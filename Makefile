@@ -33,3 +33,6 @@ test:
 
 lint-script:      ## check narration for AI tells + TTS problems (docs/script-style-guide.md)
 	$(PY) -m pipeline.lint_script episodes/$(SLUG)/script.md
+
+recording-script: ## printable script for recording your own voice, one file per line
+	$(PY) -m pipeline.recording_script episodes/$(SLUG)
