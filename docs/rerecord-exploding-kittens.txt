@@ -1,0 +1,18 @@
+RE-RECORD: 7 lines (2 new, 5 redo)
+
+One recording, any order. 10 s of silence first. Pause 1-2 s between lines. Mess up? Pause and redo the whole line; the last take wins.
+Say every 'percent'. Slow down on d3 and a2 (they were ~260 words/min; aim for your normal ~190).
+
+[g1]  If you've never played: everyone draws from one deck, and whoever draws an Exploding Kitten is out, unless they have a Defuse. Every other card helps you avoid drawing, or makes someone else draw. Last player standing wins.
+
+[o4]  The best of them won thirty five percent of its games. The worst won eleven and a half.
+
+[d3]  Wait for a coin flip, and you still lose ground. The only rule that held up is the boring one. Skip or Attack when you know the next card is a Kitten. Not when you feel it.
+
+[f4]  And you can tell when that is. Count the cards left in the deck, and divide by the Kittens still in it. About three cards per Kitten, and it's time to look. Two Kittens left means six cards or fewer.
+
+[a2]  So I cut it. The numbers in this video come from the simulation. When I give you a reason, I'll tell you if it's a guess.
+
+[t2]  With two players, it does. The first player wins fifty two percent of the time.
+
+[w3]  That's the Patient One. Forty percent at a table of four, and more than half its games with three.

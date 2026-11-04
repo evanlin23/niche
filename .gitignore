@@ -11,3 +11,7 @@ music/*
 episodes/*/voice/*.wav
 episodes/*/voice/*.m4a
 episodes/*/voice/*.mp3
+episodes/*/voice/_transcript.json
+episodes/*/voice/*.said.txt
+episodes/*/voice/_report*.txt
+episodes/*/voice/_roomtone.wav

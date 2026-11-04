@@ -16,33 +16,36 @@ COLD OPEN
 [o2]  The one who plays every card the second it lands in their hand. The one who Skips as soon as the deck starts to feel dangerous. And the one who never steals anything, because stealing feels rude.
 [o3]  So I turned them into bots, sat them at the same table, and had them play Exploding Kittens more than ten billion times.
 [o4]  The best of them won thirty five percent of its games. The worst won eleven and a half.
-[o5]  And the gap wasn't luck, or some secret combo. It came down to five mistakes. Most tables make every one of them.
+[o5]  And the gap wasn't luck, or some secret combo. It came down to five mistakes, and most tables make every one of them.
+
+THE GAME IN TEN SECONDS
+[g1]  If you've never played: everyone draws from one deck, and whoever draws an Exploding Kitten is out, unless they have a Defuse. Every other card helps you avoid drawing, or makes someone else draw. Last player standing wins.
 
 CAN YOU TRUST IT
 [c1]  First, the game. My version follows the official rulebook for the original edition. Fifty six cards, four Kittens, six Defuses, Attacks that stack, and Nopes that cancel other Nopes.
 [c2]  Before trusting it with strategy, I checked something boring. With four players, the chance that the very first card anyone draws is a Kitten is three in twenty three. That's thirteen point oh four percent.
 [c3]  Across ten million shuffles, my deck said thirteen point oh seven. Close enough.
 [c4]  The bots only know what a real player knows. Their own hand, whatever they saw with See the Future, and where they hid a Kitten.
-[c5]  There is one thing they can't do, though. They can't lie. Real players bluff about where they put the Kitten. Mine just put it there. Keep that in mind, because I'll come back to it.
+[c5]  There is only one thing they can't do, though. They can't lie. Real players bluff about where they put the Kitten. Mine just put it there. Keep that in mind, because I'll come back to it.
 
 MEET THE BOTS
 [b1]  Here's who's at the table.
 [b2]  The Normal Player plays like most people. It dodges when it knows a Kitten is coming, it hides Kittens at random, and now and then it plays a card just because it's fun.
 [b3]  The Gambler plays cards on a whim, half the time. The Panicker Skips as soon as one card in four could be a Kitten. The Hoarder never steals and never peeks.
-[b4]  And then there's the Patient One. I'll get to what it does.
+[b4]  And then there's the Patient One. I'll get back to what it does.
 [b5]  One table, seats shuffled every game. The Patient One won thirty five percent. The Normal Player, twenty two. The Gambler, seventeen. The Panicker, fourteen. And the Hoarder, eleven and a half. A fair share is twenty.
-[b6]  But a ranking doesn't tell you why. So I switched to a cleaner test. Three Normal Players, plus one test bot that changes a single habit. A hundred million games for each change. Twenty five percent is the number to beat.
+[b6]  But a ranking doesn't tell you why. So I switched to a cleaner test. Three Normal Players, plus one test bot that changes a single habit. One hundred million games for each change. Twenty five is the number to beat.
 
 MISTAKE ONE: PLAYING FOR FUN
 [p1]  Mistake number one is playing cards for fun.
-[p2]  Take the Normal Player and remove the urge to play random cards. Same bot otherwise. It goes from twenty five percent to thirty.
+[p2]  Take the Normal Player and remove the urge to play random cards. Same bot otherwise. It goes from twenty five to thirty.
 [p3]  Push it the other way, cards on a whim half the time, and it falls to fourteen.
 [p4]  Every Skip you spend early is one you don't have later. And later is when it counts. At the first draw, about one card in seven is a Kitten. In the last few draws, most of what's left is Kittens.
 [p5]  The rulebook actually tells you this. Save your cards early, while your chance of exploding is low. Almost nobody listens.
 
 MISTAKE TWO: PANICKING
 [d1]  Mistake number two is panicking.
-[d2]  Once one card in four is a Kitten, the deck feels dangerous, and most people start Skipping. That's the Panicker. It wins sixteen percent.
+[d2]  Once one card in four is a Kitten, the deck feels dangerous, and most people start Skipping. That's the Panicker, and it only wins sixteen.
 [d3]  Wait for a coin flip, and you still lose ground. The only rule that held up is the boring one. Skip or Attack when you know the next card is a Kitten. Not when you feel it.
 [d4]  And if you're wondering, Attack or Skip barely matters when you're dodging. The gap was a fraction of a point.
 
@@ -50,14 +53,15 @@ MISTAKE THREE: LOOKING AT THE WRONG TIME
 [f1]  Which brings us to mistake number three. Looking at the wrong time.
 [f2]  The only way to know what's coming is See the Future. Never using it costs you about two and a half points. Using it the moment you draw it costs about the same.
 [f3]  The best time is when roughly one card in three could be a Kitten. Peek then. If the top card is a Kitten, dodge. If it isn't, draw, and keep your Skip.
+[f4]  And you can tell when that is. Count the cards left in the deck, and divide by the Kittens still in it. About three cards per Kitten, and it's time to look. Two Kittens left means six cards or fewer.
 
 MISTAKE FOUR: HIDING IT IN THE WRONG PLACE
 [k1]  Mistake number four happens right after you survive.
 [k2]  You drew a Kitten, you played your Defuse, and now you can put it back anywhere you like. Most people tuck it in at random. That's exactly average.
 [k3]  The bottom of the deck feels safe. It's actually worse than random. My best guess is that a Kitten at the bottom just waits for whoever is left, and that could easily be you.
 [k4]  The best spot is the first card the next player will draw. Usually that's the top. If you're under an Attack, count your turns. One more turn to take means second from the top. Two more, third.
-[k5]  That one change takes a bot from twenty five percent to thirty.
-[cta]  If that just saved you a Defuse, subscribe. Uno is next.
+[k5]  That one change takes a bot from twenty five to thirty.
+[cta]  If that just saved you a Defuse, please subscribe. Uno is next.
 
 A QUICK CONFESSION
 [a1]  Quick confession about that bottom of the deck result. The first draft of this script had a neat explanation for it. Then I noticed I had never actually tested the explanation, only the result.

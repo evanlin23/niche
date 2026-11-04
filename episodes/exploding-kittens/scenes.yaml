@@ -65,6 +65,7 @@ scenes:
   chapter: Can you trust it?
   render: deck56
   lines:
+  - g1
   - c1
   pad:
   - 0.6
@@ -241,9 +242,17 @@ scenes:
   lines:
   - f2
   - f3
+  - f4
   params:
     chart: future
     title: 'Mistake 3: when to See the Future'
+    notes:
+    - text: 'Cards left ÷ Kittens left ≤ 3  →  peek'
+      at: f4
+      pos: [960, 150]
+      align: center
+      size: 40
+      pill: MUSTARD
 - id: m4
   render: statement
   lines:
