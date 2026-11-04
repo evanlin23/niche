@@ -340,7 +340,8 @@ SCENES.odds = async (stage, spec) => {
   }
   title(stage, p.title); brand(stage);
   return (t) => {
-    stage.cameraAt(t, { pos: [[0, 11.6, 7.2], [0, 11.0, 6.7]], look: [[0, 0, -0.4]] });
+    // near-overhead with a long lens: card edges stay vertical across the whole grid (no perspective lean)
+    stage.cameraAt(t, { pos: [[0, 21.5, 4.6], [0, 20.6, 4.3]], look: [[0, 0, -0.1]], fov: 22 });
     stage.camera.updateMatrixWorld();
     let fi = 0; frames.forEach((f, i) => { if (t >= f.at) fi = i; });
     const f = frames[fi], prev = frames[Math.max(0, fi - 1)];
@@ -403,7 +404,7 @@ SCENES.deck56 = async (stage, spec) => {
       const c = makeCard(stage, tp === 8 ? 8 + (k % 5) : tp, true);
       // neat fan: one angle per pile and a little air between cards (exactly-touching cards z-fight)
       c.position.set(gx + (k % 10) * 0.12, 0.016 + k * 0.033, gz + Math.floor(k / 10) * 0.45);
-      c.rotation.y = -0.1; c.visible = false; cards.push(c);
+      c.rotation.y = 0; c.visible = false; cards.push(c);   // square on: no diagonal lean
     }
     const lab = stage.text({ text: `${n} × ${name}`, x: 0, y: 0, size: 28, weight: 900, font: 'rubik', color: GN.text, manual: true, align: 'center' });
     items.push({ cards, lab, gx: gx + fanW / 2, gz, at: 0.6 + gi * 0.35, tp });
@@ -418,7 +419,7 @@ SCENES.deck56 = async (stage, spec) => {
   const hl = spec.highlights || [];
   const HOLD = 1.5;
   return (t) => {
-    stage.cameraAt(t, { pos: [[0, 13.2, 9.6], [0, 12.4, 8.8]], look: [[0, 0, 0.6]] });
+    stage.cameraAt(t, { pos: [[0, 19.5, 7.6], [0, 18.6, 7.1]], look: [[0, 0, 0.5]], fov: 24 });   // long lens: piles read square
     stage.camera.updateMatrixWorld();
     // which highlight is active
     let cur = null;
@@ -444,11 +445,11 @@ SCENES.deck56 = async (stage, spec) => {
         hero.traverse((o) => { o.castShadow = false; o.receiveShadow = false; });
         const top = it.cards[it.cards.length - 1].position;
         // target: in front of the camera, upright (rotated to face it), big
-        const target = new THREE.Vector3(0, 5.4, 4.2);
+        const target = new THREE.Vector3(0, 8.6, 3.6);
         hero.position.lerpVectors(new THREE.Vector3(top.x, top.y + 0.05, top.z), target, k);
         // face the camera: tip the card's face (+y) toward the camera (a positive turn about x)
         const cam = stage.camera.position, dy = cam.y - target.y, dz = cam.z - target.z;
-        hero.rotation.set(Math.atan2(dz, dy) * k, -0.1 * (1 - k), 0);
+        hero.rotation.set(Math.atan2(dz, dy) * k, 0, 0);
         hero.scale.setScalar(1 + 1.05 * k);
       }
     }
