@@ -166,7 +166,8 @@ export class Stage {
         if (T !== '0px' || it.py == null) it.py = parseFloat(T) || 0;
         el.style.left = '0px'; el.style.top = '0px';
         const b = it.note.align === 'center' ? ' translateX(-50%)' : it.note.align === 'right' ? ' translateX(-100%)' : '';
-        el.style.transform = `translate3d(${it.px.toFixed(3)}px, ${it.py.toFixed(3)}px, 0)${b}`;
+        // the tiny rotation stops Chrome snapping the layer/glyphs to whole pixels (measured: smoothest option)
+        el.style.transform = `translate3d(${it.px.toFixed(3)}px, ${it.py.toFixed(3)}px, 0)${b} rotate(0.02deg)`;
         continue;
       }
       const a = win(t, it.s, it.e, it.note.fade ?? 0.35);
