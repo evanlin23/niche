@@ -415,32 +415,37 @@ SCENES.bars = async (stage, spec) => {
 SCENES.placement = async (stage, spec) => {
   buildRoom(stage, { feltW: 18, feltD: 9 });
   const p = spec.params, ch = spec.chart;
-  // the deck laid out as a row: left = top of the deck
+  // the deck laid out as a spread row: left = top of the deck. Each card sits a little lower than the one
+  // before it (cards overlapping at the same height z-fought and flickered).
   const row = [];
-  const RX = -8.2, RS = 0.56;
-  for (let k = 0; k < 12; k++) { const c = makeCard(stage, 'back', false); c.position.set(RX + k * RS, 0.08, -1.2); row.push(c); }
-  const kitten = makeCard(stage, 0, true);
-  const bars = makeBars(stage, ch.items, { x0: 0.2, width: 7.6, maxV: ch.maxV, height: 5.0, z: 0.5, fair: ch.fair, fairSide: 'left' });
+  const RX = -7.5, RS = 0.6, Y0 = 0.06, DY = 0.05, SC = 1.45, RZ = 0.2;   // bigger and closer: the Kitten must be easy to see
+  const rowY = (j) => Y0 + (12 - j) * DY;
+  for (let k = 0; k < 12; k++) { const c = makeCard(stage, 'back', false); c.scale.setScalar(SC); c.position.set(RX + k * RS, rowY(k), RZ); row.push(c); }
+  const kitten = makeCard(stage, 0, true); kitten.scale.setScalar(SC);
+  const bars = makeBars(stage, ch.items, { x0: 1.2, width: 6.2, maxV: ch.maxV, height: 5.0, z: 0.5, fair: ch.fair, fairSide: "left" });
   stage.text({ text: 'TOP OF DECK', x: 0, y: 0, size: 24, weight: 900, font: 'rubik', color: GN.mustard, manual: true });
   const topLab = stage.texts[stage.texts.length - 1];
   stage.text({ text: 'BOTTOM', x: 0, y: 0, size: 24, weight: 900, font: 'rubik', color: GN.muted, manual: true });
   const botLab = stage.texts[stage.texts.length - 1];
   title(stage, p.title); notes(stage, p.notes); brand(stage);
-  // targets: slot index over time (random -> bottom -> top -> second)
-  const plan = [[stage.at('k2+3', 0.6), 6], [stage.at('k3'), 12], [stage.at('k4'), 0], [stage.at('k4+4'), 1], [stage.at('k4+6'), 2], [stage.at('k5'), 0]];
+  if (ch.players) stage.text({ text: `${ch.players} players · fair share ${ch.fair}%`, x: 960, y: 128, size: 30, weight: 700, font: 'rubik', align: 'center', at: 0.05, case: 'none', pill: 'rgba(244,234,213,0.92)', color: '#1b1209' });
+  // where the Kitten goes, on the words that say it (params.plan = [[time, slot], ...], anchors resolved)
+  const plan = (p.plan || [[0.6, 6]]).map(([a, s]) => [typeof a === 'number' ? a : stage.at(a, 0.6), s]);
   return (t) => {
     stage.cameraAt(t, { pos: [[-0.2, 7.2, 17.5], [0, 6.8, 16.8]], look: [[-0.2, 1.8, 0]] });
     stage.camera.updateMatrixWorld();
-    let slot = 6, prev = 6, ts = 0;
+    let slot = plan[0][1], prev = plan[0][1], ts = plan[0][0];
     for (const [at, s] of plan) if (t >= at) { prev = slot; slot = s; ts = at; }
-    const k = ease((t - ts) / 0.8);
+    const k = ease((t - ts) / 0.7);
     const sl = lerp(prev, slot, k);
-    // open a gap in the row at the slot
-    row.forEach((c, j) => { const shift = j >= sl ? RS : 0; c.position.x = RX + j * RS + shift; });
+    // a smooth gap opens where the Kitten goes (no snapping card by card)
+    row.forEach((c, j) => { const g = clamp(j - sl + 1); c.position.x = RX + j * RS + g * RS; c.position.y = rowY(j); });
     const lift = Math.sin(k * Math.PI) * 1.2;
-    kitten.position.set(RX + sl * RS, 0.25 + lift + (t < plan[0][0] ? 1.5 : 0), -1.2);
-    const [tx, ty] = stage.project(new THREE.Vector3(RX, 0, -0.2));
-    const [bx, by] = stage.project(new THREE.Vector3(RX + 12.5 * RS, 0, -0.2));
+    const arrive = ease((t - plan[0][0]) / 0.6);
+    kitten.position.set(RX + sl * RS, rowY(Math.min(11, Math.max(0, Math.round(sl)))) + DY * 0.6 + lift + (1 - arrive) * 1.5, RZ);
+    kitten.visible = t >= plan[0][0] - 0.6;
+    const [tx, ty] = stage.project(new THREE.Vector3(RX, 0, RZ + 1.2));
+    const [bx, by] = stage.project(new THREE.Vector3(RX + 12.5 * RS, 0, RZ + 1.2));
     topLab.el.style.left = tx - 60 + 'px'; topLab.el.style.top = ty + 'px'; topLab.el.style.opacity = 1;
     botLab.el.style.left = bx - 30 + 'px'; botLab.el.style.top = by + 'px'; botLab.el.style.opacity = 1;
     bars.update(t);

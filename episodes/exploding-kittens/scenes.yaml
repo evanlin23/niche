@@ -305,6 +305,13 @@ scenes:
   - k5
   - cta
   params:
+    plan:
+    - [k2@random, 6]
+    - [k3@bottom, 12]
+    - [k4@top, 0]
+    - [k4@second, 1]
+    - [k4@third, 2]
+    - [k5@thirty, 0]
     chart: placement
     title: 'Mistake 4: where to put the Kitten back'
 - id: confession
