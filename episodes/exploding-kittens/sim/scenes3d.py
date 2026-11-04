@@ -18,7 +18,7 @@ F = json.loads((EP / "data" / "final.json").read_text())
 import os
 import yaml
 CFG = yaml.safe_load((EP / "scenes.yaml").read_text())
-LOOK = {"look": CFG.get("look"), "quality": CFG.get("quality", "normal"),
+LOOK = {"look": CFG.get("look"), "quality": CFG.get("quality", "normal"), "grade": CFG.get("grade"),
         "ssaa": float(os.environ.get("RENDER_SSAA", CFG.get("ssaa", 1)))}
 X = json.loads((EP / "data" / "extra.json").read_text())
 RK = json.loads((EP / "data" / "ranking-5p.json").read_text())

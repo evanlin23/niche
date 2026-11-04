@@ -153,7 +153,20 @@ export function cardTexture(type) {
 }
 
 const CW = 0.9, CH = 1.26, CT = 0.02;
-const _cardGeo = new RoundedBoxGeometry(CW, CT, CH, 2, 0.008);
+// card body = rounded rectangle (same corner radius as the printed face), extruded to the card's thickness.
+// A box with square corners showed cream corners behind the rounded face art.
+const CR = 0.09;   // 26 px of the 256 px card art
+function _roundedCardGeo() {
+  const w = CW / 2, h = CH / 2, r = CR, sh = new THREE.Shape();
+  sh.moveTo(-w + r, -h); sh.lineTo(w - r, -h); sh.quadraticCurveTo(w, -h, w, -h + r);
+  sh.lineTo(w, h - r); sh.quadraticCurveTo(w, h, w - r, h); sh.lineTo(-w + r, h);
+  sh.quadraticCurveTo(-w, h, -w, h - r); sh.lineTo(-w, -h + r); sh.quadraticCurveTo(-w, -h, -w + r, -h);
+  const g = new THREE.ExtrudeGeometry(sh, { depth: CT, bevelEnabled: false, curveSegments: 6 });
+  g.translate(0, 0, -CT / 2); g.rotateX(-Math.PI / 2);      // lie flat: thickness along y, centred
+  g.computeVertexNormals();
+  return g;
+}
+const _cardGeo = _roundedCardGeo();
 const _faceGeo = new THREE.PlaneGeometry(CW * 0.98, CH * 0.98);
 export function makeCard(stage, type, faceUp = true) {
   const grp = new THREE.Group();

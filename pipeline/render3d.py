@@ -43,7 +43,7 @@ def render(spec: dict, out: Path, scale: float = 1.0, crf: int = 18, png_frame: 
         json.dump(spec, f)
     job = {"root": str(ROOT), "spec": "/" + str(Path(sp).relative_to(ROOT)), "out": str(out),
            "width": int(round(spec["W"] * scale / 2) * 2), "height": int(round(spec["H"] * scale / 2) * 2),
-           "fps": spec["fps"], "crf": crf}
+           "fps": spec["fps"], "crf": crf, "grade": spec.get("grade")}
     if frames is not None:
         job["from"], job["to"] = frames
     if png_frame is not None:

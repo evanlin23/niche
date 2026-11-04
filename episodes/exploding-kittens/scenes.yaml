@@ -4,6 +4,7 @@ music:              # YouTube Audio Library, no attribution required (local only
   - music/renunciation-asher-fulero.mp3
   - music/ponderous-days-joel-cummins.mp3
 engine: 3d
+grade: eq=saturation=1.12:contrast=1.04   # light colour grade baked into every scene
 burn_captions: true  # on-screen captions for every spoken line (creator request)
 voice_style: studio   # no-AI studio chain: de-reverb, broadcast EQ, compression (pipeline/studio_voice.py)
 look: clean-sage      # clean-sage | clean-ink | clean-light | (unset = warm game night)

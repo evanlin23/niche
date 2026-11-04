@@ -23,7 +23,7 @@ const server = http.createServer((req, res) => {
   await page.waitForFunction('window.READY');
   const n = await page.evaluate((u) => window.setup(u), job.spec);
   const ff = job.png ? null : spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(job.fps), '-c:v', 'mjpeg', '-i', '-',
-    '-c:v', 'libx264', '-preset', 'veryfast', '-crf', String(job.crf || 18), '-pix_fmt', 'yuv420p', '-r', String(job.fps),
+    ...(job.grade ? ['-vf', job.grade] : []), '-c:v', 'libx264', '-preset', 'veryfast', '-crf', String(job.crf || 18), '-pix_fmt', 'yuv420p', '-r', String(job.fps),
     '-movflags', '+faststart', job.out], { stdio: ['pipe', 'inherit', 'inherit'] });
   const cdp = await page.context().newCDPSession(page);
   const lo = job.from ?? 0, hi = Math.min(n, job.to ?? n);
