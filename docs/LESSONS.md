@@ -186,6 +186,7 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - Pinned comment = the argument-starter question from the ending.
 
 ## Working with the creator
+- Always give times in **US Central time** (CST/CDT), never UTC.
 - They want autonomy: make the production decisions (studio sound, pacing, cuts) and explain briefly.
 - No AI voice enhancement. Signal processing only.
 - Plan ~14 episodes ahead; research + build in parallel with docs/agent-prompts/game-research-and-sim.md
