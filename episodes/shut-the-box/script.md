@@ -58,5 +58,5 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 [w2] Take the biggest tile you can, every time. Don't spend your small tiles early. And if your family plays sum or split, stop worrying about strategy, because you're mostly playing the dice.
 
 ## Close
-[e1] Next, I'm playing Battleship, to find out where to hide your ships.
+[e1] Next, more games your family argues about.
 [e2] And tell me which rule your family uses. Any combination, or sum or split?

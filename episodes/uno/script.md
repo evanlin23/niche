@@ -83,4 +83,4 @@ Re-check every number after the big run (data/results.json).
 
 ## Close
 [e1] Remember the one thing my bots never do? Argue about the rules. Which might be the real reason Uno takes forever at your house.
-[e2] Next, I'm playing Battleship, to find out where to hide your ships. Tell me where you always put yours.
+[e2] Next, I'm finding out how to beat your friends at Connect Four. Tell me your opening move.
