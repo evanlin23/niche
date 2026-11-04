@@ -295,11 +295,13 @@ def final_check(ep: Path):
     from .voice_clean import clean, load
     vd = ep / "voice"
     script = {m.group(1): m.group(2) for m in re.finditer(r"^\[(\w+)\] (.*)$", (ep / "script.md").read_text(), re.M)}
-    room = load(vd / "_roomtone.wav") if (vd / "_roomtone.wav").exists() else None
+    from .match_voice import roomtone_path, session_of
     bad = []
     for lid, text in script.items():
         if not (vd / f"{lid}.wav").exists():
             continue
+        rp = roomtone_path(vd, session_of(json.loads((vd / f"{lid}.json").read_text())))
+        room = load(rp) if rp.exists() else None
         cl = clean(load(vd / f"{lid}.wav"), room, do_trim=False)
         _, db = frames(cl); fl = np.percentile(db, 10)
         if db[-3:].max() > fl + 15:

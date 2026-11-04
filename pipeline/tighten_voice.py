@@ -120,6 +120,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("voice_dir")
     ap.add_argument("--max-pause", type=float, default=0.35)
+    ap.add_argument("--lines", nargs="*", help="only rebuild these lines (others keep their QA edits)")
     ap.add_argument("--cuts", default=None)
     ap.add_argument("--words", default=None, help="verbatim word timings {id: [[w,s,e],...]} (find_stumbles)")
     a = ap.parse_args()
@@ -130,7 +131,7 @@ def main():
     manual = json.loads(mpath.read_text()) if mpath.exists() else {}
     before = after = 0.0
     for js in sorted(d.glob("*.json")):
-        if js.name.startswith("_"):
+        if js.name.startswith("_") or (a.lines and js.stem not in a.lines):
             continue
         wav = js.with_suffix(".wav")
         if not wav.exists():
