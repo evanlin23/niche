@@ -59,6 +59,21 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - Keep decorative props fully in frame and clear of text (the checklist card fan was half off-screen).
 - While a rules line names each card, light up that pile (lift + mustard label), timed from the word cues.
 
+## Visuals follow the voice (creator feedback on video 1)
+- **Always motion, and animation that follows what is said.** Every visual event is tied to the WORD that says it
+  (`'line@word'` anchors resolved from the force-aligned voice), never to fixed offsets. Check: no line may have
+  more than ~5 s of speech without something new on screen (bar, card, bot, deck change, callout chip).
+- Charts: bars appear on their number; every chart shows its player count ("4 players · fair share 25%");
+  charts that mix player counts reveal one group at a time. Never show a 5-player chart while saying "25".
+- Explain with objects, not text: card piles where each named card flies up big; bots that step forward with
+  their habits listed as they're said; a held hand / See the Future / hiding a Kitten; the deck as Kittens vs
+  cards for odds. Text chips ("callouts") only where no picture exists yet.
+- Tables show as many seats as bots being discussed. Hands face their owners (card tops point away from them).
+- Cards: rounded bodies matching the art, a little thickness, darker edges, stacked by real thickness (never
+  coplanar), square-on (no random tilt), near-overhead long-lens cameras so edges stay vertical.
+- Big 3D statements: fade in place with a gentle orbit (+/-3 deg), not a drop.
+- No burned-in captions (YouTube CC is enough); a light grade (+12% saturation, +4% contrast) baked per scene.
+
 ## Camera (research notes, see sources in docs/camera-research.md)
 - One dominant move per shot. Slow orbit 1-4 deg/s (we use ~1 deg/s, max +/-8 deg for wide charts: wider arcs
   make the edge bars lean and the fair-share line tilt), push-in 10-20% of distance on a key reveal.
