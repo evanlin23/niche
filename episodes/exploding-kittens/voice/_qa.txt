@@ -1,6 +1,11 @@
-[f2]
-    1.56- 1.64s  voiced  +34.6 dB  (flat 0.0, 474 Hz, low 0.8)  -> keep
-    4.33s  unsure word 'two' (score 0.125) -> listen: mumble / leftover restart?
-    4.49s  unsure word 'and' (score 0.072) -> listen: mumble / leftover restart?
-    4.59s  unsure word 'a' (score 0.035) -> listen: mumble / leftover restart?
-    4.67s  unsure word 'half' (score 0.137) -> listen: mumble / leftover restart?
+[g3]
+    0.12- 0.18s  breath  +30.8 dB  (flat 0.257, 4566 Hz, low 0.0)  -> keep
+    3.12- 3.18s  voiced  +40.3 dB  (flat 0.003, 735 Hz, low 0.21)  -> keep
+    5.12- 5.16s  breath  +12.7 dB  (flat 0.187, 3964 Hz, low 0.02)  -> keep
+    5.30- 5.35s  voiced  +12.1 dB  (flat 0.023, 1671 Hz, low 0.04)  -> keep
+    7.69- 7.76s  breath  +20.7 dB  (flat 0.136, 4744 Hz, low 0.01)  -> keep
+   12.15-12.19s  breath  +14.6 dB  (flat 0.102, 4788 Hz, low 0.01)  -> keep
+   14.22-14.40s  voiced  +40.3 dB  (flat 0.081, 2201 Hz, low 0.54)  -> keep
+   16.08-16.15s  voiced  +17.4 dB  (flat 0.008, 1449 Hz, low 0.02)  -> keep
+   16.16-16.22s  voiced  +14.9 dB  (flat 0.009, 1427 Hz, low 0.05)  -> keep
+    8.19s  unsure word 'Shuffle' (score 0.149) -> listen: mumble / leftover restart?
