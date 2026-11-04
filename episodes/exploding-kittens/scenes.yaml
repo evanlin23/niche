@@ -1,5 +1,8 @@
 # Exploding Kittens: scene list. `lines` = narration ids in script.md. Chart values come from data/*.json.
-music: curious       # procedural mood, or a folder of tracks, e.g. music/  (YouTube Audio Library)
+music:              # YouTube Audio Library, no attribution required (files are local only, not in git)
+  - music/3-tiburtina-schwartzy.mp3
+  - music/4-fascination-gregory-allison.mp3
+  - music/1-sleep-music-no1-chris-haugen.mp3
 engine: 3d
 look: clean-sage      # clean-sage | clean-ink | clean-light | (unset = warm game night)
 quality: high         # high = reflections + glossy pieces + 4K shadows

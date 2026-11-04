@@ -31,26 +31,36 @@ AUDIO_EXT = (".mp3", ".wav", ".m4a", ".ogg", ".flac", ".aac")
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def _bandlimit(a: np.ndarray) -> np.ndarray:
+    import subprocess
+    p = subprocess.run(["ffmpeg", "-loglevel", "error", "-f", "f32le", "-ac", "1", "-ar", str(SR), "-i", "-",
+                        "-af", "highpass=f=140,lowpass=f=12000", "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"],
+                       input=a.astype(np.float32).tobytes(), capture_output=True, check=True)
+    return np.frombuffer(p.stdout, np.float32).copy()
+
+
 def music_bed(duration: float, mood: str, seed: int = 0) -> np.ndarray:
     """Music under the voice. `mood` is either a procedural mood ("curious", "tension") or a
     file / folder of tracks (e.g. "music/" with YouTube Audio Library downloads). Tracks are
     played in order, looped, and crossfaded (4 s) to fill the duration."""
     from .tts import read_wav
-    p = Path(mood) if mood else None
-    if p is not None and not p.is_absolute():
-        p = ROOT / p
     tracks = []
-    if p is not None and p.is_dir():
-        tracks = sorted(x for x in p.iterdir() if x.suffix.lower() in AUDIO_EXT)
-    elif p is not None and p.is_file():
-        tracks = [p]
+    for item in (mood if isinstance(mood, list) else [mood]):
+        p = Path(item) if item else None
+        if p is not None and not p.is_absolute():
+            p = ROOT / p
+        if p is not None and p.is_dir():
+            tracks += sorted(x for x in p.iterdir() if x.suffix.lower() in AUDIO_EXT)
+        elif p is not None and p.is_file():
+            tracks.append(p)
     if not tracks:
-        return music.bed(duration, mood if mood in music.PROGRESSIONS else "curious", seed)
+        return music.bed(duration, mood if isinstance(mood, str) and mood in music.PROGRESSIONS else "curious", seed)
     n, xf = int(duration * SR), int(4 * SR)
     out = np.zeros(0, np.float32)
     k = 0
     while len(out) < n:
         t = read_wav(tracks[k % len(tracks)])
+        t = _bandlimit(t)                                          # keep bass mud out from under the voice
         t = t / (np.sqrt(np.mean(t ** 2)) + 1e-9) * 0.12          # equal loudness between tracks
         if len(out) >= xf and len(t) > xf:
             ramp = np.linspace(0, 1, xf, dtype=np.float32)

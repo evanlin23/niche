@@ -6,3 +6,5 @@ episodes/*/assets/
 .cache/
 node_modules/
 sims/ek/eksim
+music/*
+!music/README.md
