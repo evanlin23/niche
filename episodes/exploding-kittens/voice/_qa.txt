@@ -1,9 +1,7 @@
-[o4]
-    0.00- 0.19s  voiced  +48.0 dB  (flat 0.0, 284 Hz, low 0.95)  -> fill
-    1.14- 1.18s  voiced  +43.9 dB  (flat 0.0, 256 Hz, low 0.98)  -> keep
-    3.22- 3.29s  voiced  +47.7 dB  (flat 0.008, 820 Hz, low 0.22)  -> keep
-    1.22s  unsure word 'won' (score 0.221) -> listen: mumble / leftover restart?
-    1.46s  unsure word 'thirty' (score 0.044) -> listen: mumble / leftover restart?
-    1.74s  unsure word 'five' (score 0.162) -> listen: mumble / leftover restart?
-    3.69s  unsure word 'won' (score 0.23) -> listen: mumble / leftover restart?
-    4.93s  unsure word 'and' (score 0.19) -> listen: mumble / leftover restart?
+[k5]
+    2.07- 2.29s  voiced  +23.3 dB  (flat 0.066, 831 Hz, low 0.17)  -> fill
+    1.52s  unsure word 'twenty' (score 0.01) -> listen: mumble / leftover restart?
+    1.77s  unsure word 'five' (score 0.031) -> listen: mumble / leftover restart?
+    2.47s  unsure word 'thirty.' (score 0.2) -> listen: mumble / leftover restart?
+
+[k5] STILL AUDIBLE after fill at 2.07-2.29s (+27 dB)
