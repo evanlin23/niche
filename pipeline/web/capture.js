@@ -26,7 +26,8 @@ const server = http.createServer((req, res) => {
     '-c:v', 'libx264', '-preset', 'veryfast', '-crf', String(job.crf || 18), '-pix_fmt', 'yuv420p', '-r', String(job.fps),
     '-movflags', '+faststart', job.out], { stdio: ['pipe', 'inherit', 'inherit'] });
   const cdp = await page.context().newCDPSession(page);
-  const frames = job.only_frame != null ? [job.only_frame] : [...Array(n).keys()];
+  const lo = job.from ?? 0, hi = Math.min(n, job.to ?? n);
+  const frames = job.only_frame != null ? [job.only_frame] : [...Array(hi - lo).keys()].map((k) => k + lo);
   for (const i of frames) {
     await page.evaluate((k) => window.frame(k), i);
     const { data } = await cdp.send('Page.captureScreenshot', { format: job.png ? 'png' : 'jpeg', quality: 93, optimizeForSpeed: true });

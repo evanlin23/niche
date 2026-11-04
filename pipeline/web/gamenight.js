@@ -52,7 +52,7 @@ function cleanRoom(stage, L) {
   S.add(new THREE.HemisphereLight(0xffffff, new THREE.Color(L.bg), 1.1));
   const key = new THREE.DirectionalLight(0xfff4e6, 2.2);
   key.position.set(-6, 18, 10); key.castShadow = true;
-  key.shadow.mapSize.set(4096, 4096); key.shadow.radius = 14; key.shadow.blurSamples = 24; key.shadow.bias = -0.0005;
+  key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 10; key.shadow.blurSamples = 12; key.shadow.bias = -0.0005;
   Object.assign(key.shadow.camera, { left: -14, right: 14, top: 14, bottom: -14, near: 1, far: 60 });
   S.add(key);
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshStandardMaterial({ color: L.floor, roughness: 1 }));

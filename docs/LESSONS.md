@@ -63,8 +63,9 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   busyness, swell) and let the creator pick by ear from a sampler. High-pass music under the voice.
 
 ## Pipeline & ops
-- Rendering is CPU-bound (software WebGL): ~3.5 s/frame at 1080p with ssaa 1.5. GitHub Actions: one runner per
-  scene, 20 at once; the longest scene sets the wall time (~80 min). Split very long scenes if time matters.
+- Rendering is CPU-bound (software WebGL): 4–7 s/frame at 1080p with ssaa 1.5 on GitHub runners (3D text and
+  soft shadows are the expensive parts). Video 1 took ~2.5 h because one runner per scene meant the longest scene
+  set the wall time. Now scenes are split into ~10 s chunks (RENDER_CHUNK=k/n), so a whole episode takes ~30–40 min.
 - Final mix happens locally (voice + licensed music), visuals on GitHub.
 - Don't commit: music, voice audio, full transcripts, out/.
 

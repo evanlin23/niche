@@ -47,7 +47,18 @@ jobs:
           PY
       - id: list
         run: |
-          echo "scenes=$(python -c "import yaml,json,os; print(json.dumps([s['id'] for s in yaml.safe_load(open(f'episodes/{os.environ[\"SLUG\"]}/scenes.yaml'))['scenes']]))")" >> "$GITHUB_OUTPUT"
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os
+          from pathlib import Path
+          from pipeline.timeline import build, parse_script, load_yaml
+          ep = Path("episodes") / os.environ["SLUG"]
+          sc = build(load_yaml(ep / "scenes.yaml")["scenes"], parse_script(ep / "script.md"), Path(".cache/tts"))
+          jobs = []
+          for s in sc:                       # ~10 s of video per runner so no single scene holds up the run
+              n = max(1, round(s.duration / 10))
+              jobs += [f"{s.id}:{k}/{n}" for k in range(n)]
+          print("scenes=" + json.dumps(jobs))
+          PY
       - run: mkdir -p .cache/tts && echo "placeholder" > .cache/tts/placeholder.txt   # never empty (recorded voice needs no TTS)
       - uses: actions/upload-artifact@v4
         with: { name: tts-cache, path: .cache/tts, retention-days: 3 }
@@ -66,11 +77,15 @@ jobs:
         with: { browser: "true" }
       - uses: actions/download-artifact@v4
         with: { name: tts-cache, path: .cache/tts }
-      - name: Render scene ${{ matrix.scene }}
-        run: python -m pipeline.cli episode "$SLUG" --only "${{ matrix.scene }}" --jobs 1
+      - name: Render ${{ matrix.scene }}
+        run: |
+          SCENE="${MATRIX_SCENE%%:*}"; export RENDER_CHUNK="${MATRIX_SCENE#*:}"
+          python -m pipeline.cli episode "$SLUG" --only "$SCENE" --jobs 1
+        env:
+          MATRIX_SCENE: ${{ matrix.scene }}
       - uses: actions/upload-artifact@v4
         with:
-          name: scene-${{ matrix.scene }}
+          name: scene-${{ strategy.job-index }}
           path: episodes/${{ inputs.slug }}/out/final/scenes/*.mp4
           retention-days: 3
 

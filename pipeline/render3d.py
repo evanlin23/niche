@@ -31,7 +31,8 @@ def _env():
     return env
 
 
-def render(spec: dict, out: Path, scale: float = 1.0, crf: int = 18, png_frame: int | None = None) -> Path:
+def render(spec: dict, out: Path, scale: float = 1.0, crf: int = 18, png_frame: int | None = None,
+           frames: tuple[int, int] | None = None) -> Path:
     out = Path(out)
     out.parent.mkdir(parents=True, exist_ok=True)
     tmpdir = ROOT / ".cache" / "specs"
@@ -43,6 +44,8 @@ def render(spec: dict, out: Path, scale: float = 1.0, crf: int = 18, png_frame: 
     job = {"root": str(ROOT), "spec": "/" + str(Path(sp).relative_to(ROOT)), "out": str(out),
            "width": int(round(spec["W"] * scale / 2) * 2), "height": int(round(spec["H"] * scale / 2) * 2),
            "fps": spec["fps"], "crf": crf}
+    if frames is not None:
+        job["from"], job["to"] = frames
     if png_frame is not None:
         job["only_frame"] = png_frame
         job["png"] = str(out)

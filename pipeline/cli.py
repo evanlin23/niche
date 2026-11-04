@@ -12,6 +12,7 @@ import copy
 import importlib.util
 import json
 import multiprocessing as mp
+import os
 import sys
 import time
 from dataclasses import dataclass, field
@@ -67,7 +68,15 @@ def _render_job(job):
     if ctx.engine == "3d":
         from . import render3d
         spec = load_3d_module(ep_dir).build_spec(ctx)
-        render3d.render(spec, out, scale=ctx.fmt.scale)
+        chunk = os.environ.get("RENDER_CHUNK")          # "k/n": render only slice k of n of this scene
+        if chunk:
+            k, n = (int(x) for x in chunk.split("/"))
+            nf = spec["n_frames"]
+            lo, hi = nf * k // n, nf * (k + 1) // n
+            out = out.with_name(f"{out.stem}.part{k:02d}.mp4")
+            render3d.render(spec, out, scale=ctx.fmt.scale, frames=(lo, hi))
+        else:
+            render3d.render(spec, out, scale=ctx.fmt.scale)
     else:
         mod = load_scenes_module(ep_dir)
         fn = mod.SCENES[ctx.scene.render]
@@ -115,7 +124,11 @@ def cmd_episode(slug, preview=False, jobs=3, only=None, assemble=False):
     _run_jobs(todo, jobs)
     if only and not assemble:
         return
-    video = compose.concat(parts, out / "video-noaudio.mp4")
+    expanded = []
+    for p in parts:                                   # chunked renders: use p.partNN.mp4 files in order
+        chunks = sorted(p.parent.glob(f"{p.stem}.part*.mp4"))
+        expanded += chunks if chunks else [p]
+    video = compose.concat(expanded, out / "video-noaudio.mp4")
     audio = compose.mix(scenes, total, out / "audio.wav", mood=spec.get("music", "curious"))
     final = compose.mux(video, audio, out / f"{slug}.mp4")
     compose.srt(caps_abs, out / f"{slug}.en.srt")
