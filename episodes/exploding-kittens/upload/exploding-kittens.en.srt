@@ -1,856 +1,856 @@
 1
-00:00:00,400 --> 00:00:02,880
+00:00:00,501 --> 00:00:03,019
 Every Exploding Kittens
 table has the same people.
 
 2
-00:00:03,430 --> 00:00:06,110
+00:00:03,490 --> 00:00:06,116
 The one who plays every card the
 second it lands in their hand.
 
 3
-00:00:06,345 --> 00:00:09,180
+00:00:06,517 --> 00:00:09,263
 The one who Skips as soon as the
 deck starts to feel dangerous.
 
 4
-00:00:09,560 --> 00:00:12,480
+00:00:09,683 --> 00:00:12,570
 And the one who never steals
 anything, because stealing feels rude.
 
 5
-00:00:12,980 --> 00:00:16,070
+00:00:13,100 --> 00:00:16,129
 So I turned them into bots,
 sat them at the same table,
 
 6
-00:00:16,490 --> 00:00:19,310
+00:00:16,511 --> 00:00:19,500
 and had them play Exploding Kittens
 more than ten billion times.
 
 7
-00:00:20,460 --> 00:00:22,700
+00:00:20,520 --> 00:00:22,845
 The best of them won thirty
 five percent of its games,
 
 8
-00:00:23,065 --> 00:00:25,350
+00:00:23,246 --> 00:00:25,390
 and the worst one won
 only eleven and a half.
 
 9
-00:00:26,060 --> 00:00:28,340
+00:00:26,140 --> 00:00:28,327
 And the gap wasn't luck,
 or some secret combo.
 
 10
-00:00:28,820 --> 00:00:32,360
+00:00:28,849 --> 00:00:32,379
 It came down to five mistakes, and
 most tables make every one of them.
 
 11
-00:00:34,080 --> 00:00:36,790
+00:00:34,240 --> 00:00:37,022
 If you've never played:
 everyone draws from one deck,
 
 12
-00:00:37,210 --> 00:00:40,690
+00:00:37,423 --> 00:00:40,925
 and whoever draws an Exploding Kitten
 is out, unless they have a Defuse.
 
 13
-00:00:41,230 --> 00:00:44,490
+00:00:41,486 --> 00:00:44,708
 Every other card helps you avoid
 drawing, or makes somebody else draw.
 
 14
-00:00:45,050 --> 00:00:46,210
+00:00:45,249 --> 00:00:46,530
 Last player standing wins.
 
 15
-00:00:46,760 --> 00:00:48,920
+00:00:47,041 --> 00:00:49,252
 There's always one Kitten
 fewer than there are players,
 
 16
-00:00:49,180 --> 00:00:50,640
+00:00:49,453 --> 00:00:51,040
 so exactly one person survives.
 
 17
-00:00:51,110 --> 00:00:53,590
+00:00:51,401 --> 00:00:53,824
 On your turn, you can play
 as many cards as you like.
 
 18
-00:00:54,190 --> 00:00:56,010
+00:00:54,345 --> 00:00:56,227
 Then you end your turn
 by drawing one card.
 
 19
-00:00:56,370 --> 00:00:57,750
+00:00:56,608 --> 00:00:58,070
 That draw is where people explode.
 
 20
-00:00:58,530 --> 00:00:59,930
+00:00:58,630 --> 00:01:00,172
 Skip ends your turn without drawing.
 
 21
-00:01:00,390 --> 00:01:03,230
+00:01:00,552 --> 00:01:03,435
 Attack does the same, and the
 next player has to take two turns.
 
 22
-00:01:03,750 --> 00:01:05,830
+00:01:04,096 --> 00:01:06,058
 See the Future shows
 you the top three cards.
 
 23
-00:01:06,430 --> 00:01:07,470
+00:01:06,599 --> 00:01:07,660
 Shuffle mixes the deck.
 
 24
-00:01:07,470 --> 00:01:10,280
+00:01:08,321 --> 00:01:10,523
 Favor makes someone give
 you a card of their choice.
 
 25
-00:01:10,940 --> 00:01:14,110
+00:01:11,424 --> 00:01:14,387
 Two matching cat cards steal
 a random card from anyone.
 
 26
-00:01:14,110 --> 00:01:16,250
+00:01:14,928 --> 00:01:16,529
 And a Nope cancels almost anything.
 
 27
-00:01:16,720 --> 00:01:20,870
+00:01:16,980 --> 00:01:21,164
 First, the game. My version follows the
 official rulebook for the original edition.
 
 28
-00:01:20,870 --> 00:01:25,450
+00:01:21,624 --> 00:01:25,688
 Fifty six cards, four Kittens,
 six Defuses, Attacks that stack,
 
 29
-00:01:25,890 --> 00:01:27,130
+00:01:26,089 --> 00:01:27,470
 and Nopes that cancel other Nopes.
 
 30
-00:01:28,050 --> 00:01:30,560
+00:01:28,310 --> 00:01:30,833
 Before trusting it with strategy,
 I checked something boring.
 
 31
-00:01:31,000 --> 00:01:34,740
+00:01:31,213 --> 00:01:34,957
 With four players, the chance that the
 very first card anyone draws is a Kitten is
 
 32
-00:01:34,740 --> 00:01:35,990
+00:01:35,057 --> 00:01:35,858
 three in twenty three.
 
 33
-00:01:35,990 --> 00:01:37,910
+00:01:36,298 --> 00:01:38,080
 That's thirteen point oh four percent.
 
 34
-00:01:38,330 --> 00:01:41,950
+00:01:38,631 --> 00:01:42,119
 Across ten million shuffles, my
 deck said thirteen point oh seven.
 
 35
-00:01:41,950 --> 00:01:42,750
+00:01:42,119 --> 00:01:42,919
 Close enough.
 
 36
-00:01:43,070 --> 00:01:44,870
+00:01:43,330 --> 00:01:45,133
 The bots only know what
 a real player knows.
 
 37
-00:01:45,270 --> 00:01:47,550
+00:01:45,514 --> 00:01:47,858
 Their own hand, whatever
 they saw with See the Future,
 
 38
-00:01:48,010 --> 00:01:48,810
+00:01:48,198 --> 00:01:49,140
 and where they hid a Kitten.
 
 39
-00:01:49,410 --> 00:01:51,080
+00:01:49,690 --> 00:01:51,332
 There is only one thing
 they can't do, though.
 
 40
-00:01:51,440 --> 00:01:54,930
+00:01:51,572 --> 00:01:54,816
 They can't lie. Real players bluff
 about where they put the Kitten.
 
 41
-00:01:54,930 --> 00:01:55,790
+00:01:55,196 --> 00:01:56,017
 Mine just put it there.
 
 42
-00:01:56,150 --> 00:01:58,010
+00:01:56,358 --> 00:01:58,320
 Keep that in mind, because
 I'll come back to it later.
 
 43
-00:01:58,790 --> 00:01:59,690
+00:01:59,031 --> 00:01:59,967
 Here's who's at the table.
 
 44
-00:02:00,200 --> 00:02:01,890
+00:02:00,481 --> 00:02:02,102
 The Normal Player plays like most people.
 
 45
-00:02:02,250 --> 00:02:05,530
+00:02:02,503 --> 00:02:05,787
 It dodges when it knows a Kitten is
 coming, it hides Kittens at random,
 
 46
-00:02:05,950 --> 00:02:08,250
+00:02:06,207 --> 00:02:08,490
 and now and then it plays a
 card just because it's fun.
 
 47
-00:02:08,780 --> 00:02:10,980
+00:02:09,040 --> 00:02:11,206
 The Gambler plays cards
 on a whim, half the time.
 
 48
-00:02:11,215 --> 00:02:14,150
+00:02:11,587 --> 00:02:14,474
 The Panicker Skips as soon as one
 card in four could be a Kitten.
 
 49
-00:02:14,570 --> 00:02:16,510
+00:02:14,895 --> 00:02:16,780
 The Hoarder never steals and never peeks.
 
 50
-00:02:17,030 --> 00:02:18,180
+00:02:17,311 --> 00:02:18,438
 And then there's the Patient One.
 
 51
-00:02:18,620 --> 00:02:19,800
+00:02:18,478 --> 00:02:20,169
 I'll get back to what it does later.
 
 52
-00:02:20,700 --> 00:02:22,740
+00:02:21,021 --> 00:02:22,962
 One table, seats shuffled every game.
 
 53
-00:02:23,120 --> 00:02:24,940
+00:02:23,342 --> 00:02:25,104
 The Patient One won thirty five percent.
 
 54
-00:02:24,940 --> 00:02:27,000
+00:02:25,444 --> 00:02:26,705
 The Normal Player, twenty two.
 
 55
-00:02:27,000 --> 00:02:28,600
+00:02:27,205 --> 00:02:28,366
 The Gambler, seventeen.
 
 56
-00:02:28,600 --> 00:02:30,060
+00:02:28,807 --> 00:02:29,927
 The Panicker, fourteen.
 
 57
-00:02:30,060 --> 00:02:31,800
+00:02:30,388 --> 00:02:31,989
 And the Hoarder, eleven and a half.
 
 58
-00:02:32,040 --> 00:02:32,960
+00:02:32,349 --> 00:02:33,190
 A fair share is twenty.
 
 59
-00:02:33,500 --> 00:02:34,960
+00:02:34,040 --> 00:02:35,423
 But a ranking doesn't tell you why.
 
 60
-00:02:35,380 --> 00:02:36,680
+00:02:35,944 --> 00:02:37,286
 So I switched to a cleaner test.
 
 61
-00:02:37,030 --> 00:02:40,010
+00:02:37,587 --> 00:02:40,592
 Three Normal Players, plus one test
 bot that changes a single habit.
 
 62
-00:02:40,010 --> 00:02:42,130
+00:02:40,612 --> 00:02:42,716
 One hundred million games for each change.
 
 63
-00:02:42,130 --> 00:02:44,290
+00:02:43,157 --> 00:02:44,860
 Twenty five is the number to beat.
 
 64
-00:02:45,110 --> 00:02:46,990
+00:02:45,671 --> 00:02:47,528
 Mistake number one is
 playing cards for fun.
 
 65
-00:02:47,820 --> 00:02:50,510
+00:02:48,400 --> 00:02:51,004
 Take the Normal Player and remove
 the urge to play random cards.
 
 66
-00:02:50,890 --> 00:02:54,270
+00:02:51,445 --> 00:02:54,690
 Same bot otherwise. It goes from
 twenty five percent to thirty percent.
 
 67
-00:02:54,520 --> 00:02:56,930
+00:02:55,080 --> 00:02:57,492
 Push it the other way, with
 cards on a whim half the time,
 
 68
-00:02:57,350 --> 00:02:58,270
+00:02:57,854 --> 00:02:58,899
 and it falls to fourteen.
 
 69
-00:02:58,870 --> 00:03:01,180
+00:02:59,370 --> 00:03:01,595
 Every Skip you spend early
 is one you don't have later.
 
 70
-00:03:01,560 --> 00:03:02,840
+00:03:02,096 --> 00:03:03,318
 And later is when it counts.
 
 71
-00:03:03,240 --> 00:03:05,420
+00:03:03,719 --> 00:03:05,964
 At the first draw, about one
 card in seven is a Kitten.
 
 72
-00:03:05,680 --> 00:03:08,120
+00:03:06,204 --> 00:03:08,750
 In the last few draws, most
 of what's left is Kittens.
 
 73
-00:03:08,720 --> 00:03:10,330
+00:03:09,180 --> 00:03:10,702
 The rulebook actually tells you this.
 
 74
-00:03:10,830 --> 00:03:13,290
+00:03:11,143 --> 00:03:13,707
 Save your cards early, while
 your chance of exploding is low.
 
 75
-00:03:13,815 --> 00:03:14,920
+00:03:14,408 --> 00:03:15,530
 Almost nobody listens.
 
 76
-00:03:15,840 --> 00:03:17,350
+00:03:16,326 --> 00:03:17,818
 Mistake number two is panicking.
 
 77
-00:03:18,170 --> 00:03:20,990
+00:03:18,690 --> 00:03:21,454
 Once one card in four is a
 Kitten, the deck feels dangerous,
 
 78
-00:03:21,430 --> 00:03:22,510
+00:03:21,834 --> 00:03:23,016
 and most people start Skipping.
 
 79
-00:03:22,980 --> 00:03:25,200
+00:03:23,416 --> 00:03:26,360
 That's the Panicker, and it only
 wins sixteen percent of the time.
 
 80
-00:03:26,350 --> 00:03:28,290
+00:03:26,830 --> 00:03:28,792
 Wait for a coin flip, and
 you still lose ground.
 
 81
-00:03:28,790 --> 00:03:30,770
+00:03:29,173 --> 00:03:31,135
 The only rule that held
 up is the boring one.
 
 82
-00:03:31,190 --> 00:03:33,190
+00:03:31,496 --> 00:03:33,678
 Skip or Attack when you know
 the next card is a Kitten.
 
 83
-00:03:33,530 --> 00:03:34,590
+00:03:34,039 --> 00:03:34,960
 Not when you feel like it.
 
 84
-00:03:34,960 --> 00:03:37,800
+00:03:35,460 --> 00:03:38,266
 And if you're wondering, Attack or Skip
 barely matters when you're dodging.
 
 85
-00:03:38,340 --> 00:03:39,600
+00:03:38,727 --> 00:03:40,110
 The gap was a fraction of a point.
 
 86
-00:03:40,480 --> 00:03:41,920
+00:03:40,960 --> 00:03:42,362
 Here's where people actually get caught.
 
 87
-00:03:42,400 --> 00:03:46,000
+00:03:42,823 --> 00:03:46,427
 At a normal table of four, almost one
 explosion in four happens to someone under
 
 88
-00:03:46,000 --> 00:03:48,060
+00:03:46,467 --> 00:03:48,470
 Attack, stuck taking two turns in a row.
 
 89
-00:03:49,260 --> 00:03:50,640
+00:03:48,971 --> 00:03:50,734
 With two players, it's almost two in five.
 
 90
-00:03:50,640 --> 00:03:54,540
+00:03:51,275 --> 00:03:54,422
 But at a table of four Patient Ones,
 it's only about one in thirteen.
 
 91
-00:03:54,540 --> 00:03:57,660
+00:03:54,983 --> 00:03:58,270
 My guess is that patient players still
 have a Skip in hand when the Attack lands.
 
 92
-00:03:58,480 --> 00:04:00,060
+00:03:58,961 --> 00:04:00,465
 Which brings us to mistake number three.
 
 93
-00:04:00,400 --> 00:04:01,340
+00:04:00,806 --> 00:04:01,829
 Looking at the wrong time.
 
 94
-00:04:02,180 --> 00:04:04,620
+00:04:02,640 --> 00:04:05,083
 The only way to know what's
 coming is See the Future.
 
 95
-00:04:04,895 --> 00:04:07,320
+00:04:05,484 --> 00:04:07,767
 Never using it costs you
 about two and a half points.
 
 96
-00:04:07,320 --> 00:04:09,800
+00:04:08,207 --> 00:04:10,310
 Using it the moment you draw
 it costs about the same.
 
 97
-00:04:10,340 --> 00:04:13,050
+00:04:10,800 --> 00:04:13,507
 The best time is when roughly one
 card in three could be a Kitten.
 
 98
-00:04:13,510 --> 00:04:15,990
+00:04:13,948 --> 00:04:16,554
 Peek then. If the top
 card is a Kitten, dodge.
 
 99
-00:04:16,410 --> 00:04:18,450
+00:04:16,835 --> 00:04:18,920
 If it isn't, draw, and keep your Skip.
 
 100
-00:04:18,890 --> 00:04:19,990
+00:04:19,281 --> 00:04:20,303
 And you can tell when that is.
 
 101
-00:04:20,410 --> 00:04:23,470
+00:04:20,704 --> 00:04:23,710
 Count the cards left in the deck, and
 divide by the Kittens still in it.
 
 102
-00:04:23,790 --> 00:04:25,870
+00:04:24,111 --> 00:04:26,215
 About three cards per Kitten,
 and it's time to look.
 
 103
-00:04:25,870 --> 00:04:28,050
+00:04:26,656 --> 00:04:28,460
 Two Kittens left means six cards or fewer.
 
 104
-00:04:28,910 --> 00:04:30,990
+00:04:29,270 --> 00:04:31,419
 Mistake number four happens
 right after you survive.
 
 105
-00:04:31,810 --> 00:04:35,440
+00:04:32,231 --> 00:04:35,655
 You drew a Kitten, you played your Defuse,
 and now you can put it back anywhere you
 
 106
-00:04:35,440 --> 00:04:37,390
+00:04:35,735 --> 00:04:37,738
 like. Most people tuck it in at random.
 
 107
-00:04:37,810 --> 00:04:38,670
+00:04:38,118 --> 00:04:39,140
 That's exactly average.
 
 108
-00:04:39,230 --> 00:04:40,570
+00:04:39,590 --> 00:04:40,913
 The bottom of the deck feels safe.
 
 109
-00:04:40,990 --> 00:04:42,110
+00:04:41,274 --> 00:04:42,497
 It's actually worse than random.
 
 110
-00:04:42,650 --> 00:04:45,730
+00:04:42,978 --> 00:04:46,126
 My best guess is that a Kitten at the
 bottom just waits for whoever is left,
 
 111
-00:04:46,170 --> 00:04:47,250
+00:04:46,447 --> 00:04:47,529
 and that could easily be you.
 
 112
-00:04:47,720 --> 00:04:50,040
+00:04:48,080 --> 00:04:50,285
 The best spot is the first
 card the next player will draw.
 
 113
-00:04:50,700 --> 00:04:51,500
+00:04:50,826 --> 00:04:51,668
 Usually that's the top.
 
 114
-00:04:51,760 --> 00:04:53,220
+00:04:52,089 --> 00:04:53,632
 If you're under an
 Attack, count your turns.
 
 115
-00:04:53,525 --> 00:04:55,670
+00:04:54,053 --> 00:04:55,977
 One more turn to take
 means second from the top.
 
 116
-00:04:55,910 --> 00:04:56,710
+00:04:56,318 --> 00:04:57,140
 Two more, third.
 
 117
-00:04:57,290 --> 00:05:00,260
+00:04:57,650 --> 00:05:00,480
 That one change takes a bot from
 twenty five percent to thirty percent.
 
 118
-00:05:00,510 --> 00:05:02,460
+00:05:00,890 --> 00:05:02,836
 If that just saved you a
 Defuse, please subscribe.
 
 119
-00:05:02,760 --> 00:05:03,560
+00:05:03,057 --> 00:05:03,857
 Uno is next.
 
 120
-00:05:04,730 --> 00:05:06,430
+00:05:04,550 --> 00:05:06,773
 Quick confession about that
 bottom of the deck result.
 
 121
-00:05:06,770 --> 00:05:09,330
+00:05:07,153 --> 00:05:09,536
 The first draft of this script
 had a neat explanation for it.
 
 122
-00:05:09,330 --> 00:05:11,670
+00:05:09,916 --> 00:05:12,159
 Then I noticed I had never
 actually tested the explanation,
 
 123
-00:05:11,990 --> 00:05:12,790
+00:05:12,319 --> 00:05:13,119
 only the result.
 
 124
-00:05:13,050 --> 00:05:15,640
+00:05:13,480 --> 00:05:16,105
 So I cut it. The numbers in this
 video come from the simulation.
 
 125
-00:05:16,200 --> 00:05:18,180
+00:05:16,546 --> 00:05:18,590
 When I give you a reason,
 I'll tell you if it's a guess.
 
 126
-00:05:19,040 --> 00:05:20,840
+00:05:19,401 --> 00:05:21,279
 Mistake number five is being too polite.
 
 127
-00:05:21,650 --> 00:05:24,280
+00:05:22,031 --> 00:05:24,576
 Cat pairs and Favors look like
 the weakest cards in the deck.
 
 128
-00:05:24,740 --> 00:05:27,610
+00:05:25,076 --> 00:05:27,641
 Against a normal table, the
 Patient One wins forty percent.
 
 129
-00:05:27,610 --> 00:05:30,880
+00:05:28,021 --> 00:05:30,806
 Take away its pair steals,
 and it drops to thirty two.
 
 130
-00:05:30,880 --> 00:05:32,420
+00:05:31,247 --> 00:05:32,930
 Take away its Favors, thirty four.
 
 131
-00:05:33,020 --> 00:05:35,060
+00:05:33,360 --> 00:05:35,486
 That's a big part of why
 the Hoarder finished last.
 
 132
-00:05:35,500 --> 00:05:38,140
+00:05:35,828 --> 00:05:38,415
 Every steal is a lottery ticket
 for someone else's Defuse.
 
 133
-00:05:38,480 --> 00:05:39,460
+00:05:38,796 --> 00:05:39,840
 Aim it at the biggest hand.
 
 134
-00:05:39,950 --> 00:05:43,160
+00:05:40,370 --> 00:05:43,035
 One warning. Any two matching
 cards count as a pair,
 
 135
-00:05:43,160 --> 00:05:45,580
+00:05:43,396 --> 00:05:45,881
 not just cats. Don't pair
 up your Attacks or Skips.
 
 136
-00:05:46,020 --> 00:05:47,915
+00:05:46,382 --> 00:05:48,025
 A bot that did that won twenty percent.
 
 137
-00:05:47,915 --> 00:05:49,940
+00:05:48,386 --> 00:05:50,330
 You're trading two escapes
 for one random card.
 
 138
-00:05:50,760 --> 00:05:52,220
+00:05:51,181 --> 00:05:52,649
 A few smaller habits, quickly.
 
 139
-00:05:52,780 --> 00:05:55,650
+00:05:53,162 --> 00:05:55,966
 When someone hits you with a
 Favor, hand over your worst card,
 
 140
-00:05:55,810 --> 00:05:57,850
+00:05:56,086 --> 00:05:58,310
 not a random one. That's
 worth about three points.
 
 141
-00:05:58,460 --> 00:06:00,800
+00:05:58,900 --> 00:06:00,946
 Nope every Attack and
 every steal aimed at you.
 
 142
-00:06:01,160 --> 00:06:03,565
+00:06:01,487 --> 00:06:03,693
 A bot that never Nopes
 wins twenty one percent.
 
 143
-00:06:03,565 --> 00:06:05,420
+00:06:04,115 --> 00:06:05,899
 One that always does wins twenty seven.
 
 144
-00:06:06,010 --> 00:06:08,530
+00:06:06,391 --> 00:06:08,980
 And if you see a Kitten on
 top and can't dodge, Shuffle.
 
 145
-00:06:08,970 --> 00:06:10,310
+00:06:09,321 --> 00:06:10,626
 It helps, just not by much.
 
 146
-00:06:10,510 --> 00:06:11,310
+00:06:10,807 --> 00:06:11,607
 Less than a point.
 
 147
-00:06:11,900 --> 00:06:13,520
+00:06:12,280 --> 00:06:13,785
 Now the argument every table has.
 
 148
-00:06:14,020 --> 00:06:14,860
+00:06:14,226 --> 00:06:15,249
 Does going first matter?
 
 149
-00:06:15,450 --> 00:06:16,590
+00:06:15,780 --> 00:06:16,943
 With two players, it does.
 
 150
-00:06:17,010 --> 00:06:19,110
+00:06:17,364 --> 00:06:19,469
 The first player wins fifty
 two percent of the time.
 
 151
-00:06:19,630 --> 00:06:20,770
+00:06:19,990 --> 00:06:21,212
 With five players, it flips.
 
 152
-00:06:21,330 --> 00:06:23,070
+00:06:21,673 --> 00:06:23,496
 The last seat does a little
 better than the first.
 
 153
-00:06:23,370 --> 00:06:25,730
+00:06:23,856 --> 00:06:26,160
 You get to watch a few draws
 before you risk anything.
 
 154
-00:06:26,610 --> 00:06:29,880
+00:06:27,010 --> 00:06:30,254
 And if you mostly play one on one,
 every one of these habits gets louder.
 
 155
-00:06:30,380 --> 00:06:33,440
+00:06:30,695 --> 00:06:34,239
 Stop playing cards for fun in a two player
 game, and you win sixty eight percent.
 
 156
-00:06:34,360 --> 00:06:35,900
+00:06:34,740 --> 00:06:36,161
 The mistakes cost you more as well.
 
 157
-00:06:36,460 --> 00:06:39,720
+00:06:36,702 --> 00:06:39,724
 Play cards on a whim half the time,
 and you drop to nineteen percent.
 
 158
-00:06:39,720 --> 00:06:42,680
+00:06:40,245 --> 00:06:42,447
 Skip the pair of steals, and
 you're down to thirty seven.
 
 159
-00:06:42,680 --> 00:06:46,120
+00:06:43,107 --> 00:06:46,590
 Even using See the Future the moment you
 draw it costs you almost nine points.
 
 160
-00:06:47,000 --> 00:06:48,650
+00:06:47,381 --> 00:06:49,118
 Does any of this work
 against good players?
 
 161
-00:06:49,280 --> 00:06:52,225
+00:06:49,670 --> 00:06:52,293
 Against a normal table, the
 Patient One wins forty percent.
 
 162
-00:06:52,225 --> 00:06:54,400
+00:06:52,714 --> 00:06:54,796
 Against an aggressive table
 that throws Attacks around,
 
 163
-00:06:54,400 --> 00:06:57,520
+00:06:54,936 --> 00:06:57,940
 fifty three. Against a table
 of hoarders, half its games.
 
 164
-00:06:58,070 --> 00:07:02,100
+00:06:58,451 --> 00:07:02,375
 But sit four Patient Ones at the same
 table, and each one wins exactly one game in
 
 165
-00:07:02,100 --> 00:07:03,570
+00:07:02,435 --> 00:07:03,937
 four. It doesn't break the game.
 
 166
-00:07:03,850 --> 00:07:06,030
+00:07:04,257 --> 00:07:06,540
 It only works because other
 people make the mistakes.
 
 167
-00:07:06,990 --> 00:07:08,490
+00:07:07,371 --> 00:07:08,973
 It also makes games even faster.
 
 168
-00:07:09,130 --> 00:07:11,490
+00:07:09,394 --> 00:07:11,817
 A normal table of four takes
 around thirty two turns.
 
 169
-00:07:12,030 --> 00:07:13,490
+00:07:12,278 --> 00:07:14,040
 Four Patient Ones finish in twenty five.
 
 170
-00:07:14,330 --> 00:07:16,280
+00:07:14,710 --> 00:07:16,459
 So here's what ten
 billion games taught me.
 
 171
-00:07:16,650 --> 00:07:17,750
+00:07:17,010 --> 00:07:18,031
 Don't play cards for fun.
 
 172
-00:07:18,190 --> 00:07:19,230
+00:07:18,491 --> 00:07:19,492
 Only dodge when you know.
 
 173
-00:07:19,455 --> 00:07:22,360
+00:07:19,912 --> 00:07:22,375
 Peek with See the Future once
 the odds reach one in three.
 
 174
-00:07:22,360 --> 00:07:24,120
+00:07:22,795 --> 00:07:24,496
 Put the Kitten where
 the next player draws.
 
 175
-00:07:24,360 --> 00:07:25,420
+00:07:24,717 --> 00:07:25,737
 Steal from the biggest hand.
 
 176
-00:07:25,840 --> 00:07:28,320
+00:07:26,618 --> 00:07:28,600
 Give away junk, and Nope
 anything aimed at you.
 
 177
-00:07:29,110 --> 00:07:30,060
+00:07:29,470 --> 00:07:30,334
 That's the Patient One.
 
 178
-00:07:30,060 --> 00:07:33,540
+00:07:30,655 --> 00:07:33,889
 Forty percent at a table of four, and
 more than half of its games with three.
 
 179
-00:07:34,020 --> 00:07:36,010
+00:07:34,411 --> 00:07:36,197
 With two players, it wins sixty percent.
 
 180
-00:07:36,010 --> 00:07:39,250
+00:07:36,639 --> 00:07:39,530
 With five, twenty nine and a half percent,
 where a fair share is twenty percent.
 
 181
-00:07:39,820 --> 00:07:41,730
+00:07:40,214 --> 00:07:41,884
 Remember the one thing my bots can't do?
 
 182
-00:07:42,190 --> 00:07:42,740
+00:07:42,367 --> 00:07:43,120
 Lie.
 
 183
-00:07:42,740 --> 00:07:45,200
+00:07:43,120 --> 00:07:45,504
 They never pretend the Kitten
 is on top when it isn't.
 
 184
-00:07:45,580 --> 00:07:46,900
+00:07:45,804 --> 00:07:47,286
 They never act nervous when they're safe.
 
 185
-00:07:47,155 --> 00:07:49,850
+00:07:47,907 --> 00:07:50,270
 That part of Exploding
 Kittens is still all yours.
 
 186
-00:07:50,840 --> 00:07:54,550
+00:07:51,240 --> 00:07:54,913
 Next, I'm testing Uno house rules, because
 one of them completely breaks the game.
 
 187
-00:07:54,980 --> 00:07:56,320
+00:07:55,275 --> 00:07:56,619
 Tell me which one you think it is.
