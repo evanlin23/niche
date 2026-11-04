@@ -225,8 +225,17 @@ def speak(text: str, cache_dir: Path, eng=None, line_id: str | None = None) -> S
         split = meta.exists()
         if os.environ.get("VOICE_CLEAN", "1") != "0":     # denoise + polish (+ trim) (pipeline/voice_clean.py)
             from .voice_clean import clean, load as load48
-            rt = eng.dir / "_roomtone.wav"
+            from .match_voice import apply_eq, level, match_floor, roomtone_path, session_of
+            session = session_of(json.loads(meta.read_text())) if split else "main"
+            rt = roomtone_path(eng.dir, session)            # each recording session uses its own room tone
             audio = clean(load48(src), load48(rt) if rt.exists() else None, do_trim=not split)
+            mj = eng.dir / "_match.json"                    # EQ onto the main session's tone (match_voice.py)
+            cfg = json.loads(mj.read_text()).get(session) if session != "main" and mj.exists() else None
+            if cfg:
+                audio = apply_eq(audio, cfg)
+            audio = level(audio)                            # same speech loudness for every line
+            if cfg and "floor" in cfg:                      # same room-noise level between words
+                audio = match_floor(audio, cfg["floor"], cfg["target_floor"])
         else:
             audio = trim_silence(read_wav(src), thr=0.02, keep=0.08)
             audio = audio / (np.abs(audio).max() + 1e-9) * 0.9

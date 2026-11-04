@@ -68,6 +68,9 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   them") and fillers, so the normal split can't see them. `python -m pipeline.find_stumbles episodes/<slug>`
   re-transcribes verbatim and writes cut ranges; then `python -m pipeline.tighten_voice episodes/<slug>/voice
   --cuts .../_stumbles.json --words .../_verbatim.json`. Video 1 had restarts in 19 of 59 lines.
+- **Several sessions, one voice:** tag pick-up lines with `"session": "<name>"` in their json, save that
+  session's room tone as `_roomtone_<name>.wav`, run `python -m pipeline.match_voice episodes/<slug>/voice`.
+  Every line is leveled to -20 dB speech; other sessions get an EQ match and a noise-floor match to "main".
 - **Tight pacing:** pauses inside lines capped at 0.35 s, 0.08 s lead / 0.15 s tail per line, 0.25 s between
   lines, 0.2/0.35 s scene pads. Video 1 lost 91 s of dead air and stumbles (8:50 -> ~7:20).
 - Transcribers drop fast words like "percent": check the audio (voiced gap) before asking for a re-record.

@@ -102,13 +102,13 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 [t2] With two players, it does. The first player wins fifty two percent of the time.
 [t3] With five players, it flips. The last seat does a little better than the first. You get to watch a few draws before you risk anything.
 [t4] And if you mostly play one on one, every one of these habits gets louder. Stop playing cards for fun in a two player game, and you win sixty eight percent.
-[t5] The mistakes cost more, too. Play cards on a whim half the time, and you drop to nineteen percent. Skip the pair steals, and you're down to thirty seven. Even using See the Future the moment you draw it costs you almost nine points.
+[t5] The mistakes cost you more as well. Play cards on a whim half the time, and you drop to nineteen percent. Skip the pair steals, and you're down to thirty seven. Even using See the Future the moment you draw it costs you almost nine points.
 
 ## Does it hold up
 [r1] Does any of this work against good players?
 [r2] Against a normal table, the Patient One wins forty percent. Against an aggressive table that throws Attacks around, fifty three. Against a table of hoarders, half its games.
 [r3] But sit four Patient Ones at the same table, and each one wins exactly one game in four. It doesn't break the game. It only works because other people make the mistakes.
-[r4] It even makes games faster. A normal table of four takes about thirty two turns. Four Patient Ones finish in twenty five.
+[r4] It also makes games even faster. A normal table of four takes around thirty two turns. Four Patient Ones finish in twenty five.
 
 ## The recipe
 [w1] So here's what ten billion games taught me.
