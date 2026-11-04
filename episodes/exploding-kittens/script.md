@@ -27,7 +27,7 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 [o5] And the gap wasn't luck, or some secret combo. It came down to five mistakes, and most tables make every one of them.
 
 ## The game in ten seconds
-[g1] If you've never played: everyone draws from one deck, and whoever draws an Exploding Kitten is out, unless they have a Defuse. Every other card helps you avoid drawing, or makes someone else draw. Last player standing wins.
+[g1] If you've never played: everyone draws from one deck, and whoever draws an Exploding Kitten is out, unless they have a Defuse. Every other card helps you avoid drawing, or makes somebody else draw. Last player standing wins.
 
 ## Can you trust it
 [c1] First, the game. My version follows the official rulebook for the original edition. Fifty six cards, four Kittens, six Defuses, Attacks that stack, and Nopes that cancel other Nopes.
@@ -54,7 +54,7 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 ## Mistake two: panicking
 [d1] Mistake number two is panicking.
 [d2] Once one card in four is a Kitten, the deck feels dangerous, and most people start Skipping. That's the Panicker, and it only wins sixteen.
-[d3] Wait for a coin flip, and you still lose ground. The only rule that held up is the boring one. Skip or Attack when you know the next card is a Kitten. Not when you feel it.
+[d3] Wait for a coin flip, and you still lose ground. The only rule that held up is the boring one. Skip or Attack when you know the next card is a Kitten. Not when you feel like it.
 [d4] And if you're wondering, Attack or Skip barely matters when you're dodging. The gap was a fraction of a point.
 
 ## Mistake three: looking at the wrong time
