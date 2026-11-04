@@ -370,6 +370,120 @@ SCENES.odds = async (stage, spec) => {
   };
 };
 
+// ------------------------------------------------------------------ Buh, the channel character
+// A round pawn-bot with a screen face. makeBuh(stage, {expr}) -> group; expressions: happy | shocked | smug | think
+function faceTexture(expr, cute = false) {
+  const c = document.createElement('canvas'); c.width = 512; c.height = 384;
+  const g = c.getContext('2d');
+  g.fillStyle = '#1d2b3a'; g.beginPath(); g.roundRect(0, 0, 512, 384, 120); g.fill();
+  if (cute) {   // big eyes low on the face, blush, small mouth
+    g.fillStyle = 'rgba(255,122,99,0.55)'; g.beginPath(); g.ellipse(112, 276, 46, 26, 0, 0, Math.PI * 2); g.fill();
+    g.beginPath(); g.ellipse(400, 276, 46, 26, 0, 0, Math.PI * 2); g.fill();
+    g.fillStyle = GN.mustard; g.strokeStyle = GN.mustard; g.lineCap = 'round'; g.lineWidth = 26;
+    const eye = (x) => {
+      if (expr === 'happy') { g.beginPath(); g.arc(x, 236, 46, Math.PI * 1.1, Math.PI * 1.9); g.stroke(); }
+      else if (expr === 'shocked') { g.beginPath(); g.ellipse(x, 212, 50, 64, 0, 0, Math.PI * 2); g.fill(); }
+      else if (expr === 'smug') { g.beginPath(); g.ellipse(x, 224, 50, 24, 0, 0, Math.PI * 2); g.fill(); g.fillStyle = '#1d2b3a'; g.fillRect(x - 60, 180, 120, 42); g.fillStyle = GN.mustard; }
+      else { g.beginPath(); g.ellipse(x, 214, 48, 60, 0, 0, Math.PI * 2); g.fill(); g.fillStyle = '#fff6e6'; g.beginPath(); g.arc(x + 16, 194, 14, 0, Math.PI * 2); g.fill(); g.fillStyle = GN.mustard; }
+    };
+    eye(180); eye(332);
+    g.lineWidth = 16;
+    if (expr === 'shocked') { g.beginPath(); g.ellipse(256, 310, 16, 20, 0, 0, Math.PI * 2); g.stroke(); }
+    else { g.beginPath(); g.arc(256, 292, 26, Math.PI * 0.2, Math.PI * 0.8); g.stroke(); }
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t;
+  }
+  g.fillStyle = GN.mustard; g.strokeStyle = GN.mustard; g.lineCap = 'round'; g.lineWidth = 30;
+  const eye = (x) => {
+    if (expr === 'happy') { g.beginPath(); g.arc(x, 200, 52, Math.PI * 1.1, Math.PI * 1.9); g.stroke(); }
+    else if (expr === 'shocked') { g.beginPath(); g.ellipse(x, 178, 46, 62, 0, 0, Math.PI * 2); g.fill(); }
+    else if (expr === 'smug') { g.beginPath(); g.ellipse(x, 192, 50, 26, 0, 0, Math.PI * 2); g.fill(); g.fillStyle = '#1d2b3a'; g.fillRect(x - 60, 150, 120, 40); g.fillStyle = GN.mustard; }
+    else { g.beginPath(); g.ellipse(x, 182, 40, 52, 0, 0, Math.PI * 2); g.fill(); }
+  };
+  eye(176); eye(336);
+  g.lineWidth = 22;
+  if (expr === 'shocked') { g.beginPath(); g.ellipse(256, 300, 26, 30, 0, 0, Math.PI * 2); g.stroke(); }
+  else if (expr === 'smug') { g.beginPath(); g.moveTo(206, 300); g.quadraticCurveTo(286, 324, 316, 282); g.stroke(); }
+  else { g.beginPath(); g.arc(256, 262, 58, Math.PI * 0.2, Math.PI * 0.8); g.stroke(); }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t;
+}
+function makeBuh(stage, { expr = 'happy', cards = false, style = 'classic' } = {}) {
+  if (style !== 'classic') return makeBuhStyle(stage, expr, style);
+  const g = new THREE.Group();
+  const cream = new THREE.MeshPhysicalMaterial({ color: 0xf3ead6, roughness: 0.35, clearcoat: 0.5, clearcoatRoughness: 0.3 });
+  const body = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.95, 1.5, 48), cream); body.position.y = 0.75; body.castShadow = true; g.add(body);
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(1.05, 1.1, 0.22, 48), cream); base.position.y = 0.11; base.castShadow = true; g.add(base);
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.98, 48, 32), cream); head.position.y = 2.25; head.castShadow = true; g.add(head);
+  // screen face: a slightly curved panel on the front of the head
+  const face = new THREE.Mesh(new THREE.SphereGeometry(0.985, 48, 32, Math.PI * 0.5 - 0.62, 1.24, Math.PI * 0.5 - 0.5, 0.92),
+    new THREE.MeshStandardMaterial({ map: faceTexture(expr), roughness: 0.25, emissive: 0xffffff, emissiveMap: faceTexture(expr), emissiveIntensity: 0.35 }));
+  face.position.y = 2.25; g.add(face);   // the segment is already centred on +z (the front)
+  const stalk = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.45, 12), new THREE.MeshStandardMaterial({ color: 0x8d8273 })); stalk.position.y = 3.42; g.add(stalk);
+  const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.13, 24, 16), new THREE.MeshStandardMaterial({ color: GN.coral, emissive: GN.coral, emissiveIntensity: 0.4 })); bulb.position.y = 3.68; g.add(bulb);
+  // two little nub arms (the right one holds the cards)
+  for (const s of [-1, 1]) {
+    const arm = new THREE.Mesh(new THREE.CapsuleGeometry(0.16, 0.55, 8, 16), cream);
+    arm.position.set(s * 0.88, 1.15, 0.25); arm.rotation.z = s * 0.9; arm.rotation.x = -0.5; arm.castShadow = true; g.add(arm);
+  }
+  if (cards) {   // a held fan of cards, faces out
+    [8, 1, 6, 3, 0].forEach((tp, i) => {
+      const c = makeCard(stage, tp, true); const off = i - 2;
+      c.scale.setScalar(0.62); c.position.set(1.12 + off * 0.2, 1.45 + (2 - Math.abs(off)) * 0.05, 0.62 + i * 0.012);
+      c.rotation.set(Math.PI / 2, 0, -off * 0.2 - 0.35); g.add(c);
+    });
+  }
+  stage.scene.add(g);
+  return g;
+}
+// cute variants: big head, small body, big low eyes, blush, stubby limbs
+function makeBuhStyle(stage, expr, style) {
+  const g = new THREE.Group();
+  const cream = new THREE.MeshPhysicalMaterial({ color: 0xf3ead6, roughness: 0.35, clearcoat: 0.5, clearcoatRoughness: 0.3 });
+  const add = (geo, y, x = 0, z = 0, mat = cream) => { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = true; g.add(m); return m; };
+  const faceMat = () => new THREE.MeshStandardMaterial({ map: faceTexture(expr, true), roughness: 0.25, emissive: 0xffffff, emissiveMap: faceTexture(expr, true), emissiveIntensity: 0.35 });
+  const sphereFace = (r, y, w = 1.3, h = 1.0) => { const f = new THREE.Mesh(new THREE.SphereGeometry(r * 1.004, 48, 32, Math.PI / 2 - w / 2, w, Math.PI / 2 - h / 2 - 0.05, h), faceMat()); f.position.y = y; g.add(f); };
+  let top = 0;
+  if (style === 'mini') {
+    add(new THREE.CylinderGeometry(0.42, 0.55, 0.7, 40), 0.35);
+    add(new THREE.SphereGeometry(1.0, 48, 32), 1.62); sphereFace(1.0, 1.62);
+    for (const s of [-1, 1]) { const a = add(new THREE.CapsuleGeometry(0.11, 0.22, 8, 16), 0.5, s * 0.58, 0.05); a.rotation.z = s * 0.7; }
+    top = 2.62;
+  } else if (style === 'bean') {
+    const b = add(new THREE.SphereGeometry(1.0, 48, 32), 1.25); b.scale.set(1, 1.22, 0.95); sphereFace(1.0, 1.42, 1.25, 0.8);
+    g.children[g.children.length - 1].scale.set(1, 1.22, 0.95); g.children[g.children.length - 1].position.y = 1.25;
+    for (const s of [-1, 1]) { add(new THREE.SphereGeometry(0.22, 24, 16), 0.12, s * 0.42, 0.18).scale.set(1.2, 0.6, 1.5);
+      const a = add(new THREE.CapsuleGeometry(0.1, 0.2, 8, 16), 1.0, s * 0.98, 0.05); a.rotation.z = s * 0.5; }
+    top = 2.47;
+  } else if (style === 'pawn') {
+    add(new THREE.CylinderGeometry(0.62, 0.7, 0.18, 40), 0.09);
+    add(new THREE.CylinderGeometry(0.22, 0.5, 0.95, 40), 0.65);
+    add(new THREE.TorusGeometry(0.3, 0.07, 16, 40), 1.14).rotation.x = Math.PI / 2;
+    add(new THREE.SphereGeometry(0.78, 48, 32), 1.9); sphereFace(0.78, 1.9, 1.35, 1.0);
+    top = 2.68;
+  } else if (style === 'tv') {
+    add(new THREE.CylinderGeometry(0.4, 0.5, 0.75, 40), 0.38);
+    const head = add(new RoundedBoxGeometry(1.9, 1.45, 1.3, 6, 0.32), 1.55);
+    const f = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 1.08), faceMat()); f.position.set(0, 1.55, 0.656); g.add(f);
+    for (const s of [-1, 1]) { const a = add(new THREE.CapsuleGeometry(0.1, 0.22, 8, 16), 0.5, s * 0.55, 0.05); a.rotation.z = s * 0.7; }
+    top = 2.28;
+  }
+  add(new THREE.CylinderGeometry(0.03, 0.03, 0.4, 12), top + 0.18, 0, 0, new THREE.MeshStandardMaterial({ color: 0x8d8273 }));
+  add(new THREE.SphereGeometry(0.12, 24, 16), top + 0.42, 0, 0, new THREE.MeshStandardMaterial({ color: GN.coral, emissive: GN.coral, emissiveIntensity: 0.4 }));
+  stage.scene.add(g);
+  return g;
+}
+
+SCENES.mascot = async (stage, spec) => {
+  buildRoom(stage);
+  const p = spec.params;
+  const buh = makeBuh(stage, { expr: p.expr || 'happy', cards: !!p.cards, style: p.style || 'classic' });
+  buh.position.set(...(p.at || [0, 0, 0])); buh.rotation.y = p.turn || 0;
+  (p.texts || []).forEach((tx) => stage.text({ text: tx.text, x: tx.x, y: tx.y, size: tx.size, weight: 900, font: 'rubik', align: tx.align || 'left', color: tx.color === 'MUSTARD' ? GN.mustard : '#fff6e6', at: -1, case: 'none' }));
+  return (t) => {
+    stage.cameraAt(t, { pos: [p.cam || [0, 3.2, 8.5]], look: [p.look || [0, 1.9, 0]], fov: p.fov || 32 });
+    stage.clear2d();
+  };
+};
+
 SCENES.title = async (stage, spec) => {
   buildRoom(stage);
   const p = spec.params;
