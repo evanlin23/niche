@@ -70,6 +70,7 @@ def align(audio48, text):
     return out
 
 
+FILLERS = {"um", "umm", "uh", "uhh", "er", "erm", "hmm", "mm", "ah"}
 _WH = {}
 
 
@@ -147,14 +148,12 @@ def events(clean_audio, word_spans, pad=0.035):
     return out, float(floor)
 
 
-def roomtone_fill(n, room, level_like):
+def roomtone_fill(n, room, level_like=None):
+    """The session's real room tone at its natural level (= what silence sounds like in that recording)."""
     if room is None or len(room) < n:
         return np.zeros(n, np.float32)
     k = np.random.default_rng(0).integers(0, len(room) - n + 1)
-    r = room[k:k + n].copy()
-    # match the room tone to the line's own quiet level so the fill is invisible
-    rr = np.sqrt(np.mean(r ** 2)) + 1e-9
-    return (r * (level_like / rr)).astype(np.float32)
+    return room[k:k + n].astype(np.float32).copy()
 
 
 def plan(evs, words, dur):
@@ -208,8 +207,9 @@ def _selftest():
     raw[int(0.3 * SR):int(0.5 * SR)] += np.sin(np.arange(int(0.2 * SR)) * 2 * np.pi * 250 / SR).astype(np.float32) * 0.5
     room = (rng.standard_normal(SR * 2) * 0.01).astype(np.float32)
     out, _ = fix(raw, [dict(start=0.3, end=0.5, action="fill")], room)
-    before = np.sqrt(np.mean(raw[int(0.32 * SR):int(0.48 * SR)] ** 2)); after = np.sqrt(np.mean(out[int(0.32 * SR):int(0.48 * SR)] ** 2))
-    assert after < before / 10, f"fill did not remove the sound ({before:.4f} -> {after:.4f})"
+    before = np.sqrt(np.mean(raw[int(0.32 * SR):int(0.48 * SR)] ** 2))
+    after = np.sqrt(np.mean(out[int(0.32 * SR):int(0.48 * SR)] ** 2)); floor = np.sqrt(np.mean(room ** 2))
+    assert after < floor * 1.5, f"fill is not at room-tone level ({after:.4f} vs room {floor:.4f})"
     out, _ = fix(raw, [dict(start=0.3, end=0.5, action="duck")], room)
     after = np.sqrt(np.mean(out[int(0.32 * SR):int(0.48 * SR)] ** 2))
     assert after < before / 3, "duck did not turn it down"
@@ -292,7 +292,7 @@ def main():
             fixed, words = apply_cuts(fixed, SR, words, cuts)
             hb, ha = heard(cl), heard(clean(fixed, rooms[sess], do_trim=False))
             sw = [re.sub(r"[^a-z0-9']", "", w.lower()) for w in script[lid].split()]
-            gone = [w for w in lost_words(hb, ha) if w in sw and ha.count(w) < sw.count(w)]
+            gone = [w for w in lost_words(hb, ha) if w not in FILLERS]   # ANY spoken word, script or not
             if gone:                                     # some edit removed real words: keep only the safe ones
                 safe = []
                 for ev in [e for e in pl if e["action"] != "keep"]:
@@ -300,7 +300,7 @@ def main():
                     f2, c2 = fix(raw, trial, rooms[sess])
                     f2, _ = apply_cuts(f2, SR, [tuple(w) for w in meta["words"]], c2)
                     h2 = heard(clean(f2, rooms[sess], do_trim=False))
-                    if not [w for w in lost_words(hb, h2) if w in sw and h2.count(w) < sw.count(w)]:
+                    if not [w for w in lost_words(hb, h2) if w not in FILLERS]:
                         safe.append(ev)
                     else:
                         report.append(f"[{lid}] skipped {ev['action']} {ev['start']}-{ev['end']}s: it removed words")
