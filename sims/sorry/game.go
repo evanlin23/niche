@@ -444,6 +444,28 @@ func (st *State) score(s int) int {
 // adult variation: choose the best card in hand; if none can move, discard one and draw.
 func (g *Game) playFromHand(s int) int8 {
 	h := g.hands[s]
+	if g.Pols[s].Random { // a random player also picks a random playable card
+		order := g.rng.Perm(len(h))
+		for _, k := range order {
+			ms, sts := g.St.legalStates(s, h[k], g.R, g.buf, g.sbuf)
+			g.buf, g.sbuf = ms, sts
+			if len(ms) == 0 {
+				continue
+			}
+			j, ok := g.Pols[s].Choose(g, s, h[k], ms, sts)
+			if !ok {
+				continue
+			}
+			v := h[k]
+			g.St = sts[j]
+			h[k] = g.draw()
+			return v
+		}
+		k := g.rng.Intn(len(h))
+		v := h[k]
+		h[k] = g.draw()
+		return v
+	}
 	bestK, bestV, found := -1, -1e18, false
 	var bestM Move
 	for k, v := range h {
