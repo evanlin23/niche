@@ -1,0 +1,30 @@
+I Simulated 10 Billion Games of Exploding Kittens. Here's How to Win.
+
+The best player at an Exploding Kittens table wins three times as often as the worst one, with the same cards. I simulated more than 10 billion games to find out why.
+
+I built the game from the official rulebook (original edition, 56 cards), made bots that only know what a real player would know, and tested one habit at a time, 100 million games per test. It comes down to five mistakes most tables make.
+
+Everything in this video, the simulation, the animation and the charts, is made with code. Not affiliated with Exploding Kittens; card designs are my own.
+
+Chapters
+0:00 Five mistakes
+0:42 Can you trust it?
+1:46 Meet the bots
+2:49 Mistake 1: playing for fun
+3:23 Mistake 2: panicking
+3:52 Mistake 3: looking at the wrong time
+4:38 Mistake 4: the wrong hiding place
+5:24 A quick confession
+5:52 Mistake 5: being polite
+6:31 The small stuff
+6:58 Does going first matter?
+7:26 Does it hold up?
+7:48 The recipe
+8:15 The one thing bots can't do
+
+Sources & models
+• Exploding Kittens Original Edition rules (2025 printing): https://www.explodingkittens.com/pages/rules-kittens
+• Simulator: one test bot vs three 'normal' bots, 100,000,000 games per test (10.2 billion games total), seats randomised.
+• Simulation code: https://github.com/evanlin23/niche/tree/HEAD/sims/ek
+
+Music (YouTube Audio Library): Days Are Long by Silent Partner, Renunciation by Asher Fulero, Ponderous Days by Joel Cummins.

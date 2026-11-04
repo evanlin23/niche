@@ -93,5 +93,70 @@ def caption_chunks(scenes: list[Scene], max_words=7, max_chars=42, absolute=True
     return out
 
 
+def _script_timed_tokens(cue):
+    """Script words (with punctuation) timed from the recognised words: difflib alignment on normalised text,
+    unmatched script words interpolated between their matched neighbours."""
+    import difflib, re
+    norm = lambda w: re.sub(r"[^a-z0-9]", "", w.lower())
+    toks = cue.text.split()
+    words = cue.words
+    if not toks:
+        return []
+    if not words:
+        n = len(toks); d = (cue.end - cue.start) / n
+        return [(t, cue.start + i * d, cue.start + (i + 1) * d) for i, t in enumerate(toks)]
+    sm = difflib.SequenceMatcher(None, [norm(t) for t in toks], [norm(w[0]) for w in words], autojunk=False)
+    st = [None] * len(toks); en = [None] * len(toks)
+    for a, b, size in sm.get_matching_blocks():
+        for k in range(size):
+            st[a + k], en[a + k] = words[b + k][1], words[b + k][2]
+    # anchor the ends, then interpolate gaps
+    if st[0] is None: st[0], en[0] = words[0][1], words[0][2]
+    if st[-1] is None: st[-1], en[-1] = words[-1][1], words[-1][2]
+    i = 0
+    while i < len(toks):
+        if st[i] is None:
+            j = i
+            while st[j] is None: j += 1
+            a, b = en[i - 1], st[j]
+            for k in range(i, j):
+                f0, f1 = (k - i) / (j - i), (k - i + 1) / (j - i)
+                st[k], en[k] = a + (b - a) * f0, a + (b - a) * f1
+            i = j
+        i += 1
+    return list(zip(toks, st, en))
+
+
+def script_caption_chunks(scenes: list[Scene], max_chars=84, line_chars=42):
+    """Upload captions: the script's own words and punctuation (not the transcription), timed from the voice.
+    Chunks end at sentence ends where possible and are wrapped into at most two lines."""
+    out = []
+    for sc in scenes:
+        for cue in sc.cues.values():
+            toks = _script_timed_tokens(cue)
+            chunk = []
+            for i, (w, s0, e0) in enumerate(toks):
+                chunk.append((w, s0, e0))
+                txt = " ".join(x[0] for x in chunk)
+                nxt = len(txt) + 1 + len(toks[i + 1][0]) if i + 1 < len(toks) else 0
+                sentence_end = w[-1] in ".?!" and len(txt) > 20
+                clause_end = w[-1] in ",;:" and len(txt) > 50
+                if sentence_end or clause_end or nxt > max_chars or i + 1 == len(toks):
+                    ws = txt.split()
+                    if len(txt) <= line_chars or len(ws) < 2:
+                        lines = [txt]
+                    else:   # two balanced lines: break at the space closest to the middle
+                        cut = min(range(1, len(ws)), key=lambda k: abs(len(" ".join(ws[:k])) - len(" ".join(ws[k:]))))
+                        lines = [" ".join(ws[:cut]), " ".join(ws[cut:])]
+                    out.append((sc.start + chunk[0][1], sc.start + chunk[-1][2], "\n".join(lines)))
+                    chunk = []
+    # no overlaps, and keep each caption up for at least ~0.8 s when there is room
+    for k in range(len(out) - 1):
+        s0, e0, t0 = out[k]
+        e0 = min(max(e0, s0 + 0.8), out[k + 1][0])
+        out[k] = (s0, e0, t0)
+    return out
+
+
 def load_yaml(path: Path):
     return yaml.safe_load(Path(path).read_text())

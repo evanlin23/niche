@@ -20,7 +20,7 @@ from pathlib import Path
 
 from . import compose, metadata, package, render
 from .render import LONG, SHORT, Format
-from .timeline import build, caption_chunks, load_yaml, parse_script
+from .timeline import build, caption_chunks, load_yaml, parse_script, script_caption_chunks
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -131,7 +131,7 @@ def cmd_episode(slug, preview=False, jobs=3, only=None, assemble=False):
     video = compose.concat(expanded, out / "video-noaudio.mp4")
     audio = compose.mix(scenes, total, out / "audio.wav", mood=spec.get("music", "curious"))
     final = compose.mux(video, audio, out / f"{slug}.mp4")
-    compose.srt(caps_abs, out / f"{slug}.en.srt")
+    compose.srt(script_caption_chunks(scenes), out / f"{slug}.en.srt")   # script words + punctuation, voice timing
     meta = load_yaml(ep / "meta.yaml")
     metadata.build(meta["long"], scenes, out, "long")
     (out / "timeline.json").write_text(json.dumps(
