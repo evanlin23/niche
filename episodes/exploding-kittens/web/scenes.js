@@ -57,6 +57,7 @@ function makeTable(stage, spec) {
     seats.push({ i, sx, sz, dir, tok, hand, label });
   }
   const mover = makeCard(stage, 'back', false); mover.visible = false;
+  mover.traverse((o) => { o.castShadow = false; });
   const pill = stage.text({ text: '', x: 0, y: 0, size: 34, weight: 900, font: 'rubik', pill: GN.mustard, color: '#1b1209', manual: true, align: 'center' });
   const odds = stage.text({ text: '', x: 0, y: 0, size: 40, weight: 900, font: 'rubik', color: GN.text, manual: true, align: 'center' });
   const oddsSub = stage.text({ text: 'chance the next card is a Kitten', x: 0, y: 0, size: 20, weight: 700, font: 'rubik', color: GN.muted, manual: true, align: 'center' });
@@ -126,6 +127,7 @@ function tableFrame(stage, T, spec, ev, u, opts = {}) {
     T.mover.position.lerpVectors(seatPos(seat), new THREE.Vector3(1.2, 0.2, 0.2), k);
   }
   T.mover.rotation.set(0, 0, 0);
+  if (opts.idle) { T.mover.visible = false; label = ''; }
   const [px, py] = stage.project(seatPos(seat).clone().setY(2.6));
   T.pill.el.style.opacity = label && opts.pills !== false ? win(f, 0.05, 0.95, 0.1) : 0;
   T.pill.el.textContent = label; T.pill.el.style.left = px + 'px'; T.pill.el.style.top = py - 40 + 'px';
@@ -153,7 +155,7 @@ SCENES.table = async (stage, spec) => {
     const u = play ? lerp(e0, e1 + 0.99, clamp(t / (stage.duration - 0.6))) : (p.ev_still ?? 2);
     drift(stage, t, cam.from, cam.to, cam.look);
     stage.camera.updateMatrixWorld();
-    tableFrame(stage, T, spec, null, u, { odds: !!p.odds, labels: p.labels !== false, pills: play, heroName: p.hero_name, otherName: p.other_name });
+    tableFrame(stage, T, spec, null, u, { odds: !!p.odds, labels: p.labels !== false, pills: play, idle: !play, heroName: p.hero_name, otherName: p.other_name });
     scrim(stage, t);
     const g = stage.g, gr = g.createLinearGradient(0, 0, 0, 260);
     gr.addColorStop(0, 'rgba(15,10,8,0.85)'); gr.addColorStop(1, 'rgba(15,10,8,0)'); g.fillStyle = gr; g.fillRect(0, 0, stage.W, 260);

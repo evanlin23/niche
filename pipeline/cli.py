@@ -91,7 +91,7 @@ def _run_jobs(jobs, n):
             print(" ", msg, flush=True)
 
 
-def cmd_episode(slug, preview=False, jobs=3, only=None):
+def cmd_episode(slug, preview=False, jobs=3, only=None, assemble=False):
     ep = ROOT / "episodes" / slug
     out = ep / "out" / ("preview" if preview else "final")
     cache = ROOT / ".cache" / "tts"
@@ -113,7 +113,7 @@ def cmd_episode(slug, preview=False, jobs=3, only=None):
         caps = [(s - sc.start, e - sc.start, t) for s, e, t in caps_abs if sc.start <= s < sc.start + sc.duration]
         todo.append((ep, SceneCtx(_strip(sc), fmt, ep, caps, engine=spec.get("engine", "2d")), p))
     _run_jobs(todo, jobs)
-    if only:
+    if only and not assemble:
         return
     video = compose.concat(parts, out / "video-noaudio.mp4")
     audio = compose.mix(scenes, total, out / "audio.wav", mood=spec.get("music", "curious"))
@@ -184,9 +184,10 @@ def main(argv=None):
     ap.add_argument("--preview", action="store_true", help="480p / 30 fps fast render")
     ap.add_argument("--jobs", type=int, default=3)
     ap.add_argument("--only", nargs="*", help="render only these scene / short ids")
+    ap.add_argument("--assemble", action="store_true", help="with --only: re-assemble the full video from existing scene files")
     a = ap.parse_args(argv)
     if a.cmd in ("episode", "all"):
-        cmd_episode(a.slug, a.preview, a.jobs, a.only)
+        cmd_episode(a.slug, a.preview, a.jobs, a.only, a.assemble)
     if a.cmd in ("shorts", "all"):
         cmd_shorts(a.slug, a.preview, a.jobs, a.only)
     if a.cmd in ("thumb", "all"):
