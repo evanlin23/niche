@@ -271,7 +271,7 @@ SCENES.placement = async (stage, spec) => {
 SCENES.checklist = async (stage, spec) => {
   buildRoom(stage);
   const p = spec.params;
-  const deco = [0, 1, 3, 6, 7, 8].map((tp, k) => { const c = makeCard(stage, tp, true); c.position.set(-7 + k * 0.4, 0.08 + k * 0.01, 2.6 - k * 0.2); c.rotation.y = 0.3 - k * 0.12; return c; });
+  const deco = [0, 1, 3, 6, 7, 8].map((tp, k) => { const c = makeCard(stage, tp, true); c.position.set(2.9 + k * 0.4, 0.08 + k * 0.01, 2.2 - k * 0.12); c.rotation.y = -0.35 + k * 0.1; return c; });   // fanned on the right, clear of the list
   title(stage, p.title);
   (p.items || []).forEach((it, k) => {
     const y = 170 + k * (p.step || 120);

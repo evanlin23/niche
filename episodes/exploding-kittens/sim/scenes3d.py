@@ -161,6 +161,8 @@ def statement_lines(ctx):
         if j < len(words):
             i = j + 1
         out.append({"text": ln["text"], "at": max(0.15, at - 0.05), "color": ln.get("color")})
+    if out and out[0]["at"] > 1.0:      # never open on an empty floor: the first line is up from the start
+        out[0]["at"] = 0.3
     return out
 
 
