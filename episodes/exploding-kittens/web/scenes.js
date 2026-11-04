@@ -174,6 +174,71 @@ SCENES.table = async (stage, spec) => {
   };
 };
 
+// ------------------------------------------------------------------ meet the bots: who they are and what they do
+// params.bots: [{name, color, at, habits: [{text, at}]}] (anchors resolved by scenes3d)
+SCENES.bots = async (stage, spec) => {
+  buildRoom(stage, { feltW: 18, feltD: 9 });
+  const p = spec.params, bots = p.bots;
+  const COLS = { BLUE: GN.blue, CREAM: GN.cream, CORAL: GN.coral, MUSTARD: GN.mustard, GREEN: GN.green };
+  const n = bots.length, gap = 2.6;
+  const pawns = bots.map((b, i) => {
+    const col = COLS[b.color] || b.color;
+    const g = new THREE.Group();
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.52, 1.1, 32), new THREE.MeshStandardMaterial({ color: col, roughness: 0.4 }));
+    body.position.y = 0.55; body.castShadow = true; g.add(body);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.37, 32, 16), new THREE.MeshStandardMaterial({ color: col, roughness: 0.4 }));
+    head.position.y = 1.42; head.castShadow = true; g.add(head);
+    const x = (i - (n - 1) / 2) * gap;
+    g.position.set(x, 0, 0); stage.scene.add(g);
+    const lab = stage.text({ text: b.name, x: 0, y: 0, size: 28, weight: 900, font: 'rubik', color: GN.text, manual: true, align: 'center' });
+    // habits card: one panel, filled for whoever is being described
+    return { b, g, x, lab, col, appear: 0.2 + i * 0.18 };
+  });
+  title(stage, p.title || "Who's at the table"); brand(stage);
+  const panel = document.createElement('div');
+  Object.assign(panel.style, { position: 'absolute', left: '50%', top: '128px', transform: 'translateX(-50%)', width: '1180px',
+    padding: '26px 40px 30px', borderRadius: '26px', background: 'rgba(20,32,28,0.78)', fontFamily: 'Rubik, sans-serif',
+    color: '#fff6e6', opacity: 0, boxSizing: 'border-box' });
+  stage.ov.appendChild(panel);
+  const head = document.createElement('div'); Object.assign(head.style, { fontSize: '46px', fontWeight: 900, marginBottom: '12px' });
+  const list = document.createElement('div'); Object.assign(list.style, { fontSize: '36px', fontWeight: 700, lineHeight: 1.35 });
+  panel.appendChild(head); panel.appendChild(list);
+  const rows = [];
+  for (let k = 0; k < 4; k++) { const r = document.createElement('div'); list.appendChild(r); rows.push(r); }
+  return (t) => {
+    stage.cameraAt(t, { pos: [[0, 7.4, 13.8], [0, 6.9, 12.9]], look: [[0, 2.4, -0.4]] });   // pawns in the lower half, panel above
+    stage.camera.updateMatrixWorld();
+    // the bot being described = the last one whose cue has started
+    let cur = -1;
+    pawns.forEach((pw, i) => { if (pw.b.at != null && t >= pw.b.at) cur = i; });
+    pawns.forEach((pw, i) => {
+      const k = ease((t - pw.appear) / 0.5);
+      const focus = i === cur ? ease(clamp((t - pw.b.at) / 0.35)) : 0;
+      const dim = cur >= 0 && i !== cur ? 1 : 0;
+      pw.g.visible = k > 0.001;
+      pw.g.position.set(pw.x, (1 - k) * 1.5 + focus * 0.35, focus * 1.4);
+      pw.g.scale.setScalar(0.001 + k * (1 + focus * 0.3 - dim * 0.12));
+      const [lx, ly] = stage.project(new THREE.Vector3(pw.x, 0, pw.g.position.z + 0.9));
+      pw.lab.el.style.left = lx + 'px'; pw.lab.el.style.top = ly + 'px';
+      pw.lab.el.style.opacity = fade(t, pw.appear + 0.2, 0.3) * (dim ? 0.5 : 1);
+      pw.lab.el.style.color = i === cur ? pw.col : GN.text;
+    });
+    if (cur >= 0) {
+      const b = pawns[cur].b;
+      panel.style.opacity = Math.min(1, (t - b.at) / 0.25);
+      head.textContent = b.name; head.style.color = pawns[cur].col;
+      rows.forEach((r, k) => {
+        const h = b.habits[k];
+        if (!h) { r.textContent = ''; r.style.opacity = 0; return; }
+        r.textContent = '\u2022 ' + h.text;
+        const a = clamp((t - h.at) / 0.2);
+        r.style.opacity = a; r.style.transform = `translateX(${(1 - a) * 18}px)`;
+      });
+    } else panel.style.opacity = 0;
+    scrim(stage, t);
+  };
+};
+
 SCENES.title = async (stage, spec) => {
   buildRoom(stage);
   const p = spec.params;

@@ -125,45 +125,43 @@ scenes:
       color: CORAL
 - id: meet
   chapter: Meet the bots
-  render: table
+  render: bots
   lines:
   - b1
   - b2
   - b3
   - b4
   params:
-    mode: idle
-    ev_still: 1
-    seat_names:
-    - THE PATIENT ONE
-    - THE GAMBLER
-    - THE PANICKER
-    - THE NORMAL PLAYER
-    notes:
-    - text: The Normal Player
-      at: b2
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 44
-      until: b3
-    - text: The Gambler · The Panicker · The Hoarder
-      at: b3
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 40
-      until: b4
-    - text: '...and the Patient One'
-      at: b4
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 44
+    title: "Who's at the table: five bots"
+    bots:
+    - name: The Normal Player
+      color: CREAM
+      at: b2@normal
+      habits:
+      - {text: Dodges only when it KNOWS a Kitten is next, at: b2@dodges}
+      - {text: Hides Kittens at random, at: b2@hides}
+      - {text: Sometimes plays a card just for fun, at: b2@now}
+    - name: The Gambler
+      color: CORAL
+      at: b3@gambler
+      habits:
+      - {text: 'Plays cards on a whim, half the time', at: b3@whim}
+    - name: The Panicker
       color: MUSTARD
+      at: b3@panicker
+      habits:
+      - {text: Skips once 1 card in 4 could be a Kitten, at: b3@skips}
+    - name: The Hoarder
+      color: GREEN
+      at: b3@hoarder
+      habits:
+      - {text: Never steals, at: b3@steals}
+      - {text: Never peeks, at: b3@peeks}
+    - name: The Patient One
+      color: BLUE
+      at: b4@patient
+      habits:
+      - {text: "???  (more on this one later)", at: b4@later}
 - id: ranking
   render: bars
   lines:
