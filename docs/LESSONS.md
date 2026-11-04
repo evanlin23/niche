@@ -138,7 +138,8 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - Final mix happens locally (voice + licensed music), visuals on GitHub.
 - `render.yml` has an `only` input (space-separated scene ids) to re-render just the scenes that changed;
   assemble locally after swapping in their parts.
-- Don't commit: music, voice audio, full transcripts, out/.
+- Don't commit: music, voice audio, full transcripts, out/. `.gitignore` covers ALL audio anywhere under
+  `episodes/*/voice/` (a new backup folder once slipped 27 voice clips into a public commit).
 
 ## Packaging
 - **Never link the code** (repo, simulator) in descriptions, end cards or comments. The creator's call.
