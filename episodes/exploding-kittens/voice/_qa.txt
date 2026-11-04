@@ -3,11 +3,25 @@
     5.07s  unsure word 'to' (score 0.096) -> listen: mumble / leftover restart?
 
 [o3]
-    0.26- 0.54s  voiced  +37.0 dB  (flat 0.0, 353 Hz, low 0.75)  -> fill
+    0.26- 0.54s  voiced  +37.0 dB  (flat 0.0, 353 Hz, low 0.75)
+    2.01s  unsure word 'sat' (score 0.124) -> listen: mumble / leftover restart?
+
+[o3]
+    0.26- 0.54s  voiced  +37.0 dB  (flat 0.0, 353 Hz, low 0.75)  -> keep
     2.01s  unsure word 'sat' (score 0.124) -> listen: mumble / leftover restart?
 
 [o4]
-    0.00- 0.19s  voiced  +48.0 dB  (flat 0.0, 284 Hz, low 0.95)  -> fill
+    0.00- 0.19s  voiced  +48.0 dB  (flat 0.0, 284 Hz, low 0.95)
+    1.14- 1.18s  voiced  +43.9 dB  (flat 0.0, 256 Hz, low 0.98)
+    3.22- 3.29s  voiced  +47.7 dB  (flat 0.008, 820 Hz, low 0.22)
+    1.22s  unsure word 'won' (score 0.221) -> listen: mumble / leftover restart?
+    1.46s  unsure word 'thirty' (score 0.044) -> listen: mumble / leftover restart?
+    1.74s  unsure word 'five' (score 0.162) -> listen: mumble / leftover restart?
+    3.69s  unsure word 'won' (score 0.23) -> listen: mumble / leftover restart?
+    4.93s  unsure word 'and' (score 0.19) -> listen: mumble / leftover restart?
+
+[o4]
+    0.00- 0.19s  voiced  +48.0 dB  (flat 0.0, 284 Hz, low 0.95)  -> keep
     1.14- 1.18s  voiced  +43.9 dB  (flat 0.0, 256 Hz, low 0.98)  -> keep
     3.22- 3.29s  voiced  +47.7 dB  (flat 0.008, 820 Hz, low 0.22)  -> keep
     1.22s  unsure word 'won' (score 0.221) -> listen: mumble / leftover restart?
@@ -35,10 +49,20 @@
     5.90s  unsure word 'is' (score 0.02) -> listen: mumble / leftover restart?
 
 [g3]
+    2.92- 2.98s  voiced  +39.2 dB  (flat 0.003, 737 Hz, low 0.2)
+    4.86- 4.90s  voiced  +15.6 dB  (flat 0.063, 4525 Hz, low 0.01)
+    7.48- 7.54s  breath  +26.0 dB  (flat 0.185, 4745 Hz, low 0.01)
+   12.56-13.31s  voiced  +47.1 dB  (flat 0.102, 963 Hz, low 0.35)
+   15.91-16.09s  voiced  +38.6 dB  (flat 0.049, 1172 Hz, low 0.7)
+   17.78-17.85s  voiced  +16.4 dB  (flat 0.008, 1439 Hz, low 0.01)
+   17.86-17.91s  voiced  +13.9 dB  (flat 0.008, 1480 Hz, low 0.04)
+    7.98s  unsure word 'Shuffle' (score 0.138) -> listen: mumble / leftover restart?
+
+[g3]
     2.92- 2.98s  voiced  +39.2 dB  (flat 0.003, 737 Hz, low 0.2)  -> keep
     4.86- 4.90s  voiced  +15.6 dB  (flat 0.063, 4525 Hz, low 0.01)  -> keep
     7.48- 7.54s  breath  +26.0 dB  (flat 0.185, 4745 Hz, low 0.01)  -> keep
-   12.56-13.31s  voiced  +47.1 dB  (flat 0.102, 963 Hz, low 0.35)  -> cut
+   12.56-13.31s  voiced  +47.1 dB  (flat 0.102, 963 Hz, low 0.35)  -> keep
    15.91-16.09s  voiced  +38.6 dB  (flat 0.049, 1172 Hz, low 0.7)  -> fill
    17.78-17.85s  voiced  +16.4 dB  (flat 0.008, 1439 Hz, low 0.01)  -> keep
    17.86-17.91s  voiced  +13.9 dB  (flat 0.008, 1480 Hz, low 0.04)  -> keep
@@ -87,12 +111,16 @@
     7.68s  unsure word 'I'll' (score 0.005) -> listen: mumble / leftover restart?
 
 [b2]
+    1.72- 1.76s  voiced  +19.8 dB  (flat 0.0, 270 Hz, low 0.59)
+    5.41- 5.46s  voiced  +31.3 dB  (flat 0.0, 195 Hz, low 0.98)
+    6.49- 6.53s  voiced  +39.9 dB  (flat 0.002, 681 Hz, low 0.34)
+    8.11- 8.16s  voiced  +27.3 dB  (flat 0.0, 205 Hz, low 0.9)
+
+[b2]
     1.72- 1.76s  voiced  +19.8 dB  (flat 0.0, 270 Hz, low 0.59)  -> keep
     5.41- 5.46s  voiced  +31.3 dB  (flat 0.0, 195 Hz, low 0.98)  -> keep
     6.49- 6.53s  voiced  +39.9 dB  (flat 0.002, 681 Hz, low 0.34)  -> keep
-    8.11- 8.16s  voiced  +27.3 dB  (flat 0.0, 205 Hz, low 0.9)  -> fill
-
-[b2] STILL AUDIBLE after fill at 8.11-8.16s (+21 dB)
+    8.11- 8.16s  voiced  +27.3 dB  (flat 0.0, 205 Hz, low 0.9)  -> keep
 
 [b3]
     1.48- 1.61s  voiced  +29.0 dB  (flat 0.001, 502 Hz, low 0.6)  -> fill
@@ -109,7 +137,26 @@
 [b4] skipped fill 2.66-2.86s: it removed words
 
 [b5]
-    0.00- 0.33s  breath  +49.7 dB  (flat 0.084, 5471 Hz, low 0.0)  -> fill
+    0.00- 0.33s  breath  +49.7 dB  (flat 0.084, 5471 Hz, low 0.0)
+    1.24- 1.42s  voiced  +46.0 dB  (flat 0.004, 324 Hz, low 0.74)
+    2.68- 2.72s  voiced  +30.7 dB  (flat 0.001, 143 Hz, low 0.99)
+    6.45- 6.52s  voiced  +36.5 dB  (flat 0.0, 147 Hz, low 0.95)
+    6.65- 6.69s  voiced  +10.9 dB  (flat 0.011, 1605 Hz, low 0.01)
+    7.47- 7.51s  click   +48.6 dB  (flat 0.208, 4728 Hz, low 0.06)
+    8.09- 8.18s  voiced  +39.1 dB  (flat 0.0, 109 Hz, low 0.99)
+    9.05- 9.11s  voiced  +42.8 dB  (flat 0.003, 310 Hz, low 0.76)
+    9.63- 9.70s  voiced  +41.7 dB  (flat 0.0, 145 Hz, low 0.98)
+   10.61-10.76s  voiced  +41.3 dB  (flat 0.0, 711 Hz, low 0.44)
+   12.91-13.00s  voiced  +39.3 dB  (flat 0.002, 237 Hz, low 0.85)
+    3.74s  unsure word 'won' (score 0.191) -> listen: mumble / leftover restart?
+    3.90s  unsure word 'thirty' (score 0.005) -> listen: mumble / leftover restart?
+    4.22s  unsure word 'five' (score 0.01) -> listen: mumble / leftover restart?
+    5.92s  unsure word 'twenty' (score 0.006) -> listen: mumble / leftover restart?
+    6.22s  unsure word 'two.' (score 0.011) -> listen: mumble / leftover restart?
+   11.25s  unsure word 'and' (score 0.064) -> listen: mumble / leftover restart?
+
+[b5]
+    0.00- 0.33s  breath  +49.7 dB  (flat 0.084, 5471 Hz, low 0.0)  -> keep
     1.24- 1.42s  voiced  +46.0 dB  (flat 0.004, 324 Hz, low 0.74)  -> fill
     2.68- 2.72s  voiced  +30.7 dB  (flat 0.001, 143 Hz, low 0.99)  -> keep
     6.45- 6.52s  voiced  +36.5 dB  (flat 0.0, 147 Hz, low 0.95)  -> keep
@@ -126,14 +173,6 @@
     5.92s  unsure word 'twenty' (score 0.006) -> listen: mumble / leftover restart?
     6.22s  unsure word 'two.' (score 0.011) -> listen: mumble / leftover restart?
    11.25s  unsure word 'and' (score 0.064) -> listen: mumble / leftover restart?
-
-[b5] skipped fill 0.0-0.33s: it removed words
-
-[b5] STILL AUDIBLE after fill at 1.24-1.42s (+15 dB)
-
-[b5] STILL AUDIBLE after fill at 7.47-7.51s (+13 dB)
-
-[b5] STILL AUDIBLE after fill at 12.91-13.0s (+11 dB)
 
 [b6]
     1.46- 1.55s  voiced  +32.2 dB  (flat 0.001, 246 Hz, low 0.81)  -> keep
@@ -153,9 +192,18 @@
     1.96- 2.00s  voiced  +19.8 dB  (flat 0.0, 142 Hz, low 0.96)  -> fill
 
 [p2]
+    1.48- 1.52s  voiced  +36.1 dB  (flat 0.0, 509 Hz, low 0.14)
+    3.05- 3.09s  click   +37.3 dB  (flat 0.044, 5766 Hz, low 0.0)
+    5.49- 5.75s  voiced  +47.5 dB  (flat 0.034, 656 Hz, low 0.34)
+    6.23- 6.32s  voiced  +30.3 dB  (flat 0.0, 114 Hz, low 0.99)
+    4.89s  unsure word 'twenty' (score 0.003) -> listen: mumble / leftover restart?
+    5.17s  unsure word 'five' (score 0.009) -> listen: mumble / leftover restart?
+    5.93s  unsure word 'thirty.' (score 0.111) -> listen: mumble / leftover restart?
+
+[p2]
     1.48- 1.52s  voiced  +36.1 dB  (flat 0.0, 509 Hz, low 0.14)  -> keep
     3.05- 3.09s  click   +37.3 dB  (flat 0.044, 5766 Hz, low 0.0)  -> fill
-    5.49- 5.75s  voiced  +47.5 dB  (flat 0.034, 656 Hz, low 0.34)  -> fill
+    5.49- 5.75s  voiced  +47.5 dB  (flat 0.034, 656 Hz, low 0.34)  -> keep
     6.23- 6.32s  voiced  +30.3 dB  (flat 0.0, 114 Hz, low 0.99)  -> fill
     4.89s  unsure word 'twenty' (score 0.003) -> listen: mumble / leftover restart?
     5.17s  unsure word 'five' (score 0.009) -> listen: mumble / leftover restart?
@@ -169,14 +217,20 @@
     3.36s  unsure word 'to' (score 0.052) -> listen: mumble / leftover restart?
 
 [p4]
-    2.37- 2.42s  voiced  +27.2 dB  (flat 0.001, 656 Hz, low 0.52)  -> keep
-    4.09- 4.13s  click   +22.4 dB  (flat 0.085, 4675 Hz, low 0.0)  -> keep
-    5.19- 5.27s  voiced  +43.8 dB  (flat 0.001, 627 Hz, low 0.06)  -> keep
-    5.59- 5.63s  click   +41.9 dB  (flat 0.0, 419 Hz, low 0.75)  -> fill
+    2.37- 2.42s  voiced  +27.2 dB  (flat 0.001, 656 Hz, low 0.52)
+    4.09- 4.13s  click   +22.4 dB  (flat 0.085, 4675 Hz, low 0.0)
+    5.19- 5.27s  voiced  +43.8 dB  (flat 0.001, 627 Hz, low 0.06)
+    5.59- 5.63s  click   +41.9 dB  (flat 0.0, 419 Hz, low 0.75)
     5.79s  unsure word 'card' (score 0.006) -> listen: mumble / leftover restart?
     5.93s  unsure word 'in' (score 0.0) -> listen: mumble / leftover restart?
 
-[p4] skipped fill 5.59-5.63s: it removed words
+[p4]
+    2.37- 2.42s  voiced  +27.2 dB  (flat 0.001, 656 Hz, low 0.52)  -> keep
+    4.09- 4.13s  click   +22.4 dB  (flat 0.085, 4675 Hz, low 0.0)  -> keep
+    5.19- 5.27s  voiced  +43.8 dB  (flat 0.001, 627 Hz, low 0.06)  -> keep
+    5.59- 5.63s  click   +41.9 dB  (flat 0.0, 419 Hz, low 0.75)  -> keep
+    5.79s  unsure word 'card' (score 0.006) -> listen: mumble / leftover restart?
+    5.93s  unsure word 'in' (score 0.0) -> listen: mumble / leftover restart?
 
 [p5]
     1.62- 1.67s  click   +30.0 dB  (flat 0.071, 4749 Hz, low 0.0)  -> fill
@@ -185,11 +239,14 @@
     4.78- 4.98s  voiced  +42.3 dB  (flat 0.069, 5213 Hz, low 0.0)  -> fill
 
 [d1]
-    0.00- 0.28s  voiced  +52.7 dB  (flat 0.003, 469 Hz, low 0.74)  -> fill
-    1.39- 1.43s  voiced  +52.5 dB  (flat 0.0, 356 Hz, low 0.68)  -> keep
+    0.00- 0.28s  voiced  +52.7 dB  (flat 0.003, 469 Hz, low 0.74)
+    1.39- 1.43s  voiced  +52.5 dB  (flat 0.0, 356 Hz, low 0.68)
     1.63s  unsure word 'panicking.' (score 0.238) -> listen: mumble / leftover restart?
 
-[d1] skipped fill 0.0-0.28s: it removed words
+[d1]
+    0.00- 0.28s  voiced  +52.7 dB  (flat 0.003, 469 Hz, low 0.74)  -> keep
+    1.39- 1.43s  voiced  +52.5 dB  (flat 0.0, 356 Hz, low 0.68)  -> keep
+    1.63s  unsure word 'panicking.' (score 0.238) -> listen: mumble / leftover restart?
 
 [d2]
     1.68- 1.79s  voiced  +45.3 dB  (flat 0.0, 243 Hz, low 0.8)  -> keep
@@ -221,26 +278,40 @@
     1.87s  unsure word 'three.' (score 0.035) -> listen: mumble / leftover restart?
 
 [f2]
+    1.56- 1.64s  voiced  +40.8 dB  (flat 0.0, 474 Hz, low 0.8)
+    2.94- 3.00s  voiced  +44.4 dB  (flat 0.004, 452 Hz, low 0.59)
+    6.02- 7.99s  voiced  +46.6 dB  (flat 0.028, 552 Hz, low 0.45)
+    8.32- 8.36s  voiced  +41.9 dB  (flat 0.001, 527 Hz, low 0.88)
+    4.79s  unsure word 'two' (score 0.085) -> listen: mumble / leftover restart?
+    4.95s  unsure word 'and' (score 0.052) -> listen: mumble / leftover restart?
+    5.05s  unsure word 'a' (score 0.011) -> listen: mumble / leftover restart?
+    5.13s  unsure word 'half' (score 0.102) -> listen: mumble / leftover restart?
+
+[f2]
     1.56- 1.64s  voiced  +40.8 dB  (flat 0.0, 474 Hz, low 0.8)  -> keep
     2.94- 3.00s  voiced  +44.4 dB  (flat 0.004, 452 Hz, low 0.59)  -> keep
-    6.02- 7.99s  voiced  +46.6 dB  (flat 0.028, 552 Hz, low 0.45)  -> cut
+    6.02- 7.99s  voiced  +46.6 dB  (flat 0.028, 552 Hz, low 0.45)  -> keep
     8.32- 8.36s  voiced  +41.9 dB  (flat 0.001, 527 Hz, low 0.88)  -> keep
     4.79s  unsure word 'two' (score 0.085) -> listen: mumble / leftover restart?
     4.95s  unsure word 'and' (score 0.052) -> listen: mumble / leftover restart?
     5.05s  unsure word 'a' (score 0.011) -> listen: mumble / leftover restart?
     5.13s  unsure word 'half' (score 0.102) -> listen: mumble / leftover restart?
 
-[f2] skipped cut 6.02-7.99s: it removed words
+[f3]
+    1.32- 1.36s  voiced  +40.9 dB  (flat 0.0, 296 Hz, low 0.84)
+    5.21- 5.40s  voiced  +43.5 dB  (flat 0.0, 131 Hz, low 0.98)
+    7.28- 7.42s  voiced  +47.8 dB  (flat 0.001, 649 Hz, low 0.05)
+    8.22- 8.26s  click   +20.8 dB  (flat 0.134, 2353 Hz, low 0.02)
+    1.80s  unsure word 'in' (score 0.229) -> listen: mumble / leftover restart?
+    3.21s  unsure word 'Peek' (score 0.095) -> listen: mumble / leftover restart?
 
 [f3]
     1.32- 1.36s  voiced  +40.9 dB  (flat 0.0, 296 Hz, low 0.84)  -> keep
     5.21- 5.40s  voiced  +43.5 dB  (flat 0.0, 131 Hz, low 0.98)  -> fill
-    7.28- 7.42s  voiced  +47.8 dB  (flat 0.001, 649 Hz, low 0.05)  -> fill
+    7.28- 7.42s  voiced  +47.8 dB  (flat 0.001, 649 Hz, low 0.05)  -> keep
     8.22- 8.26s  click   +20.8 dB  (flat 0.134, 2353 Hz, low 0.02)  -> fill
     1.80s  unsure word 'in' (score 0.229) -> listen: mumble / leftover restart?
     3.21s  unsure word 'Peek' (score 0.095) -> listen: mumble / leftover restart?
-
-[f3] STILL AUDIBLE after fill at 5.21-5.4s (+18 dB)
 
 [f4]
     1.42- 1.47s  click   +28.6 dB  (flat 0.092, 5133 Hz, low 0.01)  -> fill
@@ -260,8 +331,6 @@
     0.86s  unsure word 'feels' (score 0.213) -> listen: mumble / leftover restart?
     1.74s  unsure word 'It's' (score 0.003) -> listen: mumble / leftover restart?
 
-[k3] STILL AUDIBLE after fill at 8.04-8.1s (+32 dB)
-
 [k4]
     2.31- 2.40s  voiced  +29.1 dB  (flat 0.001, 682 Hz, low 0.12)  -> keep
     4.87- 4.93s  voiced  +21.6 dB  (flat 0.026, 919 Hz, low 0.0)  -> keep
@@ -272,25 +341,32 @@
     1.68s  unsure word 'player' (score 0.188) -> listen: mumble / leftover restart?
     4.49s  unsure word 'an' (score 0.0) -> listen: mumble / leftover restart?
 
-[k4] skipped fill 9.16-9.21s: it removed words
-
 [k5]
-    2.07- 2.29s  voiced  +23.3 dB  (flat 0.066, 831 Hz, low 0.17)  -> fill
     1.52s  unsure word 'twenty' (score 0.01) -> listen: mumble / leftover restart?
-    1.77s  unsure word 'five' (score 0.031) -> listen: mumble / leftover restart?
-    2.47s  unsure word 'thirty.' (score 0.2) -> listen: mumble / leftover restart?
-
-[k5] STILL AUDIBLE after fill at 2.07-2.29s (+42 dB)
+    1.77s  unsure word 'five' (score 0.014) -> listen: mumble / leftover restart?
+    2.47s  unsure word 'thirty' (score 0.2) -> listen: mumble / leftover restart?
+    2.73s  unsure word 'percent.' (score 0.0) -> listen: mumble / leftover restart?
 
 [cta]
     2.43- 2.47s  voiced  +28.4 dB  (flat 0.0, 413 Hz, low 0.72)  -> keep
     0.82s  unsure word 'a' (score 0.015) -> listen: mumble / leftover restart?
 
 [a1]
-    0.08- 0.74s  voiced  +41.4 dB  (flat 0.028, 545 Hz, low 0.38)  -> fill
+    0.08- 0.74s  voiced  +41.4 dB  (flat 0.028, 545 Hz, low 0.38)
+    6.67- 6.75s  voiced  +39.4 dB  (flat 0.003, 880 Hz, low 0.06)
+    7.35- 8.75s  voiced  +39.5 dB  (flat 0.166, 1522 Hz, low 0.3)
+    9.07- 9.32s  voiced  +41.3 dB  (flat 0.008, 656 Hz, low 0.16)
+    4.39s  unsure word 'this' (score 0.072) -> listen: mumble / leftover restart?
+
+[a1] kept 0.08-0.74s: it is a word ('Quick')
+
+[a1] kept 7.35-8.75s: it is a word ('never')
+
+[a1]
+    0.08- 0.74s  voiced  +41.4 dB  (flat 0.028, 545 Hz, low 0.38)  -> keep
     6.67- 6.75s  voiced  +39.4 dB  (flat 0.003, 880 Hz, low 0.06)  -> keep
-    7.35- 8.75s  voiced  +39.5 dB  (flat 0.166, 1522 Hz, low 0.3)  -> cut
-    9.07- 9.32s  voiced  +41.3 dB  (flat 0.008, 656 Hz, low 0.16)  -> fill
+    7.35- 8.75s  voiced  +39.5 dB  (flat 0.166, 1522 Hz, low 0.3)  -> keep
+    9.07- 9.32s  voiced  +41.3 dB  (flat 0.008, 656 Hz, low 0.16)  -> keep
     4.39s  unsure word 'this' (score 0.072) -> listen: mumble / leftover restart?
 
 [a2]
@@ -315,8 +391,6 @@
 
 [s2] skipped fill 0.0-0.26s: it removed words
 
-[s2] skipped duck 8.09-8.23s: it removed words
-
 [s3]
     2.71- 2.75s  breath  +28.4 dB  (flat 0.133, 5098 Hz, low 0.18)  -> keep
     2.79s  unsure word 'steal' (score 0.189) -> listen: mumble / leftover restart?
@@ -335,14 +409,32 @@
     1.69- 1.75s  voiced  +28.7 dB  (flat 0.0, 162 Hz, low 0.97)  -> fill
 
 [x2]
-    0.07- 0.77s  voiced  +49.1 dB  (flat 0.021, 537 Hz, low 0.64)  -> fill
+    0.07- 0.77s  voiced  +49.1 dB  (flat 0.021, 537 Hz, low 0.64)
+    2.58- 2.66s  voiced  +31.2 dB  (flat 0.0, 654 Hz, low 0.53)
+    3.97- 4.01s  voiced  +37.7 dB  (flat 0.0, 146 Hz, low 0.97)
+    6.31- 6.36s  click   +29.8 dB  (flat 0.038, 4688 Hz, low 0.0)
+    3.42s  unsure word 'worst' (score 0.218) -> listen: mumble / leftover restart?
+
+[x2]
+    0.07- 0.77s  voiced  +49.1 dB  (flat 0.021, 537 Hz, low 0.64)  -> keep
     2.58- 2.66s  voiced  +31.2 dB  (flat 0.0, 654 Hz, low 0.53)  -> keep
     3.97- 4.01s  voiced  +37.7 dB  (flat 0.0, 146 Hz, low 0.97)  -> keep
     6.31- 6.36s  click   +29.8 dB  (flat 0.038, 4688 Hz, low 0.0)  -> fill
     3.42s  unsure word 'worst' (score 0.218) -> listen: mumble / leftover restart?
 
 [x3]
-    0.00- 0.26s  voiced  +45.6 dB  (flat 0.0, 374 Hz, low 0.72)  -> fill
+    0.00- 0.26s  voiced  +45.6 dB  (flat 0.0, 374 Hz, low 0.72)
+    2.21- 2.25s  voiced  +32.7 dB  (flat 0.0, 520 Hz, low 0.05)
+    2.75- 2.81s  voiced  +31.9 dB  (flat 0.0, 236 Hz, low 0.79)
+    5.80- 5.84s  click   +41.0 dB  (flat 0.001, 270 Hz, low 0.88)
+    6.14- 6.18s  voiced  +40.8 dB  (flat 0.001, 629 Hz, low 0.08)
+    4.65s  unsure word 'twenty' (score 0.029) -> listen: mumble / leftover restart?
+    4.97s  unsure word 'one' (score 0.078) -> listen: mumble / leftover restart?
+    7.12s  unsure word 'twenty' (score 0.071) -> listen: mumble / leftover restart?
+    7.40s  unsure word 'seven.' (score 0.222) -> listen: mumble / leftover restart?
+
+[x3]
+    0.00- 0.26s  voiced  +45.6 dB  (flat 0.0, 374 Hz, low 0.72)  -> keep
     2.21- 2.25s  voiced  +32.7 dB  (flat 0.0, 520 Hz, low 0.05)  -> keep
     2.75- 2.81s  voiced  +31.9 dB  (flat 0.0, 236 Hz, low 0.79)  -> keep
     5.80- 5.84s  click   +41.0 dB  (flat 0.001, 270 Hz, low 0.88)  -> fill
@@ -351,8 +443,6 @@
     4.97s  unsure word 'one' (score 0.078) -> listen: mumble / leftover restart?
     7.12s  unsure word 'twenty' (score 0.071) -> listen: mumble / leftover restart?
     7.40s  unsure word 'seven.' (score 0.222) -> listen: mumble / leftover restart?
-
-[x3] skipped fill 0.0-0.26s: it removed words
 
 [x4]
     3.57- 3.63s  breath  +34.1 dB  (flat 0.099, 5324 Hz, low 0.0)  -> keep
@@ -377,6 +467,8 @@
     6.82s  unsure word 'sixty' (score 0.181) -> listen: mumble / leftover restart?
     7.16s  unsure word 'eight' (score 0.09) -> listen: mumble / leftover restart?
     7.28s  unsure word 'percent.' (score 0.087) -> listen: mumble / leftover restart?
+
+[t4] skipped fill 5.27-5.31s: it removed words
 
 [t5]
     3.98- 4.04s  voiced  +29.7 dB  (flat 0.004, 506 Hz, low 0.41)  -> keep
@@ -404,8 +496,6 @@
     8.59- 8.64s  click   +27.9 dB  (flat 0.066, 4393 Hz, low 0.0)  -> fill
     4.33s  unsure word 'in' (score 0.15) -> listen: mumble / leftover restart?
 
-[r3] skipped fill 8.59-8.64s: it removed words
-
 [r4]
     2.16- 2.21s  voiced  +23.5 dB  (flat 0.002, 397 Hz, low 0.61)  -> keep
     4.17s  unsure word 'thirty' (score 0.139) -> listen: mumble / leftover restart?
@@ -428,8 +518,6 @@
     5.41s  unsure word 'in' (score 0.077) -> listen: mumble / leftover restart?
    10.88s  unsure word 'Nope' (score 0.136) -> listen: mumble / leftover restart?
 
-[w2] skipped fill 12.02-12.08s: it removed words
-
 [w3]
     2.67- 2.75s  voiced  +25.9 dB  (flat 0.0, 617 Hz, low 0.27)  -> keep
 
@@ -440,14 +528,10 @@
     3.33s  unsure word 'nine' (score 0.035) -> listen: mumble / leftover restart?
     3.59s  unsure word 'and' (score 0.177) -> listen: mumble / leftover restart?
 
-[w4] skipped fill 5.16-5.2s: it removed words
-
 [e1]
     0.00- 0.17s  voiced  +43.9 dB  (flat 0.0, 301 Hz, low 0.65)  -> fill
     2.21- 2.38s  voiced  +44.9 dB  (flat 0.0, 232 Hz, low 0.92)  -> fill
     2.58- 2.62s  voiced  +40.9 dB  (flat 0.0, 284 Hz, low 0.93)  -> keep
-
-[e1] STILL AUDIBLE after fill at 2.21-2.38s (+18 dB)
 
 [e2]
     4.51- 4.61s  voiced  +33.4 dB  (flat 0.094, 2780 Hz, low 0.39)  -> keep
