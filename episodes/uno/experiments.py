@@ -51,6 +51,30 @@ def main():
         sk = run(VARIANTS[name], test=SMART, games=G, players=2)
         res["two_player"][name] = {"table": base, "smart_vs_normal": sk["test_win_rate"]}
         print(f"  {name:12s} turns {base['mean_turns']:5.1f}  1st {base['first_seat_win']*100:4.1f}%  smart {sk['test_win_rate']*100:4.1f}%  drawn {base['mean_cards_drawn_per_round']:.1f}")
+    print("\none habit inside each house rule (4 players, vs normal table)")
+    res["house_habits"] = {}
+    for label, rname, change in [("always stack", "stacking", {"stack_prob": 1.0}), ("never stack", "stacking", {"stack_prob": 0.0}),
+                                 ("always stack (mixed)", "stacking_mixed", {"stack_prob": 1.0}), ("never stack (mixed)", "stacking_mixed", {"stack_prob": 0.0}),
+                                 ("seven to a random player", "seven_zero", {"swap_target": "random"}),
+                                 ("always jump in", "jump_in", {"jump_prob": 1.0}), ("never jump in", "jump_in", {"jump_prob": 0.0}),
+                                 ("hold wilds (free +4)", "free_draw4", {"hold_wilds": True}), ("hold wilds (draw until)", "draw_until", {"hold_wilds": True}),
+                                 ("hold wilds (seven zero)", "seven_zero", {"hold_wilds": True})]:
+        r = run(VARIANTS[rname], test=dict(NORMAL, name=label, **change), games=G)
+        res["house_habits"][label] = {"rules": rname, "win": r["test_win_rate"]}
+        print(f"  {label:28s} {r['test_win_rate']*100:5.1f}%")
+    print("\nplayer count (official vs draw until, all normal)")
+    res["players"] = {}
+    for n in (2, 3, 4, 5, 6, 8, 10):
+        o = run({}, games=G, allsame=True, players=n); d = run(VARIANTS["draw_until"], games=G, allsame=True, players=n)
+        res["players"][str(n)] = {"official": o, "draw_until": d}
+        print(f"  {n:2d} players  turns {o['mean_turns']:5.1f} -> {d['mean_turns']:5.1f}  first {o['first_seat_win']*100:4.1f}% (fair {100/n:.1f})")
+    print("\nclassic 108-card deck (no Shuffle Hands, no blank wilds)")
+    classic = {"no_shuffle": True, "no_custom": True}
+    base = run(classic, games=G, allsame=True); sk = run(classic, test=SMART, games=G)
+    res["classic_deck"] = {"table": base, "smart_vs_normal": sk["test_win_rate"]}
+    print(f"  turns {base['mean_turns']:.1f}  first {base['first_seat_win']*100:.1f}%  smart {sk['test_win_rate']*100:.1f}%")
+    runs = 2 * len(VARIANTS) + len(res["habits"]) + 2 * len(res["two_player"]) + len(res["house_habits"]) + 2 * len(res["players"]) + 2
+    res["runs"] = runs; res["total_games"] = runs * G
     (out / "results.json").write_text(json.dumps(res, indent=1)); print("wrote", out / "results.json")
 
 

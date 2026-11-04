@@ -24,6 +24,8 @@ func (c Card) points() int {
 		return int(c.K)
 	case c.K <= DrawTwo:
 		return 20
+	case c.K == Shuffle || c.K == Custom:
+		return 40 // GDJ85 scoring: Wild Shuffle Hands and Customizable are 40
 	default:
 		return 50
 	}
@@ -73,6 +75,7 @@ type Game struct {
 	maxHit    int // biggest single penalty taken
 	lastD4Ill bool
 	lastD4Who int
+	dry       int // times a draw found no cards left anywhere
 }
 
 func newDeck(r *Rules) []Card {
@@ -123,10 +126,7 @@ func NewGame(rng *rand.Rand, r *Rules, pols []*Policy, dealer int) *Game {
 		g.cur = (dealer + 1) % n
 		switch {
 		case c.isWild():
-			g.color = g.bestColor(g.cur)
-			if c.K == Shuffle {
-				g.shuffleHands(dealer)
-			}
+			g.color = g.bestColor(g.cur) // any Wild turned up (incl. Shuffle Hands): player left of dealer picks the colour, no shuffle
 		case c.K == DrawTwo:
 			g.give(g.cur, 2)
 			g.cur = g.next(g.cur)
@@ -141,29 +141,35 @@ func NewGame(rng *rand.Rand, r *Rules, pols []*Policy, dealer int) *Game {
 	return g
 }
 
+func (g *Game) canDraw() bool { return len(g.deck) > 0 || len(g.discard) > 1 }
+
 func (g *Game) pop() Card {
-	if len(g.deck) == 0 {
+	if len(g.deck) == 0 { // reshuffle the discard pile (all but the top card) into a new draw pile
 		top := g.discard[len(g.discard)-1]
 		g.deck = append(g.deck, g.discard[:len(g.discard)-1]...)
 		g.discard = []Card{top}
 		g.rng.Shuffle(len(g.deck), func(i, j int) { g.deck[i], g.deck[j] = g.deck[j], g.deck[i] })
-		if len(g.deck) == 0 { // everything is in hands: extremely rare; mint a fresh deck
-			g.deck = newDeck(g.R)
-		}
 	}
 	c := g.deck[len(g.deck)-1]
 	g.deck = g.deck[:len(g.deck)-1]
 	return c
 }
 
-func (g *Game) give(p, k int) {
-	for i := 0; i < k; i++ {
+// give draws up to k cards for p. If every card is in someone's hand there is nothing left to draw
+// (rare; the real table would be stuck the same way), so the draw just stops. Returns cards drawn.
+func (g *Game) give(p, k int) int {
+	n := 0
+	for ; n < k && g.canDraw(); n++ {
 		g.hands[p] = append(g.hands[p], g.pop())
 	}
-	g.drawn[p] += k
-	if k > g.maxHit {
-		g.maxHit = k
+	if n < k {
+		g.dry++
 	}
+	g.drawn[p] += n
+	if n > g.maxHit {
+		g.maxHit = n
+	}
+	return n
 }
 
 func (g *Game) next(p int) int { n := len(g.hands); return ((p+g.dir)%n + n) % n }
@@ -308,7 +314,7 @@ func (g *Game) wantsChallenge(victim, player int) bool {
 
 // ---------------------------------------------------------------- play
 type Result struct {
-	Winner, Turns, MaxHit, Points int
+	Winner, Turns, MaxHit, Points, Dry int
 	Drawn                         []int
 }
 
@@ -456,9 +462,9 @@ func (g *Game) Play() Result {
 		i := g.choose(p)
 		if i < 0 {
 			for {
-				g.give(p, 1)
-				g.drawn[p]-- // count voluntary draws separately from penalties? keep simple: drawn counts all
-				g.drawn[p]++
+				if g.give(p, 1) == 0 {
+					break // nothing left to draw
+				}
 				c := g.hands[p][len(g.hands[p])-1]
 				ok := g.legal(c) && !(c.K == WildD4 && !g.R.FreeD4 && g.hasColor(p, g.color))
 				if ok && (g.pols[p].PlayDrawn || g.R.Forced || g.R.DrawUntil) {
@@ -497,5 +503,5 @@ func (g *Game) result(w int) Result {
 			pts += c.points()
 		}
 	}
-	return Result{Winner: w, Turns: g.turns, MaxHit: g.maxHit, Points: pts, Drawn: g.drawn}
+	return Result{Winner: w, Turns: g.turns, MaxHit: g.maxHit, Points: pts, Drawn: g.drawn, Dry: g.dry}
 }

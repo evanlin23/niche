@@ -27,6 +27,7 @@ type Summary struct {
 	MeanPoints   float64 `json:"mean_round_points"`
 	Unfinished   float64 `json:"unfinished"`
 	MeanDrawn    float64 `json:"mean_cards_drawn_per_round"`
+	DryRounds    float64 `json:"share_rounds_draw_ran_dry"` // a draw found no cards anywhere (all in hands)
 }
 
 func main() {
@@ -71,7 +72,7 @@ func main() {
 	W := runtime.NumCPU()
 	per := (*games + W - 1) / W
 	type acc struct {
-		wins, firstWins, unfinished, big10 int
+		wins, firstWins, unfinished, big10, dry int
 		turns                              []int
 		maxHit, points, drawn              float64
 	}
@@ -106,6 +107,9 @@ func main() {
 				if r.Winner == first {
 					a.firstWins++
 				}
+				if r.Dry > 0 {
+					a.dry++
+				}
 				if r.MaxHit >= 10 {
 					a.big10++
 				}
@@ -121,13 +125,14 @@ func main() {
 	wg.Wait()
 	var s Summary
 	var all []int
-	wins, first, unf, big := 0, 0, 0, 0
+	wins, first, unf, big, dry := 0, 0, 0, 0, 0
 	mh, pts, dr := 0.0, 0.0, 0.0
 	for _, a := range accs {
 		wins += a.wins
 		first += a.firstWins
 		unf += a.unfinished
 		big += a.big10
+		dry += a.dry
 		all = append(all, a.turns...)
 		mh += a.maxHit
 		dr += a.drawn
@@ -152,6 +157,7 @@ func main() {
 	s.MeanPoints = pts / n
 	s.Unfinished = float64(unf) / float64(s.Games)
 	s.MeanDrawn = dr / n
+	s.DryRounds = float64(dry) / n
 	must(json.NewEncoder(os.Stdout).Encode(s))
 }
 
