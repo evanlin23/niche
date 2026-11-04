@@ -78,7 +78,7 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 [k2] You drew a Kitten, you played your Defuse, and now you can put it back anywhere you like. Most people tuck it in at random. That's exactly average.
 [k3] The bottom of the deck feels safe. It's actually worse than random. My best guess is that a Kitten at the bottom just waits for whoever is left, and that could easily be you.
 [k4] The best spot is the first card the next player will draw. Usually that's the top. If you're under an Attack, count your turns. One more turn to take means second from the top. Two more, third.
-[k5] That one change takes a bot from twenty five to thirty.
+[k5] That one change takes a bot from twenty five percent to thirty percent.
 [cta] If that just saved you a Defuse, please subscribe. Uno is next.
 
 ## A quick confession

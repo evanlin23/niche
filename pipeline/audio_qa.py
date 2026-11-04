@@ -82,7 +82,30 @@ def heard(audio48):
     from scipy.signal import resample_poly
     a16 = resample_poly(audio48, 1, 3).astype(np.float32)
     segs, _ = _WH["m"].transcribe(a16, language="en", beam_size=5, vad_filter=False)
-    return [re.sub(r"[^a-z0-9']", "", w.lower()) for s in segs for w in s.text.split() if re.sub(r"[^a-z0-9']", "", w.lower())]
+    text = " ".join(s.text for s in segs).replace("%", " percent")      # "25%" must still count "percent"
+    return [re.sub(r"[^a-z0-9']", "", w.lower()) for w in text.split() if re.sub(r"[^a-z0-9']", "", w.lower())]
+
+
+def word_inside(audio48, ev, script_text, pad=0.4):
+    """Does Whisper, primed with this line's script, hear a real word inside the event? (protects quiet or
+    unscripted words like an extra 'percent' that the forced alignment had no slot for)"""
+    if not _WH:
+        heard(np.zeros(SR, np.float32))
+    from scipy.signal import resample_poly
+    t0 = max(0.0, ev["start"] - pad)
+    seg = audio48[int(t0 * SR): int((ev["end"] + pad) * SR)]
+    a16 = resample_poly(seg, 1, 3).astype(np.float32)
+    segs, _ = _WH["m"].transcribe(a16, language="en", beam_size=5, word_timestamps=True,
+                                  initial_prompt=script_text, condition_on_previous_text=False)
+    for sg in segs:
+        for w in sg.words:
+            n = re.sub(r"[^a-z0-9%']", "", w.word.lower())
+            if not n or n in FILLERS:
+                continue
+            mid = t0 + (w.start + w.end) / 2
+            if ev["start"] + 0.02 <= mid <= ev["end"] - 0.02:
+                return w.word.strip()
+    return None
 
 
 def lost_words(before, after):
@@ -180,15 +203,36 @@ def plan(evs, words, dur):
     return out
 
 
-def fix(raw, plan_, room):
+def widen(ev, db, floor, spans, max_ext=0.12, gap=0.02):
+    """Grow an event outward while the sound is still above floor+4 dB (its soft onset and tail), but never into
+    a neighbouring word. Returns (start, end) in seconds."""
+    lo_lim = max([e for _, s0, e, _ in spans if e <= ev["start"] + 0.005] + [0.0]) + gap
+    hi_lim = min([s0 for _, s0, e, _ in spans if s0 >= ev["end"] - 0.005] + [len(db) * 0.01]) - gap
+    i, j = int(ev["start"] / 0.01), int(ev["end"] / 0.01)
+    k = 0
+    while i > 0 and (i - 1) * 0.01 >= lo_lim and db[i - 1] > floor + 4 and k < max_ext / 0.01:
+        i -= 1; k += 1
+    k = 0
+    while j < len(db) and (j + 1) * 0.01 <= hi_lim and db[j] > floor + 4 and k < max_ext / 0.01:
+        j += 1; k += 1
+    return max(i * 0.01, 0.0), j * 0.01
+
+
+def fix(raw, plan_, room, spans=None, clean_db=None):
     """Apply fill / duck to the raw line audio, then remove the 'cut' ranges. Returns audio, cut ranges."""
     a = raw.copy()
     _, db = frames(raw)
     quiet = 10 ** (np.percentile(db, 10) / 20)
     cuts = []
+    if spans is not None and clean_db is not None:          # cover the soft edges of each noise too
+        fl = np.percentile(clean_db, 10)
+        plan_ = [dict(ev, start=widen(ev, clean_db, fl, spans)[0], end=widen(ev, clean_db, fl, spans)[1])
+                 if ev["action"] in ("fill", "duck") else ev for ev in plan_]
     for ev in plan_:
         s, e = int(ev["start"] * SR), int(ev["end"] * SR)
-        f = min(int(0.008 * SR), (e - s) // 4)
+        if e <= s:
+            continue
+        f = min(int(0.004 * SR), (e - s) // 4)
         ramp = np.zeros(e - s, np.float32)                  # how much ORIGINAL to keep: 1 at the edges, 0 inside
         if f > 0:
             ramp[:f] = np.linspace(1, 0, f); ramp[-f:] = np.linspace(0, 1, f)
@@ -282,12 +326,18 @@ def main():
         if lines:
             report.append(f"[{lid}]\n" + "\n".join(lines))
         pl = plan(evs, spans, len(raw) / SR)
+        for ev in pl:                                    # never blank or cut something Whisper hears as a word
+            if ev["action"] in ("fill", "cut"):
+                w = word_inside(cl, ev, script[lid])
+                if w:
+                    ev["action"] = "keep"; ev["protected_word"] = w
+                    report.append(f"[{lid}] kept {ev['start']}-{ev['end']}s: it is a word ('{w}')")
         lines = [ln + "  -> " + ev["action"] for ln, ev in zip(lines, pl)] + lines[len(pl):]
         if lines:
             report[-1] = f"[{lid}]\n" + "\n".join(lines) if report and report[-1].startswith(f"[{lid}]") else report[-1]
         if not a.dry_run and any(ev["action"] != "keep" for ev in pl):
             from .tighten_voice import apply_cuts
-            fixed, cuts = fix(raw, pl, rooms[sess])
+            fixed, cuts = fix(raw, pl, rooms[sess], spans, frames(cl)[1])
             words = [tuple(w) for w in meta["words"]]
             fixed, words = apply_cuts(fixed, SR, words, cuts)
             hb, ha = heard(cl), heard(clean(fixed, rooms[sess], do_trim=False))
@@ -297,7 +347,7 @@ def main():
                 safe = []
                 for ev in [e for e in pl if e["action"] != "keep"]:
                     trial = [dict(e, action=e["action"] if (e in safe or e is ev) else "keep") for e in pl]
-                    f2, c2 = fix(raw, trial, rooms[sess])
+                    f2, c2 = fix(raw, trial, rooms[sess], spans, frames(cl)[1])
                     f2, _ = apply_cuts(f2, SR, [tuple(w) for w in meta["words"]], c2)
                     h2 = heard(clean(f2, rooms[sess], do_trim=False))
                     if not [w for w in lost_words(hb, h2) if w not in FILLERS]:
@@ -305,7 +355,7 @@ def main():
                     else:
                         report.append(f"[{lid}] skipped {ev['action']} {ev['start']}-{ev['end']}s: it removed words")
                 pl = [dict(e, action=e["action"] if e in safe else "keep") for e in pl]
-                fixed, cuts = fix(raw, pl, rooms[sess])
+                fixed, cuts = fix(raw, pl, rooms[sess], spans, frames(cl)[1])
                 words = [tuple(w) for w in meta["words"]]
                 fixed, words = apply_cuts(fixed, SR, words, cuts)
                 print(lid, f"kept {len(safe)} safe edits", flush=True)
@@ -316,7 +366,7 @@ def main():
                 if ev["action"] == "cut":
                     shift += ev["end"] - ev["start"] + 0.04
                 elif ev["action"] == "fill":
-                    i0, i1 = int((ev["start"] - shift) / 0.01) + 1, int((ev["end"] - shift) / 0.01) - 1
+                    i0, i1 = int((ev["start"] - shift) / 0.01) + 2, int((ev["end"] - shift) / 0.01) - 2   # interior only
                     if i1 > i0 and dbc[i0:i1].max() > fl + 8:
                         report.append(f"[{lid}] STILL AUDIBLE after fill at {ev['start']}-{ev['end']}s (+{dbc[i0:i1].max()-fl:.0f} dB)")
             sf.write(wav, fixed, SR)
