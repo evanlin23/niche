@@ -234,6 +234,15 @@ def build_spec(ctx) -> dict:
         s["highlights"] = card_highlights(ctx)
     if p.get("chart"):
         s["chart"] = resolve_all(ctx, CHARTS[p["chart"]]())
+    cos = s["params"].get("callouts")
+    if cos:
+        ok = []
+        for c in cos:
+            try:
+                ok.append(dict(c, at=resolve_at(ctx, c["at"])))
+            except KeyError as e:
+                print(f"  callout skipped in {ctx.scene.id}: {e}")
+        s["params"] = dict(s["params"], callouts=ok)
     s["params"] = resolve_all(ctx, s["params"])           # notes / checklist items can use word anchors too
     if ctx.scene.render in ("table", "short"):
         tr = demo_trace(p.get("seed", 123), p.get("players", 4))

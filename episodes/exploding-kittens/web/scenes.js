@@ -18,6 +18,18 @@ function notes(stage, list) {
 }
 function brand(stage, x = 56, y = 36) {
   stage.text({ text: 'BUH SIMULATES', x, y, size: 26, color: GN.brand, weight: 700, font: 'rubik', at: -1 });
+  callouts(stage);
+}
+// key-fact chips that pop up on the word that says them (params.callouts = [{text, at, color?}], times resolved
+// from the voice). One at a time, just above the burned-in captions; each holds until the next or ~3.2 s.
+function callouts(stage) {
+  const list = ((stage.spec.params || {}).callouts || []).filter((c) => typeof c.at === 'number').sort((a, b) => a.at - b.at);
+  list.forEach((c, i) => {
+    const next = list[i + 1] ? list[i + 1].at : 1e9;
+    const until = Math.min(next - 0.05, c.at + (c.hold || 3.2));
+    stage.text({ text: c.text, x: 960, y: stage.spec.calloutY || 868, size: 40, weight: 900, font: 'rubik', align: 'center', at: c.at, until, fade: 0.14,
+      case: 'none', pill: c.color === 'CORAL' ? GN.coral : c.color === 'CREAM' ? 'rgba(244,234,213,0.95)' : GN.mustard, color: '#1b1209' });
+  });
 }
 function title(stage, s, at = 0.1, y = 54) {
   if (s) stage.text({ text: s, x: 960, y, size: 64, weight: 900, font: 'rubik', align: 'center', at, case: 'none' });
@@ -394,10 +406,13 @@ SCENES.deck56 = async (stage, spec) => {
 SCENES.bars = async (stage, spec) => {
   buildRoom(stage, { feltW: 18, feltD: 9 });
   const ch = spec.chart, p = spec.params;
-  // a chart with a note pill gets shorter bars so the pill never covers a value label
-  const hasNotes = (p.notes || []).length > 0;
-  const bars = makeBars(stage, ch.items, { x0: -6.3, width: 12.6, maxV: ch.maxV, height: hasNotes ? 5.2 : 6.2, z: 0, fair: ch.fair, unit: ch.unit ?? '%', fairSide: ch.fairSide ?? 'right' });
-  const shifted = ch.players ? (p.notes || []).map((n) => ({ ...n, pos: n.pos ? [n.pos[0], n.pos[1] + 58] : n.pos })) : p.notes;
+  // a chart with a note pill / callouts gets shorter bars so they never cover a value label
+  const hasNotes = (p.notes || []).length > 0, hasCallouts = (p.callouts || []).length > 0;
+  const bars = makeBars(stage, ch.items, { x0: -6.3, width: 12.6, maxV: ch.maxV, height: hasNotes && hasCallouts ? 4.6 : hasNotes || hasCallouts ? 5.2 : 6.2, z: 0, fair: ch.fair, unit: ch.unit ?? '%', fairSide: ch.fairSide ?? 'right' });
+  // charts: callouts go at the top (under the player-count label) so they never cover a bar label; notes move
+  // down one more row, and the bars get shorter to leave room
+  if (hasCallouts) stage.spec.calloutY = 186;
+  const shifted = (p.notes || []).map((n) => ({ ...n, pos: n.pos ? [n.pos[0], n.pos[1] + (ch.players ? 58 : 0) + (hasCallouts ? 64 : 0)] : n.pos }));
   title(stage, p.title); notes(stage, shifted); brand(stage);
   if (ch.players) {        // always say how many players this chart is about (charts used to switch silently)
     const fair = ch.fair != null ? ` · fair share ${ch.fair}%` : '';
@@ -427,6 +442,7 @@ SCENES.placement = async (stage, spec) => {
   const topLab = stage.texts[stage.texts.length - 1];
   stage.text({ text: 'BOTTOM', x: 0, y: 0, size: 24, weight: 900, font: 'rubik', color: GN.muted, manual: true });
   const botLab = stage.texts[stage.texts.length - 1];
+  if ((p.callouts || []).length) stage.spec.calloutY = 186;   // chart below: callouts at the top
   title(stage, p.title); notes(stage, p.notes); brand(stage);
   if (ch.players) stage.text({ text: `${ch.players} players · fair share ${ch.fair}%`, x: 960, y: 128, size: 30, weight: 700, font: 'rubik', align: 'center', at: 0.05, case: 'none', pill: 'rgba(244,234,213,0.92)', color: '#1b1209' });
   // where the Kitten goes, on the words that say it (params.plan = [[time, slot], ...], anchors resolved)

@@ -5,7 +5,7 @@ music:              # YouTube Audio Library, no attribution required (local only
   - music/ponderous-days-joel-cummins.mp3
 engine: 3d
 grade: eq=saturation=1.12:contrast=1.04   # light colour grade baked into every scene
-burn_captions: true  # on-screen captions for every spoken line (creator request)
+burn_captions: false  # creator: no burned-in captions; YouTube CC covers it, animations carry the screen
 voice_style: studio   # no-AI studio chain: de-reverb, broadcast EQ, compression (pipeline/studio_voice.py)
 look: clean-sage      # clean-sage | clean-ink | clean-light | (unset = warm game night)
 quality: high         # high = reflections + glossy pieces + 4K shadows
@@ -22,6 +22,10 @@ scenes:
   - 0.4
   - 0.6
   params:
+    callouts:
+    - {text: "Same table, seats shuffled", at: o3@sat}
+    - {text: "5 bots at one table", at: o3@bots}
+    - {text: "10,200,000,000 games", at: o3@ten}
     mode: play
     ev_from: 10
     players: 5
@@ -37,7 +41,7 @@ scenes:
     - [4, 'o2@steals']
     notes:
     - text: 10,000,000,000+ games
-      at: o3
+      at: o3@ten
       pos:
       - 960
       - 150
@@ -85,6 +89,16 @@ scenes:
   pad:
   - 0.1
   - 0.4
+  params:
+    callouts:
+    - {text: "\u2026unless you have a Defuse", at: g1@unless}
+    - {text: "Every other card: avoid drawing", at: g1@every}
+    - {text: "Everyone draws from one deck", at: g1@everyone}
+    - {text: "Last player standing wins", at: g1@last}
+    - {text: "Play as many cards as you like\u2026", at: g2@play}
+    - {text: "\u2026then draw one card", at: g2@drawing}
+    - {text: "That draw is where you explode", at: g2@explode}
+    - {text: "Official rulebook \xB7 original edition", at: c1@official}
 - id: check
   chapter: Can you trust it?
   render: statement
@@ -92,6 +106,9 @@ scenes:
   - c2
   - c3
   params:
+    callouts:
+    - {text: "First, a boring check", at: c2@boring}
+    - {text: "3 Kittens in 23 cards", at: c2@three_in}
     lines:
     - 'First card is a Kitten:'
     - math says 13.04%
@@ -103,6 +120,10 @@ scenes:
   - c4
   - c5
   params:
+    callouts:
+    - {text: "Real players bluff", at: c5@bluff}
+    - {text: "Bots just put it there", at: c5@mine}
+    - {text: "Remember this one", at: c5@keep}
     mode: idle
     ev_still: 1
     labels: false
@@ -178,6 +199,9 @@ scenes:
   lines:
   - b6
   params:
+    callouts:
+    - {text: "A ranking doesn't tell you why", at: b6@ranking}
+    - {text: "100,000,000 games per change", at: b6@hundred}
     size: 0.85
     lines:
     - text: 3 Normal Players
@@ -208,6 +232,15 @@ scenes:
   - p4
   - p5
   params:
+    callouts:
+    - {text: "Remove the urge to play for fun", at: p2@remove}
+    - {text: "Later is when it counts", at: p4@later_is}
+    - {text: "\u2026while your chance of exploding is low", at: p5@low}
+    - {text: "A Skip spent early is gone later", at: p4@spend}
+    - {text: "First draw: about 1 in 7 is a Kitten", at: p4@seven}
+    - {text: "Last few draws: mostly Kittens", at: p4@last}
+    - {text: "Rulebook: \"save your cards early\"", at: p5@rulebook}
+    - {text: "Almost nobody listens", at: p5@nobody}
     chart: patience
     title: 'Mistake 1: playing cards for fun'
     notes:
@@ -237,6 +270,13 @@ scenes:
   - d3
   - d4
   params:
+    callouts:
+    - {text: "Most people start Skipping", at: d2@most}
+    - {text: "The rule that held up:", at: d3@boring}
+    - {text: "Panicker: Skips at 1 in 4", at: d2@deck}
+    - {text: "A coin flip? Still worse", at: d3@coin}
+    - {text: "Dodge only when you KNOW", at: d3@know}
+    - {text: "Attack or Skip: barely matters", at: d4@barely}
     chart: dodge
     title: 'Mistake 2: panicking'
     notes:
@@ -254,6 +294,9 @@ scenes:
   - d5
   - d6
   params:
+    callouts:
+    - {text: "Under Attack = 2 turns in a row", at: d5@stuck}
+    - {text: "My guess: they still hold a Skip", at: d6@guess, color: CREAM}
     chart: attacks
     title: Explosions that happen under Attack
 - id: m3
@@ -275,6 +318,12 @@ scenes:
   - f3
   - f4
   params:
+    callouts:
+    - {text: "Kitten on top? Dodge", at: f3@dodge}
+    - {text: "Not a Kitten? Draw, keep your Skip", at: f3@isn't}
+    - {text: "Cards left \xF7 Kittens left", at: f4@count}
+    - {text: "About 3? Time to peek", at: f4@about}
+    - {text: "2 Kittens left = 6 cards or fewer", at: f4@six}
     chart: future
     title: 'Mistake 3: when to See the Future'
     notes:
@@ -305,6 +354,13 @@ scenes:
   - k5
   - cta
   params:
+    callouts:
+    - {text: "The bottom of the deck\u2026", at: k3@bottom}
+    - {text: "Best spot: the next player's draw", at: k4@best}
+    - {text: "Defused? Put it back anywhere", at: k2@defuse}
+    - {text: "The bottom feels safe\u2026", at: k3@safe}
+    - {text: "My guess: it waits for whoever's left", at: k3@guess, color: CREAM}
+    - {text: "Under Attack? Count your turns", at: k4@attack}
     plan:
     - [k2@random, 6]
     - [k3@bottom, 12]
@@ -320,6 +376,12 @@ scenes:
   - a1
   - a2
   params:
+    callouts:
+    - {text: "First draft: a neat explanation", at: a1@first}
+    - {text: "The numbers come from the simulation", at: a2@simulation}
+    - {text: "Quick confession", at: a1@confession}
+    - {text: "Never tested the explanation \u2192 cut", at: a1@never, color: CORAL}
+    - {text: "Guesses get labelled", at: a2@guess}
     lines:
     - The numbers are real.
     - text: Guesses get labelled.
@@ -342,6 +404,13 @@ scenes:
   - s3
   - s4
   params:
+    callouts:
+    - {text: "They look like the weakest cards\u2026", at: s2@weakest}
+    - {text: "Don't pair your Attacks or Skips", at: s4@don't, color: CORAL}
+    - {text: "Every steal = a shot at their Defuse", at: s3@lottery}
+    - {text: "Aim at the biggest hand", at: s3@biggest}
+    - {text: "Any two matching cards = a pair", at: s4@any}
+    - {text: "2 escapes for 1 random card", at: s4@trading, color: CORAL}
     chart: steal
     title: 'Mistake 5: steal from the biggest hand'
     notes:
@@ -361,6 +430,10 @@ scenes:
   - x3
   - x4
   params:
+    callouts:
+    - {text: "Nope every Attack and steal aimed at you", at: x3@nope}
+    - {text: "Kitten on top, can't dodge? Shuffle", at: x4@shuffle}
+    - {text: "Worth less than a point", at: x4@less}
     chart: small
     title: The small stuff
     notes:
@@ -389,6 +462,8 @@ scenes:
   - t4
   - t5
   params:
+    callouts:
+    - {text: "Mistakes cost more with 2 players", at: t5@mistakes}
     chart: twoplayer
     title: 'Two players: every habit gets louder'
 - id: tables
@@ -398,6 +473,9 @@ scenes:
   - r2
   - r3
   params:
+    callouts:
+    - {text: "It doesn't break the game", at: r3@break}
+    - {text: "It works because others make mistakes", at: r3@only}
     chart: tables
     title: The Patient One vs different tables
     notes:
@@ -429,17 +507,17 @@ scenes:
     size: 44
     items:
     - text: Don't play cards for fun
-      at: w2+0.2
+      at: w2@don't
     - text: Only dodge when you know
-      at: w2+1.8
+      at: w2@only
     - text: See the Future at 1 in 3 odds
-      at: w2+3.2
+      at: w2@peek
     - text: Kitten goes where the next player draws
-      at: w2+5.5
+      at: w2@put
     - text: Steal from the biggest hand
-      at: w2+8
+      at: w2@steal
     - text: Give away junk, Nope attacks on you
-      at: w2+9.5
+      at: w2@give
 - id: final
   render: bars
   lines:
@@ -454,6 +532,10 @@ scenes:
   - e1
   - e2
   params:
+    callouts:
+    - {text: "No bluffing", at: e2@pretend}
+    - {text: "No nerves", at: e2@nervous}
+    - {text: "That part is all yours", at: e2@yours}
     lines:
     - They can't lie.
     - text: That part is yours.
@@ -464,6 +546,9 @@ scenes:
   lines:
   - e3
   params:
+    callouts:
+    - {text: "Next: Uno house rules", at: e3@uno}
+    - {text: "Which one breaks the game? \u2193", at: e3@tell}
     lines:
     - Which Uno house rule
     - text: breaks the game?
