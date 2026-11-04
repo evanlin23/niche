@@ -18,15 +18,20 @@ def _room_bed(n: int, level_db: float) -> np.ndarray | None:
     rt = vd / "_roomtone.wav"
     if not os.environ.get("VOICE_DIR") or not rt.exists():
         return None
-    from .voice_clean import clean, load
-    r = clean(load(rt), load(rt), do_trim=False)
-    r = r[np.abs(r) > 1e-7]
+    from .voice_clean import ffilter, load
+    # raw room tone, only band-limited: running it through the noise reduction would strip the very noise we
+    # want here and leave a bed full of near-silent holes
+    r = ffilter(load(rt), "highpass=f=80,lowpass=f=12000")
+    hop = 480; m = len(r) // hop                      # keep only steady room frames (drop dropouts / bumps)
+    fr = r[: m * hop].reshape(m, hop); fdb = 20 * np.log10(np.sqrt((fr ** 2).mean(1)) + 1e-12)
+    med = np.median(fdb)
+    r = fr[(fdb > med - 4) & (fdb < med + 4)].ravel()
     if len(r) < SR // 4:
         return None
     # loop with crossfades so the bed has no seams
     seg, xf = len(r), int(0.05 * SR)
     out = np.zeros(n + seg, np.float32); pos = 0
-    ramp = np.linspace(0, 1, xf, dtype=np.float32)
+    ramp = np.sqrt(np.linspace(0, 1, xf, dtype=np.float32))   # equal-power crossfade: no dip at the seams
     while pos < n:
         piece = r.copy(); piece[:xf] *= ramp; piece[-xf:] *= ramp[::-1]
         out[pos:pos + seg] += piece; pos += seg - xf
@@ -54,11 +59,19 @@ def narration_track(scenes: list[Scene], duration: float) -> np.ndarray:
                 floors.append(np.percentile(db, 10))
     out, cover = out[:n], cover[:n]
     if floors:
-        bed = _room_bed(n, float(np.median(floors)) - 3.0)   # a touch under the lines' floor
+        fl = float(np.median(floors))
+        bed = _room_bed(n, fl - 3.0)                          # a touch under the lines' floor
         if bed is not None:
-            k = int(0.04 * SR)                                # 40 ms fades at line edges
-            c = np.convolve(cover, np.ones(k, np.float32) / k, mode="same")
-            out = out + bed * (1.0 - np.clip(c, 0, 1))
+            # where the track dips well under the normal background (gaps between lines, and spots inside lines
+            # where a fill or the cleanup left it too quiet), bring the room back in, with smooth edges
+            hop = 480; m = n // hop
+            db = 20 * np.log10(np.sqrt((out[: m * hop].reshape(m, hop) ** 2).mean(1)) + 1e-9)
+            need = np.clip((fl - 4 - db) / 6, 0, 1)            # 0 at the normal floor, 1 when 10 dB under it
+            need = np.maximum(need, 1.0 - cover[: m * hop: hop])   # gaps between lines: always
+            k = 5
+            need = np.convolve(np.pad(need, k, mode="edge"), np.ones(2 * k + 1) / (2 * k + 1), "valid")
+            g = np.interp(np.arange(n), np.arange(m) * hop + hop / 2, need).astype(np.float32)
+            out = out + bed * g
     return out
 
 
@@ -105,7 +118,7 @@ def music_bed(duration: float, mood: str, seed: int = 0) -> np.ndarray:
         t = _bandlimit(t)                                          # keep bass mud out from under the voice
         t = t / (np.sqrt(np.mean(t ** 2)) + 1e-9) * 0.12          # equal loudness between tracks
         if len(out) >= xf and len(t) > xf:
-            ramp = np.linspace(0, 1, xf, dtype=np.float32)
+            ramp = np.sqrt(np.linspace(0, 1, xf, dtype=np.float32))   # equal-power crossfade: no dip at the seams
             out[-xf:] = out[-xf:] * (1 - ramp) + t[:xf] * ramp
             t = t[xf:]
         out = np.concatenate([out, t.astype(np.float32)])

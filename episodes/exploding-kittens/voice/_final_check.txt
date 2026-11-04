@@ -1,2 +1,1 @@
-g3: ends abruptly (last 30 ms at +20 dB)
-g3: starts abruptly
+

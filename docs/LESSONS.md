@@ -99,6 +99,9 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - **Repeats are cut upstream, by hand-checked ranges** in `_stumbles.json` (Whisper hides many repeats even in
   verbatim mode; the aligner finds them as "speech outside the script words"). The QA step only blanks noises
   and protects anything that sounds like words; an automatic repeat cut once nearly deleted real content.
+- The room bed must be RAW room tone (band-limited, steady frames only, equal-power loop crossfades). A
+  noise-reduced bed is full of near-silent holes. The bed also fills dips inside lines (fills and cleanup can
+  leave a spot 20 dB under the background). Check: no 10 ms frame > 12 dB under the narration's floor.
 - **Room tone under the gaps.** The narration track used to be pure silence between lines; each line carries its
   own faint room noise, so the background cut out at every line end (heard as dropouts at 3:13, 5:40).
   `compose.narration_track` now lays a seamless room-tone bed under the gaps at the lines' own level.
