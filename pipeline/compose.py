@@ -71,6 +71,16 @@ def narration_track(scenes: list[Scene], duration: float) -> np.ndarray:
             k = 5
             need = np.convolve(np.pad(need, k, mode="edge"), np.ones(2 * k + 1) / (2 * k + 1), "valid")
             g = np.interp(np.arange(n), np.arange(m) * hop + hop / 2, need).astype(np.float32)
+            # only between the first and the last word: before the narration starts and after it ends (end card)
+            # it's true silence under the music, not room hiss; 0.3 s fades
+            idx = np.flatnonzero(cover > 0)
+            if len(idx):
+                f = int(0.3 * SR); env = np.zeros(n, np.float32)
+                a0, a1 = idx[0], idx[-1]
+                env[a0:a1] = 1.0
+                env[a1:min(n, a1 + f)] = np.linspace(1, 0, min(n, a1 + f) - a1)
+                env[max(0, a0 - f):a0] = np.linspace(0, 1, a0 - max(0, a0 - f))
+                g = g * env
             out = out + bed * g
     return out
 
