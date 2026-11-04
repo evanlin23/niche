@@ -206,7 +206,7 @@ export function makeBars(stage, items, { x0 = -6, width = 12, maxV = 60, height 
       for (const b of bars) {
         const k = ease((t - b.at) / 0.9);
         const h = Math.max(0.001, b.it.value / maxV * height * k);
-        b.m.scale.y = h; b.m.position.y = h / 2;
+        b.m.scale.y = h; b.m.position.y = h / 2; b.m.visible = k > 0.002;
         const [sx, sy] = stage.project(new THREE.Vector3(b.m.position.x, h + 0.25, z));
         const [lx, ly] = stage.project(new THREE.Vector3(b.m.position.x, 0, z + bw / 2 + 0.3));
         const a = fade(t, b.at, 0.4);
@@ -218,7 +218,7 @@ export function makeBars(stage, items, { x0 = -6, width = 12, maxV = 60, height 
       if (fairMesh) {
         const fxw = fairSide === 'left' ? x0 - 0.15 : x0 + width + 0.2;
         const [fx, fy] = stage.project(new THREE.Vector3(fxw, fair / maxV * height, z + bw / 2 + 0.05));
-        fairText.el.style.left = Math.min(stage.W - 20, fx) - fairText.el.offsetWidth + 'px'; fairText.el.style.top = fy - 40 + 'px';
+        fairText.el.style.left = Math.min(stage.W - 96, fx) - fairText.el.offsetWidth + 'px'; fairText.el.style.top = fy - 40 + 'px';
         const a = fade(t, bars.length ? Math.min(...bars.map((b) => b.at)) : 0, 0.5);
         fairText.el.style.opacity = a; fairMesh.visible = a > 0.01;
       }

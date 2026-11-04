@@ -22,7 +22,9 @@ function brand(stage, x = 56, y = 36) {
 function title(stage, s, at = 0.1, y = 54) {
   if (s) stage.text({ text: s, x: 960, y, size: 64, weight: 900, font: 'rubik', align: 'center', at, case: 'none' });
 }
-function scrim(stage, t, fin = 0.35, fout = 0.35) {
+function scrim(stage, t, fin = stage.spec.fade_in ?? 0, fout = stage.spec.fade_out ?? 0) {
+  // Hard cuts between scenes: a dip to the background at every boundary reads as a flash.
+  // Only the end card fades out (and a scene can opt in with spec.fade_in / fade_out).
   stage.clear2d();
   const a = Math.max(1 - fade(t, 0, fin), fade(t, stage.duration - fout, fout));
   if (a > 0.001) { const g = stage.g; g.fillStyle = `rgba(${GN.scrim},${a})`; g.fillRect(0, 0, stage.W, stage.H); }
@@ -217,7 +219,8 @@ SCENES.bars = async (stage, spec) => {
   const bars = makeBars(stage, ch.items, { x0: -7.5, width: 15, maxV: ch.maxV, height: 6.2, z: 0, fair: ch.fair, unit: ch.unit ?? '%' });
   title(stage, p.title); notes(stage, p.notes); brand(stage);
   return (t) => {
-    stage.cameraAt(t, { pos: [[0, 6.2, 15.5], [0, 5.8, 14.2]], look: [[0, 2.6, 0]] });
+    // slow arc around the chart (labels are world-anchored and sub-pixel, so they glide with it)
+    stage.orbitAt(t, { center: [0, 0, 0], look: [0, 2.6, 0], r: [16.6, 15.2], h: [6.4, 5.9], rate: 1.0, maxDeg: 8, ...(p.orbit || {}) });
     stage.camera.updateMatrixWorld();
     bars.update(t);
     scrim(stage, t);
@@ -290,7 +293,7 @@ SCENES.endcard = async (stage, spec) => {
   return (t) => {
     const a = t * 0.05;
     stage.cameraAt(t, { pos: [[Math.sin(a) * 9, 10, Math.cos(a) * 9]], look: [[0, 0, 0]] });
-    scrim(stage, t, 0.35, 1.0);
+    scrim(stage, t, 0, 1.0);
     const g = stage.g, al = fade(t, 0.3, 0.6);
     g.fillStyle = `rgba(${GN.scrim},0.55)`; g.fillRect(0, 0, stage.W, stage.H);
     g.save(); g.globalAlpha = al; g.fillStyle = 'rgba(34,48,74,0.9)'; g.beginPath(); g.roundRect(260, 330, 800, 450, 22); g.fill();

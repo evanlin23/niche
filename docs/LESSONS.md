@@ -44,6 +44,21 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   put footnote pills under the title, not over bar labels; fair-share label must stay on screen.
 - Cards in flight should not cast hard shadows (they look like holes in the table).
 - Always render one still per scene and eyeball a contact sheet before a full render.
+- **Hard cuts between scenes.** A dip to the background at every scene boundary reads as a flash. Only the end
+  card fades out. (`scrim()` defaults to no fade; a scene can opt in with `fade_in`/`fade_out` in its spec.)
+- **Labels that follow the camera must be sub-pixel.** `left/top` snap to whole pixels, so projected labels
+  wiggle during a push-in or orbit. `Stage.updateTexts` now moves manual labels with `translate3d` and uses
+  tabular numbers so counting values don't shift width. Check with a frame-by-frame clip, not stills.
+- Hide bars until they start growing (a 0-height rounded box still renders as a flat slab on the floor).
+- Check motion with a low-res clip of the whole scene (`SCALE=0.35`), stills hide jitter and flashes.
+
+## Camera (research notes, see sources in docs/camera-research.md)
+- One dominant move per shot. Slow orbit 1-4 deg/s (we use ~1 deg/s, max +/-8 deg for wide charts: wider arcs
+  make the edge bars lean and the fair-share line tilt), push-in 10-20% of distance on a key reveal.
+- Speed cap: nothing should cross the frame faster than ~7 s per frame width (about 6-9 px per frame at 1080p30).
+- Never fully still, but hold near-still while a dense label must be read. 30 fps is enough for slow moves.
+- Keep labels inside a 5% title-safe margin; clamp projected positions.
+- Overhead text shots don't orbit (rotating an overhead camera tilts the words); use a level push-in.
 
 ## Voice
 - **One long recording is easiest.** Pixel Recorder ~15–20 cm away, 10 s of room tone first, pause between

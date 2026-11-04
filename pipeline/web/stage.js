@@ -91,6 +91,21 @@ export class Stage {
   }
 
   // camera move: {pos:[a,b], look:[a,b]} eased across [t0,t1] (default whole scene)
+  // slow orbit: {center:[x,y,z], r:[r0,r1], h:[h0,h1], deg:[a0,a1] or rate (deg/s, centred on 0), look}
+  // Angle, radius and height all ease together over the whole scene, so the move starts and ends softly.
+  orbitAt(t, o) {
+    const k = ease(clamp(t / this.duration));
+    const c = o.center || [0, 0, 0];
+    const rate = o.rate ?? 1.2, half = Math.min(o.maxDeg ?? 16, rate * this.duration / 2);
+    const [a0, a1] = o.deg || [-half, half];
+    const a = (a0 + (a1 - a0) * k) * Math.PI / 180;
+    const r = Array.isArray(o.r) ? o.r[0] + (o.r[1] - o.r[0]) * k : o.r;
+    const h = Array.isArray(o.h) ? o.h[0] + (o.h[1] - o.h[0]) * k : o.h;
+    this.camera.position.set(c[0] + Math.sin(a) * r, c[1] + h, c[2] + Math.cos(a) * r);
+    const l = o.look || c; this.camera.lookAt(l[0], l[1], l[2]);
+    if (o.fov) { this.camera.fov = o.fov; this.camera.updateProjectionMatrix(); }
+  }
+
   cameraAt(t, cam) {
     const k = ease((t - (cam.t0 ?? 0)) / ((cam.t1 ?? this.duration) - (cam.t0 ?? 0)));
     const p = cam.pos.length > 1 ? lerp3(cam.pos[0], cam.pos[1], k) : cam.pos[0];
@@ -127,7 +142,9 @@ export class Stage {
       letterSpacing: note.font === 'sans' ? '0' : (note.font || this.spec.font) === 'rubik' ? '-0.5px' : '0.5px', lineHeight: note.lh || 1.05,
       whiteSpace: note.width ? 'normal' : 'nowrap', width: note.width ? note.width + 'px' : 'auto',
       textShadow: note.pill ? 'none' : '0 4px 18px rgba(0,0,0,.45)', opacity: 0,
+      fontVariantNumeric: 'tabular-nums',
     });
+    if (note.manual) d.style.willChange = 'transform';
     if (note.align === 'center') d.style.transform = 'translateX(-50%)', d.style.textAlign = 'center';
     if (note.align === 'right') d.style.transform = 'translateX(-100%)', d.style.textAlign = 'right';
     if (note.pill) Object.assign(d.style, { background: note.pill, color: note.color || '#111', padding: '6px 18px', borderRadius: '999px' });
@@ -140,7 +157,18 @@ export class Stage {
 
   updateTexts(t) {
     for (const it of this.texts) {
-      if (it.note.manual) continue;
+      if (it.note.manual) {
+        // Scenes place manual labels with style.left/top every frame. Layout positions snap to whole
+        // pixels, so labels that follow a moving camera jitter. Move the offset into a composited
+        // translate3d (sub-pixel) instead.
+        const el = it.el, L = el.style.left, T = el.style.top;
+        if (L !== '0px' || it.px == null) it.px = parseFloat(L) || 0;
+        if (T !== '0px' || it.py == null) it.py = parseFloat(T) || 0;
+        el.style.left = '0px'; el.style.top = '0px';
+        const b = it.note.align === 'center' ? ' translateX(-50%)' : it.note.align === 'right' ? ' translateX(-100%)' : '';
+        el.style.transform = `translate3d(${it.px.toFixed(3)}px, ${it.py.toFixed(3)}px, 0)${b}`;
+        continue;
+      }
       const a = win(t, it.s, it.e, it.note.fade ?? 0.35);
       it.el.style.opacity = a;
       const rise = (1 - fade(t, it.s, 0.45)) * 18;
