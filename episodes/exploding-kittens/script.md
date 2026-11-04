@@ -1,9 +1,9 @@
-# I Simulated 71 Million Games of Exploding Kittens. Here's How to Win.
+# I Simulated 100 Million Games of Exploding Kittens. Here's How to Win.
 
 Narrated lines are `[id] text`. Everything else is notes. Style: docs/script-style-guide.md.
 
 ## Number sources (data/results.json, data/final.json; 1M games per test, 4 players unless noted)
-- 71M games = 56 one-variable runs x 1M + 15M for final/ablation.
+- 102M games = 56 one-variable runs x 1M + 15M final/ablation + 31M extra (2p, myths, tables).
 - Best bot vs casual table: 2p 59.5, 3p 51.1, 4p 40.6, 5p 29.5. Mirror (all best): 25.0 at 4p.
 - Patience: random_play 0 -> 30.4, 0.15 (casual) -> 25.05, 0.5 -> 14.5. attack_free 1.0 -> 16.7.
 - Dodging on odds: avoid at 1/4 risk -> 16.1; at 1/2 -> 22.7; only when sure -> 25.05.
@@ -15,12 +15,16 @@ Narrated lines are `[id] text`. Everything else is notes. Style: docs/script-sty
 - Attack vs Skip when dodging: 15.9 vs 16.1 (no real difference).
 - Seats (all casual): 2p first 52.4 / second 47.6. 5p first 19.6 ... last 20.5.
 - Kitten odds over a game (300 traced 4p casual games): first draw ~1/7, midpoint ~1/4, last draws ~0.8.
+- extra.json: 2p patience 0 -> 68.5 / casual 50.0 / whim-half 18.7; 2p no pairs 37.1; 2p Future immediately 41.3;
+  2p next-player placement 59.3. Shuffle-if-Kitten off 24.2 vs on 25.05. Pairing action cards 20.1.
+  Best bot vs aggressive table 53.2, vs hoarders 50.2, vs casual 40.6, vs best 25.0.
+  Explosions under an Attack at a casual 4p table: 22.8%.
 - Rulebook quote: "A good strategy generally is to save your cards early in the game while your chance
   of exploding is low."
 
 ## Hook
 [h1] The best way to win at Exploding Kittens is to do almost nothing.
-[h2] I simulated seventy one million games, and the bot that wins the most barely touches its cards. At a table of four, it wins four games out of ten. A fair share is two and a half.
+[h2] I simulated over a hundred million games, and the bot that wins the most barely touches its cards. At a table of four, it wins four games out of ten. A fair share is two and a half.
 [h3] It's not doing nothing, though. It does six specific things, and you can steal every one of them.
 
 ## How I tested it
@@ -71,6 +75,30 @@ Narrated lines are `[id] text`. Everything else is notes. Style: docs/script-sty
 [t1] Quick detour. Does going first matter?
 [t2] In a two player game, yes. The first player wins fifty two percent.
 [t3] With five players it flips. The last seat does slightly better than the first. Sitting last means you get to watch a few draws before you risk anything.
+
+## Two players
+[q1] If you mostly play one on one, everything I just said gets louder.
+[q2] With two players, a fair share is half. Stop playing cards for fun, and you win sixty eight percent. Play on a whim half the time, and you win nineteen.
+[q3] Stealing matters even more. Turn off pair stealing, and a two player bot drops to thirty seven percent. There's only one hand to steal from, so every steal hits the one person you have to beat.
+[q4] And never burn See the Future the moment you get it. Head to head, that drops you to forty one.
+
+## Advice you've heard
+[m1] Now some advice people swear by. I tested that too.
+[m2] Attack is better than Skip. Basically no difference. Use whichever one you have.
+[m3] Shuffle when you see a Kitten coming. That one's real, but small. Under one point.
+[m4] You can play any two matching cards as a pair, not just cats. Two Attacks, two Skips. Please don't. A bot that does that wins twenty percent. You're trading two escape cards for one random card.
+[m5] And triple stealing, where you name the card you want? It almost never comes up. Three of a kind is rare, and the bots that tried it did no better.
+
+## Attacks
+[a1] One more thing about Attacks. At a normal table, about one explosion in four happens while someone is under an Attack.
+[a2] An Attack doesn't kill anyone by itself. It makes you draw twice. And the second draw comes from a deck that just got more dangerous.
+[a3] Another reason to hold onto Skips. When an Attack lands on you, one Skip cancels one of those draws.
+
+## Who you play with
+[r1] Last question. Does this only work against bad players?
+[r2] Against a normal table, it wins forty percent. Against an aggressive table, people who throw Attacks around and play cards constantly, it wins fifty three.
+[r3] Against hoarders who sit on everything and never steal, it still wins half the time.
+[r4] The worse your friends play, the better this works. Which is a strange thing to be good at.
 
 ## The full strategy
 [w1] So here's the whole thing in one go.

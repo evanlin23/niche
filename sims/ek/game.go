@@ -359,10 +359,12 @@ func (g *Game) actionPhase(p *Player) int {
 }
 
 type Result struct {
-	Winner      int
-	Turns       int
-	Order       []int // elimination order (first out first)
-	FirstPlayer int
+	ExplodeUnderAttack int
+	Explosions         int
+	Winner             int
+	Turns              int
+	Order              []int // elimination order (first out first)
+	FirstPlayer        int
 }
 
 func (g *Game) Play() Result {
@@ -408,6 +410,10 @@ func (g *Game) Play() Result {
 				} else {
 					p.alive = false
 					p.stats.Exploded[EK]++
+					res.Explosions++
+					if g.underAttack {
+						res.ExplodeUnderAttack++
+					}
 					g.alive--
 					g.kittensLeft--
 					res.Order = append(res.Order, p.id)

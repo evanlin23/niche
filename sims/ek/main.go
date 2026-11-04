@@ -46,19 +46,20 @@ func (g *Game) log(p int, ev string, arg, target int) {
 }
 
 type Summary struct {
-	Players       int       `json:"players"`
-	Games         int       `json:"games"`
-	TestWins      int       `json:"test_wins"`
-	TestWinRate   float64   `json:"test_win_rate"`
-	CI95          float64   `json:"ci95"`
-	FairShare     float64   `json:"fair_share"`
-	SeatWinRate   []float64 `json:"seat_win_rate"` // by seat offset from the first player (0 = goes first)
-	TestSeatRate  []float64 `json:"test_seat_win_rate"`
-	MeanTurns     float64   `json:"mean_turns"`
-	TestDefuses   float64   `json:"test_defuses_per_game"`
-	TestFirstOut  float64   `json:"test_first_out_rate"`
-	TestPlayed    []float64 `json:"test_cards_played_per_game"`
-	DefuseAvailOK float64   `json:"-"`
+	Players                 int       `json:"players"`
+	Games                   int       `json:"games"`
+	TestWins                int       `json:"test_wins"`
+	TestWinRate             float64   `json:"test_win_rate"`
+	CI95                    float64   `json:"ci95"`
+	FairShare               float64   `json:"fair_share"`
+	SeatWinRate             []float64 `json:"seat_win_rate"` // by seat offset from the first player (0 = goes first)
+	TestSeatRate            []float64 `json:"test_seat_win_rate"`
+	MeanTurns               float64   `json:"mean_turns"`
+	TestDefuses             float64   `json:"test_defuses_per_game"`
+	TestFirstOut            float64   `json:"test_first_out_rate"`
+	TestPlayed              []float64 `json:"test_cards_played_per_game"`
+	ExplodeUnderAttackShare float64   `json:"explode_under_attack_share"`
+	DefuseAvailOK           float64   `json:"-"`
 }
 
 func main() {
@@ -100,13 +101,14 @@ func main() {
 	workers := runtime.NumCPU()
 	per := (*games + workers - 1) / workers
 	type acc struct {
-		wins, n      int
-		seat         []int
-		tseat, tseen []int
-		turns        int
-		defuses      int
-		firstOut     int
-		played       [NCard]int
+		wins, n       int
+		seat          []int
+		tseat, tseen  []int
+		turns         int
+		defuses       int
+		firstOut      int
+		played        [NCard]int
+		expl, explAtt int
 	}
 	accs := make([]acc, workers)
 	var wg sync.WaitGroup
@@ -140,6 +142,8 @@ func main() {
 					a.tseat[toff]++
 				}
 				a.turns += r.Turns
+				a.expl += r.Explosions
+				a.explAtt += r.ExplodeUnderAttack
 				tp := g.players[ts]
 				a.defuses += tp.stats.Defused[EK]
 				if len(r.Order) > 0 && r.Order[0] == ts {
@@ -158,11 +162,13 @@ func main() {
 	tseat := make([]int, *players)
 	tseen := make([]int, *players)
 	var played [NCard]int
-	turns, defuses, firstOut := 0, 0, 0
+	turns, defuses, firstOut, expl, explAtt := 0, 0, 0, 0, 0
 	for _, a := range accs {
 		s.Games += a.n
 		s.TestWins += a.wins
 		turns += a.turns
+		expl += a.expl
+		explAtt += a.explAtt
 		defuses += a.defuses
 		firstOut += a.firstOut
 		for i := range seat {
@@ -187,6 +193,9 @@ func main() {
 		}
 	}
 	s.MeanTurns = float64(turns) / n
+	if expl > 0 {
+		s.ExplodeUnderAttackShare = float64(explAtt) / float64(expl)
+	}
 	s.TestDefuses = float64(defuses) / n
 	s.TestFirstOut = float64(firstOut) / n
 	for c := range played {

@@ -102,3 +102,36 @@ def final(G):
     p = OUT.parent / "final.json"
     p.write_text(json.dumps(out, indent=1))
     print("wrote", p)
+
+
+AGGRO = dict(CASUAL, name="aggressive", attack_free=0.5, random_play=0.3, avoid_risk=0.3)
+HOARD = dict(CASUAL, name="hoarder", random_play=0.0, future_risk=2.0, pair_steal=False, favor_use=False)
+
+
+def extra(G):
+    out = {}
+    print("two players: one habit at a time vs casual")
+    out["2p"] = {
+        "patience": sweep("2p random", "random_play", [0.0, 0.15, 0.5], G, players=2),
+        "avoid": sweep("2p avoid", "avoid_risk", [1.0, 0.5, 0.33, 0.25], G, players=2),
+        "placement": sweep("2p place", "placement", ["random", "top", "next", "bottom"], G, players=2),
+        "future": sweep("2p future", "future_risk", [2.0, 0.3, 0.0], G, players=2),
+        "steal": sweep("2p steal", "pair_steal", [False, True], G, players=2),
+    }
+    print("myths (4p, vs casual)")
+    out["myth_shuffle"] = sweep("shuffle if ek", "shuffle_if_ek", [False, True], G)
+    out["myth_pair_noncats"] = sweep("pair noncats", "pair_noncats", [False, True], G)
+    print("robustness: best bot vs other tables (4p)")
+    out["tables"] = {}
+    for name, base in [("casual", CASUAL), ("aggressive", AGGRO), ("hoarder", HOARD), ("best", BEST)]:
+        r = run(BEST, base=base, games=G)
+        b = run(base=base, games=G, allsame=True)
+        out["tables"][name] = {"best_win": r["test_win_rate"], "explode_under_attack": b["explode_under_attack_share"],
+                               "mean_turns": b["mean_turns"]}
+        print(f"  best vs {name:10s} {r['test_win_rate']*100:5.2f}%   (table: {b['explode_under_attack_share']*100:4.1f}% of explosions under Attack, {b['mean_turns']:.0f} turns)")
+    for n in (2, 3, 5):
+        b = run(players=n, games=G, allsame=True)
+        out.setdefault("explode_under_attack_by_n", {})[n] = b["explode_under_attack_share"]
+    p = OUT.parent / "extra.json"
+    p.write_text(json.dumps(out, indent=1))
+    print("wrote", p)

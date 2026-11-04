@@ -2,6 +2,9 @@
 <style>
 @font-face{font-family:Oswald;src:url(fonts/oswald-latin-700.ttf);font-weight:700}
 @font-face{font-family:Oswald;src:url(fonts/oswald-latin-500.ttf);font-weight:500}
+@font-face{font-family:Rubik;src:url(fonts/rubik-latin-500.ttf);font-weight:500}
+@font-face{font-family:Rubik;src:url(fonts/rubik-latin-700.ttf);font-weight:700}
+@font-face{font-family:Rubik;src:url(fonts/rubik-latin-900.ttf);font-weight:900}
 html,body{margin:0;padding:0;overflow:hidden;background:#121722}
 #root{position:absolute;left:0;top:0;transform-origin:0 0;overflow:hidden}
 </style>
@@ -11,7 +14,7 @@ html,body{margin:0;padding:0;overflow:hidden;background:#121722}
 import { Stage } from './stage.js';
 window.setup = async (specUrl) => {
   const spec = await (await fetch(specUrl)).json();
-  await document.fonts.load('700 40px Oswald'); await document.fonts.load('500 40px Oswald');
+  await document.fonts.load('700 40px Oswald'); await document.fonts.load('500 40px Oswald'); for (const w of [500,700,900]) await document.fonts.load(`${w} 40px Rubik`);
   const mod = await import(spec.module);
   const stage = new Stage(spec);
   const frame = await mod.build(stage, spec);

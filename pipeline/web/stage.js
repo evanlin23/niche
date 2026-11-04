@@ -65,7 +65,7 @@ export class Stage {
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(spec.fov || 32, this.W / this.H, 0.1, 400);
-    this.studio();
+    if (spec.theme !== 'custom') this.studio();
     this.texts = [];
   }
 
@@ -117,12 +117,13 @@ export class Stage {
   // DOM text with per-frame opacity. note: {text, at, until, x, y, size, color, weight, align, font, width, pill}
   text(note) {
     const d = document.createElement('div');
-    const font = note.font === 'sans' ? 'Inter, "DejaVu Sans", sans-serif' : 'Oswald, Impact, sans-serif';
+    const FONTS = { sans: 'Inter, "DejaVu Sans", sans-serif', rubik: 'Rubik, Inter, sans-serif', oswald: 'Oswald, Impact, sans-serif' };
+    const font = FONTS[note.font || this.spec.font || 'oswald'];
     Object.assign(d.style, {
       position: 'absolute', left: note.x + 'px', top: note.y + 'px', fontFamily: font,
       fontSize: (note.size || 40) + 'px', fontWeight: note.weight || 700, color: note.color || '#fff',
-      textTransform: note.font === 'sans' || note.case === 'none' ? 'none' : 'uppercase',
-      letterSpacing: note.font === 'sans' ? '0' : '0.5px', lineHeight: note.lh || 1.05,
+      textTransform: (note.case || ((note.font || this.spec.font) === 'oswald' || !(note.font || this.spec.font) ? 'uppercase' : 'none')),
+      letterSpacing: note.font === 'sans' ? '0' : (note.font || this.spec.font) === 'rubik' ? '-0.5px' : '0.5px', lineHeight: note.lh || 1.05,
       whiteSpace: note.width ? 'normal' : 'nowrap', width: note.width ? note.width + 'px' : 'auto',
       textShadow: note.pill ? 'none' : '0 4px 18px rgba(0,0,0,.45)', opacity: 0,
     });
