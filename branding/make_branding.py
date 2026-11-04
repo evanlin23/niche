@@ -33,16 +33,19 @@ MASCOT = {"module": "/episodes/exploding-kittens/web/scenes.js", "type": "mascot
           "look": "clean-sage", "quality": "high", "ssaa": 2}
 
 
+STYLE = "tv"   # chosen design: rounded screen head on a small body
+
+
 def mascot(name, W, H, params, scale=1.0):
     render3d.render(dict(MASCOT, W=W, H=H, params=params), OUT / f"{name}.png", scale=scale, png_frame=5)
     print("wrote", OUT / f"{name}.png")
 
 
 if __name__ == "__main__" and "--v2" in sys.argv:
-    mascot("avatar-buh", 800, 800, {"expr": "happy", "turn": 0.0, "cam": [0, 2.6, 6.4], "look": [0, 2.45, 0], "fov": 34})
+    mascot("avatar-buh", 800, 800, {"expr": "happy", "style": STYLE, "turn": 0.0, "cam": [0, 1.75, 6.2], "look": [0, 1.5, 0], "fov": 34})
     # banner: Buh on the right of the 1546x423 safe area, name + tagline on the left (2560x1440 canvas)
-    mascot("banner-buh", 2560, 1440, {"expr": "smug", "turn": -0.35, "at": [3.3, 0, 0], "cam": [0, 2.0, 18.5], "look": [0, 1.9, 0], "fov": 30,
+    mascot("banner-buh", 2560, 1440, {"expr": "smug", "style": STYLE, "turn": -0.35, "at": [3.6, 0, 0], "cam": [0, 1.5, 20.5], "look": [0, 1.42, 0], "fov": 30,
                                      "texts": [{"text": "BUH SIMULATES", "x": 560, "y": 610, "size": 112},
                                                {"text": "I simulate games so you can win.", "x": 566, "y": 760, "size": 56, "color": "MUSTARD"}]})
     for e in ("happy", "shocked", "smug"):
-        mascot(f"buh-{e}", 1200, 1200, {"expr": e, "turn": -0.3, "cam": [0, 2.7, 9.4], "look": [0.3, 1.85, 0]})
+        mascot(f"buh-{e}", 1200, 1200, {"expr": e, "style": STYLE, "turn": -0.3, "cam": [0, 2.0, 7.6], "look": [0.2, 1.35, 0]})

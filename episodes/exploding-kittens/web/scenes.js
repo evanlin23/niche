@@ -439,7 +439,7 @@ function makeBuhStyle(stage, expr, style) {
   const g = new THREE.Group();
   const cream = new THREE.MeshPhysicalMaterial({ color: 0xf3ead6, roughness: 0.35, clearcoat: 0.5, clearcoatRoughness: 0.3 });
   const add = (geo, y, x = 0, z = 0, mat = cream) => { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = true; g.add(m); return m; };
-  const faceMat = () => new THREE.MeshStandardMaterial({ map: faceTexture(expr, true), roughness: 0.25, emissive: 0xffffff, emissiveMap: faceTexture(expr, true), emissiveIntensity: 0.35 });
+  const faceMat = () => new THREE.MeshStandardMaterial({ map: faceTexture(expr, true), transparent: true, alphaTest: 0.5, roughness: 0.25, emissive: 0xffffff, emissiveMap: faceTexture(expr, true), emissiveIntensity: 0.35 });
   const sphereFace = (r, y, w = 1.3, h = 1.0) => { const f = new THREE.Mesh(new THREE.SphereGeometry(r * 1.004, 48, 32, Math.PI / 2 - w / 2, w, Math.PI / 2 - h / 2 - 0.05, h), faceMat()); f.position.y = y; g.add(f); };
   let top = 0;
   if (style === 'mini') {
