@@ -147,7 +147,7 @@ export function makeDeck(stage, pos, max = 60) {
 
 // ------------------------------------------------------------------ 3D bar chart on the felt
 // items: [{label, value, color, at}] values in %, fair: % line. Returns update(t) + label anchors.
-export function makeBars(stage, items, { x0 = -6, width = 12, maxV = 60, height = 6, z = 0, fair = null, unit = '%' } = {}) {
+export function makeBars(stage, items, { x0 = -6, width = 12, maxV = 60, height = 6, z = 0, fair = null, unit = '%', fairSide = 'right' } = {}) {
   const n = items.length, gap = width / n, bw = Math.min(1.6, gap * 0.62);
   const bars = items.map((it, i) => {
     const m = new THREE.Mesh(new RoundedBoxGeometry(bw, 1, bw, 3, 0.08),
@@ -179,8 +179,9 @@ export function makeBars(stage, items, { x0 = -6, width = 12, maxV = 60, height 
         b.lt.el.style.left = lx + 'px'; b.lt.el.style.top = ly + 4 + 'px'; b.lt.el.style.opacity = a;
       }
       if (fairMesh) {
-        const [fx, fy] = stage.project(new THREE.Vector3(x0 + width + 0.35, fair / maxV * height, z));
-        fairText.el.style.left = fx + 10 + 'px'; fairText.el.style.top = fy - 18 + 'px';
+        const fxw = fairSide === 'left' ? x0 - 0.15 : x0 + width + 0.2;
+        const [fx, fy] = stage.project(new THREE.Vector3(fxw, fair / maxV * height, z + bw / 2 + 0.05));
+        fairText.el.style.left = Math.min(stage.W - 20, fx) - fairText.el.offsetWidth + 'px'; fairText.el.style.top = fy - 40 + 'px';
         const a = fade(t, bars.length ? Math.min(...bars.map((b) => b.at)) : 0, 0.5);
         fairText.el.style.opacity = a; fairMesh.visible = a > 0.01;
       }

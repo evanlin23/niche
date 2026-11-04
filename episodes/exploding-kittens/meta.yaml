@@ -1,0 +1,26 @@
+long:
+  title: "I Simulated 100 Million Games of Exploding Kittens. Here's How to Win."
+  description: |
+    The best Exploding Kittens strategy is to do almost nothing. I built the game from the official
+    rulebook, made bots that only know what a real player knows, and tested one habit at a time
+    over 100+ million games. Six habits take you from a 25% win rate to 40% at a table of four.
+
+    Everything in this video, the simulation, the animation and the music, is generated from code.
+    Not affiliated with Exploding Kittens. Card designs are our own.
+  links:
+    Simulation source code: "<GUMROAD LINK>"
+  sources:
+    - "Exploding Kittens Original Edition rules (2025 printing): https://www.explodingkittens.com/pages/rules-kittens"
+    - "Simulator: one test bot vs three 'normal' bots, 1,000,000 games per test, seats randomised."
+  music_note: "Music: procedurally generated for this video (original)."
+  tags: [exploding kittens, exploding kittens strategy, how to win exploding kittens, card game strategy,
+         board game strategy, simulation, game theory, card games, party games]
+  category: Gaming
+  contains_synthetic_media: false
+
+short_defaults:
+  title: "How to win Exploding Kittens (100M games simulated) #shorts"
+  description: |
+    Tested over 100 million simulated games. Full video on the channel.
+  tags: [exploding kittens, card games, strategy, shorts]
+  category: Gaming

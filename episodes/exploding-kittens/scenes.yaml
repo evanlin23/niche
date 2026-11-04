@@ -1,0 +1,191 @@
+# Exploding Kittens: scene list. `lines` = narration ids in script.md. Chart values come from data/*.json.
+music: curious
+engine: 3d
+scenes:
+  - id: hook
+    chapter: The answer
+    render: table
+    lines: [h1, h2, h3]
+    pad: [0.5, 0.8]
+    params:
+      ev_from: 28
+      odds: false
+      notes:
+        - {text: "Do almost nothing.", at: h1, until: h2, pos: [960, 140], align: center, size: 96}
+        - {text: "100,000,000+ games simulated", at: h2, until: "h2+4", pos: [960, 130], align: center, size: 56, color: MUSTARD}
+        - {text: "Wins 40% at a table of four. Fair share: 25%.", at: "h2+4", until: h3, pos: [960, 130], align: center, size: 52}
+        - {text: "6 habits", at: h3, pos: [960, 130], align: center, size: 80, color: MUSTARD}
+
+  - id: title
+    render: title
+    min_duration: 4.5
+    pad: [0, 0]
+    params:
+      lines: ["100 Million Games of", "Exploding Kittens"]
+
+  - id: rules
+    chapter: How I tested it
+    render: deck56
+    lines: [c1]
+    pad: [0.6, 1.5]
+
+  - id: bots
+    render: table
+    lines: [c2, c3, c4]
+    params:
+      mode: idle
+      ev_still: 1
+      hero_name: "TEST BOT"
+      other_name: "NORMAL PLAYER"
+      notes:
+        - {text: "Bots only know what a real player knows", at: c2, until: c3, pos: [960, 130], align: center, size: 50}
+        - {text: "3 normal players", at: c3, until: c4, pos: [960, 130], align: center, size: 56}
+        - {text: "1 habit changed · 1,000,000 games each", at: c4, pos: [960, 130], align: center, size: 50, color: MUSTARD}
+
+  - id: demo
+    render: table
+    lines: [c5, c6]
+    pad: [0.4, 1.5]
+    params:
+      odds: true
+      notes:
+        - {text: "One simulated game, sped up", at: 0.2, until: c6, pos: [960, 130], align: center, size: 50}
+
+  - id: patience
+    chapter: "Habit 1: patience"
+    render: bars
+    lines: [p1, p2, p3, p4, p5]
+    params:
+      chart: patience
+      title: "Habit 1: stop playing cards for fun"
+      notes:
+        - {text: "\"Save your cards early in the game, while your chance of exploding is low.\"  (the rulebook)", at: p5, pos: [960, 150], align: center, size: 30, width: 1600, weight: 700}
+
+  - id: dodge
+    chapter: "Habit 2: only dodge when you know"
+    render: bars
+    lines: [d1, d2, d3, d4, d5]
+    params:
+      chart: dodge
+      title: "Habit 2: only dodge when you know"
+      notes:
+        - {text: "Skip first vs Attack first: 16.1% vs 15.9%", at: d5, pos: [960, 150], align: center, size: 36, pill: CREAM}
+
+  - id: future
+    chapter: "Habit 3: See the Future timing"
+    render: bars
+    lines: [f1, f2, f3]
+    params:
+      chart: future
+      title: "Habit 3: look when it's 1 in 3"
+
+  - id: placement
+    chapter: "Habit 4: aim the Kitten"
+    render: placement
+    lines: [k1, k2, k3, k4, k5]
+    params:
+      chart: placement
+      title: "Habit 4: where to put the Kitten back"
+
+  - id: steal
+    chapter: "Habit 5: steal"
+    render: bars
+    lines: [s1, s2, s3]
+    params:
+      chart: steal
+      title: "Habit 5: steal from the biggest hand"
+
+  - id: small
+    chapter: "Habit 6: the small stuff"
+    render: bars
+    lines: [x1, x2, x3]
+    params:
+      chart: small
+      title: "Habit 6: give junk, Nope attacks"
+
+  - id: seats
+    chapter: Does going first matter?
+    render: bars
+    lines: [t1, t2, t3]
+    params:
+      chart: seats
+      title: "Win rate by seat"
+
+  - id: twoplayer
+    chapter: Two players
+    render: bars
+    lines: [q1, q2, q3, q4]
+    params:
+      chart: twoplayer
+      title: "Two players: everything gets louder"
+
+  - id: myths
+    chapter: Advice you've heard
+    render: checklist
+    lines: [m1, m2, m3, m4, m5]
+    params:
+      title: "Advice you've heard, tested"
+      step: 150
+      items:
+        - {text: "Attack is better than Skip", verdict: "NO DIFFERENCE", at: m2, color: CREAM}
+        - {text: "Shuffle when a Kitten is coming", verdict: "TRUE, BARELY", at: m3, color: TEAL}
+        - {text: "Pair up action cards to steal", verdict: "DON'T: 20%", at: m4, color: CORAL}
+        - {text: "Name a Defuse with three of a kind", verdict: "RARELY MATTERS", at: m5, color: CREAM}
+
+  - id: attacks
+    chapter: Attacks
+    render: bars
+    lines: [a1, a2, a3]
+    params:
+      chart: attacks
+      title: "Explosions that happen under an Attack"
+
+  - id: tables
+    chapter: Who you play with
+    render: bars
+    lines: [r1, r2, r3, r4]
+    params:
+      chart: tables
+      title: "The strategy vs different tables"
+
+  - id: strategy
+    chapter: The full strategy
+    render: checklist
+    lines: [w1, w2]
+    params:
+      title: "The whole strategy"
+      step: 120
+      size: 44
+      items:
+        - {text: "Don't play cards for fun", at: "w2+0.2"}
+        - {text: "Only dodge when you know", at: "w2+1.8"}
+        - {text: "See the Future at 1 in 3 odds", at: "w2+3.2"}
+        - {text: "Kitten goes where the next player draws", at: "w2+5.5"}
+        - {text: "Steal from the biggest hand", at: "w2+8"}
+        - {text: "Give away junk, Nope attacks on you", at: "w2+9.5"}
+
+  - id: final
+    render: bars
+    lines: [w3, w4]
+    params:
+      chart: final
+      title: "Strategy vs a normal table"
+      notes:
+        - {text: "Everyone using it: exactly 25% each", at: w4, pos: [960, 150], align: center, size: 36, pill: CREAM}
+
+  - id: close
+    chapter: One honest assumption
+    render: table
+    lines: [e1, e2, e3]
+    params:
+      mode: idle
+      ev_still: 40
+      notes:
+        - {text: "Next: Uno house rules", at: e2, pos: [960, 130], align: center, size: 64, color: MUSTARD}
+
+  - id: endcard
+    render: endcard
+    min_duration: 18
+    pad: [0, 0]
+    params:
+      next_title: "I Tested Every Uno House Rule"
