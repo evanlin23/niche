@@ -17,7 +17,7 @@ function notes(stage, list) {
   }
 }
 function brand(stage, x = 56, y = 36) {
-  stage.text({ text: 'I SIMULATED IT', x, y, size: 26, color: 'rgba(255,246,230,0.55)', weight: 700, font: 'rubik', at: -1 });
+  stage.text({ text: 'I SIMULATED IT', x, y, size: 26, color: GN.brand, weight: 700, font: 'rubik', at: -1 });
 }
 function title(stage, s, at = 0.1, y = 54) {
   if (s) stage.text({ text: s, x: 960, y, size: 64, weight: 900, font: 'rubik', align: 'center', at, case: 'none' });
@@ -25,7 +25,7 @@ function title(stage, s, at = 0.1, y = 54) {
 function scrim(stage, t, fin = 0.35, fout = 0.35) {
   stage.clear2d();
   const a = Math.max(1 - fade(t, 0, fin), fade(t, stage.duration - fout, fout));
-  if (a > 0.001) { const g = stage.g; g.fillStyle = `rgba(15,10,8,${a})`; g.fillRect(0, 0, stage.W, stage.H); }
+  if (a > 0.001) { const g = stage.g; g.fillStyle = `rgba(${GN.scrim},${a})`; g.fillRect(0, 0, stage.W, stage.H); }
 }
 function drift(stage, t, from, to, look) {
   stage.cameraAt(t, { pos: [from, to], look: [look] });
@@ -134,7 +134,7 @@ function tableFrame(stage, T, spec, ev, u, opts = {}) {
   T.pill.el.style.background = e.ev === 'explode' ? GN.coral : e.ev === 'defuse' ? GN.green : GN.mustard;
   // odds
   const show = opts.odds ? 1 : 0;
-  const ox = 250, oy = 330;
+  const ox = 230, oy = 860;
   const deckN = Math.max(1, e.deck);
   T.odds.el.textContent = kittens > 0 ? `Kitten odds: 1 in ${Math.max(1, Math.round(deckN / kittens))}` : '';
   T.odds.el.style.left = ox + 'px'; T.odds.el.style.top = oy - 70 + 'px'; T.odds.el.style.opacity = show;
@@ -158,7 +158,7 @@ SCENES.table = async (stage, spec) => {
     tableFrame(stage, T, spec, null, u, { odds: !!p.odds, labels: p.labels !== false, pills: play, idle: !play, heroName: p.hero_name, otherName: p.other_name });
     scrim(stage, t);
     const g = stage.g, gr = g.createLinearGradient(0, 0, 0, 260);
-    gr.addColorStop(0, 'rgba(15,10,8,0.85)'); gr.addColorStop(1, 'rgba(15,10,8,0)'); g.fillStyle = gr; g.fillRect(0, 0, stage.W, 260);
+    gr.addColorStop(0, `rgba(${GN.scrim},0.85)`); gr.addColorStop(1, `rgba(${GN.scrim},0)`); g.fillStyle = gr; g.fillRect(0, 0, stage.W, 260);
   };
 };
 
@@ -174,7 +174,7 @@ SCENES.title = async (stage, spec) => {
     stage.cameraAt(t, { pos: [[Math.sin(a) * 4, 15 - t * 0.2, 9 + Math.cos(a) * 2]], look: [[0, 0, 0]] });
     cards.forEach((c, k) => { c.position.y = 0.08 + k * 0.01 + Math.max(0, Math.sin(t * 1.4 + k)) * 0.03; });
     scrim(stage, t);
-    const g = stage.g; g.fillStyle = 'rgba(15,10,8,0.45)'; g.fillRect(0, 0, stage.W, stage.H);
+    const g = stage.g; g.fillStyle = `rgba(${GN.scrim},0.45)`; g.fillRect(0, 0, stage.W, stage.H);
   };
 };
 
@@ -274,7 +274,7 @@ SCENES.checklist = async (stage, spec) => {
   return (t) => {
     stage.cameraAt(t, { pos: [[0, 12, 10], [0.6, 11.4, 9.4]], look: [[0, 0, 0]] });
     scrim(stage, t);
-    const g = stage.g; g.fillStyle = 'rgba(15,10,8,0.62)'; g.fillRect(0, 0, stage.W, stage.H);
+    const g = stage.g; g.fillStyle = `rgba(${GN.scrim},0.62)`; g.fillRect(0, 0, stage.W, stage.H);
   };
 };
 
@@ -291,7 +291,7 @@ SCENES.endcard = async (stage, spec) => {
     stage.cameraAt(t, { pos: [[Math.sin(a) * 9, 10, Math.cos(a) * 9]], look: [[0, 0, 0]] });
     scrim(stage, t, 0.35, 1.0);
     const g = stage.g, al = fade(t, 0.3, 0.6);
-    g.fillStyle = 'rgba(15,10,8,0.55)'; g.fillRect(0, 0, stage.W, stage.H);
+    g.fillStyle = `rgba(${GN.scrim},0.55)`; g.fillRect(0, 0, stage.W, stage.H);
     g.save(); g.globalAlpha = al; g.fillStyle = 'rgba(34,48,74,0.9)'; g.beginPath(); g.roundRect(260, 330, 800, 450, 22); g.fill();
     g.beginPath(); g.arc(1440, 555, 150, 0, 7); g.fill(); g.restore();
   };

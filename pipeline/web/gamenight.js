@@ -1,9 +1,10 @@
 // "Warm game night" look: walnut table, felt mat, pendant-lamp lighting, our own card designs.
 import { THREE, RoundedBoxGeometry, clamp, ease, fade } from '/pipeline/web/stage.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 export const GN = {
   roomTop: '#3b2a20', roomEdge: '#0f0a08', wood: '#5b3a24', felt: '#1f5a46',
-  cream: '#f4ead5', ink: '#22304a', coral: '#ff6b57', mustard: '#f2b134', teal: '#2a9d8f',
+  cream: '#f4ead5', ink: '#22304a', brand: 'rgba(255,246,230,0.55)', scrim: '15,10,8', coral: '#ff6b57', mustard: '#f2b134', teal: '#2a9d8f',
   blue: '#4c8dff', plum: '#8e5a9e', red: '#d6403a', green: '#3fae6a', muted: '#cdbfa6', text: '#fff6e6',
 };
 
@@ -37,8 +38,37 @@ function feltTexture() {
 let _seed = 1;
 const rnd = () => { _seed = (_seed * 16807) % 2147483647; return _seed / 2147483647; };
 
+export const LOOKS = {
+  'clean-light': { bg: '#ece6dc', floor: '#e9e2d6', text: '#1f2633', muted: '#6c6a66', brand: 'rgba(31,38,51,0.5)', scrim: '236,230,220', bar: '#d9cfbf' },
+  'clean-ink':   { bg: '#151c27', floor: '#18202c', text: '#f5f1ea', muted: '#9aa3b2', brand: 'rgba(245,241,234,0.5)', scrim: '21,28,39', bar: '#e8e1d4' },
+  'clean-sage':  { bg: '#2f4a46', floor: '#33504b', text: '#f6f2ea', muted: '#b9c8c2', brand: 'rgba(246,242,234,0.55)', scrim: '47,74,70', bar: '#efe7d8' },
+};
+
+function cleanRoom(stage, L) {
+  const S = stage.scene;
+  S.background = new THREE.Color(L.bg);
+  S.fog = new THREE.Fog(L.bg, 22, 48);
+  Object.assign(GN, { text: L.text, muted: L.muted, cream: L.bar, brand: L.brand, scrim: L.scrim });
+  S.add(new THREE.HemisphereLight(0xffffff, new THREE.Color(L.bg), 1.1));
+  const key = new THREE.DirectionalLight(0xfff4e6, 2.2);
+  key.position.set(-6, 18, 10); key.castShadow = true;
+  key.shadow.mapSize.set(4096, 4096); key.shadow.radius = 14; key.shadow.blurSamples = 24; key.shadow.bias = -0.0005;
+  Object.assign(key.shadow.camera, { left: -14, right: 14, top: 14, bottom: -14, near: 1, far: 60 });
+  S.add(key);
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshStandardMaterial({ color: L.floor, roughness: 1 }));
+  floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; S.add(floor);
+  if (stage.spec.quality === 'high') {
+    const pm = new THREE.PMREMGenerator(stage.renderer);
+    S.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; S.environmentIntensity = 0.25;
+  }
+  stage.renderer.shadowMap.type = THREE.VSMShadowMap;
+  return { floor };
+}
+
 export function buildRoom(stage, { feltW = 16, feltD = 10 } = {}) {
   const S = stage.scene;
+  const look = LOOKS[stage.spec.look];
+  if (look) return cleanRoom(stage, look);
   _seed = 7; const mr = Math.random; Math.random = rnd;
   const cv = document.createElement('canvas'); cv.width = cv.height = 1024;
   const g = cv.getContext('2d');
@@ -46,9 +76,14 @@ export function buildRoom(stage, { feltW = 16, feltD = 10 } = {}) {
   gr.addColorStop(0, GN.roomTop); gr.addColorStop(1, GN.roomEdge);
   g.fillStyle = gr; g.fillRect(0, 0, 1024, 1024);
   const bg = new THREE.CanvasTexture(cv); bg.colorSpace = THREE.SRGBColorSpace; S.background = bg;
+  if (stage.spec.quality === 'high') {   // studio reflections for glossy materials
+    const pm = new THREE.PMREMGenerator(stage.renderer);
+    S.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+    S.environmentIntensity = 0.35;
+  }
   S.add(new THREE.HemisphereLight(0xffe9cc, 0x2a1a10, 0.55));
   const lamp = new THREE.SpotLight(0xffd9a8, 1400, 0, Math.PI / 4.2, 0.75, 1.7);
-  lamp.position.set(0, 20, 3); lamp.castShadow = true; lamp.shadow.mapSize.set(2048, 2048);
+  lamp.position.set(0, 20, 3); lamp.castShadow = true; lamp.shadow.mapSize.set(stage.spec.quality === 'high' ? 4096 : 2048, stage.spec.quality === 'high' ? 4096 : 2048);
   lamp.shadow.radius = 6; lamp.shadow.bias = -0.0004; lamp.shadow.camera.near = 5; lamp.shadow.camera.far = 50;
   S.add(lamp); S.add(lamp.target);
   const fill = new THREE.DirectionalLight(0x9fb4ff, 0.35); fill.position.set(-10, 8, 12); S.add(fill);
@@ -150,8 +185,10 @@ export function makeDeck(stage, pos, max = 60) {
 export function makeBars(stage, items, { x0 = -6, width = 12, maxV = 60, height = 6, z = 0, fair = null, unit = '%', fairSide = 'right' } = {}) {
   const n = items.length, gap = width / n, bw = Math.min(1.6, gap * 0.62);
   const bars = items.map((it, i) => {
-    const m = new THREE.Mesh(new RoundedBoxGeometry(bw, 1, bw, 3, 0.08),
-      new THREE.MeshStandardMaterial({ color: it.color || GN.cream, roughness: 0.45 }));
+    const hq = stage.spec.quality === 'high';
+    const m = new THREE.Mesh(new RoundedBoxGeometry(bw, 1, bw, hq ? 6 : 3, hq ? 0.12 : 0.08),
+      hq ? new THREE.MeshPhysicalMaterial({ color: (it.color === '#f4ead5' ? GN.cream : it.color) || GN.cream, roughness: 0.32, clearcoat: 0.6, clearcoatRoughness: 0.25 })
+         : new THREE.MeshStandardMaterial({ color: (it.color === '#f4ead5' ? GN.cream : it.color) || GN.cream, roughness: 0.45 }));
     m.position.set(x0 + gap * (i + 0.5), 0, z); m.castShadow = true; m.receiveShadow = true; m.scale.y = 0.001;
     stage.scene.add(m);
     const vt = stage.text({ text: `${it.value.toFixed(1)}${unit}`, x: 0, y: 0, size: 44, weight: 900, font: 'rubik', color: GN.text, align: 'center', manual: true });
@@ -160,7 +197,7 @@ export function makeBars(stage, items, { x0 = -6, width = 12, maxV = 60, height 
   });
   let fairMesh = null, fairText = null;
   if (fair != null) {
-    fairMesh = new THREE.Mesh(new THREE.BoxGeometry(width + 0.6, 0.03, 0.05), new THREE.MeshStandardMaterial({ color: 0xfff6e6, emissive: 0xfff6e6, emissiveIntensity: 0.4 }));
+    fairMesh = new THREE.Mesh(new THREE.BoxGeometry(width + 0.6, 0.03, 0.05), new THREE.MeshStandardMaterial({ color: GN.text, emissive: GN.text, emissiveIntensity: 0.4 }));
     fairMesh.position.set(x0 + width / 2, fair / maxV * height, z + bw / 2 + 0.05); stage.scene.add(fairMesh);
     fairText = stage.text({ text: `fair share ${fair.toFixed(0)}${unit}`, x: 0, y: 0, size: 26, weight: 700, font: 'rubik', color: GN.text, manual: true });
   }

@@ -46,7 +46,8 @@ export class Stage {
     root.style.transform = `scale(${this.scale})`;
     this.renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
     this.renderer.setPixelRatio(1);
-    this.renderer.setSize(this.W * this.scale, this.H * this.scale, false);
+    this.ssaa = spec.ssaa || 1;   // supersampling: render bigger, browser downsamples (smooth edges without MSAA)
+    this.renderer.setSize(this.W * this.scale * this.ssaa, this.H * this.scale * this.ssaa, false);
     Object.assign(this.renderer.domElement.style, { width: this.W + 'px', height: this.H + 'px', position: 'absolute', left: 0, top: 0 });
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;

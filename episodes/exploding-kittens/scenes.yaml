@@ -1,6 +1,9 @@
 # Exploding Kittens: scene list. `lines` = narration ids in script.md. Chart values come from data/*.json.
 music: curious
 engine: 3d
+look: clean-sage      # clean-sage | clean-ink | clean-light | (unset = warm game night)
+quality: high         # high = reflections + glossy pieces + 4K shadows
+ssaa: 1.5             # supersampling factor (smooth edges); override with RENDER_SSAA
 scenes:
   - id: hook
     chapter: The answer

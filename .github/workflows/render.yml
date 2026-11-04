@@ -1,0 +1,108 @@
+# Render an episode on GitHub Actions: one runner per scene, then assemble.
+# Run it from the Actions tab ("Render episode" -> Run workflow), or via the API.
+# Result: an artifact "<slug>-final" with the mp4, subtitles, metadata and thumbnail.
+name: Render episode
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: Episode folder under episodes/
+        default: exploding-kittens
+      ssaa:
+        description: Supersampling (1 = fast, 1.5 = smooth, 2 = smoothest)
+        default: "1.5"
+      tts_engine:
+        description: kokoro (AI voice) or recorded (episodes/<slug>/voice/*)
+        default: kokoro
+
+concurrency:
+  group: render-${{ inputs.slug }}
+  cancel-in-progress: true
+
+env:
+  SLUG: ${{ inputs.slug }}
+  RENDER_SSAA: ${{ inputs.ssaa }}
+  TTS_ENGINE: ${{ inputs.tts_engine }}
+  VOICE_DIR: episodes/${{ inputs.slug }}/voice
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  prep:
+    runs-on: ubuntu-latest
+    outputs:
+      scenes: ${{ steps.list.outputs.scenes }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: Narration (shared so every runner sees identical timing)
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from pipeline.timeline import build, parse_script, load_yaml
+          ep = Path("episodes") / os.environ["SLUG"]
+          sc = build(load_yaml(ep / "scenes.yaml")["scenes"], parse_script(ep / "script.md"), Path(".cache/tts"))
+          print(f"{len(sc)} scenes, {sum(s.duration for s in sc)/60:.2f} min")
+          PY
+      - id: list
+        run: |
+          echo "scenes=$(python -c "import yaml,json,os; print(json.dumps([s['id'] for s in yaml.safe_load(open(f'episodes/{os.environ[\"SLUG\"]}/scenes.yaml'))['scenes']]))")" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with: { name: tts-cache, path: .cache/tts, retention-days: 3 }
+
+  render:
+    needs: prep
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        scene: ${{ fromJSON(needs.prep.outputs.scenes) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+        with: { browser: "true" }
+      - uses: actions/download-artifact@v4
+        with: { name: tts-cache, path: .cache/tts }
+      - name: Render scene ${{ matrix.scene }}
+        run: python -m pipeline.cli episode "$SLUG" --only "${{ matrix.scene }}" --jobs 1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scene-${{ matrix.scene }}
+          path: episodes/${{ inputs.slug }}/out/final/scenes/*.mp4
+          retention-days: 3
+
+  assemble:
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+        with: { browser: "true" }
+      - uses: actions/download-artifact@v4
+        with: { name: tts-cache, path: .cache/tts }
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: scene-*
+          path: episodes/${{ inputs.slug }}/out/final/scenes
+          merge-multiple: true
+      - name: Assemble video, audio, captions, metadata
+        run: |
+          ls -la "episodes/$SLUG/out/final/scenes"
+          python -m pipeline.cli episode "$SLUG" --only none --assemble
+          python -m pipeline.cli thumb "$SLUG"
+          rm -f "episodes/$SLUG/out/final/audio.wav"
+      - name: 720p preview (small, phone friendly)
+        run: |
+          ffmpeg -loglevel error -y -i "episodes/$SLUG/out/final/$SLUG.mp4" -vf scale=-2:720 -c:v libx264 -crf 26 -preset veryfast -c:a aac -b:a 128k "episodes/$SLUG/out/final/$SLUG-preview-720p.mp4"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.slug }}-final
+          path: |
+            episodes/${{ inputs.slug }}/out/final/*.mp4
+            episodes/${{ inputs.slug }}/out/final/*.srt
+            episodes/${{ inputs.slug }}/out/final/*.json
+            episodes/${{ inputs.slug }}/out/final/*.txt
+            episodes/${{ inputs.slug }}/out/final/thumbnail.png
+          retention-days: 30

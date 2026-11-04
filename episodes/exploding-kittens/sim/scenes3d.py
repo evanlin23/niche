@@ -15,6 +15,11 @@ MODULE = "/episodes/exploding-kittens/web/scenes.js"
 
 R = json.loads((EP / "data" / "results.json").read_text())
 F = json.loads((EP / "data" / "final.json").read_text())
+import os
+import yaml
+CFG = yaml.safe_load((EP / "scenes.yaml").read_text())
+LOOK = {"look": CFG.get("look"), "quality": CFG.get("quality", "normal"),
+        "ssaa": float(os.environ.get("RENDER_SSAA", CFG.get("ssaa", 1)))}
 X = json.loads((EP / "data" / "extra.json").read_text())
 
 NAVY, CORAL, MUSTARD, TEAL, CREAM, BLUE, GREY = "#22304a", "#ff6b57", "#f2b134", "#2a9d8f", "#f4ead5", "#4c8dff", "#8d8273"
@@ -123,7 +128,7 @@ def base(ctx) -> dict:
     return {"module": MODULE, "type": sc.render, "W": ctx.fmt.width, "H": ctx.fmt.height, "fps": FPS,
             "duration": sc.duration, "n_frames": n, "id": sc.id, "theme": "custom", "font": "rubik",
             "cues": {k: [c.start, c.end] for k, c in sc.cues.items()},
-            "params": sc.params, "captions": ctx.captions, "hook": ctx.hook}
+            "params": sc.params, "captions": ctx.captions, "hook": ctx.hook, **LOOK}
 
 
 def build_spec(ctx) -> dict:
@@ -140,6 +145,6 @@ def build_spec(ctx) -> dict:
 def thumbnail_spec():
     tr = demo_trace(123)
     return {"module": MODULE, "type": "thumb", "W": 1920, "H": 1080, "fps": FPS, "duration": 1 / FPS,
-            "n_frames": 1, "cues": {}, "params": {}, "theme": "custom", "font": "rubik",
+            "n_frames": 1, "cues": {}, "params": {}, "theme": "custom", "font": "rubik", **LOOK,
             "headline": pct(F["vs_casual"]["4"]["win"]),
             "trace": {"events": tr["events"], "players": tr["players"], "winner": tr["result"]["Winner"]}}
