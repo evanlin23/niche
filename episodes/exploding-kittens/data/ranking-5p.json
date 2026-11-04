@@ -1,0 +1,25 @@
+{
+ "games": 2000000,
+ "table": [
+  {
+   "name": "The Patient One",
+   "win": 0.3542665
+  },
+  {
+   "name": "The Normal Player",
+   "win": 0.2185305
+  },
+  {
+   "name": "The Gambler",
+   "win": 0.1695005
+  },
+  {
+   "name": "The Panicker",
+   "win": 0.142472
+  },
+  {
+   "name": "The Hoarder",
+   "win": 0.1152305
+  }
+ ]
+}

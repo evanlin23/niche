@@ -92,9 +92,10 @@ function tableFrame(stage, T, spec, ev, u, opts = {}) {
     layoutHand(s, Math.max(0, e.hands[s.i]), isDead);
     s.tok.rotation.z = isDead ? lerp(0, Math.PI / 2.2, 1) : 0;
     s.tok.position.y = isDead ? 0.3 : 0.06;
-    const [lx, ly] = stage.project(new THREE.Vector3(s.tok.position.x, 1.8, s.tok.position.z));
-    s.label.el.style.left = lx + 'px'; s.label.el.style.top = ly - 30 + 'px'; s.label.el.style.opacity = opts.labels === false ? 0 : 1;
-    s.label.el.textContent = isDead ? 'OUT' : (s.i === 0 ? (opts.heroName || 'TEST BOT') : (opts.otherName || `PLAYER ${s.i + 1}`));
+    const front = s.sz > 2;   // seat nearest the camera: label goes below the pawn, not over the cards
+    const [lx, ly] = stage.project(front ? new THREE.Vector3(s.tok.position.x, 0, s.tok.position.z + 1.4) : new THREE.Vector3(s.tok.position.x, 1.8, s.tok.position.z));
+    s.label.el.style.left = lx + 'px'; s.label.el.style.top = (front ? ly + 4 : ly - 30) + 'px'; s.label.el.style.opacity = opts.labels === false ? 0 : 1;
+    s.label.el.textContent = isDead ? 'OUT' : (opts.seatNames ? opts.seatNames[s.i] : (s.i === 0 ? (opts.heroName || 'TEST BOT') : (opts.otherName || `PLAYER ${s.i + 1}`)));
   });
   // last played card on discard
   let last = null;
@@ -155,7 +156,7 @@ SCENES.table = async (stage, spec) => {
     const u = play ? lerp(e0, e1 + 0.99, clamp(t / (stage.duration - 0.6))) : (p.ev_still ?? 2);
     drift(stage, t, cam.from, cam.to, cam.look);
     stage.camera.updateMatrixWorld();
-    tableFrame(stage, T, spec, null, u, { odds: !!p.odds, labels: p.labels !== false, pills: play, idle: !play, heroName: p.hero_name, otherName: p.other_name });
+    tableFrame(stage, T, spec, null, u, { odds: !!p.odds, labels: p.labels !== false, pills: play, idle: !play, heroName: p.hero_name, otherName: p.other_name, seatNames: p.seat_names });
     scrim(stage, t);
     const g = stage.g, gr = g.createLinearGradient(0, 0, 0, 260);
     gr.addColorStop(0, `rgba(${GN.scrim},0.85)`); gr.addColorStop(1, `rgba(${GN.scrim},0)`); g.fillStyle = gr; g.fillRect(0, 0, stage.W, 260);
@@ -238,7 +239,7 @@ SCENES.placement = async (stage, spec) => {
   const botLab = stage.texts[stage.texts.length - 1];
   title(stage, p.title); notes(stage, p.notes); brand(stage);
   // targets: slot index over time (random -> bottom -> top -> second)
-  const plan = [[stage.at('k2', 0.6), 6], [stage.at('k2+3.5'), 12], [stage.at('k3'), 0], [stage.at('k4+3'), 1], [stage.at('k4+5.5'), 2], [stage.at('k5'), 0]];
+  const plan = [[stage.at('k2+3', 0.6), 6], [stage.at('k3'), 12], [stage.at('k4'), 0], [stage.at('k4+4'), 1], [stage.at('k4+6'), 2], [stage.at('k5'), 0]];
   return (t) => {
     stage.cameraAt(t, { pos: [[-0.2, 7.2, 17.5], [0, 6.8, 16.8]], look: [[-0.2, 1.8, 0]] });
     stage.camera.updateMatrixWorld();

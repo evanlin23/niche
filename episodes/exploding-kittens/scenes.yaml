@@ -8,233 +8,421 @@ look: clean-sage      # clean-sage | clean-ink | clean-light | (unset = warm gam
 quality: high         # high = reflections + glossy pieces + 4K shadows
 ssaa: 1.5             # supersampling factor (smooth edges); override with RENDER_SSAA
 scenes:
-  - id: open
-    chapter: The answer
-    render: statement
-    lines: [h1]
-    pad: [0.4, 0.8]
-    params:
-      lines: ["The best way to win", "Exploding Kittens:", {text: "do almost nothing.", color: MUSTARD}]
-
-  - id: hook
-    render: table
-    lines: [h2, h3]
-    pad: [0.3, 0.8]
-    params:
-      ev_from: 28
-      odds: false
-      notes:
-        - {text: "100,000,000+ games simulated", at: h2, until: "h2+4", pos: [960, 130], align: center, size: 56, color: MUSTARD}
-        - {text: "Wins 40% at a table of four. Fair share: 25%.", at: "h2+4", until: h3, pos: [960, 130], align: center, size: 52}
-        - {text: "6 habits", at: h3, pos: [960, 130], align: center, size: 80, color: MUSTARD}
-
-  - id: title
-    render: title
-    min_duration: 4.5
-    pad: [0, 0]
-    params:
-      lines: ["100 Million Games of", "Exploding Kittens"]
-
-  - id: rules
-    chapter: How I tested it
-    render: deck56
-    lines: [c1]
-    pad: [0.6, 1.5]
-
-  - id: bots
-    render: table
-    lines: [c2, c3, c4]
-    params:
-      mode: idle
-      ev_still: 1
-      hero_name: "TEST BOT"
-      other_name: "NORMAL PLAYER"
-      notes:
-        - {text: "Bots only know what a real player knows", at: c2, until: c3, pos: [960, 130], align: center, size: 50}
-        - {text: "3 normal players", at: c3, until: c4, pos: [960, 130], align: center, size: 56}
-        - {text: "1 habit changed · 1,000,000 games each", at: c4, pos: [960, 130], align: center, size: 50, color: MUSTARD}
-
-  - id: demo
-    render: table
-    lines: [c5, c6]
-    pad: [0.4, 1.5]
-    params:
-      odds: true
-      notes:
-        - {text: "One simulated game, sped up", at: 0.2, until: c6, pos: [960, 130], align: center, size: 50}
-
-  - id: habit1
-    chapter: "Habit 1: patience"
-    render: statement
-    lines: [p1]
-    params:
-      lines: ["Habit one:", {text: "stop playing cards", color: MUSTARD}, {text: "for fun.", color: MUSTARD}]
-
-  - id: patience
-    render: bars
-    lines: [p2, p3, p4, p5]
-    params:
-      chart: patience
-      title: "Habit 1: stop playing cards for fun"
-      notes:
-        - {text: "\"Save your cards early in the game, while your chance of exploding is low.\"  (the rulebook)", at: p5, pos: [960, 150], align: center, size: 30, width: 1600, weight: 700}
-
-  - id: habit2
-    chapter: "Habit 2: only dodge when you know"
-    render: statement
-    lines: [d1]
-    params:
-      lines: ["When should you dodge?", {text: "My gut was wrong.", color: CORAL}]
-
-  - id: dodge
-    render: bars
-    lines: [d2, d3, d4, d5]
-    params:
-      chart: dodge
-      title: "Habit 2: only dodge when you know"
-      notes:
-        - {text: "Skip first vs Attack first: 16.1% vs 15.9%", at: d5, pos: [960, 150], align: center, size: 36, pill: CREAM}
-
-  - id: future
-    chapter: "Habit 3: See the Future timing"
-    render: bars
-    lines: [f1, f2, f3]
-    params:
-      chart: future
-      title: "Habit 3: look when it's 1 in 3"
-
-  - id: habit4
-    chapter: "Habit 4: aim the Kitten"
-    render: statement
-    lines: [k1]
-    params:
-      lines: ["You drew a Kitten.", "You have a Defuse.", {text: "Where do you put it back?", color: MUSTARD}]
-
-  - id: placement
-    render: placement
-    lines: [k2, k3, k4, k5]
-    params:
-      chart: placement
-      title: "Habit 4: where to put the Kitten back"
-
-  - id: steal
-    chapter: "Habit 5: steal"
-    render: bars
-    lines: [s1, s2, s3]
-    params:
-      chart: steal
-      title: "Habit 5: steal from the biggest hand"
-
-  - id: small
-    chapter: "Habit 6: the small stuff"
-    render: bars
-    lines: [x1, x2, x3]
-    params:
-      chart: small
-      title: "Habit 6: give junk, Nope attacks"
-
-  - id: seats
-    chapter: Does going first matter?
-    render: bars
-    lines: [t1, t2, t3]
-    params:
-      chart: seats
-      title: "Win rate by seat"
-
-  - id: twop
-    chapter: Two players
-    render: statement
-    lines: [q1]
-    params:
-      lines: ["One on one,", {text: "everything gets louder.", color: MUSTARD}]
-
-  - id: twoplayer
-    render: bars
-    lines: [q2, q3, q4]
-    params:
-      chart: twoplayer
-      title: "Two players: everything gets louder"
-
-  - id: myths
-    chapter: Advice you've heard
-    render: checklist
-    lines: [m1, m2, m3, m4, m5]
-    params:
-      title: "Advice you've heard, tested"
-      step: 150
-      items:
-        - {text: "Attack is better than Skip", verdict: "NO DIFFERENCE", at: m2, color: CREAM}
-        - {text: "Shuffle when a Kitten is coming", verdict: "TRUE, BARELY", at: m3, color: TEAL}
-        - {text: "Pair up action cards to steal", verdict: "DON'T: 20%", at: m4, color: CORAL}
-        - {text: "Name a Defuse with three of a kind", verdict: "RARELY MATTERS", at: m5, color: CREAM}
-
-  - id: attacks
-    chapter: Attacks
-    render: bars
-    lines: [a1, a2, a3]
-    params:
-      chart: attacks
-      title: "Explosions that happen under an Attack"
-
-  - id: tables
-    chapter: Who you play with
-    render: bars
-    lines: [r1, r2, r3]
-    params:
-      chart: tables
-      title: "The strategy vs different tables"
-
-  - id: worse
-    render: statement
-    lines: [r4]
-    params:
-      lines: ["The worse your friends play,", {text: "the better this works.", color: MUSTARD}]
-
-  - id: strategy
-    chapter: The full strategy
-    render: checklist
-    lines: [w1, w2]
-    params:
-      title: "The whole strategy"
-      step: 120
+- id: cold
+  chapter: Five mistakes
+  render: table
+  lines:
+  - o1
+  - o2
+  - o3
+  pad:
+  - 0.4
+  - 0.6
+  params:
+    mode: play
+    ev_from: 10
+    seat_names:
+    - THE PATIENT ONE
+    - THE GAMBLER
+    - THE PANICKER
+    - THE HOARDER
+    notes:
+    - text: 10,000,000,000+ games
+      at: o3
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 60
+      color: MUSTARD
+- id: hookrank
+  render: bars
+  lines:
+  - o4
+  params:
+    chart: ranking_hook
+    title: Best bot vs worst bot
+- id: five
+  render: statement
+  lines:
+  - o5
+  params:
+    lines:
+    - It came down to
+    - text: five mistakes.
+      color: MUSTARD
+- id: title
+  render: title
+  min_duration: 4.5
+  pad:
+  - 0
+  - 0
+  params:
+    lines:
+    - 10 Billion Games of
+    - Exploding Kittens
+- id: rules
+  chapter: Can you trust it?
+  render: deck56
+  lines:
+  - c1
+  pad:
+  - 0.6
+  - 1.0
+- id: check
+  render: statement
+  lines:
+  - c2
+  - c3
+  params:
+    lines:
+    - 'First card is a Kitten:'
+    - math says 13.04%
+    - text: 'my deck: 13.07%'
+      color: MUSTARD
+- id: cantlie
+  render: table
+  lines:
+  - c4
+  - c5
+  params:
+    mode: idle
+    ev_still: 1
+    labels: false
+    notes:
+    - text: Bots only know what a real player knows
+      at: c4
+      pos:
+      - 960
+      - 150
+      align: center
       size: 44
-      items:
-        - {text: "Don't play cards for fun", at: "w2+0.2"}
-        - {text: "Only dodge when you know", at: "w2+1.8"}
-        - {text: "See the Future at 1 in 3 odds", at: "w2+3.2"}
-        - {text: "Kitten goes where the next player draws", at: "w2+5.5"}
-        - {text: "Steal from the biggest hand", at: "w2+8"}
-        - {text: "Give away junk, Nope attacks on you", at: "w2+9.5"}
-
-  - id: final
-    render: bars
-    lines: [w3, w4]
-    params:
-      chart: final
-      title: "Strategy vs a normal table"
-      notes:
-        - {text: "Everyone using it: exactly 25% each", at: w4, pos: [960, 150], align: center, size: 36, pill: CREAM}
-
-  - id: close
-    chapter: One honest assumption
-    render: table
-    lines: [e1, e2]
-    params:
-      mode: idle
-      ev_still: 40
-      notes:
-        - {text: "Next: Uno house rules", at: e2, pos: [960, 130], align: center, size: 64, color: MUSTARD}
-
-  - id: ask
-    render: statement
-    lines: [e3]
-    pad: [0.3, 1.2]
-    params:
-      lines: ["Which Uno house rule", {text: "breaks the game?", color: CORAL}]
-
-  - id: endcard
-    render: endcard
-    min_duration: 18
-    pad: [0, 0]
-    params:
-      next_title: "I Tested Every Uno House Rule"
+      until: c5
+    - text: They can't lie.
+      at: c5
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 64
+      color: CORAL
+- id: meet
+  chapter: Meet the bots
+  render: table
+  lines:
+  - b1
+  - b2
+  - b3
+  - b4
+  params:
+    mode: idle
+    ev_still: 1
+    seat_names:
+    - THE PATIENT ONE
+    - THE GAMBLER
+    - THE PANICKER
+    - THE NORMAL PLAYER
+    notes:
+    - text: The Normal Player
+      at: b2
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 44
+      until: b3
+    - text: The Gambler · The Panicker · The Hoarder
+      at: b3
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 40
+      until: b4
+    - text: '...and the Patient One'
+      at: b4
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 44
+      color: MUSTARD
+- id: ranking
+  render: bars
+  lines:
+  - b5
+  - b6
+  params:
+    chart: ranking
+    title: One table, seats shuffled
+    notes:
+    - text: 'Number to beat: 25%'
+      at: b6
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 36
+      pill: CREAM
+- id: m1
+  render: statement
+  lines:
+  - p1
+  params:
+    lines:
+    - 'Mistake 1:'
+    - text: playing cards
+      color: MUSTARD
+    - text: for fun.
+      color: MUSTARD
+  chapter: 'Mistake 1: playing for fun'
+- id: patience
+  render: bars
+  lines:
+  - p2
+  - p3
+  - p4
+  - p5
+  params:
+    chart: patience
+    title: 'Mistake 1: playing cards for fun'
+    notes:
+    - text: '"Save your cards early in the game, while your chance of exploding is low."  (the rulebook)'
+      at: p5
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 30
+      width: 1600
+      weight: 700
+- id: m2
+  render: statement
+  lines:
+  - d1
+  params:
+    lines:
+    - 'Mistake 2:'
+    - text: panicking.
+      color: CORAL
+  chapter: 'Mistake 2: panicking'
+- id: dodge
+  render: bars
+  lines:
+  - d2
+  - d3
+  - d4
+  params:
+    chart: dodge
+    title: 'Mistake 2: panicking'
+    notes:
+    - text: 'Skip first vs Attack first: 16.1% vs 15.9%'
+      at: d4
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 36
+      pill: CREAM
+- id: m3
+  render: statement
+  lines:
+  - f1
+  params:
+    lines:
+    - 'Mistake 3:'
+    - text: looking at
+      color: MUSTARD
+    - text: the wrong time.
+      color: MUSTARD
+  chapter: 'Mistake 3: looking at the wrong time'
+- id: future
+  render: bars
+  lines:
+  - f2
+  - f3
+  params:
+    chart: future
+    title: 'Mistake 3: when to See the Future'
+- id: m4
+  render: statement
+  lines:
+  - k1
+  params:
+    lines:
+    - 'Mistake 4:'
+    - text: hiding the Kitten
+      color: MUSTARD
+    - text: in the wrong place.
+      color: MUSTARD
+  chapter: 'Mistake 4: the wrong hiding place'
+- id: placement
+  render: placement
+  lines:
+  - k2
+  - k3
+  - k4
+  - k5
+  - cta
+  params:
+    chart: placement
+    title: 'Mistake 4: where to put the Kitten back'
+- id: confession
+  render: statement
+  lines:
+  - a1
+  - a2
+  params:
+    lines:
+    - The numbers are real.
+    - text: Guesses get labelled.
+      color: MUSTARD
+  chapter: A quick confession
+- id: m5
+  render: statement
+  lines:
+  - s1
+  params:
+    lines:
+    - 'Mistake 5:'
+    - text: being too polite.
+      color: MUSTARD
+  chapter: 'Mistake 5: being polite'
+- id: steal
+  render: bars
+  lines:
+  - s2
+  - s3
+  - s4
+  params:
+    chart: steal
+    title: 'Mistake 5: steal from the biggest hand'
+    notes:
+    - text: 'Pairing Attacks or Skips to steal: 20%'
+      at: s4
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 36
+      pill: CORAL
+- id: small
+  render: bars
+  lines:
+  - x1
+  - x2
+  - x3
+  - x4
+  params:
+    chart: small
+    title: The small stuff
+    notes:
+    - text: 'Shuffle when a Kitten is on top: under +1 point'
+      at: x4
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 34
+      pill: CREAM
+  chapter: The small stuff
+- id: seats
+  render: bars
+  lines:
+  - t1
+  - t2
+  - t3
+  - t4
+  params:
+    chart: seats
+    title: Does going first matter?
+    notes:
+    - text: 'Two players, never playing for fun: 68.5%'
+      at: t4
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 36
+      pill: MUSTARD
+  chapter: Does going first matter?
+- id: tables
+  render: bars
+  lines:
+  - r1
+  - r2
+  - r3
+  params:
+    chart: tables
+    title: The Patient One vs different tables
+    notes:
+    - text: 'Four Patient Ones: exactly 25% each'
+      at: r3
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 36
+      pill: CREAM
+  chapter: Does it hold up?
+- id: strategy
+  chapter: The recipe
+  render: checklist
+  lines:
+  - w1
+  - w2
+  params:
+    title: The Patient One
+    step: 120
+    size: 44
+    items:
+    - text: Don't play cards for fun
+      at: w2+0.2
+    - text: Only dodge when you know
+      at: w2+1.8
+    - text: See the Future at 1 in 3 odds
+      at: w2+3.2
+    - text: Kitten goes where the next player draws
+      at: w2+5.5
+    - text: Steal from the biggest hand
+      at: w2+8
+    - text: Give away junk, Nope attacks on you
+      at: w2+9.5
+- id: final
+  render: bars
+  lines:
+  - w3
+  params:
+    chart: final
+    title: The Patient One vs a normal table
+- id: lie
+  render: statement
+  lines:
+  - e1
+  - e2
+  params:
+    lines:
+    - They can't lie.
+    - text: That part is yours.
+      color: MUSTARD
+  chapter: The one thing bots can't do
+- id: ask
+  render: statement
+  lines:
+  - e3
+  params:
+    lines:
+    - Which Uno house rule
+    - text: breaks the game?
+      color: CORAL
+  pad:
+  - 0.3
+  - 1.2
+- id: endcard
+  render: endcard
+  min_duration: 20
+  pad:
+  - 0
+  - 0
+  params:
+    next_title: I Tested Every Uno House Rule

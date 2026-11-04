@@ -21,6 +21,7 @@ CFG = yaml.safe_load((EP / "scenes.yaml").read_text())
 LOOK = {"look": CFG.get("look"), "quality": CFG.get("quality", "normal"),
         "ssaa": float(os.environ.get("RENDER_SSAA", CFG.get("ssaa", 1)))}
 X = json.loads((EP / "data" / "extra.json").read_text())
+RK = json.loads((EP / "data" / "ranking-5p.json").read_text())
 
 NAVY, CORAL, MUSTARD, TEAL, CREAM, BLUE, GREY = "#22304a", "#ff6b57", "#f2b134", "#2a9d8f", "#f4ead5", "#4c8dff", "#8d8273"
 
@@ -54,29 +55,42 @@ def item(label, value, color=CREAM, at=0, hl=False):
     return {"label": label, "value": value, "color": color, "at": at, "hl": hl}
 
 
+def rk(name):
+    return next(pct(t["win"]) for t in RK["table"] if t["name"] == name)
+
+
 CHARTS = {
+    "ranking": lambda: dict(fair=20, maxV=50, items=[
+        item("The Hoarder", rk("The Hoarder"), CORAL, "b5+7.5"),
+        item("The Panicker", rk("The Panicker"), CORAL, "b5+6"),
+        item("The Gambler", rk("The Gambler"), CORAL, "b5+4.5"),
+        item("The Normal Player", rk("The Normal Player"), CREAM, "b5+3"),
+        item("The Patient One", rk("The Patient One"), MUSTARD, "b5+0.8", True)]),
+    "ranking_hook": lambda: dict(fair=20, maxV=50, items=[
+        item("worst bot", rk("The Hoarder"), CORAL, "o4+2.2"),
+        item("best bot", rk("The Patient One"), MUSTARD, "o4", True)]),
     "patience": lambda: dict(fair=25, maxV=40, items=[
         item("play cards on a whim half the time", sw("random_play", 0.5), CORAL, "p3"),
         item("normal player", sw("random_play", 0.15), CREAM, "p2"),
         item("never play cards for fun", sw("random_play", 0.0), MUSTARD, "p2+2.5", True)]),
     "dodge": lambda: dict(fair=25, maxV=40, items=[
-        item("dodge at 1 in 4 odds", sw("avoid", 0.25), CORAL, "d3"),
-        item("dodge at 1 in 3", sw("avoid", 0.33), CORAL, "d4"),
-        item("dodge at a coin flip", sw("avoid", 0.5), CREAM, "d4+1"),
-        item("only when you KNOW", sw("avoid", 1.0), MUSTARD, "d4+3", True)]),
+        item("the Panicker: 1 in 4", sw("avoid", 0.25), CORAL, "d2+3"),
+        item("dodge at 1 in 3", sw("avoid", 0.33), CORAL, "d3"),
+        item("dodge at a coin flip", sw("avoid", 0.5), CREAM, "d3+0.8"),
+        item("only when you KNOW", sw("avoid", 1.0), MUSTARD, "d3+3", True)]),
     "future": lambda: dict(fair=25, maxV=40, items=[
         item("never use it", sw("future", 2.0), CORAL, "f2"),
         item("use it right away", sw("future", 0.0), CORAL, "f2+2"),
         item("use it at 1 in 3 odds", sw("future", 0.3), MUSTARD, "f3", True)]),
     "placement": lambda: dict(fair=25, maxV=40, items=[
-        item("bottom", sw("placement", "bottom"), CORAL, "k2+3.5"),
-        item("random", sw("placement", "random"), CREAM, "k2"),
-        item("top", sw("placement", "top"), TEAL, "k3"),
+        item("bottom", sw("placement", "bottom"), CORAL, "k3"),
+        item("random", sw("placement", "random"), CREAM, "k2+3"),
+        item("top", sw("placement", "top"), TEAL, "k4"),
         item("next player's draw", sw("placement", "next"), MUSTARD, "k5", True)]),
     "steal": lambda: dict(fair=25, maxV=56, items=[
-        item("full strategy", pct(F["vs_casual"]["4"]["win"]), MUSTARD, "s2", True),
-        item("without Favors", abl("favor_use"), CORAL, "s2+3.5"),
-        item("without pair steals", abl("pair_steal"), CORAL, "s2+1.5")]),
+        item("the Patient One", pct(F["vs_casual"]["4"]["win"]), MUSTARD, "s2+2", True),
+        item("without pair steals", abl("pair_steal"), CORAL, "s2+4.5"),
+        item("without Favors", abl("favor_use"), CORAL, "s2+6.5")]),
     "small": lambda: dict(fair=25, maxV=40, items=[
         item("give a random card", sw("give_worst", False), CREAM, "x2"),
         item("give your worst card", sw("give_worst", True), MUSTARD, "x2+1.5", True),
@@ -102,7 +116,7 @@ CHARTS = {
     "tables": lambda: dict(fair=25, maxV=72, items=[
         item("vs a normal table", pct(X["tables"]["casual"]["best_win"]), CREAM, "r2"),
         item("vs an aggressive table", pct(X["tables"]["aggressive"]["best_win"]), MUSTARD, "r2+3", True),
-        item("vs hoarders", pct(X["tables"]["hoarder"]["best_win"]), CREAM, "r3")]),
+        item("vs hoarders", pct(X["tables"]["hoarder"]["best_win"]), CREAM, "r2+6")]),
     "final": lambda: dict(fair=None, maxV=82, items=[
         *[x for n in ("2", "3", "4", "5") for x in (
             item(f"{n} players: fair", round(100 / int(n), 1), GREY, "w3"),

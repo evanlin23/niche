@@ -70,8 +70,64 @@ func main() {
 	baseJ := flag.String("base", "", "base policy JSON")
 	trace := flag.Bool("trace", false, "emit one game's event log")
 	allSame := flag.Bool("allsame", false, "everyone uses base policy (seat study)")
+	tableJ := flag.String("table", "", "JSON array of policies, one per seat (seats shuffled each game): ranking mode")
+	check := flag.Bool("check", false, "sanity check: fraction of games whose first drawn card is a Kitten")
 	flag.Parse()
 
+	if *check {
+		rng := rand.New(rand.NewSource(*seed))
+		p := &Policy{AvoidRisk: 2, FutureRisk: 2, Placement: "top", StealWhen: 2}
+		hits := 0
+		for k := 0; k < *games; k++ {
+			pols := make([]*Policy, *players)
+			for i := range pols {
+				pols[i] = p
+			}
+			g := NewGame(rng, pols)
+			if g.deck[len(g.deck)-1] == EK {
+				hits++
+			}
+		}
+		must(json.NewEncoder(os.Stdout).Encode(map[string]any{"games": *games, "first_draw_kitten": float64(hits) / float64(*games)}))
+		return
+	}
+	if *tableJ != "" {
+		var tp []Policy
+		must(json.Unmarshal([]byte(*tableJ), &tp))
+		n := len(tp)
+		workers := runtime.NumCPU()
+		per := (*games + workers - 1) / workers
+		wins := make([][]int, workers)
+		var wg sync.WaitGroup
+		for w := 0; w < workers; w++ {
+			wg.Add(1)
+			go func(w int) {
+				defer wg.Done()
+				rng := rand.New(rand.NewSource(*seed*7919 + int64(w)))
+				wins[w] = make([]int, n)
+				for k := 0; k < per; k++ {
+					perm := rng.Perm(n)
+					pols := make([]*Policy, n)
+					for seat, pi := range perm {
+						pols[seat] = &tp[pi]
+					}
+					r := NewGame(rng, pols).Play()
+					wins[w][perm[r.Winner]]++
+				}
+			}(w)
+		}
+		wg.Wait()
+		out := []map[string]any{}
+		for i := 0; i < n; i++ {
+			t := 0
+			for w := range wins {
+				t += wins[w][i]
+			}
+			out = append(out, map[string]any{"name": tp[i].Name, "win": float64(t) / float64(per*workers)})
+		}
+		must(json.NewEncoder(os.Stdout).Encode(map[string]any{"games": per * workers, "table": out}))
+		return
+	}
 	var test, base Policy
 	must(json.Unmarshal([]byte(*baseJ), &base))
 	if *testJ != "" {
