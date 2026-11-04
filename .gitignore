@@ -22,3 +22,4 @@ sims/uno/unosim
 episodes/*/voice/_orig/*.wav
 episodes/*/voice/_verbatim.json
 episodes/*/voice/_stumbles.txt
+sims/phase10/p10sim
