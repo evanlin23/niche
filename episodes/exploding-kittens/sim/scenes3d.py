@@ -151,7 +151,7 @@ def card_highlights(ctx):
     """When the narration names a card type, that pile lifts and lights up: {group index: time}."""
     import re
     names = {"kitten": 0, "kittens": 0, "defuse": 1, "attack": 2, "skip": 3, "favor": 4, "shuffle": 5,
-             "nope": 6, "see": 7, "cat": 8, "matching": 8}
+             "nope": 6, "see": 7, "cat": 8, "matching": 8, "steal": 8}
     out = {}
     for lid in ("g3",):                       # the card rundown
         c = ctx.scene.cues.get(lid)
