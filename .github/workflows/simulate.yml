@@ -4,9 +4,15 @@ name: Simulate (big run)
 on:
   workflow_dispatch:
     inputs:
+      episode:
+        description: Episode folder (must have experiments.py)
+        default: exploding-kittens
       games_per_shard:
         description: Games per test per shard (x20 shards)
         default: "5000000"
+      extra_args:
+        description: Extra args for experiments.py (EK uses --all)
+        default: "--all"
 
 jobs:
   shard:
@@ -22,7 +28,7 @@ jobs:
       - uses: actions/setup-go@v5
         with: { go-version: "1.24", cache: false }
       - name: Run all experiments (shard ${{ matrix.shard }})
-        run: python episodes/exploding-kittens/experiments.py --all --games ${{ inputs.games_per_shard }} --seed ${{ matrix.shard }}000 --out shard
+        run: python episodes/${{ inputs.episode }}/experiments.py ${{ inputs.extra_args }} --games ${{ inputs.games_per_shard }} --seed ${{ matrix.shard }}000 --out shard
       - uses: actions/upload-artifact@v4
         with:
           name: shard-${{ matrix.shard }}
@@ -36,9 +42,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with: { pattern: shard-*, path: shards }
-      - run: python episodes/exploding-kittens/merge_shards.py shards/
+      - run: |
+          if [ -f "episodes/${{ inputs.episode }}/merge_shards.py" ]; then python episodes/${{ inputs.episode }}/merge_shards.py shards/
+          else python -m pipeline.merge_shards shards/ episodes/${{ inputs.episode }}/data; fi
       - uses: actions/upload-artifact@v4
         with:
           name: merged-data
-          path: episodes/exploding-kittens/data/*.json
+          path: episodes/${{ inputs.episode }}/data/*.json
           retention-days: 30

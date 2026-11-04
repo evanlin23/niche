@@ -36,7 +36,29 @@ func main() {
 	baseJ := flag.String("base", "{}", "")
 	testJ := flag.String("test", "", "")
 	allSame := flag.Bool("allsame", false, "")
+	check := flag.Bool("check", false, "engine check: share of opening hands with at least one Wild card")
 	flag.Parse()
+	if *check {
+		rng := rand.New(rand.NewSource(*seed))
+		var R0 Rules
+		hit := 0
+		for k := 0; k < *games; k++ {
+			d := newDeck(&R0) // the 7 cards as dealt, before the starting card does anything
+			rng.Shuffle(len(d), func(i, j int) { d[i], d[j] = d[j], d[i] })
+			hand := []Card{}
+			for i := 0; i < 7; i++ {
+				hand = append(hand, d[len(d)-1-4*i]) // dealt one at a time to 4 players
+			}
+			for _, c := range hand {
+				if c.isWild() {
+					hit++
+					break
+				}
+			}
+		}
+		fmt.Printf("{\"games\": %d, \"opening_hand_has_wild\": %.5f}\n", *games, float64(hit)/float64(*games))
+		return
+	}
 	var R Rules
 	var base, test Policy
 	must(json.Unmarshal([]byte(*rulesJ), &R))
