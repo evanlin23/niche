@@ -51,6 +51,13 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   tabular numbers so counting values don't shift width. Check with a frame-by-frame clip, not stills.
 - Hide bars until they start growing (a 0-height rounded box still renders as a flat slab on the floor).
 - Check motion with a low-res clip of the whole scene (`SCALE=0.35`), stills hide jitter and flashes.
+- Measure jitter, don't eyeball it: track a label's centroid frame by frame (2nd-difference std in px).
+  Chrome still snaps `translate3d` text; a tiny `rotate(0.02deg)` forces true sub-pixel compositing.
+- Hidden 3D text must not cast shadows (`visible=false` until it appears): otherwise a dark blurry "ghost"
+  of words not yet spoken sits on the floor. Statement scenes show their first line from the start (never
+  open on an empty floor); later lines appear on their spoken cue.
+- Keep decorative props fully in frame and clear of text (the checklist card fan was half off-screen).
+- While a rules line names each card, light up that pile (lift + mustard label), timed from the word cues.
 
 ## Camera (research notes, see sources in docs/camera-research.md)
 - One dominant move per shot. Slow orbit 1-4 deg/s (we use ~1 deg/s, max +/-8 deg for wide charts: wider arcs
@@ -76,6 +83,25 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   Every line is leveled to -20 dB speech; other sessions get an EQ match and a noise-floor match to "main".
 - **Tight pacing:** pauses inside lines capped at 0.35 s, 0.08 s lead / 0.15 s tail per line, 0.25 s between
   lines, 0.2/0.35 s scene pads. Video 1 lost 91 s of dead air and stumbles (8:50 -> ~7:20).
+- **Never trust the transcript for audio QA.** Whisper stretches words over noises (it timed "The" across a
+  burp) and deletes repeats. `python -m pipeline.audio_qa episodes/<slug>` force-aligns the script words
+  (torchaudio MMS_FA, ~20 ms accuracy), then treats every sound outside the words as an event:
+  burp/cough/hum -> replaced with the session's real room tone, extra speech >= 0.3 s -> cut, breath -> -12 dB,
+  tiny blips at word edges -> kept (usually part of the word). Then each line is trimmed to its first/last word.
+  Safety: every edited line is re-transcribed; an edit that removes ANY spoken word (script or not, e.g. an
+  unscripted "percent") is undone, one edit at a time.
+- **Verify the result, not the edit list.** The first QA version reported 63 fills that did nothing (an inverted
+  gain ramp). Now a self-test runs before every pass and every fill is re-measured afterwards ("STILL AUDIBLE").
+  Same rule for everything: after an automatic fix, measure the output.
+- Order of the voice pipeline: `split_recording` -> `find_stumbles` -> `tighten_voice` (+ `_manual_cuts.json`)
+  -> `audio_qa` -> `match_voice`. Re-running `tighten_voice` rebuilds every line from `_orig/`, so always run
+  `audio_qa` again after it. Any timing change makes a running render stale: cancel it and re-render.
+- Single-word restarts ("Once a card - once one card") slip past `find_stumbles` (it wants a 2-word match);
+  the final full-narration check against the script catches them. Fix with `_manual_cuts.json`.
+- Pick-up sessions: use the LAST complete take of each line; watch for hidden asides at the start of a take
+  ("sorry, let's try that again"); update script.md to the words actually said (captions follow it).
+- Review flow for the creator: export the narration on the exact video timeline plus a list of every cut
+  (time + words either side). They can also edit it themselves: docs/edit-your-own-audio.md.
 - Transcribers drop fast words like "percent": check the audio (voiced gap) before asking for a re-record.
 - Re-records: `split_recording --only <ids>` replaces just those lines. Compare takes; keep the cleaner one.
 - Cleanup (high-pass, noise profile from room tone, de-ess, compression) handles light rain/street noise.
@@ -94,19 +120,37 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   soft shadows are the expensive parts). Video 1 took ~2.5 h because one runner per scene meant the longest scene
   set the wall time. Now scenes are split into ~10 s chunks (RENDER_CHUNK=k/n), so a whole episode takes ~30–40 min.
 - Final mix happens locally (voice + licensed music), visuals on GitHub.
+- `render.yml` has an `only` input (space-separated scene ids) to re-render just the scenes that changed;
+  assemble locally after swapping in their parts.
 - Don't commit: music, voice audio, full transcripts, out/.
 
 ## Packaging
 - **Never link the code** (repo, simulator) in descriptions, end cards or comments. The creator's call.
+- **Length: at least 8:00** (mid-roll ads), with margin (aim ~8:20). If short, add real content from unused
+  data or a fuller game primer (rules from the official sheet), never filler. Order: what the game is ->
+  how a turn works -> what each card does.
+- Captions for upload are the script's own words and punctuation, timed from the voice (two balanced lines,
+  sentence breaks). Raw transcription captions (no punctuation, broken lines) are not acceptable.
+- The music credit must be true (we use YouTube Audio Library tracks, credited by name), never "generated".
+- One GitHub issue per episode holds the full upload kit: files, titles, description to paste, settings,
+  pinned comment. The video itself stays out of the public repo (music licence).
 - 3 title/thumbnail pairs for YouTube **Test & compare** (winner = watch time). Every claim must be literally true.
 - Mid-video subscribe ask right after a payoff, never in the opening.
 - Pinned comment = the argument-starter question from the ending.
+
+## Working with the creator
+- They want autonomy: make the production decisions (studio sound, pacing, cuts) and explain briefly.
+- No AI voice enhancement. Signal processing only.
+- Plan ~14 episodes ahead; research + build in parallel with docs/agent-prompts/game-research-and-sim.md
+  (give that agent its own branch).
 
 ## Per-episode checklist
 1. Demand/competition scan → pick game → confirm public rules (save source link in RULES.md).
 2. Go engine + rule tests → baseline "normal" bot → one-variable experiments → mirror check → big run on Actions.
 3. Script in the PerfectPlay-style structure → lint → read aloud.
 4. Scenes: map every line; contact sheet of stills.
-5. Recording sheet → one long take → `make split` → review report → re-record list.
-6. Render on Actions (recorded timing) → assemble locally with voice + music → spot-check frames.
+5. Recording sheet → one long take → `make split` → `find_stumbles` → `tighten_voice` → `audio_qa`
+   → `match_voice` → full-narration check vs script → listen-list (narration mp3 + cut list) → pick-ups.
+6. Render on Actions (recorded timing) → assemble locally with voice + music → contact sheet, brightness-dip
+   scan, loudness (-14 LUFS), caption check.
 7. Upload kit: 3 titles + 3 thumbnails, description with chapters, SRT, pinned comment, end screen.
