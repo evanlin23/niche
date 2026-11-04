@@ -187,3 +187,70 @@ Alternates if one fails a check: Solitaire (Klondike), Backgammon, Rummikub, Spa
   least often completed. Big run and script are parked until its slot.
 - Findings that changed the plan: in Checkers the forced-jump rule doesn't have one simple effect (more draws without
   it for casual players, fewer for stronger ones); in Gin Rummy the knock-or-wait answer flips with the undercut bonus.
+
+---
+
+# 2026-11-04 (d): wider net (64 more games) and what to do beyond one game per video
+
+Raw numbers: `docs/game-search-scan-2026-11-04d.txt` (same method as scan c: top 20 YouTube results for
+"<game> strategy", "how to win <game>", and a rules/house-rule search; demand = views of the unique results whose
+title names the game; bracket = without the single biggest video). 121 games screened in total across scans c and d.
+
+## The new batch
+
+### Worth adding to the backlog
+| Game | Demand M (w/o top) | Competition | Angle | Rules source | Engine | Note |
+|---|---|---|---|---|---|---|
+| White Elephant gift swap | 18.9 (10.9) | no sim videos | Which number should you draw? Steal or open? | folk rules; we state the variant (3-steal limit, frozen gifts) | S | **December special**, needs a gift-value model (a stated assumption, not a rulebook number) |
+| The Price Is Right wheel | 38.9 (18.8) | academic papers only (Coe & Butterworth 1995; Tenorio & Cason 2002 studied real contestants) | When should you spin again? Most contestants get it wrong | wheel: 20 values, 5 cents to 1.00 (to verify against an official CBS source) | S | exact answer (dynamic programming) + a billion simulated showdowns; great Shorts |
+| Secret Hitler | 14.2 (10.4) | none | Is the deck rigged against the Liberals? | **verified**: official rules PDF (CC BY-NC-SA), 17 policy tiles = 6 Liberal + 11 Fascist, role tables for 5-10 players | M | ad-suitability risk from the name; deck math is exact, voting bots are a model |
+| Ludo (Ludo King) | 17.6 (10.0) | none | Rush one token or spread out? (we already know the Sorry! answer) | folk / Ludo King app rules (to verify) | S (reuse Sorry! engine) | big South Asian audience, lower RPM; a Hindi version could be its own audience |
+| Werewolf / Mafia | 29.4 / 19.8 (inflated by a visual novel and Beta Squad) | Game Theorist-style talk videos, no sims | Should the village just vote at random? (known theory: Braverman, Etesami & Mossel 2008) | Ultimate Werewolf (Bezier Games) rulebook (to verify); Mafia is folk | M | social deduction = stylized bots; say so on camera |
+| Cheat / BS | 3.8 (2.8) | none | When should you call BS? | to verify (Bicycle / Pagat) | S | small but very argued-about |
+| Azul | 3.3 (2.1) | one 3.5K video | First player tile: worth taking? | rulebook lists 100 tiles, 20 per colour (to verify) | M | gamer audience |
+
+### Regional giants (our scan is US English, so their real demand is bigger than shown)
+Durak 2.6M (Russian-speaking world), Big Two 0.8M (East/Southeast Asia), Xiangqi 1.2M (China), Carrom 40M (physics:
+not simulable), Ludo (above). Worth it only with dubbed or translated versions.
+
+### Rejected or parked from this batch (why)
+- Too physical or real-time: Carrom, 8 Ball Pool, Cup Pong, Spoons (also Fortnite-inflated), Speed/Spit, Egyptian
+  Ratscrew, Nertz.
+- Too complex to simulate honestly, or video games with rules only from fan wikis: Among Us (354M, but no honest
+  model), Tetris (AI videos with 3M views), Pokemon TCG Pocket, Magic (land-count math already done by Frank Karsten),
+  Bridge, Pandemic, Carcassonne, Splendor (card list printed only on cards), Kingdomino.
+- Pure luck: Old Maid, Bunco, Hi Ho Cherry-O, Dreidel (a Hanukkah Short at most: known math says it's unfair to
+  later players).
+- Numbers not public: Zombie Dice (**checked**: the official PDF doesn't give the colour mix or dice faces), Deal or
+  No Deal (the banker's formula isn't published).
+- Small demand (under 2M): Canasta, Hand and Foot, Pinochle, Golf, Kings in the Corner, Rummy 500, 31, President, Qwirkle,
+  Blokus, Sequence, Parcheesi, Aggravation, Pig, Ship Captain Crew, Mexico, Quoridor, Nine Men's Morris, Mastermind,
+  Memory, Darts Cricket, Word Hunt, NYT Connections, Sea Battle, King of Tokyo, Avalon.
+- Squid Game (114M): glass-bridge math is everywhere already; the other games are physical.
+
+## Beyond one game per video (there are only so many games)
+1. **Cross-game episodes from engines we already have** (9 engines: Exploding Kittens, Uno, Connect 4, Battleship,
+   Shut the Box, Phase 10, Sorry!, Checkers, Gin Rummy). Cheapest new videos:
+   - "I ranked 9 family games from pure luck to pure skill" (same test in every game: best bot vs random player).
+   - "Does going first matter? 9 games" (the data mostly exists already).
+   - "The worst house rule in every game I've simulated" (Uno stacking, Checkers optional jumps, Gin's 25-point
+     undercut, Sorry!'s 2020 rules...). House-rule videos pull 19M on the search we tested (mostly comedy channels,
+     no sims).
+2. **Second episodes on games that hit.** A big game supports a follow-up: the house-rules episode (like Uno), the
+   player-count episode, or the "adult/expert variant" (Sorry!'s 5-card version, where a random player wins under 1
+   game in 1,000).
+3. **Seasonal specials**, timed to search spikes: White Elephant (December), Dreidel Short (December), March Madness
+   bracket pools (March; 3.5M, ESPN-style advice only), family game night around Thanksgiving.
+4. **Game-show math:** The Price Is Right wheel and Plinko, Wheel of Fortune letter choices (needs a word list).
+   Huge, older, ad-friendly audience; exact math plus simulation.
+5. **Party and social-deduction games:** Secret Hitler deck math, Werewolf/Mafia voting, Coup (already planned).
+   Honest framing: bots model one decision at a time, not table talk.
+6. **Regional versions** of games we've built: Ludo is Sorry!'s cousin and has a huge audience in India.
+7. **Shorts from every long video:** each myth or surprising number is a 30-60 second Short (Sorry!'s backward 4,
+   Checkers' back row, Gin's 25-point flip...).
+8. **"Fix the game" episodes:** change one rule to make a game fairer (e.g. the 3-player Sorry! seat edge) and test it.
+9. **Viewer requests:** pin a "which game next?" comment and simulate the winner; the comment question at the end of
+   each script already sets this up.
+
+With the 14-game plan, about 7 new games from this batch, 3-4 cross-game episodes, 3 seasonal specials and a few
+second episodes, that's well over a year of weekly long videos before repeating a format.
