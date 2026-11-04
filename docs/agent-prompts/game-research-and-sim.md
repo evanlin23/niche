@@ -1,7 +1,7 @@
 # Agent prompt: research the next games, then simulate the best one
 
 Copy everything below the line into a new Claude Code session on this repo (branch: your working branch).
-Fill in the three `<…>` values first. Defaults are in brackets.
+Fill in the `<…>` values first. Defaults are after the `=`.
 
 ---
 
@@ -13,9 +13,14 @@ actually play, proven by simulating billions of games". Read these first, in ord
 
 ## Task (bounded: stop when the acceptance checklist is done)
 
-**Part A: research (no code).** Find the best <N=5> candidate games for the next videos, excluding games we
-already have (Exploding Kittens, Uno, Connect 4, Shut the Box, Battleship) and <EXCLUDE=none>.
-For each candidate, collect with sources:
+**Part A: research (no code).** Build a **14-episode plan** (about 3 months at one video a week). Screen at
+least <CANDIDATES=30> games, then rank the best <N=14>, excluding games we already have (Exploding Kittens, Uno,
+Connect 4, Shut the Box, Battleship) and <EXCLUDE=none>. Look wide: card games (Skip-Bo, Phase 10, Crazy
+Eights, Go Fish, Rummy, Spades, Hearts, Cribbage, Monopoly Deal, Sushi Go, Love Letter, Coup, Codenames…),
+dice games (Yahtzee, Farkle, Liar's Dice, Left Center Right, Can't Stop…), board games (Sorry!, Monopoly,
+Trouble, Snakes and Ladders, Mancala, Checkers, Guess Who, Clue, Catan, Ticket to Ride, Risk…), party and
+casino-free classics, and popular digital/mobile games with published rules. For each candidate, collect
+with sources:
 1. **Demand:** total views of the top ~20 YouTube results for "<game> strategy", "how to win <game>", and the
    most argued-about rule ("<game> <house rule>"). Use the same method as `docs/game-search-scan-*.txt`
    and save your raw numbers to `docs/game-search-scan-<date>.txt`.
@@ -28,10 +33,16 @@ For each candidate, collect with sources:
    public source.** We own no physical copies. Wrong numbers kill credibility.
 5. **Simulability:** are there real decisions to test (not pure luck)? Rough engine size in Go?
 6. **Audience/RPM note:** kids' games reach far but earn less; gambling games are ad-unfriendly.
-Score each 1–5 on demand, competition (5 = none), angle, verifiability, simulability. Write the table and a
-one-paragraph recommendation into `docs/next-episodes.md` (add a dated section, keep the old one).
+Score each 1–5 on demand, competition (5 = none), angle, verifiability, simulability. Write into
+`docs/next-episodes.md` (new dated section, keep the old ones):
+- the full screened table (all candidates, with why each rejected one was rejected);
+- the **14-episode plan**: order, working title, the one-line hook, the 3–5 experiments that answer it,
+  engine effort (S/M/L), and a mix rule (alternate big-audience games with quick wins; no two
+  near-identical games back to back);
+- for each of the 14, the official rules link and anything still unverified.
 
-**Part B: build and simulate the top pick** (only if it scored ≥ 4 on verifiability).
+**Part B: build and simulate the top <BUILD=3> picks of the plan, in order** (each only if it scored ≥ 4 on
+verifiability; otherwise skip to the next). For each:
 1. `episodes/<slug>/RULES.md`: rules digest + source links + date checked + any edition differences.
 2. Go engine in `sims/<slug>/` with **rule tests** (`go test`): setup counts, every special card/rule, edge cases.
 3. Bots that only use information a real player has. A "normal" baseline bot, then one-habit variants.
@@ -58,11 +69,13 @@ one-paragraph recommendation into `docs/next-episodes.md` (add a dated section, 
   found and why into `docs/next-episodes.md` instead of guessing.
 
 ## Acceptance checklist (report each item back with evidence)
-- [ ] Research table with sources + recommendation in `docs/next-episodes.md`; raw scan file committed.
+- [ ] Screened table (≥ <CANDIDATES> games) + 14-episode plan with sources in `docs/next-episodes.md`; raw scan file committed.
 - [ ] RULES.md with official source links.
 - [ ] `go test ./...` passes in `sims/<slug>`.
 - [ ] Engine check: math vs engine numbers, within 0.1 percentage points.
 - [ ] Mirror check passes.
 - [ ] Big run finished: Actions run URL, total games ≥ <MIN_GAMES>, merged `data/results.json` committed.
 - [ ] Script draft, lint clean, every number traceable.
-- [ ] Final message: the recommended title/angle, the 3 most surprising results, and anything you'd re-check.
+- [ ] (Each built game) items above, one block per game.
+- [ ] Final message: the 14-episode plan in one table, then per built game the title/angle, the 3 most
+      surprising results, and anything you'd re-check.
