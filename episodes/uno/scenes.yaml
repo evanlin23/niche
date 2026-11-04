@@ -1,0 +1,285 @@
+# UNO: scene list. `lines` = narration ids in script.md. Chart values come from data/results.json.
+music:              # same Audio Library tracks as video 1 (local only)
+  - music/days-are-long-silent-partner.mp3
+  - music/renunciation-asher-fulero.mp3
+  - music/ponderous-days-joel-cummins.mp3
+engine: 3d
+look: clean-sage
+quality: high
+ssaa: 1.5
+scenes:
+- id: cold
+  chapter: Every family plays differently
+  render: unotable
+  lines:
+  - o1
+  - o2
+  - o3
+  pad:
+  - 0.4
+  - 0.6
+  params:
+    notes:
+    - text: Billions of rounds simulated
+      at: o3
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 56
+      color: MUSTARD
+- id: hook
+  render: bars
+  lines:
+  - o4
+  params:
+    chart: hook
+    title: Average turns per round
+- id: title
+  render: title
+  min_duration: 2.5
+  pad:
+  - 0
+  - 0
+  params:
+    lines:
+    - Every Uno
+    - House Rule, Tested
+- id: primer
+  render: unotable
+  lines:
+  - g1
+  params:
+    from: 0.2
+    every: 0.8
+- id: deck
+  chapter: Can you trust it?
+  render: unodeck
+  lines:
+  - c1
+  pad:
+  - 0.5
+  - 1.0
+- id: surprise
+  render: statement
+  lines:
+  - c2
+  params:
+    lines:
+    - 'Official rules:'
+    - text: no stacking.
+      color: CORAL
+    - text: draw ONE card.
+      color: MUSTARD
+- id: check
+  render: statement
+  lines:
+  - c3
+  - c4
+  params:
+    lines:
+    - 'Opening hand has a Wild:'
+    - math says 55.81%
+    - text: 'engine: 55.84%'
+      color: MUSTARD
+- id: limits
+  render: unotable
+  lines:
+  - c5
+  params:
+    notes:
+    - text: Bots never argue about the rules
+      at: c5
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 50
+      color: MUSTARD
+- id: rules
+  chapter: The house rules
+  render: checklist
+  lines:
+  - r1
+  - r2
+  - r3
+  params:
+    title: The house rules
+    step: 110
+    size: 42
+    items:
+    - text: Stacking +2s (and +4s)
+      at: r2+0.5
+    - text: 'Seven Zero: swap and rotate hands'
+      at: r2+3.5
+    - text: 'Jump In: same card, out of turn'
+      at: r2+7
+    - text: Draw until you can play
+      at: r3
+    - text: Forced play
+      at: r3+2
+    - text: 'Free +4: no color rule, no challenges'
+      at: r3+3.5
+- id: length
+  render: bars
+  lines:
+  - x1
+  - x2
+  - x3
+  - x4
+  - x5
+  params:
+    chart: length
+    title: Average turns per round
+    notes:
+    - text: 1 round in 10 lasts over 76 turns (official) vs 172 (draw until)
+      at: x4
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 32
+      pill: CORAL
+    - text: 'Cards drawn per round: 25 → 73'
+      at: x5
+      pos:
+      - 960
+      - 215
+      align: center
+      size: 36
+      pill: CREAM
+  chapter: The game breaker
+- id: stackdemo
+  chapter: Stacking
+  render: unotable
+  lines:
+  - s1
+  params:
+    stack: true
+    from: 0.3
+    every: 0.6
+- id: stack
+  render: bars
+  lines:
+  - s2
+  - s3
+  params:
+    chart: stack
+    title: Rounds where someone draws 10+ at once
+- id: sevenzero
+  render: bars
+  lines:
+  - z1
+  - z2
+  - z3
+  params:
+    chart: sevenzero
+    title: 'Seven Zero: first-player edge and skill'
+  chapter: Seven Zero
+- id: everything
+  render: bars
+  lines:
+  - a1
+  - a2
+  params:
+    chart: everything
+    title: All the house rules at once
+    notes:
+    - text: '6 rounds in 100: someone draws 10+'
+      at: a2+3
+      pos:
+      - 960
+      - 150
+      align: center
+      size: 36
+      pill: CORAL
+  chapter: Everything at once
+- id: twoplayer
+  render: bars
+  lines:
+  - t1
+  - t2
+  params:
+    chart: twoplayer
+    title: Two players
+  chapter: Two players
+- id: getgood
+  render: statement
+  lines:
+  - k1
+  params:
+    lines:
+    - Can you actually
+    - text: get good at Uno?
+      color: MUSTARD
+  chapter: Can you get good at Uno?
+- id: luck
+  render: bars
+  lines:
+  - k2
+  - k3
+  params:
+    chart: luck
+    title: Best bot vs a normal table
+- id: habits
+  render: bars
+  lines:
+  - h1
+  - h2
+  - h3
+  - h4
+  - h5
+  params:
+    chart: habits
+    title: The habits that help (and hurt)
+  chapter: The habits that help
+- id: recipe
+  chapter: The verdict
+  render: checklist
+  lines:
+  - w1
+  - w2
+  - w3
+  params:
+    title: The house-rule verdict
+    step: 120
+    size: 44
+    items:
+    - text: 'Shorter rounds: add Jump In'
+      at: w2
+    - text: 'Chaos stories: add stacking'
+      at: w2+2.5
+    - text: 'More luck: add Seven Zero'
+      at: w2+4.5
+    - text: 'Never: draw until you can play'
+      at: w3
+      verdict: BROKEN
+      color: CORAL
+- id: argue
+  render: statement
+  lines:
+  - e1
+  params:
+    lines:
+    - Argue about the rules.
+    - text: (That might be the real reason.)
+      color: MUSTARD
+- id: ask
+  render: statement
+  lines:
+  - e2
+  params:
+    lines:
+    - text: Your opening move?
+      color: MUSTARD
+  pad:
+  - 0.3
+  - 1.2
+- id: endcard
+  render: endcard
+  min_duration: 12
+  pad:
+  - 0
+  - 0
+  params:
+    next_title: How to Beat Your Friends at Connect 4

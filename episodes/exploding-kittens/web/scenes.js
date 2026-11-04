@@ -214,7 +214,7 @@ SCENES.deck56 = async (stage, spec) => {
 SCENES.bars = async (stage, spec) => {
   buildRoom(stage, { feltW: 18, feltD: 9 });
   const ch = spec.chart, p = spec.params;
-  const bars = makeBars(stage, ch.items, { x0: -7.5, width: 15, maxV: ch.maxV, height: 6.2, z: 0, fair: ch.fair, unit: ch.unit || '%' });
+  const bars = makeBars(stage, ch.items, { x0: -7.5, width: 15, maxV: ch.maxV, height: 6.2, z: 0, fair: ch.fair, unit: ch.unit ?? '%' });
   title(stage, p.title); notes(stage, p.notes); brand(stage);
   return (t) => {
     stage.cameraAt(t, { pos: [[0, 6.2, 15.5], [0, 5.8, 14.2]], look: [[0, 2.6, 0]] });
@@ -393,3 +393,6 @@ SCENES.statement = async (stage, spec) => {
     scrim(stage, t);
   };
 };
+
+// shared with other episodes (generic scene types + helpers)
+export { SCENES, notes, brand, title, scrim, rubikFont };
