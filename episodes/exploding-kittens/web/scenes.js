@@ -163,11 +163,75 @@ SCENES.table = async (stage, spec) => {
   const e0 = p.ev_from ?? 0, e1 = Math.min(evs.length - 1, p.ev_to ?? evs.length - 1);
   const play = p.mode !== 'idle';
   const cam = p.cam || { from: [0, 16.5, 15.5], to: [0, 15.2, 14.2], look: [0, 0, 0.9] };
+  // "what a real player knows" (params.knows = {hand, future, hid} word times): the Patient One picks up its
+  // hand and holds it upright while the camera swings behind it; See the Future lifts the top three cards;
+  // a Kitten slides into the deck.
+  const K = p.knows;
+  let held = [], fut = [], hidK = null;
+  if (K) {
+    held = [1, 3, 6, 8, 2].map((tp) => { const c = makeCard(stage, tp, true); c.visible = false; return c; });
+    fut = [8, 0, 3].map((tp) => { const c = makeCard(stage, tp, true); c.visible = false; c.traverse((o) => { o.castShadow = false; }); return c; });
+    hidK = makeCard(stage, 0, true); hidK.visible = false;
+  }
+  const V3 = (a) => new THREE.Vector3(...a);
+  const SHOTS = K ? [   // [time, camera pos, look] keyframes, eased between
+    [0, [0, 16.5, 15.5], [0, 0, 0.9]],
+    [K.hand - 0.2, [0, 15.6, 14.6], [0, 0, 0.9]],
+    [K.hand + 0.9, [2.4, 4.6, 9.4], [0, 1.7, 3.1]],          // over the shoulder: the cards as the player sees them
+    [K.future - 0.1, [-1.6, 4.8, 9.3], [0, 1.6, 3.1]],       // slow orbit around the held hand
+    [K.future + 0.9, [0.2, 7.2, 7.4], [-0.6, 1.2, 0.2]],    // over to the deck
+    [K.hid + 0.2, [-0.6, 6.8, 6.9], [-0.8, 0.8, 0.2]],
+    [K.hid + 2.4, [0, 12.5, 12.0], [0, 0, 0.9]],
+  ] : null;
+  function shotAt(t) {
+    let i = 0; while (i < SHOTS.length - 1 && t > SHOTS[i + 1][0]) i++;
+    if (i >= SHOTS.length - 1) return [V3(SHOTS[i][1]), V3(SHOTS[i][2])];
+    const [t0, p0, l0] = SHOTS[i], [t1, p1, l1] = SHOTS[i + 1];
+    const k = ease(clamp((t - t0) / Math.max(0.01, t1 - t0)));
+    return [V3(p0).lerp(V3(p1), k), V3(l0).lerp(V3(l1), k)];
+  }
   return (t) => {
     const u = play ? lerp(e0, e1 + 0.99, clamp(t / (stage.duration - 0.6))) : (p.ev_still ?? 2);
-    drift(stage, t, cam.from, cam.to, cam.look, cam.arc);
+    if (K) { const [cp, cl] = shotAt(t); stage.camera.position.copy(cp); stage.camera.lookAt(cl); }
+    else drift(stage, t, cam.from, cam.to, cam.look, cam.arc);
     stage.camera.updateMatrixWorld();
     tableFrame(stage, T, spec, null, u, { odds: !!p.odds, labels: p.labels !== false, pills: play, idle: !play, heroName: p.hero_name, otherName: p.other_name, seatNames: p.seat_names, seatHl: p.seat_hl, t });
+    if (K) {
+      const seat = T.seats[0];
+      // held hand: up on "hand", down a bit after See the Future starts
+      const up = ease(clamp((t - K.hand) / 0.6)) * (1 - ease(clamp((t - K.future - 0.6) / 0.6)));
+      held.forEach((c, i) => {
+        c.visible = up > 0.001;
+        const off = i - (held.length - 1) / 2;
+        const flat = new THREE.Vector3(seat.sx + off * 0.42, 0.06, seat.sz - 0.2);
+        const hold = new THREE.Vector3(off * 0.52, 1.6 - off * off * 0.06, 3.1 + Math.abs(off) * 0.05 - i * 0.012);
+        c.position.lerpVectors(flat, hold, up);
+        // stand up facing the player (+z), fanned
+        c.rotation.set(Math.PI / 2 * up, 0, -off * 0.24 * up);
+        c.scale.setScalar(1 + 0.15 * up);
+      });
+      if (up > 0.001) seat.hand.forEach((c) => (c.visible = false));
+      // See the Future: top three cards lift off the deck, turn face up toward the camera, then go back
+      const back = Math.max(0.6, Math.min(2.2, K.hid - K.future - 0.5));   // gone before the Kitten is hidden
+      const f = ease(clamp((t - K.future) / 0.4)) * (1 - ease(clamp((t - K.future - back) / 0.35)));
+      const deckTop = new THREE.Vector3(T.deck.pos[0], T.deck.topY(Math.min(46, spec.trace.events[Math.floor(p.ev_still ?? 2)].deck)) + 0.05, T.deck.pos[2]);
+      fut.forEach((c, i) => {
+        c.visible = f > 0.001;
+        const target = new THREE.Vector3(T.deck.pos[0] - 1.25 + i * 1.25, 1.9, T.deck.pos[2] + 0.9);
+        c.position.lerpVectors(deckTop.clone().setY(deckTop.y + i * 0.03), target, f);
+        c.rotation.set(Math.PI / 2 * 0.62 * f, 0, 0);
+      });
+      // hide a Kitten: from the player's seat into the middle of the deck
+      const h = clamp((t - K.hid) / 1.4);
+      hidK.visible = h > 0 && h < 1;
+      if (hidK.visible) {
+        const mid = new THREE.Vector3(T.deck.pos[0], deckTop.y * 0.5, T.deck.pos[2]);
+        const a = new THREE.Vector3(seat.sx, 0.6, seat.sz - 0.6), b = mid.clone().add(new THREE.Vector3(0, 0, 1.4));
+        if (h < 0.6) { const k = ease(h / 0.6); hidK.position.lerpVectors(a, b, k); hidK.position.y += Math.sin(k * Math.PI) * 1.0; }
+        else { const k = ease((h - 0.6) / 0.4); hidK.position.lerpVectors(b, mid, k); }
+        hidK.rotation.set(0, 0, 0);
+      }
+    }
     scrim(stage, t);
     const g = stage.g, gr = g.createLinearGradient(0, 0, 0, 260);
     gr.addColorStop(0, `rgba(${GN.scrim},0.85)`); gr.addColorStop(1, `rgba(${GN.scrim},0)`); g.fillStyle = gr; g.fillRect(0, 0, stage.W, 260);

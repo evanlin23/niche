@@ -106,6 +106,10 @@ scenes:
     mode: idle
     ev_still: 1
     labels: false
+    knows:
+      hand: c4@hand
+      future: c4@see
+      hid: c4@hid
     notes:
     - text: Bots only know what a real player knows
       at: c4
