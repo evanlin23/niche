@@ -223,7 +223,12 @@ def speak(text: str, cache_dir: Path, eng=None, line_id: str | None = None) -> S
             return speak(text, cache_dir, eng.fallback)
         meta = src.with_suffix(".json")             # written by pipeline/split_recording.py
         split = meta.exists()
-        if os.environ.get("VOICE_CLEAN", "1") != "0":     # denoise + polish (+ trim) (pipeline/voice_clean.py)
+        processed = split and json.loads(meta.read_text()).get("processed")
+        if processed:                                       # already cleaned + edited by hand (e.g. in Audacity)
+            from .voice_clean import load as load48
+            from .match_voice import level
+            audio = level(load48(src))
+        elif os.environ.get("VOICE_CLEAN", "1") != "0":     # denoise + polish (+ trim) (pipeline/voice_clean.py)
             from .voice_clean import clean, load as load48
             from .match_voice import apply_eq, level, match_floor, roomtone_path, session_of
             session = session_of(json.loads(meta.read_text())) if split else "main"
