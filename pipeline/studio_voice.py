@@ -59,13 +59,26 @@ def expander(a, thresh_db=-46, ratio=1.8, win=0.01):
     return (a * np.interp(np.arange(len(a)), np.arange(n) * hop + hop / 2, g)).astype(np.float32)
 
 
+def _floor_and_speech(a, win=0.03):
+    hop = int(SR * win); n = len(a) // hop
+    db = 20 * np.log10(np.sqrt((a[: n * hop].reshape(n, hop) ** 2).mean(1)) + 1e-9)
+    return float(np.percentile(db, 10)), float(np.percentile(db, 90))
+
+
 def studio(a, reverb=True):
+    """Studio chain that never makes the background louder relative to the voice: compression lifts quiet
+    parts (room noise too), so afterwards the noise between words is pulled back down to the line's
+    original voice-to-noise distance."""
     from .voice_clean import ffilter
+    from .match_voice import match_floor
     if reverb:
         a = dereverb(a)
+    f0, s0 = _floor_and_speech(a)
     a = ffilter(a, EQ + "," + COMP)
     a = saturate(a)
-    a = expander(a)
+    f1, s1 = _floor_and_speech(a)
+    target = s1 - (s0 - f0)                       # same speech-to-noise gap as before processing
+    a = match_floor(a, f1, target)
     return (a / (np.abs(a).max() + 1e-9) * 0.89).astype(np.float32)
 
 

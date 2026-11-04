@@ -68,6 +68,9 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   them") and fillers, so the normal split can't see them. `python -m pipeline.find_stumbles episodes/<slug>`
   re-transcribes verbatim and writes cut ranges; then `python -m pipeline.tighten_voice episodes/<slug>/voice
   --cuts .../_stumbles.json --words .../_verbatim.json`. Video 1 had restarts in 19 of 59 lines.
+- **Studio voice without AI** (`voice_style: studio` in scenes.yaml): WPE de-reverb (signal processing, no
+  model), broadcast EQ, two-stage compression, light saturation, expander. The creator doesn't want AI voice
+  enhancement. Biggest real upgrade is still the room: record in a closet full of clothes, phone ~15 cm away.
 - **Several sessions, one voice:** tag pick-up lines with `"session": "<name>"` in their json, save that
   session's room tone as `_roomtone_<name>.wav`, run `python -m pipeline.match_voice episodes/<slug>/voice`.
   Every line is leveled to -20 dB speech; other sessions get an EQ match and a noise-floor match to "main".

@@ -208,6 +208,17 @@ def _whisper_words(path: Path, text: str):
     return [(w.word.strip(), w.start, w.end) for s in segs for w in s.words]
 
 
+def _studio_on(voice_dir: Path) -> bool:
+    """scenes.yaml `voice_style: studio` (episode folder = VOICE_DIR's parent) or STUDIO_VOICE=1."""
+    if os.environ.get("STUDIO_VOICE") in ("0", "1"):
+        return os.environ["STUDIO_VOICE"] == "1"
+    try:
+        import yaml
+        return (yaml.safe_load((Path(voice_dir).parent / "scenes.yaml").read_text()) or {}).get("voice_style") == "studio"
+    except Exception:
+        return False
+
+
 def speak(text: str, cache_dir: Path, eng=None, line_id: str | None = None) -> Speech:
     eng = eng or default_engine()
     cache_dir.mkdir(parents=True, exist_ok=True)
@@ -233,11 +244,19 @@ def speak(text: str, cache_dir: Path, eng=None, line_id: str | None = None) -> S
             from .match_voice import apply_eq, level, match_floor, roomtone_path, session_of
             session = session_of(json.loads(meta.read_text())) if split else "main"
             rt = roomtone_path(eng.dir, session)            # each recording session uses its own room tone
-            audio = clean(load48(src), load48(rt) if rt.exists() else None, do_trim=not split)
+            studio = _studio_on(eng.dir)
+            raw = load48(src)
+            if studio:                                       # no-AI studio chain (pipeline/studio_voice.py)
+                from .studio_voice import dereverb
+                raw = dereverb(raw)                          # remove room echo before denoising
+            audio = clean(raw, load48(rt) if rt.exists() else None, do_trim=not split)
             mj = eng.dir / "_match.json"                    # EQ onto the main session's tone (match_voice.py)
             cfg = json.loads(mj.read_text()).get(session) if session != "main" and mj.exists() else None
             if cfg:
                 audio = apply_eq(audio, cfg)
+            if studio:
+                from .studio_voice import studio as studio_chain
+                audio = studio_chain(audio, reverb=False)   # broadcast EQ, compression, saturation, expander
             audio = level(audio)                            # same speech loudness for every line
             if cfg and "floor" in cfg:                      # same room-noise level between words
                 audio = match_floor(audio, cfg["floor"], cfg["target_floor"])
