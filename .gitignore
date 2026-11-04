@@ -4,3 +4,4 @@ episodes/*/out/
 episodes/*/assets/
 .voices/
 .cache/
+node_modules/

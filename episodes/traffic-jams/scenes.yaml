@@ -2,6 +2,7 @@
 # Scene duration = narration + padding (or min_duration). Sim time t0..t1 is
 # stretched over the scene; `anchor` pins a sim moment to a narration cue.
 music: curious
+engine: 3d          # 3d = Three.js tabletop stage; 2d = original skia renderer
 scenes:
   - id: cold-open
     chapter: Phantom traffic jams

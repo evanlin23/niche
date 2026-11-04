@@ -62,7 +62,7 @@ def build(scene_specs: list[dict], texts: dict[str, str], cache_dir: Path,
             if isinstance(lid, dict):            # inline text (used by shorts)
                 lid, text = lid["id"], lid["text"]
                 texts[lid] = text
-            sp: Speech = speak(texts[lid], cache_dir)
+            sp: Speech = speak(texts[lid], cache_dir, line_id=lid)
             words = [(w, cur + s, cur + e) for w, s, e in sp.words]
             sc.cues[lid] = Cue(lid, texts[lid], cur, cur + sp.duration, words)
             sc.speech.append((t + cur, sp))

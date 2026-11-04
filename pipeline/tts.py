@@ -1,10 +1,12 @@
 """Pluggable text-to-speech with caching and word timings.
 
 Engines:
-  piper       local, free (default). Voice auto-downloaded into .voices/
+  kokoro      local, free, natural (default). KOKORO_VOICE=am_michael|bm_george|...
+  recorded    your own voice: VOICE_DIR/<line id>.wav|m4a|mp3 (missing lines -> kokoro)
+  piper       local, free, more robotic. Voice auto-downloaded into .voices/
   elevenlabs  set ELEVENLABS_API_KEY (+ optional ELEVENLABS_VOICE_ID); returns
               character alignment, which we convert to exact word timings.
-Select with env TTS_ENGINE=piper|elevenlabs.
+Select with env TTS_ENGINE=kokoro|recorded|piper|elevenlabs.
 
 Word timings: ElevenLabs gives them exactly. For Piper we estimate from character
 counts within each line (good to ~0.1 s for captions); install faster-whisper and
@@ -96,6 +98,57 @@ class Piper:
         return None
 
 
+class Kokoro:
+    """Open-source Kokoro-82M (ONNX). Much more natural than Piper; free, local."""
+    name = "kokoro"
+
+    def __init__(self, voice=os.environ.get("KOKORO_VOICE", "am_michael"),
+                 speed=float(os.environ.get("KOKORO_SPEED", "0.95"))):
+        self.voice, self.speed = voice, speed
+        self.dir = ROOT / ".voices" / "kokoro"
+        self._k = None
+
+    def key(self) -> str:
+        return f"kokoro:{self.voice}:{self.speed}"
+
+    def ensure(self):
+        base = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/"
+        self.dir.mkdir(parents=True, exist_ok=True)
+        for f in ("kokoro-v1.0.onnx", "voices-v1.0.bin"):
+            if not (self.dir / f).exists():
+                urllib.request.urlretrieve(base + f, self.dir / f)
+
+    def synth(self, text: str, out: Path) -> None:
+        if self._k is None:
+            self.ensure()
+            from kokoro_onnx import Kokoro as K
+            self._k = K(str(self.dir / "kokoro-v1.0.onnx"), str(self.dir / "voices-v1.0.bin"))
+        lang = "en-gb" if self.voice.startswith("b") else "en-us"
+        audio, sr = self._k.create(text, voice=self.voice, speed=self.speed, lang=lang)
+        write_wav(out, np.asarray(audio, np.float32), sr)
+        return None
+
+
+class Recorded:
+    """Your own voice: one file per narration line, named <line id>.<wav|m4a|mp3>,
+    in VOICE_DIR (e.g. episodes/<slug>/voice). Missing lines fall back to Kokoro."""
+    name = "recorded"
+
+    def __init__(self):
+        self.dir = Path(os.environ.get("VOICE_DIR", "voice"))
+        self.fallback = Kokoro()
+
+    def find(self, line_id):
+        for ext in ("wav", "m4a", "mp3", "flac", "ogg"):
+            p = self.dir / f"{line_id}.{ext}"
+            if p.exists():
+                return p
+        return None
+
+    def key(self) -> str:
+        return f"recorded:{self.dir.resolve()}"
+
+
 class ElevenLabs:
     name = "elevenlabs"
 
@@ -134,8 +187,18 @@ class ElevenLabs:
 
 
 def engine():
-    name = os.environ.get("TTS_ENGINE", "piper")
-    return {"piper": Piper, "elevenlabs": ElevenLabs}[name]()
+    name = os.environ.get("TTS_ENGINE", "kokoro")
+    return {"piper": Piper, "kokoro": Kokoro, "recorded": Recorded, "elevenlabs": ElevenLabs}[name]()
+
+
+_ENGINE = None
+
+
+def default_engine():
+    global _ENGINE
+    if _ENGINE is None:
+        _ENGINE = engine()
+    return _ENGINE
 
 
 def _whisper_words(path: Path, text: str):
@@ -145,9 +208,20 @@ def _whisper_words(path: Path, text: str):
     return [(w.word.strip(), w.start, w.end) for s in segs for w in s.words]
 
 
-def speak(text: str, cache_dir: Path, eng=None) -> Speech:
-    eng = eng or engine()
+def speak(text: str, cache_dir: Path, eng=None, line_id: str | None = None) -> Speech:
+    eng = eng or default_engine()
     cache_dir.mkdir(parents=True, exist_ok=True)
+    if isinstance(eng, Recorded):
+        src = eng.find(line_id) if line_id else None
+        if src is None:
+            return speak(text, cache_dir, eng.fallback)
+        audio = trim_silence(read_wav(src), thr=0.02, keep=0.08)
+        audio = audio / (np.abs(audio).max() + 1e-9) * 0.9
+        if os.environ.get("TTS_ALIGN") == "whisper":
+            words = _whisper_words(src, text)
+        else:
+            words = estimate_words(text, len(audio) / SR)
+        return Speech(audio, words)
     h = hashlib.sha1((eng.key() + "|" + text).encode()).hexdigest()[:16]
     wav, meta = cache_dir / f"{h}.wav", cache_dir / f"{h}.json"
     if not (wav.exists() and meta.exists()):

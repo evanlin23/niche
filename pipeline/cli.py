@@ -32,6 +32,7 @@ class SceneCtx:
     ep_dir: Path
     captions: list = field(default_factory=list)   # [(start, end, text)] scene-relative
     hook: str | None = None       # shorts only
+    engine: str = "2d"            # "2d" (skia) or "3d" (Three.js tabletop stage)
 
     @property
     def params(self):
@@ -51,12 +52,26 @@ def load_scenes_module(ep_dir: Path):
     return mod
 
 
+def load_3d_module(ep_dir: Path):
+    path = ep_dir / "sim" / "scenes3d.py"
+    sys.path.insert(0, str(ROOT))
+    spec = importlib.util.spec_from_file_location(f"ep3d_{ep_dir.name.replace('-', '_')}", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
 def _render_job(job):
     ep_dir, ctx, out = job
-    mod = load_scenes_module(ep_dir)
-    fn = mod.SCENES[ctx.scene.render]
     t0 = time.time()
-    render.render_video(out, ctx.fmt, ctx.duration, fn(ctx))
+    if ctx.engine == "3d":
+        from . import render3d
+        spec = load_3d_module(ep_dir).build_spec(ctx)
+        render3d.render(spec, out, scale=ctx.fmt.scale)
+    else:
+        mod = load_scenes_module(ep_dir)
+        fn = mod.SCENES[ctx.scene.render]
+        render.render_video(out, ctx.fmt, ctx.duration, fn(ctx))
     return f"{ctx.scene.id}: {ctx.duration:.1f}s video in {time.time() - t0:.0f}s"
 
 
@@ -86,6 +101,8 @@ def cmd_episode(slug, preview=False, jobs=3, only=None):
     total = sum(s.duration for s in scenes)
     print(f"[{slug}] {len(scenes)} scenes, {total / 60:.1f} min", flush=True)
     fmt = render.preview(LONG) if preview else LONG
+    if spec.get("engine") == "3d":
+        fmt = Format("long", 1920, 1080, 30, 1 / 3 if preview else 1.0)
     caps_abs = caption_chunks(scenes, max_words=12, max_chars=80)
     parts, todo = [], []
     for i, sc in enumerate(scenes):
@@ -94,7 +111,7 @@ def cmd_episode(slug, preview=False, jobs=3, only=None):
         if only and sc.id not in only:
             continue
         caps = [(s - sc.start, e - sc.start, t) for s, e, t in caps_abs if sc.start <= s < sc.start + sc.duration]
-        todo.append((ep, SceneCtx(_strip(sc), fmt, ep, caps), p))
+        todo.append((ep, SceneCtx(_strip(sc), fmt, ep, caps, engine=spec.get("engine", "2d")), p))
     _run_jobs(todo, jobs)
     if only:
         return
@@ -118,7 +135,10 @@ def cmd_shorts(slug, preview=False, jobs=3, only=None):
     cache = ROOT / ".cache" / "tts"
     spec = load_yaml(ep / "shorts.yaml")
     meta = load_yaml(ep / "meta.yaml")
+    engine = load_yaml(ep / "scenes.yaml").get("engine", "2d")
     fmt = render.preview(SHORT) if preview else SHORT
+    if engine == "3d":
+        fmt = Format("short", 1080, 1920, 30, 1 / 3 if preview else 1.0)
     built = []
     for sh in spec["shorts"]:
         if only and sh["id"] not in only:
@@ -126,7 +146,7 @@ def cmd_shorts(slug, preview=False, jobs=3, only=None):
         scenes = build([{**sh, "id": sh["id"]}], {}, cache, line_gap=0.25, default_pad=(0.15, 1.2))
         sc = scenes[0]
         caps = caption_chunks(scenes, max_words=4, max_chars=24, absolute=False)
-        built.append((sh, scenes, (ep, SceneCtx(_strip(sc), fmt, ep, caps, sh.get("hook")), out / f"{sh['id']}-noaudio.mp4")))
+        built.append((sh, scenes, (ep, SceneCtx(_strip(sc), fmt, ep, caps, sh.get("hook"), engine), out / f"{sh['id']}-noaudio.mp4")))
     _run_jobs([b[2] for b in built], jobs)
     for sh, scenes, job in built:
         dur = scenes[0].duration
@@ -141,10 +161,14 @@ def cmd_shorts(slug, preview=False, jobs=3, only=None):
 
 def cmd_thumb(slug):
     ep = ROOT / "episodes" / slug
-    mod = load_scenes_module(ep)
     out = ep / "out" / "final"
     out.mkdir(parents=True, exist_ok=True)
-    p = render.render_still(out / "thumbnail.png", 1280, 720, mod.thumbnail)
+    if load_yaml(ep / "scenes.yaml").get("engine", "2d") == "3d":
+        from . import render3d
+        p = render3d.render(load_3d_module(ep).thumbnail_spec(), out / "thumbnail.png", scale=2 / 3, png_frame=0)
+    else:
+        mod = load_scenes_module(ep)
+        p = render.render_still(out / "thumbnail.png", 1280, 720, mod.thumbnail)
     print("wrote", p)
 
 

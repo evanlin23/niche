@@ -1,0 +1,11 @@
+{
+  "name": "i-simulated-it",
+  "private": true,
+  "description": "3D stage (Three.js) rendered frame-by-frame in headless Chromium",
+  "dependencies": {
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}
