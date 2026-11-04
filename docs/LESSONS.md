@@ -188,7 +188,7 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 ## Working with the creator
 - Always give times in **US Central time** (CST/CDT), never UTC.
 - They want autonomy: make the production decisions (studio sound, pacing, cuts) and explain briefly.
-- No AI voice enhancement. Signal processing only.
+- Voice: they first wanted signal processing only, then compared and chose AI enhancement ("AI full", Resemble Enhance). Use `voice_style: ai`.
 - Plan ~14 episodes ahead; research + build in parallel with docs/agent-prompts/game-research-and-sim.md
   (give that agent its own branch).
 
