@@ -174,11 +174,16 @@ Alternates if one fails a check: Solitaire (Klondike), Backgammon, Rummikub, Spa
    *Unverified:* the sheet marks double-12 as 4+ players only; the 50-point double-blank appears only in its Chickenfoot section.
 14. **Cribbage**: American Cribbage Congress rulebook (2025) https://www.cribbage.org/NewSite/rules/rulebook_2025.pdf . Complete.
 
-### Where things stand
-- **Phase 10** (planned #1 before the creator moved the household names first): Go engine `sims/phase10`, rule tests
-  (phase detector checked against a brute-force solver), mirror check (4 equal bots: 24.6-25.5% per seat) and the
-  engine check (deal odds for all ten Phases match exact combinatorics within 0.01 points) are done and committed.
+### Where things stand (2026-11-04, end of session)
+- **Built and simulated (plan 1-3):** Sorry! (1,006,250,000 games, Actions run 41872745692), Checkers
+  (1,022,544,000 games, run 41874542377), Gin Rummy (1,008,000,000 full games to 100 = 10.2 billion hands, run 41875817486).
+  Each has RULES.md, a Go engine with rule tests in sims/<slug>, experiments.py, merged data/results.json and a
+  lint-clean script.md draft. Engine checks and mirror checks are recorded in each data file.
+- **Phase 10** (was planned #1 before the creator moved the household names first): Go engine `sims/phase10`, rule
+  tests (phase detector checked against a brute-force solver), mirror check (4 equal bots: 24.6-25.5% per seat) and
+  the engine check (deal odds for all ten Phases match exact combinatorics within 0.01 points) are done and committed.
   Pilot: never taking from the discard pile wins 3.6% at a 4-player table (fair share 25%); waiting for someone else
   to lay down first 21.6%; not hitting on other players' Phases 17.2%. In-game, Phase 7 (two sets of four) is the
   least often completed. Big run and script are parked until its slot.
-- Builds now in progress, in order: Sorry!, Checkers, Gin Rummy.
+- Findings that changed the plan: in Checkers the forced-jump rule doesn't have one simple effect (more draws without
+  it for casual players, fewer for stronger ones); in Gin Rummy the knock-or-wait answer flips with the undercut bonus.
