@@ -11,13 +11,55 @@ from .timeline import Scene
 from .tts import SR, write_wav
 
 
+def _room_bed(n: int, level_db: float) -> np.ndarray | None:
+    """Continuous room tone for the gaps between lines (cleaned like the voice, at the lines' own floor level)."""
+    import os
+    vd = Path(os.environ.get("VOICE_DIR", ""))
+    rt = vd / "_roomtone.wav"
+    if not os.environ.get("VOICE_DIR") or not rt.exists():
+        return None
+    from .voice_clean import clean, load
+    r = clean(load(rt), load(rt), do_trim=False)
+    r = r[np.abs(r) > 1e-7]
+    if len(r) < SR // 4:
+        return None
+    # loop with crossfades so the bed has no seams
+    seg, xf = len(r), int(0.05 * SR)
+    out = np.zeros(n + seg, np.float32); pos = 0
+    ramp = np.linspace(0, 1, xf, dtype=np.float32)
+    while pos < n:
+        piece = r.copy(); piece[:xf] *= ramp; piece[-xf:] *= ramp[::-1]
+        out[pos:pos + seg] += piece; pos += seg - xf
+    out = out[:n]
+    rms = np.sqrt(np.mean(out ** 2)) + 1e-12
+    return (out * (10 ** (level_db / 20) / rms)).astype(np.float32)
+
+
 def narration_track(scenes: list[Scene], duration: float) -> np.ndarray:
-    out = np.zeros(int(duration * SR) + SR, np.float32)
+    """All narration lines on the timeline. Gaps between lines get a continuous room-tone bed at the lines' own
+    background level: pure digital silence between lines sounds like the audio dropping out."""
+    n = int(duration * SR)
+    out = np.zeros(n + SR, np.float32)
+    cover = np.zeros(n + SR, np.float32)
+    floors = []
     for sc in scenes:
         for t0, sp in sc.speech:
             i = int(t0 * SR)
-            out[i:i + len(sp.audio)] += sp.audio[: len(out) - i]
-    return out[: int(duration * SR)]
+            a = sp.audio[: len(out) - i]
+            out[i:i + len(a)] += a
+            cover[i:i + len(a)] = 1.0
+            if len(a) > SR // 2:
+                hop = 480; m = len(a) // hop
+                db = 20 * np.log10(np.sqrt((a[: m * hop].reshape(m, hop) ** 2).mean(1)) + 1e-9)
+                floors.append(np.percentile(db, 10))
+    out, cover = out[:n], cover[:n]
+    if floors:
+        bed = _room_bed(n, float(np.median(floors)) - 3.0)   # a touch under the lines' floor
+        if bed is not None:
+            k = int(0.04 * SR)                                # 40 ms fades at line edges
+            c = np.convolve(cover, np.ones(k, np.float32) / k, mode="same")
+            out = out + bed * (1.0 - np.clip(c, 0, 1))
+    return out
 
 
 def _smooth(x: np.ndarray, sec: float) -> np.ndarray:

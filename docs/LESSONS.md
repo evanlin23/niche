@@ -99,6 +99,9 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - **Repeats are cut upstream, by hand-checked ranges** in `_stumbles.json` (Whisper hides many repeats even in
   verbatim mode; the aligner finds them as "speech outside the script words"). The QA step only blanks noises
   and protects anything that sounds like words; an automatic repeat cut once nearly deleted real content.
+- **Room tone under the gaps.** The narration track used to be pure silence between lines; each line carries its
+  own faint room noise, so the background cut out at every line end (heard as dropouts at 3:13, 5:40).
+  `compose.narration_track` now lays a seamless room-tone bed under the gaps at the lines' own level.
 - **Never insert digital silence.** The splitter put 0.12 s of zeros at every splice (14 lines) and the room-tone
   file had a zero run: next to speech that is an audible dropout. Splices and fills use real room tone; the
   final check fails any 10 ms of exact zeros.
