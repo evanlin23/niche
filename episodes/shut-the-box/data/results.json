@@ -1,0 +1,318 @@
+{
+ "games_per_test": 1000000,
+ "variants": {
+  "9_any": {
+   "games_per_strategy": 1000000,
+   "mode": "any",
+   "one_die": false,
+   "perfect_low_score_exact_left": 11.15750844420262,
+   "perfect_shut_exact": 0.07143162230560596,
+   "strategies": {
+    "biggest tile first": {
+     "left_exact": 11.3732550461735,
+     "left_sim": 11.369633,
+     "shut_exact": 0.06958293019396006,
+     "shut_sim": 0.069819
+    },
+    "fewest tiles": {
+     "left_exact": 11.323146869747474,
+     "left_sim": 11.319617,
+     "shut_exact": 0.06999227781311801,
+     "shut_sim": 0.070259
+    },
+    "most tiles": {
+     "left_exact": 24.150250201068644,
+     "left_sim": 24.144424,
+     "shut_exact": 0.01040747945707533,
+     "shut_sim": 0.010507
+    },
+    "perfect (low score)": {
+     "left_exact": 11.15750844420262,
+     "left_sim": 11.153802,
+     "shut_exact": 0.07088853227853871,
+     "shut_sim": 0.071176
+    },
+    "perfect (shut)": {
+     "left_exact": 11.201532531587436,
+     "left_sim": 11.199519,
+     "shut_exact": 0.07143162230560596,
+     "shut_sim": 0.071587
+    },
+    "random": {
+     "left_exact": 20.418812228185022,
+     "left_sim": 20.427277,
+     "shut_exact": 0.020393495598722222,
+     "shut_sim": 0.020309
+    },
+    "smallest tiles first": {
+     "left_exact": 24.088065350392554,
+     "left_sim": 24.090176,
+     "shut_exact": 0.010475883802290658,
+     "shut_sim": 0.010588
+    }
+   },
+   "tiles": 9
+  },
+  "9_any_onedie": {
+   "games_per_strategy": 1000000,
+   "mode": "any",
+   "one_die": true,
+   "perfect_low_score_exact_left": 11.663174265220709,
+   "perfect_shut_exact": 0.0742227526458984,
+   "strategies": {
+    "biggest tile first": {
+     "left_exact": 12.268294021617375,
+     "left_sim": 12.272145,
+     "shut_exact": 0.055633717302964666,
+     "shut_sim": 0.055293
+    },
+    "fewest tiles": {
+     "left_exact": 12.216977231112551,
+     "left_sim": 12.222871,
+     "shut_exact": 0.05645395538935907,
+     "shut_sim": 0.056292
+    },
+    "most tiles": {
+     "left_exact": 24.147268358521583,
+     "left_sim": 24.146279,
+     "shut_exact": 0.010883352365270748,
+     "shut_sim": 0.01091
+    },
+    "perfect (low score)": {
+     "left_exact": 11.663174265220709,
+     "left_sim": 11.660666,
+     "shut_exact": 0.06948030134450092,
+     "shut_sim": 0.069397
+    },
+    "perfect (shut)": {
+     "left_exact": 12.091053073842001,
+     "left_sim": 12.085513,
+     "shut_exact": 0.0742227526458984,
+     "shut_sim": 0.074509
+    },
+    "random": {
+     "left_exact": 20.443368141854812,
+     "left_sim": 20.452505,
+     "shut_exact": 0.020785594390184268,
+     "shut_sim": 0.020709
+    },
+    "smallest tiles first": {
+     "left_exact": 24.085254710590448,
+     "left_sim": 24.077953,
+     "shut_exact": 0.010945453880542088,
+     "shut_sim": 0.010858
+    }
+   },
+   "tiles": 9
+  },
+  "9_sumsplit": {
+   "games_per_strategy": 1000000,
+   "mode": "sumsplit",
+   "one_die": false,
+   "perfect_low_score_exact_left": 24.630698309836667,
+   "perfect_shut_exact": 0.00510382429339101,
+   "strategies": {
+    "biggest tile first": {
+     "left_exact": 24.710593498678584,
+     "left_sim": 24.72013,
+     "shut_exact": 0.0031421301157293705,
+     "shut_sim": 0.003106
+    },
+    "fewest tiles": {
+     "left_exact": 24.710593498678584,
+     "left_sim": 24.72013,
+     "shut_exact": 0.0031421301157293705,
+     "shut_sim": 0.003106
+    },
+    "most tiles": {
+     "left_exact": 27.503222326018548,
+     "left_sim": 27.515059,
+     "shut_exact": 0.0031084311067865653,
+     "shut_sim": 0.003122
+    },
+    "perfect (low score)": {
+     "left_exact": 24.630698309836667,
+     "left_sim": 24.6433,
+     "shut_exact": 0.0037725865454130638,
+     "shut_sim": 0.003729
+    },
+    "perfect (shut)": {
+     "left_exact": 25.110397257264193,
+     "left_sim": 25.116382,
+     "shut_exact": 0.00510382429339101,
+     "shut_sim": 0.005078
+    },
+    "random": {
+     "left_exact": 26.318560398563275,
+     "left_sim": 26.330812,
+     "shut_exact": 0.003168312391650201,
+     "shut_sim": 0.003166
+    },
+    "smallest tiles first": {
+     "left_exact": 27.503222326018548,
+     "left_sim": 27.515059,
+     "shut_exact": 0.0031084311067865653,
+     "shut_sim": 0.003122
+    }
+   },
+   "tiles": 9
+  },
+  "9_sumsplit_onedie": {
+   "games_per_strategy": 1000000,
+   "mode": "sumsplit",
+   "one_die": true,
+   "perfect_low_score_exact_left": 24.63040646816194,
+   "perfect_shut_exact": 0.00532874691633561,
+   "strategies": {
+    "biggest tile first": {
+     "left_exact": 24.7035574254127,
+     "left_sim": 24.704499,
+     "shut_exact": 0.003995107758904562,
+     "shut_sim": 0.004063
+    },
+    "fewest tiles": {
+     "left_exact": 24.7035574254127,
+     "left_sim": 24.704499,
+     "shut_exact": 0.003995107758904562,
+     "shut_sim": 0.004063
+    },
+    "most tiles": {
+     "left_exact": 27.49740603002835,
+     "left_sim": 27.497466,
+     "shut_exact": 0.0036268907948692687,
+     "shut_sim": 0.003575
+    },
+    "perfect (low score)": {
+     "left_exact": 24.63040646816194,
+     "left_sim": 24.628972,
+     "shut_exact": 0.004457519803381191,
+     "shut_sim": 0.004461
+    },
+    "perfect (shut)": {
+     "left_exact": 25.13339459580409,
+     "left_sim": 25.140489,
+     "shut_exact": 0.00532874691633561,
+     "shut_sim": 0.005345
+    },
+    "random": {
+     "left_exact": 26.311068950978715,
+     "left_sim": 26.322419,
+     "shut_exact": 0.0037744538104870257,
+     "shut_sim": 0.003686
+    },
+    "smallest tiles first": {
+     "left_exact": 27.49740603002835,
+     "left_sim": 27.497466,
+     "shut_exact": 0.0036268907948692687,
+     "shut_sim": 0.003575
+    }
+   },
+   "tiles": 9
+  },
+  "12_any": {
+   "games_per_strategy": 1000000,
+   "mode": "any",
+   "one_die": false,
+   "perfect_low_score_exact_left": 35.08142065292144,
+   "perfect_shut_exact": 0.003622181136078962,
+   "strategies": {
+    "biggest tile first": {
+     "left_exact": 35.34956319236059,
+     "left_sim": 35.355639,
+     "shut_exact": 0.0034503811791500765,
+     "shut_sim": 0.00347
+    },
+    "fewest tiles": {
+     "left_exact": 35.343822787977246,
+     "left_sim": 35.349797,
+     "shut_exact": 0.0034562584392393925,
+     "shut_sim": 0.003483
+    },
+    "most tiles": {
+     "left_exact": 53.90645843176518,
+     "left_sim": 53.895887,
+     "shut_exact": 0.00012386155906312401,
+     "shut_sim": 0.000127
+    },
+    "perfect (low score)": {
+     "left_exact": 35.08142065292144,
+     "left_sim": 35.086957,
+     "shut_exact": 0.0035637097436509264,
+     "shut_sim": 0.003698
+    },
+    "perfect (shut)": {
+     "left_exact": 35.24206708324699,
+     "left_sim": 35.243879,
+     "shut_exact": 0.003622181136078962,
+     "shut_sim": 0.003719
+    },
+    "random": {
+     "left_exact": 49.70166789764985,
+     "left_sim": 49.701581,
+     "shut_exact": 0.0002465725822783025,
+     "shut_sim": 0.000233
+    },
+    "smallest tiles first": {
+     "left_exact": 53.66674083439812,
+     "left_sim": 53.674758,
+     "shut_exact": 0.00013470848913853858,
+     "shut_sim": 0.000134
+    }
+   },
+   "tiles": 12
+  },
+  "12_sumsplit": {
+   "games_per_strategy": 1000000,
+   "mode": "sumsplit",
+   "one_die": false,
+   "perfect_low_score_exact_left": 44.59190144110774,
+   "perfect_shut_exact": 0.0003486650551024922,
+   "strategies": {
+    "biggest tile first": {
+     "left_exact": 44.6043880130234,
+     "left_sim": 44.614662,
+     "shut_exact": 0.0002504875113629442,
+     "shut_sim": 0.000263
+    },
+    "fewest tiles": {
+     "left_exact": 44.6043880130234,
+     "left_sim": 44.614662,
+     "shut_exact": 0.0002504875113629442,
+     "shut_sim": 0.000263
+    },
+    "most tiles": {
+     "left_exact": 50.866611721701176,
+     "left_sim": 50.87231,
+     "shut_exact": 0.00015004773671153392,
+     "shut_sim": 0.000152
+    },
+    "perfect (low score)": {
+     "left_exact": 44.59190144110774,
+     "left_sim": 44.597265,
+     "shut_exact": 0.00026573794991497447,
+     "shut_sim": 0.000277
+    },
+    "perfect (shut)": {
+     "left_exact": 46.210532777687064,
+     "left_sim": 46.213404,
+     "shut_exact": 0.0003486650551024922,
+     "shut_sim": 0.000365
+    },
+    "random": {
+     "left_exact": 48.47052772792105,
+     "left_sim": 48.468418,
+     "shut_exact": 0.00018542491249710303,
+     "shut_sim": 0.00016
+    },
+    "smallest tiles first": {
+     "left_exact": 50.866611721701176,
+     "left_sim": 50.87231,
+     "shut_exact": 0.00015004773671153392,
+     "shut_sim": 0.000152
+    }
+   },
+   "tiles": 12
+  }
+ },
+ "tests": 42
+}
