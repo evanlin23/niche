@@ -1,0 +1,150 @@
+TOMORROW NIGHT'S RECORDING SESSION
+
+Do one recording per episode (three files). Same routine as last time:
+- Pixel Recorder, phone ~15-20 cm away, quiet spot away from windows.
+- Each file: 10 seconds of silence first, then read top to bottom, 1-2 s pause between lines.
+- Mess up? Pause and redo the whole sentence. The last take wins.
+- Say 'percent' clearly. Slow down on the punchlines (the lines in CAPS-heavy sections like the verdicts).
+- Take a water break between episodes. Name/send the files in any order; I match them automatically.
+- Re-word anything that doesn't sound like you. I'll update the captions to match what you said.
+
+========================================================================
+EPISODE 2 — UNO HOUSE RULES   (~1037 words, about 5.5 min at your pace)
+========================================================================
+
+COLD OPEN
+[o1]  Every family plays Uno a little differently.
+[o2]  Somebody stacks their plus twos. Somebody swaps hands on a seven. Somebody makes you keep drawing until you can play. And somebody always says that's not a real rule.
+[o3]  So I took every house rule I could find, gave them to bots, and played billions of rounds of Uno.
+[o4]  One of those rules makes the average round seventy five percent longer. And one round in ten turns into a marathon of more than a hundred and seventy turns.
+THE GAME IN TEN SECONDS
+[g1]  Quick refresher. Match the top card by color or number, or play a Wild. Action cards skip people, reverse direction, or make them draw. First one out of cards wins the round.
+CAN YOU TRUST IT
+[c1]  My version follows the official rule sheet that comes in the box today. A hundred and twelve cards, including the new Wild Shuffle Hands card and three blank Wilds.
+[c2]  And here's the first surprise. According to that rule sheet, you can't stack plus twos. And when you can't play, you draw one card. Not until you find one.
+[c3]  To check the engine, I compared it with plain math. The chance your opening hand has at least one Wild is fifty five point eight percent. Over ten million deals, my engine says the same, to a tenth of a percent.
+[c4]  Confession. The first time I ran that check, it was off. I had been looking at hands after the first card was flipped, and a Draw Two or a Shuffle Hands had already changed them. So the check caught a bug in the check.
+[c5]  One limitation. My bots never forget to say Uno, and they never argue about the rules. Hold onto that one.
+MEET THE HOUSE RULES
+[r1]  Here are the rules I tested, one at a time, against the official game.
+[r2]  Stacking, where you can answer a plus two with a plus two and pass the pile along. Seven Zero, where a seven swaps hands and a zero rotates everyone's hands. Jump In, where anyone holding the exact same card can play it out of turn.
+[r3]  Draw until you can play. Forced play, where you have to play if you can. And the free plus four, with no color rule and no challenges.
+THE RESULTS
+[x1]  Under the official rules, a round of four players takes about forty seven turns.
+[x2]  Jump In makes rounds shorter, about six percent. Stacking, Seven Zero and the free plus four each add a few turns. Forced play changes nothing at all, because almost everybody already plays when they can.
+[x3]  And then there's draw until you can play. Eighty two turns on average. Seventy five percent longer.
+[x4]  The average isn't even the worst part. With the official rules, one round in ten goes past seventy six turns. With draw until you can play, one in ten goes past a hundred and seventy.
+[x5]  Here's why. Under the official rules, the table draws about twenty five cards in a round. With draw until you can play, it draws seventy three. Nearly three times as many. Hands grow instead of shrinking, and everyone drifts further from Uno. That's the rule that breaks the game.
+STACKING
+[s1]  What about stacking? Everyone remembers the round where somebody got hit with sixteen cards.
+[s2]  It's rarer than it feels. With plus twos stacking on plus twos, only about one round in a hundred has anyone draw ten or more at once. Let plus fours join the stack, and it's still under one in twenty.
+[s3]  It makes great stories. It barely changes the game.
+SEVEN ZERO
+[z1]  Seven Zero is the sneaky one.
+[z2]  Under the official rules, the player who goes first wins almost twenty seven percent of four player rounds. A fair share is twenty five. With Seven Zero, that edge disappears completely.
+[z3]  It also cuts how much skill matters. My best bot's edge over a normal player shrinks by more than half. My guess is that when your hand can be taken from you, planning ahead stops paying off.
+EVERYTHING AT ONCE
+[a1]  Of course, some families play with all of these rules at the same time.
+[a2]  Stacking, Seven Zero, Jump In, draw until you can play, and the free plus four, all together. Eighty six turns a round on average. And six rounds in a hundred, somebody draws ten or more cards in one go.
+TWO PLAYERS
+[t1]  If you mostly play one on one, a couple of things change.
+[t2]  The player who goes first wins fifty one and a half percent of the time. And Seven Zero is even harsher. My best bot goes from fifty four percent to barely over fifty. With two players, Seven Zero just hands your cards to the only other person at the table.
+SO CAN YOU ACTUALLY GET GOOD AT UNO?
+[k1]  Which raises the uncomfortable question. Can you actually get good at Uno?
+[k2]  I gave my best bot every habit that helped. Against three normal players, it wins twenty nine percent of rounds. A fair share is twenty five.
+[k3]  That's a real edge, but it's small. Uno is mostly luck. Which is probably why everyone is willing to play it.
+THE HABITS THAT HELP
+[h1]  Still, if you want those extra four points, almost all of them come from one habit.
+[h2]  Hold your Wilds. Don't play a Wild while you have another card you can play. That alone takes you from twenty five percent to twenty nine.
+[h3]  And when you do play a Wild, pick the color you hold the most of. Picking a color at random drops you to twenty two and a half.
+[h4]  Some things people argue about barely matter. Challenging a plus four, bluffing one, or saving your attack cards for someone close to winning. All within about half a point.
+[h5]  One that backfires. Dumping your high point cards early feels smart, but it lowers your chance of winning the round.
+THE RECIPE
+[w1]  So here's the house rule verdict.
+[w2]  If you want shorter, punchier rounds, add Jump In. If you want chaos stories, add stacking. If you want luck to decide more of the game, add Seven Zero.
+[w3]  And never, ever play draw until you can play. Unless you really like drawing cards.
+CLOSE
+[e1]  Remember the one thing my bots never do? Argue about the rules. Which might be the real reason Uno takes forever at your house.
+[e2]  Next, I'm finding out how to beat your friends at Connect Four. Tell me your opening move.
+
+========================================================================
+EPISODE 3 — CONNECT 4   (~619 words, about 3.3 min at your pace)
+========================================================================
+
+COLD OPEN
+[o1]  Connect Four was solved in 1988. A computer worked out that the first player can always win, if they start in the middle and never make a mistake.
+[o2]  That's no help at all when you're playing your little brother. You can't memorize a solution with trillions of positions.
+[o3]  So I built bots that play like people, from complete beginners to pretty sharp players, and had them play millions of games against each other.
+[o4]  Here's the headline. One simple habit beats a beginner ninety six games out of a hundred. And looking just two moves ahead beats a careful player more than eight times in ten.
+CAN YOU TRUST IT
+[c1]  First, the engine. It plays on the standard seven by six grid, drops discs exactly like the real thing, and checks every row, column and diagonal for four in a row.
+[c2]  To make sure it understands the game, I gave it the hardest test there is. Solving the whole thing from an empty board. It found the same answer as the 1988 proof. Start in the middle and you can force a win. Start one column over and the best you can do is a draw. Start anywhere else and you lose.
+[c3]  Confession: that one check took longer to run than every other experiment in this video combined.
+THE LADDER
+[l1]  Now the bots. Each one adds a single habit to the one before it.
+[l2]  The Beginner drops discs at random. The Blocker takes a win when it sees one, and blocks yours. That one habit beats the Beginner ninety six percent of the time.
+[l3]  If you only remember one thing from this video, it's this. Before every move, check for a four you can finish, and a four they can finish.
+HABIT TWO: THE MIDDLE
+[m1]  The second habit is the middle.
+[m2]  There are more ways to make four through the middle column than through any other. So the next bot plays toward the center whenever it can.
+[m3]  Against the Blocker, it wins sixty eight percent of games. Same reflexes, just better aim.
+HABIT THREE: DON'T SET THEM UP
+[s1]  Habit three is the sneaky one. Never play directly underneath a spot where your opponent could win.
+[s2]  If you fill the square below their winning square, you just handed them the next move. The Careful bot never does that, and it beats the center bot sixty one percent of the time.
+HABIT FOUR: TWO MOVES AHEAD
+[t1]  The fourth habit is the big one. Look two moves ahead. For each move you could make, ask what your opponent would do next.
+[t2]  That bot beats the Careful bot eighty four percent of the time.
+[t3]  And here's the surprise. Looking four or six moves ahead, with only a rough sense of what a good position looks like, didn't reliably beat looking two. My guess is that past a point, it's not about how far you look. It's about knowing what you're looking for.
+GOING FIRST
+[f1]  What about going first? With perfect play, it's a guaranteed win. With real people, it's a nudge.
+[f2]  Between two players who use the middle, the first player wins fifty three percent of games and the second wins forty three. The rest are draws.
+[f3]  And where you start matters, even for normal players. Opening in the middle column wins forty nine percent of games for the first player. Opening on an edge, under thirty nine.
+THE RECIPE
+[w1]  So here's how to beat your friends at Connect Four.
+[w2]  Check for wins and blocks every single move. Play toward the middle. Never fill the square under their winning spot. And before you drop a disc, ask what they'll do next.
+[w3]  And if you get to go first, start in the middle. The computer from 1988 would approve.
+CLOSE
+[e1]  Which game should I simulate next? Tell me in the comments, and tell me the house rule your family swears by.
+
+========================================================================
+EPISODE 4 — SHUT THE BOX   (~719 words, about 3.8 min at your pace)
+========================================================================
+
+COLD OPEN
+[o1]  Shut the Box is the pub game with the wooden tiles, numbered one to nine. Roll two dice, flip down tiles that add up to your roll, and try to flip them all.
+[o2]  Everyone who plays it has a system. Take the big tiles first. Take as many tiles as you can. Just go with your gut.
+[o3]  So I solved it. Every possible board, every possible roll. Then I had bots play billions of games to make sure the math holds up.
+[o4]  Here's the headline. Played perfectly, you shut the box about one game in fourteen. But there's a popular house rule that makes it fourteen times harder. Even for perfect play.
+THE RULES IN TEN SECONDS
+[g1]  Quick rules. You roll two dice. You flip down any open tiles that add up to the total. If you can't, your turn is over, and the tiles still standing are your score. Shut them all, and you win outright.
+CAN YOU TRUST IT
+[c1]  Shut the Box is small enough to solve exactly. Nine tiles means only five hundred and twelve possible boards. For each one, the computer checks every roll and every move, and works out which choice gives you the best chance.
+[c2]  Then I replayed billions of games with the perfect strategy, rolling real random dice. Perfect play shut the box seven point one four percent of the time on paper. In the simulation, seven point one five.
+[c3]  Confession. The first time I checked my random player, the math and the simulation disagreed. My exact calculation had frozen one random choice per board instead of averaging over all of them. Fixed, they now agree to a hundredth of a percent.
+THE SYSTEMS
+[s1]  So let's test the systems people actually use.
+[s2]  The Big Spender always takes the biggest tile it can. The Minimalist flips as few tiles as possible. The Sweeper flips as many as possible, cleaning up the small ones first. And the Coin Flipper just picks any legal move.
+[s3]  The Big Spender shuts the box six point nine six percent of the time. Perfect play is seven point one four. That's ninety eight percent as good as a computer that knows every board.
+[s4]  The Minimalist is right there too, at seven percent. The Coin Flipper manages two.
+[s5]  And the Sweeper? One percent. Almost seven times worse than the Big Spender. Flipping lots of small tiles feels productive. My guess is that you need those small tiles at the end, when only small totals are left.
+THE HOUSE RULE
+[h1]  Now the house rule. In a lot of homes, you can't flip any combination you like. You can flip one tile that matches the total, or the two tiles that match each die. Sum or split. Nothing else.
+[h2]  That rule changes everything. Even perfect play only shuts the box half a percent of the time. About one game in two hundred.
+[h3]  And strategy barely matters anymore. The Big Spender, the Sweeper and the Coin Flipper all land within a few hundredths of a percent of each other. With sum or split, Shut the Box is basically a lottery.
+TWELVE TILES
+[t1]  Some boxes go up to twelve.
+[t2]  With any combination allowed, perfect play shuts a twelve tile box about once in two hundred and eighty games. With sum or split, about once in three thousand. You could play every day for years and never see it.
+THE ONE DIE RULE
+[d1]  One more common rule. Once the seven, eight and nine are down, you roll just one die.
+[d2]  For perfect play, that helps a little. Seven point four two percent instead of seven point one four.
+[d3]  But for the Big Spender, it hurts. It drops to five and a half. My guess is that the one die rule rewards a slightly different plan, and the simple habit doesn't adjust.
+PLAYING FOR POINTS
+[p1]  Plenty of tables don't play for the shut. They add up the tiles left standing, and the lowest score wins.
+[p2]  Same lesson. Perfect play leaves about eleven points on average. The Big Spender, about eleven and a half. The Sweeper leaves twenty four.
+THE RECIPE
+[w1]  So here's how to play Shut the Box.
+[w2]  Take the biggest tile you can, every time. Don't spend your small tiles early. And if your family plays sum or split, stop worrying about strategy, because you're mostly playing the dice.
+CLOSE
+[e1]  Next, more games your family argues about.
+[e2]  And tell me which rule your family uses. Any combination, or sum or split?
+
