@@ -391,6 +391,8 @@ SCENES.statement = async (stage, spec) => {
     for (const m of meshes) {
       const k = ease((t - m.userData.at) / 0.45);
       m.material.forEach((mt) => (mt.opacity = k));
+      // hidden lines must not cast shadows (they showed up as dark ghost words before the line appeared)
+      m.visible = k > 0.001; m.castShadow = k > 0.6;
       m.position.set(0, (1 - k) * 1.4, m.userData.z0 + size * 0.5);   // drops onto the floor
       m.rotation.x = -Math.PI / 2 + (1 - k) * 0.25;
     }

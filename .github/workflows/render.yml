@@ -15,6 +15,9 @@ on:
       tts_engine:
         description: kokoro (AI voice) or recorded (episodes/<slug>/voice/*)
         default: kokoro
+      only:
+        description: Optional space-separated scene ids to re-render (skips assembly; assemble locally)
+        default: ""
 
 concurrency:
   group: render-${{ inputs.slug }}
@@ -24,6 +27,7 @@ env:
   SLUG: ${{ inputs.slug }}
   RENDER_SSAA: ${{ inputs.ssaa }}
   TTS_ENGINE: ${{ inputs.tts_engine }}
+  ONLY: ${{ inputs.only }}
   VOICE_DIR: episodes/${{ inputs.slug }}/voice
   PYTHONUNBUFFERED: "1"
 
@@ -53,8 +57,11 @@ jobs:
           from pipeline.timeline import build, parse_script, load_yaml
           ep = Path("episodes") / os.environ["SLUG"]
           sc = build(load_yaml(ep / "scenes.yaml")["scenes"], parse_script(ep / "script.md"), Path(".cache/tts"))
+          only = set(os.environ.get("ONLY", "").split())
           jobs = []
-          for s in sc:                       # ~10 s of video per runner so no single scene holds up the run
+          for s in sc:
+              if only and s.id not in only:
+                  continue                       # ~10 s of video per runner so no single scene holds up the run
               n = max(1, round(s.duration / 10))
               jobs += [f"{s.id}:{k}/{n}" for k in range(n)]
           print("scenes=" + json.dumps(jobs))
@@ -91,6 +98,7 @@ jobs:
 
   assemble:
     needs: render
+    if: inputs.only == ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
