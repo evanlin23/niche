@@ -15,3 +15,7 @@ episodes/*/voice/_transcript.json
 episodes/*/voice/*.said.txt
 episodes/*/voice/_report*.txt
 episodes/*/voice/_roomtone.wav
+sims/connect4/c4
+sims/connect4/c4b
+sims/shutbox/shutbox
+sims/uno/unosim
