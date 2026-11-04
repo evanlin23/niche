@@ -172,7 +172,7 @@ export class Stage {
       }
       const a = win(t, it.s, it.e, it.note.fade ?? 0.35);
       it.el.style.opacity = a;
-      const rise = (1 - fade(t, it.s, 0.45)) * 18;
+      const rise = (1 - fade(t, it.s, (it.note.fade ?? 0.35) + 0.1)) * 18;
       const base = it.note.align === 'center' ? 'translateX(-50%)' : it.note.align === 'right' ? 'translateX(-100%)' : '';
       it.el.style.transform = `${base} translateY(${rise}px)`;
     }

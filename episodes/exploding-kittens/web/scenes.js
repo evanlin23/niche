@@ -175,8 +175,10 @@ SCENES.title = async (stage, spec) => {
   const p = spec.params;
   const types = [0, 1, 2, 3, 6, 7, 8, 4, 5];
   const cards = types.map((tp, k) => { const c = makeCard(stage, tp, true); const a = k / types.length * Math.PI * 2; c.position.set(Math.cos(a) * 5.2, 0.08 + k * 0.01, Math.sin(a) * 3.2); c.rotation.y = a * 1.7; return c; });
-  stage.text({ text: 'BUH SIMULATES', x: 960, y: 300, size: 40, weight: 700, font: 'rubik', color: GN.mustard, align: 'center', at: 0.3 });
-  (p.lines || []).forEach((s, k) => stage.text({ text: s, x: 960, y: 370 + k * 130, size: 120, weight: 900, font: 'rubik', align: 'center', at: 0.5 + k * 0.25, case: 'none' }));
+  // short title beat: everything is readable within ~0.2 s (a slow stagger got cut off when the card was shortened)
+  const quick = spec.duration < 2.0;
+  stage.text({ text: 'BUH SIMULATES', x: 960, y: 300, size: 40, weight: 700, font: 'rubik', color: GN.mustard, align: 'center', at: quick ? 0.02 : 0.3, fade: quick ? 0.15 : 0.35 });
+  (p.lines || []).forEach((s, k) => stage.text({ text: s, x: 960, y: 370 + k * 130, size: 120, weight: 900, font: 'rubik', align: 'center', at: quick ? 0.04 + k * 0.06 : 0.5 + k * 0.25, fade: quick ? 0.15 : 0.35, case: 'none' }));
   return (t) => {
     const a = t * 0.06;
     stage.cameraAt(t, { pos: [[Math.sin(a) * 4, 15 - t * 0.2, 9 + Math.cos(a) * 2]], look: [[0, 0, 0]] });
