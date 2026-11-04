@@ -373,8 +373,9 @@ def main():
                 hw = words_inside(cl, ev, script[lid])
                 if not hw:
                     continue
-                repeat = (len(hw) >= 2 and ev["end"] - ev["start"] >= 0.3
-                          and all(w in sw_norm for w in hw))   # same words are already aligned in the line
+                # Repeats are removed upstream (find_stumbles / _stumbles.json, checked by hand). Here a spot that
+                # holds words is ALWAYS kept: an automatic "repeat" cut once nearly deleted real content (f2).
+                repeat = False
                 if repeat:
                     ev["action"] = "cut"; ev["repeat"] = " ".join(hw)
                     report.append(f"[{lid}] cut repeat {ev['start']}-{ev['end']}s: '{' '.join(hw)}'")

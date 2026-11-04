@@ -61,7 +61,7 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 
 ## Mistake two: panicking
 [d1] Mistake number two is panicking.
-[d2] Once one card in four is a Kitten, the deck feels dangerous, and most people start Skipping. That's the Panicker, and it only wins sixteen.
+[d2] Once one card in four is a Kitten, the deck feels dangerous, and most people start Skipping. That's the Panicker, and it only wins sixteen percent of the time.
 [d3] Wait for a coin flip, and you still lose ground. The only rule that held up is the boring one. Skip or Attack when you know the next card is a Kitten. Not when you feel like it.
 [d4] And if you're wondering, Attack or Skip barely matters when you're dodging. The gap was a fraction of a point.
 [d5] Here's where people actually get caught. At a normal table of four, almost one explosion in four happens to someone under Attack, stuck taking two turns in a row.
