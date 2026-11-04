@@ -17,6 +17,7 @@ type Policy struct {
 	StartLate bool    `json:"start_late"` // don't start a new pawn while one is already on the track (if another move exists)
 	SafeFirst bool    `json:"safe_first"` // prefer moves that get a pawn into the Safety Zone
 	Lead      bool    `json:"lead"`       // always move your front pawn forward when it can
+	RandTie   bool    `json:"rand_tie"`   // break exact ties at random (default: first in board order, as in the big run)
 	LeadBump  bool    `json:"lead_bump"`  // ...unless another move bumps an opponent
 }
 
@@ -191,7 +192,7 @@ func (b *Policy) Choose(g *Game, s int, v int8, ms []Move, sts []State) (int, bo
 			}
 		}
 	}
-	bestK, bestV := -1, -1e18
+	bestK, bestV, ties := -1, -1e18, 0
 	for k, m := range ms {
 		if !allowed(m) {
 			continue
@@ -201,7 +202,12 @@ func (b *Policy) Choose(g *Game, s int, v int8, ms []Move, sts []State) (int, bo
 			val += 1000
 		}
 		if val > bestV+1e-9 {
-			bestK, bestV = k, val
+			bestK, bestV, ties = k, val, 1
+		} else if b.RandTie && val > bestV-1e-9 {
+			ties++
+			if g.rng.Intn(ties) == 0 {
+				bestK = k
+			}
 		}
 	}
 	if bestK < 0 { // every legal move was ruled out by the habit: still must move
