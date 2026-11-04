@@ -53,7 +53,7 @@ scenes:
       color: MUSTARD
 - id: title
   render: title
-  min_duration: 2.5
+  min_duration: 1.6
   pad:
   - 0
   - 0
@@ -66,13 +66,13 @@ scenes:
   render: deck56
   lines:
   - g1
+  - g4
   - g2
   - g3
-  - g4
   - c1
   pad:
-  - 0.6
-  - 1.0
+  - 0.25
+  - 0.4
 - id: check
   render: statement
   lines:

@@ -33,9 +33,9 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 
 ## The game in thirty seconds
 [g1] If you've never played: everyone draws from one deck, and whoever draws an Exploding Kitten is out, unless they have a Defuse. Every other card helps you avoid drawing, or makes somebody else draw. Last player standing wins.
+[g4] There's always one Kitten fewer than there are players, so exactly one person survives.
 [g2] On your turn, you can play as many cards as you like. Then you end your turn by drawing one card. That draw is where people explode.
 [g3] Skip ends your turn without drawing. Attack does the same, and the next player has to take two turns. See the Future shows you the top three cards. Shuffle mixes the deck. Favor makes someone give you a card of their choice. Two matching cat cards steal a random card from anyone. And a Nope cancels almost anything.
-[g4] There's always one Kitten fewer than there are players, so exactly one person survives.
 
 ## Can you trust it
 [c1] First, the game. My version follows the official rulebook for the original edition. Fifty six cards, four Kittens, six Defuses, Attacks that stack, and Nopes that cancel other Nopes.

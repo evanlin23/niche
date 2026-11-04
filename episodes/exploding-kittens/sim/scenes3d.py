@@ -147,6 +147,23 @@ def base(ctx) -> dict:
             "params": sc.params, "captions": ctx.captions, "hook": ctx.hook, **LOOK}
 
 
+def card_highlights(ctx):
+    """When the narration names a card type, that pile lifts and lights up: {group index: time}."""
+    import re
+    names = {"kitten": 0, "kittens": 0, "defuse": 1, "attack": 2, "skip": 3, "favor": 4, "shuffle": 5,
+             "nope": 6, "see": 7, "cat": 8, "matching": 8}
+    out = {}
+    for lid in ("g3",):                       # the card rundown
+        c = ctx.scene.cues.get(lid)
+        if not c:
+            continue
+        for w, t0, t1 in c.words:
+            k = names.get(re.sub(r"[^a-z]", "", w.lower()))
+            if k is not None and k not in out:
+                out[k] = round(t0, 3)
+    return {str(k): v for k, v in out.items()}
+
+
 def statement_lines(ctx):
     """Display lines appear when the narration reaches each line's first word."""
     import re
@@ -173,6 +190,8 @@ def build_spec(ctx) -> dict:
     p = ctx.params
     if ctx.scene.render == "statement":
         s["lines"] = statement_lines(ctx)
+    if ctx.scene.render == "deck56":
+        s["highlights"] = card_highlights(ctx)
     if p.get("chart"):
         s["chart"] = CHARTS[p["chart"]]()
     if ctx.scene.render in ("table", "short"):

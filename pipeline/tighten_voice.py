@@ -126,6 +126,8 @@ def main():
     d = Path(a.voice_dir); orig = d / "_orig"; orig.mkdir(exist_ok=True)
     cuts = json.loads(Path(a.cuts).read_text()) if a.cuts else {}
     vwords = json.loads(Path(a.words).read_text()) if a.words else {}
+    mpath = d / "_manual_cuts.json"   # hand-picked cuts in FINAL (tightened) line time, applied last
+    manual = json.loads(mpath.read_text()) if mpath.exists() else {}
     before = after = 0.0
     for js in sorted(d.glob("*.json")):
         if js.name.startswith("_"):
@@ -150,6 +152,11 @@ def main():
         joins = join_points(lc)
         audio, words, mapper = tighten(audio, sr, words, a.max_pause)
         meta["stumble_cuts"] = [round(mapper(t), 3) for t in joins]   # where each stumble cut lands (s)
+        mc = sorted(tuple(c) for c in manual.get(js.stem, []))
+        if mc:
+            audio, words = apply_cuts(audio, sr, words, mc)
+            msh = shifter(mc)
+            meta["stumble_cuts"] = [round(msh(t), 3) for t in meta["stumble_cuts"]] + [round(t, 3) for t in join_points(mc)]
         after += len(audio) / sr
         sf.write(wav, audio, sr)
         meta.update(duration=round(len(audio) / sr, 3), words=[list(w) for w in words])

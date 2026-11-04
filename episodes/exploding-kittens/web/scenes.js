@@ -210,9 +210,13 @@ SCENES.deck56 = async (stage, spec) => {
     stage.camera.updateMatrixWorld();
     for (const it of items) {
       const k = ease((t - it.at) / 0.5);
-      it.cards.forEach((c, j) => { c.visible = k > 0; c.position.y = 0.08 + j * 0.02 + (1 - k) * 2; });
+      // named in the card rundown: the pile lifts for ~1.6 s and its label turns mustard
+      const h = spec.highlights && spec.highlights[String(items.indexOf(it))];
+      const on = h != null ? win(t, h - 0.1, h + 1.6, 0.25) : 0;
+      it.cards.forEach((c, j) => { c.visible = k > 0; c.position.y = 0.08 + j * 0.02 + (1 - k) * 2 + on * 0.6; });
       const [lx, ly] = stage.project(new THREE.Vector3(it.gx + 0.6, 0, it.gz + 1.6));
       it.lab.el.style.left = lx + 'px'; it.lab.el.style.top = ly + 'px'; it.lab.el.style.opacity = fade(t, it.at + 0.2, 0.4);
+      it.lab.el.style.color = on > 0.5 ? GN.mustard : GN.text;
     }
     scrim(stage, t);
   };
