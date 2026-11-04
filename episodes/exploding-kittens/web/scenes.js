@@ -193,36 +193,68 @@ SCENES.deck56 = async (stage, spec) => {
   const groups = [[0, 4, 'Exploding Kittens'], [1, 6, 'Defuse'], [2, 4, 'Attack'], [3, 4, 'Skip'], [4, 4, 'Favor'],
     [5, 4, 'Shuffle'], [6, 5, 'Nope'], [7, 5, 'See the Future'], [8, 20, 'Cat cards']];
   const items = [];
+  const STEP = 2.9;
   groups.forEach(([tp, n, name], gi) => {
-    const col = gi % 5, row = Math.floor(gi / 5);
-    const gx = -6.6 + col * 2.9, gz = -1.6 + row * 3.6;
+    const row = gi < 5 ? 0 : 1, col = row ? gi - 5 : gi, ncol = row ? 4 : 5;
+    // centred rows (5 on top, 4 below); each pile's own fan is centred on its slot too
+    const fanW = Math.min(n, 10) * 0.12;
+    const gx = (col - (ncol - 1) / 2) * STEP - fanW / 2, gz = -1.5 + row * 3.5;
     const cards = [];
     for (let k = 0; k < n; k++) {
       const c = makeCard(stage, tp === 8 ? 8 + (k % 5) : tp, true);
-      // neat fan: one angle per pile and a little air between cards (exactly-touching cards z-fight and the
-      // per-card jitter made edges cut through each other)
+      // neat fan: one angle per pile and a little air between cards (exactly-touching cards z-fight)
       c.position.set(gx + (k % 10) * 0.12, 0.012 + k * 0.026, gz + Math.floor(k / 10) * 0.45);
       c.rotation.y = -0.1; c.visible = false; cards.push(c);
     }
     const lab = stage.text({ text: `${n} × ${name}`, x: 0, y: 0, size: 28, weight: 900, font: 'rubik', color: GN.text, manual: true, align: 'center' });
-    items.push({ cards, lab, gx, gz, at: 0.6 + gi * 0.45 });
+    items.push({ cards, lab, gx: gx + fanW / 2, gz, at: 0.6 + gi * 0.35, tp });
   });
   title(stage, 'Original edition · 56 cards');
+  // how many players? the deck depends on it (Kittens = players - 1)
+  const g4 = spec.cues && spec.cues.g4;
+  if (g4) stage.text({ text: 'With 4 players: 3 Kittens go in the deck', x: 960, y: 128, size: 30, weight: 700, font: 'rubik', align: 'center', at: g4[0] + 0.2, case: 'none', pill: 'rgba(244,234,213,0.92)', color: '#1b1209' });
   brand(stage);
+  // the "zoom in": one card flies from its pile to front and centre, upright and big, then goes back
+  const hero = makeCard(stage, 0, true); hero.visible = false; hero.traverse((o) => { o.castShadow = false; });
+  const hl = spec.highlights || [];
+  const HOLD = 1.5;
   return (t) => {
-    stage.cameraAt(t, { pos: [[0, 13, 9.5], [0, 12, 8.5]], look: [[0, 0, 0.8]] });
+    stage.cameraAt(t, { pos: [[0, 13.2, 9.6], [0, 12.4, 8.8]], look: [[0, 0, 0.6]] });
     stage.camera.updateMatrixWorld();
+    // which highlight is active
+    let cur = null;
+    for (const [g, t0] of hl) if (t >= t0 - 0.05 && t < t0 + HOLD + 0.5) cur = [g, t0];
     for (const it of items) {
       const k = ease((t - it.at) / 0.5);
-      // named in the card rundown: the pile lifts for ~1.6 s and its label turns mustard
-      const h = spec.highlights && spec.highlights[String(items.indexOf(it))];
-      const on = h != null ? win(t, h - 0.1, h + 1.6, 0.25) : 0;
-      it.cards.forEach((c, j) => { c.visible = k > 0; c.position.y = 0.012 + j * 0.026 + (1 - k) * 2 + on * 0.6; });
-      const [lx, ly] = stage.project(new THREE.Vector3(it.gx + 0.6, 0, it.gz + 1.6));
-      it.lab.el.style.left = lx + 'px'; it.lab.el.style.top = ly + 'px'; it.lab.el.style.opacity = fade(t, it.at + 0.2, 0.4);
-      it.lab.el.style.color = on > 0.5 ? GN.mustard : GN.text;
+      const active = cur && items[cur[0]] === it;
+      it.cards.forEach((c, j) => { c.visible = k > 0; c.position.y = 0.012 + j * 0.026 + (1 - k) * 2; });
+      const [lx, ly] = stage.project(new THREE.Vector3(it.gx, 0, it.gz + 1.5));
+      it.lab.el.style.left = lx + 'px'; it.lab.el.style.top = ly + 'px';
+      // while a card is up, only its own label stays (labels are drawn above the 3D card)
+      const z = cur ? ease(clamp((t - cur[1]) / 0.25)) * (1 - ease(clamp((t - cur[1] - HOLD) / 0.4))) : 0;
+      it.lab.el.style.opacity = fade(t, it.at + 0.2, 0.4) * (active ? 1 : 1 - z);
+      it.lab.el.style.color = active ? GN.mustard : GN.text;
+    }
+    hero.visible = false;
+    if (cur) {
+      const it = items[cur[0]], u = t - cur[1];
+      const up = ease(clamp(u / 0.35)), down = ease(clamp((u - HOLD) / 0.4));
+      const k = up * (1 - down);
+      if (k > 0.001) {
+        hero.visible = true; hero.setFace(it.tp);
+        hero.traverse((o) => { o.castShadow = false; o.receiveShadow = false; });
+        const top = it.cards[it.cards.length - 1].position;
+        // target: in front of the camera, upright (rotated to face it), big
+        const target = new THREE.Vector3(0, 5.4, 4.2);
+        hero.position.lerpVectors(new THREE.Vector3(top.x, top.y + 0.05, top.z), target, k);
+        // face the camera: tip the card's face (+y) toward the camera (a positive turn about x)
+        const cam = stage.camera.position, dy = cam.y - target.y, dz = cam.z - target.z;
+        hero.rotation.set(Math.atan2(dz, dy) * k, -0.1 * (1 - k), 0);
+        hero.scale.setScalar(1 + 1.05 * k);
+      }
     }
     scrim(stage, t);
+
   };
 };
 

@@ -148,20 +148,24 @@ def base(ctx) -> dict:
 
 
 def card_highlights(ctx):
-    """When the narration names a card type, that pile lifts and lights up: {group index: time}."""
+    """Every time the narration names a card type, that card flies up and is shown big: [[group, time], ...]
+    (one at a time; a new mention less than 1.6 s after the previous one is skipped)."""
     import re
-    names = {"kitten": 0, "kittens": 0, "defuse": 1, "attack": 2, "skip": 3, "favor": 4, "shuffle": 5,
-             "nope": 6, "see": 7, "cat": 8, "matching": 8, "steal": 8}
-    out = {}
-    for lid in ("g3",):                       # the card rundown
-        c = ctx.scene.cues.get(lid)
-        if not c:
-            continue
+    names = {"kitten": 0, "kittens": 0, "defuse": 1, "defuses": 1, "attack": 2, "attacks": 2, "skip": 3,
+             "favor": 4, "shuffle": 5, "nope": 6, "nopes": 6, "see": 7, "cat": 8, "matching": 8}
+    hits = []
+    for lid, c in ctx.scene.cues.items():
+        seen = set()
         for w, t0, t1 in c.words:
             k = names.get(re.sub(r"[^a-z]", "", w.lower()))
-            if k is not None and k not in out:
-                out[k] = round(t0, 3)
-    return {str(k): v for k, v in out.items()}
+            if k is not None and k not in seen:
+                seen.add(k); hits.append([k, round(t0, 3)])
+    hits.sort(key=lambda x: x[1])
+    out, last = [], -9
+    for k, t0 in hits:
+        if t0 - last >= 1.6:
+            out.append([k, t0]); last = t0
+    return out
 
 
 def resolve_at(ctx, ref):
