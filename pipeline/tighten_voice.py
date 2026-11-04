@@ -40,6 +40,25 @@ def silent_runs(a, sr, min_len):
     return runs
 
 
+def shifter(cuts):
+    """Map a time in the uncut audio to the cut audio."""
+    def shift(t):
+        d = 0.0
+        for s, e in cuts:
+            if t >= e:
+                d += e - s
+            elif t > s:
+                return s - d
+        return t - d
+    return shift
+
+
+def join_points(cuts):
+    """Where each cut's join lands in the cut audio."""
+    sh = shifter(cuts)
+    return [sh(e) for s, e in cuts]
+
+
 def apply_cuts(a, sr, words, cuts, fade=0.012):
     """Remove [s,e) ranges (seconds), crossfading the joins; shift/drop words."""
     cuts = sorted((max(0.0, s), min(len(a) / sr, e)) for s, e in cuts if e > s)
@@ -82,6 +101,7 @@ def tighten(a, sr, words, max_pause=0.35, lead=0.08, tail=0.15):
         mid = (s + e) / 2
         cuts.append((mid - (e - s - max_pause) / 2, mid + (e - s - max_pause) / 2))
     a, words = apply_cuts(a, sr, words, cuts)
+    pause_shift = shifter(sorted(cuts)); s0 = 0.0
     # lead / tail from the AUDIO (first / last loud frame), never from the transcript: a transcript that
     # stops early must not chop the end of the line off
     hop = int(sr * FRAME); n = len(a) // hop
@@ -93,7 +113,7 @@ def tighten(a, sr, words, max_pause=0.35, lead=0.08, tail=0.15):
             e1 = min(len(a) / sr, (loud[-1] + 1) * FRAME + tail)
             a = a[int(s0 * sr): int(e1 * sr)]
             words = [(w, round(max(0.0, s - s0), 3), round(min(e1 - s0, e - s0), 3)) for w, s, e in words]
-    return a, words, sum(e - s for s, e in cuts)
+    return a, words, (lambda t: pause_shift(t) - s0)
 
 
 def main():
@@ -125,8 +145,11 @@ def main():
         words = [tuple(w) for w in (vw or meta["words"])]
         words = [w for w in words if any(ch.isalnum() for ch in w[0])]
         before += len(audio) / sr
-        audio, words = apply_cuts(audio, sr, words, [tuple(c) for c in cuts.get(js.stem, [])])
-        audio, words, _ = tighten(audio, sr, words, a.max_pause)
+        lc = sorted((max(0.0, x), y) for x, y in cuts.get(js.stem, []))
+        audio, words = apply_cuts(audio, sr, words, [tuple(c) for c in lc])
+        joins = join_points(lc)
+        audio, words, mapper = tighten(audio, sr, words, a.max_pause)
+        meta["stumble_cuts"] = [round(mapper(t), 3) for t in joins]   # where each stumble cut lands (s)
         after += len(audio) / sr
         sf.write(wav, audio, sr)
         meta.update(duration=round(len(audio) / sr, 3), words=[list(w) for w in words])
