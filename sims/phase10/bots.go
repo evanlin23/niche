@@ -6,10 +6,10 @@ package main
 type Policy struct {
 	Name       string `json:"name"`
 	Take       string `json:"take"`        // "improve" (normal): take the discard if it gets you closer; "never"; "loose": also if it pairs up
-	Lay        string `json:"lay"`         // "now" (normal) or "late": hold a finished Phase until you can go out the same turn
+	Lay        string `json:"lay"`         // "now" (normal); "surprise": hold a finished Phase until you can go out that turn; "wait": hold it until another player lays down first
 	SkipUse    string `json:"skip_use"`    // "now" (normal): play Skips right away; "hold": keep them until an opponent has laid down; "last": only as your final card
 	SkipTarget string `json:"skip_target"` // "leader" (normal): the player furthest ahead; "next": the player on your left; "random"; "laid"
-	Tie        string `json:"tie"`         // "conn" (normal): throw the loosest card; "points": throw the highest-scoring card first
+	Tie        string `json:"tie"`         // "conn" (normal): throw the loosest card; "points": throw the highest-scoring card first; "outs": keep the most ways to improve
 	Watch      bool   `json:"watch"`       // don't throw a number the next player picked up, or a card they could hit
 	HitOthers  bool   `json:"hit_others"`  // hit on other players' Phases (normal: true)
 	KeepHigh   bool   `json:"keep_high"`   // after laying down, throw the lowest card instead of the highest
@@ -97,10 +97,17 @@ func conn(ph int, h *Hand, c uint8) int {
 }
 
 func (b *Policy) LayNow(g *Game, s int) bool {
-	if b.Lay != "late" {
+	if b.Lay != "surprise" && b.Lay != "wait" {
 		return true
 	}
 	p := &g.P[s]
+	if b.Lay == "wait" {
+		for j := range g.P {
+			if j != s && g.P[j].Laid {
+				return true
+			}
+		}
+	}
 	cp := p.H
 	gs := Arrange(p.Phase, &cp, s)
 	tab := append(append([]Group(nil), g.table...), gs...)
@@ -251,8 +258,8 @@ func (b *Policy) Discard(g *Game, s int) (uint8, int) {
 		if !colorPhase {
 			key = uint8((num(c) - 1) * 4) // dedupe by number
 		}
-		if seen[key] {
-			continue
+		if seen[key] || (c == p.JustTook && h.Naturals() > 1) {
+			continue // never throw back the card you just picked up
 		}
 		seen[key] = true
 		var d int
@@ -275,7 +282,13 @@ func (b *Policy) Discard(g *Game, s int) (uint8, int) {
 		if b.Watch && g.feeds(s, c) {
 			k += 500000
 		}
-		k = k*16 + num(c) - 1 // deterministic final tie-break: lower number thrown... (stable)
+		k = k*16 + num(c) - 1 // deterministic final tie-break
+		if b.Tie == "outs" {
+			k = d*1000000 - outs(ph, h, c)*1000 + cn*10 + (20-pt)/5
+			if b.Watch && g.feeds(s, c) {
+				k += 500000
+			}
+		}
 		if k < bk {
 			best, bk = c, k
 		}
@@ -287,4 +300,33 @@ func (b *Policy) Discard(g *Game, s int) (uint8, int) {
 		return 255, 0
 	}
 	return best, 0
+}
+
+// outs: after throwing c, how many unseen cards (deck minus your own hand) would get you closer?
+func outs(ph int, h *Hand, c uint8) int {
+	addTemp(h, c, -1)
+	d := Deficit(ph, h)
+	o := 0
+	if d > 0 {
+		o += 8 - int(h.wild)
+		if Phases[ph].Kind == KColor {
+			for col := 0; col < 4; col++ {
+				h.col[col]++
+				if Deficit(ph, h) < d {
+					o += 24 - int(h.col[col]) + 1
+				}
+				h.col[col]--
+			}
+		} else {
+			for n := 1; n <= 12; n++ {
+				h.cnt[n]++
+				if Deficit(ph, h) < d {
+					o += 8 - int(h.cnt[n]) + 1
+				}
+				h.cnt[n]--
+			}
+		}
+	}
+	addTemp(h, c, 1)
+	return o
 }

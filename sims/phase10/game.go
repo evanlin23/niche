@@ -17,6 +17,7 @@ type Player struct {
 	Pol     *Policy
 	Took    [14]bool // numbers this player took from the discard pile this round (public)
 	LaidTurn int
+	JustTook uint8 // card taken from the discard pile this turn (255 = drew from the pile)
 }
 
 type Stats struct {
@@ -264,9 +265,11 @@ func (g *Game) turn(s, turnNo int) bool {
 	p := &g.P[s]
 	bot := p.Pol
 	// 1. draw
+	p.JustTook = 255
 	if top, ok := g.topDiscard(); ok && top != Skip && bot.TakeDiscard(g, s, top) {
 		g.disc = g.disc[:len(g.disc)-1]
 		p.H.Add(top)
+		p.JustTook = top
 		if isNum(top) {
 			p.Took[num(top)] = true
 		}
