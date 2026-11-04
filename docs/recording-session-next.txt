@@ -1,6 +1,6 @@
 TOMORROW NIGHT'S RECORDING SESSION
 
-Do one recording per episode (three files). Same routine as last time:
+Do one recording per episode (four files). Same routine as last time:
 - Pixel Recorder, phone ~15-20 cm away, quiet spot away from windows.
 - Each file: 10 seconds of silence first, then read top to bottom, 1-2 s pause between lines.
 - Mess up? Pause and redo the whole sentence. The last take wins.
@@ -148,3 +148,50 @@ CLOSE
 [e1]  Next, more games your family argues about.
 [e2]  And tell me which rule your family uses. Any combination, or sum or split?
 
+
+========================================================================
+EPISODE 5 — BATTLESHIP   (~661 words, about 3.5 min at your pace)
+========================================================================
+(Numbers may shift slightly after tonight's big run; I'll update this sheet if any do.)
+COLD OPEN
+[o1]  Everybody has a Battleship strategy. Hide in the corners. Line your ships up along the edge. Bunch them all together so they're hard to find.
+[o2]  And then there's how you shoot. Most people fire at random until they hit something.
+[o3]  So I built bots that hide and hunt in all those different ways, and had them play hundreds of millions of games.
+[o4]  Here's the headline. Where you hide matters less than you think. How you shoot matters way more. The best shooter needs less than half the shots of a random one.
+THE GAME IN TEN SECONDS
+[g1]  Quick rules. Each player hides five ships on a ten by ten grid. You take turns calling out squares. Hit or miss. Sink the whole fleet first and you win.
+CAN YOU TRUST IT
+[c1]  My version follows the official Hasbro rules. Five ships, from the five square Carrier down to the two square Patrol Boat. Seventeen squares of ship in total.
+[c2]  And one rule a lot of people skip. When you hit a ship, your opponent has to tell you which ship it was.
+[c3]  To check the engine, I used plain math. If you shoot completely at random, you finish when you find the last of those seventeen squares. On paper, that takes about ninety five point four shots on average. My engine says ninety five point three.
+MEET THE SHOOTERS
+[s1]  Here are the shooters.
+[s2]  The Beginner fires at random. The Hunter fires at random too, but once it gets a hit, it checks the squares around it until the ship sinks.
+[s3]  The Checkerboard does the same thing, but while it's searching, it only fires at every other square, like the black squares on a chess board. The smallest ship is two squares long, so it can't hide between them.
+[s4]  And the Calculator. Before every shot, it counts every way the remaining ships could still fit on the board, and fires where the most of them overlap.
+THE RESULTS
+[r1]  The Beginner needs ninety five shots to sink a fleet. Almost the whole board.
+[r2]  The Hunter needs sixty two. That one habit, checking around a hit, beats the Beginner ninety nine games out of a hundred.
+[r3]  The Checkerboard needs fifty five, and beats the Hunter sixty five percent of the time.
+[r4]  And the Calculator needs forty four. Against the Checkerboard, it wins eighty one percent of games.
+WHERE TO HIDE
+[h1]  Now the other half. Where should you put your ships?
+[h2]  Against a Hunter, which is how most people play, the worst thing you can do is bunch your ships together. Clustered fleets win only thirty six percent of games. My guess is that one hit leads the Hunter straight into the next ship.
+[h3]  The best thing is to spread them out, so no two ships touch. That wins sixty percent of games against the same opponent.
+[h4]  Corners and edges? Against a Hunter, they barely matter at all.
+AGAINST THE CALCULATOR
+[k1]  But the Calculator is different.
+[k2]  It knows ships fit more easily in the middle of the board, so it shoots there first. Against the Calculator, ships on the edges win fifty four percent of games, and ships in the corners win fifty five.
+[k3]  So the corner people were half right. Corners help, but only against a really good shooter.
+THE HOUSE RULE
+[x1]  And remember that rule about naming the ship you hit? A lot of families just say hit.
+[x2]  It barely matters. The Calculator needs about half a shot more. Everyone else doesn't use the name anyway.
+GOING FIRST
+[f1]  Does going first help? A little. Between two equal shooters, the first player wins between fifty one and fifty two percent of games.
+[f2]  That's because if you both need the same number of shots, you get there first.
+THE RECIPE
+[w1]  So here's how to win at Battleship.
+[w2]  When you shoot, search in a checkerboard pattern, and when you get a hit, finish that ship before you go back to searching.
+[w3]  When you hide, spread your ships out and never let them touch. If your opponent is good, push them toward the edges.
+CLOSE
+[e1]  Where do you hide your Carrier? Tell me in the comments.
