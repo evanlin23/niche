@@ -1,0 +1,227 @@
+{
+ "games_per_test": 50000,
+ "bots": {
+  "random": {
+   "name": "random"
+  },
+  "win_block": {
+   "name": "win_block",
+   "win_block": true
+  },
+  "center": {
+   "name": "center",
+   "win_block": true,
+   "center": true
+  },
+  "careful": {
+   "name": "careful",
+   "win_block": true,
+   "center": true,
+   "careful": true
+  },
+  "look2": {
+   "name": "look2",
+   "win_block": true,
+   "careful": true,
+   "depth": 2
+  },
+  "look4": {
+   "name": "look4",
+   "win_block": true,
+   "careful": true,
+   "depth": 4
+  },
+  "look6": {
+   "name": "look6",
+   "win_block": true,
+   "careful": true,
+   "depth": 6
+  }
+ },
+ "ladder": {
+  "win_block_vs_random": {
+   "a_win_first": 0.96942,
+   "a_win_overall": 0.96085,
+   "a_win_second": 0.95228,
+   "draw_a_first": 0.00218,
+   "draw_a_second": 0.00318,
+   "games_per_seat": 50000,
+   "mean_moves": 18.05818
+  },
+  "center_vs_win_block": {
+   "a_win_first": 0.7138,
+   "a_win_overall": 0.67807,
+   "a_win_second": 0.64234,
+   "draw_a_first": 0.02166,
+   "draw_a_second": 0.02368,
+   "games_per_seat": 50000,
+   "mean_moves": 22.61463
+  },
+  "careful_vs_center": {
+   "a_win_first": 0.65894,
+   "a_win_overall": 0.61061,
+   "a_win_second": 0.56228,
+   "draw_a_first": 0.08348,
+   "draw_a_second": 0.08672,
+   "games_per_seat": 50000,
+   "mean_moves": 25.02053
+  },
+  "look2_vs_careful": {
+   "a_win_first": 0.86104,
+   "a_win_overall": 0.8434,
+   "a_win_second": 0.82576,
+   "draw_a_first": 0.05894,
+   "draw_a_second": 0.07508,
+   "games_per_seat": 50000,
+   "mean_moves": 25.7941
+  },
+  "look4_vs_look2": {
+   "a_win_first": 0.49612,
+   "a_win_overall": 0.46857,
+   "a_win_second": 0.44102,
+   "draw_a_first": 0.1664,
+   "draw_a_second": 0.24058,
+   "games_per_seat": 50000,
+   "mean_moves": 33.22084
+  },
+  "look6_vs_look4": {
+   "a_win_first": 0.5945,
+   "a_win_overall": 0.549,
+   "a_win_second": 0.5035,
+   "draw_a_first": 0.146,
+   "draw_a_second": 0.156,
+   "games_per_seat": 2000,
+   "mean_moves": 33.3035
+  }
+ },
+ "mirror": {
+  "random": {
+   "a_win_first": 0.55104,
+   "a_win_overall": 0.49704,
+   "a_win_second": 0.44304,
+   "draw_a_first": 0.00224,
+   "draw_a_second": 0.00264,
+   "games_per_seat": 50000,
+   "mean_moves": 21.33698
+  },
+  "win_block": {
+   "a_win_first": 0.50848,
+   "a_win_overall": 0.48006,
+   "a_win_second": 0.45164,
+   "draw_a_first": 0.03766,
+   "draw_a_second": 0.03882,
+   "games_per_seat": 50000,
+   "mean_moves": 25.57585
+  },
+  "center": {
+   "a_win_first": 0.5328,
+   "a_win_overall": 0.48249,
+   "a_win_second": 0.43218,
+   "draw_a_first": 0.03506,
+   "draw_a_second": 0.03404,
+   "games_per_seat": 50000,
+   "mean_moves": 22.73189
+  },
+  "careful": {
+   "a_win_first": 0.45706,
+   "a_win_overall": 0.41556,
+   "a_win_second": 0.37406,
+   "draw_a_first": 0.17216,
+   "draw_a_second": 0.1711,
+   "games_per_seat": 50000,
+   "mean_moves": 28.56423
+  },
+  "look2": {
+   "a_win_first": 0.40956,
+   "a_win_overall": 0.37776,
+   "a_win_second": 0.34596,
+   "draw_a_first": 0.24796,
+   "draw_a_second": 0.2455,
+   "games_per_seat": 50000,
+   "mean_moves": 34.19345
+  },
+  "look4": {
+   "a_win_first": 0.42194,
+   "a_win_overall": 0.41375,
+   "a_win_second": 0.40556,
+   "draw_a_first": 0.16888,
+   "draw_a_second": 0.16788,
+   "games_per_seat": 50000,
+   "mean_moves": 33.69631
+  },
+  "look6": {
+   "a_win_first": 0.446,
+   "a_win_overall": 0.43,
+   "a_win_second": 0.414,
+   "draw_a_first": 0.139,
+   "draw_a_second": 0.148,
+   "games_per_seat": 2000,
+   "mean_moves": 35.6155
+  }
+ },
+ "openings": {
+  "1": {
+   "a_win_first": 0.38832,
+   "a_win_overall": 0.38219,
+   "a_win_second": 0.37606,
+   "draw_a_first": 0.16246,
+   "draw_a_second": 0.17182,
+   "games_per_seat": 50000,
+   "mean_moves": 28.73434
+  },
+  "2": {
+   "a_win_first": 0.43448,
+   "a_win_overall": 0.40181,
+   "a_win_second": 0.36914,
+   "draw_a_first": 0.16524,
+   "draw_a_second": 0.17414,
+   "games_per_seat": 50000,
+   "mean_moves": 28.61252
+  },
+  "3": {
+   "a_win_first": 0.43814,
+   "a_win_overall": 0.40491,
+   "a_win_second": 0.37168,
+   "draw_a_first": 0.18398,
+   "draw_a_second": 0.17492,
+   "games_per_seat": 50000,
+   "mean_moves": 28.83121
+  },
+  "4": {
+   "a_win_first": 0.49314,
+   "a_win_overall": 0.43016,
+   "a_win_second": 0.36718,
+   "draw_a_first": 0.1647,
+   "draw_a_second": 0.17236,
+   "games_per_seat": 50000,
+   "mean_moves": 28.37632
+  },
+  "5": {
+   "a_win_first": 0.4373,
+   "a_win_overall": 0.40516,
+   "a_win_second": 0.37302,
+   "draw_a_first": 0.18392,
+   "draw_a_second": 0.16946,
+   "games_per_seat": 50000,
+   "mean_moves": 28.79625
+  },
+  "6": {
+   "a_win_first": 0.43234,
+   "a_win_overall": 0.40129,
+   "a_win_second": 0.37024,
+   "draw_a_first": 0.16522,
+   "draw_a_second": 0.17374,
+   "games_per_seat": 50000,
+   "mean_moves": 28.65082
+  },
+  "7": {
+   "a_win_first": 0.3856,
+   "a_win_overall": 0.37871,
+   "a_win_second": 0.37182,
+   "draw_a_first": 0.1612,
+   "draw_a_second": 0.17386,
+   "games_per_seat": 50000,
+   "mean_moves": 28.75948
+  }
+ }
+}
