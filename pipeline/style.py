@@ -18,7 +18,7 @@ VIOLET = 0xFFA78BFA      # secondary series
 PALETTE = [TEAL, AMBER, RED, BLUE, VIOLET]
 
 FONT_FAMILY = "Inter"
-CHANNEL_NAME = "I SIMULATED IT"
+CHANNEL_NAME = "BUH SIMULATES"
 
 
 def rgba(c: int) -> tuple[int, int, int, int]:

@@ -17,7 +17,7 @@ function notes(stage, list) {
   }
 }
 function brand(stage, x = 56, y = 36) {
-  stage.text({ text: 'I SIMULATED IT', x, y, size: 26, color: GN.brand, weight: 700, font: 'rubik', at: -1 });
+  stage.text({ text: 'BUH SIMULATES', x, y, size: 26, color: GN.brand, weight: 700, font: 'rubik', at: -1 });
 }
 function title(stage, s, at = 0.1, y = 54) {
   if (s) stage.text({ text: s, x: 960, y, size: 64, weight: 900, font: 'rubik', align: 'center', at, case: 'none' });
@@ -167,7 +167,7 @@ SCENES.title = async (stage, spec) => {
   const p = spec.params;
   const types = [0, 1, 2, 3, 6, 7, 8, 4, 5];
   const cards = types.map((tp, k) => { const c = makeCard(stage, tp, true); const a = k / types.length * Math.PI * 2; c.position.set(Math.cos(a) * 5.2, 0.08 + k * 0.01, Math.sin(a) * 3.2); c.rotation.y = a * 1.7; return c; });
-  stage.text({ text: 'I SIMULATED IT', x: 960, y: 300, size: 40, weight: 700, font: 'rubik', color: GN.mustard, align: 'center', at: 0.3 });
+  stage.text({ text: 'BUH SIMULATES', x: 960, y: 300, size: 40, weight: 700, font: 'rubik', color: GN.mustard, align: 'center', at: 0.3 });
   (p.lines || []).forEach((s, k) => stage.text({ text: s, x: 960, y: 370 + k * 130, size: 120, weight: 900, font: 'rubik', align: 'center', at: 0.5 + k * 0.25, case: 'none' }));
   return (t) => {
     const a = t * 0.06;
@@ -340,13 +340,13 @@ SCENES.statement = async (stage, spec) => {
     const col = ln.color ? (NAMED[ln.color] || ln.color) : '#fbf7ef';
     const mat = new THREE.MeshPhysicalMaterial({ color: col, roughness: 0.35, clearcoat: 0.4, transparent: true, opacity: 0 });
     const m = new THREE.Mesh(geo, mat); m.castShadow = true;
-    const s = Math.min(1, maxW / w); m.scale.set(s, s, s);
+    const s = Math.min(ln.scale || 1, maxW / w); m.scale.set(s, s, s);
     const z0 = (k - (lines.length - 1) / 2) * gapY;     // lines lie on the floor, first line farthest
     m.rotation.x = -Math.PI / 2;
     m.userData = { z0, at: ln.at };
     stage.scene.add(m); return m;
   });
-  brand(stage);
+  if (!spec.params.no_brand) brand(stage);
   return (t) => {
     for (const m of meshes) {
       const k = ease((t - m.userData.at) / 0.45);
@@ -354,7 +354,7 @@ SCENES.statement = async (stage, spec) => {
       m.position.set(0, (1 - k) * 1.4, m.userData.z0 + size * 0.5);   // drops onto the floor
       m.rotation.x = -Math.PI / 2 + (1 - k) * 0.25;
     }
-    const a = lerp(-0.18, 0.18, clamp(t / stage.duration));
+    const a = spec.params.static ? 0 : lerp(-0.18, 0.18, clamp(t / stage.duration));
     const R = 8.5;
     stage.camera.position.set(Math.sin(a) * R, 15.5, Math.cos(a) * R);
     stage.camera.lookAt(0, 0, 0.3);

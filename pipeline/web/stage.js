@@ -1,4 +1,4 @@
-// Generic 3D "tabletop studio" stage for the I Simulated It channel.
+// Generic 3D "tabletop studio" stage for the Buh Simulates channel.
 // A scene module (per episode) exports build(stage, spec) -> (frameIndex) => void.
 // The page is driven frame-by-frame by capture.js; nothing here depends on wall-clock time.
 import * as THREE from 'three';

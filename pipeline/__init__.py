@@ -1,1 +1,1 @@
-"""Code-only video production pipeline for the "I Simulated It" channel."""
+"""Code-only video production pipeline for the "Buh Simulates" channel."""

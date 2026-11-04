@@ -138,7 +138,7 @@ export function cardTexture(type) {
   if (type === 'back') {
     g.fillStyle = GN.ink; g.fillRect(0, 0, 256, 356);
     g.strokeStyle = 'rgba(244,234,213,0.5)'; g.lineWidth = 6; g.beginPath(); g.roundRect(16, 16, 224, 324, 18); g.stroke();
-    g.fillStyle = GN.mustard; g.font = '900 64px Rubik'; g.textAlign = 'center'; g.fillText('IS', 128, 200);
+    g.fillStyle = GN.mustard; g.font = '900 58px Rubik'; g.textAlign = 'center'; g.fillText('BUH', 128, 198);
   } else {
     const d = CARDS[type];
     g.fillStyle = d.bg || GN.cream; g.fillRect(0, 0, 256, 356);

@@ -1,4 +1,6 @@
-# Episode backlog ("I Simulated It")
+# Episode backlog (Buh Simulates)
+
+Game-strategy episodes are the main format now; the list below is the older "systems" backlog.
 
 Each: the sim → the hook (first 2 s). Every episode ends by changing one rule to show the fix.
 
