@@ -1,0 +1,30 @@
+long:
+  title: "Why Traffic Jams Appear From Nowhere (I Simulated It)"
+  description: |
+    No accident, no construction, and yet you're stuck. I built a ring road with 40 identical,
+    perfectly well-behaved simulated drivers, made one of them tap the brakes for three seconds,
+    and watched a phantom traffic jam grow out of nothing. Then I tried two ways to make it disappear.
+
+    Everything in this video, the simulation, the animation and the music, is generated from code.
+    Narration is synthetic (text-to-speech) from a script I wrote.
+  links:
+    Simulation source code: "<GUMROAD LINK>"
+    Support the channel: "<PATREON LINK>"
+  sources:
+    - "Sugiyama et al. (2008). Traffic jams without bottlenecks. New Journal of Physics 10, 033001."
+    - "Treiber, Hennecke & Helbing (2000). Congested traffic states in empirical observations and microscopic simulations. Physical Review E 62, 1805. (Intelligent Driver Model)"
+    - "Stern et al. (2018). Dissipation of stop-and-go waves via control of autonomous vehicles: Field experiments. Transportation Research Part C 89, 205-221."
+    - "Treiber & Kesting (2013). Traffic Flow Dynamics. Springer. (wave speeds of stop-and-go traffic)"
+  music_note: "Music: procedurally generated for this video (original)."
+  tags: [traffic jam, phantom traffic jam, traffic simulation, stop and go traffic, intelligent driver model,
+         traffic waves, simulation, science explained, physics, engineering, adaptive cruise control]
+  category: Education
+  contains_synthetic_media: false   # TTS voice reading an original script; no realistic altered footage
+
+short_defaults:
+  title: "Why traffic jams appear from nowhere #shorts"
+  description: |
+    One tap of the brakes, 40 simulated drivers, and a phantom jam. Full video on the channel.
+    Everything is generated from code.
+  tags: [traffic jam, phantom traffic jam, simulation, shorts, science]
+  category: Education

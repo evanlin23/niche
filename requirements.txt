@@ -1,0 +1,8 @@
+numpy>=2.0
+pillow>=10
+skia-python>=138
+pyyaml>=6
+piper-tts>=1.3        # local TTS (default engine)
+# optional:
+# requests             # ElevenLabs engine (set ELEVENLABS_API_KEY)
+# faster-whisper       # word-level alignment of narration

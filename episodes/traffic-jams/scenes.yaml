@@ -1,0 +1,179 @@
+# Ordered scene list. `lines` reference narration ids in script.md.
+# Scene duration = narration + padding (or min_duration). Sim time t0..t1 is
+# stretched over the scene; `anchor` pins a sim moment to a narration cue.
+music: curious
+scenes:
+  - id: cold-open
+    chapter: Phantom traffic jams
+    render: ring
+    lines: [hook1, hook2, hook3]
+    pad: [0.4, 0.6]
+    params:
+      layout: center
+      run: tap
+      t0: 640
+      t1: 720
+      notes:
+        - {text: "No accident.", at: hook1, until: hook2, pos: [960, 500], align: center, size: 44, weight: bold}
+        - {text: "No construction.", at: "hook1+0.9", until: hook2, pos: [960, 560], align: center, size: 44, weight: bold}
+        - {text: "Still stuck.", at: "hook1+2.6", until: hook2, pos: [960, 620], align: center, size: 44, weight: bold, color: RED}
+
+  - id: title
+    render: title
+    min_duration: 5.5
+    pad: [0, 0]
+    params:
+      lines: ["Why Traffic Jams", "Appear From Nowhere"]
+      sub: "Episode 1 · 40 identical drivers, one ring road"
+
+  - id: experiment
+    pad: [0.6, 1.5]
+    chapter: The 2008 ring-road experiment
+    render: experiment
+    lines: [exp1, exp2, exp3, exp4]
+
+  - id: model
+    chapter: The driver model
+    render: equation
+    lines: [mod1, mod2, mod3, mod4, mod5, mod6]
+
+  - id: setup
+    chapter: Building the ring road
+    render: ring
+    lines: [set1, set2, set3]
+    params:
+      run: tap
+      t0: 0
+      t1: 19.5
+      highlight: {39: track}
+      chart_cars: [39]
+      chart_colors: [TEXT]
+      chart_labels: ["tracked car"]
+      panel_at: set2
+      legend_at: set2
+      notes:
+        - {text: "1 km ring · 40 cars · 52 km/h", at: "set1+0.5", until: set2, pos: [1080, 330], pill: true, color: AMBER}
+
+  - id: tap
+    pad: [0.6, 4.0]
+    chapter: One tap of the brakes
+    render: ring
+    lines: [tap1, tap2, tap3, tap4]
+    params:
+      run: tap
+      t0: 15
+      t1: 150
+      anchor: {cue: tap1, offset: 2.0, sim: 20}
+      highlight: {0: brake, 39: track}
+      chart_cars: [0, 39]
+      chart_colors: [AMBER, TEXT]
+      chart_labels: ["braking driver", "car behind"]
+
+  - id: amplify
+    pad: [0.6, 2.0]
+    chapter: How a small dip grows
+    render: chain
+    lines: [amp1, amp2, amp3, amp4]
+
+  - id: wave
+    pad: [0.6, 3.0]
+    chapter: The jam moves backwards
+    render: ring
+    lines: [wav1, wav2, wav3]
+    params:
+      run: tap
+      t0: 480
+      t1: 640
+      panel: stopped
+      highlight: {0: brake}
+      notes:
+        - {text: "amber outline = the driver who braked, 8 minutes ago", at: wav3, pos: [1080, 820], size: 26, width: 760, color: AMBER}
+
+  - id: spacetime
+    pad: [0.6, 3.0]
+    chapter: The space-time diagram
+    render: spacetime
+    lines: [st1, st2, st3, st4]
+    params:
+      run: tap
+      t0: 0
+      t1: 960
+      wave_t: 760
+      reveal_from: st2
+      reveal_to: "st3+2.0"
+
+  - id: persist
+    render: ring
+    lines: [per1, per2]
+    params:
+      run: tap
+      t0: 900
+      t1: 960
+      highlight: {39: track}
+      chart_cars: [39]
+      chart_colors: [TEXT]
+      chart_labels: ["tracked car"]
+      notes:
+        - {text: "15 minutes later", at: 0.3, until: per2, pos: [1080, 200], pill: true, color: RED}
+
+  - id: why
+    chapter: Why it happens
+    render: why
+    lines: [why1, why2, why3]
+
+  - id: fix-gaps
+    pad: [0.6, 3.0]
+    chapter: "Fix #1: more room"
+    render: ring
+    lines: [fix1, fix2, fix3, fix4]
+    params:
+      run: gaps
+      t0: 12
+      t1: 240
+      anchor: {cue: fix2, offset: 6.0, sim: 20}
+      panel: spacetime
+      st_range: [0, 240]
+      highlight: {0: brake}
+      notes:
+        - {text: "30 cars · 28 m gaps", at: fix2, until: fix4, pos: [1080, 92], pill: true, color: TEAL}
+        - {text: "ramp meters hold density below the tipping point", at: fix4, pos: [1080, 1000], size: 26, width: 760, color: MUTED}
+
+  - id: fix-smooth
+    pad: [0.6, 3.0]
+    chapter: "Fix #2: one smart car"
+    render: ring
+    lines: [sm1, sm2, sm3, sm4, sm5, sm6]
+    params:
+      run: smooth
+      t0: 560
+      t1: 900
+      anchor: {cue: sm3, sim: 620}
+      panel: spacetime
+      st_range: [500, 900]
+      highlight: {20: smooth}
+      notes:
+        - {text: "blue car: drives at the average speed, keeps a buffer", at: sm3, until: sm5, pos: [1080, 92], pill: true, color: BLUE}
+        - {text: "Stern et al. (2018), Transportation Research Part C 89", at: sm6, pos: [1080, 92], pill: true, color: AMBER}
+
+  - id: takeaway
+    chapter: What you can do
+    render: ring
+    lines: [tk1, tk2, tk3, tk4, tk5]
+    params:
+      layout: center
+      run: smooth
+      t0: 900
+      t1: 1000
+      highlight: {20: smooth}
+      notes:
+        - {text: "Leave a gap.", at: tk2, until: tk3, pos: [960, 575], align: center, size: 56, weight: black}
+        - {text: "Be the blue car.", at: tk3, until: tk4, pos: [960, 575], align: center, size: 56, weight: black, color: BLUE}
+        - {text: "code in the description", at: tk4, until: tk5, pos: [960, 575], align: center, size: 40, weight: bold, color: MUTED}
+        - {text: "Next: crowds", at: tk5, pos: [960, 575], align: center, size: 48, weight: bold, color: AMBER}
+
+  - id: endcard
+    render: endcard
+    min_duration: 20
+    pad: [0, 0]
+    params:
+      next_title: "Why Crowds Crush"

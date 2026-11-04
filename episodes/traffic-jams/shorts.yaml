@@ -1,0 +1,63 @@
+# Each short is re-rendered in 9:16 from the same simulation (not cropped).
+shorts:
+  - id: short1-phantom-jam
+    hook: "No accident.\nStill stuck."
+    render: short
+    meta: {title: "No accident. No construction. Still stuck. Why? #shorts"}
+    lines:
+      - {id: s1a, text: "No accident. No construction. Still stuck. Why?"}
+      - {id: s1b, text: "I simulated forty identical drivers on a ring road. Perfectly smooth traffic."}
+      - {id: s1c, text: "Then one driver taps the brakes for three seconds."}
+      - {id: s1d, text: "The slowdown gets handed back from car to car, and with every lap, it grows."}
+      - {id: s1e, text: "Eight minutes later, cars are coming to a complete stop. Nobody crashed. Nobody did anything wrong."}
+      - {id: s1f, text: "That's a phantom traffic jam. Full simulation on my channel."}
+    params:
+      mode: ring
+      run: tap
+      t0: 0
+      t1: 620
+      anchor: {cue: s1c, offset: 1.5, sim: 20}
+      highlight: {0: brake}
+      notes:
+        - {text: "52 km/h", at: s1b, until: s1d, pos: [540, 915], align: center, size: 60, weight: black, color: TEAL}
+        - {text: "8 min later", at: s1e, until: s1f, pos: [540, 915], align: center, size: 60, weight: black, color: RED}
+
+  - id: short2-jams-move-backwards
+    hook: "Traffic jams\nmove backwards."
+    render: short
+    meta: {title: "Traffic jams move BACKWARDS (simulation) #shorts"}
+    lines:
+      - {id: s2a, text: "Traffic jams move backwards. Here's the proof."}
+      - {id: s2b, text: "Every line is a car on a ring road, climbing upwards as time passes."}
+      - {id: s2c, text: "The red stripes are where cars are stopped. And they tilt the other way."}
+      - {id: s2d, text: "The cars drive forwards. The jam drifts backwards, at about fourteen kilometers an hour."}
+      - {id: s2e, text: "Real highway data shows the same thing. The full breakdown is on my channel."}
+    params:
+      mode: spacetime
+      run: tap
+      t0: 300
+      t1: 960
+      reveal: [0.2, 14.0]
+      arrow_at: s2b
+      jam_at: s2c
+      caption_y: 1420
+
+  - id: short3-one-car-fixes-it
+    hook: "One car can fix\na traffic jam."
+    render: short
+    meta: {title: "One car can fix a traffic jam #shorts"}
+    lines:
+      - {id: s3a, text: "One car can fix a traffic jam. Watch the blue one."}
+      - {id: s3b, text: "This ring road is stuck in stop and go."}
+      - {id: s3c, text: "The blue car stops copying the car in front. It holds the average speed of traffic, and lets a gap open up."}
+      - {id: s3d, text: "That gap soaks up the wave. Within two minutes, nobody has to stop."}
+      - {id: s3e, text: "Researchers tested this with real cars in 2016. Full video on my channel."}
+    params:
+      mode: ring_st
+      run: smooth
+      t0: 560
+      t1: 900
+      st_range: [500, 900]
+      anchor: {cue: s3c, sim: 620}
+      highlight: {20: smooth}
+      caption_y: 1085

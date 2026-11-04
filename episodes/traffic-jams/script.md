@@ -1,0 +1,86 @@
+# Why Traffic Jams Appear From Nowhere
+
+Episode 1 of "I Simulated It". Lines in the form `[id] text` are narrated; they are
+referenced by id from scenes.yaml. Everything else is notes.
+
+Facts checked against the simulation (sims/idm.py, see tests/test_sims.py):
+40 cars / 1 km ring, equilibrium 52 km/h; brake tap 2 m/s^2 for 3 s drops car 1 to ~31 km/h;
+first full stop ~490 s after the tap (~310 car-to-car handoffs); wave speed -14 km/h;
+30 cars: dip decays, cruise 71 km/h; smoother on at t=620 s -> no stops within ~2 min, all at ~37 km/h.
+
+## Cold open
+[hook1] No accident. No construction. No lane closure. And yet, you're stuck.
+[hook2] A minute later, the road clears, and you never find out why.
+[hook3] Today I'm going to build that traffic jam from scratch, in a simulation, and find out exactly where it comes from. And then, how to make it disappear.
+
+## The experiment
+[exp1] In 2008, a team of Japanese researchers ran a very simple experiment. They put twenty-two cars on a circular track, two hundred and thirty meters around, and asked the drivers to cruise at a steady thirty kilometers an hour.
+[exp2] No intersections. No traffic lights. Nothing to stop for.
+[exp3] Within a few minutes, a jam appeared anyway. Cars came to a complete stop, then moved on, and the stopped section slowly crept backwards around the track.
+[exp4] I want to understand why. So let's rebuild that experiment in code.
+
+## The model
+[mod1] Every car in my simulation follows one rule, called the Intelligent Driver Model. It was published in 2000, and it's still one of the standard ways traffic researchers describe how people drive.
+[mod2] The rule is a single equation for acceleration, with two parts that pull against each other.
+[mod3] The first part is the urge to go. Below your desired speed, you speed up, and the closer you get to it, the gentler that push becomes.
+[mod4] The second part is the urge to keep your distance. Every driver wants a minimum gap, plus a time gap of about one point two seconds. And if you're closing in on the car ahead, you want even more room.
+[mod5] When the actual gap is smaller than the one you'd like, this term takes over, and you brake.
+[mod6] That's it. No randomness, no bad drivers. Every car is identical and perfectly well behaved.
+
+## The setup
+[set1] Here's my ring road. One kilometer around, forty identical cars, evenly spaced, all moving at about fifty kilometers an hour.
+[set2] Color shows speed. Teal is cruising, red is stopped. On the right, I'm tracking the speed of one car, this one, outlined in white.
+[set3] And as you'd expect, if nobody does anything, nothing happens. Perfectly smooth traffic, forever.
+
+## One tap of the brakes
+[tap1] So let's make one small mistake. This driver, in amber, taps the brakes for three seconds. They drop from about fifty kilometers an hour to thirty, then carry on as normal.
+[tap2] Watch the car behind them.
+[tap3] It slows down too, but a little less than the first car did. And the car behind that one, a little less again. So far, so good. The dip seems to be fading.
+[tap4] But it doesn't go away. The slowdown gets handed from car to car, all the way around the ring, and every time it comes back around, it's slightly bigger.
+
+## How a small dip grows
+[amp1] Here is the lowest speed each car reaches as the slowdown passes through it, in order. Car after car, lap after lap.
+[amp2] The first few drivers soften it. But then the trend flips, and each driver passes on a slowdown that's a little deeper than the one they received.
+[amp3] About three hundred handoffs later, a twenty kilometer an hour dip has become a complete stop.
+[amp4] Traffic engineers call this string instability. In a dense enough line of cars, small disturbances don't fade. They grow.
+
+## The jam moves backwards
+[wav1] Eight minutes after that single tap, cars start coming to a complete stop. And then something strange happens.
+[wav2] The jam doesn't stay where it formed. Cars drive into the back of it, stop, and pull away from the front. But the jam itself creeps the other way, backwards, against the flow of traffic.
+[wav3] And the driver who caused it? They braked once, eight minutes ago, and they've been all the way around this road several times since. Nobody stuck in this jam could ever work out what started it.
+
+## The space-time diagram
+[st1] To see what's really going on, here's another way to look at the same simulation.
+[st2] Time runs from left to right. Position around the ring runs from bottom to top. Each car leaves a trail, colored by its speed.
+[st3] The cars all climb upwards, the way traffic flows. But the red stripes, the stopped sections, tilt the other way. They're moving backwards, at about fourteen kilometers an hour.
+[st4] Real highway data shows the same pattern. Stop-and-go waves travel against the traffic at roughly fifteen to twenty kilometers an hour, on roads all over the world.
+
+## It never goes away
+[per1] And the wave doesn't die. Here's the same road, fifteen minutes into the simulation. The jam is still there, still circling.
+[per2] One tap of the brakes, three seconds long, and this road is stuck in stop-and-go for as long as I keep the simulation running.
+
+## Why it happens
+[why1] So why does this happen? It takes two ingredients.
+[why2] First, lag. Nobody can change speed instantly. By the time you've matched the car ahead, the gap has already changed, so you overshoot a little, and the driver behind you has to correct for your overshoot as well as theirs.
+[why3] Second, density. With forty cars on this ring, every gap is only about twenty meters. There's no slack. Nobody can absorb a slowdown, they can only pass it on.
+
+## Fix one: more room
+[fix1] Which suggests the first fix. Give everyone more room.
+[fix2] Same ring, same rule, same three second tap. But this time there are thirty cars instead of forty, so the average gap grows from twenty meters to about twenty-eight.
+[fix3] The cars behind soften the dip, just like before. But this time it keeps fading, car after car, until it's gone. No jam, ever. And everyone is cruising faster, at around seventy kilometers an hour.
+[fix4] On a real highway, you can't just delete cars. But this is the idea behind ramp meters, those traffic lights on on-ramps. They hold the density just below the point where waves start to grow.
+
+## Fix two: one smart car
+[sm1] But there's a cleverer fix, and it only needs one car.
+[sm2] Here's the jam from before, fully formed. I'm going to switch one car, this one in blue, over to a different strategy.
+[sm3] Instead of copying the car in front, it drives at the average speed of traffic, and ignores the stop-and-go ahead of it. It lets a big gap open up in front, and uses that gap as a buffer.
+[sm4] When the jam ahead stops, the blue car doesn't. It's already going slowly enough that it just rolls into the space it left. And the cars behind it never feel the wave at all.
+[sm5] Watch the diagram. The red stripes fade out, and within about two minutes, every car is moving at the same steady speed. The average speed barely changes, but nobody has to stop.
+[sm6] This isn't just a simulation trick. In 2016, researchers ran the ring experiment for real in Arizona, with about twenty human drivers and one automated car running a controller like this. When it was switched on, the stop-and-go waves were largely dampened, and fuel use across the whole group dropped by up to forty percent.
+
+## What you can do
+[tk1] So what can you actually do about it?
+[tk2] Leave a gap. Not to drive slower, but to give yourself room to react smoothly. If the car ahead brakes, you can ease off instead of stamping on the brakes, and the wave stops with you.
+[tk3] Every time you do that, you're being the blue car.
+[tk4] The full simulation code from this video is linked in the description, so you can run it yourself and try to break it.
+[tk5] Next time, I'm simulating crowds, and why pushing toward an exit makes everyone slower.

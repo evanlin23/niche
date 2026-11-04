@@ -1,0 +1,67 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Oswald;src:url(oswald-latin-700.ttf);font-weight:700}
+@font-face{font-family:Oswald;src:url(oswald-latin-500.ttf);font-weight:500}
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#1d2433}
+canvas{position:absolute;inset:0}
+.t{position:absolute;white-space:nowrap;line-height:1;font-family:Oswald;color:#fff;text-transform:uppercase;letter-spacing:.5px;text-shadow:0 4px 18px rgba(0,0,0,.35)}
+</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<div id="ov"></div>
+<script type="module">
+import * as THREE from 'three';
+import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+const P=new URLSearchParams(location.search); const shot=P.get('shot')||'a';
+const S=await (await fetch('state.json')).json();
+const W=1920,H=1080;
+const r=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+r.setSize(W,H); r.setPixelRatio(1); r.shadowMap.enabled=true; r.shadowMap.type=THREE.PCFSoftShadowMap;
+r.toneMapping=THREE.ACESFilmicToneMapping; r.outputColorSpace=THREE.SRGBColorSpace;
+document.body.prepend(r.domElement);
+const sc=new THREE.Scene();
+// studio backdrop: radial gradient texture
+const cv=document.createElement('canvas');cv.width=cv.height=1024;const g=cv.getContext('2d');
+const gr=g.createRadialGradient(512,420,50,512,512,700);gr.addColorStop(0,'#46506a');gr.addColorStop(1,'#151a26');
+g.fillStyle=gr;g.fillRect(0,0,1024,1024);
+sc.background=new THREE.CanvasTexture(cv); sc.background.colorSpace=THREE.SRGBColorSpace;
+const cam=new THREE.PerspectiveCamera(32,W/H,0.1,200);
+sc.add(new THREE.HemisphereLight(0xdfe8ff,0x1a2030,0.9));
+const key=new THREE.SpotLight(0xfff3e0,900,0,Math.PI/5,0.6,1.6); key.position.set(-6,16,8); key.castShadow=true;
+key.shadow.mapSize.set(4096,4096); key.shadow.radius=6; key.shadow.bias=-0.0004; sc.add(key);
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({color:0x2a3142,roughness:.95}));
+floor.rotation.x=-Math.PI/2; floor.receiveShadow=true; sc.add(floor);
+const speedCol=v=>{const f=Math.min(1,v/54); const red=new THREE.Color('#e5484d'),amb=new THREE.Color('#ffb627'),wh=new THREE.Color('#f2f2ee');
+ return f<.5?red.clone().lerp(amb,f/.5):amb.clone().lerp(wh,(f-.5)/.5);};
+const ovl=document.getElementById('ov');
+const txt=(s,x,y,size,col='#fff',w=700)=>{const d=document.createElement('div');d.className='t';d.style.cssText=`left:${x}px;top:${y}px;font-size:${size}px;color:${col};font-weight:${w}`;d.textContent=s;ovl.append(d);};
+if(shot==='a'){
+ // board: round track on a slab
+ const R=4.2;
+ const slab=new THREE.Mesh(new RoundedBoxGeometry(11,0.35,11,4,0.18),new THREE.MeshStandardMaterial({color:0xe9e6dd,roughness:.8}));
+ slab.position.y=0.175; slab.castShadow=slab.receiveShadow=true; sc.add(slab);
+ const road=new THREE.Mesh(new THREE.RingGeometry(R-0.45,R+0.45,256),new THREE.MeshStandardMaterial({color:0x3a4152,roughness:.9}));
+ road.rotation.x=-Math.PI/2; road.position.y=0.352; road.receiveShadow=true; sc.add(road);
+ for(let k=0;k<64;k++){const a=k/64*Math.PI*2; const d=new THREE.Mesh(new THREE.BoxGeometry(0.16,0.005,0.03),new THREE.MeshStandardMaterial({color:0xcfd3dc}));
+   d.position.set(Math.cos(a)*R,0.356,Math.sin(a)*R); d.rotation.y=-a; sc.add(d);}
+ const cg=new RoundedBoxGeometry(0.26,0.2,0.46,3,0.07);
+ S.x.forEach((x,i)=>{const a=x/1000*Math.PI*2; const col=speedCol(S.v[i]); const m=new THREE.Mesh(cg,new THREE.MeshStandardMaterial({color:col,roughness:.45,emissive:S.v[i]<15?new THREE.Color('#e5484d'):new THREE.Color(0),emissiveIntensity:.35}));
+   m.position.set(Math.cos(a)*R,0.46,Math.sin(a)*R); m.rotation.y=-a; m.castShadow=true; sc.add(m);
+   if(false){const cone=new THREE.Mesh(new THREE.ConeGeometry(0.12,0.3,24),new THREE.MeshStandardMaterial({color:0xffb627}));cone.position.set(m.position.x,1.0,m.position.z);cone.rotation.x=Math.PI;cone.castShadow=true;sc.add(cone);}});
+ cam.position.set(-3.5,11,16.5); cam.lookAt(3.6,0,0.8);
+ txt('8 minutes later',1240,200,46,'#ffb627',500);
+ txt('9 cars',1236,260,150,'#fff');
+ txt('stopped',1236,415,150,'#e5484d');
+ txt('No crash. One 3-second brake tap.',1242,600,38,'#c9d1e0',500);
+}else{
+ const mat=c=>new THREE.MeshStandardMaterial({color:c,roughness:.45});
+ const col=(x,h,c)=>{const m=new THREE.Mesh(new RoundedBoxGeometry(1.6,h,1.6,4,0.12),mat(c));m.position.set(x,h/2,0);m.castShadow=m.receiveShadow=true;sc.add(m);
+   const car=new THREE.Mesh(new RoundedBoxGeometry(0.6,0.45,1.0,3,0.14),mat(0xf2f2ee));car.position.set(x,h+0.23,0);car.castShadow=true;sc.add(car);};
+ col(-1.7,9*0.5,0xe5484d); col(1.7,0.12,0x4fd1c5);
+ cam.position.set(0,4.5,21); cam.lookAt(0,2.6,0);
+ txt('Same brake tap. Cars stopped after 12 minutes:',150,110,46,'#c9d1e0',500);
+ txt('9',560,250,170,'#e5484d'); txt('0',1250,640,170,'#4fd1c5');
+ txt('40 cars · 20 m gaps',640,930,40,'#fff',500); txt('30 cars · 28 m gaps',1050,930,40,'#fff',500);
+}
+r.render(sc,cam); window.DONE=true;
+</script></body></html>
