@@ -90,6 +90,17 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   tiny blips at word edges -> kept (usually part of the word). Then each line is trimmed to its first/last word.
   Safety: every edited line is re-transcribed; an edit that removes ANY spoken word (script or not, e.g. an
   unscripted "percent") is undone, one edit at a time.
+- **Chopped endings come from the split, not the cleanup.** `split_recording` ends each clip where the SCRIPT
+  ends, so any extra spoken word ("...back to it later", "25 percent", "of the time") was cut off at the source.
+  Fix: make script.md match the take, then `python -m pipeline.extend_tails episodes/<slug> <recordings...>`
+  finds every clip in the original recordings and extends it while the sound continues. Heads are capped at
+  0.15 s (a longer head pulled in the previous take: "lie.", "4%"); tails can run 1.2 s but check what they
+  added (e2 pulled in the start of the next line). Run before tighten_voice.
+- **Repeats are cut upstream, by hand-checked ranges** in `_stumbles.json` (Whisper hides many repeats even in
+  verbatim mode; the aligner finds them as "speech outside the script words"). The QA step only blanks noises
+  and protects anything that sounds like words; an automatic repeat cut once nearly deleted real content.
+- Don't double-cut: a range in `_stumbles.json` AND `_manual_cuts.json` removes audio twice ("The door is a
+  kitchen..."). Keep each fix in one place.
 - **Align to what was said, protect every word.** The script can differ from the take (an extra "percent").
   Before any fill/cut, Whisper (primed with the script line) listens to that spot; if it hears a word there,
   the spot is kept. Transcripts write "percent" as "%": normalise it or the safety check misses it.
