@@ -1,0 +1,13 @@
+{
+  "source": "sims/connect4 exact solver (c4 -openings -col N), GitHub Actions run 41802558270, 2026-11-04",
+  "score_meaning": "+1 = first player forces a win, 0 = draw, -1/-2 = first player loses (solver score units)",
+  "columns": {
+    "1": {"score": -2, "result": "loss", "time": "23m28s", "nodes": 39283239622},
+    "2": {"score": -1, "result": "loss", "time": "2h33m15s", "nodes": 155734847736},
+    "3": {"score": 0, "result": "draw", "time": "1h15m59s", "nodes": 80766530570},
+    "4": {"score": 1, "result": "win", "time": "2h15m9s", "nodes": 244681054194},
+    "5-7": "mirror images of 3-1"
+  },
+  "matches_1988": true,
+  "total_solver_time": "about 6.5 runner-hours"
+}

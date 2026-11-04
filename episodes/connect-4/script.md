@@ -8,7 +8,7 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 - First player (mirror): random 55.1 vs 44.7; centre bots 53.3 vs 43.2; careful 45.7 vs 37.1 (17% draws).
 - Opening column (careful bots): centre 49.3%, columns 3/5 43.8/43.7, columns 2/6 43.4/43.2, edges 38.8/38.6.
 - Engine check (sims/connect4 solver, `c4 -openings`): MUST reproduce the 1988 result (first player wins only
-  by opening in the centre; columns 3 and 5 draw; the rest lose). Lines c2-c3 stay only if it does (c3 also requires the solver to be the slowest run). [PENDING]
+  by opening in the centre; columns 3 and 5 draw; the rest lose). DONE: matches (data/solver.json): centre win, columns 3/5 draw, others lose. c2 stays. c3 needs one check: solver took ~6.5 runner-hours; confirm the bot experiments took less in total.
 
 ## Cold open
 [o1] Connect Four was solved in 1988. A computer worked out that the first player can always win, if they start in the middle and never make a mistake.
