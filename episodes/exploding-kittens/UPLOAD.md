@@ -31,6 +31,17 @@ with timestamps from your actual voice timing, and the sources).
 - Chapters: on (automatic from the timestamps in the description).
 - Tags: paste from meta.yaml (tags matter little; the title and description do the work).
 
+## Playlist (do this once, with the first upload)
+Studio → Content → Playlists → New playlist (Visibility: Public), then add the video to it.
+- **Title:** `Board & Card Games, Simulated`
+- **Description:**
+  ```
+  How to win the games people actually play, proven by simulating billions of games. Exploding Kittens, Uno, Connect 4, Shut the Box, Battleship and more. New game every week.
+  ```
+- Set it as the video's playlist on upload (Details → Playlists), and add every future episode to it.
+- Later, once there are 2+ of each: `House Rules, Tested` (Uno, Shut the Box) and a Shorts playlist.
+- Channel page → Customization → Layout → add the playlist as a featured section.
+
 ## After publishing
 - Reply to early comments in the first hours; pin the question comment.
 - Don't change the title/thumbnail manually while Test & compare is running (it takes up to ~2 weeks).

@@ -137,6 +137,8 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - Captions for upload are the script's own words and punctuation, timed from the voice (two balanced lines,
   sentence breaks). Raw transcription captions (no punctuation, broken lines) are not acceptable.
 - The music credit must be true (we use YouTube Audio Library tracks, credited by name), never "generated".
+- Every episode goes in the public playlist **Board & Card Games, Simulated** (featured on the channel page);
+  add theme playlists ("House Rules, Tested", Shorts) once a theme has 2+ videos.
 - One GitHub issue per episode holds the full upload kit: files, titles, description to paste, settings,
   pinned comment. The video itself stays out of the public repo (music licence).
 - 3 title/thumbnail pairs for YouTube **Test & compare** (winner = watch time). Every claim must be literally true.
