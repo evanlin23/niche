@@ -175,9 +175,33 @@ def concat(parts: list[Path], out: Path) -> Path:
     return out
 
 
-def mux(video: Path, audio: Path, out: Path, loudnorm=True) -> Path:
-    af = ["-af", "loudnorm=I=-14:TP=-1.5:LRA=11"] if loudnorm else []
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(video), "-i", str(audio),
-                    "-map", "0:v", "-map", "1:a", "-c:v", "copy", *af, "-c:a", "aac", "-b:a", "192k",
-                    "-ar", "48000", "-shortest", "-movflags", "+faststart", str(out)], check=True)
+def _lufs(path: Path) -> float:
+    r = subprocess.run(["ffmpeg", "-nostats", "-i", str(path), "-af", "ebur128", "-f", "null", "-"],
+                       capture_output=True, text=True).stderr
+    summ = r[r.rfind("Summary"):]
+    import re
+    return float(re.search(r"I:\s+(-?[\d.]+) LUFS", summ).group(1))
+
+
+def _peak_dbfs(path: Path) -> float:
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(path), "-map", "0:a", "-f", "f32le", "-"],
+                         capture_output=True, check=True).stdout
+    a = np.frombuffer(raw, np.float32)
+    return float(20 * np.log10(np.abs(a).max() + 1e-12))
+
+
+def mux(video: Path, audio: Path, out: Path, loudnorm=True, target=-14.0) -> Path:
+    """Exact gain to the loudness target, then a look-ahead limiter; the ENCODED file is measured and the
+    ceiling lowered until no decoded sample exceeds -1 dBFS (single-pass loudnorm let peaks hit +2.1 dBFS)."""
+    gain = target - _lufs(audio) if loudnorm else 0.0
+    for ceiling_db in (-2.0, -3.0, -4.0):
+        af = f"volume={gain:.2f}dB,alimiter=limit={10 ** (ceiling_db / 20):.4f}:attack=5:release=80:level=false"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(video), "-i", str(audio),
+                        "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-af", af, "-c:a", "aac", "-b:a", "192k",
+                        "-ar", "48000", "-shortest", "-movflags", "+faststart", str(out)], check=True)
+        pk = _peak_dbfs(out)
+        print(f"  audio: gain {gain:+.1f} dB, limiter {ceiling_db} dB -> decoded peak {pk:.2f} dBFS, "
+              f"loudness {_lufs(out):.1f} LUFS")
+        if pk <= -1.0:
+            break
     return out

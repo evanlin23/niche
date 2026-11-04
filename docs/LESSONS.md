@@ -150,6 +150,10 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - Don't commit: music, voice audio, full transcripts, out/. `.gitignore` covers ALL audio anywhere under
   `episodes/*/voice/` (a new backup folder once slipped 27 voice clips into a public commit).
 
+- **Clipping:** single-pass `loudnorm` + AAC let the final audio peak at +2.1 dBFS (the creator's friend heard
+  it). `compose.mux` now applies the exact gain to -14 LUFS, a look-ahead limiter, and MEASURES the encoded
+  file, lowering the ceiling until the decoded peak is <= -1 dBFS.
+
 ## Packaging
 - **Never link the code** (repo, simulator) in descriptions, end cards or comments. The creator's call.
 - **Length: at least 8:00** (mid-roll ads), with margin (aim ~8:20). If short, add real content from unused
