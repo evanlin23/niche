@@ -127,12 +127,12 @@ CHARTS = {
 
 
 @lru_cache(None)
-def demo_trace(seed=123):
+def demo_trace(seed=123, players=4):
     import importlib.util
     spec = importlib.util.spec_from_file_location("ekx", EP / "experiments.py")
     m = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(m)
-    out = subprocess.run([str(ROOT / "sims" / "ek" / "eksim"), "-players", "4", "-trace", "-seed", str(seed),
+    out = subprocess.run([str(ROOT / "sims" / "ek" / "eksim"), "-players", str(players), "-trace", "-seed", str(seed),
                           "-test", json.dumps(m.BEST), "-base", json.dumps(m.CASUAL)],
                          capture_output=True, text=True, check=True).stdout
     return json.loads(out)
@@ -192,6 +192,9 @@ def resolve_at(ctx, ref):
 
 
 def resolve_all(ctx, obj):
+    import re
+    if isinstance(obj, str) and re.match(r"^\w+@[\w']+(#\d+)?([+-][\d.]+)?$", obj):
+        return resolve_at(ctx, obj)                       # anchors anywhere (e.g. inside seat_hl lists)
     if isinstance(obj, dict):
         return {k: (resolve_at(ctx, v) if k in ("at", "until") else resolve_all(ctx, v)) for k, v in obj.items()}
     if isinstance(obj, list):
@@ -233,7 +236,7 @@ def build_spec(ctx) -> dict:
         s["chart"] = resolve_all(ctx, CHARTS[p["chart"]]())
     s["params"] = resolve_all(ctx, s["params"])           # notes / checklist items can use word anchors too
     if ctx.scene.render in ("table", "short"):
-        tr = demo_trace(p.get("seed", 123))
+        tr = demo_trace(p.get("seed", 123), p.get("players", 4))
         s["trace"] = {"events": tr["events"], "players": tr["players"], "winner": tr["result"]["Winner"]}
     return s
 

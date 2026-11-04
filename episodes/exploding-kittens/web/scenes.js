@@ -40,7 +40,8 @@ function drift(stage, t, from, to, look, arc = null) {
 
 // ------------------------------------------------------------------ table with a replayed game
 const SEATS = [[0, 4.1], [-6.6, 0.2], [0, -3.7], [6.6, 0.2]];
-const SEATCOL = [GN.blue, GN.cream, GN.coral, GN.mustard];
+const SEATS5 = [[0, 4.1], [-6.4, 1.9], [-3.9, -3.5], [3.9, -3.5], [6.4, 1.9]];   // 5 bots: one per seat, no doubling up
+const SEATCOL = [GN.blue, GN.cream, GN.coral, GN.mustard, GN.green || '#7fc8a9'];
 
 function makeTable(stage, spec) {
   buildRoom(stage);
@@ -49,7 +50,7 @@ function makeTable(stage, spec) {
   const n = spec.trace.players;
   const seats = [];
   for (let i = 0; i < n; i++) {
-    const [sx, sz] = SEATS[i];
+    const [sx, sz] = (n === 5 ? SEATS5 : SEATS)[i];
     const tok = new THREE.Group();
     const body = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.42, 0.9, 32), new THREE.MeshStandardMaterial({ color: SEATCOL[i], roughness: 0.4 }));
     body.position.y = 0.45; body.castShadow = true; tok.add(body);
@@ -79,8 +80,8 @@ function layoutHand(seat, count, dead) {
     const spread = Math.min(0.42, 4.2 / Math.max(1, count));
     const off = (k - (count - 1) / 2) * spread;
     const px = sx + Math.cos(dir) * off, pz = sz - Math.sin(dir) * off;
-    c.position.set(px, 0.08 + k * 0.004, pz);
-    c.rotation.set(0, dir + (k - (count - 1) / 2) * 0.05, 0);
+    c.position.set(px, 0.02 + k * 0.032, pz);   // stacked by real thickness: overlapping hand cards never intersect
+    c.rotation.set(0, dir + Math.PI + (k - (count - 1) / 2) * 0.05, 0);   // upright for the person in that seat
   });
 }
 
@@ -103,6 +104,9 @@ function tableFrame(stage, T, spec, ev, u, opts = {}) {
     const [lx, ly] = stage.project(front ? new THREE.Vector3(s.tok.position.x, 0, s.tok.position.z + 1.4) : new THREE.Vector3(s.tok.position.x, 1.8, s.tok.position.z));
     s.label.el.style.left = lx + 'px'; s.label.el.style.top = (front ? ly + 4 : ly - 30) + 'px'; s.label.el.style.opacity = opts.labels === false ? 0 : 1;
     s.label.el.textContent = isDead ? 'OUT' : (opts.seatNames ? opts.seatNames[s.i] : (s.i === 0 ? (opts.heroName || 'TEST BOT') : (opts.otherName || `PLAYER ${s.i + 1}`)));
+    const hlOn = (opts.seatHl || []).some(([si, t0]) => si === s.i && opts.t >= t0 && opts.t < t0 + 2.4);
+    s.label.el.style.color = hlOn ? GN.mustard : (s.i === 0 && !opts.seatNames ? GN.blue : GN.muted);
+    if (hlOn) s.tok.position.y += Math.abs(Math.sin(opts.t * 7)) * 0.25;
   });
   // last played card on discard
   let last = null;
@@ -136,7 +140,7 @@ function tableFrame(stage, T, spec, ev, u, opts = {}) {
   }
   T.mover.rotation.set(0, 0, 0);
   if (opts.idle) { T.mover.visible = false; label = ''; }
-  const [px, py] = stage.project(seatPos(seat).clone().setY(2.6));
+  const [px, py] = stage.project(seatPos(seat).clone().setY(3.4));   // above the seat's name label
   T.pill.el.style.opacity = label && opts.pills !== false ? win(f, 0.05, 0.95, 0.1) : 0;
   T.pill.el.textContent = label; T.pill.el.style.left = px + 'px'; T.pill.el.style.top = py - 40 + 'px';
   T.pill.el.style.background = e.ev === 'explode' ? GN.coral : e.ev === 'defuse' ? GN.green : GN.mustard;
@@ -163,7 +167,7 @@ SCENES.table = async (stage, spec) => {
     const u = play ? lerp(e0, e1 + 0.99, clamp(t / (stage.duration - 0.6))) : (p.ev_still ?? 2);
     drift(stage, t, cam.from, cam.to, cam.look, cam.arc);
     stage.camera.updateMatrixWorld();
-    tableFrame(stage, T, spec, null, u, { odds: !!p.odds, labels: p.labels !== false, pills: play, idle: !play, heroName: p.hero_name, otherName: p.other_name, seatNames: p.seat_names });
+    tableFrame(stage, T, spec, null, u, { odds: !!p.odds, labels: p.labels !== false, pills: play, idle: !play, heroName: p.hero_name, otherName: p.other_name, seatNames: p.seat_names, seatHl: p.seat_hl, t });
     scrim(stage, t);
     const g = stage.g, gr = g.createLinearGradient(0, 0, 0, 260);
     gr.addColorStop(0, `rgba(${GN.scrim},0.85)`); gr.addColorStop(1, `rgba(${GN.scrim},0)`); g.fillStyle = gr; g.fillRect(0, 0, stage.W, 260);
@@ -203,7 +207,7 @@ SCENES.deck56 = async (stage, spec) => {
     for (let k = 0; k < n; k++) {
       const c = makeCard(stage, tp === 8 ? 8 + (k % 5) : tp, true);
       // neat fan: one angle per pile and a little air between cards (exactly-touching cards z-fight)
-      c.position.set(gx + (k % 10) * 0.12, 0.012 + k * 0.026, gz + Math.floor(k / 10) * 0.45);
+      c.position.set(gx + (k % 10) * 0.12, 0.016 + k * 0.033, gz + Math.floor(k / 10) * 0.45);
       c.rotation.y = -0.1; c.visible = false; cards.push(c);
     }
     const lab = stage.text({ text: `${n} × ${name}`, x: 0, y: 0, size: 28, weight: 900, font: 'rubik', color: GN.text, manual: true, align: 'center' });
@@ -227,7 +231,7 @@ SCENES.deck56 = async (stage, spec) => {
     for (const it of items) {
       const k = ease((t - it.at) / 0.5);
       const active = cur && items[cur[0]] === it;
-      it.cards.forEach((c, j) => { c.visible = k > 0; c.position.y = 0.012 + j * 0.026 + (1 - k) * 2; });
+      it.cards.forEach((c, j) => { c.visible = k > 0; c.position.y = 0.016 + j * 0.033 + (1 - k) * 2; });
       const [lx, ly] = stage.project(new THREE.Vector3(it.gx, 0, it.gz + 1.5));
       it.lab.el.style.left = lx + 'px'; it.lab.el.style.top = ly + 'px';
       // while a card is up, only its own label stays (labels are drawn above the 3D card)

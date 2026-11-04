@@ -24,11 +24,17 @@ scenes:
   params:
     mode: play
     ev_from: 10
+    players: 5
     seat_names:
     - THE PATIENT ONE
+    - THE NORMAL PLAYER
     - THE GAMBLER
     - THE PANICKER
     - THE HOARDER
+    seat_hl:
+    - [2, 'o2@plays']
+    - [3, 'o2@skips']
+    - [4, 'o2@steals']
     notes:
     - text: 10,000,000,000+ games
       at: o3

@@ -152,7 +152,7 @@ export function cardTexture(type) {
   _tex[key] = t; return t;
 }
 
-const CW = 0.9, CH = 1.26, CT = 0.02;
+const CW = 0.9, CH = 1.26, CT = 0.028;   // a little real thickness (creator request)
 // card body = rounded rectangle (same corner radius as the printed face), extruded to the card's thickness.
 // A box with square corners showed cream corners behind the rounded face art.
 const CR = 0.09;   // 26 px of the 256 px card art
@@ -170,7 +170,9 @@ const _cardGeo = _roundedCardGeo();
 const _faceGeo = new THREE.PlaneGeometry(CW * 0.98, CH * 0.98);
 export function makeCard(stage, type, faceUp = true) {
   const grp = new THREE.Group();
-  const body = new THREE.Mesh(_cardGeo, new THREE.MeshStandardMaterial({ color: 0xf1e7d0, roughness: 0.6 }));
+  // caps cream, edges a touch darker so the thickness reads (ExtrudeGeometry groups: 0 = caps, 1 = sides)
+  const body = new THREE.Mesh(_cardGeo, [new THREE.MeshStandardMaterial({ color: 0xf1e7d0, roughness: 0.6 }),
+                                         new THREE.MeshStandardMaterial({ color: 0xcdbf9f, roughness: 0.7 })]);
   body.castShadow = true; body.receiveShadow = true; grp.add(body);
   const face = new THREE.Mesh(_faceGeo, new THREE.MeshStandardMaterial({ map: cardTexture(faceUp ? type : 'back'), roughness: 0.55, transparent: true }));
   face.rotation.x = -Math.PI / 2; face.position.y = CT / 2 + 0.001; grp.add(face);
@@ -186,7 +188,7 @@ export function makeDeck(stage, pos, max = 60) {
   const cards = [];
   for (let i = 0; i < max; i++) {
     const c = makeCard(stage, 'back', false);
-    c.position.set(pos[0] + Math.sin(i * 2.1) * 0.012, 0.07 + i * (CT + 0.004), pos[2] + Math.cos(i * 1.7) * 0.012);
+    c.position.set(pos[0] + Math.sin(i * 2.1) * 0.012, 0.07 + i * (CT + 0.003), pos[2] + Math.cos(i * 1.7) * 0.012);
     c.rotation.y = Math.sin(i * 1.3) * 0.03;
     cards.push(c);
   }
