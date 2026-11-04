@@ -63,7 +63,7 @@ scenes:
     - 10 Billion Games of
     - Exploding Kittens
 - id: rules
-  chapter: Can you trust it?
+  chapter: How the game works
   render: deck56
   lines:
   - g1
@@ -75,6 +75,7 @@ scenes:
   - 0.1
   - 0.4
 - id: check
+  chapter: Can you trust it?
   render: statement
   lines:
   - c2

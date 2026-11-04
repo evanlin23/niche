@@ -8,19 +8,20 @@ Everything in this video, the simulation, the animation and the charts, is made 
 
 Chapters
 0:00 Five mistakes
-0:42 Can you trust it?
-1:46 Meet the bots
-2:49 Mistake 1: playing for fun
-3:23 Mistake 2: panicking
-3:52 Mistake 3: looking at the wrong time
-4:38 Mistake 4: the wrong hiding place
-5:24 A quick confession
-5:52 Mistake 5: being polite
-6:31 The small stuff
-6:58 Does going first matter?
-7:26 Does it hold up?
-7:48 The recipe
-8:15 The one thing bots can't do
+0:33 How the game works
+1:27 Can you trust it?
+1:58 Meet the bots
+2:44 Mistake 1: playing for fun
+3:15 Mistake 2: panicking
+3:58 Mistake 3: looking at the wrong time
+4:28 Mistake 4: the wrong hiding place
+5:03 A quick confession
+5:18 Mistake 5: being polite
+5:50 The small stuff
+6:11 Does going first matter?
+6:46 Does it hold up?
+7:14 The recipe
+7:39 The one thing bots can't do
 
 Sources & models
 • Exploding Kittens Original Edition rules (2025 printing): https://www.explodingkittens.com/pages/rules-kittens
