@@ -1,0 +1,21 @@
+# Solve Connect 4 openings exactly (engine check). Columns 5-7 mirror 3-1.
+name: Solve Connect 4 openings
+on: workflow_dispatch
+jobs:
+  solve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        col: [1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with: { go-version: "1.24", cache: false }
+      - run: cd sims/connect4 && go build -o c4 . && (time ./c4 -openings -col ${{ matrix.col }} > ../../opening-${{ matrix.col }}.json) 2>&1 | tee ../../opening-${{ matrix.col }}.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: opening-${{ matrix.col }}
+          path: opening-${{ matrix.col }}.*
+          retention-days: 14

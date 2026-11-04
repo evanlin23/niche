@@ -13,6 +13,7 @@ import (
 
 func main() {
 	opening := flag.Bool("openings", false, "solve every first move (the 1988 result)")
+	onlyCol := flag.Int("col", 0, "with -openings: solve only this first column (1-7)")
 	aJ := flag.String("a", "", "bot A json")
 	bJ := flag.String("b", "", "bot B json")
 	games := flag.Int("games", 100000, "games per seat order")
@@ -70,6 +71,9 @@ func main() {
 	if *opening {
 		res := map[string]any{}
 		for c := 0; c < W; c++ {
+			if *onlyCol > 0 && c != *onlyCol-1 {
+				continue
+			}
 			var p Pos
 			p.play(c)
 			s := NewSolver()
