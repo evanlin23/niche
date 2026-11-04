@@ -139,7 +139,7 @@ class Recorded:
         self.fallback = Kokoro()
 
     def find(self, line_id):
-        for ext in ("wav", "m4a", "mp3", "flac", "ogg"):
+        for ext in ("wav", "m4a", "mp3", "flac", "ogg"):   # _roomtone/_report are helpers, never lines
             p = self.dir / f"{line_id}.{ext}"
             if p.exists():
                 return p
@@ -213,15 +213,26 @@ def speak(text: str, cache_dir: Path, eng=None, line_id: str | None = None) -> S
     cache_dir.mkdir(parents=True, exist_ok=True)
     if isinstance(eng, Recorded):
         src = eng.find(line_id) if line_id else None
+        meta_only = eng.dir / f"{line_id}.json" if line_id else None
+        if src is None and meta_only is not None and meta_only.exists():
+            # timing-only mode (e.g. GitHub render without the audio): silent placeholder of the
+            # recorded length + exact word timings; the real voice is mixed in where the wavs live
+            m = json.loads(meta_only.read_text())
+            return Speech(np.zeros(int(m["duration"] * SR), np.float32), [tuple(w) for w in m["words"]])
         if src is None:
             return speak(text, cache_dir, eng.fallback)
-        if os.environ.get("VOICE_CLEAN", "1") != "0":     # denoise + polish + trim (pipeline/voice_clean.py)
+        meta = src.with_suffix(".json")             # written by pipeline/split_recording.py
+        split = meta.exists()
+        if os.environ.get("VOICE_CLEAN", "1") != "0":     # denoise + polish (+ trim) (pipeline/voice_clean.py)
             from .voice_clean import clean, load as load48
-            audio = clean(load48(src))
+            rt = eng.dir / "_roomtone.wav"
+            audio = clean(load48(src), load48(rt) if rt.exists() else None, do_trim=not split)
         else:
             audio = trim_silence(read_wav(src), thr=0.02, keep=0.08)
             audio = audio / (np.abs(audio).max() + 1e-9) * 0.9
-        if os.environ.get("TTS_ALIGN") == "whisper":
+        if split:
+            words = [tuple(w) for w in json.loads(meta.read_text())["words"]]
+        elif os.environ.get("TTS_ALIGN") == "whisper":
             words = _whisper_words(src, text)
         else:
             words = estimate_words(text, len(audio) / SR)

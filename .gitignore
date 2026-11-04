@@ -8,3 +8,6 @@ node_modules/
 sims/ek/eksim
 music/*
 !music/README.md
+episodes/*/voice/*.wav
+episodes/*/voice/*.m4a
+episodes/*/voice/*.mp3

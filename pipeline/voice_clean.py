@@ -72,7 +72,7 @@ def trim(a, pad=0.15, thresh_below_peak=30, max_gap=0.7):
     return a[max(0, s * w - int(pad * SR)):min(len(a), (e + 1) * w + int(pad * SR))]
 
 
-def clean(a: np.ndarray, noise: np.ndarray | None = None, strength=0.9) -> np.ndarray:
+def clean(a: np.ndarray, noise: np.ndarray | None = None, strength=0.9, do_trim=True) -> np.ndarray:
     import noisereduce as nr
     a = ffilter(a, "highpass=f=80,lowpass=f=15000")
     noise = room_tone(a) if noise is None else ffilter(noise, "highpass=f=80,lowpass=f=15000")
@@ -81,7 +81,8 @@ def clean(a: np.ndarray, noise: np.ndarray | None = None, strength=0.9) -> np.nd
     # voice polish: de-ess, gentle compression, presence
     a = ffilter(a, "deesser=i=0.4,acompressor=threshold=-22dB:ratio=3:attack=8:release=120:makeup=4,"
                    "equalizer=f=180:t=q:w=1:g=-2,equalizer=f=4000:t=q:w=1:g=1.5")
-    a = trim(a)
+    if do_trim:
+        a = trim(a)
     return (a / (np.abs(a).max() + 1e-9) * 0.89).astype(np.float32)
 
 

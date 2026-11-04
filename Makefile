@@ -36,3 +36,6 @@ lint-script:      ## check narration for AI tells + TTS problems (docs/script-st
 
 recording-script: ## printable script for recording your own voice, one file per line
 	$(PY) -m pipeline.recording_script episodes/$(SLUG)
+
+split:            ## split ONE long recording into per-line files: make split SLUG=... REC=path/to/file.m4a
+	$(PY) -m pipeline.split_recording episodes/$(SLUG) "$(REC)"

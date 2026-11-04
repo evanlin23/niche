@@ -17,7 +17,7 @@ runs:
       run: |
         sudo apt-get update -qq
         sudo apt-get install -y -qq ffmpeg libegl1 libgl1 fonts-inter >/dev/null || sudo apt-get install -y -qq ffmpeg libegl1 libgl1 >/dev/null
-        pip install -q numpy pillow skia-python pyyaml kokoro-onnx soundfile noisereduce
+        pip install -q numpy pillow skia-python pyyaml kokoro-onnx soundfile noisereduce faster-whisper
         npm install --no-save --silent three@0.170.0
         (cd sims/ek && go build -o eksim .)
     - if: inputs.browser == 'true'
