@@ -341,23 +341,23 @@ SCENES.statement = async (stage, spec) => {
     const mat = new THREE.MeshPhysicalMaterial({ color: col, roughness: 0.35, clearcoat: 0.4, transparent: true, opacity: 0 });
     const m = new THREE.Mesh(geo, mat); m.castShadow = true;
     const s = Math.min(1, maxW / w); m.scale.set(s, s, s);
-    const y0 = 1.2 + (lines.length - 1 - k) * gapY;
-    m.userData = { y0, at: ln.at };
+    const z0 = (k - (lines.length - 1) / 2) * gapY;     // lines lie on the floor, first line farthest
+    m.rotation.x = -Math.PI / 2;
+    m.userData = { z0, at: ln.at };
     stage.scene.add(m); return m;
   });
-  const midY = 1.2 + (lines.length - 1) * gapY / 2 + size / 2;
   brand(stage);
   return (t) => {
     for (const m of meshes) {
       const k = ease((t - m.userData.at) / 0.45);
       m.material.opacity = k;
-      m.position.set(0, m.userData.y0 - (1 - k) * 0.6, (1 - k) * 0.8);
-      m.rotation.x = (1 - k) * -0.35;
+      m.position.set(0, (1 - k) * 1.4, m.userData.z0 + size * 0.5);   // drops onto the floor
+      m.rotation.x = -Math.PI / 2 + (1 - k) * 0.25;
     }
-    const a = lerp(-0.22, 0.22, clamp(t / stage.duration));
-    const R = 16;
-    stage.camera.position.set(Math.sin(a) * R, midY + 1.2, Math.cos(a) * R);
-    stage.camera.lookAt(0, midY - 0.2, 0);
+    const a = lerp(-0.18, 0.18, clamp(t / stage.duration));
+    const R = 8.5;
+    stage.camera.position.set(Math.sin(a) * R, 15.5, Math.cos(a) * R);
+    stage.camera.lookAt(0, 0, 0.3);
     scrim(stage, t);
   };
 };

@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 BIN = ROOT / "sims" / "ek" / "eksim"
 OUT = Path(__file__).resolve().parent / "data" / "results.json"
+SEED = 1
 
 # A "typical table": dodges only when it KNOWS a Kitten is on top, hides Kittens at random,
 # plays cards on a whim sometimes, Nopes attacks on itself half the time.
@@ -19,7 +20,8 @@ CASUAL = dict(name="casual", avoid_risk=1.0, prefer_attack=False, future_risk=0.
               yup=0.3, random_play=0.15, give_worst=False)
 
 
-def run(test=None, base=CASUAL, players=4, games=1_000_000, seed=1, allsame=False):
+def run(test=None, base=CASUAL, players=4, games=1_000_000, seed=None, allsame=False):
+    seed = SEED if seed is None else seed
     cmd = [str(BIN), "-players", str(players), "-games", str(games), "-seed", str(seed), "-base", json.dumps(base)]
     if test:
         cmd += ["-test", json.dumps(test)]
@@ -46,8 +48,16 @@ def sweep(label, key, values, games, base=CASUAL, extra=None, players=4):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--games", type=int, default=2_000_000)
-    G = ap.parse_args().games
+    global SEED, OUT
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--games", type=int, default=2_000_000)
+    ap.add_argument("--seed", type=int, default=1, help="shard seed (each shard = independent games)")
+    ap.add_argument("--out", default=None, help="output folder (default: data/)")
+    ap.add_argument("--all", action="store_true", help="also run final + extra experiments")
+    a = ap.parse_args()
+    G, SEED = a.games, a.seed
+    if a.out:
+        OUT = Path(a.out) / "results.json"
     subprocess.run(["go", "build", "-o", str(BIN), "."], cwd=BIN.parent, check=True)
     res = {"games_per_test": G, "casual": CASUAL}
     print("seat study (all casual)")
@@ -74,10 +84,9 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(res, indent=1))
     print("wrote", OUT)
-
-
-if __name__ == "__main__":
-    main()
+    if a.all:
+        final(G)
+        extra(G)
 
 
 BEST = dict(CASUAL, name="best", avoid_risk=1.0, future_risk=0.3, placement="next", random_play=0.0,
@@ -135,3 +144,7 @@ def extra(G):
     p = OUT.parent / "extra.json"
     p.write_text(json.dumps(out, indent=1))
     print("wrote", p)
+
+
+if __name__ == "__main__":
+    main()
