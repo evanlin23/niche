@@ -308,6 +308,11 @@ def final_check(ep: Path):
             bad.append(f"{lid}: ends abruptly (last 30 ms at +{db[-3:].max() - fl:.0f} dB)")
         if db[:3].max() > fl + 15:
             bad.append(f"{lid}: starts abruptly")
+        raw = load(vd / f"{lid}.wav"); z = np.abs(raw) < 1e-7; run = best = 0
+        for v in z:                                          # digital silence = audible dropout
+            run = run + 1 if v else 0; best = max(best, run)
+        if best >= int(0.01 * SR):
+            bad.append(f"{lid}: {best / SR * 1000:.0f} ms of digital silence (dropout)")
         spans = align(cl, text)
         evs, _ = events(cl, spans)
         for ev in evs:

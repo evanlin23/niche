@@ -99,6 +99,9 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - **Repeats are cut upstream, by hand-checked ranges** in `_stumbles.json` (Whisper hides many repeats even in
   verbatim mode; the aligner finds them as "speech outside the script words"). The QA step only blanks noises
   and protects anything that sounds like words; an automatic repeat cut once nearly deleted real content.
+- **Never insert digital silence.** The splitter put 0.12 s of zeros at every splice (14 lines) and the room-tone
+  file had a zero run: next to speech that is an audible dropout. Splices and fills use real room tone; the
+  final check fails any 10 ms of exact zeros.
 - Don't double-cut: a range in `_stumbles.json` AND `_manual_cuts.json` removes audio twice ("The door is a
   kitchen..."). Keep each fix in one place.
 - **Align to what was said, protect every word.** The script can differ from the take (an extra "percent").

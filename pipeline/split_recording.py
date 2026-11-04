@@ -229,6 +229,7 @@ def main():
     if not a.only:
         write_wav(out / "_roomtone.wav", room_tone(full, SR))
     fade = int(0.015 * SR)
+    room = room_tone(full, SR)          # joins between spliced pieces are filled with real room tone, never zeros
     report = []
     for lid, text in lines.items():
         keys = [k for k in units if k.split("#")[0] == lid]
@@ -250,13 +251,15 @@ def main():
         audio, wts, t = [], [], 0.0
         for ci, (sw, ew) in enumerate(clips):
             ws = words[sw:ew]
-            s0 = max(0.0, ws[0][1] - (0.15 if ci == 0 else 0.06))
-            e0 = ws[-1][2] + (0.3 if ci == len(clips) - 1 else 0.08)
+            s0 = max(0.0, ws[0][1] - (0.15 if ci == 0 else 0.10))
+            e0 = ws[-1][2] + (0.3 if ci == len(clips) - 1 else 0.15)   # word endings decay past the timestamp
             seg = full[int(s0 * SR):int(e0 * SR)].copy()
             if len(seg) > 2 * fade:
                 seg[:fade] *= np.linspace(0, 1, fade); seg[-fade:] *= np.linspace(1, 0, fade)
             if ci:
-                audio.append(np.zeros(int(0.12 * SR), np.float32)); t += 0.12
+                n = int(0.12 * SR)
+                fill = np.resize(room, n).astype(np.float32) if len(room) else np.zeros(n, np.float32)
+                audio.append(fill); t += 0.12
             wts += [(w[3], w[1] - s0 + t, w[2] - s0 + t) for w in ws]
             audio.append(seg); t += len(seg) / SR
         y = np.concatenate(audio)
