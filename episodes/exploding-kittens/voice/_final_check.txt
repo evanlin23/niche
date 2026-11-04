@@ -1,0 +1,3 @@
+g3: ends abruptly (last 30 ms at +19 dB)
+g3: starts abruptly
+f2: extra speech 5.57-7.52s 'it the moment you draw it costs about'
