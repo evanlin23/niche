@@ -5,16 +5,22 @@ look: clean-sage      # clean-sage | clean-ink | clean-light | (unset = warm gam
 quality: high         # high = reflections + glossy pieces + 4K shadows
 ssaa: 1.5             # supersampling factor (smooth edges); override with RENDER_SSAA
 scenes:
-  - id: hook
+  - id: open
     chapter: The answer
+    render: statement
+    lines: [h1]
+    pad: [0.4, 0.8]
+    params:
+      lines: ["The best way to win", "Exploding Kittens:", {text: "do almost nothing.", color: MUSTARD}]
+
+  - id: hook
     render: table
-    lines: [h1, h2, h3]
-    pad: [0.5, 0.8]
+    lines: [h2, h3]
+    pad: [0.3, 0.8]
     params:
       ev_from: 28
       odds: false
       notes:
-        - {text: "Do almost nothing.", at: h1, until: h2, pos: [960, 140], align: center, size: 96}
         - {text: "100,000,000+ games simulated", at: h2, until: "h2+4", pos: [960, 130], align: center, size: 56, color: MUSTARD}
         - {text: "Wins 40% at a table of four. Fair share: 25%.", at: "h2+4", until: h3, pos: [960, 130], align: center, size: 52}
         - {text: "6 habits", at: h3, pos: [960, 130], align: center, size: 80, color: MUSTARD}
@@ -54,20 +60,32 @@ scenes:
       notes:
         - {text: "One simulated game, sped up", at: 0.2, until: c6, pos: [960, 130], align: center, size: 50}
 
-  - id: patience
+  - id: habit1
     chapter: "Habit 1: patience"
+    render: statement
+    lines: [p1]
+    params:
+      lines: ["Habit one:", {text: "stop playing cards", color: MUSTARD}, {text: "for fun.", color: MUSTARD}]
+
+  - id: patience
     render: bars
-    lines: [p1, p2, p3, p4, p5]
+    lines: [p2, p3, p4, p5]
     params:
       chart: patience
       title: "Habit 1: stop playing cards for fun"
       notes:
         - {text: "\"Save your cards early in the game, while your chance of exploding is low.\"  (the rulebook)", at: p5, pos: [960, 150], align: center, size: 30, width: 1600, weight: 700}
 
-  - id: dodge
+  - id: habit2
     chapter: "Habit 2: only dodge when you know"
+    render: statement
+    lines: [d1]
+    params:
+      lines: ["When should you dodge?", {text: "My gut was wrong.", color: CORAL}]
+
+  - id: dodge
     render: bars
-    lines: [d1, d2, d3, d4, d5]
+    lines: [d2, d3, d4, d5]
     params:
       chart: dodge
       title: "Habit 2: only dodge when you know"
@@ -82,10 +100,16 @@ scenes:
       chart: future
       title: "Habit 3: look when it's 1 in 3"
 
-  - id: placement
+  - id: habit4
     chapter: "Habit 4: aim the Kitten"
+    render: statement
+    lines: [k1]
+    params:
+      lines: ["You drew a Kitten.", "You have a Defuse.", {text: "Where do you put it back?", color: MUSTARD}]
+
+  - id: placement
     render: placement
-    lines: [k1, k2, k3, k4, k5]
+    lines: [k2, k3, k4, k5]
     params:
       chart: placement
       title: "Habit 4: where to put the Kitten back"
@@ -114,10 +138,16 @@ scenes:
       chart: seats
       title: "Win rate by seat"
 
-  - id: twoplayer
+  - id: twop
     chapter: Two players
+    render: statement
+    lines: [q1]
+    params:
+      lines: ["One on one,", {text: "everything gets louder.", color: MUSTARD}]
+
+  - id: twoplayer
     render: bars
-    lines: [q1, q2, q3, q4]
+    lines: [q2, q3, q4]
     params:
       chart: twoplayer
       title: "Two players: everything gets louder"
@@ -146,10 +176,16 @@ scenes:
   - id: tables
     chapter: Who you play with
     render: bars
-    lines: [r1, r2, r3, r4]
+    lines: [r1, r2, r3]
     params:
       chart: tables
       title: "The strategy vs different tables"
+
+  - id: worse
+    render: statement
+    lines: [r4]
+    params:
+      lines: ["The worse your friends play,", {text: "the better this works.", color: MUSTARD}]
 
   - id: strategy
     chapter: The full strategy
@@ -179,12 +215,19 @@ scenes:
   - id: close
     chapter: One honest assumption
     render: table
-    lines: [e1, e2, e3]
+    lines: [e1, e2]
     params:
       mode: idle
       ev_still: 40
       notes:
         - {text: "Next: Uno house rules", at: e2, pos: [960, 130], align: center, size: 64, color: MUSTARD}
+
+  - id: ask
+    render: statement
+    lines: [e3]
+    pad: [0.3, 1.2]
+    params:
+      lines: ["Which Uno house rule", {text: "breaks the game?", color: CORAL}]
 
   - id: endcard
     render: endcard

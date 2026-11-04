@@ -131,9 +131,30 @@ def base(ctx) -> dict:
             "params": sc.params, "captions": ctx.captions, "hook": ctx.hook, **LOOK}
 
 
+def statement_lines(ctx):
+    """Display lines appear when the narration reaches each line's first word."""
+    import re
+    norm = lambda w: re.sub(r"[^a-z0-9']", "", w.lower())
+    words = [w for c in ctx.scene.cues.values() for w in c.words]
+    out, i = [], 0
+    for ln in ctx.params["lines"]:
+        ln = ln if isinstance(ln, dict) else {"text": ln}
+        first = norm(ln["text"].split()[0])
+        j = i
+        while j < len(words) and norm(words[j][0]) != first:
+            j += 1
+        at = words[j][1] if j < len(words) else (words[i][1] if i < len(words) else 0.3)
+        if j < len(words):
+            i = j + 1
+        out.append({"text": ln["text"], "at": max(0.15, at - 0.05), "color": ln.get("color")})
+    return out
+
+
 def build_spec(ctx) -> dict:
     s = base(ctx)
     p = ctx.params
+    if ctx.scene.render == "statement":
+        s["lines"] = statement_lines(ctx)
     if p.get("chart"):
         s["chart"] = CHARTS[p["chart"]]()
     if ctx.scene.render in ("table", "short"):

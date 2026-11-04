@@ -238,7 +238,7 @@ SCENES.placement = async (stage, spec) => {
   const botLab = stage.texts[stage.texts.length - 1];
   title(stage, p.title); notes(stage, p.notes); brand(stage);
   // targets: slot index over time (random -> bottom -> top -> second)
-  const plan = [[stage.at('k1+1'), 6], [stage.at('k2+3.5'), 12], [stage.at('k3'), 0], [stage.at('k4+3'), 1], [stage.at('k4+5.5'), 2], [stage.at('k5'), 0]];
+  const plan = [[stage.at('k2', 0.6), 6], [stage.at('k2+3.5'), 12], [stage.at('k3'), 0], [stage.at('k4+3'), 1], [stage.at('k4+5.5'), 2], [stage.at('k5'), 0]];
   return (t) => {
     stage.cameraAt(t, { pos: [[-0.2, 7.2, 17.5], [0, 6.8, 16.8]], look: [[-0.2, 1.8, 0]] });
     stage.camera.updateMatrixWorld();
@@ -312,3 +312,52 @@ export async function build(stage, spec) {
   if (!f) throw new Error('unknown scene type ' + spec.type);
   return f(stage, spec);
 }
+
+// ------------------------------------------------------------------ statement cards (3D text, lines pop in with the voice)
+import { TTFLoader } from 'three/addons/loaders/TTFLoader.js';
+import { Font } from 'three/addons/loaders/FontLoader.js';
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+
+let _font = null;
+async function rubikFont() {
+  if (_font) return _font;
+  const json = await new Promise((res, rej) => new TTFLoader().load('/pipeline/web/fonts/rubik-latin-900.ttf', res, undefined, rej));
+  _font = new Font(json);
+  return _font;
+}
+
+SCENES.statement = async (stage, spec) => {
+  buildRoom(stage);
+  const font = await rubikFont();
+  const lines = spec.lines;              // [{text, at, color}]
+  const size = spec.params.size || 1.0, gapY = size * 1.45, maxW = spec.params.max_width || 13;
+  const meshes = lines.map((ln, k) => {
+    const geo = new TextGeometry(ln.text.toUpperCase(), { font, size, depth: size * 0.32, curveSegments: 6,
+      bevelEnabled: true, bevelThickness: size * 0.03, bevelSize: size * 0.025, bevelSegments: 3 });
+    geo.computeBoundingBox(); const bb = geo.boundingBox;
+    geo.translate(-(bb.max.x + bb.min.x) / 2, 0, 0);
+    const w = bb.max.x - bb.min.x;
+    const col = ln.color ? (NAMED[ln.color] || ln.color) : '#fbf7ef';
+    const mat = new THREE.MeshPhysicalMaterial({ color: col, roughness: 0.35, clearcoat: 0.4, transparent: true, opacity: 0 });
+    const m = new THREE.Mesh(geo, mat); m.castShadow = true;
+    const s = Math.min(1, maxW / w); m.scale.set(s, s, s);
+    const y0 = 1.2 + (lines.length - 1 - k) * gapY;
+    m.userData = { y0, at: ln.at };
+    stage.scene.add(m); return m;
+  });
+  const midY = 1.2 + (lines.length - 1) * gapY / 2 + size / 2;
+  brand(stage);
+  return (t) => {
+    for (const m of meshes) {
+      const k = ease((t - m.userData.at) / 0.45);
+      m.material.opacity = k;
+      m.position.set(0, m.userData.y0 - (1 - k) * 0.6, (1 - k) * 0.8);
+      m.rotation.x = (1 - k) * -0.35;
+    }
+    const a = lerp(-0.22, 0.22, clamp(t / stage.duration));
+    const R = 16;
+    stage.camera.position.set(Math.sin(a) * R, midY + 1.2, Math.cos(a) * R);
+    stage.camera.lookAt(0, midY - 0.2, 0);
+    scrim(stage, t);
+  };
+};
