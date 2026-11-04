@@ -64,6 +64,12 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - **One long recording is easiest.** Pixel Recorder ~15–20 cm away, 10 s of room tone first, pause between
   lines, redo the whole phrase on a mistake. `make split` aligns it with Whisper at *phrase* level, keeps the
   last take, splices mid-line restarts, and handles numbers ("13.04%" vs "thirteen point oh four").
+- **Transcripts hide stumbles.** Whisper cleans up restarts ("the best of - the best of them" -> "the best of
+  them") and fillers, so the normal split can't see them. `python -m pipeline.find_stumbles episodes/<slug>`
+  re-transcribes verbatim and writes cut ranges; then `python -m pipeline.tighten_voice episodes/<slug>/voice
+  --cuts .../_stumbles.json --words .../_verbatim.json`. Video 1 had restarts in 19 of 59 lines.
+- **Tight pacing:** pauses inside lines capped at 0.35 s, 0.08 s lead / 0.15 s tail per line, 0.25 s between
+  lines, 0.2/0.35 s scene pads. Video 1 lost 91 s of dead air and stumbles (8:50 -> ~7:20).
 - Transcribers drop fast words like "percent": check the audio (voiced gap) before asking for a re-record.
 - Re-records: `split_recording --only <ids>` replaces just those lines. Compare takes; keep the cleaner one.
 - Cleanup (high-pass, noise profile from room tone, de-ess, compression) handles light rain/street noise.

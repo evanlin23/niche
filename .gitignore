@@ -19,3 +19,6 @@ sims/connect4/c4
 sims/connect4/c4b
 sims/shutbox/shutbox
 sims/uno/unosim
+episodes/*/voice/_orig/*.wav
+episodes/*/voice/_verbatim.json
+episodes/*/voice/_stumbles.txt

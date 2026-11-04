@@ -95,9 +95,11 @@ def main():
     ap.add_argument("voice_dir")
     ap.add_argument("--max-pause", type=float, default=0.35)
     ap.add_argument("--cuts", default=None)
+    ap.add_argument("--words", default=None, help="verbatim word timings {id: [[w,s,e],...]} (find_stumbles)")
     a = ap.parse_args()
     d = Path(a.voice_dir); orig = d / "_orig"; orig.mkdir(exist_ok=True)
     cuts = json.loads(Path(a.cuts).read_text()) if a.cuts else {}
+    vwords = json.loads(Path(a.words).read_text()) if a.words else {}
     before = after = 0.0
     for js in sorted(d.glob("*.json")):
         if js.name.startswith("_"):
@@ -110,7 +112,8 @@ def main():
                 shutil.copy2(p, orig / p.name)
         audio, sr = sf.read(orig / wav.name, dtype="float32")
         meta = json.loads((orig / js.name).read_text())
-        words = [tuple(w) for w in meta["words"]]
+        words = [tuple(w) for w in (vwords.get(js.stem) or meta["words"])]
+        words = [w for w in words if any(ch.isalnum() for ch in w[0])]
         before += len(audio) / sr
         audio, words = apply_cuts(audio, sr, words, [tuple(c) for c in cuts.get(js.stem, [])])
         audio, words, _ = tighten(audio, sr, words, a.max_pause)

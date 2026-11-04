@@ -39,33 +39,59 @@ def verbatim(model, path):
     return [(w.word.strip(), float(w.start), float(w.end)) for s in segs for w in s.words]
 
 
-def find_cuts(words, script_text):
+def find_cuts(words, script_text, max_back=40):
+    """Restart = the speaker goes back and re-says words they just said: tokens [i, j) are an abandoned
+    attempt when toks[j:j+m] == toks[i:i+m] (m >= 2, or m == 1 when the attempt is one word) and that
+    repetition isn't in the script. Cut [start of i, start of j). Fillers are cut too."""
     toks = [(norm(w), s, e) for w, s, e in words if norm(w)]
     script = " " + " ".join(norm(w) for w in script_text.split()) + " "
-    cuts, notes, i = [], [], 0
-    while i < len(toks):
-        if toks[i][0] in FILLERS:
-            cuts.append((toks[i][1] - 0.02, toks[i][2] + 0.02)); notes.append(f"filler '{toks[i][0]}' @{toks[i][1]:.2f}")
-            i += 1; continue
-        hit = None
-        for k in range(min(6, (len(toks) - i) // 2), 0, -1):   # longest repeated phrase first
-            a = [t[0] for t in toks[i:i + k]]
-            b = [t[0] for t in toks[i + k:i + 2 * k]]
-            if a == b and (" " + " ".join(a + b) + " ") not in script:
-                if k == 1 and a[0] in ("that", "had", "is"):
+    cuts, notes = [], []
+    j, floor = 1, 0
+    while j < len(toks):
+        if toks[j - 1][0] in FILLERS:
+            cuts.append((toks[j - 1][1] - 0.02, toks[j - 1][2] + 0.02)); notes.append(f"filler '{toks[j-1][0]}' @{toks[j-1][1]:.2f}")
+        best = None
+        for i in range(max(floor, j - max_back), j):         # earliest restart point wins (longest abandoned attempt)
+            m = 0
+            while j + m < len(toks) and i + m < j and toks[i + m][0] == toks[j + m][0]:
+                m += 1
+            need = 1 if j - i == 1 else 2 if j - i <= 3 else 3   # long abandoned attempts need a 3-word match
+            if m >= need:
+                rep = " " + " ".join(t[0] for t in toks[i:j]) + " " + " ".join(t[0] for t in toks[j:j + m]) + " "
+                if rep in script or (j - i == 1 and toks[i][0] in ("that", "had", "is", "one")):
                     continue
-                hit = k; break
-            # partial restart: "the best of | the best of them" also matches above; "wor- | worst" = prefix
-            if k == 1 and b and a[0] and b[0].startswith(a[0]) and a[0] != b[0] and len(a[0]) <= 4:
-                hit = 1; break
-        if hit:
-            s, e = toks[i][1], toks[i + hit][1]
-            cuts.append((s - 0.02, e - 0.03))
-            notes.append(f"restart '{' '.join(t[0] for t in toks[i:i + hit])}' @{s:.2f}-{e:.2f}")
-            i += hit
+                phrase = " " + " ".join(t[0] for t in toks[j:j + m]) + " "
+                if script.count(phrase) >= 2:            # the script itself repeats it ("take away its ...")
+                    continue
+                best, m_best = i, m
+                break
+        if best is not None:
+            # words just before the restart that the script needs there (speaker started mid-line, then went
+            # back to the start: "it dodges ... The Normal Player plays ... It dodges ...") are kept
+            sw = script.split(); ph = [t[0] for t in toks[j:j + m_best]]
+            k = j
+            for p in range(len(sw) - len(ph) + 1):
+                if sw[p:p + len(ph)] == ph:
+                    r = 0
+                    while j - 1 - r > best and p - 1 - r >= 0 and toks[j - 1 - r][0] == sw[p - 1 - r]:
+                        r += 1
+                    k = j - r if r >= 3 else j
+                    break
+            s0, e0 = toks[best][1], toks[k][1]
+            cuts.append((s0 - 0.02, e0 - 0.03))
+            notes.append(f"restart '{' '.join(t[0] for t in toks[best:j])}' @{s0:.2f}-{e0:.2f}")
+            floor = j                                 # the kept attempt can't be cut by a later match
+            j += max(1, m_best)                       # skip past the repeated words (no shifted re-detections)
+            continue
+        j += 1
+    # merge overlapping cuts
+    cuts.sort(); merged = []
+    for c in cuts:
+        if merged and c[0] <= merged[-1][1]:
+            merged[-1] = (merged[-1][0], max(merged[-1][1], c[1]))
         else:
-            i += 1
-    return cuts, notes
+            merged.append(c)
+    return merged, notes
 
 
 def main():
