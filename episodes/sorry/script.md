@@ -17,7 +17,9 @@ Big run: 1,006,250,000 games (GitHub Actions run 41872745692, 20 shards x 28.75 
   Sorry! 40.2, eleven 10.4, twelve 6.0, ten 4.9, seven 4.6, eight 4.2, four 3.8, five 3.3, two 2.7 (before its extra
   draw), three 2.3, one 2.0. Twelves can't be used 56.7% of the time ("card_forfeit"). Game length 287.6 turns = 72 each.
 - Going first, 4 players: 24.91%; 2 players: 50.00% (no real edge).
-- Mirror check: 4 Normal players 24.92-25.08% per seat; 4 best bots 24.99-25.02%; 2 players 49.98/50.02.
+- Mirror check: 4 Normal players 24.92-25.08% per seat (more than noise at 35M games: exact ties were broken by board
+  order; with random tie-breaks 24.99-25.01%, data/supplementary_mirror_randtie.json); 4 best bots 24.99-25.02%;
+  2 players 49.98/50.02. Habit tests rotate the test bot through every seat, so the tie effect averages out.
 - Three players ("mirror" -> "3p"): the seat whose side runs into the empty side wins 39.84%, the others 30.06 and 30.10.
   Same games with no bumping at all ("3p_no_interaction"): 33.23-33.50%. The colour rotation check (any three colours,
   same result) was run locally during development: always the colour just before the empty side, about 40%.
