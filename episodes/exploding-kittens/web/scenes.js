@@ -294,7 +294,6 @@ SCENES.endcard = async (stage, spec) => {
   stage.text({ text: 'NEXT', x: 260, y: 250, size: 40, weight: 900, font: 'rubik', color: GN.mustard, at: 0.3 });
   stage.text({ text: p.next_title || '', x: 660, y: 520, size: 60, weight: 900, font: 'rubik', align: 'center', at: 0.5, case: 'none' });
   stage.text({ text: 'subscribe', x: 1440, y: 530, size: 40, weight: 700, font: 'rubik', color: GN.muted, align: 'center', at: 0.5 });
-  stage.text({ text: 'Simulation code: link in the description', x: 960, y: 880, size: 32, weight: 700, font: 'rubik', color: GN.muted, align: 'center', at: 0.8, case: 'none' });
   return (t) => {
     const a = t * 0.05;
     stage.cameraAt(t, { pos: [[Math.sin(a) * 9, 10, Math.cos(a) * 9]], look: [[0, 0, 0]] });

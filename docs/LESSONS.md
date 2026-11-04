@@ -85,6 +85,7 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - Don't commit: music, voice audio, full transcripts, out/.
 
 ## Packaging
+- **Never link the code** (repo, simulator) in descriptions, end cards or comments. The creator's call.
 - 3 title/thumbnail pairs for YouTube **Test & compare** (winner = watch time). Every claim must be literally true.
 - Mid-video subscribe ask right after a payoff, never in the opening.
 - Pinned comment = the argument-starter question from the ending.

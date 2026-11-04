@@ -9,7 +9,6 @@ long:
   sources:
     - "Exploding Kittens Original Edition rules (2025 printing): https://www.explodingkittens.com/pages/rules-kittens"
     - "Simulator: one test bot vs three 'normal' bots, 100,000,000 games per test (10.2 billion games total), seats randomised."
-    - "Simulation code: https://github.com/evanlin23/niche/tree/HEAD/sims/ek"
   music_note: "Music (YouTube Audio Library): Days Are Long by Silent Partner, Renunciation by Asher Fulero, Ponderous Days by Joel Cummins."
   tags: [exploding kittens, exploding kittens strategy, how to win exploding kittens, exploding kittens tips, card game strategy,
          board game strategy, simulation, game theory, card games, party games, buh simulates]
