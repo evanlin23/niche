@@ -16,6 +16,8 @@ type Policy struct {
 	SorryLead bool    `json:"sorry_lead"` // with a Sorry!, always bump the most advanced opponent pawn
 	StartLate bool    `json:"start_late"` // don't start a new pawn while one is already on the track (if another move exists)
 	SafeFirst bool    `json:"safe_first"` // prefer moves that get a pawn into the Safety Zone
+	Lead      bool    `json:"lead"`       // always move your front pawn forward when it can
+	LeadBump  bool    `json:"lead_bump"`  // ...unless another move bumps an opponent
 }
 
 func (b *Policy) pv(p int) float64 {
@@ -99,10 +101,10 @@ func (b *Policy) Value(st *State, s int) float64 {
 	return v
 }
 
-func (b *Policy) Choose(g *Game, s int, v int8, ms []Move) (Move, bool) {
+func (b *Policy) Choose(g *Game, s int, v int8, ms []Move, sts []State) (int, bool) {
 	st := &g.St
 	if b.Random {
-		return ms[g.rng.Intn(len(ms))], true
+		return g.rng.Intn(len(ms)), true
 	}
 	canFwd := false
 	for _, m := range ms {
@@ -111,10 +113,10 @@ func (b *Policy) Choose(g *Game, s int, v int8, ms []Move) (Move, bool) {
 		}
 	}
 	// rule-of-thumb overrides (each one is a single habit)
-	if v == 11 && b.SwitchLead {
+	if (v == 11 && b.SwitchLead) || (v == CSorry && b.SorryLead) {
 		best, bp := -1, -1
 		for k, m := range ms {
-			if m.Kind == MSwitch {
+			if m.Kind == MSwitch || m.Kind == MSorry {
 				ts, ti := int(m.T)/4, int(m.T)%4
 				if p := progress(st.Col[ts], int(st.Loc[ts][ti])); p > bp {
 					best, bp = k, p
@@ -122,21 +124,19 @@ func (b *Policy) Choose(g *Game, s int, v int8, ms []Move) (Move, bool) {
 			}
 		}
 		if best >= 0 {
-			return ms[best], true
+			return best, true
 		}
 	}
-	if v == CSorry && b.SorryLead {
-		best, bp := -1, -1
-		for k, m := range ms {
-			if m.Kind == MSorry {
-				ts, ti := int(m.T)/4, int(m.T)%4
-				if p := progress(st.Col[ts], int(st.Loc[ts][ti])); p > bp {
-					best, bp = k, p
+	lead := -1
+	if b.Lead { // the pawn furthest along that isn't Home
+		bp := -1
+		for i := 0; i < 4; i++ {
+			l := int(st.Loc[s][i])
+			if l != Start && l != HomeSq {
+				if p := progress(st.Col[s], l); p > bp {
+					lead, bp = i, p
 				}
 			}
-		}
-		if best >= 0 {
-			return ms[best], true
 		}
 	}
 	allowed := func(m Move) bool {
@@ -156,15 +156,48 @@ func (b *Policy) Choose(g *Game, s int, v int8, ms []Move) (Move, bool) {
 		}
 		return true
 	}
+	if lead >= 0 && b.LeadBump { // a bump beats the rule
+		oppNow := 0
+		for q := 0; q < st.N; q++ {
+			if q != s {
+				oppNow += st.score(q)
+			}
+		}
+		for k := range ms {
+			o := 0
+			for q := 0; q < st.N; q++ {
+				if q != s {
+					o += sts[k].score(q)
+				}
+			}
+			if o < oppNow {
+				lead = -1
+				break
+			}
+		}
+	}
+	if lead >= 0 { // move the lead pawn forward if it can
+		for pass := 0; pass < 1; pass++ {
+			bk, bv := -1, -1e18
+			for k, m := range ms {
+				if m.Kind == MFwd && int(m.P) == lead && allowed(m) {
+					if val := b.Value(&sts[k], s); val > bv {
+						bk, bv = k, val
+					}
+				}
+			}
+			if bk >= 0 {
+				return bk, true
+			}
+		}
+	}
 	bestK, bestV := -1, -1e18
 	for k, m := range ms {
 		if !allowed(m) {
 			continue
 		}
-		cp := *st
-		cp.apply(s, m)
-		val := b.Value(&cp, s)
-		if b.SafeFirst && entersSafety(st, &cp, s) {
+		val := b.Value(&sts[k], s)
+		if b.SafeFirst && entersSafety(st, &sts[k], s) {
 			val += 1000
 		}
 		if val > bestV+1e-9 {
@@ -172,21 +205,18 @@ func (b *Policy) Choose(g *Game, s int, v int8, ms []Move) (Move, bool) {
 		}
 	}
 	if bestK < 0 { // every legal move was ruled out by the habit: still must move
-		for k, m := range ms {
-			cp := *st
-			cp.apply(s, m)
-			if val := b.Value(&cp, s); val > bestV {
+		for k := range ms {
+			if val := b.Value(&sts[k], s); val > bestV {
 				bestK, bestV = k, val
 			}
 		}
-		_ = ms
 	}
 	if v == 11 && !canFwd { // may decline to switch when it can't go forward 11
 		if b.NoSwitch || b.Value(st, s) > bestV {
-			return Move{}, false
+			return 0, false
 		}
 	}
-	return ms[bestK], true
+	return bestK, true
 }
 
 func entersSafety(a, b *State, s int) bool {

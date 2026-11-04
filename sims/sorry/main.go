@@ -33,11 +33,16 @@ func main() {
 	rulesJ := flag.String("rules", "{}", "")
 	baseJ := flag.String("base", "", "")
 	testJ := flag.String("test", "", "")
+	colorsJ := flag.String("colors", "", "seat colours, e.g. [1,2,3]")
 	flag.Parse()
+	if *colorsJ != "" {
+		json.Unmarshal([]byte(*colorsJ), &ColorsOverride)
+	}
 	var R Rules
 	if err := json.Unmarshal([]byte(*rulesJ), &R); err != nil {
 		panic(err)
 	}
+	noInteract = R.NoInteract
 	W := runtime.NumCPU()
 	per := (*games + W - 1) / W
 	enc := json.NewEncoder(os.Stdout)

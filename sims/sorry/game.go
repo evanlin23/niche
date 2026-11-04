@@ -10,7 +10,10 @@ type Rules struct {
 	TwoNoDraw  bool `json:"two_no_draw"`  // 2020 rules: a 2 does not draw again
 	SorryFour  bool `json:"sorry_four"`   // 2020 rules: a Sorry! card may instead move a pawn forward 4
 	Hand       int  `json:"hand"`         // adult variation: hold this many cards and choose one (0 = draw and play)
+	NoInteract bool `json:"no_interact"`  // sanity check only (not a real rule): no bumping, no Sorry!, no 11 switch, slides don't bump
 }
+
+var noInteract bool // set from Rules for the current run (sanity check only)
 
 func newDeck(R *Rules) []int8 {
 	d := make([]int8, 0, 45)
@@ -33,9 +36,14 @@ type State struct {
 	Col [4]int
 }
 
+var ColorsOverride []int // tests/experiments: which colours the seats play (default 2p {0,2}, 3p {0,1,2})
+
 func (st *State) init(n int) {
 	st.N = n
 	cols := map[int][]int{2: {0, 2}, 3: {0, 1, 2}, 4: {0, 1, 2, 3}}[n]
+	if len(ColorsOverride) == n {
+		cols = ColorsOverride
+	}
 	for s := 0; s < n; s++ {
 		st.Col[s] = cols[s]
 		for i := 0; i < 4; i++ {
@@ -69,6 +77,9 @@ func (st *State) set(s, i, l int) {
 }
 
 func (st *State) bump(sq int) {
+	if noInteract {
+		return
+	}
 	o := int(st.Occ[sq])
 	if o >= 0 {
 		st.Occ[sq] = -1
@@ -86,6 +97,9 @@ func (st *State) land(s, i, l int) {
 	if isTrack(l) {
 		if so := slideOwner[l]; so >= 0 && int(so) != st.Col[s] {
 			end := int(slideEnd[l])
+			if noInteract && st.Occ[end] >= 0 {
+				return
+			}
 			for q := l + 1; q <= end; q++ {
 				st.bump(q)
 			}
@@ -108,6 +122,9 @@ func (st *State) canLand(s, i, l int) bool {
 		return true
 	}
 	o := int(st.Occ[l])
+	if noInteract && o >= 0 && o != s*4+i {
+		return false // sanity check: can't land on anyone
+	}
 	return o < 0 || o/4 != s || o == s*4+i
 }
 
@@ -201,11 +218,20 @@ func (st *State) apply(s int, m Move) bool {
 
 // legal lists every legal move for card v (classic rules; SorryFour adds the 2020 option).
 func (st *State) legal(s int, v int8, R *Rules, out []Move) []Move {
+	out, _ = st.legalStates(s, v, R, out, nil)
+	return out
+}
+
+// legalStates also returns the board after each legal move (so bots don't re-apply them).
+func (st *State) legalStates(s int, v int8, R *Rules, out []Move, sts []State) ([]Move, []State) {
 	out = out[:0]
+	sts = sts[:0]
+	var cp State
 	try := func(m Move) {
-		cp := *st
+		cp = *st
 		if cp.apply(s, m) {
 			out = append(out, m)
+			sts = append(sts, cp)
 		}
 	}
 	startDone := false
@@ -248,7 +274,7 @@ func (st *State) legal(s int, v int8, R *Rules, out []Move) []Move {
 			}
 		}
 	}
-	if v == 11 {
+	if v == 11 && !noInteract {
 		for i := int8(0); i < 4; i++ {
 			if !isTrack(int(st.Loc[s][i])) {
 				continue
@@ -261,7 +287,7 @@ func (st *State) legal(s int, v int8, R *Rules, out []Move) []Move {
 			}
 		}
 	}
-	if v == CSorry {
+	if v == CSorry && !noInteract {
 		for i := int8(0); i < 4; i++ {
 			if st.Loc[s][i] != Start {
 				continue
@@ -275,7 +301,7 @@ func (st *State) legal(s int, v int8, R *Rules, out []Move) []Move {
 			break // any pawn from Start will do
 		}
 	}
-	return out
+	return out, sts
 }
 
 type Game struct {
@@ -289,6 +315,7 @@ type Game struct {
 	Turns int
 	Cards int
 	buf   []Move
+	sbuf  []State
 	CS    *CardStats
 	trackSeats []bool
 }
@@ -303,7 +330,7 @@ type CardStats struct {
 }
 
 func NewGame(rng *rand.Rand, R *Rules, pols []*Policy) *Game {
-	g := &Game{R: R, rng: rng, Pols: pols, buf: make([]Move, 0, 256)}
+	g := &Game{R: R, rng: rng, Pols: pols, buf: make([]Move, 0, 256), sbuf: make([]State, 0, 256)}
 	g.St.init(len(pols))
 	g.deck = newDeck(R)
 	rng.Shuffle(len(g.deck), func(i, j int) { g.deck[i], g.deck[j] = g.deck[j], g.deck[i] })
@@ -365,8 +392,8 @@ func (g *Game) turn(s int) bool {
 }
 
 func (g *Game) move(s int, v int8) {
-	ms := g.St.legal(s, v, g.R, g.buf)
-	g.buf = ms
+	ms, sts := g.St.legalStates(s, v, g.R, g.buf, g.sbuf)
+	g.buf, g.sbuf = ms, sts
 	var before [4]int
 	if g.CS != nil {
 		for q := 0; q < g.St.N; q++ {
@@ -380,10 +407,11 @@ func (g *Game) move(s int, v int8) {
 		}
 		return
 	}
-	m, ok := g.Pols[s].Choose(g, s, v, ms)
+	k, ok := g.Pols[s].Choose(g, s, v, ms, sts)
 	if !ok { // optional pass (only the 11 when it can't go forward)
 		return
 	}
+	m := ms[k]
 	if g.CS != nil && m.Kind == MBack {
 		cp := g.St
 		cp.apply(s, m)
@@ -392,7 +420,7 @@ func (g *Game) move(s int, v int8) {
 			g.CS.Shortcut++
 		}
 	}
-	g.St.apply(s, m)
+	g.St = sts[k]
 	if g.CS != nil {
 		sw := float64(g.St.score(s) - before[s])
 		for q := 0; q < g.St.N; q++ {
@@ -419,20 +447,18 @@ func (g *Game) playFromHand(s int) int8 {
 	bestK, bestV, found := -1, -1e18, false
 	var bestM Move
 	for k, v := range h {
-		ms := g.St.legal(s, v, g.R, g.buf)
-		g.buf = ms
+		ms, sts := g.St.legalStates(s, v, g.R, g.buf, g.sbuf)
+		g.buf, g.sbuf = ms, sts
 		if len(ms) == 0 {
 			continue
 		}
-		m, ok := g.Pols[s].Choose(g, s, v, ms)
+		j, ok := g.Pols[s].Choose(g, s, v, ms, sts)
 		if !ok {
 			continue
 		}
-		cp := g.St
-		cp.apply(s, m)
-		val := g.Pols[s].Value(&cp, s) + g.Pols[s].keepValue(h, k)
+		val := g.Pols[s].Value(&sts[j], s) + g.Pols[s].keepValue(h, k)
 		if !found || val > bestV {
-			bestK, bestV, bestM, found = k, val, m, true
+			bestK, bestV, bestM, found = k, val, ms[j], true
 		}
 	}
 	var v int8
