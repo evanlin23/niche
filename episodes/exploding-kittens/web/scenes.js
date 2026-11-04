@@ -327,7 +327,10 @@ async function rubikFont() {
 }
 
 SCENES.statement = async (stage, spec) => {
-  buildRoom(stage);
+  const room = buildRoom(stage);
+  if (room.floor) room.floor.material.color.multiplyScalar(0.72);   // darker floor behind text
+  stage.scene.background = new THREE.Color(stage.scene.background).multiplyScalar(0.72);
+  if (stage.scene.fog) stage.scene.fog.color.multiplyScalar(0.72);
   const font = await rubikFont();
   const lines = spec.lines;              // [{text, at, color}]
   const size = spec.params.size || 1.0, gapY = size * 1.45, maxW = spec.params.max_width || 13;
@@ -337,9 +340,12 @@ SCENES.statement = async (stage, spec) => {
     geo.computeBoundingBox(); const bb = geo.boundingBox;
     geo.translate(-(bb.max.x + bb.min.x) / 2, 0, 0);
     const w = bb.max.x - bb.min.x;
-    const col = ln.color ? (NAMED[ln.color] || ln.color) : '#fbf7ef';
-    const mat = new THREE.MeshPhysicalMaterial({ color: col, roughness: 0.35, clearcoat: 0.4, transparent: true, opacity: 0 });
-    const m = new THREE.Mesh(geo, mat); m.castShadow = true;
+    const col = new THREE.Color(ln.color === 'MUSTARD' ? '#ffcc33' : ln.color === 'CORAL' ? '#ff7a63' : ln.color ? (NAMED[ln.color] || ln.color) : '#ffffff');
+    // bright, slightly self-lit faces + darker sides = crisp letter edges on the floor
+    const face = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.55, roughness: 0.5, transparent: true, opacity: 0 });
+    const side = new THREE.MeshStandardMaterial({ color: col.clone().multiplyScalar(0.55), roughness: 0.6, transparent: true, opacity: 0 });
+    const m = new THREE.Mesh(geo, [face, side]); m.castShadow = true;
+    m.material.opacity = 0;
     const s = Math.min(ln.scale || 1, maxW / w); m.scale.set(s, s, s);
     const z0 = (k - (lines.length - 1) / 2) * gapY;     // lines lie on the floor, first line farthest
     m.rotation.x = -Math.PI / 2;
@@ -350,14 +356,14 @@ SCENES.statement = async (stage, spec) => {
   return (t) => {
     for (const m of meshes) {
       const k = ease((t - m.userData.at) / 0.45);
-      m.material.opacity = k;
+      m.material.forEach((mt) => (mt.opacity = k));
       m.position.set(0, (1 - k) * 1.4, m.userData.z0 + size * 0.5);   // drops onto the floor
       m.rotation.x = -Math.PI / 2 + (1 - k) * 0.25;
     }
-    const a = spec.params.static ? 0 : lerp(-0.18, 0.18, clamp(t / stage.duration));
-    const R = 8.5;
-    stage.camera.position.set(Math.sin(a) * R, 15.5, Math.cos(a) * R);
-    stage.camera.lookAt(0, 0, 0.3);
+    // level text, gentle push-in (no orbit: rotating an overhead camera tilts the words)
+    const k = spec.params.static ? 0 : ease(clamp(t / stage.duration));
+    stage.camera.position.set(0, lerp(17.5, 15.8, k), 2.9);
+    stage.camera.lookAt(0, 0, 0.1);
     scrim(stage, t);
   };
 };
