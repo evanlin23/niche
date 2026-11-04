@@ -441,8 +441,55 @@ function makeBuhStyle(stage, expr, style) {
   const add = (geo, y, x = 0, z = 0, mat = cream) => { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = true; g.add(m); return m; };
   const faceMat = () => new THREE.MeshStandardMaterial({ map: faceTexture(expr, true), transparent: true, alphaTest: 0.5, roughness: 0.25, emissive: 0xffffff, emissiveMap: faceTexture(expr, true), emissiveIntensity: 0.35 });
   const sphereFace = (r, y, w = 1.3, h = 1.0) => { const f = new THREE.Mesh(new THREE.SphereGeometry(r * 1.004, 48, 32, Math.PI / 2 - w / 2, w, Math.PI / 2 - h / 2 - 0.05, h), faceMat()); f.position.y = y; g.add(f); };
-  let top = 0;
-  if (style === 'mini') {
+  let top = 0, bulb = GN.coral;
+  const flat = (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.55 });
+  const ink = flat(0x1d2b3a), white = flat(0xffffff);
+  // dot eyes: white ball + dark pupil looking slightly up-forward (simple, readable at avatar size)
+  const eyes = (y, z, dx, r = 0.2, look = [0.02, 0.03], one = false) => {
+    for (const s of (one ? [0] : [-1, 1])) {
+      add(new THREE.SphereGeometry(r, 32, 24), y, s * dx, z, white).scale.z = 0.55;
+      add(new THREE.SphereGeometry(r * 0.52, 24, 16), y + look[1] + r * 0.05, s * dx + look[0], z + r * 0.36, ink).scale.z = 0.5;
+      add(new THREE.SphereGeometry(r * 0.14, 12, 8), y + r * 0.32, s * dx + r * 0.22, z + r * 0.5, white);
+    }
+  };
+  const smile = (y, z, w = 0.16, mat = ink) => { const m = add(new THREE.TorusGeometry(w, 0.035, 10, 24, Math.PI * 0.8), y, 0, z, mat); m.rotation.z = Math.PI * 1.1; };
+  if (style === 'meeple') {
+    const s = new THREE.Shape();   // generic board-game person silhouette
+    s.moveTo(-0.95, 0); s.lineTo(-0.3, 0); s.quadraticCurveTo(0, 0.42, 0.3, 0); s.lineTo(0.95, 0);
+    s.quadraticCurveTo(0.6, 0.65, 0.42, 1.05); s.quadraticCurveTo(0.95, 1.3, 1.1, 1.38); s.quadraticCurveTo(1.25, 1.62, 0.95, 1.66);
+    s.quadraticCurveTo(0.6, 1.62, 0.38, 1.6); s.absarc(0, 2.05, 0.55, -0.9, Math.PI + 0.9, false);
+    s.quadraticCurveTo(-0.6, 1.62, -0.95, 1.66); s.quadraticCurveTo(-1.25, 1.62, -1.1, 1.38); s.quadraticCurveTo(-0.95, 1.3, -0.42, 1.05);
+    s.quadraticCurveTo(-0.6, 0.65, -0.95, 0);
+    const geo = new THREE.ExtrudeGeometry(s, { depth: 0.5, bevelEnabled: true, bevelThickness: 0.14, bevelSize: 0.12, bevelSegments: 8, curveSegments: 40 });
+    geo.translate(0, 0, -0.25);
+    add(geo, 0, 0, 0, flat(GN.coral));
+    eyes(2.1, 0.39, 0.2, 0.17); smile(1.86, 0.4, 0.1);
+    top = 2.72; bulb = GN.mustard;
+  } else if (style === 'die') {
+    const die = flat(GN.mustard);
+    add(new THREE.CylinderGeometry(0.34, 0.42, 0.55, 32), 0.28, 0, 0, flat(0x1d2b3a));
+    for (const s of [-1, 1]) add(new THREE.SphereGeometry(0.2, 20, 14), 0.08, s * 0.3, 0.12, flat(0x1d2b3a)).scale.set(1.1, 0.6, 1.5);
+    add(new RoundedBoxGeometry(1.7, 1.7, 1.7, 8, 0.36), 1.42, 0, 0, die);
+    // the face is the die's "2" side: two pips are the eyes; other sides carry real pip layouts
+    eyes(1.6, 0.86, 0.38, 0.24);
+    smile(1.06, 0.86, 0.14);
+    const pip = (x, y, z, rx, ry) => { const m = add(new THREE.CylinderGeometry(0.13, 0.13, 0.04, 24), y, x, z, ink); m.rotation.set(rx, 0, ry); };
+    for (const [y, z] of [[0, 0], [0.45, 0.45], [-0.45, -0.45]]) pip(0.86, 1.42 + y, z, 0, Math.PI / 2);   // 3 on the right side
+    for (const [x, z] of [[0, 0], [-0.42, -0.42], [0.42, 0.42], [-0.42, 0.42], [0.42, -0.42]]) pip(x, 2.28, z, 0, 0); // 5 on top
+    top = 2.27; bulb = GN.coral;
+  } else if (style === 'tvbold') {
+    add(new THREE.CylinderGeometry(0.4, 0.5, 0.75, 40), 0.38, 0, 0, flat(0x1d2b3a));
+    add(new RoundedBoxGeometry(1.9, 1.45, 1.3, 6, 0.32), 1.55, 0, 0, flat(GN.coral));
+    const f = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 1.08), faceMat()); f.position.set(0, 1.55, 0.656); g.add(f);
+    for (const s of [-1, 1]) { const a = add(new THREE.CapsuleGeometry(0.1, 0.22, 8, 16), 0.5, s * 0.55, 0.05, flat(0x1d2b3a)); a.rotation.z = s * 0.7; }
+    top = 2.28; bulb = GN.mustard;
+  } else if (style === 'cyclops') {
+    const b = add(new THREE.SphereGeometry(1.0, 48, 32), 1.05, 0, 0, flat(GN.teal)); b.scale.set(1, 1.05, 0.95);
+    eyes(1.25, 0.8, 0, 0.42, [0.04, 0.05], true); smile(0.62, 0.86, 0.16);
+    for (const s of [-1, 1]) { add(new THREE.SphereGeometry(0.22, 20, 14), 0.08, s * 0.4, 0.2, flat(GN.mustard)).scale.set(1.1, 0.55, 1.5);
+      const a = add(new THREE.CapsuleGeometry(0.11, 0.22, 8, 16), 0.95, s * 1.02, 0.05, flat(GN.teal)); a.rotation.z = s * 0.6; }
+    top = 2.1; bulb = GN.mustard;
+  } else if (style === 'mini') {
     add(new THREE.CylinderGeometry(0.42, 0.55, 0.7, 40), 0.35);
     add(new THREE.SphereGeometry(1.0, 48, 32), 1.62); sphereFace(1.0, 1.62);
     for (const s of [-1, 1]) { const a = add(new THREE.CapsuleGeometry(0.11, 0.22, 8, 16), 0.5, s * 0.58, 0.05); a.rotation.z = s * 0.7; }
@@ -467,7 +514,7 @@ function makeBuhStyle(stage, expr, style) {
     top = 2.28;
   }
   add(new THREE.CylinderGeometry(0.03, 0.03, 0.4, 12), top + 0.18, 0, 0, new THREE.MeshStandardMaterial({ color: 0x8d8273 }));
-  add(new THREE.SphereGeometry(0.12, 24, 16), top + 0.42, 0, 0, new THREE.MeshStandardMaterial({ color: GN.coral, emissive: GN.coral, emissiveIntensity: 0.4 }));
+  add(new THREE.SphereGeometry(0.12, 24, 16), top + 0.42, 0, 0, new THREE.MeshStandardMaterial({ color: bulb, emissive: bulb, emissiveIntensity: 0.4 }));
   stage.scene.add(g);
   return g;
 }
