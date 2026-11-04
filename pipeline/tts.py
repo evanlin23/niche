@@ -208,6 +208,17 @@ def _whisper_words(path: Path, text: str):
     return [(w.word.strip(), w.start, w.end) for s in segs for w in s.words]
 
 
+def _voice_style(voice_dir: Path) -> str:
+    """scenes.yaml voice_style: 'studio' (signal processing), 'ai' (Resemble Enhance files in voice/_ai), or ''."""
+    if os.environ.get("VOICE_STYLE"):
+        return os.environ["VOICE_STYLE"]
+    try:
+        import yaml
+        return (yaml.safe_load((Path(voice_dir).parent / "scenes.yaml").read_text()) or {}).get("voice_style", "") or ""
+    except Exception:
+        return ""
+
+
 def _studio_on(voice_dir: Path) -> bool:
     """scenes.yaml `voice_style: studio` (episode folder = VOICE_DIR's parent) or STUDIO_VOICE=1."""
     if os.environ.get("STUDIO_VOICE") in ("0", "1"):
@@ -237,7 +248,21 @@ def speak(text: str, cache_dir: Path, eng=None, line_id: str | None = None) -> S
         meta = src.with_suffix(".json")             # written by pipeline/split_recording.py
         split = meta.exists()
         processed = split and json.loads(meta.read_text()).get("processed")
-        if processed:                                       # already cleaned + edited by hand (e.g. in Audacity)
+        ai = eng.dir / "_ai" / f"{line_id}.wav"
+        if split and _voice_style(eng.dir) == "ai" and ai.exists():
+            # AI-enhanced line (Resemble Enhance, run locally; creator's choice). Same length as the edited line,
+            # so the timing JSON still holds: resample, trim/pad to the exact original duration, level.
+            from .match_voice import level
+            import soundfile as _sf
+            from scipy.signal import resample_poly
+            x, xsr = _sf.read(ai, dtype="float32"); x = x if x.ndim == 1 else x.mean(1)
+            if xsr != SR:
+                from math import gcd
+                g = gcd(SR, xsr); x = resample_poly(x, SR // g, xsr // g).astype(np.float32)
+            n = int(round(json.loads(meta.read_text())["duration"] * SR))
+            x = x[:n] if len(x) >= n else np.pad(x, (0, n - len(x)))
+            audio = level(x)
+        elif processed:                                       # already cleaned + edited by hand (e.g. in Audacity)
             from .voice_clean import load as load48
             from .match_voice import level
             audio = level(load48(src))

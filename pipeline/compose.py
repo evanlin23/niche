@@ -58,6 +58,10 @@ def narration_track(scenes: list[Scene], duration: float) -> np.ndarray:
                 db = 20 * np.log10(np.sqrt((a[: m * hop].reshape(m, hop) ** 2).mean(1)) + 1e-9)
                 floors.append(np.percentile(db, 10))
     out, cover = out[:n], cover[:n]
+    import os
+    from .tts import _voice_style
+    if os.environ.get("VOICE_DIR") and _voice_style(Path(os.environ["VOICE_DIR"])) == "ai":
+        return out          # AI-enhanced voice has (almost) no room noise: true silence between lines matches it
     if floors:
         fl = float(np.median(floors))
         bed = _room_bed(n, fl - 3.0)                          # a touch under the lines' floor
