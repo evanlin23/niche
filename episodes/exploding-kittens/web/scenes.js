@@ -29,8 +29,13 @@ function scrim(stage, t, fin = stage.spec.fade_in ?? 0, fout = stage.spec.fade_o
   const a = Math.max(1 - fade(t, 0, fin), fade(t, stage.duration - fout, fout));
   if (a > 0.001) { const g = stage.g; g.fillStyle = `rgba(${GN.scrim},${a})`; g.fillRect(0, 0, stage.W, stage.H); }
 }
-function drift(stage, t, from, to, look) {
-  stage.cameraAt(t, { pos: [from, to], look: [look] });
+function drift(stage, t, from, to, look, arc = null) {
+  // push-in plus a slow arc around the look point (~0.8 deg/s, at most +/-6 deg)
+  const deg = arc ?? Math.min(6, 0.4 * stage.duration);
+  const k = ease(clamp(t / stage.duration)), a = (-deg + 2 * deg * k) * Math.PI / 180;
+  const rot = (p) => { const dx = p[0] - look[0], dz = p[2] - look[2];
+    return [look[0] + dx * Math.cos(a) + dz * Math.sin(a), p[1], look[2] - dx * Math.sin(a) + dz * Math.cos(a)]; };
+  stage.cameraAt(t, { pos: [rot(from), rot(to)], look: [look] });
 }
 
 // ------------------------------------------------------------------ table with a replayed game
@@ -156,7 +161,7 @@ SCENES.table = async (stage, spec) => {
   const cam = p.cam || { from: [0, 16.5, 15.5], to: [0, 15.2, 14.2], look: [0, 0, 0.9] };
   return (t) => {
     const u = play ? lerp(e0, e1 + 0.99, clamp(t / (stage.duration - 0.6))) : (p.ev_still ?? 2);
-    drift(stage, t, cam.from, cam.to, cam.look);
+    drift(stage, t, cam.from, cam.to, cam.look, cam.arc);
     stage.camera.updateMatrixWorld();
     tableFrame(stage, T, spec, null, u, { odds: !!p.odds, labels: p.labels !== false, pills: play, idle: !play, heroName: p.hero_name, otherName: p.other_name, seatNames: p.seat_names });
     scrim(stage, t);
@@ -216,7 +221,7 @@ SCENES.deck56 = async (stage, spec) => {
 SCENES.bars = async (stage, spec) => {
   buildRoom(stage, { feltW: 18, feltD: 9 });
   const ch = spec.chart, p = spec.params;
-  const bars = makeBars(stage, ch.items, { x0: -7.5, width: 15, maxV: ch.maxV, height: 6.2, z: 0, fair: ch.fair, unit: ch.unit ?? '%' });
+  const bars = makeBars(stage, ch.items, { x0: -6.3, width: 12.6, maxV: ch.maxV, height: 6.2, z: 0, fair: ch.fair, unit: ch.unit ?? '%' });
   title(stage, p.title); notes(stage, p.notes); brand(stage);
   return (t) => {
     // slow arc around the chart (labels are world-anchored and sub-pixel, so they glide with it)

@@ -218,7 +218,12 @@ export function makeBars(stage, items, { x0 = -6, width = 12, maxV = 60, height 
       if (fairMesh) {
         const fxw = fairSide === 'left' ? x0 - 0.15 : x0 + width + 0.2;
         const [fx, fy] = stage.project(new THREE.Vector3(fxw, fair / maxV * height, z + bw / 2 + 0.05));
-        fairText.el.style.left = Math.min(stage.W - 96, fx) - fairText.el.offsetWidth + 'px'; fairText.el.style.top = fy - 40 + 'px';
+        const fw = fairText.el.offsetWidth, safe = stage.W * 0.05;
+        // beside the end of the line when it fits in the title-safe area, else above the line's end
+        const beside = fairSide === 'left' ? fx - 14 - fw >= safe : fx + 14 + fw <= stage.W - safe;
+        let lx = fairSide === 'left' ? (beside ? fx - 14 - fw : fx) : (beside ? fx + 14 : fx - fw);
+        lx = Math.max(safe, Math.min(stage.W - safe - fw, lx));
+        fairText.el.style.left = lx + 'px'; fairText.el.style.top = fy + (beside ? -16 : -40) + 'px';
         const a = fade(t, bars.length ? Math.min(...bars.map((b) => b.at)) : 0, 0.5);
         fairText.el.style.opacity = a; fairMesh.visible = a > 0.01;
       }
