@@ -1,187 +1,188 @@
 {
- "games_per_test": 20000,
+ "games_per_test": 10000000,
  "hunters": {
   "random": {
-   "a_win": 0.5061,
-   "first_player_win": 0.543,
-   "games": 20000,
-   "mean_shots_a": 95.3326,
-   "mean_shots_b": 95.4027,
-   "median_shots_a": 97
+   "a_win": 0.4997545,
+   "first_player_win": 0.5472216999999999,
+   "games": 500000.0,
+   "mean_shots_a": 95.39036899999999,
+   "mean_shots_b": 95.3876573,
+   "median_shots_a": 97.0
   },
   "hunt_target": {
-   "a_win": 0.50005,
-   "first_player_win": 0.51025,
-   "games": 20000,
-   "mean_shots_a": 62.1638,
-   "mean_shots_b": 62.2439,
-   "median_shots_a": 61
+   "a_win": 0.49986610000000004,
+   "first_player_win": 0.5094575,
+   "games": 500000.0,
+   "mean_shots_a": 62.2275551,
+   "mean_shots_b": 62.23036,
+   "median_shots_a": 62.0
   },
   "parity": {
-   "a_win": 0.49695,
-   "first_player_win": 0.51925,
-   "games": 20000,
-   "mean_shots_a": 55.2196,
-   "mean_shots_b": 55.15835,
-   "median_shots_a": 56
+   "a_win": 0.49987820000000005,
+   "first_player_win": 0.5170614,
+   "games": 500000.0,
+   "mean_shots_a": 55.2065278,
+   "mean_shots_b": 55.2055173,
+   "median_shots_a": 56.0
   },
   "density": {
-   "a_win": 0.5029,
-   "first_player_win": 0.5149,
-   "games": 20000,
-   "mean_shots_a": 44.3472,
-   "mean_shots_b": 44.42435,
-   "median_shots_a": 44
+   "a_win": 0.5000756,
+   "first_player_win": 0.5152766,
+   "games": 500000.0,
+   "mean_shots_a": 44.2941073,
+   "mean_shots_b": 44.2956048,
+   "median_shots_a": 44.0
   }
  },
  "no_labels": {
   "random": {
-   "a_win": 0.5061,
-   "first_player_win": 0.543,
-   "games": 20000,
-   "mean_shots_a": 95.3326,
-   "mean_shots_b": 95.4027,
-   "median_shots_a": 97
+   "a_win": 0.4997545,
+   "first_player_win": 0.5472216999999999,
+   "games": 500000.0,
+   "mean_shots_a": 95.39036899999999,
+   "mean_shots_b": 95.3876573,
+   "median_shots_a": 97.0
   },
   "hunt_target": {
-   "a_win": 0.50005,
-   "first_player_win": 0.51025,
-   "games": 20000,
-   "mean_shots_a": 62.1638,
-   "mean_shots_b": 62.2439,
-   "median_shots_a": 61
+   "a_win": 0.49986610000000004,
+   "first_player_win": 0.5094575,
+   "games": 500000.0,
+   "mean_shots_a": 62.2275551,
+   "mean_shots_b": 62.23036,
+   "median_shots_a": 62.0
   },
   "parity": {
-   "a_win": 0.49695,
-   "first_player_win": 0.51925,
-   "games": 20000,
-   "mean_shots_a": 55.2196,
-   "mean_shots_b": 55.15835,
-   "median_shots_a": 56
+   "a_win": 0.49987820000000005,
+   "first_player_win": 0.5170614,
+   "games": 500000.0,
+   "mean_shots_a": 55.2065278,
+   "mean_shots_b": 55.2055173,
+   "median_shots_a": 56.0
   },
   "density": {
-   "a_win": 0.50085,
-   "first_player_win": 0.51545,
-   "games": 20000,
-   "mean_shots_a": 44.79875,
-   "mean_shots_b": 44.85925,
-   "median_shots_a": 44
+   "a_win": 0.4998398,
+   "first_player_win": 0.5155864,
+   "games": 500000.0,
+   "mean_shots_a": 44.8453172,
+   "mean_shots_b": 44.8365176,
+   "median_shots_a": 44.0
   }
  },
  "placement": {
   "random": {
-   "hunt_target": 62.1638,
-   "parity": 55.2196,
-   "density": 44.3472
+   "hunt_target": 62.2275551,
+   "parity": 55.2065278,
+   "density": 44.2941073
   },
   "edges": {
-   "hunt_target": 62.66765,
-   "parity": 55.1731,
-   "density": 45.529
+   "hunt_target": 62.3908622,
+   "parity": 55.157693800000004,
+   "density": 45.4608706
   },
   "center": {
-   "hunt_target": 60.1851,
-   "parity": 53.9699,
-   "density": 42.10015
+   "hunt_target": 60.300461399999996,
+   "parity": 53.9183159,
+   "density": 42.0364533
   },
   "corners": {
-   "hunt_target": 62.11855,
-   "parity": 54.9632,
-   "density": 45.82455
+   "hunt_target": 62.142747199999995,
+   "parity": 54.991194500000006,
+   "density": 45.8189122
   },
   "cluster": {
-   "hunt_target": 54.8307,
-   "parity": 49.39555,
-   "density": 44.5587
+   "hunt_target": 55.137389299999995,
+   "parity": 49.3660782,
+   "density": 44.611911500000005
   },
   "spread": {
-   "hunt_target": 66.9346,
-   "parity": 58.7598,
-   "density": 44.23285
+   "hunt_target": 66.6681643,
+   "parity": 58.7904364,
+   "density": 44.1332229
   }
  },
  "h2h": {
   "density_vs_parity": {
-   "a_win": 0.80595,
-   "first_player_win": 0.50465,
-   "games": 20000,
-   "mean_shots_a": 44.17885,
-   "mean_shots_b": 55.19505,
-   "median_shots_a": 43
+   "a_win": 0.8031084,
+   "first_player_win": 0.509894,
+   "games": 500000.0,
+   "mean_shots_a": 44.300286,
+   "mean_shots_b": 55.212962100000006,
+   "median_shots_a": 44.0
   },
   "parity_vs_hunt_target": {
-   "a_win": 0.6461,
-   "first_player_win": 0.5132,
-   "games": 20000,
-   "mean_shots_a": 55.2423,
-   "mean_shots_b": 62.26515,
-   "median_shots_a": 56
+   "a_win": 0.6479511,
+   "first_player_win": 0.5111193,
+   "games": 500000.0,
+   "mean_shots_a": 55.2092623,
+   "mean_shots_b": 62.2343926,
+   "median_shots_a": 56.0
   },
   "density_vs_hunt_target": {
-   "a_win": 0.85325,
-   "first_player_win": 0.50475,
-   "games": 20000,
-   "mean_shots_a": 44.20425,
-   "mean_shots_b": 62.35665,
-   "median_shots_a": 44
+   "a_win": 0.8524521999999999,
+   "first_player_win": 0.5071332,
+   "games": 500000.0,
+   "mean_shots_a": 44.2899064,
+   "mean_shots_b": 62.2378666,
+   "median_shots_a": 44.0
   },
   "hunt_target_vs_random": {
-   "a_win": 0.9871,
-   "first_player_win": 0.5004,
-   "games": 20000,
-   "mean_shots_a": 62.1477,
-   "mean_shots_b": 95.29205,
-   "median_shots_a": 61
+   "a_win": 0.9871698,
+   "first_player_win": 0.5013292,
+   "games": 500000.0,
+   "mean_shots_a": 62.2336776,
+   "mean_shots_b": 95.38965759999999,
+   "median_shots_a": 62.0
   },
   "density_vs_density": {
-   "a_win": 0.5029,
-   "first_player_win": 0.5149,
-   "games": 20000,
-   "mean_shots_a": 44.3472,
-   "mean_shots_b": 44.42435,
-   "median_shots_a": 44
+   "a_win": 0.5000756,
+   "first_player_win": 0.5152766,
+   "games": 500000.0,
+   "mean_shots_a": 44.2941073,
+   "mean_shots_b": 44.2956048,
+   "median_shots_a": 44.0
   }
  },
  "placement_h2h": {
   "spread_vs_hunt_target": {
-   "a_win": 0.59825,
-   "first_player_win": 0.50485,
-   "games": 20000,
-   "mean_shots_a": 62.2315,
-   "mean_shots_b": 66.9163,
-   "median_shots_a": 61
+   "a_win": 0.5919492,
+   "first_player_win": 0.510015,
+   "games": 500000.0,
+   "mean_shots_a": 62.2394646,
+   "mean_shots_b": 66.6680549,
+   "median_shots_a": 62.0
   },
   "cluster_vs_hunt_target": {
-   "a_win": 0.36405,
-   "first_player_win": 0.50805,
-   "games": 20000,
-   "mean_shots_a": 62.2591,
-   "mean_shots_b": 54.8258,
-   "median_shots_a": 62
+   "a_win": 0.3663516,
+   "first_player_win": 0.5083194,
+   "games": 500000.0,
+   "mean_shots_a": 62.2364798,
+   "mean_shots_b": 55.1373776,
+   "median_shots_a": 62.0
   },
   "center_vs_hunt_target": {
-   "a_win": 0.4555,
-   "first_player_win": 0.5138,
-   "games": 20000,
-   "mean_shots_a": 62.36175,
-   "mean_shots_b": 60.1834,
-   "median_shots_a": 62
+   "a_win": 0.46174410000000005,
+   "first_player_win": 0.5092649,
+   "games": 500000.0,
+   "mean_shots_a": 62.236982499999996,
+   "mean_shots_b": 60.3006012,
+   "median_shots_a": 62.0
   },
   "edges_vs_density": {
-   "a_win": 0.54235,
-   "first_player_win": 0.51915,
-   "games": 20000,
-   "mean_shots_a": 44.25045,
-   "mean_shots_b": 45.4975,
-   "median_shots_a": 44
+   "a_win": 0.5359003999999999,
+   "first_player_win": 0.5151744,
+   "games": 500000.0,
+   "mean_shots_a": 44.2976975,
+   "mean_shots_b": 45.4614496,
+   "median_shots_a": 44.0
   },
   "corners_vs_density": {
-   "a_win": 0.54905,
-   "first_player_win": 0.51705,
-   "games": 20000,
-   "mean_shots_a": 44.29165,
-   "mean_shots_b": 45.8158,
-   "median_shots_a": 44
+   "a_win": 0.5477141999999999,
+   "first_player_win": 0.5152644000000001,
+   "games": 500000.0,
+   "mean_shots_a": 44.2980481,
+   "mean_shots_b": 45.8188552,
+   "median_shots_a": 44.0
   }
- }
+ },
+ "shards": 20
 }

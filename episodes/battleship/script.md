@@ -1,20 +1,20 @@
 # Where to Hide Your Ships in Battleship (and How the Computer Finds Them Anyway)
 
 Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: docs/perfectplay-structure-notes.md.
-Numbers below are from the 20,000-game pilot. RE-CHECK after the big run (data/results.json) before recording.
+Big run: 36 tests x 10M games = 360M games. Script numbers re-checked against it.
 
 ## Number sources (data/results.json; classic Hasbro A3264 fleet 5-4-3-3-2, 10x10)
-- Shots to sink a randomly placed fleet: Random 95.3 (median 97); Hunter (random until a hit, then neighbours) 62.2;
+- Shots to sink a randomly placed fleet: Random 95.39 (median 97); Hunter (random until a hit, then neighbours) 62.2;
   Checkerboard (hunter that only searches every other square) 55.2; Calculator (probability map) 44.3.
-- Head to head: Hunter beats Random 98.7%; Checkerboard beats Hunter 64.6%; Calculator beats Checkerboard 80.6%;
+- Head to head: Hunter beats Random 98.7%; Checkerboard beats Hunter 64.6%; Calculator beats Checkerboard 80.3%;
   Calculator beats Hunter 85.3%. Mirror: equal bots 50/50 except going first (51-52%; ties go to the first player).
 - Engine check: a random shooter needs the last of 17 ship squares among 100: 17 x 101 / 18 = 95.39 shots on
-  paper; engine 95.33.
+  paper; engine 95.39 (10M games).
 - Hiding vs the Hunter (shots it needs): random 62.2, spread out 66.9, edges 62.7, corners 62.1, centre 60.2,
-  clustered 54.8. Spread vs random placer (both Hunters): 59.8% wins. Clustered: 36.4%. Centre: 45.6%.
+  clustered 55.1. Spread vs random placer (both Hunters): 59.2% wins. Clustered: 36.6%. Centre: 46.2%.
 - Hiding vs the Calculator: random 44.3, spread 44.2, edges 45.5, corners 45.8, centre 42.1, cluster 44.6.
-  Edges vs random placer (both Calculators): 54.2%. Corners: 54.9%.
-- House rule "only say hit" (don't name the ship): Calculator 44.3 -> 44.8 shots. Other bots never use the name.
+  Edges vs random placer (both Calculators): 53.6%. Corners: 54.8%.
+- House rule "only say hit" (don't name the ship): Calculator 44.29 -> 44.85 shots. Other bots never use the name.
 
 ## Cold open
 [o1] Everybody has a Battleship strategy. Hide in the corners. Line your ships up along the edge. Bunch them all together so they're hard to find.
@@ -28,7 +28,7 @@ Numbers below are from the 20,000-game pilot. RE-CHECK after the big run (data/r
 ## Can you trust it
 [c1] My version follows the official Hasbro rules. Five ships, from the five square Carrier down to the two square Patrol Boat. Seventeen squares of ship in total.
 [c2] And one rule a lot of people skip. When you hit a ship, your opponent has to tell you which ship it was.
-[c3] To check the engine, I used plain math. If you shoot completely at random, you finish when you find the last of those seventeen squares. On paper, that takes about ninety five point four shots on average. My engine says ninety five point three.
+[c3] To check the engine, I used plain math. If you shoot completely at random, you finish when you find the last of those seventeen squares. On paper, that takes ninety five point three nine shots on average. Over ten million games, my engine says ninety five point three nine.
 
 ## Meet the shooters
 [s1] Here are the shooters.
@@ -40,11 +40,11 @@ Numbers below are from the 20,000-game pilot. RE-CHECK after the big run (data/r
 [r1] The Beginner needs ninety five shots to sink a fleet. Almost the whole board.
 [r2] The Hunter needs sixty two. That one habit, checking around a hit, beats the Beginner ninety nine games out of a hundred.
 [r3] The Checkerboard needs fifty five, and beats the Hunter sixty five percent of the time.
-[r4] And the Calculator needs forty four. Against the Checkerboard, it wins eighty one percent of games.
+[r4] And the Calculator needs forty four. Against the Checkerboard, it wins eighty percent of games.
 
 ## Where to hide
 [h1] Now the other half. Where should you put your ships?
-[h2] Against a Hunter, which is how most people play, the worst thing you can do is bunch your ships together. Clustered fleets win only thirty six percent of games. My guess is that one hit leads the Hunter straight into the next ship.
+[h2] Against a Hunter, which is how most people play, the worst thing you can do is bunch your ships together. Clustered fleets win only thirty seven percent of games. My guess is that one hit leads the Hunter straight into the next ship.
 [h3] The best thing is to spread them out, so no two ships touch. That wins sixty percent of games against the same opponent.
 [h4] Corners and edges? Against a Hunter, they barely matter at all.
 

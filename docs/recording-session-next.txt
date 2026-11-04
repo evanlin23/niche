@@ -152,7 +152,7 @@ CLOSE
 ========================================================================
 EPISODE 5 — BATTLESHIP   (~661 words, about 3.5 min at your pace)
 ========================================================================
-(Numbers may shift slightly after tonight's big run; I'll update this sheet if any do.)
+(Numbers re-checked against the 360-million-game run.)
 COLD OPEN
 [o1]  Everybody has a Battleship strategy. Hide in the corners. Line your ships up along the edge. Bunch them all together so they're hard to find.
 [o2]  And then there's how you shoot. Most people fire at random until they hit something.
@@ -163,7 +163,7 @@ THE GAME IN TEN SECONDS
 CAN YOU TRUST IT
 [c1]  My version follows the official Hasbro rules. Five ships, from the five square Carrier down to the two square Patrol Boat. Seventeen squares of ship in total.
 [c2]  And one rule a lot of people skip. When you hit a ship, your opponent has to tell you which ship it was.
-[c3]  To check the engine, I used plain math. If you shoot completely at random, you finish when you find the last of those seventeen squares. On paper, that takes about ninety five point four shots on average. My engine says ninety five point three.
+[c3]  To check the engine, I used plain math. If you shoot completely at random, you finish when you find the last of those seventeen squares. On paper, that takes ninety five point three nine shots on average. Over ten million games, my engine says ninety five point three nine.
 MEET THE SHOOTERS
 [s1]  Here are the shooters.
 [s2]  The Beginner fires at random. The Hunter fires at random too, but once it gets a hit, it checks the squares around it until the ship sinks.
@@ -173,10 +173,10 @@ THE RESULTS
 [r1]  The Beginner needs ninety five shots to sink a fleet. Almost the whole board.
 [r2]  The Hunter needs sixty two. That one habit, checking around a hit, beats the Beginner ninety nine games out of a hundred.
 [r3]  The Checkerboard needs fifty five, and beats the Hunter sixty five percent of the time.
-[r4]  And the Calculator needs forty four. Against the Checkerboard, it wins eighty one percent of games.
+[r4]  And the Calculator needs forty four. Against the Checkerboard, it wins eighty percent of games.
 WHERE TO HIDE
 [h1]  Now the other half. Where should you put your ships?
-[h2]  Against a Hunter, which is how most people play, the worst thing you can do is bunch your ships together. Clustered fleets win only thirty six percent of games. My guess is that one hit leads the Hunter straight into the next ship.
+[h2]  Against a Hunter, which is how most people play, the worst thing you can do is bunch your ships together. Clustered fleets win only thirty seven percent of games. My guess is that one hit leads the Hunter straight into the next ship.
 [h3]  The best thing is to spread them out, so no two ships touch. That wins sixty percent of games against the same opponent.
 [h4]  Corners and edges? Against a Hunter, they barely matter at all.
 AGAINST THE CALCULATOR
