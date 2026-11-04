@@ -9,15 +9,13 @@ from pathlib import Path
 ep = Path(sys.argv[1])
 src = (ep / "script.md").read_text()
 out = [f"RECORDING SCRIPT: {src.splitlines()[0].lstrip('# ').strip()}", "",
-       "How to record",
-       "- One file per line, named exactly as the id in brackets, e.g. h1.m4a, h2.m4a.",
-       "- Phone voice memos are fine. Quiet room (closet full of clothes = great), phone ~20 cm away, same spot every time.",
-       "- Leave a second of silence before and after; the pipeline trims it.",
-       "- Re-word anything that doesn't sound like you. If you change a line, change it in script.md too",
-       "  (captions use the script text). Then run `make lint-script SLUG=" + ep.name + "`.",
-       f"- Put the files in {ep}/voice/ and render with:",
-       f"    TTS_ENGINE=recorded VOICE_DIR={ep}/voice make episode SLUG={ep.name}",
-       "- Lines you skip are filled in with the AI voice, so you can do a few at a time.", ""]
+       "How to record (one long take is easiest)",
+       "- Pixel Recorder, phone ~15-20 cm from your mouth, quiet room (a closet is great), away from windows.",
+       "- Start with ~10 seconds of silence (room tone, used for noise cleanup).",
+       "- Read top to bottom with a 1-2 second pause between lines.",
+       "- Mess up? Pause, then redo the whole sentence. The LAST take wins automatically.",
+       "- Say every number exactly as written ('percent' included). Slow down a touch on punchlines.",
+       "- Send me the file; I split it, clean it and drop it into the video.", ""]
 for line in src.splitlines():
     if line.startswith("## ") and "source" not in line.lower():
         out += ["", line[3:].upper()]

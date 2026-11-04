@@ -1,0 +1,77 @@
+RECORDING SCRIPT: I Tested Every Uno House Rule. One of Them Breaks the Game.
+
+How to record (one long take is easiest)
+- Pixel Recorder, phone ~15-20 cm from your mouth, quiet room (a closet is great), away from windows.
+- Start with ~10 seconds of silence (room tone, used for noise cleanup).
+- Read top to bottom with a 1-2 second pause between lines.
+- Mess up? Pause, then redo the whole sentence. The LAST take wins automatically.
+- Say every number exactly as written ('percent' included). Slow down a touch on punchlines.
+- Send me the file; I split it, clean it and drop it into the video.
+
+
+COLD OPEN
+[o1]  Every family plays Uno a little differently.
+[o2]  Somebody stacks their plus twos. Somebody swaps hands on a seven. Somebody makes you keep drawing until you can play. And somebody always says that's not a real rule.
+[o3]  So I took every house rule I could find, gave them to bots, and played billions of rounds of Uno.
+[o4]  One of those rules makes the average round seventy five percent longer. And one round in ten turns into a marathon of more than a hundred and seventy turns.
+
+THE GAME IN TEN SECONDS
+[g1]  Quick refresher. Match the top card by color or number, or play a Wild. Action cards skip people, reverse direction, or make them draw. First one out of cards wins the round.
+
+CAN YOU TRUST IT
+[c1]  My version follows the official rule sheet that comes in the box today. A hundred and twelve cards, including the new Wild Shuffle Hands card and three blank Wilds.
+[c2]  And here's the first surprise. According to that rule sheet, you can't stack plus twos. And when you can't play, you draw one card. Not until you find one.
+[c3]  To check the engine, I compared it with plain math. The chance your opening hand has at least one Wild is fifty five point eight percent. Over ten million deals, my engine says the same, to a tenth of a percent.
+[c4]  Confession. The first time I ran that check, it was off. I had been looking at hands after the first card was flipped, and a Draw Two or a Shuffle Hands had already changed them. So the check caught a bug in the check.
+[c5]  One limitation. My bots never forget to say Uno, and they never argue about the rules. Hold onto that one.
+
+MEET THE HOUSE RULES
+[r1]  Here are the rules I tested, one at a time, against the official game.
+[r2]  Stacking, where you can answer a plus two with a plus two and pass the pile along. Seven Zero, where a seven swaps hands and a zero rotates everyone's hands. Jump In, where anyone holding the exact same card can play it out of turn.
+[r3]  Draw until you can play. Forced play, where you have to play if you can. And the free plus four, with no color rule and no challenges.
+
+THE RESULTS
+[x1]  Under the official rules, a round of four players takes about forty seven turns.
+[x2]  Jump In makes rounds shorter, about six percent. Stacking, Seven Zero and the free plus four each add a few turns. Forced play changes nothing at all, because almost everybody already plays when they can.
+[x3]  And then there's draw until you can play. Eighty two turns on average. Seventy five percent longer.
+[x4]  The average isn't even the worst part. With the official rules, one round in ten goes past seventy six turns. With draw until you can play, one in ten goes past a hundred and seventy.
+[x5]  Here's why. Under the official rules, the table draws about twenty five cards in a round. With draw until you can play, it draws seventy three. Nearly three times as many. Hands grow instead of shrinking, and everyone drifts further from Uno. That's the rule that breaks the game.
+
+STACKING
+[s1]  What about stacking? Everyone remembers the round where somebody got hit with sixteen cards.
+[s2]  It's rarer than it feels. With plus twos stacking on plus twos, only about one round in a hundred has anyone draw ten or more at once. Let plus fours join the stack, and it's still under one in twenty.
+[s3]  It makes great stories. It barely changes the game.
+
+SEVEN ZERO
+[z1]  Seven Zero is the sneaky one.
+[z2]  Under the official rules, the player who goes first wins almost twenty seven percent of four player rounds. A fair share is twenty five. With Seven Zero, that edge disappears completely.
+[z3]  It also cuts how much skill matters. My best bot's edge over a normal player shrinks by more than half. My guess is that when your hand can be taken from you, planning ahead stops paying off.
+
+EVERYTHING AT ONCE
+[a1]  Of course, some families play with all of these rules at the same time.
+[a2]  Stacking, Seven Zero, Jump In, draw until you can play, and the free plus four, all together. Eighty six turns a round on average. And six rounds in a hundred, somebody draws ten or more cards in one go.
+
+TWO PLAYERS
+[t1]  If you mostly play one on one, a couple of things change.
+[t2]  The player who goes first wins fifty one and a half percent of the time. And Seven Zero is even harsher. My best bot goes from fifty four percent to barely over fifty. With two players, Seven Zero just hands your cards to the only other person at the table.
+
+SO CAN YOU ACTUALLY GET GOOD AT UNO?
+[k1]  Which raises the uncomfortable question. Can you actually get good at Uno?
+[k2]  I gave my best bot every habit that helped. Against three normal players, it wins twenty nine percent of rounds. A fair share is twenty five.
+[k3]  That's a real edge, but it's small. Uno is mostly luck. Which is probably why everyone is willing to play it.
+
+THE HABITS THAT HELP
+[h1]  Still, if you want those extra four points, almost all of them come from one habit.
+[h2]  Hold your Wilds. Don't play a Wild while you have another card you can play. That alone takes you from twenty five percent to twenty nine.
+[h3]  And when you do play a Wild, pick the color you hold the most of. Picking a color at random drops you to twenty two and a half.
+[h4]  Some things people argue about barely matter. Challenging a plus four, bluffing one, or saving your attack cards for someone close to winning. All within about half a point.
+[h5]  One that backfires. Dumping your high point cards early feels smart, but it lowers your chance of winning the round.
+
+THE RECIPE
+[w1]  So here's the house rule verdict.
+[w2]  If you want shorter, punchier rounds, add Jump In. If you want chaos stories, add stacking. If you want luck to decide more of the game, add Seven Zero.
+[w3]  And never, ever play draw until you can play. Unless you really like drawing cards.
+
+CLOSE
+[e1]  Remember the one thing my bots never do? Argue about the rules. Which might be the real reason Uno takes forever at your house.
+[e2]  Next, I'm playing Battleship, to find out where to hide your ships. Tell me where you always put yours.

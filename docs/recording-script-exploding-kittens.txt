@@ -1,14 +1,12 @@
 RECORDING SCRIPT: I Simulated 10 Billion Games of Exploding Kittens. Here's How to Win.
 
-How to record
-- One file per line, named exactly as the id in brackets, e.g. h1.m4a, h2.m4a.
-- Phone voice memos are fine. Quiet room (closet full of clothes = great), phone ~20 cm away, same spot every time.
-- Leave a second of silence before and after; the pipeline trims it.
-- Re-word anything that doesn't sound like you. If you change a line, change it in script.md too
-  (captions use the script text). Then run `make lint-script SLUG=exploding-kittens`.
-- Put the files in episodes/exploding-kittens/voice/ and render with:
-    TTS_ENGINE=recorded VOICE_DIR=episodes/exploding-kittens/voice make episode SLUG=exploding-kittens
-- Lines you skip are filled in with the AI voice, so you can do a few at a time.
+How to record (one long take is easiest)
+- Pixel Recorder, phone ~15-20 cm from your mouth, quiet room (a closet is great), away from windows.
+- Start with ~10 seconds of silence (room tone, used for noise cleanup).
+- Read top to bottom with a 1-2 second pause between lines.
+- Mess up? Pause, then redo the whole sentence. The LAST take wins automatically.
+- Say every number exactly as written ('percent' included). Slow down a touch on punchlines.
+- Send me the file; I split it, clean it and drop it into the video.
 
 
 COLD OPEN
@@ -19,7 +17,7 @@ COLD OPEN
 [o5]  And the gap wasn't luck, or some secret combo. It came down to five mistakes, and most tables make every one of them.
 
 THE GAME IN TEN SECONDS
-[g1]  If you've never played: everyone draws from one deck, and whoever draws an Exploding Kitten is out, unless they have a Defuse. Every other card helps you avoid drawing, or makes someone else draw. Last player standing wins.
+[g1]  If you've never played: everyone draws from one deck, and whoever draws an Exploding Kitten is out, unless they have a Defuse. Every other card helps you avoid drawing, or makes somebody else draw. Last player standing wins.
 
 CAN YOU TRUST IT
 [c1]  First, the game. My version follows the official rulebook for the original edition. Fifty six cards, four Kittens, six Defuses, Attacks that stack, and Nopes that cancel other Nopes.
@@ -46,7 +44,7 @@ MISTAKE ONE: PLAYING FOR FUN
 MISTAKE TWO: PANICKING
 [d1]  Mistake number two is panicking.
 [d2]  Once one card in four is a Kitten, the deck feels dangerous, and most people start Skipping. That's the Panicker, and it only wins sixteen.
-[d3]  Wait for a coin flip, and you still lose ground. The only rule that held up is the boring one. Skip or Attack when you know the next card is a Kitten. Not when you feel it.
+[d3]  Wait for a coin flip, and you still lose ground. The only rule that held up is the boring one. Skip or Attack when you know the next card is a Kitten. Not when you feel like it.
 [d4]  And if you're wondering, Attack or Skip barely matters when you're dodging. The gap was a fraction of a point.
 
 MISTAKE THREE: LOOKING AT THE WRONG TIME

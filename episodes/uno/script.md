@@ -10,7 +10,7 @@ Re-check every number after the big run (data/results.json).
 - Rounds with a 10+ card hit: stacking 0.9%, mixed stacking 4.6%, everything 6.0%.
 - Player who goes first: official 26.8%, 7-0 25.1%. Fair 25.
 - Smart bot vs normal table: official 28.8, 7-0 26.1, free +4 31.2, draw until 29.5.
-- Habits (official): hold Wilds 28.8; random Wild colour 22.5; switch to best colour 26.5; save attacks 25.5;
+- Habits (official): hold Wilds 28.8; random Wild color 22.5; switch to best color 26.5; save attacks 25.5;
   challenges 24.6-25.1; bluff 25.1; dump high cards 23.8.
 - Cards drawn per round (whole table): official 24.7, draw until 72.9. Everything at once: 86.4 turns, 6.0% rounds with a 10+ hit.
 - Two players: first player 51.4%; smart bot official 54.1, 7-0 50.6; draw until 53.1 turns vs 33.9.
@@ -25,7 +25,7 @@ Re-check every number after the big run (data/results.json).
 [o4] One of those rules makes the average round seventy five percent longer. And one round in ten turns into a marathon of more than a hundred and seventy turns.
 
 ## The game in ten seconds
-[g1] Quick refresher. Match the top card by colour or number, or play a Wild. Action cards skip people, reverse direction, or make them draw. First one out of cards wins the round.
+[g1] Quick refresher. Match the top card by color or number, or play a Wild. Action cards skip people, reverse direction, or make them draw. First one out of cards wins the round.
 
 ## Can you trust it
 [c1] My version follows the official rule sheet that comes in the box today. A hundred and twelve cards, including the new Wild Shuffle Hands card and three blank Wilds.
@@ -37,7 +37,7 @@ Re-check every number after the big run (data/results.json).
 ## Meet the house rules
 [r1] Here are the rules I tested, one at a time, against the official game.
 [r2] Stacking, where you can answer a plus two with a plus two and pass the pile along. Seven Zero, where a seven swaps hands and a zero rotates everyone's hands. Jump In, where anyone holding the exact same card can play it out of turn.
-[r3] Draw until you can play. Forced play, where you have to play if you can. And the free plus four, with no colour rule and no challenges.
+[r3] Draw until you can play. Forced play, where you have to play if you can. And the free plus four, with no color rule and no challenges.
 
 ## The results
 [x1] Under the official rules, a round of four players takes about forty seven turns.
@@ -72,7 +72,7 @@ Re-check every number after the big run (data/results.json).
 ## The habits that help
 [h1] Still, if you want those extra four points, almost all of them come from one habit.
 [h2] Hold your Wilds. Don't play a Wild while you have another card you can play. That alone takes you from twenty five percent to twenty nine.
-[h3] And when you do play a Wild, pick the colour you hold the most of. Picking a colour at random drops you to twenty two and a half.
+[h3] And when you do play a Wild, pick the color you hold the most of. Picking a color at random drops you to twenty two and a half.
 [h4] Some things people argue about barely matter. Challenging a plus four, bluffing one, or saving your attack cards for someone close to winning. All within about half a point.
 [h5] One that backfires. Dumping your high point cards early feels smart, but it lowers your chance of winning the round.
 
