@@ -26,6 +26,7 @@ type Summary struct {
 	BigHit10     float64 `json:"share_rounds_with_10plus_draw"`
 	MeanPoints   float64 `json:"mean_round_points"`
 	Unfinished   float64 `json:"unfinished"`
+	MeanDrawn    float64 `json:"mean_cards_drawn_per_round"`
 }
 
 func main() {
@@ -72,7 +73,7 @@ func main() {
 	type acc struct {
 		wins, firstWins, unfinished, big10 int
 		turns                              []int
-		maxHit, points                     float64
+		maxHit, points, drawn              float64
 	}
 	accs := make([]acc, W)
 	var wg sync.WaitGroup
@@ -111,6 +112,9 @@ func main() {
 				a.turns = append(a.turns, r.Turns)
 				a.maxHit += float64(r.MaxHit)
 				a.points += float64(r.Points)
+				for _, d := range r.Drawn {
+					a.drawn += float64(d)
+				}
 			}
 		}(w)
 	}
@@ -118,7 +122,7 @@ func main() {
 	var s Summary
 	var all []int
 	wins, first, unf, big := 0, 0, 0, 0
-	mh, pts := 0.0, 0.0
+	mh, pts, dr := 0.0, 0.0, 0.0
 	for _, a := range accs {
 		wins += a.wins
 		first += a.firstWins
@@ -126,6 +130,7 @@ func main() {
 		big += a.big10
 		all = append(all, a.turns...)
 		mh += a.maxHit
+		dr += a.drawn
 		pts += a.points
 	}
 	n := float64(len(all))
@@ -146,6 +151,7 @@ func main() {
 	s.BigHit10 = float64(big) / n
 	s.MeanPoints = pts / n
 	s.Unfinished = float64(unf) / float64(s.Games)
+	s.MeanDrawn = dr / n
 	must(json.NewEncoder(os.Stdout).Encode(s))
 }
 

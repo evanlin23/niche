@@ -33,7 +33,7 @@ def main():
         base = run(R, games=G, allsame=True)
         sk = run(R, test=SMART, games=G)
         res["variants"][name] = {"rules": R, "table": base, "smart_vs_normal": sk["test_win_rate"]}
-        print(f"{name:16s} {base['mean_turns']:6.1f} {base['median_turns']:6.0f} {base['p90_turns']:5.0f} {base['first_seat_win']*100:7.1f}% {base['mean_max_hit']:7.1f} {base['share_rounds_with_10plus_draw']*100:6.1f}% {sk['test_win_rate']*100:8.1f}%")
+        print(f"{name:16s} drawn {base['mean_cards_drawn_per_round']:5.1f} {base['mean_turns']:6.1f} {base['median_turns']:6.0f} {base['p90_turns']:5.0f} {base['first_seat_win']*100:7.1f}% {base['mean_max_hit']:7.1f} {base['share_rounds_with_10plus_draw']*100:6.1f}% {sk['test_win_rate']*100:8.1f}%")
     print("\nhabits (official rules, one change vs normal table)")
     for label, change in [("hold wilds", {"hold_wilds": True}), ("attack when next has <=2", {"attack_small": 2}),
                           ("switch to your best colour", {"change_color": True}), ("random colour choice", {"color_choice": "random"}),
@@ -44,6 +44,13 @@ def main():
         r = run({}, test=dict(NORMAL, name=label, **change), games=G)
         res["habits"][label] = r["test_win_rate"]
         print(f"  {label:28s} {r['test_win_rate']*100:5.1f}%  ±{r['ci95']*100:.2f}")
+    print("\ntwo players")
+    res["two_player"] = {}
+    for name in ("official", "draw_until", "stacking", "seven_zero"):
+        base = run(VARIANTS[name], games=G, allsame=True, players=2)
+        sk = run(VARIANTS[name], test=SMART, games=G, players=2)
+        res["two_player"][name] = {"table": base, "smart_vs_normal": sk["test_win_rate"]}
+        print(f"  {name:12s} turns {base['mean_turns']:5.1f}  1st {base['first_seat_win']*100:4.1f}%  smart {sk['test_win_rate']*100:4.1f}%  drawn {base['mean_cards_drawn_per_round']:.1f}")
     (out / "results.json").write_text(json.dumps(res, indent=1)); print("wrote", out / "results.json")
 
 
