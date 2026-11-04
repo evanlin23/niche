@@ -1,0 +1,280 @@
+{
+ "games_per_test": 56000000,
+ "seed": [
+  1000,
+  10000,
+  11000,
+  12000,
+  13000,
+  14000,
+  15000,
+  16000,
+  17000,
+  18000,
+  19000,
+  2000,
+  20000,
+  3000,
+  4000,
+  5000,
+  6000,
+  7000,
+  8000,
+  9000
+ ],
+ "engine_check": {
+  "math": {
+   "deal_has_meld": 0.3979071546579465
+  },
+  "engine": {
+   "deal_deadwood_le10": 0.0006419464285714286,
+   "deal_has_meld": 0.397926125,
+   "games": 56000000
+  }
+ },
+ "mirror": {
+  "a_win": 0.5000405178571429,
+  "a_win_when_a_plays_first": 0.501877,
+  "ci95": 0.00013095800810710128,
+  "games": 56000000,
+  "gin_rate": 0.02228617096183558,
+  "hands": 597834503,
+  "mean_hands_per_game": 10.675616125000001,
+  "mean_knock_deadwood": 7.108652417421806,
+  "mean_turns_per_hand": 11.62931644932262,
+  "undercut_rate_of_knocks": 0.04095819207446395,
+  "void_rate": 0.0010529803705701176
+ },
+ "knock": {
+  "knock_8": {
+   "a_win": 0.44462471428571426,
+   "a_win_when_a_plays_first": 0.4464334285714286,
+   "ci95": 0.00013015238542731132,
+   "games": 56000000,
+   "gin_rate": 0.029411841723727385,
+   "hands": 617501535,
+   "mean_hands_per_game": 11.026813125,
+   "mean_knock_deadwood": 6.4353146999551285,
+   "mean_turns_per_hand": 12.23406461962088,
+   "undercut_rate_of_knocks": 0.06022389192501067,
+   "void_rate": 0.001377571790739204
+  },
+  "knock_6": {
+   "a_win": 0.3991233928571428,
+   "a_win_when_a_plays_first": 0.40076592857142856,
+   "ci95": 0.00012826503902081156,
+   "games": 56000000,
+   "gin_rate": 0.039731350396807266,
+   "hands": 630025516,
+   "mean_hands_per_game": 11.250455642857144,
+   "mean_knock_deadwood": 6.035854770183112,
+   "mean_turns_per_hand": 12.8065057769231,
+   "undercut_rate_of_knocks": 0.10883624187421725,
+   "void_rate": 0.0018429520541745966
+  },
+  "knock_4": {
+   "a_win": 0.37170510714285715,
+   "a_win_when_a_plays_first": 0.37317721428571426,
+   "ci95": 0.00012657358667597562,
+   "games": 56000000,
+   "gin_rate": 0.05246537855107421,
+   "hands": 634434476,
+   "mean_hands_per_game": 11.329187071428573,
+   "mean_knock_deadwood": 5.964803626950701,
+   "mean_turns_per_hand": 13.26020707136627,
+   "undercut_rate_of_knocks": 0.17228942519521556,
+   "void_rate": 0.0023786397628513247
+  },
+  "knock_2": {
+   "a_win": 0.3674617857142857,
+   "a_win_when_a_plays_first": 0.3687902857142857,
+   "ci95": 0.0001262733006312944,
+   "games": 56000000,
+   "gin_rate": 0.07085740726402515,
+   "hands": 630191288,
+   "mean_hands_per_game": 11.253415857142858,
+   "mean_knock_deadwood": 6.156996271274644,
+   "mean_turns_per_hand": 13.63417198575028,
+   "undercut_rate_of_knocks": 0.24275466466301285,
+   "void_rate": 0.002795062349193009
+  },
+  "gin_only": {
+   "a_win": 0.39551073214285715,
+   "a_win_when_a_plays_first": 0.39685675000000004,
+   "ci95": 0.00012806648551874815,
+   "games": 56000000,
+   "gin_rate": 0.10484396298034222,
+   "hands": 612660001,
+   "mean_hands_per_game": 10.940357160714285,
+   "mean_knock_deadwood": 6.7364026484154,
+   "mean_turns_per_hand": 14.026718742552575,
+   "undercut_rate_of_knocks": 0.33684671941441924,
+   "void_rate": 0.0032666792447414834
+  }
+ },
+ "late": {
+  "gin_then_knock_late": {
+   "a_win": 0.3853287142857143,
+   "a_win_when_a_plays_first": 0.38666625,
+   "ci95": 0.00012746742345226328,
+   "games": 56000000,
+   "gin_rate": 0.10056207779008368,
+   "hands": 617932049,
+   "mean_hands_per_game": 11.034500875,
+   "mean_knock_deadwood": 6.719128358934734,
+   "mean_turns_per_hand": 13.910857347562018,
+   "undercut_rate_of_knocks": 0.3073027164881066,
+   "void_rate": 0.0010528985108120043
+  },
+  "knock4_then_10_late": {
+   "a_win": 0.36668289285714284,
+   "a_win_when_a_plays_first": 0.3681095714285714,
+   "ci95": 0.0001262170402817857,
+   "games": 56000000,
+   "gin_rate": 0.04819156960930183,
+   "hands": 638698128,
+   "mean_hands_per_game": 11.405323714285714,
+   "mean_knock_deadwood": 6.143846371193801,
+   "mean_turns_per_hand": 13.032577515522982,
+   "undercut_rate_of_knocks": 0.1430455596560008,
+   "void_rate": 0.0010528492679918356
+  }
+ },
+ "habits": {
+  "take_lower": {
+   "a_win": 0.44846142857142857,
+   "a_win_when_a_plays_first": 0.4514356428571428,
+   "ci95": 0.00013026044299763455,
+   "games": 56000000,
+   "gin_rate": 0.021535292694063297,
+   "hands": 590877136,
+   "mean_hands_per_game": 10.55137742857143,
+   "mean_knock_deadwood": 7.107186896788032,
+   "mean_turns_per_hand": 11.991135932884301,
+   "undercut_rate_of_knocks": 0.03848403655098576,
+   "void_rate": 0.0006309703944939865
+  },
+  "never_take": {
+   "a_win": 0.05124580357142857,
+   "a_win_when_a_plays_first": 0.05290103571428571,
+   "ci95": 5.775213799920704e-05,
+   "games": 56000000,
+   "gin_rate": 0.018870122450830577,
+   "hands": 473671604,
+   "mean_hands_per_game": 8.4584215,
+   "mean_knock_deadwood": 7.177759228677301,
+   "mean_turns_per_hand": 13.77052613038166,
+   "undercut_rate_of_knocks": 0.03863231527425948,
+   "void_rate": 0.011750098842092715
+  },
+  "dump_high": {
+   "a_win": 0.43430028571428575,
+   "a_win_when_a_plays_first": 0.43552325,
+   "ci95": 0.0001298225379563749,
+   "games": 56000000,
+   "gin_rate": 0.021497679392347206,
+   "hands": 600030418,
+   "mean_hands_per_game": 10.714828892857144,
+   "mean_knock_deadwood": 7.132198983693911,
+   "mean_turns_per_hand": 11.975580378421714,
+   "undercut_rate_of_knocks": 0.04251672970916126,
+   "void_rate": 0.0013799801681299185
+  },
+  "watcher": {
+   "a_win": 0.5034139642857143,
+   "a_win_when_a_plays_first": 0.5053550357142857,
+   "ci95": 0.0001309549558304798,
+   "games": 56000000,
+   "gin_rate": 0.0221551767746262,
+   "hands": 599772127,
+   "mean_hands_per_game": 10.71021655357143,
+   "mean_knock_deadwood": 7.11030781960896,
+   "mean_turns_per_hand": 11.647757720320733,
+   "undercut_rate_of_knocks": 0.04128708874588587,
+   "void_rate": 0.001060969440882527
+  },
+  "random_discards": {
+   "a_win": 2.0142857142857144e-05,
+   "a_win_when_a_plays_first": 2.0785714285714284e-05,
+   "ci95": 1.1754880546394337e-06,
+   "games": 56000000,
+   "gin_rate": 0.03285041457947084,
+   "hands": 176343172,
+   "mean_hands_per_game": 3.148985214285714,
+   "mean_knock_deadwood": 6.6419462735844075,
+   "mean_turns_per_hand": 14.968694787673176,
+   "undercut_rate_of_knocks": 0.0022227098845541706,
+   "void_rate": 0.007324529451711477
+  }
+ },
+ "rules": {
+  "no_layoff_mirror": {
+   "a_win": 0.4999231428571429,
+   "a_win_when_a_plays_first": 0.5017768928571429,
+   "ci95": 0.0001309580069899447,
+   "games": 56000000,
+   "gin_rate": 0.0222854040190126,
+   "hands": 594848263,
+   "mean_hands_per_game": 10.622290410714285,
+   "mean_knock_deadwood": 7.1086527127995165,
+   "mean_turns_per_hand": 11.629307293543395,
+   "undercut_rate_of_knocks": 0.04095845639769112,
+   "void_rate": 0.001052942363265447
+  },
+  "no_layoff_gin_only": {
+   "a_win": 0.4098271071428571,
+   "a_win_when_a_plays_first": 0.4112325357142857,
+   "ci95": 0.00012881072575066454,
+   "games": 56000000,
+   "gin_rate": 0.10484938754131456,
+   "hands": 601680385,
+   "mean_hands_per_game": 10.744292589285715,
+   "mean_knock_deadwood": 6.736451142483732,
+   "mean_turns_per_hand": 14.026773985565423,
+   "undercut_rate_of_knocks": 0.33684916129460035,
+   "void_rate": 0.003266589194405485
+  },
+  "bonus25_mirror": {
+   "a_win": 0.4998836071428571,
+   "a_win_when_a_plays_first": 0.5015818571428572,
+   "ci95": 0.00013095800498883378,
+   "games": 56000000,
+   "gin_rate": 0.02228509798472901,
+   "hands": 570851689,
+   "mean_hands_per_game": 10.193780160714287,
+   "mean_knock_deadwood": 7.108655421262109,
+   "mean_turns_per_hand": 11.629281035334527,
+   "undercut_rate_of_knocks": 0.04095725090489112,
+   "void_rate": 0.0010530442342198175
+  },
+  "bonus25_gin_only": {
+   "a_win": 0.6740293035714285,
+   "a_win_when_a_plays_first": 0.67547,
+   "ci95": 0.0001227695678203407,
+   "games": 56000000,
+   "gin_rate": 0.10497295216451022,
+   "hands": 457460548,
+   "mean_hands_per_game": 8.168938357142858,
+   "mean_knock_deadwood": 6.736322851961688,
+   "mean_turns_per_hand": 14.029966363682897,
+   "undercut_rate_of_knocks": 0.3370098366138164,
+   "void_rate": 0.0032733683484379556
+  },
+  "bonus25_knock_6": {
+   "a_win": 0.5164420892857142,
+   "a_win_when_a_plays_first": 0.5179193214285714,
+   "ci95": 0.0001308871824061262,
+   "games": 56000000,
+   "gin_rate": 0.03974266969272807,
+   "hands": 562925956,
+   "mean_hands_per_game": 10.052249214285714,
+   "mean_knock_deadwood": 6.035588504081091,
+   "mean_turns_per_hand": 12.80689730004722,
+   "undercut_rate_of_knocks": 0.10882583918643907,
+   "void_rate": 0.0018432369714159944
+  }
+ },
+ "total_games": 1008000000,
+ "total_hands": 10207738794,
+ "shards": 20
+}

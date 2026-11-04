@@ -1,0 +1,21 @@
+{
+ "note": "Local supplementary run (2026-11-04, after the big run): the 5-card adult variation with a FULLY random player (random card and random move), 4 players, vs three normal bots. The big run's hand5_random test used an older random bot that picked the best card in hand; that number is not quoted.",
+ "command": "sims/sorry/sorrysim -games 4000000 -seed 99 -rules '{\"hand\":5}' -test '{\"name\":\"random\",\"random\":true}'",
+ "ci95": 2.667149802165928e-05,
+ "fair_share": 0.25,
+ "first_player_win": 0.24984125,
+ "games": 4000000,
+ "mean_cards": 148.17409875,
+ "mean_turns": 114.80906025,
+ "others_mean_home": 2.5861936666667646,
+ "players": 4,
+ "seat_win": [
+  0.2502845,
+  0.25008275,
+  0.24932525,
+  0.2503075
+ ],
+ "test_mean_home": 0.352474,
+ "test_win": 0.00074125,
+ "unfinished": 0
+}

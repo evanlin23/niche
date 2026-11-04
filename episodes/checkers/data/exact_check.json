@@ -1,0 +1,23 @@
+{
+ "perft": [
+  7,
+  49,
+  302,
+  1469,
+  7361,
+  36768,
+  179740
+ ],
+ "perft_published": [
+  7,
+  49,
+  302,
+  1469,
+  7361,
+  36768,
+  179740
+ ],
+ "perft_matches_published": true,
+ "capture_within_6_plies": 0.8432189867565102,
+ "capture_within_6_plies_fraction": "54420409/64538880"
+}
