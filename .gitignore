@@ -26,3 +26,4 @@ sims/phase10/p10sim
 sims/sorry/sorrysim
 sims/checkers/cksim
 sims/gin/ginsim
+sims/*/*.test
