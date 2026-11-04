@@ -23,4 +23,4 @@ def shot(name, W, H, lines, size, scale=1.0):
 
 
 shot("avatar", 800, 800, [("BUH", "MUSTARD")], 2.2)
-shot("banner", 2560, 1440, [("BUH SIMULATES", None, 1.75), ("I simulate games so you can win them", "MUSTARD")], 0.5, scale=1.0)
+shot("banner", 2560, 1440, [("BUH SIMULATES", None, 1.75), ("I simulate games so you can win them", "MUSTARD")], 0.311, scale=1.0)
