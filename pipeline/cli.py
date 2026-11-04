@@ -112,7 +112,10 @@ def cmd_episode(slug, preview=False, jobs=3, only=None, assemble=False):
     fmt = render.preview(LONG) if preview else LONG
     if spec.get("engine") == "3d":
         fmt = Format("long", 1920, 1080, 30, 1 / 3 if preview else 1.0)
-    caps_abs = caption_chunks(scenes, max_words=12, max_chars=80)
+    if spec.get("burn_captions"):       # on-screen captions: short script phrases, timed from the aligned voice
+        caps_abs = [(a, b, t.replace("\n", " ")) for a, b, t in script_caption_chunks(scenes, max_chars=46, line_chars=46)]
+    else:
+        caps_abs = caption_chunks(scenes, max_words=12, max_chars=80)
     parts, todo = [], []
     for i, sc in enumerate(scenes):
         p = out / "scenes" / f"{i:02d}-{sc.id}.mp4"

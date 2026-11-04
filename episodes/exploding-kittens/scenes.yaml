@@ -4,6 +4,7 @@ music:              # YouTube Audio Library, no attribution required (local only
   - music/renunciation-asher-fulero.mp3
   - music/ponderous-days-joel-cummins.mp3
 engine: 3d
+burn_captions: true  # on-screen captions for every spoken line (creator request)
 voice_style: studio   # no-AI studio chain: de-reverb, broadcast EQ, compression (pipeline/studio_voice.py)
 look: clean-sage      # clean-sage | clean-ink | clean-light | (unset = warm game night)
 quality: high         # high = reflections + glossy pieces + 4K shadows
@@ -160,19 +161,24 @@ scenes:
   render: bars
   lines:
   - b5
-  - b6
   params:
     chart: ranking
-    title: One table, seats shuffled
-    notes:
-    - text: 'Number to beat: 25%'
-      at: b6
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 36
-      pill: CREAM
+    title: 'One table, five bots, seats shuffled'
+- id: testsetup
+  render: statement
+  lines:
+  - b6
+  params:
+    size: 0.85
+    lines:
+    - text: 3 Normal Players
+      at: b6@three
+    - text: + 1 test bot
+      at: b6@plus
+      color: MUSTARD
+    - text: 'number to beat: 25%'
+      at: b6@twenty
+      color: MUSTARD
 - id: m1
   render: statement
   lines:

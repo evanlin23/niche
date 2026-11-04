@@ -229,7 +229,9 @@ def speak(text: str, cache_dir: Path, eng=None, line_id: str | None = None) -> S
             # timing-only mode (e.g. GitHub render without the audio): silent placeholder of the
             # recorded length + exact word timings; the real voice is mixed in where the wavs live
             m = json.loads(meta_only.read_text())
-            return Speech(np.zeros(int(m["duration"] * SR), np.float32), [tuple(w) for w in m["words"]])
+            aw = m.get("aligned_words")
+            ws = [(w[0], w[1], w[2]) for w in aw] if aw else [tuple(w) for w in m["words"]]
+            return Speech(np.zeros(int(m["duration"] * SR), np.float32), ws)
         if src is None:
             return speak(text, cache_dir, eng.fallback)
         meta = src.with_suffix(".json")             # written by pipeline/split_recording.py
@@ -264,7 +266,10 @@ def speak(text: str, cache_dir: Path, eng=None, line_id: str | None = None) -> S
             audio = trim_silence(read_wav(src), thr=0.02, keep=0.08)
             audio = audio / (np.abs(audio).max() + 1e-9) * 0.9
         if split:
-            words = [tuple(w) for w in json.loads(meta.read_text())["words"]]
+            m = json.loads(meta.read_text())
+            # force-aligned SCRIPT words (audio_qa) are exact and match the script; prefer them for cues/captions
+            aw = m.get("aligned_words")
+            words = [(w[0], w[1], w[2]) for w in aw] if aw else [tuple(w) for w in m["words"]]
         elif os.environ.get("TTS_ALIGN") == "whisper":
             words = _whisper_words(src, text)
         else:

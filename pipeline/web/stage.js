@@ -155,7 +155,27 @@ export class Stage {
     return item;
   }
 
+  // burned-in captions: spec.captions = [[start, end, text], ...] in scene time (phrase at a time)
+  _captions(t) {
+    const caps = this.spec.captions || [];
+    if (!caps.length) return;
+    if (!this.capEl) {
+      const d = document.createElement('div');
+      Object.assign(d.style, { position: 'absolute', left: '50%', top: '968px', transform: 'translateX(-50%)',
+        fontFamily: 'Rubik, Inter, sans-serif', fontWeight: 700, fontSize: '44px', color: '#fffdf6', whiteSpace: 'nowrap',
+        padding: '8px 26px 10px', borderRadius: '18px', background: 'rgba(20,32,28,0.62)', letterSpacing: '-0.3px',
+        opacity: 0, zIndex: 50 });
+      this.ov.appendChild(d); this.capEl = d;
+    }
+    const c = caps.find(([s, e]) => t >= s - 0.02 && t < e + 0.12);
+    if (c) {
+      if (this.capEl.textContent !== c[2]) this.capEl.textContent = c[2];
+      this.capEl.style.opacity = Math.min(1, (t - c[0] + 0.02) / 0.08, (c[1] + 0.12 - t) / 0.08);
+    } else this.capEl.style.opacity = 0;
+  }
+
   updateTexts(t) {
+    this._captions(t);
     for (const it of this.texts) {
       if (it.note.manual) {
         // Scenes place manual labels with style.left/top every frame. Layout positions snap to whole

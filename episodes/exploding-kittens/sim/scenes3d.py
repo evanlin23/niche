@@ -60,69 +60,69 @@ def rk(name):
 
 
 CHARTS = {
-    "ranking": lambda: dict(fair=20, maxV=50, items=[
-        item("The Hoarder", rk("The Hoarder"), CORAL, "b5+7.5"),
-        item("The Panicker", rk("The Panicker"), CORAL, "b5+6"),
-        item("The Gambler", rk("The Gambler"), CORAL, "b5+4.5"),
-        item("The Normal Player", rk("The Normal Player"), CREAM, "b5+3"),
-        item("The Patient One", rk("The Patient One"), MUSTARD, "b5+0.8", True)]),
-    "ranking_hook": lambda: dict(fair=20, maxV=50, items=[
-        item("worst bot", rk("The Hoarder"), CORAL, "o4+2.2"),
-        item("best bot", rk("The Patient One"), MUSTARD, "o4", True)]),
-    "patience": lambda: dict(fair=25, maxV=40, items=[
-        item("play cards on a whim half the time", sw("random_play", 0.5), CORAL, "p3"),
-        item("normal player", sw("random_play", 0.15), CREAM, "p2"),
-        item("never play cards for fun", sw("random_play", 0.0), MUSTARD, "p2+2.5", True)]),
-    "dodge": lambda: dict(fair=25, maxV=40, items=[
-        item("the Panicker: 1 in 4", sw("avoid", 0.25), CORAL, "d2+3"),
-        item("dodge at 1 in 3", sw("avoid", 0.33), CORAL, "d3"),
-        item("dodge at a coin flip", sw("avoid", 0.5), CREAM, "d3+0.8"),
-        item("only when you KNOW", sw("avoid", 1.0), MUSTARD, "d3+3", True)]),
-    "future": lambda: dict(fair=25, maxV=40, items=[
-        item("never use it", sw("future", 2.0), CORAL, "f2"),
-        item("use it right away", sw("future", 0.0), CORAL, "f2+2"),
-        item("use it at 1 in 3 odds", sw("future", 0.3), MUSTARD, "f3", True)]),
-    "placement": lambda: dict(fair=25, maxV=40, items=[
-        item("bottom", sw("placement", "bottom"), CORAL, "k3"),
-        item("random", sw("placement", "random"), CREAM, "k2+3"),
-        item("top", sw("placement", "top"), TEAL, "k4"),
-        item("next player's draw", sw("placement", "next"), MUSTARD, "k5", True)]),
-    "steal": lambda: dict(fair=25, maxV=56, items=[
-        item("the Patient One", pct(F["vs_casual"]["4"]["win"]), MUSTARD, "s2+2", True),
-        item("without pair steals", abl("pair_steal"), CORAL, "s2+4.5"),
-        item("without Favors", abl("favor_use"), CORAL, "s2+6.5")]),
-    "small": lambda: dict(fair=25, maxV=40, items=[
-        item("give a random card", sw("give_worst", False), CREAM, "x2"),
-        item("give your worst card", sw("give_worst", True), MUSTARD, "x2+1.5", True),
-        item("never Nope", sw("nope_defend", 0.0), CORAL, "x3"),
-        item("Nope half the time", sw("nope_defend", 0.5), CREAM, "x3+1"),
-        item("always Nope", sw("nope_defend", 1.0), MUSTARD, "x3+2.5", True)]),
+    "ranking": lambda: dict(fair=20, maxV=50, players=5, items=[
+        item("The Hoarder", rk("The Hoarder"), CORAL, "b5@hoarder"),
+        item("The Panicker", rk("The Panicker"), CORAL, "b5@panicker"),
+        item("The Gambler", rk("The Gambler"), CORAL, "b5@gambler"),
+        item("The Normal Player", rk("The Normal Player"), CREAM, "b5@normal"),
+        item("The Patient One", rk("The Patient One"), MUSTARD, "b5@patient", True)]),
+    "ranking_hook": lambda: dict(fair=20, maxV=50, players=5, items=[
+        item("best bot", rk("The Patient One"), MUSTARD, "o4@thirty", True),
+        item("worst bot", rk("The Hoarder"), CORAL, "o4@eleven")]),
+    "patience": lambda: dict(fair=25, maxV=40, players=4, items=[
+        item("normal player", sw("random_play", 0.15), CREAM, "p2@twenty"),
+        item("never play cards for fun", sw("random_play", 0.0), MUSTARD, "p2@thirty", True),
+        item("play cards on a whim half the time", sw("random_play", 0.5), CORAL, "p3@fourteen")]),
+    "dodge": lambda: dict(fair=25, maxV=40, players=4, items=[
+        item("the Panicker: 1 in 4", sw("avoid", 0.25), CORAL, "d2@sixteen"),
+        item("dodge at 1 in 3", sw("avoid", 0.33), CORAL, "d3@coin-0.3"),
+        item("dodge at a coin flip", sw("avoid", 0.5), CREAM, "d3@coin"),
+        item("only when you KNOW", sw("avoid", 1.0), MUSTARD, "d3@know", True)]),
+    "future": lambda: dict(fair=25, maxV=40, players=4, items=[
+        item("never use it", sw("future", 2.0), CORAL, "f2@never"),
+        item("use it right away", sw("future", 0.0), CORAL, "f2@using_it_the"),
+        item("use it at 1 in 3 odds", sw("future", 0.3), MUSTARD, "f3@peek", True)]),
+    "placement": lambda: dict(fair=25, maxV=40, players=4, items=[
+        item("random", sw("placement", "random"), CREAM, "k2@random"),
+        item("bottom", sw("placement", "bottom"), CORAL, "k3@worse"),
+        item("top", sw("placement", "top"), TEAL, "k4@top"),
+        item("next player's draw", sw("placement", "next"), MUSTARD, "k5@thirty", True)]),
+    "steal": lambda: dict(fair=25, maxV=56, players=4, items=[
+        item("the Patient One", pct(F["vs_casual"]["4"]["win"]), MUSTARD, "s2@forty", True),
+        item("without pair steals", abl("pair_steal"), CORAL, "s2@thirty"),
+        item("without Favors", abl("favor_use"), CORAL, "s2@thirty_four")]),
+    "small": lambda: dict(fair=25, maxV=40, players=4, items=[
+        item("give a random card", sw("give_worst", False), CREAM, "x2@random"),
+        item("give your worst card", sw("give_worst", True), MUSTARD, "x2@three", True),
+        item("never Nope", sw("nope_defend", 0.0), CORAL, "x3@twenty"),
+        item("Nope half the time", sw("nope_defend", 0.5), CREAM, "x3@always"),
+        item("always Nope", sw("nope_defend", 1.0), MUSTARD, "x3@twenty#2", True)]),
     "seats": lambda: dict(fair=None, maxV=72, items=[
-        item("2 players: first", pct(R["seats"]["2"]["seat_win"][0]), MUSTARD, "t2", True),
-        item("2 players: second", pct(R["seats"]["2"]["seat_win"][1]), CREAM, "t2"),
-        item("5 players: first", pct(R["seats"]["5"]["seat_win"][0]), CREAM, "t3"),
-        item("5 players: last", pct(R["seats"]["5"]["seat_win"][4]), MUSTARD, "t3+1", True)]),
-    "twoplayer": lambda: dict(fair=50, maxV=92, fairSide="left", items=[
-        item("cards on a whim half the time", sw2("patience", 0.5), CORAL, "t5+1.2"),
-        item("no pair steals", sw2("steal", False), CORAL, "t5+3.6"),
-        item("See the Future right away", sw2("future", 0.0), CORAL, "t5+6"),
-        item("normal player", sw2("patience", 0.15), CREAM, "t4"),
-        item("never play for fun", sw2("patience", 0.0), MUSTARD, "t4+2.5", True)]),
+        item("2 players: first", pct(R["seats"]["2"]["seat_win"][0]), MUSTARD, "t2@fifty", True),
+        item("2 players: second", pct(R["seats"]["2"]["seat_win"][1]), CREAM, "t2@fifty+0.4"),
+        item("5 players: first", pct(R["seats"]["5"]["seat_win"][0]), CREAM, "t3@first"),
+        item("5 players: last", pct(R["seats"]["5"]["seat_win"][4]), MUSTARD, "t3@last", True)]),
+    "twoplayer": lambda: dict(fair=50, maxV=92, fairSide="left", players=2, items=[
+        item("normal player", sw2("patience", 0.15), CREAM, "t4@stop"),
+        item("never play for fun", sw2("patience", 0.0), MUSTARD, "t4@sixty", True),
+        item("cards on a whim half the time", sw2("patience", 0.5), CORAL, "t5@nineteen"),
+        item("no pair steals", sw2("steal", False), CORAL, "t5@thirty"),
+        item("See the Future right away", sw2("future", 0.0), CORAL, "t5@nine")]),
     "attacks": lambda: dict(fair=None, maxV=52, unit="%", items=[
-        item("2 players", pct(X["explode_under_attack_by_n"]["2"]), CORAL, "d6"),
-        item("4 players: normal table", pct(X["tables"]["casual"]["explode_under_attack"]), CREAM, "d5+2"),
-        item("4 Patient Ones", pct(X["tables"]["best"]["explode_under_attack"]), MUSTARD, "d6+2.5", True)]),
-    "tables": lambda: dict(fair=25, maxV=72, items=[
-        item("vs a normal table", pct(X["tables"]["casual"]["best_win"]), CREAM, "r2"),
-        item("vs an aggressive table", pct(X["tables"]["aggressive"]["best_win"]), MUSTARD, "r2+3", True),
-        item("vs hoarders", pct(X["tables"]["hoarder"]["best_win"]), CREAM, "r2+6")]),
-    "length": lambda: dict(fair=None, maxV=45, unit=" turns", items=[
-        item("normal table", round(X["tables"]["casual"]["mean_turns"], 1), CREAM, "r4+1.5"),
-        item("four Patient Ones", round(X["tables"]["best"]["mean_turns"], 1), MUSTARD, "r4+3.5", True)]),
+        item("4 players: normal table", pct(X["tables"]["casual"]["explode_under_attack"]), CREAM, "d5@one_explosion"),
+        item("2 players", pct(X["explode_under_attack_by_n"]["2"]), CORAL, "d6@two_in"),
+        item("4 Patient Ones", pct(X["tables"]["best"]["explode_under_attack"]), MUSTARD, "d6@thirteen", True)]),
+    "tables": lambda: dict(fair=25, maxV=72, players=4, items=[
+        item("vs a normal table", pct(X["tables"]["casual"]["best_win"]), CREAM, "r2@forty"),
+        item("vs an aggressive table", pct(X["tables"]["aggressive"]["best_win"]), MUSTARD, "r2@fifty", True),
+        item("vs hoarders", pct(X["tables"]["hoarder"]["best_win"]), CREAM, "r2@half")]),
+    "length": lambda: dict(fair=None, maxV=45, unit=" turns", players=4, items=[
+        item("normal table", round(X["tables"]["casual"]["mean_turns"], 1), CREAM, "r4@thirty"),
+        item("four Patient Ones", round(X["tables"]["best"]["mean_turns"], 1), MUSTARD, "r4@twenty", True)]),
     "final": lambda: dict(fair=None, maxV=82, items=[
-        *[x for n in ("2", "3", "4", "5") for x in (
-            item(f"{n} players: fair", round(100 / int(n), 1), GREY, "w3"),
-            item(f"{n} players: strategy", pct(F["vs_casual"][n]["win"]), MUSTARD, "w3+0.5", n == "4"))]]),
+        *[x for n, at in (("2", "w4@sixty"), ("3", "w3@half"), ("4", "w3@forty"), ("5", "w4@twenty_nine")) for x in (
+            item(f"{n} players: fair", round(100 / int(n), 1), GREY, at),
+            item(f"{n} players: strategy", pct(F["vs_casual"][n]["win"]), MUSTARD, at + "+0.3", n == "4"))]]),
 }
 
 
@@ -164,6 +164,37 @@ def card_highlights(ctx):
     return {str(k): v for k, v in out.items()}
 
 
+def resolve_at(ctx, ref):
+    """'b5@hoarder' -> scene time of the word 'hoarder' in line b5 (force-aligned voice timing).
+    Forms: 'id@word', 'id@word#2' (2nd occurrence), 'id@word+0.3', 'id@a_b' (first word of a phrase a b).
+    Plain numbers and 'id', 'id+1.5', 'id:end' pass through (stage.at handles them)."""
+    import re
+    if not isinstance(ref, str) or "@" not in ref:
+        return ref
+    m = re.match(r"^(\w+)@([\w']+)(?:#(\d+))?([+-][\d.]+)?$", ref)
+    if not m:
+        raise ValueError(f"bad anchor {ref}")
+    lid, word, nth, off = m.group(1), m.group(2), int(m.group(3) or 1), float(m.group(4) or 0)
+    cue = ctx.scene.cues.get(lid)
+    if cue is None:
+        raise KeyError(f"anchor {ref}: line {lid} not in scene {ctx.scene.id}")
+    norm = lambda w: re.sub(r"[^a-z0-9']", "", w.lower())
+    seq = [norm(x) for x in word.split("_")]
+    ws = [(norm(w), t0) for w, t0, _ in cue.words]
+    hits = [ws[i][1] for i in range(len(ws) - len(seq) + 1) if [w for w, _ in ws[i:i + len(seq)]] == seq]
+    if len(hits) < nth:
+        raise KeyError(f"anchor {ref}: word not found in {lid}: {' '.join(w for w, _ in ws)}")
+    return round(hits[nth - 1] + off, 3)
+
+
+def resolve_all(ctx, obj):
+    if isinstance(obj, dict):
+        return {k: (resolve_at(ctx, v) if k in ("at", "until") else resolve_all(ctx, v)) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [resolve_all(ctx, x) for x in obj]
+    return obj
+
+
 def statement_lines(ctx):
     """Display lines appear when the narration reaches each line's first word."""
     import re
@@ -179,9 +210,11 @@ def statement_lines(ctx):
         at = words[j][1] if j < len(words) else (words[i][1] if i < len(words) else 0.3)
         if j < len(words):
             i = j + 1
-        out.append({"text": ln["text"], "at": max(0.15, at - 0.05), "color": ln.get("color")})
-    if out and out[0]["at"] > 1.0:      # never open on an empty floor: the first line is up from the start
-        out[0]["at"] = 0.3
+        if ln.get("at"):                  # explicit word anchor ('b6@twenty') wins over first-word matching
+            at = resolve_at(ctx, ln["at"]) + 0.05
+        out.append({"text": ln["text"], "at": max(0.05, at - 0.05), "color": ln.get("color")})
+    if out and out[0]["at"] > 0.3:      # never open on an empty floor: the first line is up from the start
+        out[0]["at"] = 0.05
     return out
 
 
@@ -193,7 +226,8 @@ def build_spec(ctx) -> dict:
     if ctx.scene.render == "deck56":
         s["highlights"] = card_highlights(ctx)
     if p.get("chart"):
-        s["chart"] = CHARTS[p["chart"]]()
+        s["chart"] = resolve_all(ctx, CHARTS[p["chart"]]())
+    s["params"] = resolve_all(ctx, s["params"])           # notes / checklist items can use word anchors too
     if ctx.scene.render in ("table", "short"):
         tr = demo_trace(p.get("seed", 123))
         s["trace"] = {"events": tr["events"], "players": tr["players"], "winner": tr["result"]["Winner"]}

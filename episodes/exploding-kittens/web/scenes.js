@@ -199,8 +199,10 @@ SCENES.deck56 = async (stage, spec) => {
     const cards = [];
     for (let k = 0; k < n; k++) {
       const c = makeCard(stage, tp === 8 ? 8 + (k % 5) : tp, true);
-      c.position.set(gx + (k % 10) * 0.14, 0.08 + k * 0.02, gz + Math.floor(k / 10) * 0.5);
-      c.rotation.y = -0.15 + (k % 3) * 0.04; c.visible = false; cards.push(c);
+      // neat fan: one angle per pile and a little air between cards (exactly-touching cards z-fight and the
+      // per-card jitter made edges cut through each other)
+      c.position.set(gx + (k % 10) * 0.12, 0.012 + k * 0.026, gz + Math.floor(k / 10) * 0.45);
+      c.rotation.y = -0.1; c.visible = false; cards.push(c);
     }
     const lab = stage.text({ text: `${n} × ${name}`, x: 0, y: 0, size: 28, weight: 900, font: 'rubik', color: GN.text, manual: true, align: 'center' });
     items.push({ cards, lab, gx, gz, at: 0.6 + gi * 0.45 });
@@ -215,7 +217,7 @@ SCENES.deck56 = async (stage, spec) => {
       // named in the card rundown: the pile lifts for ~1.6 s and its label turns mustard
       const h = spec.highlights && spec.highlights[String(items.indexOf(it))];
       const on = h != null ? win(t, h - 0.1, h + 1.6, 0.25) : 0;
-      it.cards.forEach((c, j) => { c.visible = k > 0; c.position.y = 0.08 + j * 0.02 + (1 - k) * 2 + on * 0.6; });
+      it.cards.forEach((c, j) => { c.visible = k > 0; c.position.y = 0.012 + j * 0.026 + (1 - k) * 2 + on * 0.6; });
       const [lx, ly] = stage.project(new THREE.Vector3(it.gx + 0.6, 0, it.gz + 1.6));
       it.lab.el.style.left = lx + 'px'; it.lab.el.style.top = ly + 'px'; it.lab.el.style.opacity = fade(t, it.at + 0.2, 0.4);
       it.lab.el.style.color = on > 0.5 ? GN.mustard : GN.text;
@@ -227,8 +229,15 @@ SCENES.deck56 = async (stage, spec) => {
 SCENES.bars = async (stage, spec) => {
   buildRoom(stage, { feltW: 18, feltD: 9 });
   const ch = spec.chart, p = spec.params;
-  const bars = makeBars(stage, ch.items, { x0: -6.3, width: 12.6, maxV: ch.maxV, height: 6.2, z: 0, fair: ch.fair, unit: ch.unit ?? '%', fairSide: ch.fairSide ?? 'right' });
-  title(stage, p.title); notes(stage, p.notes); brand(stage);
+  // a chart with a note pill gets shorter bars so the pill never covers a value label
+  const hasNotes = (p.notes || []).length > 0;
+  const bars = makeBars(stage, ch.items, { x0: -6.3, width: 12.6, maxV: ch.maxV, height: hasNotes ? 5.2 : 6.2, z: 0, fair: ch.fair, unit: ch.unit ?? '%', fairSide: ch.fairSide ?? 'right' });
+  const shifted = ch.players ? (p.notes || []).map((n) => ({ ...n, pos: n.pos ? [n.pos[0], n.pos[1] + 58] : n.pos })) : p.notes;
+  title(stage, p.title); notes(stage, shifted); brand(stage);
+  if (ch.players) {        // always say how many players this chart is about (charts used to switch silently)
+    const fair = ch.fair != null ? ` · fair share ${ch.fair}%` : '';
+    stage.text({ text: `${ch.players} players${fair}`, x: 960, y: 128, size: 30, weight: 700, font: 'rubik', align: 'center', at: 0.05, case: 'none', pill: 'rgba(244,234,213,0.92)', color: '#1b1209' });
+  }
   return (t) => {
     // slow arc around the chart (labels are world-anchored and sub-pixel, so they glide with it)
     stage.orbitAt(t, { center: [0, 0, 0], look: [0, 2.6, 0], r: [16.6, 15.2], h: [6.4, 5.9], rate: 1.0, maxDeg: 8, ...(p.orbit || {}) });
@@ -372,7 +381,7 @@ SCENES.statement = async (stage, spec) => {
   if (stage.scene.fog) stage.scene.fog.color.multiplyScalar(0.72);
   const font = await rubikFont();
   const lines = spec.lines;              // [{text, at, color}]
-  const size = spec.params.size || 1.0, gapY = size * 1.45, maxW = spec.params.max_width || 13;
+  const size = spec.params.size || 1.0, gapY = size * 1.45, maxW = spec.params.max_width || 10.5;
   const meshes = lines.map((ln, k) => {
     const geo = new TextGeometry(ln.text.toUpperCase(), { font, size, depth: size * 0.32, curveSegments: 6,
       bevelEnabled: true, bevelThickness: size * 0.03, bevelSize: size * 0.025, bevelSegments: 3 });
@@ -392,19 +401,22 @@ SCENES.statement = async (stage, spec) => {
     stage.scene.add(m); return m;
   });
   if (!spec.params.no_brand) brand(stage);
+  // orbit (creator request): lines fade up in place on their cue; the camera circles slowly at ~60 deg elevation,
+  // so the extruded letters show their depth. Relative yaw stays small (+/-4 deg) so the words remain readable.
+  const center = new THREE.Vector3(0, 0, 0.1 + size * 0.5);
   return (t) => {
     for (const m of meshes) {
-      const k = ease((t - m.userData.at) / 0.45);
+      const k = ease((t - m.userData.at) / 0.3);
       m.material.forEach((mt) => (mt.opacity = k));
-      // hidden lines must not cast shadows (they showed up as dark ghost words before the line appeared)
       m.visible = k > 0.001; m.castShadow = k > 0.6;
-      m.position.set(0, (1 - k) * 1.4, m.userData.z0 + size * 0.5);   // drops onto the floor
-      m.rotation.x = -Math.PI / 2 + (1 - k) * 0.25;
+      m.position.set(0, (1 - k) * 0.25, m.userData.z0 + size * 0.5);   // tiny settle, no drop
+      m.rotation.x = -Math.PI / 2;
     }
-    // level text, gentle push-in (no orbit: rotating an overhead camera tilts the words)
     const k = spec.params.static ? 0 : ease(clamp(t / stage.duration));
-    stage.camera.position.set(0, lerp(17.5, 15.8, k), 2.9);
-    stage.camera.lookAt(0, 0, 0.1);
+    const yaw = (-3 + 6 * k) * Math.PI / 180;
+    const r = lerp(7.2, 6.4, k), h = lerp(16.4, 15.2, k);
+    stage.camera.position.set(center.x + Math.sin(yaw) * r, h, center.z + Math.cos(yaw) * r);
+    stage.camera.lookAt(center.x, 0, center.z);
     scrim(stage, t);
   };
 };
