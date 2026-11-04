@@ -1,0 +1,117 @@
+{
+ "best": {
+  "name": "best",
+  "avoid_risk": 1.0,
+  "prefer_attack": false,
+  "future_risk": 0.3,
+  "shuffle_if_ek": true,
+  "attack_free": 0.0,
+  "placement": "next",
+  "pair_steal": true,
+  "pair_noncats": false,
+  "triple_defuse": false,
+  "favor_use": true,
+  "steal_target": "most",
+  "steal_when": 0.2,
+  "nope_defend": 1.0,
+  "nope_skip_seen": false,
+  "yup": 1.0,
+  "random_play": 0.0,
+  "give_worst": true
+ },
+ "vs_casual": {
+  "2": {
+   "win": 0.595067,
+   "ci": 0.0009621229854790176,
+   "fair": 0.5
+  },
+  "3": {
+   "win": 0.511413,
+   "ci": 0.0009797446638612174,
+   "fair": 0.3333333333333333
+  },
+  "4": {
+   "win": 0.405568,
+   "ci": 0.0009623631882400955,
+   "fair": 0.25
+  },
+  "5": {
+   "win": 0.294647,
+   "ci": 0.0008935324764853628,
+   "fair": 0.2
+  }
+ },
+ "vs_best": {
+  "2": {
+   "win": 0.500596,
+   "seat_win": [
+    0.51972,
+    0.48028
+   ]
+  },
+  "3": {
+   "win": 0.332274,
+   "seat_win": [
+    0.332172,
+    0.330215,
+    0.337613
+   ]
+  },
+  "4": {
+   "win": 0.249907,
+   "seat_win": [
+    0.251475,
+    0.243483,
+    0.250383,
+    0.254659
+   ]
+  },
+  "5": {
+   "win": 0.199999,
+   "seat_win": [
+    0.191826,
+    0.191079,
+    0.202023,
+    0.201592,
+    0.21348
+   ]
+  }
+ },
+ "ablation": [
+  {
+   "drop": "placement",
+   "to": "random",
+   "win": 0.362454
+  },
+  {
+   "drop": "random_play",
+   "to": 0.15,
+   "win": 0.365099
+  },
+  {
+   "drop": "nope_defend",
+   "to": 0.5,
+   "win": 0.393319
+  },
+  {
+   "drop": "give_worst",
+   "to": false,
+   "win": 0.376915
+  },
+  {
+   "drop": "future_risk",
+   "to": 2.0,
+   "win": 0.33393
+  },
+  {
+   "drop": "pair_steal",
+   "to": false,
+   "win": 0.325387
+  },
+  {
+   "drop": "favor_use",
+   "to": false,
+   "win": 0.340116
+  }
+ ]
+}

@@ -5,3 +5,4 @@ episodes/*/assets/
 .voices/
 .cache/
 node_modules/
+sims/ek/eksim
