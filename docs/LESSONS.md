@@ -90,6 +90,11 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   tiny blips at word edges -> kept (usually part of the word). Then each line is trimmed to its first/last word.
   Safety: every edited line is re-transcribed; an edit that removes ANY spoken word (script or not, e.g. an
   unscripted "percent") is undone, one edit at a time.
+- **Align to what was said, protect every word.** The script can differ from the take (an extra "percent").
+  Before any fill/cut, Whisper (primed with the script line) listens to that spot; if it hears a word there,
+  the spot is kept. Transcripts write "percent" as "%": normalise it or the safety check misses it.
+- Fills must cover a noise's soft onset and tail (grow the region until the sound is within 4 dB of the floor,
+  stopping short of the neighbouring words), else its edges stay audible.
 - **Verify the result, not the edit list.** The first QA version reported 63 fills that did nothing (an inverted
   gain ramp). Now a self-test runs before every pass and every fill is re-measured afterwards ("STILL AUDIBLE").
   Same rule for everything: after an automatic fix, measure the output.
