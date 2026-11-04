@@ -34,8 +34,10 @@ def load16(p):
 
 
 def verbatim(model, path):
+    # vad_filter: transcribe speech chunk by chunk so Whisper can't stop early on a long line (it did on a1)
     segs, _ = model.transcribe(load16(path), language="en", word_timestamps=True, initial_prompt=PROMPT,
-                               condition_on_previous_text=False, beam_size=5)
+                               condition_on_previous_text=False, beam_size=5, vad_filter=True,
+                               vad_parameters={"min_silence_duration_ms": 300})
     return [(w.word.strip(), float(w.start), float(w.end)) for s in segs for w in s.words]
 
 

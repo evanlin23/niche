@@ -78,7 +78,7 @@ def studio(a, reverb=True):
     a = saturate(a)
     f1, s1 = _floor_and_speech(a)
     target = s1 - (s0 - f0)                       # same speech-to-noise gap as before processing
-    a = match_floor(a, f1, target)
+    a = match_floor(a, f1, target, reach=6)       # only the floor itself: word tails above it stay natural
     return (a / (np.abs(a).max() + 1e-9) * 0.89).astype(np.float32)
 
 

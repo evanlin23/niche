@@ -86,9 +86,8 @@ def heard(audio48):
     return [re.sub(r"[^a-z0-9']", "", w.lower()) for w in text.split() if re.sub(r"[^a-z0-9']", "", w.lower())]
 
 
-def word_inside(audio48, ev, script_text, pad=0.4):
-    """Does Whisper, primed with this line's script, hear a real word inside the event? (protects quiet or
-    unscripted words like an extra 'percent' that the forced alignment had no slot for)"""
+def words_inside(audio48, ev, script_text, pad=0.4):
+    """Words Whisper (primed with this line's script) hears inside the event."""
     if not _WH:
         heard(np.zeros(SR, np.float32))
     from scipy.signal import resample_poly
@@ -97,27 +96,16 @@ def word_inside(audio48, ev, script_text, pad=0.4):
     a16 = resample_poly(seg, 1, 3).astype(np.float32)
     segs, _ = _WH["m"].transcribe(a16, language="en", beam_size=5, word_timestamps=True,
                                   initial_prompt=script_text, condition_on_previous_text=False)
+    out = []
     for sg in segs:
         for w in sg.words:
-            n = re.sub(r"[^a-z0-9%']", "", w.word.lower())
+            n = re.sub(r"[^a-z0-9%']", "", w.word.lower()).replace("%", "percent")
             if not n or n in FILLERS:
                 continue
             mid = t0 + (w.start + w.end) / 2
             if ev["start"] + 0.02 <= mid <= ev["end"] - 0.02:
-                return w.word.strip()
-    return None
-
-
-def lost_words(before, after):
-    """Words heard before the edit that are gone after it (ignoring repeats the edit was meant to remove)."""
-    import difflib
-    sm = difflib.SequenceMatcher(None, before, after, autojunk=False)
-    gone = []
-    for op, a0, a1, b0, b1 in sm.get_opcodes():
-        if op in ("delete", "replace"):
-            seg = before[a0:a1]
-            gone += [w for w in seg if before.count(w) > after.count(w) and w not in after[max(0, b0 - 3):b1 + 3]]
-    return gone
+                out.append(n)
+    return out
 
 
 def frames(a, win=0.01):
@@ -187,7 +175,10 @@ def plan(evs, words, dur):
     for ev in evs:
         d = ev["end"] - ev["start"]
         edge = ev["end"] <= first + 0.02 or ev["start"] >= last - 0.02
-        if edge:
+        near = min([abs(ev["start"] - e) for _, s0, e, _ in words] + [abs(s0 - ev["end"]) for _, s0, e, _ in words] + [9])
+        if near < 0.06 and not (ev["kind"] == "voiced" and d >= 0.3):
+            act = "keep"                                   # touches a word: its onset or decaying tail, not noise
+        elif edge:
             act = "fill"                                   # burp / breath / click before or after the line
         elif ev["kind"] == "voiced" and d >= 0.3:
             act = "cut"                                    # extra speech: leftover restart, ad-lib, cough
@@ -267,7 +258,14 @@ def trim_to_words(vd: Path, lid: str, lead=0.08, tail=0.15):
     if not aw:
         return 0.0
     a, sr = sf.read(wav, dtype="float32"); dur = len(a) / sr
-    s0 = max(0.0, aw[0][1] - lead); e1 = min(dur, aw[-1][2] + tail)
+    _, db = frames(a); fl = np.percentile(db, 10)
+    i = int(aw[-1][2] / 0.01)                        # CTC word ends are early: follow the sound until it has decayed
+    while i < len(db) - 1 and (db[i] > fl + 6 or db[min(i + 5, len(db) - 1)] > fl + 6) and i * 0.01 < aw[-1][2] + 0.8:
+        i += 1
+    j = int(aw[0][1] / 0.01)
+    while j > 0 and db[j - 1] > fl + 6 and j * 0.01 > aw[0][1] - 0.3:
+        j -= 1
+    s0 = max(0.0, j * 0.01 - lead); e1 = min(dur, i * 0.01 + tail)
     cuts = [c for c in ((0.0, s0), (e1, dur)) if c[1] - c[0] > 0.02]
     if not cuts:
         return 0.0
@@ -279,8 +277,39 @@ def trim_to_words(vd: Path, lid: str, lead=0.08, tail=0.15):
     return sum(c[1] - c[0] for c in cuts)
 
 
+def final_check(ep: Path):
+    """After all edits: no line may end (or start) mid-sound, and no extra speech >= 0.3 s may remain outside the
+    aligned script words (= leftover repeat). Prints problems; exit code 1 if any."""
+    from .voice_clean import clean, load
+    vd = ep / "voice"
+    script = {m.group(1): m.group(2) for m in re.finditer(r"^\[(\w+)\] (.*)$", (ep / "script.md").read_text(), re.M)}
+    room = load(vd / "_roomtone.wav") if (vd / "_roomtone.wav").exists() else None
+    bad = []
+    for lid, text in script.items():
+        if not (vd / f"{lid}.wav").exists():
+            continue
+        cl = clean(load(vd / f"{lid}.wav"), room, do_trim=False)
+        _, db = frames(cl); fl = np.percentile(db, 10)
+        if db[-3:].max() > fl + 15:
+            bad.append(f"{lid}: ends abruptly (last 30 ms at +{db[-3:].max() - fl:.0f} dB)")
+        if db[:3].max() > fl + 15:
+            bad.append(f"{lid}: starts abruptly")
+        spans = align(cl, text)
+        evs, _ = events(cl, spans)
+        for ev in evs:
+            if ev["kind"] == "voiced" and ev["end"] - ev["start"] >= 0.3:
+                hw = words_inside(cl, ev, text)
+                if hw:
+                    bad.append(f"{lid}: extra speech {ev['start']}-{ev['end']}s '{' '.join(hw)}'")
+    (vd / "_final_check.txt").write_text("\n".join(bad) + "\n")
+    print("\n".join(bad) or "final check: clean")
+    raise SystemExit(1 if bad else 0)
+
+
 def main():
     import sys
+    if "--final-check" in sys.argv:
+        final_check(Path(sys.argv[1])); return
     if "--trim-only" in sys.argv:
         ep = Path(sys.argv[1]); vd = ep / "voice"
         ids = re.findall(r"^\[(\w+)\] ", (ep / "script.md").read_text(), re.M)
@@ -326,12 +355,20 @@ def main():
         if lines:
             report.append(f"[{lid}]\n" + "\n".join(lines))
         pl = plan(evs, spans, len(raw) / SR)
-        for ev in pl:                                    # never blank or cut something Whisper hears as a word
+        sw_norm = [re.sub(r"[^a-z0-9']", "", w.lower()) for w in script[lid].split()]
+        for ev in pl:                                    # never blank or cut a real word; DO cut repeats
             if ev["action"] in ("fill", "cut"):
-                w = word_inside(cl, ev, script[lid])
-                if w:
-                    ev["action"] = "keep"; ev["protected_word"] = w
-                    report.append(f"[{lid}] kept {ev['start']}-{ev['end']}s: it is a word ('{w}')")
+                hw = words_inside(cl, ev, script[lid])
+                if not hw:
+                    continue
+                repeat = (len(hw) >= 2 and ev["end"] - ev["start"] >= 0.3
+                          and all(w in sw_norm for w in hw))   # same words are already aligned in the line
+                if repeat:
+                    ev["action"] = "cut"; ev["repeat"] = " ".join(hw)
+                    report.append(f"[{lid}] cut repeat {ev['start']}-{ev['end']}s: '{' '.join(hw)}'")
+                else:
+                    ev["action"] = "keep"; ev["protected_word"] = " ".join(hw)
+                    report.append(f"[{lid}] kept {ev['start']}-{ev['end']}s: it is a word ('{' '.join(hw)}')")
         lines = [ln + "  -> " + ev["action"] for ln, ev in zip(lines, pl)] + lines[len(pl):]
         if lines:
             report[-1] = f"[{lid}]\n" + "\n".join(lines) if report and report[-1].startswith(f"[{lid}]") else report[-1]

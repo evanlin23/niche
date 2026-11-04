@@ -44,7 +44,7 @@ def floor_db(a, win=0.03):
     return float(np.percentile(db, 10))
 
 
-def match_floor(a, cur, target, win=0.01):
+def match_floor(a, cur, target, win=0.01, reach=14):
     """Downward expander: pull the quiet frames (room noise between words) from `cur` down to `target` dB,
     leaving speech untouched (full effect 0-4 dB above the floor, fading out by 14 dB above it)."""
     drop = cur - target
@@ -52,7 +52,7 @@ def match_floor(a, cur, target, win=0.01):
         return a
     hop = int(SR * win); n = len(a) // hop
     db = 20 * np.log10(np.sqrt((a[: n * hop].reshape(n, hop) ** 2).mean(1)) + 1e-9)
-    k = np.clip((cur + 14 - db) / 10, 0, 1)                    # 1 near the floor, 0 for speech
+    k = np.clip((cur + reach - db) / max(reach - 4, 2), 0, 1)  # 1 near the floor, 0 for speech
     g = 10 ** (-drop * k / 20)
     g = np.convolve(np.pad(g, 3, mode="edge"), np.ones(7) / 7, "valid")   # ~70 ms smoothing, no pumping
     gs = np.interp(np.arange(len(a)), np.arange(n) * hop + hop / 2, g)

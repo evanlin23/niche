@@ -54,7 +54,7 @@ scenes:
       color: MUSTARD
 - id: title
   render: title
-  min_duration: 1.2
+  min_duration: 0.9
   pad:
   - 0
   - 0

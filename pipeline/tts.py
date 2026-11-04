@@ -259,7 +259,7 @@ def speak(text: str, cache_dir: Path, eng=None, line_id: str | None = None) -> S
                 audio = studio_chain(audio, reverb=False)   # broadcast EQ, compression, saturation, expander
             audio = level(audio)                            # same speech loudness for every line
             if cfg and "floor" in cfg:                      # same room-noise level between words
-                audio = match_floor(audio, cfg["floor"], cfg["target_floor"])
+                audio = match_floor(audio, cfg["floor"], cfg["target_floor"], reach=6)
         else:
             audio = trim_silence(read_wav(src), thr=0.02, keep=0.08)
             audio = audio / (np.abs(audio).max() + 1e-9) * 0.9
