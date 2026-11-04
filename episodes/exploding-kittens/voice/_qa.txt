@@ -1,0 +1,34 @@
+[f4]
+    1.42- 1.47s  click   +28.6 dB  (flat 0.092, 5133 Hz, low 0.01)  -> fill
+    6.39- 6.45s  voiced  +34.9 dB  (flat 0.002, 716 Hz, low 0.37)  -> keep
+    6.61s  unsure word 'it's' (score 0.159) -> listen: mumble / leftover restart?
+    9.20s  unsure word 'or' (score 0.151) -> listen: mumble / leftover restart?
+
+[f4] skipped fill 1.42-1.47s: it removed words
+
+[k4]
+    2.31- 2.40s  voiced  +29.1 dB  (flat 0.001, 682 Hz, low 0.12)  -> keep
+    4.87- 4.93s  voiced  +21.6 dB  (flat 0.026, 919 Hz, low 0.0)  -> keep
+    8.74- 8.82s  voiced  +35.1 dB  (flat 0.045, 604 Hz, low 0.65)  -> keep
+    9.16- 9.21s  voiced  +25.3 dB  (flat 0.001, 163 Hz, low 0.95)  -> fill
+    0.78s  unsure word 'the' (score 0.116) -> listen: mumble / leftover restart?
+    1.16s  unsure word 'card' (score 0.248) -> listen: mumble / leftover restart?
+    1.68s  unsure word 'player' (score 0.188) -> listen: mumble / leftover restart?
+    4.49s  unsure word 'an' (score 0.0) -> listen: mumble / leftover restart?
+
+[k4] skipped fill 9.16-9.21s: it removed words
+
+[w2]
+    1.12- 1.23s  voiced  +42.3 dB  (flat 0.0, 116 Hz, low 0.98)  -> keep
+    2.58- 2.63s  voiced  +38.0 dB  (flat 0.0, 268 Hz, low 0.69)  -> keep
+    2.97- 3.02s  click   +44.9 dB  (flat 0.174, 3475 Hz, low 0.01)  -> fill
+    5.17- 5.25s  voiced  +46.8 dB  (flat 0.003, 300 Hz, low 0.9)  -> keep
+    6.73- 6.77s  voiced  +50.0 dB  (flat 0.006, 343 Hz, low 0.81)  -> keep
+    9.41- 9.47s  voiced  +50.9 dB  (flat 0.02, 998 Hz, low 0.72)  -> keep
+    9.64- 9.68s  click   +25.9 dB  (flat 0.008, 1637 Hz, low 0.01)  -> fill
+   10.66-10.72s  voiced  +33.4 dB  (flat 0.004, 346 Hz, low 0.79)  -> keep
+   12.02-12.08s  voiced  +34.2 dB  (flat 0.001, 129 Hz, low 0.97)  -> fill
+    5.41s  unsure word 'in' (score 0.077) -> listen: mumble / leftover restart?
+   10.88s  unsure word 'Nope' (score 0.136) -> listen: mumble / leftover restart?
+
+[w2] skipped fill 12.02-12.08s: it removed words
