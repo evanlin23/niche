@@ -11,7 +11,7 @@ VARIANTS = {"9_any": ["-n", "9", "-mode", "any"], "9_any_onedie": ["-n", "9", "-
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--games", type=int, default=1_000_000)
-    ap.add_argument("--seed", type=int, default=1); ap.add_argument("--out", default=None)
+    ap.add_argument("--seed", type=int, default=1); ap.add_argument("--all", action="store_true", help="accepted for workflow compatibility"); ap.add_argument("--out", default=None)
     a = ap.parse_args()
     out = Path(a.out) if a.out else Path(__file__).resolve().parent / "data"; out.mkdir(parents=True, exist_ok=True)
     subprocess.run(["go", "build", "-o", str(BIN), "."], cwd=BIN.parent, check=True)

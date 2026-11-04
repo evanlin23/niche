@@ -23,7 +23,7 @@ def run(rules, base=NORMAL, test=None, games=500_000, allsame=False, players=4):
 def main():
     global SEED
     ap = argparse.ArgumentParser(); ap.add_argument("--games", type=int, default=500_000)
-    ap.add_argument("--seed", type=int, default=1); ap.add_argument("--out", default=None)
+    ap.add_argument("--seed", type=int, default=1); ap.add_argument("--all", action="store_true", help="accepted for workflow compatibility"); ap.add_argument("--out", default=None)
     a = ap.parse_args(); SEED = a.seed; G = a.games
     out = Path(a.out) if a.out else Path(__file__).resolve().parent / "data"; out.mkdir(parents=True, exist_ok=True)
     subprocess.run(["go", "build", "-o", str(BIN), "."], cwd=BIN.parent, check=True)
