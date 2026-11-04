@@ -1,0 +1,84 @@
+# I Simulated 71 Million Games of Exploding Kittens. Here's How to Win.
+
+Narrated lines are `[id] text`. Everything else is notes. Style: docs/script-style-guide.md.
+
+## Number sources (data/results.json, data/final.json; 1M games per test, 4 players unless noted)
+- 71M games = 56 one-variable runs x 1M + 15M for final/ablation.
+- Best bot vs casual table: 2p 59.5, 3p 51.1, 4p 40.6, 5p 29.5. Mirror (all best): 25.0 at 4p.
+- Patience: random_play 0 -> 30.4, 0.15 (casual) -> 25.05, 0.5 -> 14.5. attack_free 1.0 -> 16.7.
+- Dodging on odds: avoid at 1/4 risk -> 16.1; at 1/2 -> 22.7; only when sure -> 25.05.
+- See the Future: never 22.5; at ~1 in 3 risk 25.05 (best); always 22.3.
+- Placement: next-player spot 30.2, top 29.3, random 25.05, bottom 23.7, third 23.5.
+- Ablation from best (40.6): no pairs 32.5, no See-the-Future 33.4, no Favor 34.0, random placement 36.3,
+  random play 36.5, random giving 37.7, Nope half the time 39.3.
+- Favor giving: worst card 27.9 vs random 25.05. Nope always 26.9 vs half 25.05 vs never 21.2.
+- Attack vs Skip when dodging: 15.9 vs 16.1 (no real difference).
+- Seats (all casual): 2p first 52.4 / second 47.6. 5p first 19.6 ... last 20.5.
+- Kitten odds over a game (300 traced 4p casual games): first draw ~1/7, midpoint ~1/4, last draws ~0.8.
+- Rulebook quote: "A good strategy generally is to save your cards early in the game while your chance
+  of exploding is low."
+
+## Hook
+[h1] The best way to win at Exploding Kittens is to do almost nothing.
+[h2] I simulated seventy one million games, and the bot that wins the most barely touches its cards. At a table of four, it wins four games out of ten. A fair share is two and a half.
+[h3] It's not doing nothing, though. It does six specific things, and you can steal every one of them.
+
+## How I tested it
+[c1] I built the game from the official rulebook. Original edition, fifty six cards. Four Kittens, six Defuses, the whole deck.
+[c2] Then I built bots. They only know what a real player would know. The cards in their hand, what they saw with See the Future, and where they hid a Kitten.
+[c3] Three of them play like a normal table. They dodge when they know a Kitten is coming, they hide Kittens at random, and sometimes they play a card just because it's fun.
+[c4] The fourth bot is the test subject. I change one habit at a time, and run a million games for each change.
+[c5] Here's one of those games, sped up. Blue is the test bot. Watch the deck shrink, and watch the odds climb every time a card comes off the top.
+[c6] At the first draw, about one card in seven is a Kitten. Halfway through, one in four. In the last few draws, most of what's left is Kittens. That climb is what the whole strategy is built around.
+
+## Habit one: patience
+[p1] First habit. Stop playing cards for fun.
+[p2] A normal player wins one game in four. Take away the urge to play random cards, and the exact same bot jumps to thirty percent.
+[p3] Play cards on a whim half the time, and it drops to fourteen.
+[p4] Every Skip you burn early is a Skip you don't have at the end, when the deck is thin and there's a Kitten in every handful of cards.
+[p5] The rulebook actually tells you this. Save your cards early in the game, while your chance of exploding is low. Almost nobody listens.
+
+## Habit two: don't dodge on a feeling
+[d1] So when should you dodge? This is where my gut was wrong.
+[d2] Say one card in four is a Kitten. That feels dangerous. Most people would Skip right there.
+[d3] That bot wins sixteen percent of its games. Way below fair.
+[d4] Dodging at a coin flip is still bad. The best rule is the boring one. Only Skip or Attack when you know the next card is a Kitten.
+[d5] And Skip or Attack? When you're dodging, it barely matters. The difference was a fraction of a percent.
+
+## Habit three: look before you leap
+[f1] Which means you need to know. That's what See the Future is for.
+[f2] Never using it costs you two and a half points. Using it the moment you get it costs about the same.
+[f3] The sweet spot is roughly when one card in three could be a Kitten. Look then, and only dodge if you see one on top.
+
+## Habit four: aim the Kitten
+[k1] Now the fun one. You drew a Kitten and you've got a Defuse. Where do you put it back?
+[k2] Most people tuck it somewhere random. That's exactly average. The bottom of the deck is worse than random. A Kitten at the bottom just waits for whoever is left, and that could be you.
+[k3] The best spot is the first card the next player will draw.
+[k4] Usually that's the top. But if you're under an Attack, count your turns. One more turn to take? Put it second from the top. Two more, third.
+[k5] Do that, and the bot goes from twenty five to thirty percent.
+
+## Habit five: steal
+[s1] Then there are the cards that look useless. Cat pairs and Favors.
+[s2] Pull pair stealing out of the best bot, and it falls from forty to thirty two. Pull Favors out, thirty four.
+[s3] Every steal is a lottery ticket for someone else's Defuse. Aim it at the biggest hand.
+
+## Habit six: the small stuff
+[x1] Last habit is a bundle of small ones.
+[x2] When someone Favors you, hand over your worst card, not a random one. That alone is worth three points.
+[x3] And Nope every Attack and every steal aimed at you. A bot that never Nopes wins twenty one percent. One that always does wins twenty seven.
+
+## Seats
+[t1] Quick detour. Does going first matter?
+[t2] In a two player game, yes. The first player wins fifty two percent.
+[t3] With five players it flips. The last seat does slightly better than the first. Sitting last means you get to watch a few draws before you risk anything.
+
+## The full strategy
+[w1] So here's the whole thing in one go.
+[w2] Don't play cards for fun. Only dodge when you know. Look with See the Future once the odds hit one in three. Put the Kitten where the next player draws. Steal from the biggest hand. Give away junk, and Nope anything aimed at you.
+[w3] Against a normal table of four, that wins forty percent of the time. With three players, more than half.
+[w4] And when every bot plays this way, they each win exactly one in four. So none of this is a trick of the simulation. It only works because other people don't do it.
+
+## Close
+[e1] One assumption to be honest about. My bots only Nope things aimed at them. Real tables Nope each other for revenge, and I didn't simulate grudges.
+[e2] Next, I'm testing Uno house rules, because one of them completely breaks the game.
+[e3] Tell me which one you think it is.
