@@ -108,6 +108,18 @@ def words_inside(audio48, ev, script_text, pad=0.4):
     return out
 
 
+def lost_words(before, after):
+    """Words heard before the edit that are gone after it (ignoring repeats the edit was meant to remove)."""
+    import difflib
+    sm = difflib.SequenceMatcher(None, before, after, autojunk=False)
+    gone = []
+    for op, a0, a1, b0, b1 in sm.get_opcodes():
+        if op in ("delete", "replace"):
+            seg = before[a0:a1]
+            gone += [w for w in seg if before.count(w) > after.count(w) and w not in after[max(0, b0 - 3):b1 + 3]]
+    return gone
+
+
 def frames(a, win=0.01):
     hop = int(SR * win); n = len(a) // hop
     fr = a[: n * hop].reshape(n, hop)

@@ -28,7 +28,7 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 [o1] Every Exploding Kittens table has the same people.
 [o2] The one who plays every card the second it lands in their hand. The one who Skips as soon as the deck starts to feel dangerous. And the one who never steals anything, because stealing feels rude.
 [o3] So I turned them into bots, sat them at the same table, and had them play Exploding Kittens more than ten billion times.
-[o4] The best of them won thirty five percent of its games. The worst won eleven and a half.
+[o4] The best of them won thirty five percent of its games, and the worst one won only eleven and a half.
 [o5] And the gap wasn't luck, or some secret combo. It came down to five mistakes, and most tables make every one of them.
 
 ## The game in thirty seconds
@@ -42,20 +42,20 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 [c2] Before trusting it with strategy, I checked something boring. With four players, the chance that the very first card anyone draws is a Kitten is three in twenty three. That's thirteen point oh four percent.
 [c3] Across ten million shuffles, my deck said thirteen point oh seven. Close enough.
 [c4] The bots only know what a real player knows. Their own hand, whatever they saw with See the Future, and where they hid a Kitten.
-[c5] There is only one thing they can't do, though. They can't lie. Real players bluff about where they put the Kitten. Mine just put it there. Keep that in mind, because I'll come back to it.
+[c5] There is only one thing they can't do, though. They can't lie. Real players bluff about where they put the Kitten. Mine just put it there. Keep that in mind, because I'll come back to it later.
 
 ## Meet the bots
 [b1] Here's who's at the table.
 [b2] The Normal Player plays like most people. It dodges when it knows a Kitten is coming, it hides Kittens at random, and now and then it plays a card just because it's fun.
 [b3] The Gambler plays cards on a whim, half the time. The Panicker Skips as soon as one card in four could be a Kitten. The Hoarder never steals and never peeks.
-[b4] And then there's the Patient One. I'll get back to what it does.
+[b4] And then there's the Patient One. I'll get back to what it does later.
 [b5] One table, seats shuffled every game. The Patient One won thirty five percent. The Normal Player, twenty two. The Gambler, seventeen. The Panicker, fourteen. And the Hoarder, eleven and a half. A fair share is twenty.
 [b6] But a ranking doesn't tell you why. So I switched to a cleaner test. Three Normal Players, plus one test bot that changes a single habit. One hundred million games for each change. Twenty five is the number to beat.
 
 ## Mistake one: playing for fun
 [p1] Mistake number one is playing cards for fun.
-[p2] Take the Normal Player and remove the urge to play random cards. Same bot otherwise. It goes from twenty five to thirty.
-[p3] Push it the other way, cards on a whim half the time, and it falls to fourteen.
+[p2] Take the Normal Player and remove the urge to play random cards. Same bot otherwise. It goes from twenty five percent to thirty percent.
+[p3] Push it the other way, with cards on a whim half the time, and it falls to fourteen.
 [p4] Every Skip you spend early is one you don't have later. And later is when it counts. At the first draw, about one card in seven is a Kitten. In the last few draws, most of what's left is Kittens.
 [p5] The rulebook actually tells you this. Save your cards early, while your chance of exploding is low. Almost nobody listens.
 
@@ -102,7 +102,7 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 [t2] With two players, it does. The first player wins fifty two percent of the time.
 [t3] With five players, it flips. The last seat does a little better than the first. You get to watch a few draws before you risk anything.
 [t4] And if you mostly play one on one, every one of these habits gets louder. Stop playing cards for fun in a two player game, and you win sixty eight percent.
-[t5] The mistakes cost you more as well. Play cards on a whim half the time, and you drop to nineteen percent. Skip the pair steals, and you're down to thirty seven. Even using See the Future the moment you draw it costs you almost nine points.
+[t5] The mistakes cost you more as well. Play cards on a whim half the time, and you drop to nineteen percent. Skip the pair of steals, and you're down to thirty seven. Even using See the Future the moment you draw it costs you almost nine points.
 
 ## Does it hold up
 [r1] Does any of this work against good players?
@@ -113,8 +113,8 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 ## The recipe
 [w1] So here's what ten billion games taught me.
 [w2] Don't play cards for fun. Only dodge when you know. Peek with See the Future once the odds reach one in three. Put the Kitten where the next player draws. Steal from the biggest hand. Give away junk, and Nope anything aimed at you.
-[w3] That's the Patient One. Forty percent at a table of four, and more than half its games with three.
-[w4] With two players, it wins sixty percent. With five, twenty nine and a half, where a fair share is twenty.
+[w3] That's the Patient One. Forty percent at a table of four, and more than half of its games with three.
+[w4] With two players, it wins sixty percent. With five, twenty nine and a half percent, where a fair share is twenty percent.
 
 ## Close
 [e1] Remember the one thing my bots can't do? Lie.
