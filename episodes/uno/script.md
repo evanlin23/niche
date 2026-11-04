@@ -1,7 +1,7 @@
 # I Tested Every Uno House Rule. One of Them Breaks the Game.
 
 Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: docs/perfectplay-structure-notes.md.
-Re-check every number after the big run (data/results.json).
+Big run done: 3.5 billion rounds (13 tests x 270M). All quoted numbers re-checked; habits moved <= 0.2 points.
 
 ## Number sources (data/results.json, 4 players, normal bots unless noted)
 - Round length (turns): official 47.1 (median 42, 1 in 10 rounds > 76); stacking 49.9; mixed stacking 49.7;

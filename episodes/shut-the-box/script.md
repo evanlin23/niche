@@ -9,7 +9,8 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 - Tiles 1-12: any 0.36% (1 in 280); sum-or-split 0.03% (about 1 in 3,000).
 - One-die rule (roll one die once 7, 8, 9 are down), 1-9 any: perfect 7.42%, biggest first 5.56%.
 - Scoring (leftover tiles added up, lower is better), 1-9 any: perfect low-score play 11.2; biggest first 11.4;
-  random 20.1; most tiles 24.2.
+  random 20.4; most tiles 24.2.
+- Big run: 1.44 billion simulated games (6 rule sets x 240M), so the script says "over a billion", not "billions".
 - Ratio 7.14 / 0.51 = 14.0. Ratio 6.96 / 1.04 = 6.7 ("almost seven times").
 - Confession is true: the first exact evaluation of the random player froze one random choice per board; fixed
   to average over all moves; now exact 2.04 vs simulated 2.03.
@@ -17,7 +18,7 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 ## Cold open
 [o1] Shut the Box is the pub game with the wooden tiles, numbered one to nine. Roll two dice, flip down tiles that add up to your roll, and try to flip them all.
 [o2] Everyone who plays it has a system. Take the big tiles first. Take as many tiles as you can. Just go with your gut.
-[o3] So I solved it. Every possible board, every possible roll. Then I had bots play billions of games to make sure the math holds up.
+[o3] So I solved it. Every possible board, every possible roll. Then I had bots play over a billion games to make sure the math holds up.
 [o4] Here's the headline. Played perfectly, you shut the box about one game in fourteen. But there's a popular house rule that makes it fourteen times harder. Even for perfect play.
 
 ## The rules in ten seconds
@@ -25,7 +26,7 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 
 ## Can you trust it
 [c1] Shut the Box is small enough to solve exactly. Nine tiles means only five hundred and twelve possible boards. For each one, the computer checks every roll and every move, and works out which choice gives you the best chance.
-[c2] Then I replayed billions of games with the perfect strategy, rolling real random dice. Perfect play shut the box seven point one four percent of the time on paper. In the simulation, seven point one five.
+[c2] Then I replayed hundreds of millions of games with the perfect strategy, rolling real random dice. Perfect play shut the box seven point one four percent of the time on paper. In the simulation, seven point one five.
 [c3] Confession. The first time I checked my random player, the math and the simulation disagreed. My exact calculation had frozen one random choice per board instead of averaging over all of them. Fixed, they now agree to a hundredth of a percent.
 
 ## The systems
