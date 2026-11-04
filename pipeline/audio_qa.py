@@ -190,7 +190,7 @@ def fix(raw, plan_, room):
     for ev in plan_:
         s, e = int(ev["start"] * SR), int(ev["end"] * SR)
         f = min(int(0.008 * SR), (e - s) // 4)
-        ramp = np.ones(e - s, np.float32)
+        ramp = np.zeros(e - s, np.float32)                  # how much ORIGINAL to keep: 1 at the edges, 0 inside
         if f > 0:
             ramp[:f] = np.linspace(1, 0, f); ramp[-f:] = np.linspace(0, 1, f)
         if ev["action"] == "duck":
@@ -202,7 +202,21 @@ def fix(raw, plan_, room):
     return a, cuts
 
 
+def _selftest():
+    rng = np.random.default_rng(1)
+    raw = (rng.standard_normal(SR) * 0.01).astype(np.float32)
+    raw[int(0.3 * SR):int(0.5 * SR)] += np.sin(np.arange(int(0.2 * SR)) * 2 * np.pi * 250 / SR).astype(np.float32) * 0.5
+    room = (rng.standard_normal(SR * 2) * 0.01).astype(np.float32)
+    out, _ = fix(raw, [dict(start=0.3, end=0.5, action="fill")], room)
+    before = np.sqrt(np.mean(raw[int(0.32 * SR):int(0.48 * SR)] ** 2)); after = np.sqrt(np.mean(out[int(0.32 * SR):int(0.48 * SR)] ** 2))
+    assert after < before / 10, f"fill did not remove the sound ({before:.4f} -> {after:.4f})"
+    out, _ = fix(raw, [dict(start=0.3, end=0.5, action="duck")], room)
+    after = np.sqrt(np.mean(out[int(0.32 * SR):int(0.48 * SR)] ** 2))
+    assert after < before / 3, "duck did not turn it down"
+
+
 def main():
+    _selftest()
     ap = argparse.ArgumentParser()
     ap.add_argument("episode")
     ap.add_argument("--lines", nargs="*")
@@ -268,6 +282,16 @@ def main():
                 words = [tuple(w) for w in meta["words"]]
                 fixed, words = apply_cuts(fixed, SR, words, cuts)
                 print(lid, f"kept {len(safe)} safe edits", flush=True)
+            # proof: every filled spot must now sit near the noise floor (measured on what the listener hears)
+            chk = clean(fixed, rooms[sess], do_trim=False); _, dbc = frames(chk); fl = np.percentile(dbc, 10)
+            shift = 0.0
+            for ev in sorted(pl, key=lambda e: e["start"]):
+                if ev["action"] == "cut":
+                    shift += ev["end"] - ev["start"] + 0.04
+                elif ev["action"] == "fill":
+                    i0, i1 = int((ev["start"] - shift) / 0.01) + 1, int((ev["end"] - shift) / 0.01) - 1
+                    if i1 > i0 and dbc[i0:i1].max() > fl + 8:
+                        report.append(f"[{lid}] STILL AUDIBLE after fill at {ev['start']}-{ev['end']}s (+{dbc[i0:i1].max()-fl:.0f} dB)")
             sf.write(wav, fixed, SR)
             meta.update(words=[list(w) for w in words], duration=round(len(fixed) / SR, 3))
             meta["qa_edits"] = [ev for ev in pl if ev["action"] != "keep"]
