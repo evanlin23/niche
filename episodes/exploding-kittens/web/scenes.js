@@ -435,24 +435,52 @@ function makeBuh(stage, { expr = 'happy', cards = false, style = 'classic' } = {
   return g;
 }
 // cute variants: big head, small body, big low eyes, blush, stubby limbs
+// "kz" look: cel shading (2 tones) + a crisp rim light + tiny dot eyes, no outlines
+let _toonRamp = null;
+function toonMat(c) {
+  if (!_toonRamp) {
+    _toonRamp = new THREE.DataTexture(new Uint8Array([150, 150, 150, 255, 255, 255, 255, 255]), 2, 1);
+    _toonRamp.minFilter = _toonRamp.magFilter = THREE.NearestFilter; _toonRamp.needsUpdate = true;
+  }
+  const m = new THREE.MeshToonMaterial({ color: c, gradientMap: _toonRamp });
+  m.onBeforeCompile = (sh) => {
+    sh.fragmentShader = sh.fragmentShader.replace('#include <tonemapping_fragment>',
+      `{ float r = 1.0 - abs(dot(normalize(normal), normalize(vViewPosition)));
+         float side = smoothstep(-0.2, 0.4, dot(normalize(normal), normalize(vec3(-0.6, 0.7, 0.2))));
+         gl_FragColor.rgb = mix(gl_FragColor.rgb, gl_FragColor.rgb * 1.35 + 0.08, smoothstep(0.62, 0.66, r) * side); }
+       #include <tonemapping_fragment>`);
+  };
+  return m;
+}
+
 function makeBuhStyle(stage, expr, style) {
+  const kz = style.startsWith('kz-'); if (kz) style = style.slice(3);
   const g = new THREE.Group();
   const cream = new THREE.MeshPhysicalMaterial({ color: 0xf3ead6, roughness: 0.35, clearcoat: 0.5, clearcoatRoughness: 0.3 });
   const add = (geo, y, x = 0, z = 0, mat = cream) => { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); m.castShadow = true; g.add(m); return m; };
   const faceMat = () => new THREE.MeshStandardMaterial({ map: faceTexture(expr, true), transparent: true, alphaTest: 0.5, roughness: 0.25, emissive: 0xffffff, emissiveMap: faceTexture(expr, true), emissiveIntensity: 0.35 });
   const sphereFace = (r, y, w = 1.3, h = 1.0) => { const f = new THREE.Mesh(new THREE.SphereGeometry(r * 1.004, 48, 32, Math.PI / 2 - w / 2, w, Math.PI / 2 - h / 2 - 0.05, h), faceMat()); f.position.y = y; g.add(f); };
   let top = 0, bulb = GN.coral;
-  const flat = (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.55 });
+  const flat = (c) => kz ? toonMat(c) : new THREE.MeshStandardMaterial({ color: c, roughness: 0.55 });
   const ink = flat(0x1d2b3a), white = flat(0xffffff);
   // dot eyes: white ball + dark pupil looking slightly up-forward (simple, readable at avatar size)
   const eyes = (y, z, dx, r = 0.2, look = [0.02, 0.03], one = false) => {
+    if (kz) {     // two black dots with one tiny highlight each (one-eyed designs get two too: it reads cuter)
+      const R = one ? 0.13 : Math.max(0.1, r * 0.55), X = one ? 0.3 : dx * 0.9, Z = one ? z + 0.1 : z + 0.05;
+      for (const s of [-1, 1]) {
+        if (style === 'raccoon') add(new THREE.SphereGeometry(R * 1.55, 24, 16), y, s * X, Z - 0.03, white).scale.z = 0.4;
+        add(new THREE.SphereGeometry(R, 24, 16), y, s * X, Z, ink).scale.z = 0.5;
+        add(new THREE.SphereGeometry(R * 0.3, 12, 8), y + R * 0.35, s * X + R * 0.3, Z + R * 0.45, white);
+      }
+      return;
+    }
     for (const s of (one ? [0] : [-1, 1])) {
       add(new THREE.SphereGeometry(r, 32, 24), y, s * dx, z, white).scale.z = 0.55;
       add(new THREE.SphereGeometry(r * 0.52, 24, 16), y + look[1] + r * 0.05, s * dx + look[0], z + r * 0.36, ink).scale.z = 0.5;
       add(new THREE.SphereGeometry(r * 0.14, 12, 8), y + r * 0.32, s * dx + r * 0.22, z + r * 0.5, white);
     }
   };
-  const smile = (y, z, w = 0.16, mat = ink) => { const m = add(new THREE.TorusGeometry(w, 0.035, 10, 24, Math.PI * 0.8), y, 0, z, mat); m.rotation.z = Math.PI * 1.1; };
+  const smile = (y, z, w = 0.16, mat = ink) => { if (kz) return; const m = add(new THREE.TorusGeometry(w, 0.035, 10, 24, Math.PI * 0.8), y, 0, z, mat); m.rotation.z = Math.PI * 1.1; };
   if (style === 'meeple') {
     const s = new THREE.Shape();   // generic board-game person silhouette
     s.moveTo(-0.95, 0); s.lineTo(-0.3, 0); s.quadraticCurveTo(0, 0.42, 0.3, 0); s.lineTo(0.95, 0);
@@ -528,7 +556,17 @@ function makeBuhStyle(stage, expr, style) {
     top = 2.1; bulb = style === 'octopus' ? GN.mustard : GN.coral;
   } else if (style === 'cyclops') {
     const b = add(new THREE.SphereGeometry(1.0, 48, 32), 1.05, 0, 0, flat(GN.teal)); b.scale.set(1, 1.05, 0.95);
-    eyes(1.25, 0.8, 0, 0.42, [0.04, 0.05], true); smile(0.62, 0.86, 0.16);
+    if (kz) { eyes(1.25, 0.8, 0, 0.42, [0.04, 0.05], true); }
+    else if (expr === 'shocked') {        // eye wide, pupil small, little "o" mouth
+      eyes(1.28, 0.8, 0, 0.47, [0.0, 0.0], true);
+      g.children.slice(-2, -1)[0].scale.set(0.7, 0.7, 0.5);
+      const o = add(new THREE.SphereGeometry(0.1, 24, 16), 0.6, 0, 0.87, ink); o.scale.set(0.85, 1.2, 0.4);
+    } else if (expr === 'smug') {         // heavy upper lid + sideways smirk
+      eyes(1.25, 0.8, 0, 0.42, [0.06, -0.04], true);
+      const lid = add(new THREE.SphereGeometry(0.445, 40, 20, 0, Math.PI * 2, 0, Math.PI * 0.47), 1.25, 0, 0.8, flat(GN.teal));
+      lid.scale.z = 0.62; lid.rotation.x = Math.PI / 2 - 0.15; lid.rotation.z = 0.12;   // cap faces forward, sits on the eye
+      const m = add(new THREE.TorusGeometry(0.13, 0.035, 10, 24, Math.PI * 0.6), 0.64, 0.08, 0.88, ink); m.rotation.z = Math.PI * 1.25;
+    } else { eyes(1.25, 0.8, 0, 0.42, [0.04, 0.05], true); smile(0.62, 0.86, 0.16); }
     for (const s of [-1, 1]) { add(new THREE.SphereGeometry(0.22, 20, 14), 0.08, s * 0.4, 0.2, flat(GN.mustard)).scale.set(1.1, 0.55, 1.5);
       const a = add(new THREE.CapsuleGeometry(0.11, 0.22, 8, 16), 0.95, s * 1.02, 0.05, flat(GN.teal)); a.rotation.z = s * 0.6; }
     top = 2.1; bulb = GN.mustard;
@@ -556,7 +594,7 @@ function makeBuhStyle(stage, expr, style) {
     for (const s of [-1, 1]) { const a = add(new THREE.CapsuleGeometry(0.1, 0.22, 8, 16), 0.5, s * 0.55, 0.05); a.rotation.z = s * 0.7; }
     top = 2.28;
   }
-  add(new THREE.CylinderGeometry(0.03, 0.03, 0.4, 12), top + 0.18, 0, 0, new THREE.MeshStandardMaterial({ color: 0x8d8273 }));
+  add(new THREE.CylinderGeometry(0.03, 0.03, 0.4, 12), top + 0.18, 0, 0, kz ? toonMat(0x3a4a5c) : new THREE.MeshStandardMaterial({ color: 0x8d8273 }));
   add(new THREE.SphereGeometry(0.12, 24, 16), top + 0.42, 0, 0, new THREE.MeshStandardMaterial({ color: bulb, emissive: bulb, emissiveIntensity: 0.4 }));
   stage.scene.add(g);
   return g;
