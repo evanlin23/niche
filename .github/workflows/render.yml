@@ -48,6 +48,7 @@ jobs:
       - id: list
         run: |
           echo "scenes=$(python -c "import yaml,json,os; print(json.dumps([s['id'] for s in yaml.safe_load(open(f'episodes/{os.environ[\"SLUG\"]}/scenes.yaml'))['scenes']]))")" >> "$GITHUB_OUTPUT"
+      - run: mkdir -p .cache/tts && echo "placeholder" > .cache/tts/placeholder.txt   # never empty (recorded voice needs no TTS)
       - uses: actions/upload-artifact@v4
         with: { name: tts-cache, path: .cache/tts, retention-days: 3 }
 

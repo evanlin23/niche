@@ -49,7 +49,7 @@ class Scene:
 
 
 def build(scene_specs: list[dict], texts: dict[str, str], cache_dir: Path,
-          line_gap=0.75, default_pad=(0.6, 0.9)) -> list[Scene]:
+          line_gap=0.4, default_pad=(0.35, 0.55)) -> list[Scene]:
     scenes, t = [], 0.0
     for spec in scene_specs:
         pad = spec.get("pad", default_pad)
