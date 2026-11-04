@@ -315,6 +315,60 @@ SCENES.bots = async (stage, spec) => {
   };
 };
 
+// ------------------------------------------------------------------ the deck as odds: cards vs Kittens
+// params.frames: [{at, cards, kittens, head, sub}] (anchors resolved). Cards are laid out face down in a grid;
+// the Kittens in it are shown face up ("x-ray"), so the ratio is visible. Between frames, cards leave for the
+// discard pile (or come back), and the headline counts.
+SCENES.odds = async (stage, spec) => {
+  buildRoom(stage, { feltW: 18, feltD: 9 });
+  const p = spec.params, frames = p.frames;
+  const MAX = Math.max(...frames.map((f) => f.cards));
+  const SX = 1.02, SZ = 1.38;
+  // centred layout for a deck of n cards (rows of up to 12); remaining cards glide into it as others leave
+  const slot = (i, n) => { const cols = Math.min(12, n), rows = Math.ceil(n / cols);
+    const r = Math.floor(i / cols), inRow = r < rows - 1 ? cols : n - r * cols;
+    return [(i % cols - (inRow - 1) / 2) * SX, 0.03, (r - (rows - 1) / 2) * SZ]; };
+  // kitten positions spread through the deck (deterministic)
+  const kitIdx = (n, k) => { const out = []; for (let a = 0; a < k; a++) out.push(Math.min(n - 1, Math.floor((a + 0.5) * n / k))); return out; };
+  const cards = [];
+  for (let i = 0; i < MAX; i++) { const c = makeCard(stage, 'back', false); cards.push(c); }
+  const head = document.createElement('div'), sub = document.createElement('div');
+  for (const [d, size, top, col] of [[head, 64, 128, '#fff6e6'], [sub, 38, 210, GN.mustard]]) {
+    Object.assign(d.style, { position: 'absolute', left: '50%', top: top + 'px', transform: 'translateX(-50%)', fontFamily: 'Rubik, sans-serif',
+      fontWeight: 900, fontSize: size + 'px', color: col, whiteSpace: 'nowrap', textShadow: '0 4px 18px rgba(0,0,0,.45)', opacity: 0 });
+    stage.ov.appendChild(d);
+  }
+  title(stage, p.title); brand(stage);
+  return (t) => {
+    stage.cameraAt(t, { pos: [[0, 11.6, 7.2], [0, 11.0, 6.7]], look: [[0, 0, -0.4]] });
+    stage.camera.updateMatrixWorld();
+    let fi = 0; frames.forEach((f, i) => { if (t >= f.at) fi = i; });
+    const f = frames[fi], prev = frames[Math.max(0, fi - 1)];
+    const k = fi === 0 ? 1 : ease(clamp((t - f.at) / 0.8));
+    const kitsNow = new Set(kitIdx(f.cards, f.kittens)), kitsPrev = new Set(kitIdx(prev.cards, prev.kittens));
+    const appear = ease(clamp((t - (frames[0].at - 0.6)) / 0.6));
+    cards.forEach((c, i) => {
+      const inNow = i < f.cards, inPrev = i < prev.cards;
+      const [px, , pz] = slot(Math.min(i, prev.cards - 1), prev.cards), [nx, y, nz] = slot(Math.min(i, f.cards - 1), f.cards);
+      const x = inNow ? lerp(px, nx, k) : px, z = inNow ? lerp(pz, nz, k) : pz;
+      let vis = fi === 0 ? inNow : (inNow || (inPrev && k < 1));
+      c.visible = vis && appear > 0.01;
+      if (!c.visible) return;
+      if (!inNow && inPrev) {        // leaving: off to the discard pile at the side
+        c.position.set(lerp(x, 9.5, k), y + Math.sin(k * Math.PI) * 1.2, lerp(z, -2.5, k));
+      } else c.position.set(x, y + (1 - appear) * 1.5, z);
+      c.rotation.set(0, 0, 0);
+      const isK = kitsNow.has(i) && inNow;
+      c.setFace(isK ? 0 : 'back');
+    });
+    head.textContent = f.head || `${f.kittens} Kittens in ${f.cards} cards`;
+    sub.textContent = f.sub || '';
+    const ta = fi === 0 ? clamp((t - f.at) / 0.25) : 1;
+    head.style.opacity = appear * ta; sub.style.opacity = appear * clamp((t - f.at - 0.25) / 0.25);
+    scrim(stage, t);
+  };
+};
+
 SCENES.title = async (stage, spec) => {
   buildRoom(stage);
   const p = spec.params;

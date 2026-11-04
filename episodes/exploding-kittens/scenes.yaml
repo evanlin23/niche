@@ -226,21 +226,15 @@ scenes:
   chapter: 'Mistake 1: playing for fun'
 - id: patience
   render: bars
+  pad:
+  - 0.2
+  - 0.1
   lines:
   - p2
   - p3
-  - p4
-  - p5
   params:
     callouts:
     - {text: "Remove the urge to play for fun", at: p2@remove}
-    - {text: "Later is when it counts", at: p4@later_is}
-    - {text: "\u2026while your chance of exploding is low", at: p5@low}
-    - {text: "A Skip spent early is gone later", at: p4@spend}
-    - {text: "First draw: about 1 in 7 is a Kitten", at: p4@seven}
-    - {text: "Last few draws: mostly Kittens", at: p4@last}
-    - {text: "Rulebook: \"save your cards early\"", at: p5@rulebook}
-    - {text: "Almost nobody listens", at: p5@nobody}
     chart: patience
     title: 'Mistake 1: playing cards for fun'
     notes:
@@ -253,6 +247,24 @@ scenes:
       size: 30
       width: 1600
       weight: 700
+- id: odds
+  render: odds
+  pad:
+  - 0.05
+  - 0.35
+  lines:
+  - p4
+  - p5
+  params:
+    title: Why save your cards
+    frames:
+    - {at: p4@first, cards: 23, kittens: 3, head: "First draw: 3 Kittens in 23 cards", sub: "13% (about 1 in 7)"}
+    - {at: p4@last, cards: 4, kittens: 3, head: "Last few draws, e.g. 3 Kittens in 4 cards", sub: "mostly Kittens"}
+    callouts:
+    - {text: "A Skip spent early is gone later", at: p4@spend}
+    - {text: "Later is when it counts", at: p4@later_is}
+    - {text: "Rulebook: save your cards early", at: p5@rulebook}
+    - {text: "Almost nobody listens", at: p5@nobody, color: CORAL}
 - id: m2
   render: statement
   lines:
@@ -313,17 +325,16 @@ scenes:
   chapter: 'Mistake 3: looking at the wrong time'
 - id: future
   render: bars
+  pad:
+  - 0.2
+  - 0.1
   lines:
   - f2
   - f3
-  - f4
   params:
     callouts:
     - {text: "Kitten on top? Dodge", at: f3@dodge}
     - {text: "Not a Kitten? Draw, keep your Skip", at: f3@isn't}
-    - {text: "Cards left \xF7 Kittens left", at: f4@count}
-    - {text: "About 3? Time to peek", at: f4@about}
-    - {text: "2 Kittens left = 6 cards or fewer", at: f4@six}
     chart: future
     title: 'Mistake 3: when to See the Future'
     notes:
@@ -333,6 +344,19 @@ scenes:
       align: center
       size: 40
       pill: MUSTARD
+- id: countdiv
+  render: odds
+  pad:
+  - 0.05
+  - 0.35
+  lines:
+  - f4
+  params:
+    title: When to peek
+    frames:
+    - {at: f4@count, cards: 15, kittens: 3, head: "15 cards \u00f7 3 Kittens = 5", sub: "not yet"}
+    - {at: f4@about, cards: 9, kittens: 3, head: "9 cards \u00f7 3 Kittens = 3", sub: "time to peek"}
+    - {at: f4@two, cards: 6, kittens: 2, head: "6 cards \u00f7 2 Kittens = 3", sub: "someone exploded: 2 Kittens, 6 cards"}
 - id: m4
   render: statement
   lines:
