@@ -2,7 +2,7 @@ SLUG ?= traffic-jams
 JOBS ?= 3
 PY ?= python3
 
-.PHONY: setup episode shorts preview preview-shorts thumb pack all test
+.PHONY: setup episode shorts preview preview-shorts thumb pack all test lint-script
 
 setup:            ## install deps + download default voice
 	$(PY) -m pip install -r requirements.txt
@@ -30,3 +30,6 @@ all: episode shorts thumb pack
 
 test:
 	$(PY) -m tests.test_sims
+
+lint-script:      ## check narration for AI tells + TTS problems (docs/script-style-guide.md)
+	$(PY) -m pipeline.lint_script episodes/$(SLUG)/script.md
