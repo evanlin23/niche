@@ -1,37 +1,51 @@
 # I Tested Every Uno House Rule. One of Them Breaks the Game.
 
 Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: docs/perfectplay-structure-notes.md.
-Big run done: 3.5 billion rounds (13 tests x 270M). All quoted numbers re-checked; habits moved <= 0.2 points.
 
-## Number sources (data/results.json, 4 players, normal bots unless noted)
-- Round length (turns): official 47.1 (median 42, 1 in 10 rounds > 76); stacking 49.9; mixed stacking 49.7;
-  7-0 48.0; jump-in 44.4; draw until you can play 82.3 (median 59, 1 in 10 > 172); forced play 47.1; free +4 50.1;
-  everything at once 86.4.
-- Rounds with a 10+ card hit: stacking 0.9%, mixed stacking 4.6%, everything 6.0%.
-- Player who goes first: official 26.8%, 7-0 25.1%. Fair 25.
-- Smart bot vs normal table: official 28.8, 7-0 26.1, free +4 31.2, draw until 29.5.
-- Habits (official): hold Wilds 28.8; random Wild color 22.5; switch to best color 26.5; save attacks 25.5;
-  challenges 24.6-25.1; bluff 25.1; dump high cards 23.8.
-- Cards drawn per round (whole table): official 24.7, draw until 72.9. Everything at once: 86.4 turns, 6.0% rounds with a 10+ hit.
-- Two players: first player 51.4%; smart bot official 54.1, 7-0 50.6; draw until 53.1 turns vs 33.9.
-- Engine check: opening hand has at least one Wild: math 55.81%, engine 55.84% (10M deals). The first version of
-  the check measured hands after the starting card (Draw Two, Shuffle Hands) and was off: true story.
-- Official rules: Mattel instruction sheet GDJ85 (112 cards). No stacking; draw one card, may play it.
+## Number sources (4 players, normal bots, unless noted). Re-checked against the big run (see bottom note).
+- data/results.json `variants.*.table` (allsame): turns official 47.1 (p90 76), jump_in 44.4 (-5.6%), seven_zero 48.0
+  (+0.9), stacking 49.9 (+2.9), free_draw4 50.0 (+3.0), forced_play 47.1 (identical: bots never decline a playable card),
+  draw_until 82.3 (+75%, p90 172-173), everything 86.4 (10+ hit 5.9-6.0%).
+  Cards drawn/round: official 24.7, draw_until 72.9. Losers' points at round end: official ~124, draw_until ~176 (+42%).
+  10+ card hit: stacking 0.9%, stacking_mixed 4.6%. First seat: official 26.8%, seven_zero 25.1%.
+- `variants.*.smart_vs_normal`: official 29.0, seven_zero 26.2 (edge 4.0 -> 1.2), free_draw4 31.1.
+- `habits`: hold wilds 28.7, random colour 22.4, switch to best colour 26.3, challenges 24.4-25.2, bluff 25.1,
+  attack small 25.5, dump high 23.8.
+- `house_habits`: always stack 25.5 / never 22.7; seven to random player 21.4; always jump in 26.8 / never 23.2;
+  hold wilds under free +4 30.4, under seven zero 25.7.
+- `players.N.official/draw_until` turns: 2p 33.9/53.1, 4p 47.0/82.3, 10p 91.1/137.8 (+~7.3 turns per player).
+- `two_player`: first seat 51.5; smart 54.2, seven_zero 50.6.
+- `classic_deck` (108 cards): turns 47.1 (same as 112).
+- data/matches.json (2M whole games to 500 per rule set): rounds official 9.9, draw_until 6.5, free_draw4 11.7;
+  turns 466 / 538 (+15%) / 584 (+25%).
+- Engine check (data/engine_check.json): opening hand has a Wild: math 1 - C(100,7)/C(112,7) = 55.81%, engine 55.84%
+  (10M deals). The first version of the check measured hands after the starting card: true story.
+- Rules: Mattel instruction sheet GDJ85 (read 2026-11-04): no stacking ("only on a matching colour or another Draw Two",
+  victim draws and misses turn), draw ONE card and may play it, Wild Draw 4 only without the current colour, challenge
+  4/6, Shuffle Hands + 3 Customizable, 2-10 players, first to 500.
+- "Billions": results.json total_games (big run, 20 shards).
 
 ## Cold open
 [o1] Every family plays Uno a little differently.
 [o2] Somebody stacks their plus twos. Somebody swaps hands on a seven. Somebody makes you keep drawing until you can play. And somebody always says that's not a real rule.
 [o3] So I took every house rule I could find, gave them to bots, and played billions of rounds of Uno.
 [o4] One of those rules makes the average round seventy five percent longer. And one round in ten turns into a marathon of more than a hundred and seventy turns.
+[o5] Spoiler. It's not stacking.
 
-## The game in ten seconds
-[g1] Quick refresher. Match the top card by color or number, or play a Wild. Action cards skip people, reverse direction, or make them draw. First one out of cards wins the round.
+## The game in thirty seconds
+[g1] Quick refresher, straight from the rule sheet. Everyone gets seven cards, and one card is flipped face up to start the pile.
+[g2] On your turn, match the top card by color or by number, or play a Wild. First one out of cards wins the round, and scores points for everything the others are still holding. First to five hundred wins the game.
+[g3] Skip makes the next player miss a turn. Reverse flips the direction. Draw Two makes the next player draw two and lose their turn. A Wild lets you pick the color.
+[g4] The Wild Draw Four is the mean one. You pick the color, and the next player draws four. But you're only allowed to play it when you have nothing in the current color. If someone thinks you cheated, they can challenge. Guilty, you draw the four. Innocent, they draw six.
+[g5] And newer decks add a Wild Shuffle Hands card. Every hand gets collected, shuffled, and dealt back out.
 
 ## Can you trust it
-[c1] My version follows the official rule sheet that comes in the box today. A hundred and twelve cards, including the new Wild Shuffle Hands card and three blank Wilds.
+[c1] My version follows the official rule sheet that comes in the box today. All hundred and twelve cards, including Shuffle Hands and three blank Wilds you can write your own rule on. My bots play those as plain Wilds.
 [c2] And here's the first surprise. According to that rule sheet, you can't stack plus twos. And when you can't play, you draw one card. Not until you find one.
 [c3] To check the engine, I compared it with plain math. The chance your opening hand has at least one Wild is fifty five point eight percent. Over ten million deals, my engine says the same, to a tenth of a percent.
-[c4] Confession. The first time I ran that check, it was off. I had been looking at hands after the first card was flipped, and a Draw Two or a Shuffle Hands had already changed them. So the check caught a bug in the check.
+[c4] Confession. The first time I ran that check, it was off. I had been looking at hands after the first card was flipped, and a starting Draw Two had already changed some of them. So the check caught a bug in the check.
+[c7] I also ran the older deck, a hundred and eight cards without the new Wilds. Rounds came out the same length. So if your deck is older, everything here still applies.
+[c6] The bots only know what a real player knows. Their own hand, the top card, and how many cards everyone holds. A normal bot plays any card that matches, picks the color it holds the most of, and challenges a plus four about three times in ten.
 [c5] One limitation. My bots never forget to say Uno, and they never argue about the rules. Hold onto that one.
 
 ## Meet the house rules
@@ -41,20 +55,42 @@ Big run done: 3.5 billion rounds (13 tests x 270M). All quoted numbers re-checke
 
 ## The results
 [x1] Under the official rules, a round of four players takes about forty seven turns.
-[x2] Jump In makes rounds shorter, about six percent. Stacking, Seven Zero and the free plus four each add a few turns. Forced play changes nothing at all, because almost everybody already plays when they can.
+[x2] Jump In makes rounds about six percent shorter. Seven Zero adds about one turn. Stacking and the free plus four add about three.
+[x6] Forced play changes nothing at all. My bots already play whenever they can, so forcing them does nothing. If your family likes to hold cards back, it will matter a bit more at your table.
 [x3] And then there's draw until you can play. Eighty two turns on average. Seventy five percent longer.
 [x4] The average isn't even the worst part. With the official rules, one round in ten goes past seventy six turns. With draw until you can play, one in ten goes past a hundred and seventy.
-[x5] Here's why. Under the official rules, the table draws about twenty five cards in a round. With draw until you can play, it draws seventy three. Nearly three times as many. Hands grow instead of shrinking, and everyone drifts further from Uno. That's the rule that breaks the game.
+[x5] Here's why. Under the official rules, the table draws about twenty five cards in a round. With draw until you can play, it draws seventy three. Nearly three times as many. When the round finally ends, the losers are holding about forty percent more points. That's the rule that breaks the game.
+[x7] Then I found a twist I didn't expect. Under the official rules, a full game to five hundred points takes about ten rounds. But those long draw until rounds end with much bigger point hauls. So the game to five hundred only takes about six and a half.
+[x8] The whole game is only about fifteen percent longer. Draw until you can play doesn't really break the game to five hundred. It breaks the round. And if your family doesn't keep score, every round is the whole game.
+[x9] If you do play to five hundred, the rule that drags the most is the free plus four. Its rounds end with smaller point hauls, so a game takes almost twelve rounds instead of ten. That's a quarter longer.
+
+## Bigger tables
+[p1] And it gets worse with a bigger table. The box says two to ten players.
+[p2] Under the official rules, every extra player adds about seven turns to a round. Ten players take about ninety one turns.
+[p3] Ten players with draw until you can play? About a hundred and thirty eight. Bring snacks.
+[cta] If this just settled an argument at your house, subscribing really helps. Now, the rule everyone fights about.
 
 ## Stacking
 [s1] What about stacking? Everyone remembers the round where somebody got hit with sixteen cards.
 [s2] It's rarer than it feels. With plus twos stacking on plus twos, only about one round in a hundred has anyone draw ten or more at once. Let plus fours join the stack, and it's still under one in twenty.
 [s3] It makes great stories. It barely changes the game.
+[s4] But if your family does stack, stack every time you can. A bot that always stacks wins twenty five and a half percent. A bot that never stacks, and just takes the cards, wins twenty two and a half.
 
 ## Seven Zero
 [z1] Seven Zero is the sneaky one.
 [z2] Under the official rules, the player who goes first wins almost twenty seven percent of four player rounds. A fair share is twenty five. With Seven Zero, that edge disappears completely.
-[z3] It also cuts how much skill matters. My best bot's edge over a normal player shrinks by more than half. My guess is that when your hand can be taken from you, planning ahead stops paying off.
+[z3] It also cuts how much skill matters. My best bot's edge over a normal player shrinks by more than half.
+[z5] Holding your Wilds is the best habit in the official game. You'll see why later. With Seven Zero, it's worth less than a point. My guess is that when your hand can be taken from you, planning ahead stops paying off.
+[z4] One habit still matters. When you play a seven, swap with the player holding the fewest cards. My normal bots always do. A bot that swaps with a random player drops to twenty one and a half percent.
+
+## Jump In
+[j1] Jump In is the rule where being fast pays.
+[j2] A bot that jumps in every time it can wins about twenty seven percent. One that never jumps in wins about twenty three. That's a four point swing, just for watching the pile.
+
+## The free plus four
+[f1] The free plus four is the strangest one. It's the only house rule that makes skill matter more.
+[f2] Under the official rules, my best bot wins twenty nine percent. With the free plus four, thirty one.
+[f3] And remember holding your Wilds? With the free plus four, that one habit is worth more than five points on its own.
 
 ## Everything at once
 [a1] Of course, some families play with all of these rules at the same time.
@@ -62,7 +98,8 @@ Big run done: 3.5 billion rounds (13 tests x 270M). All quoted numbers re-checke
 
 ## Two players
 [t1] If you mostly play one on one, a couple of things change.
-[t2] The player who goes first wins fifty one and a half percent of the time. And Seven Zero is even harsher. My best bot goes from fifty four percent to barely over fifty. With two players, Seven Zero just hands your cards to the only other person at the table.
+[t2] The player who goes first wins fifty one and a half percent of the time. And Seven Zero is even harsher. My best bot goes from fifty four percent to barely over fifty. With two players, every seven swaps your hand with your only opponent.
+[t3] And draw until you can play still hurts. A two player round goes from thirty four turns to fifty three.
 
 ## So can you actually get good at Uno?
 [k1] Which raises the uncomfortable question. Can you actually get good at Uno?
@@ -73,14 +110,15 @@ Big run done: 3.5 billion rounds (13 tests x 270M). All quoted numbers re-checke
 [h1] Still, if you want those extra four points, almost all of them come from one habit.
 [h2] Hold your Wilds. Don't play a Wild while you have another card you can play. That alone takes you from twenty five percent to twenty nine.
 [h3] And when you do play a Wild, pick the color you hold the most of. Picking a color at random drops you to twenty two and a half.
+[h6] And when a plain card lets you switch to the color you have more of, switch. That's worth about a point on its own.
 [h4] Some things people argue about barely matter. Challenging a plus four, bluffing one, or saving your attack cards for someone close to winning. All within about half a point.
 [h5] One that backfires. Dumping your high point cards early feels smart, but it lowers your chance of winning the round.
 
 ## The recipe
 [w1] So here's the house rule verdict.
-[w2] If you want shorter, punchier rounds, add Jump In. If you want chaos stories, add stacking. If you want luck to decide more of the game, add Seven Zero.
+[w2] If you want shorter, punchier rounds, add Jump In. If you want chaos stories, add stacking. If you want luck to decide more of the game, add Seven Zero. If you want skill to count, play the free plus four.
 [w3] And never, ever play draw until you can play. Unless you really like drawing cards.
 
 ## Close
 [e1] Remember the one thing my bots never do? Argue about the rules. Which might be the real reason Uno takes forever at your house.
-[e2] Next, I'm finding out how to beat your friends at Connect Four. Tell me your opening move.
+[e2] So here's my question. Is draw until you can play a real rule at your house? Defend it in the comments. I'll be reading every one.

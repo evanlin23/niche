@@ -38,6 +38,7 @@ func main() {
 	baseJ := flag.String("base", "{}", "")
 	testJ := flag.String("test", "", "")
 	allSame := flag.Bool("allsame", false, "")
+	match := flag.Bool("match", false, "play whole games to 500 points (GDJ85 scoring), report rounds and turns per game")
 	check := flag.Bool("check", false, "engine check: share of opening hands with at least one Wild card")
 	flag.Parse()
 	if *check {
@@ -65,6 +66,10 @@ func main() {
 	var base, test Policy
 	must(json.Unmarshal([]byte(*rulesJ), &R))
 	must(json.Unmarshal([]byte(*baseJ), &base))
+	if *match {
+		runMatches(*players, *games, *seed, &R, &base)
+		return
+	}
 	test = base
 	if *testJ != "" {
 		must(json.Unmarshal([]byte(*testJ), &test))
@@ -166,4 +171,61 @@ func must(err error) {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+}
+
+// runMatches: first to 500 points wins; the dealer moves left each round.
+func runMatches(players, games int, seed int64, R *Rules, base *Policy) {
+	W := runtime.NumCPU()
+	per := (games + W - 1) / W
+	type acc struct{ rounds, turns, firstDealtWins, unfinished float64 }
+	accs := make([]acc, W)
+	var wg sync.WaitGroup
+	for w := 0; w < W; w++ {
+		wg.Add(1)
+		go func(w int) {
+			defer wg.Done()
+			rng := rand.New(rand.NewSource(seed*7919 + int64(w)))
+			pols := make([]*Policy, players)
+			for i := range pols {
+				pols[i] = base
+			}
+			a := &accs[w]
+			for k := 0; k < per; k++ {
+				score := make([]int, players)
+				dealer := rng.Intn(players)
+				firstStarter := (dealer + 1) % players
+				for rounds := 1; ; rounds++ {
+					g := NewGame(rng, R, pols, dealer)
+					r := g.Play()
+					a.turns += float64(r.Turns)
+					if r.Winner < 0 {
+						a.unfinished++
+						a.rounds += float64(rounds)
+						break
+					}
+					score[r.Winner] += r.Points
+					if score[r.Winner] >= 500 {
+						a.rounds += float64(rounds)
+						if r.Winner == firstStarter {
+							a.firstDealtWins++
+						}
+						break
+					}
+					dealer = (dealer + 1) % players
+				}
+			}
+		}(w)
+	}
+	wg.Wait()
+	var t acc
+	for _, a := range accs {
+		t.rounds += a.rounds
+		t.turns += a.turns
+		t.firstDealtWins += a.firstDealtWins
+		t.unfinished += a.unfinished
+	}
+	n := float64(per * W)
+	out := map[string]float64{"games": n, "mean_rounds_per_game": t.rounds / n, "mean_turns_per_game": t.turns / n,
+		"first_round_starter_wins_game": t.firstDealtWins / n, "unfinished_rounds": t.unfinished / n}
+	must(json.NewEncoder(os.Stdout).Encode(out))
 }

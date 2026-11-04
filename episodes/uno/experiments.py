@@ -24,9 +24,17 @@ def main():
     global SEED
     ap = argparse.ArgumentParser(); ap.add_argument("--games", type=int, default=500_000)
     ap.add_argument("--seed", type=int, default=1); ap.add_argument("--all", action="store_true", help="accepted for workflow compatibility"); ap.add_argument("--out", default=None)
+    ap.add_argument("--matches", type=int, default=0, help="only play N whole games to 500 points per rule set -> matches.json")
     a = ap.parse_args(); SEED = a.seed; G = a.games
     out = Path(a.out) if a.out else Path(__file__).resolve().parent / "data"; out.mkdir(parents=True, exist_ok=True)
     subprocess.run(["go", "build", "-o", str(BIN), "."], cwd=BIN.parent, check=True)
+    if a.matches:
+        m = {"games_per_rule_set": a.matches}
+        for name in ("official", "draw_until", "stacking", "seven_zero", "jump_in", "free_draw4", "everything"):
+            cmd = [str(BIN), "-match", "-players", "4", "-games", str(a.matches), "-seed", str(SEED), "-rules", json.dumps(VARIANTS[name]), "-base", json.dumps(NORMAL)]
+            m[name] = json.loads(subprocess.run(cmd, capture_output=True, text=True, check=True).stdout)
+            print(f"{name:14s} rounds {m[name]['mean_rounds_per_game']:5.2f}  turns {m[name]['mean_turns_per_game']:6.1f}", flush=True)
+        (out / "matches.json").write_text(json.dumps(m, indent=1)); print("wrote", out / "matches.json"); return
     res = {"games_per_test": G, "normal": NORMAL, "smart": SMART, "variants": {}, "habits": {}}
     print(f"{'variant':16s} {'turns':>6s} {'median':>6s} {'p90':>5s} {'1st seat':>8s} {'max hit':>7s} {'10+ hit':>7s} {'smart bot':>9s}")
     for name, R in VARIANTS.items():
