@@ -483,6 +483,49 @@ function makeBuhStyle(stage, expr, style) {
     const f = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 1.08), faceMat()); f.position.set(0, 1.55, 0.656); g.add(f);
     for (const s of [-1, 1]) { const a = add(new THREE.CapsuleGeometry(0.1, 0.22, 8, 16), 0.5, s * 0.55, 0.05, flat(0x1d2b3a)); a.rotation.z = s * 0.7; }
     top = 2.28; bulb = GN.mustard;
+  } else if (['raccoon', 'owl', 'octopus', 'hamster'].includes(style)) {
+    // animals on the cyclops blob body: round, flat colour, dot eyes, stubby feet
+    const C = { raccoon: 0x8a94a6, owl: 0xc08a4e, octopus: 0xff6b57, hamster: 0xf2b47a }[style];
+    const body = flat(C);
+    const b = add(new THREE.SphereGeometry(1.0, 48, 32), 1.05, 0, 0, body); b.scale.set(1, style === 'octopus' ? 1.1 : 1.0, 0.95);
+    const feet = style === 'octopus' ? null : flat(style === 'raccoon' ? 0x3a4150 : style === 'owl' ? GN.mustard : 0xffe7cf);
+    if (feet) for (const s of [-1, 1]) add(new THREE.SphereGeometry(0.22, 20, 14), 0.08, s * 0.4, 0.2, feet).scale.set(1.1, 0.55, 1.5);
+    if (style === 'raccoon') {
+      const mask = add(new THREE.SphereGeometry(1.004, 48, 16, Math.PI / 2 - 0.75, 1.5, 1.05, 0.38), 1.05, 0, 0, flat(0x2b303b)); mask.scale.set(1, 1, 0.95);
+      const muzzle = add(new THREE.SphereGeometry(0.42, 32, 20), 0.82, 0, 0.66, flat(0xf1ece2)); muzzle.scale.set(1.2, 0.8, 0.7);
+      add(new THREE.SphereGeometry(0.09, 16, 12), 0.9, 0, 0.98, ink);
+      eyes(1.27, 0.86, 0.34, 0.19);
+      for (const s of [-1, 1]) { const e = add(new THREE.ConeGeometry(0.3, 0.42, 24), 1.92, s * 0.58, 0, body); e.rotation.z = -s * 0.45;
+        const i = add(new THREE.ConeGeometry(0.18, 0.28, 24), 1.9, s * 0.6, 0.12, flat(0x2b303b)); i.rotation.z = -s * 0.45; }
+      for (let k = 0; k < 5; k++) add(new THREE.SphereGeometry(0.3 - k * 0.02, 24, 16), 0.45 + k * 0.08, 0.85 + k * 0.16, -0.55 - k * 0.05, flat(k % 2 ? 0x2b303b : C));
+      for (const s of [-1, 1]) add(new THREE.CapsuleGeometry(0.1, 0.18, 8, 16), 0.85, s * 1.0, 0.1, body).rotation.z = s * 0.6;
+    } else if (style === 'owl') {
+      const belly = add(new THREE.SphereGeometry(0.7, 40, 24), 0.75, 0, 0.42, flat(0xf3e1c0)); belly.scale.set(1, 0.9, 0.6);
+      for (const s of [-1, 1]) { const d = add(new THREE.CylinderGeometry(0.36, 0.36, 0.06, 32), 1.32, s * 0.36, 0.86, flat(0xfff6e6)); d.rotation.x = Math.PI / 2 - 0.15; }
+      eyes(1.32, 0.9, 0.36, 0.22);
+      const beak = add(new THREE.ConeGeometry(0.1, 0.22, 16), 1.06, 0, 0.98, flat(GN.mustard)); beak.rotation.x = Math.PI;
+      for (const s of [-1, 1]) { const t = add(new THREE.ConeGeometry(0.16, 0.45, 20), 1.95, s * 0.55, 0, body); t.rotation.z = -s * 0.5; }
+      for (const s of [-1, 1]) { const w = add(new THREE.SphereGeometry(0.4, 24, 16), 0.95, s * 0.9, -0.05, flat(0x9c6a38)); w.scale.set(0.35, 0.9, 0.7); w.rotation.z = s * 0.2; }
+    } else if (style === 'octopus') {
+      eyes(1.25, 0.84, 0, 0.42, [0.04, 0.05], true);
+      for (const s of [-1, 1]) add(new THREE.SphereGeometry(0.14, 16, 12), 0.95, s * 0.6, 0.72, flat(0xffa192)).scale.set(1.4, 0.7, 0.4);
+      smile(0.78, 0.92, 0.12);
+      for (let k = 0; k < 6; k++) {
+        const a = (k / 6) * Math.PI * 2 + Math.PI / 6;
+        const t = add(new THREE.TorusGeometry(0.22, 0.12, 14, 24, Math.PI * 1.25), 0.24, Math.sin(a) * 0.72, Math.cos(a) * 0.72, body);
+        t.rotation.set(0, a + Math.PI / 2, 0); t.rotateZ(Math.PI * 0.95);
+      }
+    } else if (style === 'hamster') {
+      const belly = add(new THREE.SphereGeometry(0.72, 40, 24), 0.75, 0, 0.4, flat(0xfff1df)); belly.scale.set(1, 0.85, 0.6);
+      for (const s of [-1, 1]) { add(new THREE.SphereGeometry(0.34, 24, 16), 0.98, s * 0.55, 0.6, flat(0xfff1df)).scale.set(1, 0.85, 0.6);
+        const e = add(new THREE.SphereGeometry(0.24, 24, 16), 1.86, s * 0.6, 0, body); e.scale.set(1, 1, 0.5);
+        const i = add(new THREE.SphereGeometry(0.15, 20, 14), 1.86, s * 0.6, 0.08, flat(0xf59c9c)); i.scale.set(1, 1, 0.4);
+        add(new THREE.SphereGeometry(0.11, 16, 12), 1.05, s * 0.5, 0.85, flat(0xff9a8a)).scale.set(1.3, 0.7, 0.4); }
+      eyes(1.3, 0.88, 0.3, 0.16);
+      add(new THREE.SphereGeometry(0.07, 16, 12), 1.12, 0, 0.98, flat(0xd96d6d));
+      for (const s of [-1, 1]) add(new THREE.SphereGeometry(0.13, 16, 12), 0.85, s * 0.2, 0.92, flat(0xffe0c8));
+    }
+    top = 2.1; bulb = style === 'octopus' ? GN.mustard : GN.coral;
   } else if (style === 'cyclops') {
     const b = add(new THREE.SphereGeometry(1.0, 48, 32), 1.05, 0, 0, flat(GN.teal)); b.scale.set(1, 1.05, 0.95);
     eyes(1.25, 0.8, 0, 0.42, [0.04, 0.05], true); smile(0.62, 0.86, 0.16);
