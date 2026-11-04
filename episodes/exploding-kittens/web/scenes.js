@@ -1,5 +1,5 @@
 // Exploding Kittens episode: game-night tabletop scenes.
-import { THREE, clamp, ease, fade, win, lerp } from '/pipeline/web/stage.js';
+import { THREE, RoundedBoxGeometry, clamp, ease, fade, win, lerp } from '/pipeline/web/stage.js';
 import { GN, buildRoom, makeCard, makeDeck, makeBars, CARD, cardTexture } from '/pipeline/web/gamenight.js';
 
 const NAMED = { MUSTARD: GN.mustard, CORAL: GN.coral, TEAL: GN.teal, BLUE: GN.blue, TEXT: GN.text, MUTED: GN.muted, CREAM: GN.cream };
@@ -299,13 +299,38 @@ SCENES.endcard = async (stage, spec) => {
 };
 
 SCENES.thumb = async (stage, spec) => {
-  buildRoom(stage);
-  const k = makeCard(stage, 0, true); k.position.set(2.2, 1.2, 0.6); k.rotation.set(-0.9, 0.25, 0.15); k.scale.set(2.6, 2.6, 2.6);
-  const d = makeDeck(stage, [4.6, 0, -1.2], 30); d.setCount(30);
-  stage.text({ text: 'DO', x: 90, y: 90, size: 230, weight: 900, font: 'rubik', at: -1 });
-  stage.text({ text: 'NOTHING.', x: 90, y: 320, size: 230, weight: 900, font: 'rubik', color: GN.mustard, at: -1 });
-  stage.text({ text: `WIN ${Math.round(spec.headline)}%`, x: 100, y: 610, size: 96, weight: 900, font: 'rubik', pill: GN.coral, color: '#fff', at: -1 });
-  return () => { stage.cameraAt(0, { pos: [[1.5, 9, 8]], look: [[2.2, 0.5, 0]] }); stage.clear2d(); };
+  const room = buildRoom(stage);
+  const v = spec.variant || 'A';
+  const font = await rubikFont();
+  const word = (txt, color, size, x, z, scale = 1) => {
+    const geo = new TextGeometry(txt, { font, size, depth: size * 0.3, curveSegments: 6, bevelEnabled: true, bevelThickness: size * 0.03, bevelSize: size * 0.025, bevelSegments: 3 });
+    geo.computeBoundingBox(); const bb = geo.boundingBox; geo.translate(-(bb.max.x + bb.min.x) / 2, 0, 0);
+    const col = new THREE.Color(color);
+    const m = new THREE.Mesh(geo, [new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.55, roughness: 0.5 }),
+                                   new THREE.MeshStandardMaterial({ color: col.clone().multiplyScalar(0.5), roughness: 0.6 })]);
+    m.rotation.x = -Math.PI / 2; m.position.set(x, 0, z); m.scale.setScalar(scale); m.castShadow = true; stage.scene.add(m); return m;
+  };
+  const kitten = (x, z, s, ry) => { const c = makeCard(stage, 0, true); c.scale.setScalar(s); c.position.set(x, 0.1, z); c.rotation.y = ry; return c; };
+  if (room.floor) room.floor.material.color.multiplyScalar(0.8);
+  if (v === 'A') {            // the counter-intuitive verdict
+    word('DO', '#ffffff', 1.7, -3.4, -1.9); word('NOTHING.', '#ffcc33', 1.3, -1.2, 0.15);
+    kitten(6.0, -0.4, 2.4, -0.22);
+    word('WIN 40%', '#ff7a63', 1.0, -2.2, 2.6);
+  } else if (v === 'B') {     // the gap
+    const bar = (x, h, col) => { const m = new THREE.Mesh(new RoundedBoxGeometry(1.8, h, 1.8, 6, 0.14), new THREE.MeshPhysicalMaterial({ color: col, roughness: 0.32, clearcoat: 0.6 })); m.position.set(x, h / 2, 0.6); m.castShadow = true; stage.scene.add(m); };
+    bar(-5.0, 0.9, '#ff6b57'); bar(-1.2, 2.8, '#f2b134');
+    word('11%', '#ffffff', 0.85, -5.0, 2.6); word('35%', '#ffcc33', 0.85, -1.2, 2.6);
+    kitten(4.6, 0.2, 2.3, 0.2);
+    word('SAME CARDS.', '#ffffff', 0.7, 3.4, -2.6);
+  } else {                    // the mistakes
+    word('5', '#ff7a63', 3.2, -4.6, 0.6);
+    word('MISTAKES', '#ffffff', 1.0, 0.6, -1.0); word('EVERYONE', '#ffcc33', 1.0, 0.6, 0.5); word('MAKES', '#ffffff', 1.0, 0.6, 2.0);
+    kitten(5.4, -2.6, 1.5, 0.35);
+  }
+  return () => {
+    const cam = v === 'B' ? { pos: [[0, 13, 7.5]], look: [[0, 0.6, 0.2]] } : { pos: [[0, 14.5, 3.2]], look: [[0, 0, 0.1]] };
+    stage.cameraAt(0, cam); stage.clear2d();
+  };
 };
 
 export async function build(stage, spec) {

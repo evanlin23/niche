@@ -177,9 +177,9 @@ def build_spec(ctx) -> dict:
     return s
 
 
-def thumbnail_spec():
+def thumbnail_spec(variant="A"):
     tr = demo_trace(123)
     return {"module": MODULE, "type": "thumb", "W": 1920, "H": 1080, "fps": FPS, "duration": 1 / FPS,
             "n_frames": 1, "cues": {}, "params": {}, "theme": "custom", "font": "rubik", **LOOK,
-            "headline": pct(F["vs_casual"]["4"]["win"]),
+            "headline": pct(F["vs_casual"]["4"]["win"]), "variant": variant,
             "trace": {"events": tr["events"], "players": tr["players"], "winner": tr["result"]["Winner"]}}
