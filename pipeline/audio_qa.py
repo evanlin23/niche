@@ -215,7 +215,34 @@ def _selftest():
     assert after < before / 3, "duck did not turn it down"
 
 
+def trim_to_words(vd: Path, lid: str, lead=0.08, tail=0.15):
+    """Trim a line to its first/last ALIGNED word (after noises were filled, the transcript-free edges)."""
+    from .tighten_voice import apply_cuts
+    wav, js = vd / f"{lid}.wav", vd / f"{lid}.json"
+    meta = json.loads(js.read_text()); aw = meta.get("aligned_words")
+    if not aw:
+        return 0.0
+    a, sr = sf.read(wav, dtype="float32"); dur = len(a) / sr
+    s0 = max(0.0, aw[0][1] - lead); e1 = min(dur, aw[-1][2] + tail)
+    cuts = [c for c in ((0.0, s0), (e1, dur)) if c[1] - c[0] > 0.02]
+    if not cuts:
+        return 0.0
+    a, words = apply_cuts(a, sr, [tuple(w) for w in meta["words"]], cuts)
+    sf.write(wav, a, sr)
+    meta.update(words=[list(w) for w in words], duration=round(len(a) / sr, 3),
+                aligned_words=[[w, round(x - s0, 3), round(y - s0, 3), sc] for w, x, y, sc in aw])
+    js.write_text(json.dumps(meta))
+    return sum(c[1] - c[0] for c in cuts)
+
+
 def main():
+    import sys
+    if "--trim-only" in sys.argv:
+        ep = Path(sys.argv[1]); vd = ep / "voice"
+        ids = re.findall(r"^\[(\w+)\] ", (ep / "script.md").read_text(), re.M)
+        total = sum(trim_to_words(vd, lid) for lid in ids)
+        print(f"trimmed {total:.1f}s of dead air at line edges")
+        return
     _selftest()
     ap = argparse.ArgumentParser()
     ap.add_argument("episode")
@@ -300,6 +327,7 @@ def main():
         meta["aligned_words"] = [list(x) for x in spans]
         if not a.dry_run:
             js.write_text(json.dumps(meta))
+            trim_to_words(vd, lid)
         print(lid, f"{len(evs)} events", f"{len(weak)} unsure words", f"{len(chopped)} chopped joins", flush=True)
     (vd / "_qa.txt").write_text("\n\n".join(report) + "\n")
     print(f"report -> {vd / '_qa.txt'}")
