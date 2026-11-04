@@ -102,21 +102,23 @@ CHARTS = {
         item("2 players: second", pct(R["seats"]["2"]["seat_win"][1]), CREAM, "t2"),
         item("5 players: first", pct(R["seats"]["5"]["seat_win"][0]), CREAM, "t3"),
         item("5 players: last", pct(R["seats"]["5"]["seat_win"][4]), MUSTARD, "t3+1", True)]),
-    "twoplayer": lambda: dict(fair=50, maxV=92, items=[
-        item("cards on a whim half the time", sw2("patience", 0.5), CORAL, "q2+3"),
-        item("no pair steals", sw2("steal", False), CORAL, "q3"),
-        item("See the Future right away", sw2("future", 0.0), CORAL, "q4"),
-        item("normal player", sw2("patience", 0.15), CREAM, "q2"),
-        item("never play for fun", sw2("patience", 0.0), MUSTARD, "q2+1.5", True)]),
+    "twoplayer": lambda: dict(fair=50, maxV=92, fairSide="left", items=[
+        item("cards on a whim half the time", sw2("patience", 0.5), CORAL, "t5+1.2"),
+        item("no pair steals", sw2("steal", False), CORAL, "t5+3.6"),
+        item("See the Future right away", sw2("future", 0.0), CORAL, "t5+6"),
+        item("normal player", sw2("patience", 0.15), CREAM, "t4"),
+        item("never play for fun", sw2("patience", 0.0), MUSTARD, "t4+2.5", True)]),
     "attacks": lambda: dict(fair=None, maxV=52, unit="%", items=[
-        item("2 players", pct(X["explode_under_attack_by_n"]["2"]), CORAL, "a1"),
-        item("3 players", pct(X["explode_under_attack_by_n"]["3"]), CORAL, "a1+0.6"),
-        item("4 players", pct(X["tables"]["casual"]["explode_under_attack"]), MUSTARD, "a1+1.2", True),
-        item("5 players", pct(X["explode_under_attack_by_n"]["5"]), CORAL, "a1+1.8")]),
+        item("2 players", pct(X["explode_under_attack_by_n"]["2"]), CORAL, "d6"),
+        item("4 players: normal table", pct(X["tables"]["casual"]["explode_under_attack"]), CREAM, "d5+2"),
+        item("4 Patient Ones", pct(X["tables"]["best"]["explode_under_attack"]), MUSTARD, "d6+2.5", True)]),
     "tables": lambda: dict(fair=25, maxV=72, items=[
         item("vs a normal table", pct(X["tables"]["casual"]["best_win"]), CREAM, "r2"),
         item("vs an aggressive table", pct(X["tables"]["aggressive"]["best_win"]), MUSTARD, "r2+3", True),
         item("vs hoarders", pct(X["tables"]["hoarder"]["best_win"]), CREAM, "r2+6")]),
+    "length": lambda: dict(fair=None, maxV=45, unit=" turns", items=[
+        item("normal table", round(X["tables"]["casual"]["mean_turns"], 1), CREAM, "r4+1.5"),
+        item("four Patient Ones", round(X["tables"]["best"]["mean_turns"], 1), MUSTARD, "r4+3.5", True)]),
     "final": lambda: dict(fair=None, maxV=82, items=[
         *[x for n in ("2", "3", "4", "5") for x in (
             item(f"{n} players: fair", round(100 / int(n), 1), GREY, "w3"),

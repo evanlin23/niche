@@ -66,6 +66,9 @@ scenes:
   render: deck56
   lines:
   - g1
+  - g2
+  - g3
+  - g4
   - c1
   pad:
   - 0.6
@@ -225,6 +228,14 @@ scenes:
       align: center
       size: 36
       pill: CREAM
+- id: attacks
+  render: bars
+  lines:
+  - d5
+  - d6
+  params:
+    chart: attacks
+    title: Explosions that happen under Attack
 - id: m3
   render: statement
   lines:
@@ -341,20 +352,18 @@ scenes:
   - t1
   - t2
   - t3
-  - t4
   params:
     chart: seats
     title: Does going first matter?
-    notes:
-    - text: 'Two players, never playing for fun: 68.5%'
-      at: t4
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 36
-      pill: MUSTARD
   chapter: Does going first matter?
+- id: twoplayer
+  render: bars
+  lines:
+  - t4
+  - t5
+  params:
+    chart: twoplayer
+    title: 'Two players: every habit gets louder'
 - id: tables
   render: bars
   lines:
@@ -374,6 +383,13 @@ scenes:
       size: 36
       pill: CREAM
   chapter: Does it hold up?
+- id: length
+  render: bars
+  lines:
+  - r4
+  params:
+    chart: length
+    title: Turns per game, four players
 - id: strategy
   chapter: The recipe
   render: checklist
@@ -401,6 +417,7 @@ scenes:
   render: bars
   lines:
   - w3
+  - w4
   params:
     chart: final
     title: The Patient One vs a normal table

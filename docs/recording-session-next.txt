@@ -1,12 +1,37 @@
 TOMORROW NIGHT'S RECORDING SESSION
 
-Do one recording per episode (four files). Same routine as last time:
+Do one recording per episode (five files: the Exploding Kittens pick-ups first, then four episodes). Same routine as last time:
 - Pixel Recorder, phone ~15-20 cm away, quiet spot away from windows.
 - Each file: 10 seconds of silence first, then read top to bottom, 1-2 s pause between lines.
 - Mess up? Pause and redo the whole sentence. The last take wins.
 - Say 'percent' clearly. Slow down a little on punchlines and verdicts.
 - Take a water break between episodes. Name/send the files in any order; I match them automatically.
 - Re-word anything that doesn't sound like you. I'll update the captions to match what you said.
+
+========================================================================
+FIRST: EXPLODING KITTENS PICK-UPS   (8 new lines, ~252 words, about 80 s)
+========================================================================
+These push video 1 past 8 minutes. Record them as their own file (10 s of room tone first).
+Same voice/energy as the rest of the video. Read each line once cleanly; if you trip, pause and redo
+the WHOLE line. (I now catch restarts automatically, but clean takes still sound better.)
+
+THE GAME (after "Last player standing wins.")
+[g2]  On your turn, you can play as many cards as you like. Then you end your turn by drawing one card. That draw is where people explode.
+[g3]  Skip ends your turn without drawing. Attack does the same, and the next player has to take two turns. See the Future shows you the top three cards. Shuffle mixes the deck. Favor makes someone give you a card of their choice. Two matching cat cards steal a random card from anyone. And a Nope cancels almost anything.
+[g4]  There's always one Kitten fewer than there are players, so exactly one person survives.
+
+ATTACKS (after "The gap was a fraction of a point.")
+[d5]  Here's where people actually get caught. At a normal table of four, almost one explosion in four happens to someone under Attack, stuck taking two turns in a row.
+[d6]  With two players, it's almost two in five. But at a table of four Patient Ones, it's only about one in thirteen. My guess is that patient players still have a Skip in hand when the Attack lands.
+
+TWO PLAYERS (after "...you win sixty eight percent.")
+[t5]  The mistakes cost more, too. Play cards on a whim half the time, and you drop to nineteen percent. Skip the pair steals, and you're down to thirty seven. Even using See the Future the moment you draw it costs you almost nine points.
+
+DOES IT HOLD UP (after "...other people make the mistakes.")
+[r4]  It even makes games faster. A normal table of four takes about thirty two turns. Four Patient Ones finish in twenty five.
+
+THE RECIPE (after "...more than half its games with three.")
+[w4]  With two players, it wins sixty percent. With five, twenty nine and a half, where a fair share is twenty.
 
 ========================================================================
 EPISODE 2 — UNO HOUSE RULES   (~1037 words, about 5.5 min at your pace)

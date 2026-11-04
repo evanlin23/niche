@@ -221,7 +221,7 @@ SCENES.deck56 = async (stage, spec) => {
 SCENES.bars = async (stage, spec) => {
   buildRoom(stage, { feltW: 18, feltD: 9 });
   const ch = spec.chart, p = spec.params;
-  const bars = makeBars(stage, ch.items, { x0: -6.3, width: 12.6, maxV: ch.maxV, height: 6.2, z: 0, fair: ch.fair, unit: ch.unit ?? '%' });
+  const bars = makeBars(stage, ch.items, { x0: -6.3, width: 12.6, maxV: ch.maxV, height: 6.2, z: 0, fair: ch.fair, unit: ch.unit ?? '%', fairSide: ch.fairSide ?? 'right' });
   title(stage, p.title); notes(stage, p.notes); brand(stage);
   return (t) => {
     // slow arc around the chart (labels are world-anchored and sub-pixel, so they glide with it)

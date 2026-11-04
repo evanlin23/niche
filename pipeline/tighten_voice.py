@@ -82,11 +82,17 @@ def tighten(a, sr, words, max_pause=0.35, lead=0.08, tail=0.15):
         mid = (s + e) / 2
         cuts.append((mid - (e - s - max_pause) / 2, mid + (e - s - max_pause) / 2))
     a, words = apply_cuts(a, sr, words, cuts)
-    if words:                                     # lead / tail relative to the first / last word
-        s0 = max(0.0, words[0][1] - lead)
-        e1 = min(len(a) / sr, words[-1][2] + tail)
-        a = a[int(s0 * sr): int(e1 * sr)]
-        words = [(w, round(s - s0, 3), round(e - s0, 3)) for w, s, e in words]
+    # lead / tail from the AUDIO (first / last loud frame), never from the transcript: a transcript that
+    # stops early must not chop the end of the line off
+    hop = int(sr * FRAME); n = len(a) // hop
+    if n:
+        e = 20 * np.log10(np.sqrt(np.mean(a[: n * hop].reshape(n, hop) ** 2, axis=1)) + 1e-9)
+        loud = np.flatnonzero(e > np.percentile(e, 95) - 32)
+        if len(loud):
+            s0 = max(0.0, loud[0] * FRAME - lead)
+            e1 = min(len(a) / sr, (loud[-1] + 1) * FRAME + tail)
+            a = a[int(s0 * sr): int(e1 * sr)]
+            words = [(w, round(max(0.0, s - s0), 3), round(min(e1 - s0, e - s0), 3)) for w, s, e in words]
     return a, words, sum(e - s for s, e in cuts)
 
 
@@ -112,7 +118,11 @@ def main():
                 shutil.copy2(p, orig / p.name)
         audio, sr = sf.read(orig / wav.name, dtype="float32")
         meta = json.loads((orig / js.name).read_text())
-        words = [tuple(w) for w in (vwords.get(js.stem) or meta["words"])]
+        vw = vwords.get(js.stem)
+        if vw and meta["words"] and vw[-1][2] < meta["words"][-1][2] - 0.6:
+            print(f"  {js.stem}: verbatim transcript stops early, using the original word timings")
+            vw = None
+        words = [tuple(w) for w in (vw or meta["words"])]
         words = [w for w in words if any(ch.isalnum() for ch in w[0])]
         before += len(audio) / sr
         audio, words = apply_cuts(audio, sr, words, [tuple(c) for c in cuts.get(js.stem, [])])

@@ -17,6 +17,11 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 - Kitten odds over a game (traced games): first draw ~1 in 7, last draws mostly Kittens.
 - Rulebook: "save your cards early in the game while your chance of exploding is low."
 - f4 rule: future_risk 0.3 = Kittens/cards >= 0.3, i.e. about 3.3 cards per Kitten or fewer (2 Kittens -> 6-7 cards).
+- Added lines (second recording): explosions under Attack (extra.json): 4p normal table 22.8% (almost 1 in 4),
+  2p 38.2% (almost 2 in 5), table of 4 Patient Ones 7.4% (about 1 in 13). Game length: normal 4p 32.4 turns,
+  4 Patient Ones 25.0. Two players vs a normal bot (fair 50): whim half the time 18.7, no pair steals 37.1,
+  See the Future right away 41.3 (-8.7), never play for fun 68.4. Final: 2p 59.6%, 5p 29.5% (fair 20).
+  Rules lines g2-g4: official rulebook (turn = play any number of cards, then draw; Kittens = players - 1).
 - Aside is true: an earlier draft explained the bottom-of-deck result with an untested reason; it was cut.
 
 ## Cold open
@@ -26,8 +31,11 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 [o4] The best of them won thirty five percent of its games. The worst won eleven and a half.
 [o5] And the gap wasn't luck, or some secret combo. It came down to five mistakes, and most tables make every one of them.
 
-## The game in ten seconds
+## The game in thirty seconds
 [g1] If you've never played: everyone draws from one deck, and whoever draws an Exploding Kitten is out, unless they have a Defuse. Every other card helps you avoid drawing, or makes somebody else draw. Last player standing wins.
+[g2] On your turn, you can play as many cards as you like. Then you end your turn by drawing one card. That draw is where people explode.
+[g3] Skip ends your turn without drawing. Attack does the same, and the next player has to take two turns. See the Future shows you the top three cards. Shuffle mixes the deck. Favor makes someone give you a card of their choice. Two matching cat cards steal a random card from anyone. And a Nope cancels almost anything.
+[g4] There's always one Kitten fewer than there are players, so exactly one person survives.
 
 ## Can you trust it
 [c1] First, the game. My version follows the official rulebook for the original edition. Fifty six cards, four Kittens, six Defuses, Attacks that stack, and Nopes that cancel other Nopes.
@@ -56,6 +64,8 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 [d2] Once one card in four is a Kitten, the deck feels dangerous, and most people start Skipping. That's the Panicker, and it only wins sixteen.
 [d3] Wait for a coin flip, and you still lose ground. The only rule that held up is the boring one. Skip or Attack when you know the next card is a Kitten. Not when you feel like it.
 [d4] And if you're wondering, Attack or Skip barely matters when you're dodging. The gap was a fraction of a point.
+[d5] Here's where people actually get caught. At a normal table of four, almost one explosion in four happens to someone under Attack, stuck taking two turns in a row.
+[d6] With two players, it's almost two in five. But at a table of four Patient Ones, it's only about one in thirteen. My guess is that patient players still have a Skip in hand when the Attack lands.
 
 ## Mistake three: looking at the wrong time
 [f1] Which brings us to mistake number three. Looking at the wrong time.
@@ -92,16 +102,19 @@ Structure follows docs/perfectplay-structure-notes.md (beats only, our own words
 [t2] With two players, it does. The first player wins fifty two percent of the time.
 [t3] With five players, it flips. The last seat does a little better than the first. You get to watch a few draws before you risk anything.
 [t4] And if you mostly play one on one, every one of these habits gets louder. Stop playing cards for fun in a two player game, and you win sixty eight percent.
+[t5] The mistakes cost more, too. Play cards on a whim half the time, and you drop to nineteen percent. Skip the pair steals, and you're down to thirty seven. Even using See the Future the moment you draw it costs you almost nine points.
 
 ## Does it hold up
 [r1] Does any of this work against good players?
 [r2] Against a normal table, the Patient One wins forty percent. Against an aggressive table that throws Attacks around, fifty three. Against a table of hoarders, half its games.
 [r3] But sit four Patient Ones at the same table, and each one wins exactly one game in four. It doesn't break the game. It only works because other people make the mistakes.
+[r4] It even makes games faster. A normal table of four takes about thirty two turns. Four Patient Ones finish in twenty five.
 
 ## The recipe
 [w1] So here's what ten billion games taught me.
 [w2] Don't play cards for fun. Only dodge when you know. Peek with See the Future once the odds reach one in three. Put the Kitten where the next player draws. Steal from the biggest hand. Give away junk, and Nope anything aimed at you.
 [w3] That's the Patient One. Forty percent at a table of four, and more than half its games with three.
+[w4] With two players, it wins sixty percent. With five, twenty nine and a half, where a fair share is twenty.
 
 ## Close
 [e1] Remember the one thing my bots can't do? Lie.
