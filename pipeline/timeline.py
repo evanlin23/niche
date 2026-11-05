@@ -40,6 +40,7 @@ class Scene:
     cues: dict[str, Cue] = field(default_factory=dict)
     chapter: str | None = None
     speech: list = field(default_factory=list)   # [(abs_start, Speech)]
+    chain: dict | None = None                   # consecutive scenes on the same template: one continuous shot
 
     def cue(self, cid, default=0.0) -> float:
         return self.cues[cid].start if cid in self.cues else default
@@ -71,7 +72,44 @@ def build(scene_specs: list[dict], texts: dict[str, str], cache_dir: Path,
         sc.duration = max(cur, float(spec.get("min_duration", 0)))
         scenes.append(sc)
         t += sc.duration
+    mark_chains(scenes)
     return scenes
+
+
+TIMING = {"at", "until", "plan", "highlight", "highlights", "seat_hl", "turns", "turns_auto", "moves", "callouts", "notes",
+          "title", "kicker", "pill", "name_words", "lines", "play", "out", "frames", "label", "labels", "text", "head", "sub"}
+STRUCT = {"players", "hands", "rows", "cols", "style", "count", "length", "item", "fair"}
+
+
+def layout_sig(v, key=None):
+    """What decides a template's framing: structure (which parts exist, how many) but not timing or wording."""
+    if isinstance(v, dict):
+        return {k: layout_sig(x, k) for k, x in sorted(v.items()) if k not in TIMING and k != "shot"}
+    if isinstance(v, list):
+        return len(v)
+    return v if key in STRUCT else None
+
+
+def mark_chains(scenes):
+    """Consecutive scenes on the same template share one continuous camera move (a cut between two shots of the same
+    layout from slightly different angles reads as a jump). If the layout differs (say a row, then the row + a chart),
+    the camera can't continue, so the next scene gets a clearly different shot (`shot: new`), as does an explicit
+    `params: {shot: new}`."""
+    i = 0
+    while i < len(scenes):
+        j = i
+        while j + 1 < len(scenes) and scenes[j + 1].render == scenes[i].render and \
+                (scenes[j + 1].params or {}).get("shot") != "new":
+            if layout_sig(scenes[j + 1].params or {}) != layout_sig(scenes[j].params or {}):
+                scenes[j + 1].params = dict(scenes[j + 1].params or {}, shot="new")
+                break
+            j += 1
+        if j > i:
+            t0, total = scenes[i].start, sum(s.duration for s in scenes[i:j + 1])
+            for k in range(i, j + 1):
+                scenes[k].chain = {"t0": round(scenes[k].start - t0, 4), "total": round(total, 4), "index": k - i,
+                                   "n": j - i + 1}
+        i = j + 1
 
 
 def caption_chunks(scenes: list[Scene], max_words=7, max_chars=42, absolute=True):

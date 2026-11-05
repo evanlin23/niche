@@ -9,7 +9,14 @@ Checks (per scene; error = gate fails, warn = look at it, info = FYI):
               other objects inside the frame                                                    (warn)
   overlap     no two visible labels overlap                                                     (error)
   cut         at the last frame nothing is half-faded, still moving or mid-tween                 (error; ambient loops warn)
-  coverage    no stretch of narration longer than 5 s without a new visual event               (error)
+  coverage    no stretch of narration longer than 5 s without a new OBJECT event (a card/piece/pawn/bar
+              appearing or moving): captions, callouts and notes popping up don't count          (error)
+  sync        every word-anchored object event starts moving within +-0.15 s of its word         (error)
+              (onset = the moment the object has covered 5% of its move, as the eye sees it)
+  smooth      no velocity discontinuity: per-object frame-to-frame velocity jumps (teleports,
+              instant starts/stops, bounces) on anything moving visibly                          (error)
+  continuity  consecutive scenes on the same template either continue the shot (same camera) or
+              cut to a clearly different one (>= 20 deg or >= 1.4x distance); in between = a jump (error)
   numbers     numbers on screen agree with the script line they are anchored to                 (error; unsaid = warn)
   captions    burn_captions: false -> nothing burned in                                          (error)
   pixels      (with --video) no black frames, no brightness flashes / dips                       (error)
@@ -29,7 +36,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 GAP_MAX = 5.0        # seconds of narration without a new visual event
-STEP = 3             # probe every 3rd frame (0.1 s) + the last two frames
+SYNC_TOL = 0.15      # s: an anchored event's motion starts this close to its word
+TEXT_ONLY = re.compile(r"callout|notes|habit|caption|chips|kicker")   # anchors that only show text (no object motion)
+STEP = 1             # probe every frame (motion onset / acceleration need it); most checks use every 3rd (COARSE)
+COARSE = 3
 
 
 def _issue(sev, check, msg, t0=None, t1=None, **kw):
@@ -68,6 +78,168 @@ def probe(spec_list, workdir: Path):
         states = [json.loads(l) for l in p.read_text().splitlines() if l.strip()] if p.exists() else []
         res[sid] = states
     return res
+
+
+# ------------------------------------------------------------------ motion (dense, every frame)
+def coarse(states):
+    """Every COARSE-th probed frame (+ the last two): the per-state checks were tuned at 0.1 s."""
+    st = [s for s in states if "error" not in s]
+    keep = {id(s) for s in st[-2:]}
+    return [s for s in states if "error" in s or s.get("f", 0) % COARSE == 0 or id(s) in keep]
+
+
+def _series(states):
+    """object id -> [(t, frame, pos(np), op)] from consecutive probe states"""
+    import numpy as np
+    ser = defaultdict(list)
+    for s in states:
+        if "error" in s:
+            continue
+        for o in s["objs"]:
+            ser[o["id"]].append((s["t"], s.get("f", 0), np.array(o["p"], float), o["op"]))
+    return ser
+
+
+def motion_onsets(states, fps=30, min_move=0.04, eps=0.15):
+    """[(t_onset, obj, kind, size)]: when each appearance / move becomes visible. Moves are split at speed minima
+    (back-to-back moves count separately); a move's onset is when the object has covered 5% of that move (an ease-in
+    that creeps for 0.2 s starts late to the eye)."""
+    import numpy as np
+    out = []
+    for k, ser in _series(states).items():
+        runs, cur = [], []
+        for x in ser:                                     # contiguous frames
+            if cur and x[1] != cur[-1][1] + 1:
+                runs.append(cur); cur = []
+            cur.append(x)
+        if cur:
+            runs.append(cur)
+        for r in runs:
+            for m, x in enumerate(r):                     # appears = becomes visible (opacity crosses 0.1)
+                if x[3] >= 0.1 and (m == 0 or r[m - 1][3] < 0.1):
+                    if x[0] > 0.05:
+                        out.append((x[0], k, "appear", 1.0))
+            if len(r) < 3:
+                continue
+            d = [0.0] + [float(np.linalg.norm(r[m][2] - r[m - 1][2])) for m in range(1, len(r))]   # d[m]: step into m
+            v = [x * fps for x in d]
+            mins = [m for m in range(len(r)) if (m == 0 or v[m] <= v[m - 1]) and (m == len(r) - 1 or v[m] <= v[m + 1])]
+            for m0, m1 in zip(mins, mins[1:]):
+                peak = max(v[m0 + 1:m1 + 1])
+                path = sum(d[m0 + 1:m1 + 1])
+                if peak < eps or path < min_move or v[m0] > 0.2 * peak:
+                    continue
+                acc = 0.0
+                for m in range(m0 + 1, m1 + 1):
+                    acc += d[m]
+                    if acc >= 0.05 * path:
+                        out.append((r[m][0], k, "move", path)); break
+    return sorted(out)
+
+
+def check_sync(spec, states, fps=30):
+    """Every anchored object event must start (visibly) within SYNC_TOL of its word. Several events on one word (two
+    cards played together) must each have their own moving object within the tolerance."""
+    issues, offsets = [], []
+    ons = motion_onsets(states, fps)
+    groups = defaultdict(list)
+    for a in spec.get("qa", {}).get("anchors", []):
+        if not TEXT_ONLY.search(a.get("path", "")) and not a.get("path", "").endswith(".until"):   # ends aren't starts
+            groups[(round(a["t"], 3), a["ref"])].append(a)
+    for (t, ref), al in groups.items():
+        if t < 0.5 or t > spec["duration"] - 0.1:
+            continue                                      # the first 0.5 s: the scene builds in on the cut itself
+        # objects needed: the most events of ONE kind on this word (play[0] + play[1] = two cards; a highlight and a
+        # move of the same pawn, or a statement line recorded twice, = one)
+        kinds = defaultdict(set)
+        for x in al:
+            kinds[re.sub(r"\[\d+\](\.at)?$", "", x["path"]).replace("params.", "")].add(x["path"])
+        need = max(len({q for q in v if "[" in q} or v) for v in kinds.values())   # 'lines' + 'params.lines[1]' = one
+        near = sorted((o for o in ons if -0.4 <= o[0] - t <= 0.8), key=lambda o: abs(o[0] - t))
+        got, objs = [], set()
+        for o in near:
+            if o[1] not in objs:
+                objs.add(o[1]); got.append(round(o[0] - t, 3))
+            if len(got) == need:
+                break
+        paths = ", ".join(sorted({x["path"] for x in al}))[:80]
+        if len(got) < need:
+            issues.append(_issue("error", "sync", f"'{ref}' ({paths}): {need} events on this word but only {len(got)} "
+                                                  "objects start moving within 0.8 s of it", t))
+        worst = max(got, key=abs) if got else None
+        offsets.append({"ref": ref, "path": paths, "events": need, "offset": worst, "offsets": got})
+        if worst is not None and abs(worst) > SYNC_TOL:
+            issues.append(_issue("error", "sync", f"'{ref}' ({paths}): motion starts {worst:+.2f} s "
+                                                  f"{'after' if worst > 0 else 'before'} the word (limit +-{SYNC_TOL})", t))
+    return issues, offsets
+
+
+def check_smooth(states, fps=30, vmin=0.8, ratio=0.5):
+    """Velocity discontinuities: a frame-to-frame velocity change of more than half the object's local top speed."""
+    import numpy as np
+    issues, worst = [], {}
+    for k, ser in _series(states).items():
+        v = []                                             # (t, velocity vector) between consecutive frames
+        for a, b in zip(ser, ser[1:]):
+            if b[1] == a[1] + 1:
+                v.append((b[0], (b[2] - a[2]) * fps, b[1]))
+        for (t0, v0, f0), (t1, v1, f1) in zip(v, v[1:]):
+            if f1 != f0 + 1:
+                continue
+            loc = [np.linalg.norm(x[1]) for x in v if abs(x[0] - t1) <= 0.5]
+            vmax = max(loc) if loc else 0
+            dv = np.linalg.norm(v1 - v0)
+            if vmax >= vmin and dv > ratio * vmax:
+                w = worst.setdefault(k, [t1, t1, 0.0, vmax])
+                w[1] = t1; w[2] = max(w[2], dv / vmax)
+    for k, (a, b, r, vmax) in worst.items():
+        issues.append(_issue("error", "smooth", f"object {k}: velocity jumps by {r:.0%} of its speed between frames "
+                                                f"(top speed {vmax:.1f} units/s): ease it (no teleports, instant "
+                                                "starts/stops or bounces)", a, b))
+    return issues
+
+
+def _cam_pose(st):
+    import numpy as np
+    c = st.get("cam")
+    if not c:
+        return None
+    p, d = np.array(c["p"]), np.array(c["d"])
+    tgt = p + d * (-p[1] / d[1]) if d[1] < -1e-3 else p + d * 10
+    return p, d, tgt, float(np.linalg.norm(tgt - p))
+
+
+def check_continuity(sp, states):
+    """Consecutive scenes on the same template: continue the shot or cut to a clearly different one."""
+    import numpy as np
+    out, pairs = [], []
+    for (sa, a), (sb, b) in zip(sp, sp[1:]):
+        if a.get("type") != b.get("type"):
+            continue
+        if hasattr(sa, "start") and hasattr(sb, "start") and abs(sa.start + a.get("duration", 0) - sb.start) > 0.05:
+            continue                                      # not neighbours on the timeline (an --only subset)
+        A = [s for s in states.get(sa.id, []) if "error" not in s]
+        B = [s for s in states.get(sb.id, []) if "error" not in s]
+        if not A or not B:
+            continue
+        pa, pb = _cam_pose(A[-1]), _cam_pose(B[0])
+        if not pa or not pb:
+            continue
+        ang = float(np.degrees(np.arccos(np.clip(np.dot(pa[1], pb[1]), -1, 1))))
+        ratio = max(pa[3], pb[3]) / max(1e-6, min(pa[3], pb[3]))
+        shift = float(np.linalg.norm(pa[2] - pb[2]) / max(pa[3], pb[3]))
+        fov = abs(A[-1]["cam"]["fov"] - B[0]["cam"]["fov"])
+        same = ang < 1.5 and ratio < 1.03 and shift < 0.03 and fov < 0.5
+        different = ang >= 20 or ratio >= 1.4 or shift >= 0.3
+        m = {"from": sa.id, "to": sb.id, "angle": round(ang, 1), "dist_ratio": round(ratio, 2), "shift": round(shift, 2),
+             "verdict": "continuous" if same else "different shot" if different else "JUMP"}
+        pairs.append(m)
+        if not same and not different:
+            out.append(_issue("error", "continuity", f"cut {sa.id} -> {sb.id} (both '{a.get('type')}'): the camera jumps "
+                              f"{ang:.1f} deg / {ratio:.2f}x distance / {shift:.0%} of the view: continue the shot "
+                              "(kit: same template = continuous camera) or cut to a clearly different shot "
+                              "(>= 20 deg or 1.4x)", 0.0) | {"scene": sb.id, "pair": m})
+    return out, pairs
 
 
 # ------------------------------------------------------------------ checks
@@ -201,8 +373,7 @@ def check_scene(sc, spec, states, script, cfg):
     for w in spec.get("_tweens", []):
         events.append((w["at"], "tween", w["name"]))
     events.sort()
-    ev_times = [e[0] for e in events]
-
+    ev_times = [e[0] for e in events if e[1].startswith("object")]   # coverage: things that move, not text
     # ---- coverage: narration without anything new on screen
     speech = sorted((c[0], c[1], lid) for lid, c in spec["cues"].items())
     pts = [0.0] + [t for t in ev_times if 0 <= t <= dur] + [dur]
@@ -212,8 +383,9 @@ def check_scene(sc, spec, states, script, cfg):
         talk = sum(max(0, min(b, e) - max(a, s)) for s, e, _ in speech)
         if talk > GAP_MAX:
             lines = [lid for s, e, lid in speech if min(b, e) > max(a, s)]
-            issues.append(_issue("error", "coverage", f"{b - a:.1f} s with no new visual event while narrating "
-                                                      f"({', '.join(lines)}): add a word-anchored event", a, b))
+            issues.append(_issue("error", "coverage", f"{b - a:.1f} s with nothing moving or appearing on screen (only "
+                                                      f"captions/labels at most) while narrating ({', '.join(lines)}): "
+                                                      "add a word-anchored object event (card, piece, bar, highlight)", a, b))
 
     # ---- numbers
     from .numbers import agrees, screen_numbers, spoken_numbers
@@ -579,12 +751,17 @@ def run(slug, video=None, only=None, vertical=False, stills=True, out_dir=None, 
     states = probe([(sc.id, spec) for sc, spec in sp], out_dir)
     res = {"slug": slug, "vertical": vertical, "scenes": {}}
     for sc, spec in sp:
-        st = states.get(sc.id, [])
+        dense = states.get(sc.id, [])
+        st = coarse(dense)
         spec["_tweens"] = st[0].get("alltw", []) if st else []     # kit scenes: every registered transition
         issues, events = check_scene(sc, spec, st, script, cfg)
-        issues = anchor_issues.get(sc.id, []) + issues
+        si, offsets = check_sync(spec, dense, spec.get("fps", 30))
+        issues = anchor_issues.get(sc.id, []) + issues + si + check_smooth(dense, spec.get("fps", 30))
         res["scenes"][sc.id] = {"duration": spec["duration"], "events": len(events), "issues": issues, **spec.get("_metrics", {}),
-                                "event_times": [round(e[0], 2) for e in events][:400]}
+                                "event_times": [round(e[0], 2) for e in events][:400], "sync": offsets}
+    cont, res["continuity"] = check_continuity(sp, states)
+    for it in cont:
+        res["scenes"].setdefault(it["scene"], {"issues": []})["issues"].append(it)
     for f, v in st_bad.items():
         res["scenes"].setdefault("static", {"issues": []})["issues"] += [
             _issue("error", "static", f"{f} line {x['line']}: {x['why']}") for x in v]
