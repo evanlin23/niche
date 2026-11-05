@@ -1,0 +1,10 @@
+o1	Every gin player has an opinion about knocking.
+o2	Your grandpa knocks the second he hits ten. Your mom never knocks, she waits for gin. And somebody always says knocking early is for cowards.
+c2	The chance that your first ten cards already hold a set or a run can be counted exactly. It's thirty nine point seven nine percent.
+c3	Over fifty six million deals, my engine says thirty nine point seven nine.
+k2	The Sorry! card is worth almost four times an eleven. Nothing else comes close.
+k3	And here's my favorite. The four, the card that moves you backwards, is worth more than the five.
+a2	With three players, one seat won forty percent of the time instead of a third. I assumed it was a bug in my code.
+a3	It wasn't. With three players one side of the board is empty.
+id	I'm Buh. I build the games you play in code, and I make the bots fight.
+y2	So which do you play, ten for an undercut or twenty five? Tell me in the comments.

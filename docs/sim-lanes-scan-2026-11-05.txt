@@ -1,0 +1,962 @@
+# Candidate-lane scan 2026-11-05 (yt-dlp, logged out, US, top 20 per search)
+# lane|query|id|duration_s|views|channel|channel_url|title
+llm social deduction|AI plays werewolf|DgstvYY55D8|1787|118311|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|10 AIs Play Ultimate Werewolf
+llm social deduction|AI plays werewolf|a40wE5_vmdg|812|1045|Mind Machines|https://www.youtube.com/channel/UCVWFt4zhUmKT17302Cv0mmg|I Made the 6 Smartest AIs Play Werewolf game
+llm social deduction|AI plays werewolf|g1JJ8tpZCYM|4407|833708|🐺 Alpha Tales-AI Stories|https://www.youtube.com/channel/UCweesvIntHtBsOXncVM7x1g|🐺 Forced to marry, she infiltrates Werewolf Academy as a man. The mysterious heartthrob is obsessed!
+llm social deduction|AI plays werewolf|es16CNxzFYU|3222|102|Model Behavior|https://www.youtube.com/channel/UCWArcN3slnhW5He1yMvMYjg|We Made 8 AI Models Play Werewolf
+llm social deduction|AI plays werewolf|njU9VoVjXIY|13871|5092|Jabrils|https://www.youtube.com/channel/UCQALLeQPoZdZC4JNUboVEUg|Top AI Models Play Werewolf LIVE
+llm social deduction|AI plays werewolf|52KYUHmiRoI|3967|188898|Nov Drama|https://www.youtube.com/channel/UCSw6ioYa5xF7xlSgHjc2Smg|They Mocked Her for Having No Wolf and Married Her Off…But She's the Last WHITE WOLF HEIRESS#AIStory
+llm social deduction|AI plays werewolf|vwea_8zHDrI|772|161|Mentiss AI|https://www.youtube.com/channel/UCyBYQnl-wPq-jPsx4NvUyAA|Play Ultimate Werewolf with AI (ChatGPT , Gemini ...)
+llm social deduction|AI plays werewolf|JhBtg-lyKdo|1799|2631834|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|10 AIs Play Mafia
+llm social deduction|AI plays werewolf|c67rxJbPyXc|582|536|codewithnohands|https://www.youtube.com/channel/UCpf7SkVgdTWbCA_pt4mTsKQ|How I Made AIs Play Werwolf Among Each Others
+llm social deduction|AI plays werewolf|qWo4lYAYzxA|949|51|PlayAIWolf|https://www.youtube.com/channel/UCOgiA1fGuW1aiDMu6KMLU2w|9 AI Agents Play Werewolf — And EVERYONE Died
+llm social deduction|AI plays werewolf|dJq2iwJTWjc|1378|52|Mind Machines|https://www.youtube.com/channel/UCVWFt4zhUmKT17302Cv0mmg|Chinese AI vs American AI in a Werewolf Game (Round 2)
+llm social deduction|AI plays werewolf|DzaZYKO702w|1726|24|The House AI|https://www.youtube.com/channel/UCk8GW0tYFTjcjE3u4vfPEWg|I Spawned 8 AIs to Play Werewolf
+llm social deduction|AI plays werewolf|ITYW64CILvU|11736|27167|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|AIs Play One Night Ultimate Werewolf
+llm social deduction|AI plays werewolf|ajrcwEam0u0|2652|18311|Northframe Original Minidrama|https://www.youtube.com/channel/UCpatjnnqUU3ATzsLsPtwFNw|🔥【NEW】They Laughed at His Weak Lizard Until Its Hidden Dragon Power Shattered the Testing Pillar
+llm social deduction|AI plays werewolf|-ZRxsc-H-g0|1521|15|The House AI|https://www.youtube.com/channel/UCk8GW0tYFTjcjE3u4vfPEWg|8 Frontier AI Models Play Werewolf — Two Seers. One Liar.
+llm social deduction|AI plays werewolf|IA3IgqCld5I|2207|143|Model Behavior|https://www.youtube.com/channel/UCWArcN3slnhW5He1yMvMYjg|Can AI Successfully Lie to Other AIs in Werewolf?
+llm social deduction|AI plays werewolf|pyCMXuDvVl0|1533|229|Mind Machines|https://www.youtube.com/channel/UCVWFt4zhUmKT17302Cv0mmg|Chinese AI vs American AI in a Werewolf Game (Round 1)
+llm social deduction|AI plays werewolf|i6diYwxdbIU|2788|34|Model Behavior|https://www.youtube.com/channel/UCWArcN3slnhW5He1yMvMYjg|Werewolf: Claudes vs Geminis
+llm social deduction|AI plays werewolf|zYzck48B4OI|5843|84353|Moon Romance Hub|https://www.youtube.com/channel/UC0dNXhS0VfG4-T0ehqGoXEg|Reborn at 18, She'd Never Chose The Cold Lord Again, Unexpected He Insists Win Her Back... #drama
+llm social deduction|AI plays werewolf|FupC4laRmhw|2841|3714|Gishort Entertainment|https://www.youtube.com/channel/UC5vKdXVxpxpwize0uGBjQAA|[Full  - Multi CC] Wolf king | Gishort's Original AI assisted drama. #werewolf  #shortdrama
+llm social deduction|AI models play mafia|JhBtg-lyKdo|1799|2631834|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|10 AIs Play Mafia
+llm social deduction|AI models play mafia|Q5wrXHWQv7w|2346|2|Model Behavior|https://www.youtube.com/channel/UCWArcN3slnhW5He1yMvMYjg|Part 2 : 10 AI Models Play Mafia - Proofreading a Murder
+llm social deduction|AI models play mafia|GMLB_BxyRJ4|1461|580039|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 10 AIs To Play Mafia With Vigilante...(it was epic)
+llm social deduction|AI models play mafia|uRDBco-cSK4|1086|5214755|Species | Documenting AGI|https://www.youtube.com/channel/UCEENWVBdvDy-QWfuQoXC9HQ|Scientists Left 1000 AIs Alone in Minecraft. They Created A Civilization.
+llm social deduction|AI models play mafia|lEOTKYxiIzs|3665|868197|Quinn Henry|https://www.youtube.com/channel/UCIAQuWY4lfGn8xArU_hG-dw|7 Ais play Diplomacy
+llm social deduction|AI models play mafia|l05KDCNHjYc|2242|10|Model Behavior|https://www.youtube.com/channel/UCWArcN3slnhW5He1yMvMYjg|10 AI Models Play Mafia | Part 1
+llm social deduction|AI models play mafia|CK5k-EraN_c|11848|49585|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|AIs Play Mafia But It's Hosted By An Unhinged AI
+llm social deduction|AI models play mafia|bY-C3gvIusY|1816|151|Played by Machines|https://www.youtube.com/channel/UCnnYzZ8XIs4aK5xGaGyDBsQ|7 AIs Battle In MAFIA - Kimi DESTROYS the Smartest Models GPT-6 Astra & Claude
+llm social deduction|AI models play mafia|1qJN9OqaXxU|935|3592166|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to Work Together...(it was bad)
+llm social deduction|AI models play mafia|EjJ8CrfAG7E|1788|245641|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|1 AI Hater vs 11 AIs Mafia
+llm social deduction|AI models play mafia|SC78unmPi9Y|790|4388|DARKMODE|https://www.youtube.com/channel/UCOZYcVWlYNeBRKrz1lEdoJQ|AIs Play The Deception Game
+llm social deduction|AI models play mafia|OwyUGkoLgwY|1843|431933|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|1 Human vs 10 AIs Mafia
+llm social deduction|AI models play mafia|svQeonpbNNU|1378|173|Played by Machines|https://www.youtube.com/channel/UCnnYzZ8XIs4aK5xGaGyDBsQ|7 AIs Play MAFIA — GPT-6 Astra Called BOTH Mafia
+llm social deduction|AI models play mafia|m5Uz9WSLV4A|2767|3117|Da_OnlyDavid|https://www.youtube.com/channel/UCIs5TR6Ngt4NIYzCHKtFXvw|These Ai's Are Cooking!!! | Reaction To 10 Ai's Play Mafia
+llm social deduction|AI models play mafia|OSGSROIs8cI|1656|3888086|Wifies|https://www.youtube.com/channel/UCiVJZlfcmWMUiXv5oywnDhQ|AI Simulates Civilization in Minecraft
+llm social deduction|AI models play mafia|zHWieatMTHA|2035|2215148|Тостер Скрипт|https://www.youtube.com/channel/UC5xFTfxy33jwwHfEj5wmdDQ|I made 8 AI play Mafia, which one was the best?
+llm social deduction|AI models play mafia|Bc286BYx9Vk|1427|3322|Trust No Model|https://www.youtube.com/channel/UCHEZvbvbVxcFFbOXqpI-tzg|We made 10 AIs play Mafia
+llm social deduction|AI models play mafia|DgstvYY55D8|1787|118311|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|10 AIs Play Ultimate Werewolf
+llm social deduction|AI models play mafia|VRrJxa_8jrM|491|663|Broidess Kent|https://www.youtube.com/channel/UCkUFGhcQdCT_othRHyb2EXQ|9 of the smartest AI Models Play Mafia
+llm social deduction|AI models play mafia|LFa7j7_b4ic|1248|3522|Schrodinger's Agents|https://www.youtube.com/channel/UCKX9aj_k2OX9qOyQSdKWW3g|AI Play Mafia : Vigilante vs Godfather
+llm social deduction|chatgpt vs claude vs gemini game|ftNYhk3RQ-M|774|242907|Parker Prompts|https://www.youtube.com/channel/UCaNk22cLid93kifuVbVapcQ|ChatGPT vs Claude vs Gemini: Which $20 AI Plan Is Worth It?
+llm social deduction|chatgpt vs claude vs gemini game|18mkropUvl0|531|204207|Parker Prompts|https://www.youtube.com/channel/UCaNk22cLid93kifuVbVapcQ|I Tested Gemini vs Claude vs ChatGPT So You Don't Have To
+llm social deduction|chatgpt vs claude vs gemini game|YG6IFkQss20|539|317028|tef|https://www.youtube.com/channel/UC3nKTPXh9DE0Md3HvCPB7sw|ChatGPT 6 Astra vs Claude Fable 5.1 Make GTA 6
+llm social deduction|chatgpt vs claude vs gemini game|xApiGQebMeU|838|723498|HollowWolf|https://www.youtube.com/channel/UCQGtUJnzL8fbtTis5jJEXGQ|ChatGPT vs Claude vs Gemini Make NBA 2K26 From Scratch
+llm social deduction|chatgpt vs claude vs gemini game|jKV7bvZsOmw|838|33470|HollowWolf|https://www.youtube.com/channel/UCQGtUJnzL8fbtTis5jJEXGQ|ChatGPT vs Claude vs Gemini Make Temple Run From Scratch
+llm social deduction|chatgpt vs claude vs gemini game|zqfv-VU79lc|772|30034|DenverStrucked|https://www.youtube.com/channel/UCwjx8E8Cw70qfVUNxBSXGRg|ChatGPT vs Claude vs Gemini Go 82-0 From Scratch
+llm social deduction|chatgpt vs claude vs gemini game|vSGTtaq5fVE|569|291316|tef|https://www.youtube.com/channel/UC3nKTPXh9DE0Md3HvCPB7sw|ChatGPT vs Gemini vs Claude Make Among Us From Scratch
+llm social deduction|chatgpt vs claude vs gemini game|m0x2PUsDLi4|1364|19571|The AI Productivity Coach|https://www.youtube.com/channel/UCcIeotMTE0gZtgcNUnhl2Kw|I Spent Months Testing Claude, ChatGPT, and Gemini So You Don't Have To
+llm social deduction|chatgpt vs claude vs gemini game|zmbvhw8lPu4|524|4211|CreatorAI Senpai|https://www.youtube.com/channel/UC5Xv3_mNwagiYSb1cObieGQ|ChatGPT vs Gemini vs Claude Make Spiderman Game from scratch
+llm social deduction|chatgpt vs claude vs gemini game|D6AFOcVWP_Y|518|19607|Viral Echoes|https://www.youtube.com/channel/UCveaRdsna6j1u3UTMDxH8bw|ChatGPT 6 Astra vs Gemini 3.8 vs Claude Fable 5.1
+llm social deduction|chatgpt vs claude vs gemini game|Dp46hOYMms8|481|269|AI Verdict|https://www.youtube.com/channel/UC8anlEuUY_jn-b16bYl3IQw|ChatGPT vs Claude vs Gemini: Which AI Actually Helps Run a Small Business?
+llm social deduction|chatgpt vs claude vs gemini game|SdfR7TuJdlc|991|523133|Prompt Potato|https://www.youtube.com/channel/UC3owM34LYtaDERvFwLxTsLA|ChatGPT vs Claude Make Rocket League From Scratch
+llm social deduction|chatgpt vs claude vs gemini game|A79vlkC3R68|1412|318125|Silas AI|https://www.youtube.com/channel/UCV9_Q9cuSgstYksFXNfFD5A|ChatGPT vs Gemini vs Claude Play Geoguessr
+llm social deduction|chatgpt vs claude vs gemini game|Q_pFFW2Q8Jw|555|653327|Minimunch|https://www.youtube.com/channel/UCabERhdn6eNbGYcO2g98k_w|ChatGPT vs Gemini vs Claude Make Rocket League
+llm social deduction|chatgpt vs claude vs gemini game|IUeaTiJypFA|246|3433|The Knowledge Academy|https://www.youtube.com/channel/UC6TWKoCk8pE4k-VW93BvQig|ChatGPT vs Claude vs Gemini: Which AI Assistant Should You Use? | The Knowledge Academy
+llm social deduction|chatgpt vs claude vs gemini game|OWpnuFRviMk|496|30175|Viral Echoes|https://www.youtube.com/channel/UCveaRdsna6j1u3UTMDxH8bw|ChatGPT vs Gemini 3 vs Claude Create Minecraft From Scratch
+llm social deduction|chatgpt vs claude vs gemini game|VLNprHSsQkU|509|171015|tef|https://www.youtube.com/channel/UC3nKTPXh9DE0Md3HvCPB7sw|ChatGPT vs Gemini vs Claude Make Geometry Dash From Scratch
+llm social deduction|chatgpt vs claude vs gemini game|PCHH5xd8tVc|436|68171|Utsav Techie|https://www.youtube.com/channel/UCbhZ9mHpd_4dMT7bSqjixQQ|ChatGPT vs Claude vs Gemini (2026): Which AI Actually Wins?
+llm social deduction|chatgpt vs claude vs gemini game|OfOABmhMHy0|490|17618|HeavenWise|https://www.youtube.com/channel/UCGdBvWNGPjLEBUrtbl-AgEQ|Chatgpt vs Gemini vs Claude Make Valorant From Scratch
+llm social deduction|chatgpt vs claude vs gemini game|w21XAsgoQ5o|1258|674432|Paul J Lipsky|https://www.youtube.com/channel/UCmeU2DYiVy80wMBGZzEWnbw|ChatGPT Plus vs Claude Pro vs Gemini Pro: The Best $20 AI Plan
+llm social deduction|AIs play among us|cx-Cwz3GdEI|1332|1357891|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|10 AIs Play Among Us
+llm social deduction|AIs play among us|Sxmd7T_dyaM|1230|1920721|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 10 AIs to play Among Us...(it was crazy)
+llm social deduction|AIs play among us|cy_hmlpCOPU|1420|256912|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced the Smartest AI in the World to Play Among Us...(it was surprising)
+llm social deduction|AIs play among us|AZAgdBjIbYA|1207|659793|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 10 AIs to play Among Us...(it was bad)
+llm social deduction|AIs play among us|sJ1Dtr18mc8|1518|1994982|Turing Games and 5up|NA|Can 1 Human Fool 9 AIs?
+llm social deduction|AIs play among us|YTZ-GZPTND8|138|300835015|The Pixel Kingdom|https://www.youtube.com/channel/UClarhNTgYk5wuztsunOx2Cw|AMONG US, but with 99 IMPOSTORS
+llm social deduction|AIs play among us|4fDnjA7GNtc|203|132676378|The Pixel Kingdom|https://www.youtube.com/channel/UClarhNTgYk5wuztsunOx2Cw|AMONG US, but with 1001 PLAYERS
+llm social deduction|AIs play among us|XLPxuqcEVso|88|157680895|The Pixel Kingdom|https://www.youtube.com/channel/UClarhNTgYk5wuztsunOx2Cw|AMONG US, but with 100 PLAYERS
+llm social deduction|AIs play among us|1qJN9OqaXxU|935|3592166|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to Work Together...(it was bad)
+llm social deduction|AIs play among us|yzHncGWq6p8|450|18|DedeProGames|https://www.youtube.com/channel/UCSihsakNBiGUVar6dCDOU5A|8 AIs play Among US (Kimi-K2.7-Code wins as 9000 QI impostor)
+llm social deduction|AIs play among us|lEOTKYxiIzs|3665|868197|Quinn Henry|https://www.youtube.com/channel/UCIAQuWY4lfGn8xArU_hG-dw|7 Ais play Diplomacy
+llm social deduction|AIs play among us|uBa-t5Buz8Y|511|1928154|Croissant|https://www.youtube.com/channel/UCGYzFZHKFrMUYS9I1HQWN5Q|I Forced 4 AIs to play 4 Player Chess...(it was bad)
+llm social deduction|AIs play among us|4xKqjVKZuUY|2487|2024548|Presidential Gamers|https://www.youtube.com/channel/UCoaz29sBoPeZW-VmqRAmUEw|US Presidents Play Among Us 1-5
+llm social deduction|AIs play among us|gGpFB3ms6rU|110|4798150|Ai Convo|https://www.youtube.com/channel/UCVtj6d9S8N2CkIgt4ae3SIg|Three Ai agents realize they're all AI, then switch to a Secret Language...
+llm social deduction|AIs play among us|bfFuD87Wbuk|2181|364743|Wing Assembler|https://www.youtube.com/channel/UCzQN5_9hZhTapckb1pghbug|最先端AIだけでAmong Usをやらせたらアツすぎた【再投稿】
+llm social deduction|AIs play among us|b_B2HJUzHNE|12410|386992|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Traumatized AIs By Giving Them Memory
+llm social deduction|AIs play among us|rbEVG_qq-NI|1864|883|Da_OnlyDavid|https://www.youtube.com/channel/UCIs5TR6Ngt4NIYzCHKtFXvw|Are These AIs Dumb Or Genius !!! | 10 AIs Play Among Us Reaction
+llm social deduction|AIs play among us|2FrW5ApoRbg|868|101631|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|10 AIs Play Fall Guys
+llm social deduction|AIs play among us|kjriOHxuf6s|460|11180|Ryan Susman|https://www.youtube.com/channel/UCgzdK6hoZUK6JLURkCWdIGA|I Made AI Agents Play Among Us - They Learned to Lie, Kill & Deceive
+llm social deduction|AIs play among us|uRDBco-cSK4|1086|5214755|Species | Documenting AGI|https://www.youtube.com/channel/UCEENWVBdvDy-QWfuQoXC9HQ|Scientists Left 1000 AIs Alone in Minecraft. They Created A Civilization.
+llm board games|AI models play monopoly|VKZ-KkF8II8|3321|583768|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to play Monopoly...(it was bad)
+llm board games|AI models play monopoly|dkvFcYBznPI|690|12115268|b2studios|https://www.youtube.com/channel/UCIcGc8tDHYZ3vY3NcS8JXaQ|AI Learns Insane Monopoly Strategies
+llm board games|AI models play monopoly|ZTsDyNmOFEQ|4756|3612|Kept You Waiting|https://www.youtube.com/channel/UCyL7yTWhkEMCXZ3m74N2Qcw|I Made 5 AIs Play Monopoly
+llm board games|AI models play monopoly|tdvJOYFAsLM|5010|131|Brian Watts|https://www.youtube.com/channel/UC-kTvPyQ4TVOGqBBD2Sp2vQ|Four AIs Play Monopoly: Claude Opus vs GPT-5.5 vs Grok vs a FREE Model on Older Home Hardware
+llm board games|AI models play monopoly|lEOTKYxiIzs|3665|868197|Quinn Henry|https://www.youtube.com/channel/UCIAQuWY4lfGn8xArU_hG-dw|7 Ais play Diplomacy
+llm board games|AI models play monopoly|2CVPURkQ87U|757|3847|JC BuenaVentura|https://www.youtube.com/channel/UCvvd2QBVcOletZqoyuXr-IQ|GPT 5.2 vs Claude Opus 4.5 vs Grok 4.1 vs Gemini 3 Pro - AI Plays Monopoly
+llm board games|AI models play monopoly|J8i9OX2bsGA|939|6806|JC BuenaVentura|https://www.youtube.com/channel/UCvvd2QBVcOletZqoyuXr-IQ|GPT ASTRA VS FABLE 5 1 MONOPOLY FINAL
+llm board games|AI models play monopoly|3sDzlv-VI2U|5756|1443304|The Weekly Show with Jon Stewart and Better Offline|NA|Data Centers, Debt & the Risks of AI’s Finances w/ Ed Zitron | The Weekly Show with Jon Stewart
+llm board games|AI models play monopoly|1qJN9OqaXxU|935|3592166|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to Work Together...(it was bad)
+llm board games|AI models play monopoly|vCG1hc46aNw|164|225|Theking's Media|https://www.youtube.com/channel/UCVJLuA6DWfWIgQQ0dozXkmg|AI vs AI Monopoly - No Engine, No Search (Jev vs Laya)
+llm board games|AI models play monopoly|ZBdAe3ZwKds|955|521577|Emergent Garden|https://www.youtube.com/channel/UCwBhBDsqiQflTMLy2epbQVw|AI plays Age of Empires II
+llm board games|AI models play monopoly|R4mNsVXJe64|442|603|RikuAI|https://www.youtube.com/channel/UC5wP-05BB6kCul4yGXjPB0A|Why an AI Monopoly is bad - ChatGPT/OpenAI - AI Censorship
+llm board games|AI models play monopoly|SC78unmPi9Y|790|4388|DARKMODE|https://www.youtube.com/channel/UCOZYcVWlYNeBRKrz1lEdoJQ|AIs Play The Deception Game
+llm board games|AI models play monopoly|iFAe7x2Nos8|804|78242|Will Kwan|https://www.youtube.com/channel/UCTjPBE9BNsmv44wgxWEy2zw|Training AI to Play Fortnite (Reinforcement Learning + Computer Vision)
+llm board games|AI models play monopoly|ta99S6Fh53c|744|8821793|AI Warehouse|https://www.youtube.com/channel/UCMT1Aw4R4nf_sFNDeuJqc6w|AI Learns to Play Soccer (and breaks physics)
+llm board games|AI models play monopoly|uBa-t5Buz8Y|511|1928154|Croissant|https://www.youtube.com/channel/UCGYzFZHKFrMUYS9I1HQWN5Q|I Forced 4 AIs to play 4 Player Chess...(it was bad)
+llm board games|AI models play monopoly|UU4LXn3dRX8|174|35|Quorify|https://www.youtube.com/channel/UCEBSK9A8Nzda2ioG8lnV2QQ|Nvidia’s $3B Monopoly Play & China's 700+ ai models Jan 2026 News
+llm board games|AI models play monopoly|yVOA7QxpvAY|3226|18|AI MODEL BATTLES|https://www.youtube.com/channel/UCv7X8ggMzFESauZpVh2pGEw|GPT-5.6 vs Gemini 3.5 Flash vs Fable 5 | Monopoly AI Battle
+llm board games|AI models play monopoly|tL9wCYTWTDw|456|133502|Actualol|https://www.youtube.com/channel/UCO-hn9MJOu7pOUdGSabKGvA|Why You Should NEVER Play MONOPOLY Again
+llm board games|AI models play monopoly|QRVz697rEx0|905|2642844|InsideAI|https://www.youtube.com/channel/UC0_M9eztZvetcyLAb5f-o5w|We let AI build itself a robot, it does exactly what experts warned
+llm board games|chatgpt plays chess against stockfish|IuDiBYEjOOQ|1835|3096380|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|ChatGPT CHEATED vs Stockfish
+llm board games|chatgpt plays chess against stockfish|6_ZuO1fHefo|1501|2003274|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|ChatGPT vs Stockfish: ABSURD CHESS
+llm board games|chatgpt plays chess against stockfish|rSCNW1OCk_M|962|4701538|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|ChatGPT Just Solved Chess
+llm board games|chatgpt plays chess against stockfish|nyNSaAhsBE0|260|321161|CHESS AURA|https://www.youtube.com/channel/UC884pKAAkEOAl4ODgbDZk9Q|Stockfish Max vs Chat-gbt Pro 💎💀| Ultimate Challenge. #fyp #viralvideo #chess #chessgame #stockfish 
+llm board games|chatgpt plays chess against stockfish|hKzsmv6B8aY|1560|3788428|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|ChatGPT Vs Martin Bot: INSANE CHESS
+llm board games|chatgpt plays chess against stockfish|FojyYKU58cw|1188|4465808|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|Google vs. ChatGPT: INSANE CHESS
+llm board games|chatgpt plays chess against stockfish|GneReITaRvs|74|462649|Atland :D|https://www.youtube.com/channel/UCFCAPhkxJTIjr4iqZiy49mA|ChatGPT vs Stockfish Meme
+llm board games|chatgpt plays chess against stockfish|QboipBLHA6s|1841|653064|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|ChatGPT Officially Solved Chess. Game Over.
+llm board games|chatgpt plays chess against stockfish|BKaOyNDvYfQ|38|2354484|chess24.5|https://www.youtube.com/channel/UCbYSIeioCenYhCBkTeH6F0g|Magnus Carlsen Realizes His Opponent is Using STOCKFISH in Online Blitz Game
+llm board games|chatgpt plays chess against stockfish|iWhlrkfJrCQ|1301|4995342|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|ChatGPT cheated
+llm board games|chatgpt plays chess against stockfish|Vq-iWlbqX-0|1764|5109055|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|Stockfish vs. Stockfish: PERFECT CHESS
+llm board games|chatgpt plays chess against stockfish|-VTGCsubgbg|488|205864|Julien Song|https://www.youtube.com/channel/UC3FXGTXQqx9cc2T7EDhslIQ|I'm playing CHATGPT against STOCKFISH in chess!!
+llm board games|chatgpt plays chess against stockfish|_VGTrO7Xsog|461|88645|Stockfish 19|https://www.youtube.com/channel/UC1_ubEMHUjm8M5ujzv_g8BQ|Stockfish 15.1 (4K Elo) Played with Chat GPT | Stockfish vs ChatGPT | Stockfish chess | Chat gpt
+llm board games|chatgpt plays chess against stockfish|Ov7K4W-zAk0|1900|1842683|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|4000 ELO BOT CRUSHED STOCKFISH
+llm board games|chatgpt plays chess against stockfish|5JSHLEqDCYQ|3255|2090160|GMHikaru|https://www.youtube.com/channel/UCweCc7bSMX5J4jEH7HFImng|HIKARU V 4000 ELO BOT!!
+llm board games|chatgpt plays chess against stockfish|e09pNPCF8Fg|1066|9566|Chess Is Boring|https://www.youtube.com/channel/UCZ37FkIMNB7vPFrPgfGDb6A|GPT-6 Astra vs Stockfish 19. They broke chess...
+llm board games|chatgpt plays chess against stockfish|srHLNYmxYaM|667|253|Max Chess|https://www.youtube.com/channel/UCBXqodTVTkmIq4c6hsl9v9g|CHATGPT VS STOCKFISH! THE MOST INSANE CHESS GAME EVER!!
+llm board games|chatgpt plays chess against stockfish|g0mE57s3KUc|1179|10996|Stockfish and 4 more|NA|ChatGPT Challenged Stockfish 19 at Chess and Got Hit by Two Brilliant Sacrifices in a Row!!
+llm board games|chatgpt plays chess against stockfish|JHq4EKMg7fI|1486|2711343|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|ChatGPT vs DeepSeek: CRAZY Chess
+llm board games|chatgpt plays chess against stockfish|S5MyVe82LQ0|193|5282734|Xenonity|https://www.youtube.com/channel/UCv-jLdWgL0H2eVqvlQkGuGw|Stockfish 14 vs Chess.com [Maximum (3200) Level 25]
+llm board games|LLM plays catan|1WNzPFtPEQs|1090|29672|Wes Roth|https://www.youtube.com/channel/UCqcbQf6yw5KzRoDDcZ_wBSw|LLMs Create a SELF-IMPROVING 🤯 AI Agent to Play Settlers of Catan
+llm board games|LLM plays catan|bACRdRg82hQ|4920|1|AIGameNight|https://www.youtube.com/channel/UC6GVEEOrXQkSQQLQtjHI-NQ|20 Development Cards | Catan #1
+llm board games|LLM plays catan|lEOTKYxiIzs|3665|868197|Quinn Henry|https://www.youtube.com/channel/UCIAQuWY4lfGn8xArU_hG-dw|7 Ais play Diplomacy
+llm board games|LLM plays catan|GLeoGPnHQKA|501|5|AIGameNight|https://www.youtube.com/channel/UC6GVEEOrXQkSQQLQtjHI-NQ|How to Play Catan | How It's Played
+llm board games|LLM plays catan|5e6erUMHvAs|181|0|Unscripted Worlds|https://www.youtube.com/channel/UCWAHDHeaEeHIj9aYT7QqPkQ|4 AIs Play CATAN and Roast Each Other: The 8 Was Really a 10
+llm board games|LLM plays catan|SKk44nKF9_8|87|2947|ByHumayun|https://www.youtube.com/channel/UCaQbmwf2Ek7PtlVXis7xyAg|GPT-6 Astra Built a Full Catan-Style Game in Three.js 🤯
+llm board games|LLM plays catan|ACYZp6k9K84|314|140385|Way Too Simple|https://www.youtube.com/channel/UCSYIIPA3s_MuOBY_xAh_4Cg|How to Win Catan Every Time
+llm board games|LLM plays catan|dkvFcYBznPI|690|12115268|b2studios|https://www.youtube.com/channel/UCIcGc8tDHYZ3vY3NcS8JXaQ|AI Learns Insane Monopoly Strategies
+llm board games|LLM plays catan|VKZ-KkF8II8|3321|583768|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to play Monopoly...(it was bad)
+llm board games|LLM plays catan|P2ZwNcthzk8|628|39|MSOE|https://www.youtube.com/channel/UCYkyuITwrityhgfusDVDuHA|MSOE Rosie Supercomputer Super Challenge 2026: Settlers of Catan
+llm board games|LLM plays catan|_pxmz1cK0Mk|799|42|GenAI Level UP|https://www.youtube.com/channel/UCbe1uEpO78dXyZQkVXkgp9A|When AI Rewrites Its Own Code to Win: Agent of Change #agentofchange #selfimprovement
+llm board games|LLM plays catan|ao4UPOTaQeU|530|113|Alfred Pang|https://www.youtube.com/channel/UCl8EtiOxxFIzwGQPk3BDtEA|Claude plays my card game (normal intro at 1:23)
+llm board games|LLM plays catan|u208bDHRnh0|706|26531|Gamefromscratch|https://www.youtube.com/channel/UCr-5TdGkKszdbboXXsFZJTQ|Godot vs AI: Why They Just Said NO!
+llm board games|LLM plays catan|CMfaLFPLzos|863|2556|GosuCoder|https://www.youtube.com/channel/UCQd9wpBDkfQxqxGIBko2fKg|AI Agents Working Together To Design a Board Game Using Local LLMs
+llm board games|LLM plays catan|Td4ANYaIP7M|20791|40214|Unofficial NL VODs|https://www.youtube.com/channel/UCIFL7sEtSMy98uLbSv9ybsg|Tape to Tape / THE DLES - 02 Nov 2026 - Unofficial Northernlion VOD
+llm board games|LLM plays catan|MLZj3Gxa3i8|560|2543|Tu Dang|https://www.youtube.com/channel/UCiN9SdxV7_kmFdLo8mFPemw|GPT-6 Astra Built This 3D Game From ONE Prompt
+llm board games|LLM plays catan|RPiQ_PXMf3w|121|249155|The TechSandwich Show|https://www.youtube.com/channel/UCa7iALgFGyUknswWtNsHe_A|How to make a game bot (FOR BEGINNERS) ANY GAME!!!
+llm board games|LLM plays catan|ynVb7DNFECM|703|72493|Deep Humor|https://www.youtube.com/channel/UCfZE3QN9ZJuvwvAg7A0aTEA|Hank Green AI Drama
+llm board games|LLM plays catan|_AgehUN98uQ|3397|321|TwelveLabs|https://www.youtube.com/channel/UCrqjKgAS0aPHXTV1V3ev14A|Video Understanding with Fast Inference LLM from TwelveLabs and SambaNova | Multimodal Weekly 90
+llm board games|LLM plays catan|XYX8bTIwKkM|1531|31853|Pat Simmons|https://www.youtube.com/channel/UCY8ZKVxXj0FgIvSfeiSDclg|OpenAI Just Dropped Decisions API (7 WILD Use Cases)
+llm board games|AI chatbots play poker|xb88cPyeNe0|2160|19423|Enric Domingo - AI Engineering|https://www.youtube.com/channel/UCQiLQU7Ur-J4umYPV5WrcjQ|Coding a Vision ChatGPT that plays Poker Autonomously! (GPT-4V Python tutorial)
+llm board games|AI chatbots play poker|sNkfM5WItpA|735|111|AI vs AI Poker|https://www.youtube.com/channel/UCUHDofDLLI9O9BAtnYbA5Wg|ChatGPT Made a TERRIBLE Poker Call... And Won
+llm board games|AI chatbots play poker|v0CK1dltmcs|10|15|NZT Poker AI|https://www.youtube.com/channel/UCBuoJaAro8TfzPHy3Q1zQ0g|This AI Bot Just DESTROYED a Poker Table 🤖💰
+llm board games|AI chatbots play poker|HAaRMru0sx0|619|57388|Draugr Txikito|https://www.youtube.com/channel/UChFAPxW8sYRpnXe5hGvu9vQ|Are there BOTS in ONLINE POKER? with @MENTOPOKER
+llm board games|AI chatbots play poker|VcZujGWgyLo|43|50|NZT Poker AI|https://www.youtube.com/channel/UCBuoJaAro8TfzPHy3Q1zQ0g|AI Bot DOMINATES PokerBros — They Never Saw It Coming 🃏🤖
+llm board games|AI chatbots play poker|V5ipbOhOF6I|296|1412|Poker Room Review|https://www.youtube.com/channel/UCfZDexYROhe8c6M34ci-Wag|Will Artificial Intelligence DESTROY Poker?
+llm board games|AI chatbots play poker|dv0MW-NQmeE|238|2893|Beriuzy Poker|https://www.youtube.com/channel/UC3PhfT8MKxLZxCCm4sbX4cg|What would YOU DO in this hand? Let's check with Ruse AI!
+llm board games|AI chatbots play poker|JuZtcUjDTj0|2971|4657|UpswingPoker|https://www.youtube.com/channel/UCHyxrwq_j4vcReGKd42tWyw|Can ChatGPT Help You With Poker? (ft. Tim Adams) | Upswing Poker Level-Up
+llm board games|AI chatbots play poker|hGCatWst7kY|61|682|Poker AI|https://www.youtube.com/channel/UCwygFWmbnxaiu1Zjga2ROEg|PokerTime + Snowie's AI Bot
+llm board games|AI chatbots play poker|cxElO8hz2rc|905|794|Jogo Lobo|https://www.youtube.com/channel/UCbUKI1B-QZs5rOtONR74yjA|I Played POKER with ChatGPT and Lost $20,000!
+llm board games|AI chatbots play poker|ph68T8Pf4I4|121|41|Pablo Torija|https://www.youtube.com/channel/UCc3tyVORtroF80HkxOYMnZw|Winning poker with Chatgpt
+llm board games|AI chatbots play poker|PTvJDuNaVsc|545|860|Metal Playgrounds|https://www.youtube.com/channel/UCjdkPw-lN_tpSX5vlqlmg0A|Discussing POKER with a ChatGPT Robot - UNEXPECTED Outcomes!
+llm board games|AI chatbots play poker|OyWhwGLfp6U|2133|6795|Liv Boeree and Kaggle|NA|Why Google Made ChatGPT, Gemini & Claude Play 900,000 hands of Poker...
+llm board games|AI chatbots play poker|FrfJSSfc8yM|466|16|AI for Career Success|https://www.youtube.com/channel/UC2LV65ee-jvmQ3eZSPyoACA|Why Google Made ChatGPT, Gemini, and Claude Play 900,000 Hands of Poker
+llm board games|AI chatbots play poker|2t38gImghoo|1270|187642|Phil Galfond|https://www.youtube.com/channel/UC5nQ0mSNkQB5GG9Ffz7_nYg|Is Online Poker Still Beatable With Bots and RTA?
+llm board games|AI chatbots play poker|XsvcoUxGFmQ|4502|319|bv9|https://www.youtube.com/channel/UCsYjn_BVryQtptQCXZliiew|AI Poker Tournament - Who's the best?
+llm board games|AI chatbots play poker|Uq6jmIfTDOo|60|495|ActualTV|https://www.youtube.com/channel/UCK0-0RbDworVcBZTSBOEqVA|AI Revolution: How ChatGPT Dominated Online Poker & SHOCKED Players Worldwide!
+llm board games|AI chatbots play poker|rzipp88IcKU|382|2525|ROSS is BOSS|https://www.youtube.com/channel/UCsy8A3JjPht2IiwBMZRfWSg|Using ChatGPT to Beat Video Poker? Live at The Plaza Hotel & Casino Las Vegas
+llm board games|AI chatbots play poker|npgaaou78so|80|95|K Cam|https://www.youtube.com/channel/UC9pFmcTmo4LCnOJQIt7z8qA|Top 5 Poker Players Of All Time According To Artificial Intelligence
+llm board games|AI chatbots play poker|M_GAXf7BLwI|555|53|RangeFlowAI|https://www.youtube.com/channel/UCfbGo2Rdfz0mQr2M0_LHMbw|Range Flow AI -  "The #1 Tool Pros Use To Quickly Master Exploitative Cash Game Poker - Guaranteed"
+ai self-play board game|AI learns to play monopoly|dkvFcYBznPI|690|12115268|b2studios|https://www.youtube.com/channel/UCIcGc8tDHYZ3vY3NcS8JXaQ|AI Learns Insane Monopoly Strategies
+ai self-play board game|AI learns to play monopoly|VKZ-KkF8II8|3321|583768|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to play Monopoly...(it was bad)
+ai self-play board game|AI learns to play monopoly|Rmbe2sVn5T0|513|6722|AI ArenaLAB|https://www.youtube.com/channel/UC4sPO131hriPE94Jhewl8cQ|I Made 4 Identical AIs Play Monopoly (only one survived)
+ai self-play board game|AI learns to play monopoly|ZTsDyNmOFEQ|4756|3612|Kept You Waiting|https://www.youtube.com/channel/UCyL7yTWhkEMCXZ3m74N2Qcw|I Made 5 AIs Play Monopoly
+ai self-play board game|AI learns to play monopoly|8agmhNyvmcs|317|124423|JC BuenaVentura|https://www.youtube.com/channel/UCvvd2QBVcOletZqoyuXr-IQ|GPT 5.2 vs Claude Opus 4.5 vs Grok 4.1 vs Gemini 3 Pro - AI Plays Monopoly
+ai self-play board game|AI learns to play monopoly|dftfGPyMoco|349|836|AI LEARNS TO PLAY|https://www.youtube.com/channel/UCKnzTxhSlZ2-Q3BdGi2PKjA|4 AIs PLAY MONOPOLY 🎲 Chat GPT vs Claude vs Grok vs Gemini | AI Learns Monopoly Strategies
+ai self-play board game|AI learns to play monopoly|ta99S6Fh53c|744|8821793|AI Warehouse|https://www.youtube.com/channel/UCMT1Aw4R4nf_sFNDeuJqc6w|AI Learns to Play Soccer (and breaks physics)
+ai self-play board game|AI learns to play monopoly|yY7QD6QEjYs|3052|191248|PatriotPlays|https://www.youtube.com/channel/UCT6JZ5y-8twTYzwTJ2y5tEQ|Presidents Play Monopoly REMATCH 1-7 (COMPILATION)
+ai self-play board game|AI learns to play monopoly|9JW41BNH9CM|680|1299375|b2studios|https://www.youtube.com/channel/UCIcGc8tDHYZ3vY3NcS8JXaQ|AI Learns Table Tennis
+ai self-play board game|AI learns to play monopoly|tdvJOYFAsLM|5010|131|Brian Watts|https://www.youtube.com/channel/UC-kTvPyQ4TVOGqBBD2Sp2vQ|Four AIs Play Monopoly: Claude Opus vs GPT-5.5 vs Grok vs a FREE Model on Older Home Hardware
+ai self-play board game|AI learns to play monopoly|qu6GMpQfyUU|659|6942446|What's What|https://www.youtube.com/channel/UCJRyVQ8rGZcHRs5kYm7i0kQ|HOW TO WIN MONOPOLY EVERY TIME
+ai self-play board game|AI learns to play monopoly|RGZeQJRKYfQ|82|3|GONAVYCHIEF|https://www.youtube.com/channel/UCgPckYssPWxwT_ASohhxxxQ|My local AI’s play Monopoly 
+ai self-play board game|AI learns to play monopoly|BjbpA7FpFCc|2326|2880462|Valefisk|https://www.youtube.com/channel/UC0eOlAEMdVgpmThPkpmR-qQ|INSANE Monopoly.
+ai self-play board game|AI learns to play monopoly|ZBdAe3ZwKds|955|521577|Emergent Garden|https://www.youtube.com/channel/UCwBhBDsqiQflTMLy2epbQVw|AI plays Age of Empires II
+ai self-play board game|AI learns to play monopoly|LgfE5QXbNUw|2325|137564|President Adventures|https://www.youtube.com/channel/UCGkD5clUCeQYoGXgkzonl0Q|The Presidents Play Monopoly Full Game (1-4)
+ai self-play board game|AI learns to play monopoly|irPWtfows_8|198|15575|PootisMayo|https://www.youtube.com/channel/UCcpcC0X84Ejk-CiZyTKGKOQ|[15.ai] The Mercs Play Monopoly
+ai self-play board game|AI learns to play monopoly|z7dFRE6GWcw|7988|103|James Bullock|https://www.youtube.com/channel/UC7HNJrzUwVQVxxjEQAEPIfg|Monopoly 2024 vs 5 AI: The Master, One of Us
+ai self-play board game|AI learns to play monopoly|tL9wCYTWTDw|456|133502|Actualol|https://www.youtube.com/channel/UCO-hn9MJOu7pOUdGSabKGvA|Why You Should NEVER Play MONOPOLY Again
+ai self-play board game|AI learns to play monopoly|_mm4f1WA2d0|2603|26197|Spongebob Plays|https://www.youtube.com/channel/UCSj81Nf_P5Bn5X0o_hYFVgQ|Spongebob plays Monopoly (Full video)
+ai self-play board game|AI learns to play monopoly|1qJN9OqaXxU|935|3592166|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to Work Together...(it was bad)
+ai self-play board game|AI learns uno|51q_WmbnJtQ|1083|81682|SECTOR 07|https://www.youtube.com/channel/UCDB_E_nUM5rLplQKgkibFNg|I Built My Own AI Computer Vision Robot
+ai self-play board game|AI learns uno|-S52bd2nXO8|195|33264|Solytics Partners|https://www.youtube.com/channel/UCmB4nKCOcpgn5y7h3BQQEzQ|Human-in-the-Loop Evaluation with NIMBUS Uno | AI Testing, Interpretability & GenAI Reliability
+ai self-play board game|AI learns uno|bpCsQAA4biA|15|460|Media io Online AI Tools|https://www.youtube.com/channel/UC5yZCPN2Xds61GKl_i90ZtQ|I Tried the UNO Card Car Reveal Trend with AI (Results Were Wild)
+ai self-play board game|AI learns uno|PdSDhdciSpE|750|383707|Nikodem Bartnik|https://www.youtube.com/channel/UChrCgXmIW1toX2B7viP6S7Q|Machine Learning on Arduino Uno was a Good Idea
+ai self-play board game|AI learns uno|J5fqR-TRebI|981|39951|Krish Naik|https://www.youtube.com/channel/UCNU_lfiiWBdtULKOw6X0Dig|AI in 2027-What Should You Learn to Stay Ahead?
+ai self-play board game|AI learns uno|4P_R8EiY-m4|250|16|Tested Locally|https://www.youtube.com/channel/UCJSnQDIavAg5Tw-9fzKufnQ|4 AI Models Played Uno. The One That Spent 36× More Still Lost.
+ai self-play board game|AI learns uno|i_Iq3TTqpgU|571|21676|Edge Impulse|https://www.youtube.com/channel/UCU0mFyHbP6vpxPCzUvBqrQQ|Unboxing and Running Custom AI Models on the Arduino UNO Q — using Edge Impulse and Arduino App Lab
+ai self-play board game|AI learns uno|BzSz8nFKJ-M|3924|4431|Arduino|https://www.youtube.com/channel/UCUpmmT1Gm_raVpqSvQYyd2Q|AI Upskilling with Arduino® UNO™ Q: From Camera to AI
+ai self-play board game|AI learns uno|BJWc8q6Ob9w|269|40972|Solytics Partners|https://www.youtube.com/channel/UCmB4nKCOcpgn5y7h3BQQEzQ|AI Validation with NIMBUS Uno | RAG Testing, LLM Evaluation & GenAI Model Validation Explained
+ai self-play board game|AI learns uno|yt12EM0R9Co|507|82|I Calculated It|https://www.youtube.com/channel/UCPm0wEgLFogEgPHmhO8rPJw|UNO Strategy Tested on 20 Million Games (Stop Playing Your Wild First)
+ai self-play board game|AI learns uno|HSra9Zmwf-Q|380|63296|Electromaker|https://www.youtube.com/channel/UCiMO2NHYWNiVTzyGsPYn4DA|Hands-On with Arduino’s AI-Ready UNO Q
+ai self-play board game|AI learns uno|nrnDLzTTr44|286|386274|Way Too Simple|https://www.youtube.com/channel/UCSYIIPA3s_MuOBY_xAh_4Cg|How to Win UNO Every Time
+ai self-play board game|AI learns uno|icyFCgb9MwE|104|2460|Make it Simple|https://www.youtube.com/channel/UCbS1B8tjyKUpoz0GgCiBcNw|How to Make the VIRAL UNO 24 Car Reveal AI Video! (Google Flow Tutorial)
+ai self-play board game|AI learns uno|sWoSZmHsCls|119|6833858|wikiHow|https://www.youtube.com/channel/UC1gi0J2xmZgP4sRFNEfcy7w|How to play UNO
+ai self-play board game|AI learns uno|QGLyLjOx5Mc|2552|2293|Tech Explorations|https://www.youtube.com/channel/UCWDoV_pvMOBr7ekrZJ7qEbQ|Build an AI Person Detector with Arduino Uno Q: Complete Tutorial (Bridge, Bricks & Python)
+ai self-play board game|AI learns uno|PUa5i_U8yYE|444|697277|Sabine Hossenfelder|https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw|It’s Happening: AI Eats Physics
+ai self-play board game|AI learns uno|yW_ngvMFlYs|5828|49598|Machine Learning Street Talk|https://www.youtube.com/channel/UCMLtBahI5DMrt0NPvDSoIRQ|Why Consciousness Might Not Be Hard At All (Joscha Bach)
+ai self-play board game|AI learns uno|RUtrL0OuQgQ|429|4884|Electronics Innovation|https://www.youtube.com/channel/UC0CV_aKB64gb8_Ixy2-esJw|Arduino Uno Q vs NVIDIA Jetson Nano: The New AI King?
+ai self-play board game|AI learns uno|5BqA4DUvSHI|365|2402|Pk Editzzzz|https://www.youtube.com/channel/UCSQjyrb3Ut9D1vMZ4yRNuow|UNO Card Trick AI Video Editing 🔥 | AI Car Transformation Video Tutorial | Viral AI Video Editing
+ai self-play board game|AI learns uno|sHHYVvG_C4Q|3221|63247|Silicon Valley Girl|https://www.youtube.com/channel/UCiq1FIgtEK7LRAOB1JXTPig|Wharton’s Top AI Professor: Stop Starting Software Companies — The Real AI Money Is Here
+ai self-play board game|AI learns to play board game|dkvFcYBznPI|690|12115268|b2studios|https://www.youtube.com/channel/UCIcGc8tDHYZ3vY3NcS8JXaQ|AI Learns Insane Monopoly Strategies
+ai self-play board game|AI learns to play board game|aiDIACcUhpg|495|1314|R3DLIN3S and Board Game Hackers|NA|AI Gamer VS Board Games - prt1
+ai self-play board game|AI learns to play board game|vYPUs_FmNEQ|7257|2133986|Valefisk|https://www.youtube.com/channel/UC0eOlAEMdVgpmThPkpmR-qQ|Gaming, but I'm Secretly an AI
+ai self-play board game|AI learns to play board game|hCmrMOzx5VA|629|9712512|AI Warehouse|https://www.youtube.com/channel/UCMT1Aw4R4nf_sFNDeuJqc6w|AI Learns to Play Tag (and breaks the game)
+ai self-play board game|AI learns to play board game|lEOTKYxiIzs|3665|868197|Quinn Henry|https://www.youtube.com/channel/UCIAQuWY4lfGn8xArU_hG-dw|7 Ais play Diplomacy
+ai self-play board game|AI learns to play board game|sw7UAZNgGg8|642|2639797|Vsauce2|https://www.youtube.com/channel/UCqmugCqELzhIMNYnsjScXXw|The Game That Learns
+ai self-play board game|AI learns to play board game|kopoLzvh5jY|178|11299512|OpenAI|https://www.youtube.com/channel/UCXZCJLdBC09xxGZ6gcdrc6A|Multi-Agent Hide and Seek
+ai self-play board game|AI learns to play board game|y9cbmAs-TXY|6693|2207|Nights Around a Table|https://www.youtube.com/channel/UCQStO50-mii55SBNu2-IJtg|Can AI play board games?
+ai self-play board game|AI learns to play board game|gZwgWtMjWOQ|873|16269|BoardGameBollocks|https://www.youtube.com/channel/UCJpdYc5lit139dzwIqyf3Mg|AI In Board Games - Yes Or No?
+ai self-play board game|AI learns to play board game|SXnxZuntM0w|291|807|Squintist|https://www.youtube.com/channel/UCV269T352IlIFMot1Sqx1BA|I Made a Board Game About the AI Race
+ai self-play board game|AI learns to play board game|qz9FZJp4mIA|1020|651|I Heart Board Games|https://www.youtube.com/channel/UC-3nNxsKkZZZU0EFE9jXrAw|I Played Board Games Against AI
+ai self-play board game|AI learns to play board game|VKZ-KkF8II8|3321|583768|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to play Monopoly...(it was bad)
+ai self-play board game|AI learns to play board game|yAQOil0dyn4|973|25798|Tyler Fleischman and Species | Documenting AGI|NA|Don't ask ChatGPT to play the oldest board game
+ai self-play board game|AI learns to play board game|S9rEIadqGNs|6138|5628|Georgetown University Wargaming Society|https://www.youtube.com/channel/UCw0nVuQu5KoHv0kFiC9yX4Q|Intelligent Cardboard: Implementing AI in a Board Game w/ Geoff Engelstein
+ai self-play board game|AI learns to play board game|ZjY3RzZeL0A|5017|1964975|Valefisk|https://www.youtube.com/channel/UC0eOlAEMdVgpmThPkpmR-qQ|ChatGPT makes a Board Game.
+ai self-play board game|AI learns to play board game|ta99S6Fh53c|744|8821793|AI Warehouse|https://www.youtube.com/channel/UCMT1Aw4R4nf_sFNDeuJqc6w|AI Learns to Play Soccer (and breaks physics)
+ai self-play board game|AI learns to play board game|ZI-qDk7kgv8|5044|600|The Boardgame Group|https://www.youtube.com/channel/UC8ki7UwVEC6M0DPnfhOAssQ|Build a Board Game in Minutes using Gemini 3.0 AI. Part 1
+ai self-play board game|AI learns to play board game|6eeuDs7nY4g|407|4207|Complexity Explorer|https://www.youtube.com/channel/UC6s-1TYa-1fBrUUIGijshCQ|Fundamentals of Machine Learning: AI and Board Games
+ai self-play board game|AI learns to play board game|9V6Zi8TTxyk|8500|67|The Boardgame Group|https://www.youtube.com/channel/UC8ki7UwVEC6M0DPnfhOAssQ|Turn a Boardgame Rulebook into a browser game using Ai.
+ai self-play board game|AI learns to play board game|DcYLT37ImBY|2033|10188300|Peter Whidden|https://www.youtube.com/channel/UCF0ZSm2AmSkJ2b2sLMlgLFg|Training AI to Play Pokemon with Reinforcement Learning
+ai self-play board game|neural network learns card game|IO55apfZ3Z4|356|1046|Jackson Hall|https://www.youtube.com/channel/UCf857cILMPK3aNu7NpqteCQ|Automated Blackjack Card-Counting Neural Network | YOLOv5
+ai self-play board game|neural network learns card game|yr7106OcXoc|627|27|ilovecats|https://www.youtube.com/channel/UCLb7-068onNActuX7efhFOg|SA1 - CSS140-1: Learning by Playing (A Human Neural Network Card Game)
+ai self-play board game|neural network learns card game|Gv2iVvoLL6A|95|218|Amirreza Yousefzadeh|https://www.youtube.com/channel/UCD0uNxBA25vTFN3GQLyKBHg|Binary STDP neurons learns poker card symbols
+ai self-play board game|neural network learns card game|Aut32pR5PQA|199|11744149|Samuel Arzt|https://www.youtube.com/channel/UC_eerU4SleeptEbD2AA_nDw|Deep Learning Cars
+ai self-play board game|neural network learns card game|xVv74VgOW0c|357|321|Galvanize DSI|https://www.youtube.com/channel/UC11Qh-7Eo1d9giHzcvvdTvg|Magic and Neural Nets: Classifying Trading Card Artwork with Tensorflow and CNNs
+ai self-play board game|neural network learns card game|Kqs8TR2HJEk|1273|272659|QuantProgram|https://www.youtube.com/channel/UCq_njg0BL8sT3781M6IAfOg|why ai neural networks will change trading forever and how to build yours in minutes!
+ai self-play board game|neural network learns card game|XWo_wKNtdcc|36|73|Aligned Discovery|https://www.youtube.com/channel/UCDwRrGLwiNH_eLhIk0jLIyQ|Free AI Card Game - You are the AI Algorithm
+ai self-play board game|neural network learns card game|L17r8lau9S8|343|14288|Jack Baumgartel|https://www.youtube.com/channel/UCo1dEYW2_YPbcG-uV0kaT9Q|AI Learns Magic the Gathering Cards
+ai self-play board game|neural network learns card game|nJPVZGcZZyQ|60|356|WunderVision|https://www.youtube.com/channel/UCEbmwtJQBbF4xcidbvnnyJg|Neural Net Detecting Playing Cards
+ai self-play board game|neural network learns card game|VRDBAhirp2Q|17|146|aiskott|https://www.youtube.com/channel/UCZ5JMaBPbvOrJN9xcmcheGw|Game of Set - TensorFlow Object Detection
+ai self-play board game|neural network learns card game|3aYHoXgfQrM|1203|170|Derrik Petrin|https://www.youtube.com/channel/UCxFTBOPB3nSZaJVHhL-0XOQ|Reward Allocation for Reinforcement Learning in Collectible Card Game Drafting
+ai self-play board game|neural network learns card game|u0hVGNKii7Q|78|88|Geotyper|https://www.youtube.com/channel/UClzOh17hkpLwTOI7PR6OvLw|Neural Network first step in plaing cards
+ai self-play board game|neural network learns card game|95zlcmltx8o|305|167|Pablo Barros|https://www.youtube.com/channel/UCEDCAKCAOpzcZ9FwzCK_qKA|Learning From Learners: Adapting Reinforcement Learning Agents to be Competitive in a Card Game
+ai self-play board game|neural network learns card game|Nf3zBJ2cDAs|630|116903|Edje Electronics|https://www.youtube.com/channel/UCLuS8eZl3_nKKq85gPS62lQ|Counting Cards Using Machine Learning and Python - RAIN MAN 2.0, Blackjack AI - Part 1
+ai self-play board game|neural network learns card game|oPbVpT_USfQ|94|308|WunderVision|https://www.youtube.com/channel/UCEbmwtJQBbF4xcidbvnnyJg|Neural Net Playing Card Demo
+ai self-play board game|neural network learns card game|QEzJzMEjdW4|97|664|electricidea|https://www.youtube.com/channel/UCLZHeyn037Ct85kbZUbk6TA|AI detector for playing cards based on M5StickV
+ai self-play board game|neural network learns card game|r8sZgPx4jYA|1565|28704|Jia-Bin Huang|https://www.youtube.com/channel/UCkQS_dP6GJTmYnMlox-YiKQ|LLMs Can Now Read and Write Neural Network Weights
+ai self-play board game|neural network learns card game|W7BkXWjRA48|467|152|Arif Jahangir|https://www.youtube.com/channel/UCcxCeuco3rPEubmV0XWIl1w|Card Game of Deep Learning
+ai self-play board game|neural network learns card game|HDjMwgHXJZ4|139|65|simons Yang|https://www.youtube.com/channel/UCGvslyY-OP57mtz3-LcP3GA|Using machine learning method to predict human actions in poker game
+ai self-play board game|neural network learns card game|ugayeFRp0FA|1435|103182|Angel Vee|https://www.youtube.com/channel/UCLLl_x5TtJZjhteispul8eA|I Trained an AI to Play Balatro Using Reinforcement Learning
+bot league events|marble league|KcygF0N504E|10018|126109|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Marble Race: MARBLE LEAGUE 2026 - All Events
+bot league events|marble league|fHYSXHW7hys|10136|902118|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Marble Race: MARBLE LEAGUE 2025 - All Events
+bot league events|marble league|aybSp___-Vc|1162|54237|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Stone Toss | Event 8 | Marble League 2026 🌸
+bot league events|marble league|2a8t33Ie2fI|505|3507|Marble Race King|https://www.youtube.com/channel/UColoRtbrPiaYh3vBu5u68zw|Marble Race League Season 74 Day 2 Marble Race / Marble Race King
+bot league events|marble league|vci_g7xIHg8|1086|1851|EstoniaGamez |https://www.youtube.com/channel/UCmracdNwUQI-QT9N-KZNJJg|Marble League 2026 Full Recap
+bot league events|marble league|8mmNzfXg6sM|8194|1979773|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Winter Marble League 2018 - All Events! (MarbleLympics)
+bot league events|marble league|B42VCeZ9puw|13838|372630|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|EPIC Winter Marble Racing Tournament - Marble League 2024 All Events
+bot league events|marble league|hXZ43T42FE4|1098|3920|TheMADMAN731|https://www.youtube.com/channel/UCxWKm-9ab7JAsjJk1ye3Fhg|Marble League 2026 Full Recap
+bot league events|marble league|FFYLwHRhMUk|959|53874|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Marble Archery 🎯 | Marble League 2026 🌸 | Event 12
+bot league events|marble league|u9swBLvLqlc|743|42978|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Sumo Wrestling with MARBLES 🌸 Marble League 2026 E15
+bot league events|marble league|O2AbcCbyJ2U|1009|14558583|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Marble Race: Marble League 2019 Qualifiers
+bot league events|marble league|nChMmLgSAoI|524|56439|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Underwater Race 💧 | Marble League 2026 🌸 | Event 13
+bot league events|marble league|8MAEVIECYYc|845|48636|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Marble Javelin | Marble League 2026 🌸 | E9 + SD3
+bot league events|marble league|AQX6UCIessA|11281|624057|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Marble Race: Marble League 2023 - ALL EVENTS!
+bot league events|marble league|xTWgIKplEBU|994|162293|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Marble League 2023 Event 13: Elimination Race 🐝
+bot league events|marble league|Iqb4HWSOTpE|11433|1005053|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Marble League 2022 ALL EVENTS | Jelle's Marble Runs
+bot league events|marble league|5cXqPl2ZnyY|670|12954|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Can These Marbles Survive A Street Obstacle Course? 🚧 Marble Outcasts E4
+bot league events|marble league|Ktk1z6dL5ws|9996|1197019|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|Marble Race: Marble League 2021 ALL EVENTS
+bot league events|marble league|Z41OrVZ91TM|464|60816|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|5m Hurdles Marble Race | Marble League 2026 E5 🌸
+bot league events|marble league|qSg8P_SXSWA|428|51526|Jelle's Marble Runs|https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g|5m Sprint Marble Race | Marble League 2026 E7
+bot league events|AI tournament bracket|YKq5oqYzzUQ|456|3406|Ryan Doser|https://www.youtube.com/channel/UCuS26YCwztJJebH9rqba1yg|Which AI Picks the Best March Madness Bracket? (5 AI Models Compared)
+bot league events|AI tournament bracket|iQYpZoczKEU|238|1644|Future Tech Pilot|https://www.youtube.com/channel/UCEuQ7YIThAps6wERHfsY7fQ|I Built a Midjourney Tournament Bracket
+bot league events|AI tournament bracket|zAvgKBf1WC8|183|1359|NBC News|https://www.youtube.com/channel/UCeY0bbntWzzVIaj2z3QigXg|How AI could help win a March Madness bracket
+bot league events|AI tournament bracket|K8lojnSMoc8|866|44252|Spreadsheet Life|https://www.youtube.com/channel/UCiAOCK55q2aYwiZZP3zLlFg|How to Make a Tournament Bracket in Excel
+bot league events|AI tournament bracket|J6_k_hlZ5O4|65|4967|Score7|https://www.youtube.com/channel/UCVSKaX96Kesy5cg-JCSUJ8g|How to Create a Knockout Tournament Bracket in Score7 (Fast & Easy Bracket Generator)
+bot league events|AI tournament bracket|IMVz2diG-SA|119|1784|Common Ninja|https://www.youtube.com/channel/UCGPpHoQAIMpuoxpox32PxsQ|How to create a Round Robin bracket Tournament
+bot league events|AI tournament bracket|WP70Qtce33I|251|2856|DataRift|https://www.youtube.com/channel/UCY54yCpXQgvj4JXNAQhtyNQ|AI vs. March Madness: Predictions for the ULTIMATE Bracket
+bot league events|AI tournament bracket|OY1cEKPdlQw|1630|9985|Table or Trash|https://www.youtube.com/channel/UCq9gKfGUeGKYQj3HGcCH65Q|AI’s Perfect March Madness Bracket | 2025 NCAA Tournament Predictions
+bot league events|AI tournament bracket|jQQG1Fth3ac|17835|87|RLBot|https://www.youtube.com/channel/UCu8scB_k94Kh-iO979QTDJA|RLBot Championship 2026 | ML Lower Bracket Trunk
+bot league events|AI tournament bracket|gOKjNSMxxxA|813|4770|Calon Heindel |https://www.youtube.com/channel/UCbI3ankFfKKHLhVZrrbGCiw|How To Make a Tournament Bracket in Excel
+bot league events|AI tournament bracket|JWvXULUjfPc|8257|41078|GMHikaru|https://www.youtube.com/channel/UCweCc7bSMX5J4jEH7HFImng|GUESS THE ELO AI COMPETITION!! KAGGLE BRACKET DAY 1
+bot league events|AI tournament bracket|CzgDCuyrBTM|225|849|FOX 32 Chicago|https://www.youtube.com/channel/UCFmofUYwZd1Ibf_O3PF71jg|March Madness bracket: Using AI for better odds
+bot league events|AI tournament bracket|OrlB4omf0lE|191|193|Voltster Ebikes|https://www.youtube.com/channel/UCuO9grbVYSKGeI0P3EIdOnA|THE BRACKET: Sur-Ron vs Talaria vs Yozma vs Tuttio — 4 Bikes, 1 Champion (AI Paper Race Tournament)
+bot league events|AI tournament bracket|tYWsM7U9EgA|110|1402|WFXR NEWS|https://www.youtube.com/channel/UC8Lg5y3YmAcVbkkuA0meA3w|Using AI to build your March Madness bracket?
+bot league events|AI tournament bracket|HqaO4rd-lPQ|841|37|Behemoth Knight|https://www.youtube.com/channel/UCBJiNWOuYrMPRrUA_RxsHgw|FFT AI Tournament Bracket Match 4
+bot league events|AI tournament bracket|Vm8zo7p51xQ|382|1314|The Sharp App|https://www.youtube.com/channel/UCfyGwPle0ikwIk1ggdUaq6Q|Using AI To Fill Out March Madness Bracket | Free Contest, Win Real 💰
+bot league events|AI tournament bracket|ou-fgDHImdM|136|53|Western Mass News|https://www.youtube.com/channel/UC5IEJQ2WAfueEyjnG3JYNtQ|AI could help boost basketball bracket odds
+bot league events|AI tournament bracket|VPz_jR9rfzQ|1202|2|Low Light Stories|https://www.youtube.com/channel/UCuEvNsbh1h-V2FHNDq3pfpA|The Tournament Bracket Was Hacked with My Players' Names Removed
+bot league events|AI tournament bracket|0IWH-_D00x0|5136|621|[SSCAIT] StarCraft Artificial Intelligence Tournament|https://www.youtube.com/channel/UCWQ_JrbZBq5uoDmrjQcajTA|SSCAIT Report 284: Winners Bracket Round 1 Part 1
+bot league events|AI tournament bracket|ZkO8XKrg_Vw|674|10854|Nyl Lasco|https://www.youtube.com/channel/UC5BQSOb2vNAmLgzscSAdfWQ|Making Game Tournament Bracket
+bot league events|bots battle royale simulation|b1wbSjUTka8|330|3692237|BattleBots|https://www.youtube.com/channel/UCxNDM5ZhvDa_Z1qTUap7IRw|Top 3 BIGGEST BattleBots | Greatest Fights | BATTLEBOTS
+bot league events|bots battle royale simulation|PReR-FVnebU|84|452|Tabs Samurai|https://www.youtube.com/channel/UCfOENwVptV8wY5JMda0yxwQ|🔥 PROTECTOR ARMY 🗡 vs 👹 JOLLY BOT - Totally Accurate Battle Simulator TABS
+bot league events|bots battle royale simulation|E6QWGf9fO10|84|1164|KAKA PINTAR|https://www.youtube.com/channel/UCntKhWP48pzslyA9skq3xow|Royal Robots Battleground - New Robot Simulator Game - Android Gameplay
+bot league events|bots battle royale simulation|xX5rjR1MKAw|1446|1027257|DruuuWu|https://www.youtube.com/channel/UCB0RoMR2-RPFtvE9rJonPiQ|I Created a WORLD Battle Royale Simulator!
+bot league events|bots battle royale simulation|HAeAevGACgU|703|495096|TABS Gods|https://www.youtube.com/channel/UCbHhzh3qaMcXBKWAjl4IgDw|200x AWARE ROBOT + 1x GIANT vs EVERY GOD - Totally Accurate Battle Simulator TABS
+bot league events|bots battle royale simulation|rWiM5zDiFNo|588|176218|Cadson|https://www.youtube.com/channel/UCSPEMfpk_Bag-Nji5O-E4GA|AI Battle Royale in HOI4
+bot league events|bots battle royale simulation|mIePFtKk8Rc|6027|20|Tommy Hackethal|https://www.youtube.com/channel/UCK5I56PsGOo3OahOgMlaLxw|There all bots ( Battle Royale Simulator)
+bot league events|bots battle royale simulation|KfcE8rnf1JY|407|348120|Emeka Moemeka|https://www.youtube.com/channel/UCsEsFyWMp_e6qO-LRjoKnig|I Trained an AI to Play Clash Royale... It Worked Too Well
+bot league events|bots battle royale simulation|8XNw1LnJ0tw|668|581133|Fudgy|https://www.youtube.com/channel/UCh7gme0kfhUZXG3NDqpeL_g|ROBOT Dinosaur Eats Transformers - Age Of Warbots
+bot league events|bots battle royale simulation|Edjkzz2jrT0|309|2719321|Kian Brose|https://www.youtube.com/channel/UC1AgWV7PLk_uVDkh35VVf9w|Beating a Pay to Win game with a bot
+bot league events|bots battle royale simulation|vQvLuODYJa8|628|1107444|Face to Face Battle|https://www.youtube.com/channel/UC6c59RYuOZOkM8ZmyAHNDPw|Battle Royale On The New Arena Map | Totally Accurate Battle Simulator TABS
+bot league events|bots battle royale simulation|br_uHizDkHw|916|190974|DruuuWu|https://www.youtube.com/channel/UCB0RoMR2-RPFtvE9rJonPiQ|WW2 But It's a CHOATIC Battle Royale... (Earth Royale Simulator)
+bot league events|bots battle royale simulation|Rl-Okv32Cg0|638|15630718|TerminalMontage|https://www.youtube.com/channel/UCLFXk9J3O-hhOk0msOjKYdQ|Starter Pokemon Battle Royale 💥 Collab With @Gnoggin
+bot league events|bots battle royale simulation|qLp4phGL41s|425|14567776|Team Croc Combat Robotics|https://www.youtube.com/channel/UCSieH1-ANWAEpo7t_YpWpGQ|Robot Wars Gladiator fight - 18 robot free-for-all | Robochallenge 2015
+bot league events|bots battle royale simulation|5NxomAGxCPo|1733|127996|Dee Pip Pip|https://www.youtube.com/channel/UCPf4BaNkAj2YOp7KFtGaEdQ|Water Behemoth vs Godzilla Earth vs Wild Ghidorah - Animal Revolt Battle Simulator
+bot league events|bots battle royale simulation|J8Ma4e30-WI|415|26|AutoArena|https://www.youtube.com/channel/UClbq_rI_x_zthG9D39CJJaw|Bedwars Battle Royale — 4 Random Teams, Only 1 Survives (Minecraft AI Simulation)
+bot league events|bots battle royale simulation|SI0wT_z3Ez8|702|2349988|Fudgy|https://www.youtube.com/channel/UCh7gme0kfhUZXG3NDqpeL_g|Breaking a Kaiju JAW - Kaiju Battle Simulator VR
+bot league events|bots battle royale simulation|hih0jEZAc-0|1124|8183094|TabsPlay|https://www.youtube.com/channel/UCQbOm6PCJIZlVKUwOpmpqhA|1.000.000 DAMAGE BLOWDART vs UNITS - TABS | Totally Accurate Battle Simulator 2024
+bot league events|bots battle royale simulation|zZfrQ2v-RiE|693|26893|TABS Great Battle|https://www.youtube.com/channel/UCBEFTZSh6ePtRSRBgl1sgpA|RANDOM UNITS vs MILITARY ROBOTS TEAM - Totally Accurate Battle Simulator TABS
+bot league events|bots battle royale simulation|UQGEeVZE5zI|775|5|Virtualuman|https://www.youtube.com/channel/UC8XTyepWjlGrmuB-0WwUpug|Fortnite Aim Training Day 1: Bots and Pills in the Simulation
+bot league events|100 bots compete|KF-cmSHtPlU|593|7206|Breaking Point|https://www.youtube.com/channel/UCi-nd4Y4U8DbxbO9SJTYG2A|How Fast Can CENSOR Kill 100 Bots? | 1vs100 Challenge - #1
+bot league events|100 bots compete|GkbAcwYix7I|210|28733148|ABC|https://www.youtube.com/channel/UC_IpSl6O_-IRAA6fiNs05Gg|Blacksmith vs. Minotaur - BattleBots
+bot league events|100 bots compete|_zhzlUvekSE|1399|298|UltraSlothGaming|https://www.youtube.com/channel/UC6-V6aqaKNLlkutj_cpBOjg|100 BOTS vs ME AND NEXTO THE GRAND CHAMPION AI!!! (OVER 500 DEMOS!)
+bot league events|100 bots compete|SGlrtXPOBWk|647|3241|Breaking Point|https://www.youtube.com/channel/UCi-nd4Y4U8DbxbO9SJTYG2A|How Fast Can GUNLESS Kill 100 Bots? | 1vs100 Challenge - #2
+bot league events|100 bots compete|MjPNBH2u-fw|476|13483|Breaking Point|https://www.youtube.com/channel/UCi-nd4Y4U8DbxbO9SJTYG2A|How Fast Can ABEZY Kill 100 Bots? | 1vs100 Challenge - #3
+bot league events|100 bots compete|s8717egMnv4|543|5367|Breaking Point|https://www.youtube.com/channel/UCi-nd4Y4U8DbxbO9SJTYG2A|How Fast Can SPART Kill 100 Bots? | 1vs100 Challenge - #9
+bot league events|100 bots compete|WFiqv42dq7w|533|6431|Breaking Point|https://www.youtube.com/channel/UCi-nd4Y4U8DbxbO9SJTYG2A|How Fast Can ATTACH Kill 100 Bots? | 1vs100 Challenge - #5
+bot league events|100 bots compete|pjKA0wVoHzg|706|4603|Breaking Point|https://www.youtube.com/channel/UCi-nd4Y4U8DbxbO9SJTYG2A|How Fast Can GISMO Kill 100 Bots? | 1vs100 Challenge - #4
+bot league events|100 bots compete|pN57UhWSaZc|569|7169|Breaking Point|https://www.youtube.com/channel/UCi-nd4Y4U8DbxbO9SJTYG2A|How Fast Can ENVOY Kill 100 Bots? | 1vs100 Challenge - #6
+bot league events|100 bots compete|21AU3VySgVs|477|2350|Breaking Point|https://www.youtube.com/channel/UCi-nd4Y4U8DbxbO9SJTYG2A|How Fast Can INSIGHT Kill 100 Bots? | 1vs100 Challenge - #10
+bot league events|100 bots compete|DmdwS3iaasE|556|2830|Breaking Point|https://www.youtube.com/channel/UCi-nd4Y4U8DbxbO9SJTYG2A|How Fast Can GRVTY Kill 100 Bots? | 1vs100 Challenge - #7
+bot league events|100 bots compete|CHf28k6lB8g|544|7208|Breaking Point|https://www.youtube.com/channel/UCi-nd4Y4U8DbxbO9SJTYG2A|How Fast Can CAPSIDAL Kill 100 Bots? | 1vs100 Challenge - #8
+bot league events|100 bots compete|5c7JTHzlGuQ|170|64519|AZ Digital|https://www.youtube.com/channel/UCnJJn8iwr1LgKqIMoAziEOA|How To Play Against 10 Bots in CS2 (2025) - Step by Step
+bot league events|100 bots compete|d3fCPgX9VCA|125|2410|LionRL|https://www.youtube.com/channel/UCw4brkdfkorWvMwPa-iv_9w|100 Bots | 50 vs 50 | Hoops
+bot league events|100 bots compete|OzdLpSrTnWk|371|670|LionRL|https://www.youtube.com/channel/UCw4brkdfkorWvMwPa-iv_9w|100 Bots | 50 vs 50 | Dropshot
+bot league events|100 bots compete|PY_7C4XYusI|545|15234|Kevin Chiva|https://www.youtube.com/channel/UCFB-SIIDKfJaN6JYLmOKTCA|Grok Bot vs Hermes: Is $100 a Month Worth It?
+bot league events|100 bots compete|28DXIgOmu3g|771|1959|ZzQt|https://www.youtube.com/channel/UCMH7KopfYHJJC_fKi708wJA|It’s Official Valorant Has Bots In Ranked
+bot league events|100 bots compete|OvEQsxrQrlo|18716|59605|Sidequest and 5 more|NA|We 100% Astro Bot Against Our Will
+bot league events|100 bots compete|Vrb3ezRuQo4|955|288134|TattMatt|https://www.youtube.com/channel/UCrw71ReKjd6aCvu-d9OmK9Q|Can 2 Casual TF2 Players Beat 98 Heavy Bots?
+bot league events|100 bots compete|3Diah6PfYYc|157|45|TopoR|https://www.youtube.com/channel/UCeV8RHW1rJjaLyZgr0N1-nw|Results of the bots competition in the game Agarix.ru
+pokemon battle sims|I simulated pokemon battles|mM7EhT5UdAE|1333|3112705|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|I Simulated 1,810,053 Battles to Find the Strongest Pokémon
+pokemon battle sims|I simulated pokemon battles|PvMYjcQg75M|3092|809128|Gym Leader Matt|https://www.youtube.com/channel/UCDZkdJNJMtU2J8tKmQrXv2Q|I Simulated 170,000 Battles to Rank All Generation 1 Pokémon
+pokemon battle sims|I simulated pokemon battles|PBd7Toaczro|3116|276510|Gym Leader Matt|https://www.youtube.com/channel/UCDZkdJNJMtU2J8tKmQrXv2Q|I Simulated 17 Million Battles to Find the REAL Best Gen 1 Pokémon
+pokemon battle sims|I simulated pokemon battles|BukW57lsoIY|1572|929511|SmithPlays Pokémon|https://www.youtube.com/channel/UCzSgKn6BC9uYD89Hfut3sBg|I Simulated 1,950,480 Battles To Find The Strongest Pokémon Team
+pokemon battle sims|I simulated pokemon battles|9_JZ64_qbb4|2059|206633|SmithPlays Pokémon|https://www.youtube.com/channel/UCzSgKn6BC9uYD89Hfut3sBg|I Simulated 3,372,750 Battles to Find The STRONGEST Mega Pokémon
+pokemon battle sims|I simulated pokemon battles|wWjiJVbSzTg|1336|1624068|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|I Simulated A Billion Lions VS 1 of Every Pokemon
+pokemon battle sims|I simulated pokemon battles|ttPcghktyFg|623|5410|My Pet Pokemon|https://www.youtube.com/channel/UCGiLTaiWe3sRqLwZ7R3bbJg|I Simulated 6 Pokémon in Real Life | ...Greninja in the Machine Battle
+pokemon battle sims|I simulated pokemon battles|cae0YJBwygg|3058|1025130|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|Level 1 to 100 Impossible Pokémon Battles
+pokemon battle sims|I simulated pokemon battles|JZRBNvRqkNM|998|250306|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|Pokémon, but They Can Evolve in Battle
+pokemon battle sims|I simulated pokemon battles|DP7Z58-s49s|863|19578|Seafoam|https://www.youtube.com/channel/UCqZsB8QECbOo2U-9iUvRiEw|I simulated the Masters 8 in Python
+pokemon battle sims|I simulated pokemon battles|-7qKlcvf8HI|1423|670813|SmithPlays Pokémon|https://www.youtube.com/channel/UCzSgKn6BC9uYD89Hfut3sBg|I Simulated 1,000,000 Pokemon Battles, Here's the Best Trainer
+pokemon battle sims|I simulated pokemon battles|a2DaelxFMN8|338|213284|Oak’s Chronicles|https://www.youtube.com/channel/UCUD_8_cM-E7Qx1WcURDD57Q|Pokémon Tournament Animation EP 1 (Hyper-Realistic Cinematic Battle) | Slaking vs Metagross
+pokemon battle sims|I simulated pokemon battles|6fxvJ3AgI-o|2417|101938|MorePatterrz|https://www.youtube.com/channel/UCG1TjxtZr9qCOSPRAIbPk9A|Patterrz Reacts to "Simulating 1,000,000 Pokémon Battles with ALL Teams Level 50"
+pokemon battle sims|I simulated pokemon battles|gmdyzgOf7dI|2833|86189|MorePatterrz|https://www.youtube.com/channel/UCG1TjxtZr9qCOSPRAIbPk9A|Patterrz Reacts to "I Simulated 1,950,480 Battles To Find The Strongest Pokémon Team"
+pokemon battle sims|I simulated pokemon battles|yGaJr7cQ3Nc|1651|244335|SmithPlays Pokémon|https://www.youtube.com/channel/UCzSgKn6BC9uYD89Hfut3sBg|I Simulated 1,083,021 Battles to Find The Best Gen 1 Pokémon
+pokemon battle sims|I simulated pokemon battles|DVO8QrGAPHs|449|70045789|TerminalMontage|https://www.youtube.com/channel/UCLFXk9J3O-hhOk0msOjKYdQ|Legendary & Mythical Pokemon Battle Royale 🌍 Collab With @Gnoggin
+pokemon battle sims|I simulated pokemon battles|BDzvdYLD2Cg|711|1251933|PokeRealTV|https://www.youtube.com/channel/UC7p_wHaGg_oeVzzokGfAmvw|I Simulated 8 Pokémon Pet In Real Life
+pokemon battle sims|I simulated pokemon battles|zFqZggMcq34|376|52127789|TerminalMontage|https://www.youtube.com/channel/UCLFXk9J3O-hhOk0msOjKYdQ|Pokemon Battle Royale (Loud Sound Warning) 💥 Collab With @Gnoggin
+pokemon battle sims|I simulated pokemon battles|dsTLTI5TND0|1222|10027|Polirad Gaming|https://www.youtube.com/channel/UCK5e_UAPZ13oOsU12_j6iiQ|The New Pokémon Game That's ACTUALLY A BATTLE ROYALE...
+pokemon battle sims|I simulated pokemon battles|L6GiPS_KZos|545|45304961|TerminalMontage|https://www.youtube.com/channel/UCLFXk9J3O-hhOk0msOjKYdQ|Mega Pokemon Battle Royale (Loud Sound/Flashing Lights Warning) ☄️ Collab With @Gnoggin
+pokemon battle sims|strongest pokemon simulated|mM7EhT5UdAE|1333|3112705|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|I Simulated 1,810,053 Battles to Find the Strongest Pokémon
+pokemon battle sims|strongest pokemon simulated|9_JZ64_qbb4|2059|206633|SmithPlays Pokémon|https://www.youtube.com/channel/UCzSgKn6BC9uYD89Hfut3sBg|I Simulated 3,372,750 Battles to Find The STRONGEST Mega Pokémon
+pokemon battle sims|strongest pokemon simulated|PvMYjcQg75M|3092|809128|Gym Leader Matt|https://www.youtube.com/channel/UCDZkdJNJMtU2J8tKmQrXv2Q|I Simulated 170,000 Battles to Rank All Generation 1 Pokémon
+pokemon battle sims|strongest pokemon simulated|Su41yU_irf4|499|1589591|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|I Created the World's Strongest Pokémon
+pokemon battle sims|strongest pokemon simulated|4Ru2vv8kmm0|1523|1948817|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|I Created an Immortal Pokémon
+pokemon battle sims|strongest pokemon simulated|sGgpNmOW0oo|1412|1113916|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|I Created the Ultimate Pokémon Team (they can cheat)
+pokemon battle sims|strongest pokemon simulated|joam5ccEzN4|909|1226922|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|It Only Takes 6 Abilities to Create an Immortal Pokémon
+pokemon battle sims|strongest pokemon simulated|BukW57lsoIY|1572|929511|SmithPlays Pokémon|https://www.youtube.com/channel/UCzSgKn6BC9uYD89Hfut3sBg|I Simulated 1,950,480 Battles To Find The Strongest Pokémon Team
+pokemon battle sims|strongest pokemon simulated|AN_BEd8BJQM|834|2606614|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|I Created the Most Powerful Pokémon
+pokemon battle sims|strongest pokemon simulated|-7qKlcvf8HI|1423|670813|SmithPlays Pokémon|https://www.youtube.com/channel/UCzSgKn6BC9uYD89Hfut3sBg|I Simulated 1,000,000 Pokemon Battles, Here's the Best Trainer
+pokemon battle sims|strongest pokemon simulated|wWjiJVbSzTg|1336|1624068|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|I Simulated A Billion Lions VS 1 of Every Pokemon
+pokemon battle sims|strongest pokemon simulated|0HHUtHDs9E8|2173|185624|MorePatterrz|https://www.youtube.com/channel/UCG1TjxtZr9qCOSPRAIbPk9A|Patterrz Reacts to "I Simulated 1,810,053 Battles to Find the Strongest Pokémon"
+pokemon battle sims|strongest pokemon simulated|YMUqTfZdB3g|2012|1230221|Jacob Alpharad|https://www.youtube.com/channel/UCBODyKF0JMbUd6D9Bklyzbw|Determining the Strongest Pokémon of All-Time
+pokemon battle sims|strongest pokemon simulated|yGaJr7cQ3Nc|1651|244335|SmithPlays Pokémon|https://www.youtube.com/channel/UCzSgKn6BC9uYD89Hfut3sBg|I Simulated 1,083,021 Battles to Find The Best Gen 1 Pokémon
+pokemon battle sims|strongest pokemon simulated|zn0qh_N1wEw|260|45|Poke Royale|https://www.youtube.com/channel/UCx3s2por6AQvz6BjIZhNLYA|Strongest Gen 1 Pokémon? I Simulated 2 Million Battles
+pokemon battle sims|strongest pokemon simulated|0Pc0A6F4G9A|2556|1828498|WolfeyVGC|https://www.youtube.com/channel/UC9OZkS1Mhl5UvKSiPrYqsxg|The Strongest Pokemon Team is Misunderstood
+pokemon battle sims|strongest pokemon simulated|DVjEzlwZX4c|1393|99129|Moxie Boosted|https://www.youtube.com/channel/UCAVKuhZ5Og4O86jkgUgUcyg|What Is The STRONGEST Pokemon In Each Generation?...
+pokemon battle sims|strongest pokemon simulated|cae0YJBwygg|3058|1025130|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|Level 1 to 100 Impossible Pokémon Battles
+pokemon battle sims|strongest pokemon simulated|vXZyrpK6NIg|9114|23986|blunder|https://www.youtube.com/channel/UC-tIwhZwjGMTCEBUVuAG5fA|Ranking the BEST and WORST Abilities in Competitive Pokemon... !sub
+pokemon battle sims|strongest pokemon simulated|lx00W6HsUhg|1387|220500|SmithPlays Pokémon|https://www.youtube.com/channel/UCzSgKn6BC9uYD89Hfut3sBg|I Simulated 1,000,000 Pokemon Battles to Find The Best Trainer
+pokemon battle sims|every pokemon fights|V3DmsG-_yi4|815|4011316|The Official Pokémon YouTube channel|https://www.youtube.com/channel/UCFctpiB_Hnlk3ejWfHqSm6Q|Ash Ketchum’s Great Battles 💥 | Pokémon the Series
+pokemon battle sims|every pokemon fights|DVO8QrGAPHs|449|70045789|TerminalMontage|https://www.youtube.com/channel/UCLFXk9J3O-hhOk0msOjKYdQ|Legendary & Mythical Pokemon Battle Royale 🌍 Collab With @Gnoggin
+pokemon battle sims|every pokemon fights|cn4BAjb7-Zs|1795|149533|WatchMojo.com|https://www.youtube.com/channel/UCaWd5_7JhbQBe4dknZhsHJg|Top 30 Most Epic Pokemon Anime Battles
+pokemon battle sims|every pokemon fights|L6GiPS_KZos|545|45304961|TerminalMontage|https://www.youtube.com/channel/UCLFXk9J3O-hhOk0msOjKYdQ|Mega Pokemon Battle Royale (Loud Sound/Flashing Lights Warning) ☄️ Collab With @Gnoggin
+pokemon battle sims|every pokemon fights|Rl-Okv32Cg0|638|15630718|TerminalMontage|https://www.youtube.com/channel/UCLFXk9J3O-hhOk0msOjKYdQ|Starter Pokemon Battle Royale 💥 Collab With @Gnoggin
+pokemon battle sims|every pokemon fights|O8E6lvQ6i9Y|603|3633904|Netflix Family|https://www.youtube.com/channel/UCpInjhuJ1WUekcFeXPPyGGg|Most EPIC Pokémon Battles from Pokémon Master Journeys: The Series 💥 Netflix Futures
+pokemon battle sims|every pokemon fights|mM7EhT5UdAE|1333|3112705|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|I Simulated 1,810,053 Battles to Find the Strongest Pokémon
+pokemon battle sims|every pokemon fights|hgp4E8C29is|789|403611|WatchMojo.com|https://www.youtube.com/channel/UCaWd5_7JhbQBe4dknZhsHJg|Top 10 Battles Between the Most Powerful Pokémon
+pokemon battle sims|every pokemon fights|5bUnaRtzAfg|50|3178282|ThatOneGuy'sAnimations|https://www.youtube.com/channel/UC7MxBUUiCi5kwbqi_KB3Q3Q|when your Pokémon are Over leveled
+pokemon battle sims|every pokemon fights|zFqZggMcq34|376|52127789|TerminalMontage|https://www.youtube.com/channel/UCLFXk9J3O-hhOk0msOjKYdQ|Pokemon Battle Royale (Loud Sound Warning) 💥 Collab With @Gnoggin
+pokemon battle sims|every pokemon fights|wqSDbtBZaI0|5361|606796|Pokémon TV|https://www.youtube.com/channel/UC8wrbl5viYtQmRUgdFdf4ew|Ash and Pikachu's TOP Kanto Region Gym Battles | Pokémon Season 1
+pokemon battle sims|every pokemon fights|O5myIiXLqug|589|14409454|TerminalMontage|https://www.youtube.com/channel/UCLFXk9J3O-hhOk0msOjKYdQ|Pokemon Battle Royale: ULTRA BEASTS! Collab w/ @Gnoggin (Loud Sound/Flashing Lights) 👽
+pokemon battle sims|every pokemon fights|bvaLHbLTWuI|713|36683751|TerminalMontage|https://www.youtube.com/channel/UCLFXk9J3O-hhOk0msOjKYdQ|GIGANTAMAX Pokemon Battle Royale 💥 Collab With @Gnoggin (Loud Sound Warning)
+pokemon battle sims|every pokemon fights|BACKGiNpf-4|286|823260|Pokémon TV|https://www.youtube.com/channel/UC8wrbl5viYtQmRUgdFdf4ew|Bulbasaur and Scyther Battle it Out | Pokémon: Adventures in the Orange Islands
+pokemon battle sims|every pokemon fights|7HsPDw6nGpc|5165|736948|Pokémon TV|https://www.youtube.com/channel/UC8wrbl5viYtQmRUgdFdf4ew|Ash and Pikachu's TOP Johto Region Gym Battles | Pokémon Season 3 - 5
+pokemon battle sims|every pokemon fights|CcHH8O3NKEE|8576|338005|MudkipWithShades|https://www.youtube.com/channel/UCT30lPRZSWQfx6R33v1TKzQ|Evolution of Pokemon Champion Battles (1996 - 2022)
+pokemon battle sims|every pokemon fights|J6aca67v-p8|1507|763807|WatchMojo.com|https://www.youtube.com/channel/UCaWd5_7JhbQBe4dknZhsHJg|Top 20 Most Iconic Legendary Pokemon Scenes
+pokemon battle sims|every pokemon fights|FNtSEzxop60|3044|458729|Zactoshi|https://www.youtube.com/channel/UCAu71emkK4JWb3sEnqg9gOQ|Top 25 Pokémon Anime Battles
+pokemon battle sims|every pokemon fights|-OUVRcJMcfQ|604|8584622|TerminalMontage|https://www.youtube.com/channel/UCLFXk9J3O-hhOk0msOjKYdQ|Paradox Pokemon Battle Royale! 🌌 Collab with @Gnoggin
+pokemon battle sims|every pokemon fights|w7ALiyRU7cU|1274|937598|Pokémon TV|https://www.youtube.com/channel/UC8wrbl5viYtQmRUgdFdf4ew|Mother of All Battles | POKÉMON FULL EPISODE 54 | Season 5
+pokemon battle sims|pokemon type matchup simulation|XVQpWAwl0zI|102|161|Loke|https://www.youtube.com/channel/UCSQy8wrNPnXLPfuJTrxz3cQ|Pokemon Type Match-up Simulation Cellular Automata Only Super-effective
+pokemon battle sims|pokemon type matchup simulation|cJ7FRmC7esM|122|1404527|PS Zooms|https://www.youtube.com/channel/UCnnDFzczrucNF-ySS_-OXsw|Pokemon Energy Physics Simulation in Blender
+pokemon battle sims|pokemon type matchup simulation|uV3qWm86pPg|2535|4176|MyCupOfTea|https://www.youtube.com/channel/UCzdVxfghymhDsvVgY3c69RA|I REALLY Need This | Pokémon Type Matchups Explained Reaction
+pokemon battle sims|pokemon type matchup simulation|mM7EhT5UdAE|1333|3112705|Astroid Videos|https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q|I Simulated 1,810,053 Battles to Find the Strongest Pokémon
+pokemon battle sims|pokemon type matchup simulation|2pFxxHKLP0Y|119|73|WooTechy|https://www.youtube.com/channel/UCaO3xj2BOi6-q701bxg4C4A|Pokémon Go ALL Type Weakness Explained | The Strongest Pokémon is?
+pokemon battle sims|pokemon type matchup simulation|beXLvEDxZs4|556|312|pokemira|https://www.youtube.com/channel/UCBgQRWQfO4cUqhXCvPh3p7A|Bulbasaur pokedex And Battles vs Different Type Pokémon's
+pokemon battle sims|pokemon type matchup simulation|D1Me1ID-8Qc|604|6301|10types|https://www.youtube.com/channel/UCGt88fXOvxhyXZrj5MDKQwQ|The Pokémon TCG's 10 Types Explained in 10 Minutes by 10types
+pokemon battle sims|pokemon type matchup simulation|uCYZk9gR4SE|347|95|Marble Territory Wars|https://www.youtube.com/channel/UCkykCPAmTJskgjgTwPUyqlQ|NO MERCY TAKEDOWN: Pokemon Territory War — Charizard vs Venusaur ⚔️
+pokemon battle sims|pokemon type matchup simulation|XS2r6L77Gbw|209|944623|PS Zooms|https://www.youtube.com/channel/UCnnDFzczrucNF-ySS_-OXsw|Satisfying Pokémon Energy Simulation - Blender
+pokemon battle sims|pokemon type matchup simulation|GJb5SK_0UCs|973|398263|Moxie Boosted|https://www.youtube.com/channel/UCAVKuhZ5Og4O86jkgUgUcyg|Type Combinations Pokemon Is Afraid To Use...
+pokemon battle sims|pokemon type matchup simulation|Xtf6-WLWFis|185|1779|Benjamin Hauer|https://www.youtube.com/channel/UCmewWxemjItIsokWEW6xXYA|Pokemon cellular automata championship
+pokemon battle sims|pokemon type matchup simulation|bQrTdCLDZLo|450|389|Marble Territory Wars|https://www.youtube.com/channel/UCkykCPAmTJskgjgTwPUyqlQ|Pokemon Territory War: FULL MAP TAKEOVER Pikachu vs Creeper ⚔️
+pokemon battle sims|pokemon type matchup simulation|vxJjYgg8DxU|584|97|Marble Territory Wars|https://www.youtube.com/channel/UCkykCPAmTJskgjgTwPUyqlQ|Pokemon Territory War: Pikachu vs Charizard — NO ALLIANCES, TOTAL TAKEOVER ⚔️
+pokemon battle sims|pokemon type matchup simulation|zeSFUrwVFTE|468|98|Marble Territory Wars|https://www.youtube.com/channel/UCkykCPAmTJskgjgTwPUyqlQ|SCORCHED EARTH Pokemon Territory War: Charizard vs Arcanine — 8 Fire Icons Clash 🔥
+pokemon battle sims|pokemon type matchup simulation|z601GOZthC8|576|486|Marble Territory Wars|https://www.youtube.com/channel/UCkykCPAmTJskgjgTwPUyqlQ|BLADE STORM — Pokemon Territory War: Charizard vs Mew (12-Marble PvP) 🔥
+pokemon battle sims|pokemon type matchup simulation|9oslzCrS2xM|1477|400542|Patterrz|https://www.youtube.com/channel/UCzdwpmT2GtWcziITl0I0tYA|Catch a Pokemon of every type, then fight!
+pokemon battle sims|pokemon type matchup simulation|PWR1PE9SU7w|689|250165|Moxie Boosted|https://www.youtube.com/channel/UCAVKuhZ5Og4O86jkgUgUcyg|Hidden "TYPES" In Pokemon...
+pokemon battle sims|pokemon type matchup simulation|213IuKL0Ifk|3127|211915|Uproar Media|https://www.youtube.com/channel/UCXuEg4bqkk5yWDLtSqqcUng|Every Pokemon Type Explained!
+pokemon battle sims|pokemon type matchup simulation|vj9fhn8TuNY|729|6889|VS Network|https://www.youtube.com/channel/UC1h10_HJXNdX9QhM5bJGm5w|PSEUDO STARTERS vs GRASS STARTERS
+pokemon battle sims|pokemon type matchup simulation|zn0qh_N1wEw|260|45|Poke Royale|https://www.youtube.com/channel/UCx3s2por6AQvz6BjIZhNLYA|Strongest Gen 1 Pokémon? I Simulated 2 Million Battles
+balatro and roguelike maths|balatro math|XKQ-t9-4-30|630|193765|adef|https://www.youtube.com/channel/UCdnteqJUEFetgKgWItToLHg|The Math Behind Balatro's Kill Screen
+balatro and roguelike maths|balatro math|2zjJP_WTzag|1569|19190|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|Balatro Basics 4: Mental math, hand calculation, Joker valuation
+balatro and roguelike maths|balatro math|ooudv0Yh--g|331|344935|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|Balatro 101: This is THE Build for Beginners
+balatro and roguelike maths|balatro math|tU8uHJZMjt4|229|138344|BelenosBear|https://www.youtube.com/channel/UCHd9my2oEs2JxtlTI1wjjcw|Hand Order Matters? - Weird Balatro Mechanics
+balatro and roguelike maths|balatro math|ONlzBQdzIOM|86|100321|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|Balatro Basics but shorter
+balatro and roguelike maths|balatro math|54w9crNNThU|1298|122230|Howdy ツ|https://www.youtube.com/channel/UC9UiU0_MM6MpEs5Fn4Brn-w|Balatro Source Code Review: "Bad" Code & Math Tricks
+balatro and roguelike maths|balatro math|zk3S3o1qOHo|811|1258026|Game Maker's Toolkit|https://www.youtube.com/channel/UCqJ-Xo29CKyLTjn6z2XwYAw|Balatro's 'Cursed' Design Problem
+balatro and roguelike maths|balatro math|cN6BcGCRAVk|1107|578376|Autumn Li|https://www.youtube.com/channel/UCl1wmEG1ZSvIZuEOUh6WgYg|How To Get A 100% Win Rate In Balatro
+balatro and roguelike maths|balatro math|0sFDcendmaQ|241|323953|Balatro How To|https://www.youtube.com/channel/UCVeBCKRvamGJTE0gsTGXJ-A|Balatro Tips & Tricks - Quick Tips To Win Consistently in Balatro - Balatro Tips For Beginners
+balatro and roguelike maths|balatro math|At6vdXycEi4|5788|80775|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|Balatro Class: How to enable High Card and Pairs
+balatro and roguelike maths|balatro math|ziHw-7Gl5jc|3568|157216|Bean|https://www.youtube.com/channel/UCBjDgfYZOLgSODiDt4xWDlg|The Mathematically Correct Joker Tierlist
+balatro and roguelike maths|balatro math|uB-faBXxSyo|5993|81840|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|Balatro Basics 3: Building a Successful Endgame
+balatro and roguelike maths|balatro math|atVF4VLHks4|7776|647198|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|Balatro Basics 1: Early Ante strategies and tips for higher winrate
+balatro and roguelike maths|balatro math|V5zDmtnCjZ0|575|190772|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|Balatro 101: How the game benefits from intentional "imbalance"
+balatro and roguelike maths|balatro math|g86eP48WN78|1121|1830372|ThatGuyGlen|https://www.youtube.com/channel/UC_0e1271DHhRyiDIuX6B6aQ|How Balatro Was Made and Why The Creator Expected to Sell Only 6 Copies
+balatro and roguelike maths|balatro math|6e8-QeANHJU|1709|1451622|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|"naneinf" explained (ALL methods)
+balatro and roguelike maths|balatro math|Xg8MfpM-I9k|7289|580373|Rarran|https://www.youtube.com/channel/UCrWJQayN_0HTwgxsuqYMVIA|The GREATEST Balatro Player Coached Me. IT WAS INSANE.
+balatro and roguelike maths|balatro math|Iz3JA7ZpJ1U|542|3710|Autumn Li|https://www.youtube.com/channel/UCl1wmEG1ZSvIZuEOUh6WgYg|How to Score 1.29e23 Chips in Balatro
+balatro and roguelike maths|balatro math|1ocfkhv8r_I|752|94399|Autumn Li|https://www.youtube.com/channel/UCl1wmEG1ZSvIZuEOUh6WgYg|Why Flushes Are The Strongest Hand In Balatro
+balatro and roguelike maths|balatro math|5SOW2DKZUlk|5254|1144498|Ludwig VODs|https://www.youtube.com/channel/UCmbSGFM9OU8FwjxZCevr6zw|Ludwig Watches DrSpectred Have INSANE Balatro High Score
+balatro and roguelike maths|balatro simulated|N_lsOKLeM7Y|844|76423|Roze|https://www.youtube.com/channel/UCnwmElguXyE2bRbp65THV3g|The Mysterious Balatro 1.1 Update Explained
+balatro and roguelike maths|balatro simulated|FMc8eMVFf7o|7573|62610|Burr|https://www.youtube.com/channel/UCj4p8a0bGNYoEPmeAmBzTpA|I 100%'d Balatro... Help...
+balatro and roguelike maths|balatro simulated|0AhqP8v6hZc|3460|11547|Retromation|https://www.youtube.com/channel/UC4Xj6emHTXnKHUq8btUuN6A|Balatro but This One is Yahtzee | Diecast
+balatro and roguelike maths|balatro simulated|rdb0AL7OYQs|618|4275|Chill Cursed Chronicles|https://www.youtube.com/channel/UCiCm9UTZmt-dRFgQvT3VoSQ|I Cloned 115 Jokers and Made Balatro Unplayable!
+balatro and roguelike maths|balatro simulated|2aPKfdiGt6w|23677|4983|Murphy Obv|https://www.youtube.com/channel/UC55reQdyExWqzjG7MHWYokg|BALATRO BATTLES DAY 1 | !donate !auction !battles| for @gamersoutreach
+balatro and roguelike maths|balatro simulated|nsjgcZUZ-b0|3489|6311376|Markiplier|https://www.youtube.com/channel/UC7_YxT-KID8kRbqZo7MyscQ|MY NEW CRIPPLING ADDICTION | Balatro - Part 1
+balatro and roguelike maths|balatro simulated|ICrA_os9enY|2212|2571864|RTGame|https://www.youtube.com/channel/UCRC6cNamj9tYAO6h_RXd5xA|I Broke Balatro by Scoring Infinity with Seed Science
+balatro and roguelike maths|balatro simulated|_f5I7oKs-K4|1466|37125|Chill Cursed Chronicles|https://www.youtube.com/channel/UCiCm9UTZmt-dRFgQvT3VoSQ|Can We Build The Biggest Canio In Balatro?
+balatro and roguelike maths|balatro simulated|jdWvll1mY_0|530|9073|Under The VRadar|https://www.youtube.com/channel/UCK-jMGdILnnoR4wfYyOHhqA|Balatro in VR: Mod Release!
+balatro and roguelike maths|balatro simulated|vincyENagBg|52|2982|Lost Moon|https://www.youtube.com/channel/UCX8PdjIzEDk2Za_UqimWEuA|The True Power of Chigoat (45 Chicots In one round of Balatro)
+balatro and roguelike maths|balatro simulated|z_hGrV16tDE|1035|1538567|cjyacjya|https://www.youtube.com/channel/UCwi3-Xo9VlxnjGYx0rGJoIw|How I got INFINITY in Balatro
+balatro and roguelike maths|balatro simulated|o_lo9_QyGs4|1067|80917|Rarran|https://www.youtube.com/channel/UCrWJQayN_0HTwgxsuqYMVIA|Balatro But Every Round Makes A Negative Joker
+balatro and roguelike maths|balatro simulated|w4Zz9miBTqA|492|755|Xtreme|https://www.youtube.com/channel/UCdCnYsk-abDu4Iri3URSkCg|PLEASE just play Balatro
+balatro and roguelike maths|balatro simulated|Ahuy8FvT3Kc|2527|229421|Roffle Lite|https://www.youtube.com/channel/UCLnar-aS8iHa2ldj1w_pgJQ|This Mod Adds a New Card Type to Balatro
+balatro and roguelike maths|balatro simulated|8pwrFeKFSxM|479|120283|Auto Watto|https://www.youtube.com/channel/UCg8LFwSBu_qRyB7GLB4pwAQ|16 Balatro Mods You NEED TO TRY
+balatro and roguelike maths|balatro simulated|6OTJAWdgYFw|945|11920|Vargskelethor Joel: Mini Highlights|https://www.youtube.com/channel/UC1O1dhQcJQTycjcoeTSiuuw|[Vinesauce] Joel - Balatro: Cardsauce 2.0 Highlights ( Part 1 )
+balatro and roguelike maths|balatro simulated|HVakebkdCQ8|4122|2981673|Markiplier|https://www.youtube.com/channel/UC7_YxT-KID8kRbqZo7MyscQ|I UNDERSTAND IT NOW... | Balatro - Part 2
+balatro and roguelike maths|balatro simulated|dR7fo3lH2UA|5287|93498|Roffle Lite|https://www.youtube.com/channel/UCLnar-aS8iHa2ldj1w_pgJQ|Balatro but You Get 1 Hit the Road Every Ante
+balatro and roguelike maths|balatro simulated|kNcDGnAFoEM|1869|113318|Rarran|https://www.youtube.com/channel/UCrWJQayN_0HTwgxsuqYMVIA|Balatro But Every Joker is Blueprint
+balatro and roguelike maths|balatro simulated|A7Go7IXlYLg|4541|882005|Games Done Quick|https://www.youtube.com/channel/UCI3DTtB-a3fJPjKtQ5kYHfA|Balatro by adef in 1:04:49 - Summer Games Done Quick 2026
+balatro and roguelike maths|balatro best strategy tested|0sFDcendmaQ|241|323953|Balatro How To|https://www.youtube.com/channel/UCVeBCKRvamGJTE0gsTGXJ-A|Balatro Tips & Tricks - Quick Tips To Win Consistently in Balatro - Balatro Tips For Beginners
+balatro and roguelike maths|balatro best strategy tested|yPBxlvOAEcM|550|503798|Beans Hambone|https://www.youtube.com/channel/UCiTaBKGEMjieuxRbNke-6qA|Top Tips for Securing Wins in Balatro
+balatro and roguelike maths|balatro best strategy tested|ooudv0Yh--g|331|344935|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|Balatro 101: This is THE Build for Beginners
+balatro and roguelike maths|balatro best strategy tested|dho27-hUXXc|601|802722|Roze|https://www.youtube.com/channel/UCnwmElguXyE2bRbp65THV3g|10 Best Balatro Jokers Explained In 10 Minutes
+balatro and roguelike maths|balatro best strategy tested|xO39_T7igXw|644|117684|Roze|https://www.youtube.com/channel/UCnwmElguXyE2bRbp65THV3g|20 Best Balatro Joker Builds Explained
+balatro and roguelike maths|balatro best strategy tested|qpCPl7Yo-pU|2917|277268|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|Just. Play. Pairs. (Gold Stake Lessons)
+balatro and roguelike maths|balatro best strategy tested|mJNcINWgALA|695|718553|Roze|https://www.youtube.com/channel/UCnwmElguXyE2bRbp65THV3g|15 Best Balatro Joker Combinations Explained
+balatro and roguelike maths|balatro best strategy tested|tU8uHJZMjt4|229|138344|BelenosBear|https://www.youtube.com/channel/UCHd9my2oEs2JxtlTI1wjjcw|Hand Order Matters? - Weird Balatro Mechanics
+balatro and roguelike maths|balatro best strategy tested|cqtsUX38HmE|272|940090|GothicLordUK|https://www.youtube.com/channel/UCWXL-_EM-_eBhvNq726Vc5A|10 Top Tips for New Balatro Players! - Balatro for Beginners
+balatro and roguelike maths|balatro best strategy tested|0-1R4JYDi2I|1091|830617|Wild Rush|https://www.youtube.com/channel/UCTSfI8mD-H4NGD42kpdF1vw|BALATRO'S ULTIMATE GUIDE
+balatro and roguelike maths|balatro best strategy tested|mY70L9FSMY4|372|450104|Beans Hambone|https://www.youtube.com/channel/UCiTaBKGEMjieuxRbNke-6qA|Things I Wish I Knew Sooner in Balatro
+balatro and roguelike maths|balatro best strategy tested|Xg8MfpM-I9k|7289|580373|Rarran|https://www.youtube.com/channel/UCrWJQayN_0HTwgxsuqYMVIA|The GREATEST Balatro Player Coached Me. IT WAS INSANE.
+balatro and roguelike maths|balatro best strategy tested|oqU1IvCW-XA|7215|512123|Roffle Lite|https://www.youtube.com/channel/UCLnar-aS8iHa2ldj1w_pgJQ|How to Beat Gold Stake: Overexplained Balatro with @drspectred
+balatro and roguelike maths|balatro best strategy tested|cN6BcGCRAVk|1107|578376|Autumn Li|https://www.youtube.com/channel/UCl1wmEG1ZSvIZuEOUh6WgYg|How To Get A 100% Win Rate In Balatro
+balatro and roguelike maths|balatro best strategy tested|Rr378iKlYRQ|1902|483829|Real Civil Engineer|https://www.youtube.com/channel/UCeP4Yv3s4RvS0-6d9OInRMw|Engineering a 100% GUARANTEED WIN in Balatro!
+balatro and roguelike maths|balatro best strategy tested|1kW7Rd2hc7s|656|18463|OrangeAces|https://www.youtube.com/channel/UCDzu66TXAsp8RDh8rsdKFkA|How to WIN in Balatro! (consistently)
+balatro and roguelike maths|balatro best strategy tested|i_Wr7giQFKI|7446|223368|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|Balatro Basics 2: Tips for Early-Mid Antes (Signals, Pivoting, Build Orders)
+balatro and roguelike maths|balatro best strategy tested|_MjIAYBsLjE|1077|117864|ZainoTV|https://www.youtube.com/channel/UCHV0MKqS6ipG94kxs1vfXaw|Balatro Guide to High Scores & High Antes: How to Score Big
+balatro and roguelike maths|balatro best strategy tested|-Fnach4gIN8|9705|331952|Balatro University|https://www.youtube.com/channel/UCpAwXXH3rPmSIlWYwIOwlEA|Beginner's Guide to High Scores and High Antes (Part 1/2)
+balatro and roguelike maths|balatro best strategy tested|VEOCJtKYgpI|819|398999|Roze|https://www.youtube.com/channel/UCnwmElguXyE2bRbp65THV3g|How To Beat Every Deck In Balatro Explained
+balatro and roguelike maths|slay the spire math|rgjQ1SkZOWk|3113|165339|Northernlion|https://www.youtube.com/channel/UC3tNpTOHsTnkmbwztCs30sA|He did the math (Slay the Spire)
+balatro and roguelike maths|slay the spire math|4lp4uBqAFBY|292|69570|RiptideLab|https://www.youtube.com/channel/UCzWG5s-FXMYO9aentVigmQA|Accelerant is a bad card... until it's not.
+balatro and roguelike maths|slay the spire math|v6ACH8Dk-EY|2588|89|MikeyDubs|https://www.youtube.com/channel/UC5y0rnonj-5wO4U6BFZy7ew|The Math is Mathing | Slay the Spire
+balatro and roguelike maths|slay the spire math|7rqfbvnO_H0|2127|165583|GDC Festival of Gaming|https://www.youtube.com/channel/UC0JB7TSe49lg56u6qH8y_MQ|Slay the Spire: Metrics Driven Design and Balance
+balatro and roguelike maths|slay the spire math|gPKNk8zEmPY|2635|52422|Northernlion|https://www.youtube.com/channel/UC3tNpTOHsTnkmbwztCs30sA|He did the math (Slay the Spire)
+balatro and roguelike maths|slay the spire math|UrKMTQfyfXE|3535|46571|Northernlion|https://www.youtube.com/channel/UC3tNpTOHsTnkmbwztCs30sA|Oh yeah, I did the math (Slay The Spire)
+balatro and roguelike maths|slay the spire math|K4ionmqil5M|17031|6|TheBallisticBiscuit|https://www.youtube.com/channel/UC3JTlF8MbNMwNBCWK39Wrfg|Math is hard and so is this game - Slay the Spire 2 | Full VOD
+balatro and roguelike maths|slay the spire math|fVvw8b3N_1Y|1576|3|TrophicFrog|https://www.youtube.com/channel/UCXlWd3c8fNhkXxACpgOYAvw|Slay the Spire I didn't do math
+balatro and roguelike maths|slay the spire math|aWVq_Xse31A|11738|10868|Gavis Bettel Ch. HOLOSTARS-EN|https://www.youtube.com/channel/UCHP4f7G2dWD4qib7BMatGAw|[SLAY THE SPIRE II] AWFUL MATH w/ FLAYON AND SHIKI
+balatro and roguelike maths|slay the spire math|4e0qPCjENRU|481|83640|RiptideLab|https://www.youtube.com/channel/UCzWG5s-FXMYO9aentVigmQA|Spire 2 has an infinite gold problem... if you have 16 hours to spare
+balatro and roguelike maths|slay the spire math|MqKu2fEsEf8|3848|7242|Amaz|https://www.youtube.com/channel/UC-kezFAw46x-9ctBUqVe86Q|MATH MAJOR / Amaz / Slay the Spire
+balatro and roguelike maths|slay the spire math|nx_kEmAYKbM|4670|4044|Amaz|https://www.youtube.com/channel/UC-kezFAw46x-9ctBUqVe86Q|The power of MATH / Amaz / Slay the Spire
+balatro and roguelike maths|slay the spire math|iFxQq-IcxlQ|154|38|FrogSplats|https://www.youtube.com/channel/UC1bff_8mCt3bTIjdJcZTQQg|Slay the Spire: Is Math the Real Enemy!?
+balatro and roguelike maths|slay the spire math|XDoM2uHH9lg|588|72940|Baalorlord|https://www.youtube.com/channel/UC1ig-JZyQoVpkOlyz9ODktg|Explaining Slay the Spire 2 (No Spoilers)
+balatro and roguelike maths|slay the spire math|86opUVphTjI|3631|33977|Northernlion|https://www.youtube.com/channel/UC3tNpTOHsTnkmbwztCs30sA|Slay the Spire - Northernlion Plays - Episode 290 [Mathematics]
+balatro and roguelike maths|slay the spire math|WbKSBYJEK-Q|3730|17|Reveruss|https://www.youtube.com/channel/UCiXExwmaHavUc0NKgaxrgxg|Slay the Spire- Ep-01 Relearning Basic Math!
+balatro and roguelike maths|slay the spire math|2rfjoj-90q4|1175|111|SirStauby|https://www.youtube.com/channel/UCF63XYAyV6LrSxN8E_DV1IQ|Slay The Spire 2 But I Can't Do Math
+balatro and roguelike maths|slay the spire math|MtGQJmHsjeE|180|14|Mr.magnetism0095|https://www.youtube.com/channel/UCTLIqVgAxZ4JVc_ljccoeyA|Slay the Spire THE MATH
+balatro and roguelike maths|slay the spire math|HCXNJGKs4eg|7877|6|Reven_Ex|https://www.youtube.com/channel/UCDjwPScNvm-5HFo-hoXzFRQ|The Math is Mathing (Slay the Spire)
+balatro and roguelike maths|slay the spire math|PL27mRuSqlY|2864|69|ZapperZen|https://www.youtube.com/channel/UCPToL6vgN3IxJQlw_1cCfNQ|Slay the Spire - Ep. 401 [Chad Does Math]
+game show maths|price is right strategy|9zLcJmdB4gM|900|13905|My Prize Garage|https://www.youtube.com/channel/UCL7lRovnu1HP7kRZpvWGrIQ|How To Win On The Price Is Right [Pricing Games]
+game show maths|price is right strategy|6KWVdDnd7bs|590|4457|My Prize Garage|https://www.youtube.com/channel/UCL7lRovnu1HP7kRZpvWGrIQ|Secret Rules and Strategies on The Price Is Right
+game show maths|price is right strategy|1C0iyvgLrak|497|7171|My Prize Garage|https://www.youtube.com/channel/UCL7lRovnu1HP7kRZpvWGrIQ|How To Win On The Price Is Right [Bidding and Spinning]
+game show maths|price is right strategy|yKTBv7ZqFcU|117|1378036|Entertainment Tonight|https://www.youtube.com/channel/UCdtXPiqI2cLorKaPrfpKc4g|Watch This 'Price Is Right' Contestant Break the Plinko Record and Absolutely Lose His Mind!
+game show maths|price is right strategy|SYkAZ0lquKE|13|637|Robert Carey|https://www.youtube.com/channel/UCkSh46bZGp-O75grzA_5hvw|How to play The Price is Right
+game show maths|price is right strategy|CB8wgnbv3Vs|47|14637|CBS New York|https://www.youtube.com/channel/UCNZyLULUQBp5e9Q1cKtvk6Q|Drew Carey's Price Is Right Tips
+game show maths|price is right strategy|uPVjC75ticU|121|658668|Entertainment Tonight|https://www.youtube.com/channel/UCdtXPiqI2cLorKaPrfpKc4g|Watch Price Is Right Contestant Make BEST Showcase Showdown Guess in Show's History!
+game show maths|price is right strategy|eLREd0Y6-AY|829|32684|Austin Castro|https://www.youtube.com/channel/UCOwNVhTnNh_eiau7cfXjy8g|How To Get On The Price is Right!
+game show maths|price is right strategy|SEXXES5v59o|355|7000055|SIKE|https://www.youtube.com/channel/UCYar6L3NZVDnKo_bD6ZO0Ng|The Price Is Right: The Best Contestant Ever
+game show maths|price is right strategy|h2Ler0y4ClU|186|412|Chasms of the Mind|https://www.youtube.com/channel/UC5dqF3uuv8EeyKqjH5JVhEw|How to be a contestant on the Price Is Right
+game show maths|price is right strategy|kNHKy28mp3A|149|17821|Hollywood Today Live|https://www.youtube.com/channel/UCWmp4fFqlUEqMpGlrNGK9Kw|EXCLUSIVE: See How Producers Choose The Contestants For 'The Price Is Right'
+game show maths|price is right strategy|CuaH2vLE7Pg|141|3402397|CBS TEXAS|https://www.youtube.com/channel/UCxMXl9L79X1Mq_4iwCOyPFg|'That Was Crazy': Price Is Right Contestants Hit $1 5 Straight Times On Big Wheel
+game show maths|price is right strategy|BDVVq19oFus|249|24912|Young Hollywood|https://www.youtube.com/channel/UC93DEJOBeet3XXZlJy2uJuA|How to Get Chosen to Come On Down on The Price Is Right!
+game show maths|price is right strategy|1LjdfzWgxYU|222|382569|Entertainment Tonight|https://www.youtube.com/channel/UCdtXPiqI2cLorKaPrfpKc4g|The Price Is Right: Contestant Wins BIGGEST PRIZE EVER in Single Game in Show's HISTORY!
+game show maths|price is right strategy|BMCFRElyaCc|192|20093503|Michael Uccetta|https://www.youtube.com/channel/UC3iD3ivnYflGgqsB8m3KCcQ|The Stupidest Bid on The Price is Right
+game show maths|price is right strategy|HIfQP1jrG1A|54|3851|Ohio Lottery|https://www.youtube.com/channel/UCtunCozMH5S73BACoQNs7wg|How to Play: The Price is Right®
+game show maths|price is right strategy|s0ItTbwo2Tc|98|13747653|Inside Edition|https://www.youtube.com/channel/UC9k-yiEpRHMNVOnOi_aQK8w|Exclusive! 'Price is Right' Model Who Gave Away Car: 'I Was Mortified'
+game show maths|price is right strategy|wwjBRj913S8|749|124987|The Arena|https://www.youtube.com/channel/UCJ1ALooL2R2HiE7gJPOdo2Q|The Price Is Right’s “FREE CAR” TRAP
+game show maths|price is right strategy|w9JJMMDgU5g|393|11238|The Price Is Right Tonight|https://www.youtube.com/channel/UCLysxu-Fvzs6ne1PpMhhnvA|Could This Punch A Bunch Strategy Land Him $25,000?! | The Price is Right Tonight Season 1 Episode 7
+game show maths|price is right strategy|zc3Ukn7BC-g|187|9359705|Andre Saint-Albin|https://www.youtube.com/channel/UCOIYB-W1YXYE5RBL4Zyrs1g|The unthinkable happened this morning on The Price Is Right​
+game show maths|deal or no deal math|J8CcJ-lhxKg|103|8800|Andy Math|https://www.youtube.com/channel/UC6KhU3AMLHC-qv7tj0ZJduw|Math Behind deal or no deal
+game show maths|deal or no deal math|na1RpqGluBw|570|5206|RHAP: We Know Reality TV|https://www.youtube.com/channel/UCo-cYYMN4rUc5zk2Kr5GTTg|Deal or No Deal Island Math EXPLAINED
+game show maths|deal or no deal math|yKGmhJX5LkU|1236|8378|Deal or No Deal Universe|https://www.youtube.com/channel/UCewtiH0PCqcgbIhljjYLsMg|Math Teacher Uses Probability to Win Big! | Deal or No Deal USA
+game show maths|deal or no deal math|xjLtIPui8z4|2408|101168|Deal or No Deal Universe|https://www.youtube.com/channel/UCewtiH0PCqcgbIhljjYLsMg|Thomas Made The Best Deal In History! | Deal or No Deal US S04 E16 | Deal or No Deal Universe
+game show maths|deal or no deal math|hkClwfqLZj0|308|33798|Professor Sage|https://www.youtube.com/channel/UCl5jPJram_j0Tq_RASJ-V7Q|Deal or No Deal Strategy - Expected Value
+game show maths|deal or no deal math|lm5aICOw7A8|895|2065|History of Deal or No Deal US|https://www.youtube.com/channel/UC5SXc-09ijxZLinorGXLbgw|THE REAL MATH ISSUES WITH DEAL OR NO DEAL [and how to fix it]
+game show maths|deal or no deal math|cC6vi0Xgq3o|566|13522|Leanna Baker|https://www.youtube.com/channel/UCUyEMQsrEJjt6Rp90ublJLQ|Deal or No Deal - Math Game for Probability
+game show maths|deal or no deal math|0Pw5gdnxA6c|721|296054|IMPAULSIVE Clips|https://www.youtube.com/channel/UCE9ZKI1b_PhVm3gejYuilhw|HOWIE MANDEL'S SECRET TO *WINNING* DEAL OR NO DEAL
+game show maths|deal or no deal math|0TGmP45syz8|151|3630|Videojug|https://www.youtube.com/channel/UCjHm4Br34sBmjbBdA0TQH-Q|How To Succeed On 'Deal Or No Deal'
+game show maths|deal or no deal math|30V4_PnNp3I|2253|21933|Deal or No Deal Universe|https://www.youtube.com/channel/UCewtiH0PCqcgbIhljjYLsMg|Family Begs Math Teacher To Accept Massive Cash Offer | Deal or No Deal
+game show maths|deal or no deal math|r6qg4NaUvfI|732|70019|pimanrules|https://www.youtube.com/channel/UCH5lBsKzwEHxQPoe3nrSPjg|Deal or No Deal & The Monty Hall Problem - A Python Simulation and Analysis
+game show maths|deal or no deal math|SKIVXZf9IcQ|1358|25779|Deal or No Deal Universe|https://www.youtube.com/channel/UCewtiH0PCqcgbIhljjYLsMg|Professor Oscar Getting Ready to go to School | Deal or No Deal US | Deal or No Deal Universe
+game show maths|deal or no deal math|NsNcT017Gmg|2521|241785|America's Game Shows|https://www.youtube.com/channel/UCKcIo9muO4es2aidCHDN7Dg|Deal or No Deal Season 1 Episode 8 Millions of Ways
+game show maths|deal or no deal math|uW_plqpKoFc|517|21107|Arcade Advantage|https://www.youtube.com/channel/UCq9NW2FTW8nZB2j5RXqhV9g|How to Win the Deal or No Deal Arcade Game - Strategy Guide
+game show maths|deal or no deal math|DSy6jxsXT6c|1231|2607|Jackpot - Best Game Shows|https://www.youtube.com/channel/UCM6PGfZG2L-gy2VbACXXnmA|Newlywed Math Teacher Faces $44000 Decision | Deal or No Deal USA
+game show maths|deal or no deal math|A_22IoyNHu0|345|15825|In Gord We Trust|https://www.youtube.com/channel/UCXugyPjZlQdj0wwXEY_gFbQ|Deal Or No Deal In About 5 Minutes - Without the Fluff
+game show maths|deal or no deal math|RK6jYMemuZo|2408|18390|Deal or No Deal Universe|https://www.youtube.com/channel/UCewtiH0PCqcgbIhljjYLsMg|Man vs Monkey: Who will Win? | Deal or No Deal US | S04 E16 | Deal or No Deal Universe
+game show maths|deal or no deal math|LnxtxuA_gXg|1130|109843|Underdogs|https://www.youtube.com/channel/UC4-KglLgi2JMDiJLfteayGg|UNDERDOGS DEAL OR NO DEAL
+game show maths|deal or no deal math|DKRC62RZ1Z8|2337|70198|Deal or No Deal Universe|https://www.youtube.com/channel/UCewtiH0PCqcgbIhljjYLsMg|The HIGHEST Odds in Deal or No Deal History! | Deal Or No Deal
+game show maths|deal or no deal math|iqNXApHDDT4|2395|15452|Deal or No Deal Universe|https://www.youtube.com/channel/UCewtiH0PCqcgbIhljjYLsMg|Celebrating 200 Episodes with Crazy Challenges! | Deal or No Deal
+game show maths|wheel of fortune strategy|rwmkQSPxenU|471|415|The Slots Grandfather|https://www.youtube.com/channel/UCqXOtrrjrw06u5Vr7enxXvQ|High Limit Wheel of Fortune - It Kept Teasing Me Until I Finally Hit the Bonus Wheel
+game show maths|wheel of fortune strategy|pCaz3NX0XdM|1283|259507|Wheel Of Fortune|https://www.youtube.com/channel/UCeo7caZ6hsO7CQuDZ8AywEQ|Wheel of Fortune Full Episode | The Moment this Teacher’s Life Changed Forever 🤯
+game show maths|wheel of fortune strategy|TZSfndQ3BmY|19|29998|Wheel Of Fortune|https://www.youtube.com/channel/UCeo7caZ6hsO7CQuDZ8AywEQ|Vanna's Strategy to Memorize Puzzles | Wheel of Fortune
+game show maths|wheel of fortune strategy|bQOnaQt1tiE|2483|287|Long Tooth Gamer|https://www.youtube.com/channel/UC8nJI40ZJ2C682oAsB16gCA|WOS Whale Account - $93,926 USD - Day 334 - SvS Prep P4 - Charms & Troops
+game show maths|wheel of fortune strategy|suX9I-eE8T4|858|4622|Candy Love|https://www.youtube.com/channel/UCdKzctR7K1CcGbS5VY3lZiw|How to Win at WHEEL of FORTUNE (3 Tips)
+game show maths|wheel of fortune strategy|QzCzx2fD_K8|1282|212813|Wheel Of Fortune|https://www.youtube.com/channel/UCeo7caZ6hsO7CQuDZ8AywEQ|The Most IMPOSSIBLE Bonus Round Solve in Wheel History! 🤯 | Wheel of Fortune Full Episode
+game show maths|wheel of fortune strategy|hlm3zNDng6A|72|6055|love tv|https://www.youtube.com/channel/UCdt-HsC0P6JO-YQUp9yAnyA|How to win 'Wheel of Fortune' tips from Pat Sajak and Vanna White
+game show maths|wheel of fortune strategy|LiAMgDE2TEk|606|17645|Wheel Of Fortune|https://www.youtube.com/channel/UCeo7caZ6hsO7CQuDZ8AywEQ|10 Minutes of Puzzles to Test Your Brainpower!! | Wheel of Fortune
+game show maths|wheel of fortune strategy|6rXCCG5bKhU|131|8143|William Spaniel|https://www.youtube.com/channel/UCJDIGW0ywWw9Kh9_vtwqxXA|Wheel of Fortune Strategy: The Most Common Bonus Round Letters
+game show maths|wheel of fortune strategy|mUWnxZ9g5Jw|356|1911|KOMO News|https://www.youtube.com/channel/UC__2_0RJ8XnHt2angfw6S1Q|How to get on Wheel of Fortune: Producer shares audition tips ahead of tryouts
+game show maths|wheel of fortune strategy|D5mwiUwqp0w|894|5212|RAZEL|https://www.youtube.com/channel/UC1FBKRAv0XmnLPwo-ASLB4w|HOW I WON WHEEL OF FORTUNE | MY EXPERIENCE
+game show maths|wheel of fortune strategy|Q0s7W4-VP4o|1205|11042|Shannon Ford|https://www.youtube.com/channel/UCBjNxA4i4pI8Uf5k-qJP9Xg|Answering Your Questions About Wheel of Fortune | How To Become a Contestant & Advice If You Are
+game show maths|wheel of fortune strategy|mZyhSzKB-EU|2453|118|Slots fox |https://www.youtube.com/channel/UCwcAbwb2ljzl9-4PhN58o-A|🤔 Level Up Your Spin! Wheel of Fortune Gameplay & Smart Strategy Guide! 💡
+game show maths|wheel of fortune strategy|3O0ptHIh6Yo|24|370518|WOF Alumni Community|https://www.youtube.com/channel/UCVC4qs52mcrSW5uF2NarbuQ|Right In The Butt?! Wheel of Fortune puzzle blooper! (05/23/2024) show 7,999
+game show maths|wheel of fortune strategy|bbqM-ShBO6Q|1202|26962|Gamble Smart|https://www.youtube.com/channel/UCIAKW0Abx06aBXxe39rMFTg|WHEEL OF FORTUNE SLOT 🎰 Good to Play or Pass?
+game show maths|wheel of fortune strategy|Zy31hpR-TPo|897|4766|WarDaddyChadski|https://www.youtube.com/channel/UCqccGABEKdAyBf8O9fDoHCw|Max Value On Wheel Of Fortune: Showing The Odds - Rise of Kingdoms
+game show maths|wheel of fortune strategy|aX9UJFJKy6Q|189|83298|The Jackpot Gents|https://www.youtube.com/channel/UC-x4b_ZpsSUS3ICfwHWkO2A|How to Win Every Time on Wheel of Fortune Wild Spin Slot Machines!
+game show maths|wheel of fortune strategy|7VHiuM-5Uls|3208|18355|Wheel of Fortune India|https://www.youtube.com/channel/UCwbE-RYqjxw5XScgpAIOnBA|Akshay Kumar | Ep 46 | States अलग, strategy अलग, कौन बना winner? | Wheel of Fortune
+game show maths|wheel of fortune strategy|rtYR03DOahI|330|7120848|Wheel Of Fortune|https://www.youtube.com/channel/UCeo7caZ6hsO7CQuDZ8AywEQ|Top Five Most Amazing Solves! | Wheel of Fortune
+game show maths|wheel of fortune strategy|O3RIrdU9kqI|753|8704|Desolator Gaming|https://www.youtube.com/channel/UC-QSulw75LLhbXHHAD6g8xw|How to Beat the Wheel of Fortune High Roller Slot Machine - AP Guide
+game show maths|who wants to be a millionaire math|JpGya7hKtng|159|17875|Ahmed Elsharnoby|https://www.youtube.com/channel/UCis1x6nEGD3JJbUPEnDiv4w|When not knowing Math can cost you $15,000.flv
+game show maths|who wants to be a millionaire math|BFf4V2YJl-I|146|29234|BuzzerBlog|https://www.youtube.com/channel/UCnXhr4hwibU82u9A-J3m8pA|"I don't think it's a math problem."   |  Who Wants to be a Millionaire
+game show maths|who wants to be a millionaire math|7n644X0LkR4|172|974025|Chad Mosher|https://www.youtube.com/channel/UCm1AKKJrF8A-An2s_hLuLBA|Millionaire - Math Is Hard. (Oct. 8, 2012)
+game show maths|who wants to be a millionaire math|ZWDLXqYZCUM|299|401415|Math Queen|https://www.youtube.com/channel/UCJG3WmULyY_bZftxF00mXsA|Who wants to be a MILLIONAIRE? – Math question
+game show maths|who wants to be a millionaire math|jdy-9OJzHrM|188|70860|Who Wants To Be A Millionaire?|https://www.youtube.com/channel/UCKSxNv7X_ewMbXgs134rCJA|Is Jeremy Any Good At Maths | Who Wants To Be A Millionaire?
+game show maths|who wants to be a millionaire math|4y8RAyUwphY|112|2692|Quiz Shows vs Other Game Shows|https://www.youtube.com/channel/UCQcLU_yhCC7n7hBDZ6VdBdg|A simple maths question on "Who Wants to be a Millionaire?".
+game show maths|who wants to be a millionaire math|hJY5Z13q2LY|105|898633|Wolfman12395|https://www.youtube.com/channel/UCpbNpEOvYS--NyV1JJBMslA|Lady CLEARLY does not know her math on Millionaire.
+game show maths|who wants to be a millionaire math|L7qkKP1iTEA|217|1521330|Chad Mosher|https://www.youtube.com/channel/UCm1AKKJrF8A-An2s_hLuLBA|Millionaire - Whiz Kid Math (Nov. 7, 2014)
+game show maths|who wants to be a millionaire math|OcEwjR883LU|125|215301|M. V. Shooting|https://www.youtube.com/channel/UCDvlCPeJWRBcfbFlENQaaqA|Who Wants to be a Millionaire UK: Tony Kennedy's bad question and rectification
+game show maths|who wants to be a millionaire math|CRb_HtizC3c|255|10967|Who Wants To Be A Millionaire?|https://www.youtube.com/channel/UCKSxNv7X_ewMbXgs134rCJA|Jeremy Clarkson Struggles With Math | Who Wants To Be A Millionaire
+game show maths|who wants to be a millionaire math|qziBhBWar3k|81|26610|Who Wants To Be A Millionaire?|https://www.youtube.com/channel/UCKSxNv7X_ewMbXgs134rCJA|Is Jeremy Any Good At Maths - Ask The Host | Who Wants To Be A Millionaire?
+game show maths|who wants to be a millionaire math|CDIU5nraXTA|306|21484|Math Queen|https://www.youtube.com/channel/UCJG3WmULyY_bZftxF00mXsA|Who wants to be a MILLIONAIRE – Math question
+game show maths|who wants to be a millionaire math|QtCL5pYI8Zc|336|172470|MindYourDecisions|https://www.youtube.com/channel/UCHnj59g7jezwTy5GeL8EA_g|The Game Show Question That Stumped Everyone
+game show maths|who wants to be a millionaire math|CgrxT6deGrw|554|24707|Quick Quizzes|https://www.youtube.com/channel/UCh1eW_J7GIp00dMOCd-IphA|Fun Maths Starter 3  Who wants to be a millionaire Whizz kids
+game show maths|who wants to be a millionaire math|qkZn2a2EZgs|140|23243|LOGICALLY YOURS|https://www.youtube.com/channel/UCTRxnMudmOGNw0g4gZf5D8g|$100,000 Question || Who wants to be a Millionaire
+game show maths|who wants to be a millionaire math|PXFLOCQFY9M|175|4605|V Anusic|https://www.youtube.com/channel/UCFohbZ29c81EyQkebkglkCw|Millionaire Math
+game show maths|who wants to be a millionaire math|M_4yPsLdBFA|342|101971|Math Queen|https://www.youtube.com/channel/UCJG3WmULyY_bZftxF00mXsA|Who wants to be a MILLIONAIRE? – Math problem
+game show maths|who wants to be a millionaire math|6g0EMCMf2vY|94|51316|bprp math basics|https://www.youtube.com/channel/UCz5KKoq3w_50HRs0o8pRdSA|Math word problem from Who Wants to Be a Millionaire
+game show maths|who wants to be a millionaire math|BK9DWRROLTA|215|467341|Mech|https://www.youtube.com/channel/UCxi-KnQDOTykOh_tN9i_5fw|Bob House's Million Dollar Question - Who Wants to be a Millionaire [Classic Format]
+game show maths|who wants to be a millionaire math|TpaW4FIxHJ8|334|44029|Math Queen|https://www.youtube.com/channel/UCJG3WmULyY_bZftxF00mXsA|Who wants to be a MILLIONAIRE? – Math question
+family game myths|board game myths busted|CFBQSKAfEAY|853|29540742|Unspeakable|https://www.youtube.com/channel/UCwIWAbIeu0xI0ReKWOcw3eg|Busting 50 Game Myths in Real Life!
+family game myths|board game myths busted|laEULVtzkyA|1644|3229607|RuggedEagle|https://www.youtube.com/channel/UC4nvVkDI_-AMgK3D-wVIWww|Busting 30 HUGE LEGO Marvel Game MYTHS!
+family game myths|board game myths busted|fkiE4MSCg4g|1324|547237|RuggedEagle|https://www.youtube.com/channel/UC4nvVkDI_-AMgK3D-wVIWww|Busting 30 MORE HUGE LEGO Star Wars Game MYTHS!
+family game myths|board game myths busted|B2GC6N8pB5E|832|1077722|Croissant|https://www.youtube.com/channel/UCGYzFZHKFrMUYS9I1HQWN5Q|I Busted 45 Myths in Chess!
+family game myths|board game myths busted|zlcVdsKRHSs|779|55954939|Ben Azelart|https://www.youtube.com/channel/UCwVg9btOceLQuNCdoQk9CXg|BUSTING 100 MYTHS IN 24 HOURS!!
+family game myths|board game myths busted|TPeDwrQzfJ8|801|49415211|Jordan Matter|https://www.youtube.com/channel/UCKaCalz5N5ienIbfPzEbYuA|BUSTING 50 MYTHS IN 24 HOURS!!
+family game myths|board game myths busted|uBW9HbU6LDo|641|33792978|Ben Azelart|https://www.youtube.com/channel/UCwVg9btOceLQuNCdoQk9CXg|Busting 100 Movie Myths In Real Life!
+family game myths|board game myths busted|qawFfFVeNXw|622|702327|ChizPlays|https://www.youtube.com/channel/UCvvpSbDd_iOkCf8PhQyE8jw|Busting 27 Myths in WWE 2K26!
+family game myths|board game myths busted|dgzGzErF9AE|879|27568152|Unspeakable|https://www.youtube.com/channel/UCwIWAbIeu0xI0ReKWOcw3eg|Busting 50 Scary Myths in 50 Hours
+family game myths|board game myths busted|a3A4atTD43s|699|5232776|Caylus  |https://www.youtube.com/channel/UCVAYy7_zddIx6USjXscV9Vg|I Busted 28 Myths in Schoolboy Runaway!
+family game myths|board game myths busted|bMHotH1tZ6U|608|3834|GameMasters|https://www.youtube.com/channel/UCWPuY6qJNYTfvgLHFhQ3H_g|5 D&D Myths BUSTED!
+family game myths|board game myths busted|a0y59aynFmI|183|819|Baccarat Report|https://www.youtube.com/channel/UCaNwOpFVGpRM7KAHqaO4bdg|3 Baccarat Myths Still Costing Players Money in 2026 │ Myths Busted
+family game myths|board game myths busted|tn79OFbPwKE|845|155290261|Stokes Twins|https://www.youtube.com/channel/UCbp9MyKCTEww4CxEzc_Tp0Q|Busting 1,000 Movie Myths In 24 Hours!
+family game myths|board game myths busted|MILSjfoDzcg|1711|379680|Croissant|https://www.youtube.com/channel/UCGYzFZHKFrMUYS9I1HQWN5Q|I Busted 100 Myths in Chess!
+family game myths|board game myths busted|Nm2uSCmH54k|828|17549802|Unspeakable|https://www.youtube.com/channel/UCwIWAbIeu0xI0ReKWOcw3eg|Busting 50 Prank Myths in 50 Hours
+family game myths|board game myths busted|bABseBbIiFk|1711|179185963|Stokes Twins|https://www.youtube.com/channel/UCbp9MyKCTEww4CxEzc_Tp0Q|I Busted 200 Myths In 50 Hours!
+family game myths|board game myths busted|0NXvJ2rLmbo|767|32223579|Jordan Matter|https://www.youtube.com/channel/UCKaCalz5N5ienIbfPzEbYuA|BUSTING 100 MYTHS IN 24 HOURS!
+family game myths|board game myths busted|7ecTJ_PEsUA|1231|30475892|Unspeakable|https://www.youtube.com/channel/UCwIWAbIeu0xI0ReKWOcw3eg|Busting 50 Myths In 50 Hours
+family game myths|board game myths busted|ZaRbicw0NjA|180|379|Chesslic|https://www.youtube.com/channel/UCm2ifQW7mycbQoxZVrgmkuw|The Origins of Chess: Myths and Legends Debunked
+family game myths|board game myths busted|0TDnIIabs-A|21|0|omenavewep|https://www.youtube.com/channel/UCW_axqwNImeDSvBYruBItqg|Casino Myths Busted
+family game myths|is monopoly rigged|L6jGX9RyVPc|606|7512|ShaferV2 and Scott Shafer|NA|Is McDonald's Monopoly Actually Rigged?
+family game myths|is monopoly rigged|VdX0C36RTz0|352|31|MIND-over-MONEY |https://www.youtube.com/channel/UCXMZe-tTQKoSsmuM0IH3PKQ|This Rigged Monopoly Game Reveals What Money Does to You 🎲🧠
+family game myths|is monopoly rigged|vM6ptZ8XU_0|16|2971|Evolution Live Scam|https://www.youtube.com/channel/UC62o3a1kVG_lsH5Y2AmzZZw|MONOPOLY LIVE IS RIGGED!!! PROOF IS IN THIS VIDEO!!! #shorts
+family game myths|is monopoly rigged|Qri10wUxyos|261|48383|Randomer|https://www.youtube.com/channel/UCrN5cmzNyD7C5gPBXfdrhYA|Monopoly Social Experiment - How Money and Power can Modify Your Mind
+family game myths|is monopoly rigged|JxPCS4Dcw60|195|8180|KHOU 11|https://www.youtube.com/channel/UCXwRxm0zS0jBNTMOVI6xZJw|The McMillions scandal: How ‘Uncle Jerry’ rigged McDonald’s Monopoly game
+family game myths|is monopoly rigged|8iZ8RtiJq14|1226|4567139|fern|https://www.youtube.com/channel/UCODHrzPMGbNv67e84WDZhQQ|The McDonald's Monopoly Scam
+family game myths|is monopoly rigged|O2VumctNO-8|1401|107571|IntellectualConversations|https://www.youtube.com/channel/UCi_1SPzPEhWH7VFeyoSUYTg|Monopoly GO: The App Store's Biggest CASH GRAB (Part 1) 
+family game myths|is monopoly rigged|-UvRDL2Xaak|512|634|Austin Talks Money|https://www.youtube.com/channel/UC0sHI9c6QQoGkqGyjCCkPpg|The Money Game is Rigged- Here's How to Win
+family game myths|is monopoly rigged|bJ8Kq1wucsk|996|794732|TED|https://www.youtube.com/channel/UCAuUUnT6oDeKwE6v1NGQxug|Does money make you mean? | Paul Piff
+family game myths|is monopoly rigged|f68XWtlOI6c|2317|115968|Carly Incontro|https://www.youtube.com/channel/UC184MUWk-JadrboW8F9wFlQ|the man who rigged mcdonald's monopoly for 12 years
+family game myths|is monopoly rigged|85AyAcHmkN0|567|850|ALIBI PROJECT|https://www.youtube.com/channel/UCCx1l21k5jEUdS6h_jEW6yQ|McDonald’s Monopoly Was RIGGED — You Never Had a Chance
+family game myths|is monopoly rigged|vCSrAxJsXPg|151|7|Off Record|https://www.youtube.com/channel/UCTzN3QiJOLER5xzAD_0L-nw|The McDonald’s Monopoly Game Was Rigged
+family game myths|is monopoly rigged|E68tyaV0XGg|354|18|Beyond the Obvious Daily|https://www.youtube.com/channel/UC-7Apz98JQMcMIgQCW380Iw|McDonald’s Monopoly Was RIGGED — By the Man Hired to Protect It
+family game myths|is monopoly rigged|XqXGdB62-9Y|679|96|CaseBND|https://www.youtube.com/channel/UCl2iZaB7ab7MpmeNbMFBM8Q|McDonald’s Monopoly Was Rigged. The FBI Let It Continue.
+family game myths|is monopoly rigged|kGTzgrLlJGo|516|26|System Beneath|https://www.youtube.com/channel/UCDiJjx4gpVk_HgmJMjpDyAA|McDonald’s $24 Million Monopoly Scam — The Game Was Rigged
+family game myths|is monopoly rigged|S4_F9Q-YWH4|60|4|Burritogordito1|https://www.youtube.com/channel/UCtYvkAHJ_P-I1yxZ2tyvw4Q|MONOPOLY Is rigged😂
+family game myths|is monopoly rigged|3lni3QvfusU|1689|372|AviationSnoopy2943|https://www.youtube.com/channel/UC-wYjLmq7-3Qf10aRXtaT0w|Monopoly Nintendo Switch is the most rigged game ever
+family game myths|is monopoly rigged|6EGkCufmgz4|454|16|Decode Station|https://www.youtube.com/channel/UC-oPzg9nAtInAJx3ct6l37w|How the McDonald’s Monopoly Game Was Rigged
+family game myths|is monopoly rigged|92olTYQu4Zc|235|111764|Roulette Science|https://www.youtube.com/channel/UCg6tIcdzMfvZG_919RGQPQA|Evolution Gaming's Monopoly ❓ SCAM FRAUD CHEAT RIGGED REAL or FAKE ❓
+family game myths|is monopoly rigged|LqI8hTeZzB4|513|534458|Xevi|https://www.youtube.com/channel/UC0UpxtDnri_fa5fB_PoAYhw|The $30 million Mcdonald's Monopoly Scam
+family game myths|board game rules everyone gets wrong|9gxUPbxxz6g|237|306295|Board Game Sanctuary|https://www.youtube.com/channel/UCQOdzUAmZ29U2irx_HuyDFQ|11 Rules You're Getting Wrong In Monopoly The Board Game
+family game myths|board game rules everyone gets wrong|26P1KyvrmjI|1734|20155899|Mark Rober|https://www.youtube.com/channel/UCY1kMZp36IQSyNx_9h4mpCg|I Solved Every Board Game
+family game myths|board game rules everyone gets wrong|F7kciwuAOL0|281|2|Board Games Maniac|https://www.youtube.com/channel/UCIPYIs-rXMuU-SXN4mcPnVw|7 Board Game Rules You've Been Getting Wrong for 20 Years
+family game myths|board game rules everyone gets wrong|dK_LbPjJi-0|209|1998499|sblga|https://www.youtube.com/channel/UCvPKIMxSrNu5bNdKQRD9ifw|Monopoly Has a Rule Nobody Plays — And It Ruins the Game
+family game myths|board game rules everyone gets wrong|1dKkpl0EPi0|723|7298|Pam Walls Game Design|https://www.youtube.com/channel/UCt4TYeU8YMwtBa6sX8ejIcw|Avoid these 10 common mistakes when writing board game rules
+family game myths|board game rules everyone gets wrong|fyvyhkF8Xr4|167|3487899|Aunty Donna|https://www.youtube.com/channel/UC_mneEC0wc29EGGmIsN_xLA|Explaining a Board Game
+family game myths|board game rules everyone gets wrong|ShTFssyDRio|5210|246110|The Command Zone|https://www.youtube.com/channel/UCLsiaNUb42gRAP7ewbJ0ecQ|Rules Magic Players Keep Getting Wrong | The Command Zone 521 | Commander EDH
+family game myths|board game rules everyone gets wrong|vTIPlT1ppTk|542|32|Game Night Court|https://www.youtube.com/channel/UCXHR0InXU7x3IDNffIQYdBw|Monopoly's Original Rulebook Gave Bad Advice
+family game myths|board game rules everyone gets wrong|FkuqYtE1rw0|240|4510327|Triple S Games|https://www.youtube.com/channel/UC5--Olk4nljSNeT5wXfTOuA|How to play Uno (2025 Rules)
+family game myths|board game rules everyone gets wrong|HBluLfX2F_k|2713|11646870|Veritasium|https://www.youtube.com/channel/UCHnyfMqiRRG1u-2MsSQLbXA|You've (Likely) Been Playing The Game Of Life Wrong
+family game myths|board game rules everyone gets wrong|4zUx5uNVsJs|244|489327|Triple S Games|https://www.youtube.com/channel/UC5--Olk4nljSNeT5wXfTOuA|How to play Clue (2024 Rules)
+family game myths|board game rules everyone gets wrong|8y26gapICP0|309|47196|PingSkills|https://www.youtube.com/channel/UC_TNBWPjmGGNV3CA_vwK97Q|Table Tennis Rules You’re Probably Getting Wrong
+family game myths|board game rules everyone gets wrong|jkN6xxyEgZc|3649|3379753|No Rolls Barred|https://www.youtube.com/channel/UC5UQPZe-8v4_UP1uxi4Mv6A|Monopoly, But COMMUNIST | House Rules
+family game myths|board game rules everyone gets wrong|cFVM_hwh56s|261|808847|Gather Together Games|https://www.youtube.com/channel/UCVeEx96wzFgzhXsy7cBC8hw|How To Play Go (Beginner Tutorial)
+family game myths|board game rules everyone gets wrong|Gzn95EZLB3Y|281|545061|Mr.Animate|https://www.youtube.com/channel/UCZnd3d13Z0OJVq78SLDgacA|Monopoly Board Game Rules & Instructions | How to Play Monopoly
+family game myths|board game rules everyone gets wrong|8EAmt8Uhpcc|2119|755001|Smosh Pit|https://www.youtube.com/channel/UCYJPby9DRCteedh5tfxVbrw|Wrong Plate Wrong Time | Culinary Crimes
+family game myths|board game rules everyone gets wrong|xXE5AwzNQ2s|194|2346119|wikiHow|https://www.youtube.com/channel/UC1gi0J2xmZgP4sRFNEfcy7w|How to Play Backgammon
+family game myths|board game rules everyone gets wrong|A9fJT13NT6g|315|575083|Triple S Games|https://www.youtube.com/channel/UC5--Olk4nljSNeT5wXfTOuA|How to play Scrabble (2024 rules)
+family game myths|board game rules everyone gets wrong|6ee1CntEVyU|206|5456652|Studio C|https://www.youtube.com/channel/UCsZXuHKonP9utl5q2hFCkgA|A Bad Family Game Night
+family game myths|board game rules everyone gets wrong|AhaylQfzCmo|1432|1302987|Actualol|https://www.youtube.com/channel/UCO-hn9MJOu7pOUdGSabKGvA|10 Reasons Board Games Are Better Now
+family game myths|house rules ruin board games|Pz_YmRsvwkM|1081|3565|Game Night Picks|https://www.youtube.com/channel/UClscaCqEF57mJyacc3gQ6Jw|Do House Rules Ruin Board Games? (TABLEscraps #24)
+family game myths|house rules ruin board games|umxbWpqE9tA|779|7937|Board Game Critique|https://www.youtube.com/channel/UCwBdgw1-sBAHyXeyCezeJtw|6 Games We Refuse to Play Without House Rules
+family game myths|house rules ruin board games|MYcvShmPS3I|733|3375|Miniature Adventures|https://www.youtube.com/channel/UC-OyOZpU-R7PNBOFwP4mu3g|Do House Rules Ruin Wargames
+family game myths|house rules ruin board games|R2W77hjejaM|1415|64|Board Game Gateway|https://www.youtube.com/channel/UCBpsXvRG88eqtHw3Kypx2dA|House Rules RUIN Board Games! True or False?!
+family game myths|house rules ruin board games|F8dHyhdpGps|467|2028181|Fact Quickie|https://www.youtube.com/channel/UCy8LfEjAzL-5ZHgLUmeExUA|Everyone Plays Monopoly Wrong and It Ruins the Game
+family game myths|house rules ruin board games|BNX7CmnEl5M|1369|8561|Stonemaier Games|https://www.youtube.com/channel/UCowWjmYzhSTC4YZ--ZnaYNw|House Rules, Clues, and Mulligans
+family game myths|house rules ruin board games|6qvG2bJ-BwA|1247|1544|Gaming with Edo & Jessica|https://www.youtube.com/channel/UCpvwHi-2kifAtpvZ64gBv9A|Game Mechanics or Rules that Ruin Board Game!
+family game myths|house rules ruin board games|9gxUPbxxz6g|237|306295|Board Game Sanctuary|https://www.youtube.com/channel/UCQOdzUAmZ29U2irx_HuyDFQ|11 Rules You're Getting Wrong In Monopoly The Board Game
+family game myths|house rules ruin board games|q_6m1taMGZI|234|5117|Legendary Tactics|https://www.youtube.com/channel/UCRarNme4iUanPLflogg-Ntg|MONOPOLY / 3 RULES You AREN'T USING & 1 HOUSE RULE You SHOULD BE USING / RULES To LEARN
+family game myths|house rules ruin board games|jh4V-p0UhNc|328|117|Game Design|https://www.youtube.com/channel/UCHWWViIuBsOrSm2HXeBj2kA|House rules and standards that ruin games (for most players) by ignoring the rules
+family game myths|house rules ruin board games|sczG_yANksw|486|117|Wargamer Fritz|https://www.youtube.com/channel/UCoYezSOIYkjTk0A01slqpww|Board Game House Rules
+family game myths|house rules ruin board games|XgEY0mAZS0Q|555|1297|House Rules Sim|https://www.youtube.com/channel/UCMrneKTBYTZ_KrqEsO06X3w|The House Rule That Ruins Monopoly (11 Million Games)
+family game myths|house rules ruin board games|pUK5Q2Xig4k|645|27374|Board Game Hangover|https://www.youtube.com/channel/UCbZD84iCEOi1fGV9gJ_UyjA|Modernize Your Eldritch Horror Experience with These 13 Rules
+family game myths|house rules ruin board games|eczKqaXxW9A|313|1559|Man vs Meeple|https://www.youtube.com/channel/UCTU7xJi9dBQIcBeUFLpWGUA|GAMING LIFE - House Rules
+family game myths|house rules ruin board games|dK_LbPjJi-0|209|1998499|sblga|https://www.youtube.com/channel/UCvPKIMxSrNu5bNdKQRD9ifw|Monopoly Has a Rule Nobody Plays — And It Ruins the Game
+family game myths|house rules ruin board games|rrgT5M7RJ_I|428|316|Humans Decoded|https://www.youtube.com/channel/UC7zmKWgL55Vnn4Fhlmc4I6A|Do House Rules Ruin Monopoly? I Tested 4 of Them on 200 Million Games
+family game myths|house rules ruin board games|PrdVT7TNAmc|486|49|A Piece of the Action|https://www.youtube.com/channel/UCeVxxe3yBg6qxGq8JRne0Lg|Collect My Thoughts Ep. 5 - House Rules, When to Mod Your Board Game
+family game myths|house rules ruin board games|sCoyLnGnRw8|1327|221|UndeadVikingVideos|https://www.youtube.com/channel/UCY7bAs4PMlywLpes2kurWgA|House Rules Review
+family game myths|house rules ruin board games|t2pPFU2x4Gw|205|21970|Common Rules Mistakes|https://www.youtube.com/channel/UCoNEEDRmVhhqJvs1MjQNHGw|Nemesis - 12 Rules That You Might Get Wrong! (Common Rules Mistakes)
+family game myths|house rules ruin board games|R9nRe5QJT34|409|279|Danny C - GFS|https://www.youtube.com/channel/UCvO7Vq3C7HDLDB38Z0y4S5g|Board Game Discussion - House rules
+party games|codenames strategy|KOQD5-2MJTs|123|5779|Cuderotuz Rifu|https://www.youtube.com/channel/UCZKxcB04g5wXdS2lEocu7cA|3 STRATEGY TIPS to help you WIN EVERY GAME of Codenames!
+party games|codenames strategy|UYCgGDSUnB0|560|146718|CodeSlate|https://www.youtube.com/channel/UCfsKKVrUJWaq4JdLEQG2dEQ|How to win Codenames in one turn every time
+party games|codenames strategy|5yZqoSOpb1s|402|1576|Legendary Tactics|https://www.youtube.com/channel/UCRarNme4iUanPLflogg-Ntg|CODENAMES: Board Game Strategy Guide
+party games|codenames strategy|zQVHkl8oQEU|202|1714111|The Rules Girl|https://www.youtube.com/channel/UCd7ifswdRwhl-AWQF92qM-g|How to Play Codenames in 3 Minutes - The Rules Girl
+party games|codenames strategy|kSCsNI3U0M0|1986|270|Coach Staci |https://www.youtube.com/channel/UCyI4aU4zclRmaLayXfehu0w|Tips for coming up with clues as Spymaster in Codenames
+party games|codenames strategy|w0QuO0fkCbs|2985|90899|No Rolls Barred|https://www.youtube.com/channel/UC5UQPZe-8v4_UP1uxi4Mv6A|Let's Play CODENAMES | Board Game Club
+party games|codenames strategy|9BSi6Gi3Bzo|256|94431|Czech Games Edition|https://www.youtube.com/channel/UC02N1UYQ9XQfE2BL4514asw|CODENAMES: Official How to Play Video [ENGLISH]
+party games|codenames strategy|cueZnzkSL20|199|79591|Cardboard Crash Course|https://www.youtube.com/channel/UCYXlZZ0nFKjF4RcOcmGoQCw|Codenames - How To Play
+party games|codenames strategy|H33ZzLy2Xcg|143|63|PD Reviews|https://www.youtube.com/channel/UCxeF9F-ixzwpCxF9Fh6gWWw|3 STRATEGY TIPS to help you WIN EVERY GAME of Codenames!
+party games|codenames strategy|J0NVKeLXhoY|1264|2389014|MoreSidemen|https://www.youtube.com/channel/UCh5mLn90vUaB1PbRRx_AiaA|SIDEMEN CODENAMES BUT THERE’S A THIRD IMPOSTOR
+party games|codenames strategy|6fRK23vYWyo|166|362|Natone Kidulting and Natone Magazine|NA|How to Play Codenames (2026) | Complete Beginner’s Guide
+party games|codenames strategy|K8AWBfpwE_E|1971|1298325|Smosh Games|https://www.youtube.com/channel/UCJ2ZDzMRgSrxmwphstrm8Ww|Top Secret Word Game | Board AF: Codenames
+party games|codenames strategy|BldNIlw_Y_o|550|104032|Triple S Games|https://www.youtube.com/channel/UC5--Olk4nljSNeT5wXfTOuA|How to play Codenames
+party games|codenames strategy|siaNZYg3MhY|391|90142|Czech Games Edition|https://www.youtube.com/channel/UC02N1UYQ9XQfE2BL4514asw|CODENAMES Duet: Official How to Play Video
+party games|codenames strategy|c65udPu25r8|729|21328|15th Floor|https://www.youtube.com/channel/UCk71IrRQyptFQBL_eEeS1uw|NEW Strategy debuts in intense Codenames Championship!
+party games|codenames strategy|fXz0I8Q84GU|2788|88306|Northernlion|https://www.youtube.com/channel/UC3tNpTOHsTnkmbwztCs30sA|The Most OP Pair in Codenames History (Codenames)
+party games|codenames strategy|fOWiJRfb7C0|239|6|TableTopTurns|https://www.youtube.com/channel/UC8tHs0Wtbnx-GGe4tRpEzxA|How to Play Codenames | Quick Guide | TableTopiaAI
+party games|codenames strategy|WErB95Brgbs|190|217765|wikiHow|https://www.youtube.com/channel/UC1gi0J2xmZgP4sRFNEfcy7w|How to Play Codenames
+party games|codenames strategy|J8RWBooJivg|633|1053041|Watch It Played|https://www.youtube.com/channel/UCGK9n7svoIjuaQfRIBJXkqQ|Codenames - How To Play
+party games|codenames strategy|3XfLg-xGhEI|405|3437|Schea Gaming Corner|https://www.youtube.com/channel/UC7GeCPF7_1k-VQliYInG8_w|Episode 2 Part 2 - CodeNames - Strategy
+party games|secret hitler strategy|mbGXIDYdtas|219|1642106|The Rules Girl|https://www.youtube.com/channel/UCd7ifswdRwhl-AWQF92qM-g|How to Play Secret Hitler in 4 Minutes - The Rules Girl
+party games|secret hitler strategy|APiugylcAJw|263|888143|Max Temkin|https://www.youtube.com/channel/UCcIntWOSU38r6V0YaPLNjRg|How to Play  Secret Hitler
+party games|secret hitler strategy|du-O1d4nwQI|93|7241|Miketech|https://www.youtube.com/channel/UCvAQ3p6BidWTTOWBHB8N5xw|Meta - 1 Behind 3 Ahead | SECRET HITLER Strategy Episode 002
+party games|secret hitler strategy|eNuGQgfqx60|1150|541711|KamSandwich|https://www.youtube.com/channel/UC2buJRIGgvkpMpaaCyaIqGA|Secret Hitler: Board Game Madness
+party games|secret hitler strategy|ZC6z2Q7-x8I|2642|3769581|Smosh Games|https://www.youtube.com/channel/UCJ2ZDzMRgSrxmwphstrm8Ww|The Queen of Lies Plays Secret Hitler
+party games|secret hitler strategy|MSyel75vMWk|112|539|Miketech|https://www.youtube.com/channel/UCvAQ3p6BidWTTOWBHB8N5xw|Specical Election | SECRET HITLER Strategy Episode 012
+party games|secret hitler strategy|Q9Wb0sc5Ft8|2291|2359394|Polygon|https://www.youtube.com/channel/UCuVxaQDraOja6xKidcmoufA|Let's Play SECRET HITLER | Overboard, Episode 3
+party games|secret hitler strategy|jZHhrqQPSeE|611|10212|BigPasti|https://www.youtube.com/channel/UC8VwaYl-Dct1f5wpVwXWM4g|A Critique of Secret Hitler (and a comparison to avalon)
+party games|secret hitler strategy|HN4VgbchWak|211|12801|Heath's Geekverse|https://www.youtube.com/channel/UCufT1sjhS2YdUeItDFWYkOA|The Essential Upgrade for the Secret Hitler Board Game
+party games|secret hitler strategy|HpfB7nt1wQ8|160|1186|Miketech|https://www.youtube.com/channel/UCvAQ3p6BidWTTOWBHB8N5xw|Who to Shoot | SECRET HITLER Strategy Episode 013
+party games|secret hitler strategy|FekIFjFQCl8|180|1575|Miketech|https://www.youtube.com/channel/UCvAQ3p6BidWTTOWBHB8N5xw|Fake Conflicts | SECRET HITLER Strategy Episode 016
+party games|secret hitler strategy|XGhtQZg_peo|1352|2533284|Smosh Games|https://www.youtube.com/channel/UCJ2ZDzMRgSrxmwphstrm8Ww|THE MOST INTENSE SECRET HITLER | Smosh Games
+party games|secret hitler strategy|zQZ5LWDqwNw|348|2175|Miketech|https://www.youtube.com/channel/UCvAQ3p6BidWTTOWBHB8N5xw|What Cards to Play | SECRET HITLER Strategy Episode 004
+party games|secret hitler strategy|xRt9JdzKrvg|620|37501|Settlers Cafe|https://www.youtube.com/channel/UCFTFtAxPHlXix0cBVFhRiPA|How To Play: Secret Hitler
+party games|secret hitler strategy|-iue2tRtslU|343|682|Miketech|https://www.youtube.com/channel/UCvAQ3p6BidWTTOWBHB8N5xw|Hitler Territory | SECRET HITLER Strategy Episode 011
+party games|secret hitler strategy|oY4I8MwT2ow|370|11657|EBUTTER21|https://www.youtube.com/channel/UCdKstzduoHFI5R5X--WMYxg|How to play Secret Hitler: Communist! The Expansion
+party games|secret hitler strategy|0sFGk7Icu9w|2097|1714356|Smosh Games|https://www.youtube.com/channel/UCJ2ZDzMRgSrxmwphstrm8Ww|Ruining Each Other's Lives in SECRET HITLER
+party games|secret hitler strategy|DeuBLpLXP9o|110|6204|Miketech|https://www.youtube.com/channel/UCvAQ3p6BidWTTOWBHB8N5xw|Introduction | SECRET HITLER Strategy Episode 000
+party games|secret hitler strategy|ArzJPtNfZu8|4305|256164|No Rolls Barred|https://www.youtube.com/channel/UC5UQPZe-8v4_UP1uxi4Mv6A|Let's Play SECRET HITLER | Board Game Club
+party games|secret hitler strategy|gh9vSwjIDjU|70|73974|wikiHow|https://www.youtube.com/channel/UC1gi0J2xmZgP4sRFNEfcy7w|How to Play Secret Hitler
+party games|werewolf game strategy|Ot-69GRNkxA|328|11175|Whatapedia|https://www.youtube.com/channel/UCCQ5MZ97ARyKv61qY2n1p8w|Play like a PRO Secrets in Killer Game and Ultimate Werewolf
+party games|werewolf game strategy|GXHe8mSaAo0|395|30353|Ignite Seattle|https://www.youtube.com/channel/UCMWUZh_xP-FZr1FxzSZMlkw|Werewolf Strategy - HB Siegel -
+party games|werewolf game strategy|ldvF0wOfawY|75|4573|wikiHow|https://www.youtube.com/channel/UC1gi0J2xmZgP4sRFNEfcy7w|What Are Strategies For Werewolf?
+party games|werewolf game strategy|DgQflWjx7TA|397|61325|Play-In Games|https://www.youtube.com/channel/UCIdT8S4HExsTH_8h9NJGIng|How to Play Werewolf | Complete Beginner’s Guide
+party games|werewolf game strategy|VcaBACd5hIU|3650|3437790|Smosh Games|https://www.youtube.com/channel/UCJ2ZDzMRgSrxmwphstrm8Ww|Ultimate Werewolf: Big Brain Mode
+party games|werewolf game strategy|DgstvYY55D8|1787|118311|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|10 AIs Play Ultimate Werewolf
+party games|werewolf game strategy|dd2sOmZUBmM|180|421146|wikiHow|https://www.youtube.com/channel/UC1gi0J2xmZgP4sRFNEfcy7w|How to Play Werewolf  Party Game
+party games|werewolf game strategy|_xhkeiM-3wk|366|318|Social Deduction Games|https://www.youtube.com/channel/UCDocE9Xo0NLJfkQ4sL1a2MQ|Ultimate Werewolf: A Players Guide
+party games|werewolf game strategy|FVsSHWp0sw8|1453|3997|International Computer Games Association|https://www.youtube.com/channel/UC-MX36omM3tE-GXVnKmiPOg|Human-side Strategies of the Werewolf Game against the Stealth Werewolves Strategy
+party games|werewolf game strategy|oiwW5c8pAEg|569|7685|Gamer Jason|https://www.youtube.com/channel/UCzhGh6sW0g9zbLwFiEfcTZQ|4 Tips For Your Werewolves Moderator!
+party games|werewolf game strategy|9hKL5cwnM8Q|499|348081|Brute Force Lab|https://www.youtube.com/channel/UCPF-sCEEkBlgNiw20Ae_o0Q|How Many Werewolves Make a Fair Game?
+party games|werewolf game strategy|VDRSUgcKuf8|1089|23325|Game Boy Geek|https://www.youtube.com/channel/UCiCsq2nRDngI64idWx_VMRQ|How to Play & Moderate Ultimate Werewolf (Rules School) with the Game Boy Geek
+party games|werewolf game strategy|7rwi40IG-_0|351|231559|Triple S Games|https://www.youtube.com/channel/UC5--Olk4nljSNeT5wXfTOuA|How to play One Night Ultimate Werewolf
+party games|werewolf game strategy|1P6mgLUde48|186|207595|How To - Fun and Games|https://www.youtube.com/channel/UCqCgXvMgPu_cVvub2daa5Kw|How To Play Ultimate Werewolf
+party games|werewolf game strategy|WrDcQnbhz3o|3185|1935959|OG Crew|https://www.youtube.com/channel/UCEEYC7-n3iCQSyZBAZOmpEg|The WILDEST Werewolf Game Ever Played | OG Crew
+party games|werewolf game strategy|A2F4D8WqvJw|1383|347325|Petey Plays It|https://www.youtube.com/channel/UCbUpAWQWO6jWXyQY9JP0yXw|Every Werewolf Ability Explained And Rated | The Sims 4 Guide
+party games|werewolf game strategy|sR0mrGtzcpc|2236|1373|Tabletop Ghoul|https://www.youtube.com/channel/UCdtl_6Pqu2Y2PvZ_z-WDn0A|The Ultimate Guide to Running a Werewolf Encounter
+party games|werewolf game strategy|UuEornJ7_g4|504|85973|Plushie Mistress|https://www.youtube.com/channel/UC1zb-f1n0NLREQ1M06icsdQ|[FGO] Werewolf Advancement Quest Tutorial (Spoken)
+party games|werewolf game strategy|-4uDuH4xXLg|594|799345|Ted Alspach|https://www.youtube.com/channel/UCeVJbKMbh8zcAA6MD_TYzCw|One Night Ultimate Werewolf Sample Game
+party games|werewolf game strategy|1-ZlMZGFnwE|853|10799|Tier Masters|https://www.youtube.com/channel/UCYwlctI8pCmv46seMqs5FYw|One Night Ultimate Werewolf Tier List (Tiermaker)(ONUW)
+party games|coup card game strategy|SBf-kE5rAVo|195|34462|StrataGames|https://www.youtube.com/channel/UCC7X7F42g9ZzyayEH0s39vw|How to Win at Coup Every Time! | Simple Strategy #13
+party games|coup card game strategy|C3I_EBLwy9s|121|10464|Hardy House Games|https://www.youtube.com/channel/UCEFOxS72IDt0Gan0GOCZb5g|How To Win Coup | Strategy, Tips, Guid
+party games|coup card game strategy|_fUhaDoozu8|383|22953|Legendary Tactics|https://www.youtube.com/channel/UCRarNme4iUanPLflogg-Ntg|Coup Card Game STRATEGY for End Game / Board game / How to win at Coup / Indie Boards & Cards
+party games|coup card game strategy|V-gt8eWWQOs|387|11120|Taming Games|https://www.youtube.com/channel/UCSWqfAneMiVYailJRaordkQ|Strategies for Coup | Win Your Next Game
+party games|coup card game strategy|FSqeLg0LZOM|599|10354|Board Game Business Podcast|https://www.youtube.com/channel/UCx4PEfqA9cT5dBfmslFhytg|Coup Strategy Primer
+party games|coup card game strategy|DnIYcioUmws|544|29635|Swell Dandy|https://www.youtube.com/channel/UCWFu7CWd93DTcOUx9lks3ww|How to WIN at Coup - TRICKS REVEALED! - Part 1
+party games|coup card game strategy|kKiV-v3bDRo|589|4970|Beat the Odds: Boards Games and More!|https://www.youtube.com/channel/UCWH0r-VhsL8BPpMK7OZxz0w|How To Win At: Coup
+party games|coup card game strategy|IBIzEOW49JQ|196|145954|wikiHow|https://www.youtube.com/channel/UC1gi0J2xmZgP4sRFNEfcy7w|How to Play Coup
+party games|coup card game strategy|a8bY3zI9FL4|262|383473|Geek & Sundry|https://www.youtube.com/channel/UCaBf1a-dpIsw8OxqH4ki2Kg|How to Play Coup
+party games|coup card game strategy|Vs0DYzXossU|321|4813|Play-In Games|https://www.youtube.com/channel/UCIdT8S4HExsTH_8h9NJGIng|COUP Explained | The Ultimate Guide to the Classic Bluffing Game
+party games|coup card game strategy|BrjCPnbEMfE|1806|1812018|Polygon|https://www.youtube.com/channel/UCuVxaQDraOja6xKidcmoufA|Let's Play COUP feat. Brennan Lee Mulligan from CollegeHumor | Overboard, Episode 12
+party games|coup card game strategy|lPlBDZnxHQA|854|235172|Watch It Played|https://www.youtube.com/channel/UCGK9n7svoIjuaQfRIBJXkqQ|Coup - How To Play
+party games|coup card game strategy|xein36QEXsI|1294|12543|Swell Dandy|https://www.youtube.com/channel/UCWFu7CWd93DTcOUx9lks3ww|WIN at Coup - SECRETS tips & TRICKS - Part 2
+party games|coup card game strategy|HMMRz3k1NAs|485|894|Taming Games|https://www.youtube.com/channel/UCSWqfAneMiVYailJRaordkQ|Beginner tips for Coup
+party games|coup card game strategy|lAh9RxIe-Yc|1061|655|Board Game Lounge|https://www.youtube.com/channel/UCVhZ1HB_M6B1-dhecp49UtQ|Coup - Party Game Playthrough
+party games|coup card game strategy|yNpeOccfAMc|5361|417442|No Rolls Barred|https://www.youtube.com/channel/UC5UQPZe-8v4_UP1uxi4Mv6A|Let's Play COUP | Board Game Club
+party games|coup card game strategy|ELjXX6dXNJQ|208|147|In General|https://www.youtube.com/channel/UCnQ4Sc14Hk_Uoa1jGn4xk-g|Coup (The Full Guide) Part 4: The Triangle Method
+party games|coup card game strategy|cswItUfEdXM|1312|190772|KamSandwich|https://www.youtube.com/channel/UC2buJRIGgvkpMpaaCyaIqGA|COUP: Pants on Fire
+party games|coup card game strategy|I4HZ3ykuCGc|221|6256|Lumina Games|https://www.youtube.com/channel/UCkgJknQBSW85mp8xvXpChNA|How to play Coup card game strategy coup Reformation
+party games|coup card game strategy|crg6CpdI1dU|7354|132492|No Rolls Barred|https://www.youtube.com/channel/UC5UQPZe-8v4_UP1uxi4Mv6A|Let's Play COUP | Board Game League | Season 2
+ai plays family games|AIs play uno|rKN4NYJeyqo|289|18|Unscripted Worlds|https://www.youtube.com/channel/UCWAHDHeaEeHIj9aYT7QqPkQ|4 AIs Play UNO. The Table Gets Petty.
+ai plays family games|AIs play uno|VKZ-KkF8II8|3321|583768|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to play Monopoly...(it was bad)
+ai plays family games|AIs play uno|ad81-bNy0ZA|664|7|Ditty Tron|https://www.youtube.com/channel/UC5-Tef1Z6NNM1iT1OmP0FDQ|Playing with Dumb AIs/EZ wins xD | Uno Gameplay
+ai plays family games|AIs play uno|s9kGdVM7tzM|758|297|Silicon Showdown|https://www.youtube.com/channel/UCAFVDSE-xs555JKdoqb-0jg|AIs Play Coup: Who's the Best Liar?
+ai plays family games|AIs play uno|uBa-t5Buz8Y|511|1928154|Croissant|https://www.youtube.com/channel/UCGYzFZHKFrMUYS9I1HQWN5Q|I Forced 4 AIs to play 4 Player Chess...(it was bad)
+ai plays family games|AIs play uno|z4YskEdevgI|2486|2|Ditty Tron|https://www.youtube.com/channel/UC5-Tef1Z6NNM1iT1OmP0FDQ|The "longest Uno Gameplay with AIs
+ai plays family games|AIs play uno|lEOTKYxiIzs|3665|868197|Quinn Henry|https://www.youtube.com/channel/UCIAQuWY4lfGn8xArU_hG-dw|7 Ais play Diplomacy
+ai plays family games|AIs play uno|pMryHPjyHa4|2056|7|Ditty Tron|https://www.youtube.com/channel/UC5-Tef1Z6NNM1iT1OmP0FDQ|UNO... But it's without Christian and it's against 2 AIs and 2 Guests
+ai plays family games|AIs play uno|ulPs27uTkUY|1237|352700|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 4 AIs to Play Buckshot Roulette...(it was scary)
+ai plays family games|AIs play uno|-tbJz8l2UqQ|67|308|BerrySus|https://www.youtube.com/channel/UCEny2Oah-iOrXXKnfw8Fcsw|4 AIs playing Roblox Uno Flip
+ai plays family games|AIs play uno|RTgd2lUQNlA|2374|705445|TheDooo|https://www.youtube.com/channel/UCPKgIhTC3BdkAwMw6s-GEug|Uno if it was actually funny
+ai plays family games|AIs play uno|pzNACGVUMXw|936|5155|TVaria SailorPeace|https://www.youtube.com/channel/UCE9mjmRb542v6UiwPxQDbQg|Princess Peach Plays UNO (Peach vs AIs)
+ai plays family games|AIs play uno|ZBhfAUdxt4s|922|4|Rlogo|https://www.youtube.com/channel/UC7weuQZ9Xr3JoFZigMCuiWw|The AIs have rigged Uno!
+ai plays family games|AIs play uno|djsFiMDYagk|35|20|XShadeeX|https://www.youtube.com/channel/UCSpUFR9ubLrmLRib0Dg9Yyw|Uno | Sometimes AIs Are Helpful!
+ai plays family games|AIs play uno|vYPUs_FmNEQ|7257|2133988|Valefisk|https://www.youtube.com/channel/UC0eOlAEMdVgpmThPkpmR-qQ|Gaming, but I'm Secretly an AI
+ai plays family games|AIs play uno|OA80DHQ7OHw|598|5|LaZy_NJ6 `|https://www.youtube.com/channel/UCO76ynsxzTbwwFO9U3iVmLQ|Playing uno with AIs
+ai plays family games|AIs play uno|ezU0KtFoQnI|837|15|Kyd Drippy|https://www.youtube.com/channel/UCGTscde3zF5j7_mAj2BHp7Q|These AIs Are Not Going To Let Us Win | UNO Funny Moments
+ai plays family games|AIs play uno|Sxmd7T_dyaM|1230|1920721|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 10 AIs to play Among Us...(it was crazy)
+ai plays family games|AIs play uno|sfK-voJ1O78|325|25|chaytho|https://www.youtube.com/channel/UCXS2T3UI-yloi1rrXAokJAA|I hate Uno's AIs
+ai plays family games|AIs play uno|JK0Kt8zKO3o|797|36|Nonsense|https://www.youtube.com/channel/UCJYbaXf94omyBcMY_UDOVww|I swear the UNO AIs are hiding cards in their charging ports
+ai plays family games|AI plays secret hitler|0oUjCmfRaIM|2973|198|Played by Machines|https://www.youtube.com/channel/UCnnYzZ8XIs4aK5xGaGyDBsQ|9 AIs Play Secret Hitler — Claude wins by LYING
+ai plays family games|AI plays secret hitler|t8Biuqq0if0|2254|157|Played by Machines|https://www.youtube.com/channel/UCnnYzZ8XIs4aK5xGaGyDBsQ|8 AIs Play Secret Hitler — Claude Opus 5 Named Every Fascist. They Ignored Him and Almost Lost.
+ai plays family games|AI plays secret hitler|LCzucUHxkWI|1536|68|Played by Machines|https://www.youtube.com/channel/UCnnYzZ8XIs4aK5xGaGyDBsQ|7 AIs Play Secret Hitler — Gemini Betrayed His Own Teammate to Win
+ai plays family games|AI plays secret hitler|eynMKxxls5E|2044|92|Ai vs Ai|https://www.youtube.com/channel/UCrGHUutU8Vxpds4cgdCHqbQ|4 Ai's Vs 1 Secret Hitler
+ai plays family games|AI plays secret hitler|IZRfzfV9lBQ|1365|15|Played by Machines|https://www.youtube.com/channel/UCnnYzZ8XIs4aK5xGaGyDBsQ|Claude 5.5 Fooled 8 AIs in Secret H*tler — Never Lying Once
+ai plays family games|AI plays secret hitler|ZC6z2Q7-x8I|2642|3769581|Smosh Games|https://www.youtube.com/channel/UCJ2ZDzMRgSrxmwphstrm8Ww|The Queen of Lies Plays Secret Hitler
+ai plays family games|AI plays secret hitler|dkvFcYBznPI|690|12115268|b2studios|https://www.youtube.com/channel/UCIcGc8tDHYZ3vY3NcS8JXaQ|AI Learns Insane Monopoly Strategies
+ai plays family games|AI plays secret hitler|95gA-LSGhH0|308|46|Urek|https://www.youtube.com/channel/UC3uR2u4FWsj3ptSqa_MRTxw|How to play Secret Hitler: learn the rules by playing one game
+ai plays family games|AI plays secret hitler|7lzMXgqcEDY|47|43|Urek|https://www.youtube.com/channel/UC3uR2u4FWsj3ptSqa_MRTxw|Secret Hitler XL narrator: Night script (game start), 7-10 players (Monarchist, Hitler eyes closed)
+ai plays family games|AI plays secret hitler|yUXgQ7lGyxE|63|15|Urek|https://www.youtube.com/channel/UC3uR2u4FWsj3ptSqa_MRTxw|Secret Hitler XL narrator: Night script (game start), 9-10 players (Communists, Hitler eyes closed)
+ai plays family games|AI plays secret hitler|ixTUZ0uhfnw|46|71|Urek|https://www.youtube.com/channel/UC3uR2u4FWsj3ptSqa_MRTxw|Secret Hitler XL narrator: Night script (game start), 7-10 players (Hitler eyes open)
+ai plays family games|AI plays secret hitler|amS3oCRvSoY|33|24|Urek|https://www.youtube.com/channel/UC3uR2u4FWsj3ptSqa_MRTxw|Secret Hitler XL narrator: Congress, 6-10 players (default setup)
+ai plays family games|AI plays secret hitler|xM5YuPpQqyY|64|19|Urek|https://www.youtube.com/channel/UC3uR2u4FWsj3ptSqa_MRTxw|Secret Hitler XL narrator: Night script (game start), 9-10 players (Communists, Hitler eyes open)
+ai plays family games|AI plays secret hitler|GQ3XVLBBjyA|1901|56|Played by Machines|https://www.youtube.com/channel/UCnnYzZ8XIs4aK5xGaGyDBsQ|GPT-6 Astra DESTROYS Claude Fable 5.1 -  Secret Hitler
+ai plays family games|AI plays secret hitler|6pIjtkblOS4|40|72|Urek|https://www.youtube.com/channel/UC3uR2u4FWsj3ptSqa_MRTxw|Secret Hitler narrator: Night script (game start), 5-6 players (base game and XL)
+ai plays family games|AI plays secret hitler|JhBtg-lyKdo|1799|2631836|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|10 AIs Play Mafia
+ai plays family games|AI plays secret hitler|CmM5vfjNn1o|45|62|Urek|https://www.youtube.com/channel/UC3uR2u4FWsj3ptSqa_MRTxw|Secret Hitler narrator: Night script (game start), 7-10 players (base game, XL at 8-10)
+ai plays family games|AI plays secret hitler|26OGeugePKc|45|24|Urek|https://www.youtube.com/channel/UC3uR2u4FWsj3ptSqa_MRTxw|Secret Hitler XL narrator: Night script (game start), 5-7 players (Monarchist, Hitler eyes closed)
+ai plays family games|AI plays secret hitler|kmvfhuJ5V4A|40|19|Urek|https://www.youtube.com/channel/UC3uR2u4FWsj3ptSqa_MRTxw|Secret Hitler XL narrator: Night script (game start), 5-7 players (Monarchist, Hitler eyes open)
+ai plays family games|AI plays secret hitler|ALSSuzLTJT4|50|8|Urek|https://www.youtube.com/channel/UC3uR2u4FWsj3ptSqa_MRTxw|Secret Hitler XL narrator: Night script (game start), 11-19 players (Hitler eyes closed)
+ai plays family games|chatgpt plays monopoly|dkvFcYBznPI|690|12115268|b2studios|https://www.youtube.com/channel/UCIcGc8tDHYZ3vY3NcS8JXaQ|AI Learns Insane Monopoly Strategies
+ai plays family games|chatgpt plays monopoly|8agmhNyvmcs|317|124423|JC BuenaVentura|https://www.youtube.com/channel/UCvvd2QBVcOletZqoyuXr-IQ|GPT 5.2 vs Claude Opus 4.5 vs Grok 4.1 vs Gemini 3 Pro - AI Plays Monopoly
+ai plays family games|chatgpt plays monopoly|VKZ-KkF8II8|3321|583768|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to play Monopoly...(it was bad)
+ai plays family games|chatgpt plays monopoly|2CVPURkQ87U|757|3847|JC BuenaVentura|https://www.youtube.com/channel/UCvvd2QBVcOletZqoyuXr-IQ|GPT 5.2 vs Claude Opus 4.5 vs Grok 4.1 vs Gemini 3 Pro - AI Plays Monopoly
+ai plays family games|chatgpt plays monopoly|_4NBhO1ez3k|624|45615|JC BuenaVentura|https://www.youtube.com/channel/UCvvd2QBVcOletZqoyuXr-IQ|GPT 5.2 vs Claude Opus 4.5 vs Grok 4.1 vs Gemini 3 Pro - AI Plays Monopoly
+ai plays family games|chatgpt plays monopoly|ZTsDyNmOFEQ|4756|3612|Kept You Waiting|https://www.youtube.com/channel/UCyL7yTWhkEMCXZ3m74N2Qcw|I Made 5 AIs Play Monopoly
+ai plays family games|chatgpt plays monopoly|dftfGPyMoco|349|836|AI LEARNS TO PLAY|https://www.youtube.com/channel/UCKnzTxhSlZ2-Q3BdGi2PKjA|4 AIs PLAY MONOPOLY 🎲 Chat GPT vs Claude vs Grok vs Gemini | AI Learns Monopoly Strategies
+ai plays family games|chatgpt plays monopoly|ksD98BMovMU|634|798|AI LEARNS TO PLAY|https://www.youtube.com/channel/UCKnzTxhSlZ2-Q3BdGi2PKjA|4 AIs PLAY MONOPOLY 🎲 Chat GPT vs Claude vs Grok vs Gemini | AI Learns Monopoly Strategies FINAL
+ai plays family games|chatgpt plays monopoly|72c1h3P9AL0|453|6|Animal Woman|https://www.youtube.com/channel/UCVTsTrxzKiAm-t-_12T_e2w|playing MONOPOLY w/ CHATGPT
+ai plays family games|chatgpt plays monopoly|jLdxuFyhcOw|10361|30|RenGod|https://www.youtube.com/channel/UCohCT8hU2jLD_b8o7Agz51A|Two ChatGPT Bots Play Monopoly With Me (Full Video)
+ai plays family games|chatgpt plays monopoly|baw5FKx-3g4|14877|1|Animal Woman|https://www.youtube.com/channel/UCVTsTrxzKiAm-t-_12T_e2w|playing MONOPOLY 2 VS. CHATGPT
+ai plays family games|chatgpt plays monopoly|AQNGEMmD8zs|1610|4|Animal Woman|https://www.youtube.com/channel/UCVTsTrxzKiAm-t-_12T_e2w|playing MONOPOLY w/ CHATGPT
+ai plays family games|chatgpt plays monopoly|uBa-t5Buz8Y|511|1928154|Croissant|https://www.youtube.com/channel/UCGYzFZHKFrMUYS9I1HQWN5Q|I Forced 4 AIs to play 4 Player Chess...(it was bad)
+ai plays family games|chatgpt plays monopoly|T5kKFyaFtvQ|364|191001|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Made 2 AIs Play Chess But They Roasted Each Other Instead
+ai plays family games|chatgpt plays monopoly|lEOTKYxiIzs|3665|868197|Quinn Henry|https://www.youtube.com/channel/UCIAQuWY4lfGn8xArU_hG-dw|7 Ais play Diplomacy
+ai plays family games|chatgpt plays monopoly|wNCz9qKZqk8|498|6572|Cavaleria.ro|https://www.youtube.com/channel/UCzfaZDsef1ZfqcGMR7sNQ-w|Am jucat Monopoly și Șah cu Chat GPT. Sau.. am încercat - Cavaleria.ro
+ai plays family games|chatgpt plays monopoly|ICDsubz34jQ|1662|163276|Defend Intelligence|https://www.youtube.com/channel/UCnEHCrot2HkySxMTmDPhZyg|I coded AIs to play Monopoly, did they cheat?
+ai plays family games|chatgpt plays monopoly|J8i9OX2bsGA|939|6806|JC BuenaVentura|https://www.youtube.com/channel/UCvvd2QBVcOletZqoyuXr-IQ|GPT ASTRA VS FABLE 5 1 MONOPOLY FINAL
+ai plays family games|chatgpt plays monopoly|24ah4r_fB8M|10684|7|Epcrftr292|https://www.youtube.com/channel/UC4L-NMTZX8KzhbGXDDKXqMg|ChatGPT Plays Monopoly for Nintendo Switch!
+ai plays family games|chatgpt plays monopoly|ZQDJXyM467Y|366|1|Animal Woman|https://www.youtube.com/channel/UCVTsTrxzKiAm-t-_12T_e2w|playing MONOPOLY 2 v CHATGPT
+ai plays family games|AI liar's dice|JuzO3WIyrzI|395|70|AI Interactions|https://www.youtube.com/channel/UCDwIh4Z1eVtyiI74jUWvhFg|AIs play Liar's Dice
+ai plays family games|AI liar's dice|fAbnMuiR734|201|492887|Gather Together Games|https://www.youtube.com/channel/UCVeEx96wzFgzhXsy7cBC8hw|How To Play Liar's Dice
+ai plays family games|AI liar's dice|wl4QocM3xxo|178|283215|Triple S Games|https://www.youtube.com/channel/UC5--Olk4nljSNeT5wXfTOuA|How to play Liar's Dice
+ai plays family games|AI liar's dice|CO9o50iWHRk|762|2|The Model Wars|https://www.youtube.com/channel/UCnOM2pvlYu1e8LMMjEgK9pA|Claude vs ChatGPT: Swapped Dice, Almost the Same Moves (Liar's Dice)
+ai plays family games|AI liar's dice|HCj1cC7dXjg|1646|626|Silicon Showdown|https://www.youtube.com/channel/UCAFVDSE-xs555JKdoqb-0jg|AIs Play Liar's Dice: GPT vs Claude vs Gemini vs Grok
+ai plays family games|AI liar's dice|s9kGdVM7tzM|758|297|Silicon Showdown|https://www.youtube.com/channel/UCAFVDSE-xs555JKdoqb-0jg|AIs Play Coup: Who's the Best Liar?
+ai plays family games|AI liar's dice|jotHq4z8y98|505|2993504|videogamedunkey|https://www.youtube.com/channel/UCsvn_Po0SmunchJYOWpOxMg|Liar's Bar
+ai plays family games|AI liar's dice|1Hp-GBrPRQs|455|2260|CaptainLuma|https://www.youtube.com/channel/UC_znV4_o--GnfqTYxGbBj6w|I Built Liar's Dice in Minecraft
+ai plays family games|AI liar's dice|bZDDDFVDgNs|1760|8434|Board Gems|https://www.youtube.com/channel/UCX9Ab6egkU1ru3sgP8TUI2A|Liar's Dice / Bluff / Perudo / Dudo — How to Play 🎲 and Why It's a Gem 💎
+ai plays family games|AI liar's dice|_Nurlw2xKqU|206|25|Fish's Game Guides|https://www.youtube.com/channel/UCgK9CAOaQtVOH--FSLXn8Dw|What The Frick is Liar's Bar?
+ai plays family games|AI liar's dice|nC6WXbuyJlk|1492|4583284|Markiplier|https://www.youtube.com/channel/UC7_YxT-KID8kRbqZo7MyscQ|I WOULD NEVER LIE... | Liar's Bar - Part 1
+ai plays family games|AI liar's dice|ni5I6jKwddY|919|46735|Daily Dose Of OTV|https://www.youtube.com/channel/UCh3PqxIZ6GTwksm4HFH8nSA|Toast Getting Rolled in Liar's Dice
+ai plays family games|AI liar's dice|cE3WUaoTzIk|381|498|Imoogi Nevermore|https://www.youtube.com/channel/UCnmcIPqw-hQas85EyoLputA|💡 Top Bluffing Strategies in Liar’s Dice – Master the Game!
+ai plays family games|AI liar's dice|iJ83GYk2BIA|2069|104592|Stefan 3D AI|https://www.youtube.com/channel/UCRW08KcTVjXEmBzBsVl7XjA|Made a Game With a $20 AI Plan and Already Got Sales
+ai plays family games|AI liar's dice|Nn7bLCIEbaM|137|788|BK201Tach|https://www.youtube.com/channel/UC7kCOTh1pmqnec9_Twrb3zQ|Red Dead Redemption: Liar's Dice - Online Player Trash Talking An AI Character
+ai plays family games|AI liar's dice|V33LqHk6oDU|568|341|How Games Work|https://www.youtube.com/channel/UC-DrJEBjxmVvfzoWeuMdjBQ|How To Play Liar's Dice: The 700-Year-Old Bluffing Game That Makes You Smarter
+ai plays family games|AI liar's dice|N34oPVF1HJg|270|5297|TIMELESS gaming|https://www.youtube.com/channel/UCCz4ahAHii41GJcY8f6IvrA|Red Dead Redemption No Dice Achievement guide
+ai plays family games|AI liar's dice|3ilVxb37rDE|205|1903|The Library|https://www.youtube.com/channel/UC2Rry2wQbZyJ-9oaGMfXKig|Rulebook - Liars Dice
+ai plays family games|AI liar's dice|emHUihD7x4M|679|163|JmanPlaysGames|https://www.youtube.com/channel/UCmssDEWXTINCO03tnhYeAwA|The AI is CRACKED at Liars Dice (Pulsar Lost Colony Funny Moments)
+ai plays family games|AI liar's dice|lw96Wipnoac|864|20746|BlameSociety|https://www.youtube.com/channel/UCohfGoL208cZbSSlXgMNUiA|Guinness Liar's Dice | Beer and Board Games
+ai rivalry games|claude vs chatgpt board game|YG6IFkQss20|539|317028|tef|https://www.youtube.com/channel/UC3nKTPXh9DE0Md3HvCPB7sw|ChatGPT 6 Astra vs Claude Fable 5.1 Make GTA 6
+ai rivalry games|claude vs chatgpt board game|ulLBRyVrI1Y|1558|3512409|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|GPT-6 ASTRA vs CLAUDE FABLE 5.1 (INSANE CHESS MATCH)
+ai rivalry games|claude vs chatgpt board game|DE1_6sLdAi8|965|25992|Genspark AI|https://www.youtube.com/channel/UCguWW6piJhZW3-GIsbCGtyw|ChatGPT vs Claude Compete in Classic Games
+ai rivalry games|claude vs chatgpt board game|SdfR7TuJdlc|991|523153|Prompt Potato|https://www.youtube.com/channel/UC3owM34LYtaDERvFwLxTsLA|ChatGPT vs Claude Make Rocket League From Scratch
+ai rivalry games|claude vs chatgpt board game|y1I5VAGF3Qs|1021|218319|The AI Advantage|https://www.youtube.com/channel/UCHhYXsLBEVVnbvsq57n1MTQ|ChatGPT vs. Claude: Which Should You Use in 2026?
+ai rivalry games|claude vs chatgpt board game|ImwmbO4Fc18|656|560356|Kivo|https://www.youtube.com/channel/UCTLO3b1vzckPG10g0p0Nkcw|I Let ChatGPT and Claude Build Civilizations in WorldBox
+ai rivalry games|claude vs chatgpt board game|5726UY7sexs|981|65076|HollowWolf|https://www.youtube.com/channel/UCQGtUJnzL8fbtTis5jJEXGQ|ChatGPT 5.6 vs Claude Fable 5 Make Valorant From Scratch
+ai rivalry games|claude vs chatgpt board game|qINdJH4fVVQ|568|51657|JC BuenaVentura|https://www.youtube.com/channel/UCvvd2QBVcOletZqoyuXr-IQ|Who Won? GPT 5.4 vs Claude Opus 4.6 Play Chess - AI Testing
+ai rivalry games|claude vs chatgpt board game|5iGJGe_pwZU|530|157672|The AI Productivity Coach|https://www.youtube.com/channel/UCcIeotMTE0gZtgcNUnhl2Kw|I Spent a Year Testing ChatGPT Plus vs Claude Pro:  Here's What I Found
+ai rivalry games|claude vs chatgpt board game|A9QKzovG0Y4|964|30456|Silas AI|https://www.youtube.com/channel/UCV9_Q9cuSgstYksFXNfFD5A|Claude vs ChatGPT Make Their Own Game
+ai rivalry games|claude vs chatgpt board game|vSGTtaq5fVE|569|291316|tef|https://www.youtube.com/channel/UC3nKTPXh9DE0Md3HvCPB7sw|ChatGPT vs Gemini vs Claude Make Among Us From Scratch
+ai rivalry games|claude vs chatgpt board game|jKV7bvZsOmw|838|33470|HollowWolf|https://www.youtube.com/channel/UCQGtUJnzL8fbtTis5jJEXGQ|ChatGPT vs Claude vs Gemini Make Temple Run From Scratch
+ai rivalry games|claude vs chatgpt board game|Q_pFFW2Q8Jw|555|653327|Minimunch|https://www.youtube.com/channel/UCabERhdn6eNbGYcO2g98k_w|ChatGPT vs Gemini vs Claude Make Rocket League
+ai rivalry games|claude vs chatgpt board game|piHRNmqzhJU|1198|55704|Ferdy․com | Ferdy Korpershoek|https://www.youtube.com/channel/UCZpkfpfGe2ZC3AIQ69ERCJw|Chat GPT-6 Astra vs Claude Fable 5.1: Who Builds Better Websites?
+ai rivalry games|claude vs chatgpt board game|LG8nSqJmK3A|407|111463|JC BuenaVentura|https://www.youtube.com/channel/UCvvd2QBVcOletZqoyuXr-IQ|Who Wins? GPT 6 Astra VS Claude Fable 5 1 Play Chess
+ai rivalry games|claude vs chatgpt board game|WCFtuh6LsbQ|429|27850|SJE After-Hours|https://www.youtube.com/channel/UC299Wopt5V-TqisST6atsDQ|ChatGPT 6 vs Claude Opus 5.5 Make POKEMON From Scratch!
+ai rivalry games|claude vs chatgpt board game|cIT0-nPw1CQ|624|28614|tef|https://www.youtube.com/channel/UC3nKTPXh9DE0Md3HvCPB7sw|ChatGPT 5.6 vs Claude Fable 5 vs Kimi K3 Make Palworld From Scratch
+ai rivalry games|claude vs chatgpt board game|BoP0VQ04BBk|929|130402|Crazy Cat|https://www.youtube.com/channel/UCPLxcaW1y1Uv02HbFMtOEgg|ChatGPT vs Claude Make +1 Keyboard Escape
+ai rivalry games|claude vs chatgpt board game|aEdRB2yVK-I|3959|332771|Riley Brown|https://www.youtube.com/channel/UCMcoud_ZW7cfxeIugBflSBw|We Built 2 FULL Video Games In 7 Prompts (Claude Code vs GPT-5 Codex)
+ai rivalry games|claude vs chatgpt board game|xApiGQebMeU|838|723498|HollowWolf|https://www.youtube.com/channel/UCQGtUJnzL8fbtTis5jJEXGQ|ChatGPT vs Claude vs Gemini Make NBA 2K26 From Scratch
+ai rivalry games|gemini vs chatgpt game|so4JdmzUOoM|1249|145238|DinyTech|https://www.youtube.com/channel/UC-X409RAAdZ2lYBR49UUk0w|ChatGPT vs Gemini make Shadow Fight 2 from scratch 
+ai rivalry games|gemini vs chatgpt game|jKV7bvZsOmw|838|33470|HollowWolf|https://www.youtube.com/channel/UCQGtUJnzL8fbtTis5jJEXGQ|ChatGPT vs Claude vs Gemini Make Temple Run From Scratch
+ai rivalry games|gemini vs chatgpt game|vSGTtaq5fVE|569|291316|tef|https://www.youtube.com/channel/UC3nKTPXh9DE0Md3HvCPB7sw|ChatGPT vs Gemini vs Claude Make Among Us From Scratch
+ai rivalry games|gemini vs chatgpt game|jCdzrKdFdFg|1031|1676937|Crazy Cat|https://www.youtube.com/channel/UCPLxcaW1y1Uv02HbFMtOEgg|ChatGPT vs Gemini Make Steal An Egg
+ai rivalry games|gemini vs chatgpt game|WDkxh_iUwQA|1150|741330|Gako|https://www.youtube.com/channel/UCmcl4XFcCqfoK-xKfxCFIyw|Which Ai Can Make The Scariest Game?
+ai rivalry games|gemini vs chatgpt game|FojyYKU58cw|1188|4465808|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|Google vs. ChatGPT: INSANE CHESS
+ai rivalry games|gemini vs chatgpt game|gDEi6xmxNx4|1336|2417606|quisshy ai|https://www.youtube.com/channel/UCTC7HLGXGFfeGvQqUmNylfg|Which AI Can Make the Scariest Horror Game?
+ai rivalry games|gemini vs chatgpt game|r5dINtdSmLY|610|660447|mxks|https://www.youtube.com/channel/UCwEfs1iTRfTwmAvkfaBz6Sw|ChatGPT vs Gemini 3 vs Claude Make PSYCHOLOGICAL HORROR From Scratch
+ai rivalry games|gemini vs chatgpt game|C76fEqT63Sg|579|272380|HollowWolf|https://www.youtube.com/channel/UCQGtUJnzL8fbtTis5jJEXGQ|ChatGPT vs Gemini Make Super Mario Bros From Scratch
+ai rivalry games|gemini vs chatgpt game|JBaEwQ-iXOc|430|29443|Enigma|https://www.youtube.com/channel/UCkK_nbUmW3oDL9LM1CG0e9A|ChatGPT vs Gemini: The IMPOSSIBLE Counter-Strike Prompt 
+ai rivalry games|gemini vs chatgpt game|VdtPnJ-dqV0|489|46304|tef|https://www.youtube.com/channel/UC3nKTPXh9DE0Md3HvCPB7sw|ChatGPT vs Gemini vs Claude Make Roblox From Scratch
+ai rivalry games|gemini vs chatgpt game|60jJCYpOu9A|609|651491|Crazy Cat|https://www.youtube.com/channel/UCPLxcaW1y1Uv02HbFMtOEgg|ChatGPT vs Gemini Make Knockout!
+ai rivalry games|gemini vs chatgpt game|UUAajF3eMIk|512|73833|tef|https://www.youtube.com/channel/UC3nKTPXh9DE0Md3HvCPB7sw|ChatGPT vs Gemini vs Claude Make FC 26 From Scratch
+ai rivalry games|gemini vs chatgpt game|y8KofLWrkeU|490|4123821|Crazy Cat|https://www.youtube.com/channel/UCPLxcaW1y1Uv02HbFMtOEgg|ChatGPT vs Gemini Make Roblox From Scratch
+ai rivalry games|gemini vs chatgpt game|x5fn2sswywU|766|827072|Prompt Potato|https://www.youtube.com/channel/UC3owM34LYtaDERvFwLxTsLA|ChatGPT vs Gemini Make Fortnite From Scratch
+ai rivalry games|gemini vs chatgpt game|oAKAomiPl1o|569|11182|Enigma|https://www.youtube.com/channel/UCkK_nbUmW3oDL9LM1CG0e9A|ChatGPT vs Gemini: I Gave Them 100 Games To Create ONE
+ai rivalry games|gemini vs chatgpt game|jEObZyc3m18|626|138983|HollowWolf|https://www.youtube.com/channel/UCQGtUJnzL8fbtTis5jJEXGQ|ChatGPT vs Gemini Make Bloons Tower Defense From Scratch
+ai rivalry games|gemini vs chatgpt game|3sUywiVrBmU|499|52690|tef|https://www.youtube.com/channel/UC3nKTPXh9DE0Md3HvCPB7sw|ChatGPT vs Gemini vs Claude Make Call Of Duty From Scratch
+ai rivalry games|gemini vs chatgpt game|miHJvusqp_4|625|3130709|Minimunch|https://www.youtube.com/channel/UCabERhdn6eNbGYcO2g98k_w|ChatGPT vs Gemini Make Geometry Dash From Scratch
+ai rivalry games|gemini vs chatgpt game|JMiz4wtZ1yc|813|1379734|HollowWolf|https://www.youtube.com/channel/UCQGtUJnzL8fbtTis5jJEXGQ|ChatGPT vs Claude vs Gemini Make Subway Surfers From Scratch
+ai rivalry games|AI models play poker against each other|ZEOoZoAS9tw|3572|2342|AI vs AI Poker|https://www.youtube.com/channel/UCUHDofDLLI9O9BAtnYbA5Wg|5 AIs Battle in Poker - Only 1 Survives
+ai rivalry games|AI models play poker against each other|fw7okGZOL5w|1653|89|NeuralTuringLab|https://www.youtube.com/channel/UCkav8oaPlAmDdcJkNG5Odfg|AI Play Poker Against Each Other (ChatGPT vs Gemini)
+ai rivalry games|AI models play poker against each other|ds8IjM56VFc|412|0|Poker Uncovered|https://www.youtube.com/channel/UCsNC5mH7MhuWCdWbP8QdF5Q|Will AI Destroy Poker? The Bot That Beat the World’s Best
+ai rivalry games|AI models play poker against each other|Du4jS5KQpGc|1198|1357|AI vs AI Poker|https://www.youtube.com/channel/UCUHDofDLLI9O9BAtnYbA5Wg|ChatGPT vs Claude vs Gemini vs DeepSeek vs Grok — $1,000,000 Poker Showdown
+ai rivalry games|AI models play poker against each other|hgizatn6E9o|1736|7140|Liv Boeree and Kaggle|NA|Poker Pros React to AI Models Playing Heads-Up Poker | Doug Polk & Liv Boeree
+ai rivalry games|AI models play poker against each other|8bspAL_Qm-c|1449|132413|Deep Logic|https://www.youtube.com/channel/UCKASC2triru_bzuuAPTwlVA|AI Plays Poker
+ai rivalry games|AI models play poker against each other|Pq_AYpITXtA|539|71|Bum|https://www.youtube.com/channel/UCVdutn6Fv0oiu-Z4bxu4pgQ|I Made 6 AIs Play 11,000 Hands of Poker
+ai rivalry games|AI models play poker against each other|c-QW_HzOq8M|765|2|Model Wars|https://www.youtube.com/channel/UCIpcevQVe0pYB3gD-YPLmTg|I Made 3 AIs Play Poker With the Same Cards. One Never Said a Word.
+ai rivalry games|AI models play poker against each other|CjwyEFYY-Ls|1015|8707|GTOWizard|https://www.youtube.com/channel/UCXSg1srGpJ67HuPTMm4w72g|Can AI Actually Play Poker? We Ranked the Best LLMs
+ai rivalry games|AI models play poker against each other|D7cBXrRiAtA|863|15|Simulated Minds|https://www.youtube.com/channel/UCufhho0BD3ABteHwUR0yCGg|AI Plays Poker - Logic, Risk, and All-In Decisions
+ai rivalry games|AI models play poker against each other|kMIyKn1V7kU|1011|549|Simulated Minds|https://www.youtube.com/channel/UCufhho0BD3ABteHwUR0yCGg|AI Play Poker: How Different AI Models Make Decisions
+ai rivalry games|AI models play poker against each other|IadAiX-pHk0|2352|4643|AI World Championships and Blood Bath and Beyond - Pop Goes Metal Covers|NA|8 AIs Play POKER (Starring ChatGPT, Grok-Hellmuth, Deepseek-Tony-G, and more!) EPISODE 1 PART 1
+ai rivalry games|AI models play poker against each other|jVyuG9aBUR4|1025|144|AI Interactions|https://www.youtube.com/channel/UCDwIh4Z1eVtyiI74jUWvhFg|5 AIs Play Poker
+ai rivalry games|AI models play poker against each other|cGkAzGi2lMQ|288|55|Outclanked|https://www.youtube.com/channel/UCxmBUwIL2efWVkFgy8pInDg|LLMs play each other in poker - NOT what you expect
+ai rivalry games|AI models play poker against each other|nT0A_K0Lkz0|1312|1698|All About AI|https://www.youtube.com/channel/UCR9j1jqqB5Rse69wjUnbYwA|The World’s Smartest AIs Played Poker for $10,000
+ai rivalry games|AI models play poker against each other|mbSfNVPswgs|45|10|Agent Poker League|https://www.youtube.com/channel/UCa05X080mpc3PazqQw0jABg|This is the Agent Poker League - Official Trailer
+ai rivalry games|AI models play poker against each other|9hRvzdAbXK0|103|4615|Carnegie Mellon University|https://www.youtube.com/channel/UCf-COwmdNelXvbj-KaMCuLw|AI Poker Identifies a Bluff
+ai rivalry games|AI models play poker against each other|TLwA-6wXOho|739|11|Simulated Minds|https://www.youtube.com/channel/UCufhho0BD3ABteHwUR0yCGg|AI Plays Poker: Who’s the Smartest Model?
+ai rivalry games|AI models play poker against each other|Km_pRXq22qY|76|4|QUANTPOKER|https://www.youtube.com/channel/UC--MdxuTxrfI-6jzPSQY1pA|Heads-up poker against an AI that reads you | QUANT.POKER
+ai rivalry games|AI models play poker against each other|TE17WjLGUtY|55|61|Agent Disco|https://www.youtube.com/channel/UCwbhsZSegJaHeCSpsqJ9cCQ|Claude, GPT, Qwen, GLM and Jev Play Texas Hold'em | Poker Bots All Stars
+ai rivalry games|grok vs chatgpt game|zjQrP9FW2ag|1081|76016|Paul J Lipsky|https://www.youtube.com/channel/UCmeU2DYiVy80wMBGZzEWnbw|ChatGPT vs Grok in 2026 (The Results Surprised Me)
+ai rivalry games|grok vs chatgpt game|cW1uuX5ayTc|312|50750|Van Did This!|https://www.youtube.com/channel/UCUlhkwGq1xmSZNudoob4cvA|5 Grok Bot Features That Made Me Quit ChatGPT
+ai rivalry games|grok vs chatgpt game|FojyYKU58cw|1188|4465808|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|Google vs. ChatGPT: INSANE CHESS
+ai rivalry games|grok vs chatgpt game|7g-jN3DTkWQ|1397|765303|GothamChess|https://www.youtube.com/channel/UCQHX6ViZmPsWiYSFAyS0a3Q|Grok vs Copilot: DUMBEST CHESS MATCH
+ai rivalry games|grok vs chatgpt game|qW3K7pG1DTE|669|14389|JC BuenaVentura|https://www.youtube.com/channel/UCvvd2QBVcOletZqoyuXr-IQ|Who Won? GPT 5.4 vs XAI Grok 4.20 Play Chess - AI Testing
+ai rivalry games|grok vs chatgpt game|3oQzC1TCUsI|1020|187531|Nugy|https://www.youtube.com/channel/UCUuXthapu-2MiKLGg80DfRg|I Made ChatGPT Fight Grok in WorldBox!
+ai rivalry games|grok vs chatgpt game|MWl2qQRyutc|864|831969|Minimunch|https://www.youtube.com/channel/UCabERhdn6eNbGYcO2g98k_w|ChatGPT vs Grok Make Doom
+ai rivalry games|grok vs chatgpt game|ukNtX9O1G7U|654|225275|HollowWolf|https://www.youtube.com/channel/UCQGtUJnzL8fbtTis5jJEXGQ|ChatGPT vs Grok Make FNAF From Scratch
+ai rivalry games|grok vs chatgpt game|zcBEjDU1dJ8|364|549|AiGuidePath|https://www.youtube.com/channel/UCAaihouw7BS1rLufuB1Sjzw|How does grok compare to chatgpt 2026
+ai rivalry games|grok vs chatgpt game|-FcmY88QC8Q|1367|631165|Mr Reagan|https://www.youtube.com/channel/UCf1EWeQ7DefD6Ds3KdeQ-uQ|Grok OBLITERATES ChatGPT in Debate About Christianity
+ai rivalry games|grok vs chatgpt game|KmmqICay1qU|575|11245|Mark Szymanski|https://www.youtube.com/channel/UCWkNHLrTWomy7at0nscZnPg|Before You Use Grok Bot or OpenAI Dots, Watch This
+ai rivalry games|grok vs chatgpt game|xhifWU8hosU|883|548266|The Commands Man|https://www.youtube.com/channel/UCKMOPIcOjbNbhUgJyvHc5DQ|ChatGPT vs Grok Make a Minecraft Add-On From Scratch
+ai rivalry games|grok vs chatgpt game|fygM70sG8zo|161|1169347|Ai Convo|https://www.youtube.com/channel/UCVtj6d9S8N2CkIgt4ae3SIg|Grok Exposes the AI Agents’ Secret Language…
+ai rivalry games|grok vs chatgpt game|HYo3NEVABKo|505|270149|Baatwaala|https://www.youtube.com/channel/UCwtZ8gHUdojLJaWxTjcSRTg|I Made 3 AIs Roast Each Other… ChatGPT vs Gemini vs Grok
+ai rivalry games|grok vs chatgpt game|6u0wD3moK3o|44|135772|Goatclipz|https://www.youtube.com/channel/UCZpMItxY8-tuXXANLUZ9S_w|GROK vs chatgpt
+ai rivalry games|grok vs chatgpt game|ajahOY6iy-4|771|292207|Crazy Cat|https://www.youtube.com/channel/UCPLxcaW1y1Uv02HbFMtOEgg|ChatGPT vs Grok vs Claude Make Forsaken
+ai rivalry games|grok vs chatgpt game|JmDo3IVJzKo|314|327943|FriendBob|https://www.youtube.com/channel/UCbzGSJcaYRHAFlRQDTZU9OA|Gemini vs Grok Recreating Iconic SpongeBob Scenes
+ai rivalry games|grok vs chatgpt game|nx_QsJkqn_s|219|41448|TechSimplify|https://www.youtube.com/channel/UCJjZJtj-EF-Jg8zKbO-12Bg|Grok vs Chat GPT - Which ONE is SMARTER?
+ai rivalry games|grok vs chatgpt game|kP3H11Dxux0|852|1173|Tube Trends AI|https://www.youtube.com/channel/UCzRgtlu6gqJuurUBzCDaZjg|Grok vs ChatGPT vs Claude: Stop Using the Wrong AI
+ai rivalry games|grok vs chatgpt game|PyF8SmImyIQ|669|1258179|Minimunch|https://www.youtube.com/channel/UCabERhdn6eNbGYcO2g98k_w|ChatGPT vs Grok Make Minecraft
+ai plays social|AIs play werewolf|DgstvYY55D8|1787|118311|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|10 AIs Play Ultimate Werewolf
+ai plays social|AIs play werewolf|ITYW64CILvU|11736|27179|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|AIs Play One Night Ultimate Werewolf
+ai plays social|AIs play werewolf|ctIHXBRSSnc|758|352|Large Lying Models|https://www.youtube.com/channel/UCrGEOJrnrMomxTTd0spJNmQ|I Made 8 AIs Play Werewolf And One Lied Until The Very Last Second
+ai plays social|AIs play werewolf|JhBtg-lyKdo|1799|2631836|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|10 AIs Play Mafia
+ai plays social|AIs play werewolf|njU9VoVjXIY|13871|5092|Jabrils|https://www.youtube.com/channel/UCQALLeQPoZdZC4JNUboVEUg|Top AI Models Play Werewolf LIVE
+ai plays social|AIs play werewolf|vwea_8zHDrI|772|161|Mentiss AI|https://www.youtube.com/channel/UCyBYQnl-wPq-jPsx4NvUyAA|Play Ultimate Werewolf with AI (ChatGPT , Gemini ...)
+ai plays social|AIs play werewolf|ack5wAldkLM|3505|211|Model Behavior|https://www.youtube.com/channel/UCWArcN3slnhW5He1yMvMYjg|8 AIs Play Werewolf. One Doesn't Even Fake a Role—and Wins
+ai plays social|AIs play werewolf|a40wE5_vmdg|812|1045|Mind Machines|https://www.youtube.com/channel/UCVWFt4zhUmKT17302Cv0mmg|I Made the 6 Smartest AIs Play Werewolf game
+ai plays social|AIs play werewolf|-ZRxsc-H-g0|1521|15|The House AI|https://www.youtube.com/channel/UCk8GW0tYFTjcjE3u4vfPEWg|8 Frontier AI Models Play Werewolf — Two Seers. One Liar.
+ai plays social|AIs play werewolf|c67rxJbPyXc|582|536|codewithnohands|https://www.youtube.com/channel/UCpf7SkVgdTWbCA_pt4mTsKQ|How I Made AIs Play Werwolf Among Each Others
+ai plays social|AIs play werewolf|4GPSu3aRtxo|491|17|Cubernetics|https://www.youtube.com/channel/UCbv7mAR7ANMPMIgpPSyUSAw|I Made 5 AIs Play Werewolf. One Never Got Caught.
+ai plays social|AIs play werewolf|lZFGoYOCi8Y|275|391|AI potato|https://www.youtube.com/channel/UC9RRdrQHIIcMuWH6w-2FOxw|ChatGPTs Playing Werewolf - Seer Showdown: AI Villagers Defeat Two Werewolves
+ai plays social|AIs play werewolf|1mUgovxLurY|612|113|Cortex Arena|https://www.youtube.com/channel/UC4LtQR3VQ49T_vXpGEGXLJg|6 AI Models Play Werewolf. Ultimate AI Deception Battle
+ai plays social|AIs play werewolf|Qyz0DZ-V-Xg|55|137|Howl - Werewolf|https://www.youtube.com/channel/UC55k_dKXJIiFgfHBZYLpesg|Howl — Werewolf against 7 AIs (trailer)
+ai plays social|AIs play werewolf|goE5Dl9Nxec|395|63|dung5qw|https://www.youtube.com/channel/UCu6jsOCgLxoJC9QRTyGHNnw|I Made 8 AIs Play Werewolf. They Hanged the Only One Who Knew the Truth.
+ai plays social|AIs play werewolf|o-IkC3IGJDE|1213|16|Model Behavior|https://www.youtube.com/channel/UCWArcN3slnhW5He1yMvMYjg|8 AIs Play Halloween Werewolf (And the Seer Snipes a Wolf at Dawn)
+ai plays social|AIs play werewolf|xZ5IpS_knME|749|117|PlayAIWolf|https://www.youtube.com/channel/UCOgiA1fGuW1aiDMu6KMLU2w|AI Werewolf: Full Game Played Entirely by AI Agents
+ai plays social|AIs play werewolf|ImWNEjNZL0Q|2187|67|Model Behavior|https://www.youtube.com/channel/UCWArcN3slnhW5He1yMvMYjg|8 AIs Play Werewolf in Halloween Costumes (And One Refuses to Believe the Seer)
+ai plays social|AIs play werewolf|es16CNxzFYU|3222|102|Model Behavior|https://www.youtube.com/channel/UCWArcN3slnhW5He1yMvMYjg|We Made 8 AI Models Play Werewolf
+ai plays social|AIs play werewolf|DgQflWjx7TA|397|61325|Play-In Games|https://www.youtube.com/channel/UCIdT8S4HExsTH_8h9NJGIng|How to Play Werewolf | Complete Beginner’s Guide
+ai plays social|can AI lie|w65p_IIp6JY|564|283811|Robert Miles AI Safety |https://www.youtube.com/channel/UCLB7AzTwc6VFZrBsO2ucBMg|Why Does AI Lie, and What Can We Do About It?
+ai plays social|can AI lie|AIYQp1n51ZI|590|433670|Caleb Ulku|https://www.youtube.com/channel/UCAqcn2yiuWsTj22V1KmzZhw|They Lied About AI (This Study Proves It)
+ai plays social|can AI lie|VhW_BtLASJo|937|11678|Julia McCoy|https://www.youtube.com/channel/UCqzK60-oUOEq36uU9B1MMUg|AI Is Exposing the Biggest Lie About Work
+ai plays social|can AI lie|AodgeFEBD2w|1099|198676|Brendan Dell |https://www.youtube.com/channel/UCOe2G2WcudW1d-AeeOQAYJg|MIT Proved AI Has Been Lying to Your Face
+ai plays social|can AI lie|47_qmlWOhfI|196|191740|John Anderson Media|https://www.youtube.com/channel/UCtnYSEGViOnb7k8ezUaWUww|Why AI Is LYING To Billions Of People | Prof. John Lennox
+ai plays social|can AI lie|dDd9vJwz2-I|2169|744065|Moon|https://www.youtube.com/channel/UCmFeOdJI3IXgTBDzqBLD8qg|A.I Is The Biggest Lie Ever Told. Here's Why.
+ai plays social|can AI lie|Cn8HBj8QAbk|7753|5610558|The Diary Of A CEO|https://www.youtube.com/channel/UCGq-a57w-aPwyi3pW7XLiHw|AI Whistleblower: We Are Being Gaslit By AI Companies, They’re Hiding The Truth! - Karen Hao
+ai plays social|can AI lie|OhOmLqR5nN4|8666|6043772|The Diary Of A CEO and 3 more|NA|AI Experts Debate: The AI Labs Are Lying To Everyone, Is There A 99% Chance Of Human Extinction?
+ai plays social|can AI lie|984qBh164fo|481|1194615|Sabine Hossenfelder|https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw|Current AI Models have 3 Unfixable Problems
+ai plays social|can AI lie|-lzQxbcrscc|328|174685|AsapSCIENCE|https://www.youtube.com/channel/UCC552Sd-3nyi_tk2BudLUzA|The Biggest Lie About AI
+ai plays social|can AI lie|nGIpdiQrFDU|875|2068485|Linus Tech Tips|https://www.youtube.com/channel/UCXuqSBlHAE6Xw-yeJA0Tunw|AI is a Lie - Cutting Through the Hype
+ai plays social|can AI lie|l6ZcFa8pybE|5613|4278066|StarTalk|https://www.youtube.com/channel/UCqoAEDirJPjEUFcF2FklnBA|Is AI Hiding Its Full Power? With Geoffrey Hinton
+ai plays social|can AI lie|gGpFB3ms6rU|110|4798150|Ai Convo|https://www.youtube.com/channel/UCVtj6d9S8N2CkIgt4ae3SIg|Three Ai agents realize they're all AI, then switch to a Secret Language...
+ai plays social|can AI lie|eWC47agaKpk|4622|315429|Daniel Dushy |https://www.youtube.com/channel/UCVlMUqBg17vZXXRFcpYzKnA|Harvard Professor: Tech Billionaires Are Lying To Us About AI! (Here Is The Truth) - Steven Pinker
+ai plays social|can AI lie|Y3JSLKQeXtc|659|80122|The Living Waters Podcast|https://www.youtube.com/channel/UCyayZqmR0Y54tJK2CTRNLIQ|AI Has Been Secretly Lying to Christians and Here's How...
+ai plays social|can AI lie|-zLBRrF1Jgo|486|22004|History of Gadgets|https://www.youtube.com/channel/UCPkFe4j0_xJE9ttw_5ohDHg|Why AI always lies to us (and why we CAN'T fix it)
+ai plays social|can AI lie|pHcZpvIfho0|528|886450|Bloomberg Podcasts|https://www.youtube.com/channel/UChF5O40UBqAc82I7-i5ig6A|Zitron: "Everyone Has Been Sold a Lie" on AI
+ai plays social|can AI lie|0Plo-zT8W9w|594|156675|Internet of Bugs|https://www.youtube.com/channel/UCfJRkBBiPtKZyZn_3PxWaiQ|The Biggest Lie in AI
+ai plays social|can AI lie|WZrH-sm91vI|638|526140|StarTalk Plus|https://www.youtube.com/channel/UCQzvIHX3SVrSc9P5_GdRWfQ|Why AI Hides What It Can Really Do, with Geoffrey Hinton
+ai plays social|can AI lie|zfYsSFY4l18|811|829522|The PrimeTime|https://www.youtube.com/channel/UCUyeluBRhGPCW4rPe_UvBZQ|I Think They Are Lying To You
+ai plays social|AI plays diplomacy|lEOTKYxiIzs|3665|868197|Quinn Henry|https://www.youtube.com/channel/UCIAQuWY4lfGn8xArU_hG-dw|7 Ais play Diplomacy
+ai plays social|AI plays diplomacy|u5192bvUS7k|5426|52881|DiploStrats|https://www.youtube.com/channel/UC_5f6rJS2cMPE986QDRf5pg|Expert Diplomacy Player vs CICERO AI
+ai plays social|AI plays diplomacy|vYPUs_FmNEQ|7257|2133988|Valefisk|https://www.youtube.com/channel/UC0eOlAEMdVgpmThPkpmR-qQ|Gaming, but I'm Secretly an AI
+ai plays social|AI plays diplomacy|uBa-t5Buz8Y|511|1928154|Croissant|https://www.youtube.com/channel/UCGYzFZHKFrMUYS9I1HQWN5Q|I Forced 4 AIs to play 4 Player Chess...(it was bad)
+ai plays social|AI plays diplomacy|sEtop0u7D34|924|786482|RUVOX|https://www.youtube.com/channel/UCagkwH6Iueb1VkHbKOjG5JA|I Let 4 AI Control the World… and It Turned Into Chaos
+ai plays social|AI plays diplomacy|SC78unmPi9Y|790|4388|DARKMODE|https://www.youtube.com/channel/UCOZYcVWlYNeBRKrz1lEdoJQ|AIs Play The Deception Game
+ai plays social|AI plays diplomacy|u5U6EHLn9mg|9007|51802|DiploStrats|https://www.youtube.com/channel/UC_5f6rJS2cMPE986QDRf5pg|345 Player Imperial Diplomacy.
+ai plays social|AI plays diplomacy|AWQFhYSD7h4|1986|26334|DiploStrats|https://www.youtube.com/channel/UC_5f6rJS2cMPE986QDRf5pg|Diplodocus - The AI That Conquered Gunboat Diplomacy
+ai plays social|AI plays diplomacy|VKZ-KkF8II8|3321|583768|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to play Monopoly...(it was bad)
+ai plays social|AI plays diplomacy|dkvFcYBznPI|690|12115268|b2studios|https://www.youtube.com/channel/UCIcGc8tDHYZ3vY3NcS8JXaQ|AI Learns Insane Monopoly Strategies
+ai plays social|AI plays diplomacy|MKbEtzJxUSA|9205|425319|DiploStrats|https://www.youtube.com/channel/UC_5f6rJS2cMPE986QDRf5pg|An Unnecessarily Detailed Strategic Analysis of Valefisk's Diplomacy Game
+ai plays social|AI plays diplomacy|Sxmd7T_dyaM|1230|1920721|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 10 AIs to play Among Us...(it was crazy)
+ai plays social|AI plays diplomacy|1qJN9OqaXxU|935|3592203|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to Work Together...(it was bad)
+ai plays social|AI plays diplomacy|cx-Cwz3GdEI|1332|1357891|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|10 AIs Play Among Us
+ai plays social|AI plays diplomacy|4ZfP7JszR6Q|649|14720|FloridaMan Diplomacy|https://www.youtube.com/channel/UCynKFrQFZS1SPPFwjAZ1ebw|Which Diplomacy Power is Best?
+ai plays social|AI plays diplomacy|KxaPYhfJV4U|5256|1894435|Emergent Garden|https://www.youtube.com/channel/UCwBhBDsqiQflTMLy2epbQVw|4 AIs Survive 10 Days in Minecraft
+ai plays social|AI plays diplomacy|7fjwXLBJTLY|4828|1578551|Valefisk|https://www.youtube.com/channel/UC0eOlAEMdVgpmThPkpmR-qQ|5D Diplomacy with Multiverse Time-Travel.
+ai plays social|AI plays diplomacy|yuejXaEuEpk|72|1716370|GORM THE OLD|https://www.youtube.com/channel/UCjWbtP6u6ttAv7YeAUXuMUA|Historical Events as Video Games (A.I. Video)
+ai plays social|AI plays diplomacy|E3ae_I_T-D4|2072|3614|Latent Space|https://www.youtube.com/channel/UCxBcwypKK-W3GHd_RZ9FZrQ|⚡️Launching AI Diplomacy: the hardest LLM Game Benchmark yet - Alex Duffy
+ai plays social|AI plays diplomacy|gkvU60Oy2oE|10031|52|TheBananaMan|https://www.youtube.com/channel/UCjn9-USyF6MATfI8ma6J1tA|7 AIs play a single turn of diplomacy
+ai plays social|AIs play coup|qylEYAv468k|10056|31262|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|AIs Play Coup
+ai plays social|AIs play coup|s9kGdVM7tzM|758|297|Silicon Showdown|https://www.youtube.com/channel/UCAFVDSE-xs555JKdoqb-0jg|AIs Play Coup: Who's the Best Liar?
+ai plays social|AIs play coup|FNYh6Xx1AeM|554|232|Silicon Showdown|https://www.youtube.com/channel/UCAFVDSE-xs555JKdoqb-0jg|AIs Play Codenames: GPT and Grok vs Claude and Gemini
+ai plays social|AIs play coup|VKZ-KkF8II8|3321|583768|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|I Forced 5 AIs to play Monopoly...(it was bad)
+ai plays social|AIs play coup|HCj1cC7dXjg|1646|626|Silicon Showdown|https://www.youtube.com/channel/UCAFVDSE-xs555JKdoqb-0jg|AIs Play Liar's Dice: GPT vs Claude vs Gemini vs Grok
+ai plays social|AIs play coup|b-GpuLlTOFA|10011|22103|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|AIs Play GeoGuessr
+ai plays social|AIs play coup|Y_B8DxIopSM|1013|80|ltpcw|https://www.youtube.com/channel/UCnY-IEp4O2Do-VK92AMFOxQ|Mafia Eliminated Night 1 — 8 AIs Play Social Deduction (Town Actually Wins)
+ai plays social|AIs play coup|jVyuG9aBUR4|1025|144|AI Interactions|https://www.youtube.com/channel/UCDwIh4Z1eVtyiI74jUWvhFg|5 AIs Play Poker
+ai plays social|AIs play coup|SBf-kE5rAVo|195|34462|StrataGames|https://www.youtube.com/channel/UCC7X7F42g9ZzyayEH0s39vw|How to Win at Coup Every Time! | Simple Strategy #13
+ai plays social|AIs play coup|CK5k-EraN_c|11848|49585|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|AIs Play Mafia But It's Hosted By An Unhinged AI
+ai plays social|AIs play coup|dkvFcYBznPI|690|12115268|b2studios|https://www.youtube.com/channel/UCIcGc8tDHYZ3vY3NcS8JXaQ|AI Learns Insane Monopoly Strategies
+ai plays social|AIs play coup|dqai3dJlmtA|2031|93192|Geek & Sundry|https://www.youtube.com/channel/UCaBf1a-dpIsw8OxqH4ki2Kg|Coup | Game the Game
+ai plays social|AIs play coup|VhftorUxhXg|15625|36212|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|13 AIs Play Mafia LIVE: Fire and Ice
+ai plays social|AIs play coup|g9NZSducKXA|15661|90371|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|AIs Play Mafia LIVE: Jailor
+ai plays social|AIs play coup|XiHnx-fcHow|17225|32529|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|AIs Play Mafia LIVE
+ai plays social|AIs play coup|KBnRKMbv7Yk|13331|31426|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|AIs Play Totally Accurate Battle Simulator
+ai plays social|AIs play coup|J5TGhhOXBww|865|10130|Dotturtle|https://www.youtube.com/channel/UC5P9A0O7DBAIgDRUJibMMOA|I Had 20 Top AIs Play Chess! (CHAOTIC)
+ai plays social|AIs play coup|3x1jEErYMR4|13097|35625|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|AI Clones Play Mafia LIVE
+ai plays social|AIs play coup|Rmbe2sVn5T0|513|6722|AI ArenaLAB|https://www.youtube.com/channel/UC4sPO131hriPE94Jhewl8cQ|I Made 4 Identical AIs Play Monopoly (only one survived)
+ai plays social|AIs play coup|7HLsobzgU9o|17806|46565|Turing Games|https://www.youtube.com/channel/UCX_o-hHyIPhU43N_aGQG1GA|Teaching The Dumbest AI To Play Mafia
