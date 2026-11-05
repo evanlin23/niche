@@ -57,6 +57,24 @@ Patterns:
 - Recaps that repeat what was just said.
 - Hedging chains: "may potentially", "could arguably".
 
+## 7b. Sound like a person, not a template (creator feedback on the Uno draft)
+Sources: Wikipedia "Signs of AI writing" (WikiProject AI Cleanup) and creator notes. `make lint-script` checks most of these.
+- No label fragments as sentences: "Spoiler." "Confession." "One limitation." Say it as a sentence you'd actually
+  say: "I'll be honest, the first time I ran this it was wrong."
+- "Here's why / here's the thing / so here's my question": max 2 per script. Usually just delete the setup.
+- No repeated templates ("X is the sneaky one", "X is the mean one", "X is the strange one"): max 1.
+- No slogan pairs ("It makes great stories. It barely changes the game.") more than twice. Real explanations
+  have a "because" in them.
+- No stock quips ("Bring snacks.", "Hold onto that."). One joke that comes from the actual data beats five quips.
+- Parallel lists of the same shape ("If you want X, add Y" four times): break the pattern, cut one, merge two.
+- Fewer than 15% of sentences start with And/But/So.
+- Significance inflation and copula avoidance are banned: "stands as", "serves as", "underscores", "highlighting",
+  "a testament", "broader", "pivotal", "showcasing".
+- Put the creator in it: what you expected before running it, what surprised you, what you play at home,
+  which result you didn't believe and re-ran. At least one real "I thought... but" moment per section.
+- Uneven rhythm: some 3-word sentences, some long ones that run on a bit the way people talk.
+- The creator re-words anything that doesn't sound like them while recording. Captions follow what they said.
+
 ## 8. Structure that works for "I simulated it" game videos
 1. Hook (0:00–0:20): the decision + the surprising answer or number. Show it on the board.
 2. Credibility (≤30 s): edition, how many games, how the bots play. Keep it brisk.

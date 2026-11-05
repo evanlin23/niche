@@ -1,5 +1,6 @@
 # Shorts cut from the long video (python -m pipeline.shorts_cut episodes/exploding-kittens).
 # Each one links back to the long video (YouTube: Shorts -> "Related video").
+context: "I simulated 10 billion games of Exploding Kittens"
 shorts:
   - id: kitten-placement
     from: k2
@@ -14,12 +15,14 @@ shorts:
     title: "Same cards, 3x the wins. I simulated 10 billion games of Exploding Kittens"
     description: "Five mistakes most tables make. Full video on my channel. #explodingkittens #boardgames #cardgames"
   - id: steal
+    crop: [250, 1420]
     from: s2
     to: s4
     hook: "The 'weakest' cards\nwin you games"
     title: "The weakest cards in Exploding Kittens are secretly the best"
     description: "Steal from the biggest hand, and never pair up your Attacks. Full video on my channel. #explodingkittens #boardgames #cardgames"
   - id: going-first
+    crop: [190, 1540]
     from: t1
     to: t3
     hook: "Does going first\nmatter?"

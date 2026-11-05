@@ -26,7 +26,8 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parent.parent
 FONTS = ROOT / "pipeline" / "web" / "fonts"
 W, H = 1080, 1920
-VID_Y = 640                      # top of the 16:9 video (1080x608)
+VID_Y = 450                      # top of the video area
+MAX_VH = 930                     # video area height limit (captions + CTA below)
 TOP, BOT = (40, 75, 65), (51, 95, 81)
 CREAM, MUSTARD = (255, 246, 230), (242, 177, 52)
 
@@ -35,7 +36,7 @@ def font(weight, size):
     return ImageFont.truetype(str(FONTS / f"rubik-latin-{weight}.ttf"), size)
 
 
-def background(hook, out):
+def background(hook, context, out):
     im = Image.new("RGB", (W, H))
     px = im.load()
     for y in range(H):
@@ -44,10 +45,13 @@ def background(hook, out):
         for x in range(W):
             px[x, y] = c
     d = ImageDraw.Draw(im)
-    d.text((W // 2, 150), "BUH SIMULATES", font=font(700, 34), fill=(205, 191, 166), anchor="mm")
+    if context:      # what this is about, always readable: "I simulated 10 billion games of ..."
+        cf = font(700, 40); tw = d.textlength(context, font=cf)
+        d.rounded_rectangle((W / 2 - tw / 2 - 30, 130, W / 2 + tw / 2 + 30, 196), radius=33, fill=(20, 40, 34))
+        d.text((W // 2, 163), context, font=cf, fill=CREAM, anchor="mm")
     lines = hook.split("\n")
     f = font(900, 92 if max(len(l) for l in lines) <= 18 else 78)
-    y = 360 - (len(lines) - 1) * 55
+    y = 300 - (len(lines) - 1) * 55
     for i, l in enumerate(lines):
         d.text((W // 2, y + i * 110), l, font=f, fill=MUSTARD if i == len(lines) - 1 else CREAM, anchor="mm",
                stroke_width=4, stroke_fill=(20, 40, 34))
@@ -64,12 +68,38 @@ def background(hook, out):
     im.save(out)
 
 
+def content_box(video, t0, t1, fw=1920, fh=1080):
+    """Union bounding box of everything that isn't plain background over the clip (sampled 3x a second),
+    so the Short can show the action bigger. Ignores the small corner watermark."""
+    import numpy as np
+    sw, sh = 480, 270
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-ss", f"{t0:.3f}", "-t", f"{t1 - t0:.3f}", "-i", str(video),
+                          "-vf", f"fps=3,scale={sw}:{sh}", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
+                         capture_output=True, check=True).stdout
+    fr = np.frombuffer(raw, np.uint8).reshape(-1, sh, sw, 3).astype(np.int16)
+    bg = np.median(fr, axis=2, keepdims=True)                    # per-row background (vertical gradient)
+    d = np.abs(fr - bg).sum(-1) > 70                              # real objects/text, not soft lighting
+    m = d.mean(0) > 0.02                                          # present in at least 2% of sampled frames
+    m[: int(sh * 0.045), : int(sw * 0.12)] = False              # "BUH SIMULATES" watermark
+    ys, xs = np.nonzero(m)
+    if len(xs) < 20:
+        return 0, 0, fw, fh
+    x0, x1 = np.percentile(xs, [0.5, 99.5]); y0, y1 = np.percentile(ys, [0.5, 99.5])
+    px, py = 0.04 * sw, 0.05 * sh
+    x0, x1 = max(0, x0 - px), min(sw, x1 + px); y0, y1 = max(0, y0 - py), min(sh, y1 + py)
+    if x1 - x0 < sw * 0.5:                                       # never zoom more than 2x (stays sharp)
+        c = (x0 + x1) / 2; x0, x1 = max(0, c - sw * 0.25), min(sw, c + sw * 0.25)
+    k = fw / sw
+    x, y, w, h = int(x0 * k) // 2 * 2, int(y0 * k) // 2 * 2, int((x1 - x0) * k) // 2 * 2, int((y1 - y0) * k) // 2 * 2
+    return x, y, w, h
+
+
 def ass_time(t):
     t = max(0.0, t); h = int(t // 3600); m = int(t % 3600 // 60); s = t % 60
     return f"{h}:{m:02d}:{s:05.2f}"
 
 
-def captions(words, out):
+def captions(words, out, top):
     """Words -> 1-3 word chunks, current chunk in big type under the video."""
     chunks, cur = [], []
     for w, a, b in words:
@@ -92,7 +122,7 @@ PlayResY: {H}
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,Rubik Black,92,&H00E6F6FF,&H00E6F6FF,&H00223A31,&H64000000,1,0,0,0,100,100,0,0,1,7,0,8,60,60,{VID_Y + 608 + 90},1
+Style: Cap,Rubik Black,92,&H00E6F6FF,&H00E6F6FF,&H00223A31,&H64000000,1,0,0,0,100,100,0,0,1,7,0,8,60,60,{top},1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -122,18 +152,26 @@ def main():
             for w in meta.get("aligned_words") or meta["words"]:
                 words.append((w[0], cues[lid][0] + w[1] - t0, cues[lid][0] + w[2] - t0))
         bg = out / f"{sh['id']}-bg.png"; ass = out / f"{sh['id']}.ass"
-        background(sh["hook"].replace("\\n", "\n"), bg); captions(words, ass)
+        cx, cy, cw, ch = content_box(video, t0, t1)
+        if sh.get("crop"):                                        # manual zoom: [x, width] in 1920-wide pixels
+            cx, cw = sh["crop"]; cw = cw // 2 * 2
+        vw, vh = W, round(W * ch / cw / 2) * 2
+        if vh > MAX_VH:                                           # tall content: fit by height instead
+            vh = MAX_VH; vw = round(MAX_VH * cw / ch / 2) * 2
+        background(sh["hook"].replace("\\n", "\n"), sh.get("context", spec.get("context", "")), bg)
+        vy = VID_Y + max(0, (1480 - VID_Y - vh - 170) // 3)        # spread the spare room above/below
+        captions(words, ass, vy + vh + 50)
         dst = out / f"{sh['id']}.mp4"
         subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-ss", f"{t0:.3f}", "-t", f"{t1 - t0:.3f}", "-i", str(video),
                         "-loop", "1", "-i", str(bg), "-filter_complex",
-                        f"[0:v]scale={W}:-2,setsar=1[v];[1:v][v]overlay=0:{VID_Y}:shortest=1,"
+                        f"[0:v]drawbox=x=0:y=0:w=300:h=72:color=0x284b41:t=fill,crop={cw}:{ch}:{cx}:{cy},scale={vw}:{vh},setsar=1[v];[1:v][v]overlay={(W - vw) // 2}:{vy}:shortest=1,"
                         f"ass={ass}:fontsdir={FONTS},format=yuv420p[o];"
                         f"[0:a]afade=t=in:d=0.08,afade=t=out:st={t1 - t0 - 0.3:.3f}:d=0.3[a]",
                         "-map", "[o]", "-map", "[a]", "-r", "30", "-c:v", "libx264", "-crf", "18", "-preset", "medium",
                         "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(dst)], check=True)
         (out / f"{sh['id']}.txt").write_text(f"{sh['title']}\n\n{sh.get('description', '')}\n")
         bg.unlink(); ass.unlink()
-        print(f"{sh['id']}: {t1 - t0:.1f}s -> {dst}")
+        print(f"{sh['id']}: {t1 - t0:.1f}s, crop {cw}x{ch}+{cx}+{cy} -> {vw}x{vh} -> {dst}")
 
 
 if __name__ == "__main__":
