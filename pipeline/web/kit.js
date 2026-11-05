@@ -824,7 +824,7 @@ T.fan = async (stage, spec) => {
       // highlights of one card combine smoothly (a max() of a falling and a rising envelope kinked)
       const mine = hl.filter((h) => h.card === i && t >= h.at);
       const lift = 1 - mine.reduce((m, h) => m * (1 - ease(clamp((t - h.at) / 0.3)) * (1 - ease(clamp((t - h.at - 1.5) / 0.3)))), 1)
-        + mine.reduce((m, h) => m + 0.35 * Math.sin(Math.PI * ease(clamp((t - h.at) / 0.45))), 0);
+        + mine.reduce((m, h) => m + 0.3 * Math.sin(Math.PI * ease(clamp((t - h.at) / 0.6))), 0);   // soft enough to turn round smoothly
       c.quaternion.copy(q0); c.rotateY(rz);                 // tilt within the hand's plane (normals stay parallel)
       // one layer per card along the shared normal; a highlighted card lifts up and toward the camera (never into the others)
       const inPlane = pos.clone().addScaledVector(n0, -pos.clone().sub(hc).dot(n0));   // the arc lies IN the hand's plane

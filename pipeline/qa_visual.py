@@ -216,6 +216,8 @@ def check_continuity(sp, states):
     for (sa, a), (sb, b) in zip(sp, sp[1:]):
         if a.get("type") != b.get("type"):
             continue
+        if hasattr(sa, "start") and hasattr(sb, "start") and abs(sa.start + a.get("duration", 0) - sb.start) > 0.05:
+            continue                                      # not neighbours on the timeline (an --only subset)
         A = [s for s in states.get(sa.id, []) if "error" not in s]
         B = [s for s in states.get(sb.id, []) if "error" not in s]
         if not A or not B:
