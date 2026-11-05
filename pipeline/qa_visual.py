@@ -348,8 +348,11 @@ def pixel_checks(video: Path, timeline):
 
 
 def contact_from_video(video: Path, out: Path, every=10):
+    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(video)],
+                               capture_output=True, text=True).stdout.strip() or 0)
+    rows = max(1, -(-int(dur // every + 1) // 6))          # grid sized to the video (no empty rows)
     subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(video), "-vf",
-                    f"fps=1/{every},scale=384:-2,tile=6x10", "-frames:v", "1", str(out)], check=True)
+                    f"fps=1/{every},scale=384:-2,tile=6x{rows}", "-frames:v", "1", str(out)], check=True)
     return out
 
 
