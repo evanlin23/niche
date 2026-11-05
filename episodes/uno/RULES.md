@@ -41,3 +41,16 @@ https://service.mattel.com/instruction_sheets/GDJ85-Eng.pdf (read in full 2026-1
 ## Bot limits (said on camera)
 - Bots always say UNO and never decline a playable card (so forced play = official for them).
 - Normal bot = random matching card, most-held colour, challenges +4 30% of the time, stacks 80%, jumps in 50%.
+
+## Calling UNO (GDJ85 sheet, "Going Out")
+"When you play your next-to-last card, you must yell UNO ... If you don't yell UNO and you are caught before the next
+player begins their turn, you must draw two cards." Engine (`uno_call`): after leaving yourself one card you forget with
+your bot's `forget` probability; each other player catches you with their `catch` probability; caught = draw 2
+(house variant `uno_penalty: 4`). Test table assumption: everyone forgets 1 time in 4 and catches half the time.
+
+## More house rules (v2)
+- Multi-play (`multi`): play every card of the same NUMBER in one turn (e.g. all your 2s). Assumption: the last card
+  played sets the colour (a bot that changes colour on purpose finishes on the colour it holds most of). Numbers only.
+- No going out on an action card or a Wild (`no_action_out`): your last card must be a number card.
+- "How I play" (the creator's table): stacking Draw Two on Draw Two and Draw Four on Draw Four (not mixed), multi-play,
+  Draw Four any time with no challenges, draw one when you can't play, no Seven Zero, no points (whoever goes out wins).

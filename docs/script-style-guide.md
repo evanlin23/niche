@@ -75,6 +75,7 @@ Sources: Wikipedia "Signs of AI writing" (WikiProject AI Cleanup) and creator no
 - Uneven rhythm: some 3-word sentences, some long ones that run on a bit the way people talk.
 - At most one short credibility beat (the engine check). No debugging or re-run stories; personality comes from
   reacting to results.
+- Address viewers generally (your table, the people you play with), not 'your family'.
 - The creator re-words anything that doesn't sound like them while recording. Captions follow what they said.
 
 ## 8. Structure that works for "I simulated it" game videos
