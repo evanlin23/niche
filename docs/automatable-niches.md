@@ -151,3 +151,10 @@ Queen Traps In Chess, Ranked by 100 Million Games", 2.8K). Nobody owns "what act
 channel's existing promise (how to win the games people actually play), so it's a series inside Buh Simulates, not a
 pivot. Risks: chess fans are experts (every number must hold up), the giants own the personality side, and the copycat
 template is arriving, so being early matters.
+
+**Creator's concerns (2026-11-05):**
+- A video split by rating invites viewers to skip to their own section.
+- Chess data speaks to active rated players, not "everyone", so it fails the "everyone has played it" test in spirit.
+
+Decision for now: no chess series. Chess stays a candidate for one episode framed for everyone (a single question with
+one answer, with rating as a twist on one chart, not as chapters). The channel stays on universal games.
