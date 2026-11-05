@@ -240,7 +240,7 @@ subscribe right). The only scene that fades out.
 ## The gates
 
 ### Visual: `make qa-visual SLUG=<slug> [VIDEO=...] [VERTICAL=1] [ONLY="a b"]`
-Probes the stage state of every scene (every 0.1 s + the last two frames) without drawing, then:
+Probes the stage state of every scene (every frame; the per-state checks use every 3rd) without drawing, then:
 
 | check | rule | severity |
 |---|---|---|
@@ -248,7 +248,10 @@ Probes the stage state of every scene (every 0.1 s + the last two frames) withou
 | safe | every visible label inside the 5% title-safe area; kit `key` objects too; other props inside the frame | error / warn |
 | overlap | no two visible labels overlap (> 12% of the smaller) | error |
 | cut | at the last frame nothing is still fading, moving or mid-tween (ambient loops: warn) | error |
-| coverage | no more than 5 s of narration without a new visual event (label appears/changes, object appears/starts moving, kit tween) | error |
+| coverage | no more than 5 s of narration without a new OBJECT event (a card, piece, pawn, bar or highlight appears or starts moving). Captions, callouts and notes popping up don't count | error |
+| sync | every word-anchored object event starts moving within +-0.15 s of its word (onset = 5% of the move covered, as the eye sees it; moves split at speed minima). Several events on one word (two cards played together) need one moving object each. Offsets per anchor in `visual.json` (`sync`). Anchors in a scene's first 0.5 s and `until` ends are skipped | error |
+| smooth | no velocity discontinuity: a per-object frame-to-frame velocity change > 50% of its local top speed (>= 0.8 units/s) = a teleport, an instant start/stop or a kinked bounce | error |
+| continuity | consecutive scenes on the same template continue the shot (< 1.5 deg, < 3% distance) or cut to a clearly different one (>= 20 deg or >= 1.4x); in between reads as a jump. Every same-template cut is listed in `visual.json` (`continuity`) | error |
 | numbers | numbers on screen agree with the script line they're anchored to (spoken forms understood: "thirty five", "eleven and a half", "ten billion", "thirteen point oh four"); unsaid numbers warn; player count / fair share are context | error / warn |
 | captions | `burn_captions: false` -> nothing burned in | error |
 | pixels (with VIDEO) | no black frames, no 1-2 frame brightness flashes or dips | error |
@@ -257,6 +260,20 @@ Probes the stage state of every scene (every 0.1 s + the last two frames) withou
 | flicker (with VIDEO) | pixels toggling A->B->A >= 3x/s in place on <= 0.02% of the frame (z-fighting, shimmer) | error |
 | static | episode scene files build no cards themselves (`pipeline/qa_static.py`) | error |
 | opening (Shorts) | frame 1 at least 60% as full as the clip's median frame (content band), frame-to-frame motion in the first 0.5 s / 1 s | error |
+
+Kit behaviour behind these gates:
+- **Continuous shots.** Consecutive scenes on the same template with the same layout chain into ONE eased camera move
+  (`timeline.mark_chains` -> `spec.chain`), so the cut continues the shot. A different layout (say a row, then the
+  row + a chart) gets `shot: new` automatically: 30 deg round and 12 deg higher, a clearly different angle. Put
+  `shot: new` in params to force one. Shorts too.
+- **Smooth motion.** Every move is eased at both ends (no linear starts, no `|sin|` bounces, no instant switches
+  between highlights); a deck-row plan is a continuous chain; table flights are eased arcs on lanes a card's height
+  apart, played cards flip face-up in the air once clear of hands and pile, drawn cards turn to their seat.
+- **On the word.** Things build on their word (not 0.6 s before it). Plays on the same word are staggered +-0.09 s
+  around it, each on a higher lane with its own pile slot. A highlight pops (lift + pop), a bar swells; chart items
+  take `pulse: [anchors]` for later words about that bar; the checklist drops a chip per item.
+- **Shadows.** PCF soft shadows with the key light's shadow camera fitted to each shot (+3 units for flights and
+  hops), bias -0.0002 / normalBias 0.015; flying cards and pile cards cast shadows.
 
 Output: `out/qa/visual.txt` (readable; problems repeated across 3+ scenes printed once), `visual.json`,
 `contact.png` (mid + cut frame of every scene, or every 10 s of the video). Exit 1 on any error.

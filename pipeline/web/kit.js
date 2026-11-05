@@ -820,7 +820,11 @@ T.fan = async (stage, spec) => {
       const pl = plays.find((h) => h.card === i);
       // each highlight lifts its own card and lowers it on its own schedule (one shared 'current' highlight dropped
       // the previous card back in one frame when the next began: smoothness gate)
-      const lift = hl.reduce((m, h) => (h.card === i ? Math.max(m, ease(clamp((t - h.at) / 0.3)) * (1 - ease(clamp((t - h.at - 1.5) / 0.3)))) : m), 0);
+      // + a pop on every highlight (the same card named again while still lifted didn't move at all); overlapping
+      // highlights of one card combine smoothly (a max() of a falling and a rising envelope kinked)
+      const mine = hl.filter((h) => h.card === i && t >= h.at);
+      const lift = 1 - mine.reduce((m, h) => m * (1 - ease(clamp((t - h.at) / 0.3)) * (1 - ease(clamp((t - h.at - 1.5) / 0.3)))), 1)
+        + mine.reduce((m, h) => m + 0.35 * Math.sin(Math.PI * ease(clamp((t - h.at) / 0.45))), 0);
       c.quaternion.copy(q0); c.rotateY(rz);                 // tilt within the hand's plane (normals stay parallel)
       // one layer per card along the shared normal; a highlighted card lifts up and toward the camera (never into the others)
       const inPlane = pos.clone().addScaledVector(n0, -pos.clone().sub(hc).dot(n0));   // the arc lies IN the hand's plane
@@ -897,7 +901,14 @@ T.table = async (stage, spec) => {
   scheduleLandings(turns, 0.12, (e) => K.tw(`${e.ev} by seat ${e.seat}`, e.start, 0.75).dur);   // lands before the cut
   const plays = turns.filter((x) => x.ev === 'play');
   plays.map((e, i) => ({ e, i })).sort((a, b) => a.e.lands - b.e.lands || a.i - b.i).forEach(({ e }, slot) => { e.slot = slot; });   // pile layers among plays, landing order
-  turns.forEach((e, k) => { e.mover = kitCard(stage, 'back'); e.mover.visible = false; e.lane = e.group > 1 ? e.lane : k % 3; K.key(e.mover); });
+  turns.forEach((e, k) => { e.mover = kitCard(stage, 'back'); e.mover.visible = false; K.key(e.mover); });
+  // arc lanes by what's already in the air: a flight that starts while others fly takes the lowest free lane, and
+  // lanes sit a card's height apart (cards flip in the air: two flips 0.24 s apart on one arc height clipped)
+  turns.slice().sort((a, b) => a.start - b.start).forEach((e, _, arr) => {
+    const busy = new Set(arr.filter((o) => o !== e && o.laneSet && o.start < e.start + e.dur && e.start < o.start + o.dur).map((o) => o.lane));
+    let l = 0; while (busy.has(l)) l++; e.lane = l; e.laneSet = true;
+  });
+  const LANE = 0.95;   // (framing doesn't depend on lanes: arcs peak mid-table, and same-template shots must match)
   const outs = (p.out || []).filter((h) => typeof h[1] === 'number');
   const pill = K.label({ text: '', size: 30, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
   const ex = rx * 1.18 + 0.8, ez = rz * 1.18 + 0.9;
@@ -929,10 +940,10 @@ T.table = async (stage, spec) => {
       // an eased arc (k eased, so it leaves and lands with zero speed); a played card flips face-up in the air (edge-on
       // at the swap, flat again by 80% of the flight); a drawn card turns to face its seat
       if (x.ev === 'draw') x.mover.position.lerpVectors(deckP, seatP, k); else x.mover.position.lerpVectors(seatP, pileAt(x.slot), k);
-      x.mover.position.y += Math.sin(k * Math.PI) * (1.3 + 0.45 * x.lane);
+      x.mover.position.y += Math.sin(k * Math.PI) * (1.3 + LANE * x.lane);
       if (x.ev === 'draw') { x.mover.setFace(p.back || 'back'); x.mover.rotation.set(0, lerp(0, s.dir + Math.PI, k), 0); }
       else {
-        const fk = ease(clamp((k - 0.1) / 0.7));                  // 0 -> 1: back up -> face up
+        const fk = ease(clamp((k - 0.25) / 0.5));                 // 0 -> 1: back up -> face up, only while clear of hands and pile
         x.mover.setFace(fk < 0.5 ? (p.back || 'back') : x.card);
         x.mover.rotation.set(fk < 0.5 ? fk * Math.PI : (fk - 1) * Math.PI, 0, 0);
       }
