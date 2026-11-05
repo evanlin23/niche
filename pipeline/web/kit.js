@@ -836,7 +836,8 @@ T.table = async (stage, spec) => {
   const outs = (p.out || []).filter((h) => typeof h[1] === 'number');
   const pill = K.label({ text: '', size: 30, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
   const ex = rx * 1.18 + 0.8, ez = rz * 1.18 + 0.9;
-  K.fit(boxPoints(-ex, 0, -ez, ex, 2.0, ez), { elev: vert ? 58 : 50, yaw: 5, push: 0.06 });
+  // camera per scene (optional): elev (deg above the table), yaw (orbit +/- deg), push (fraction); defaults unchanged
+  K.fit(boxPoints(-ex, 0, -ez, ex, 2.0, ez), { elev: p.elev ?? (vert ? 58 : 50), yaw: p.yaw ?? 5, push: p.push ?? 0.06 });
   return K.frame((t) => {
     seats.forEach((s) => {
       let on = false, hop = 0;

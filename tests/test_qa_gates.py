@@ -92,6 +92,12 @@ def test_spoken_numbers():
     assert spoken_numbers("a billion games") == [1e9]
     assert spoken_numbers("Two more, third.") == [2.0, 3.0]
     assert agrees(35.4, [35]) and not agrees(31.0, [35]) and agrees(10.2e9, [1e10])
+    # punctuation ends a number; unit words don't chain; "a hundred and ..." (Uno episode)
+    assert spoken_numbers("With the free plus four, thirty one.") == [4.0, 31.0]
+    assert spoken_numbers("wins about twenty three. Four points") == [23.0, 4.0]
+    assert spoken_numbers("a hundred and thirty eight") == [138.0]
+    assert spoken_numbers("one hundred and twelve cards") == [112.0]
+    assert spoken_numbers("All hundred and twelve cards, the hundred and eight card deck") == [112.0, 108.0]
 
 
 # ------------------------------------------------------------------ voice gate measurements
