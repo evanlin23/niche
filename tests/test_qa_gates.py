@@ -110,6 +110,23 @@ def test_voice_measurements():
     assert extra and not miss
 
 
+def test_pixel_flash_and_black():
+    import subprocess, tempfile
+    from pathlib import Path
+    from pipeline.qa_visual import pixel_checks
+    d = Path(tempfile.mkdtemp())
+    # 4 s grey, one white frame at 1 s, black from 2.0 to 2.5 s
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=0x3a5a52:s=320x180:r=30:d=4",
+                    "-vf", "drawbox=c=white:t=fill:enable='eq(n,30)',drawbox=c=black:t=fill:enable='between(t,2,2.5)'",
+                    "-c:v", "libx264", "-pix_fmt", "yuv420p", str(d / "v.mp4")], check=True)
+    iss, _ = pixel_checks(d / "v.mp4", [{"id": "s", "start": 0, "duration": 4}])
+    msgs = " ".join(i["msg"] for i in iss)
+    assert "flash" in msgs and "black" in msgs, msgs
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=0x3a5a52:s=320x180:r=30:d=3",
+                    "-c:v", "libx264", "-pix_fmt", "yuv420p", str(d / "ok.mp4")], check=True)
+    assert pixel_checks(d / "ok.mp4", [{"id": "s", "start": 0, "duration": 3}])[0] == []
+
+
 if __name__ == "__main__":
     import sys
     fails = 0

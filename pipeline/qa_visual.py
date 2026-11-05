@@ -316,7 +316,7 @@ def pixel_checks(video: Path, timeline):
             if s["start"] <= t < s["start"] + s["duration"]:
                 return s["id"]
         return "?"
-    black = np.flatnonzero(y < 16)
+    black = np.flatnonzero(y <= 20)          # limited-range black measures 16
     if len(black):
         runs = np.split(black, np.flatnonzero(np.diff(black) > 1) + 1)
         for rr in runs:
@@ -325,7 +325,12 @@ def pixel_checks(video: Path, timeline):
                 continue                              # the end card's own fade-out
             issues.append(_issue("error", "pixels", f"black frames in {where(t0)}", t0, t1, scene=where(t0)))
     k = 7
+    near_black = np.zeros(len(y), bool)
+    for b in black:
+        near_black[max(0, b - k): b + k + 1] = True   # black runs are reported above, not as flashes
     for i in range(k, len(y) - k):
+        if near_black[i]:
+            continue
         ref = np.median(np.r_[y[i - k:i - 1], y[i + 2:i + k]])
         if abs(y[i] - ref) > 14 and abs(y[i - 1] - ref) < 6 or abs(y[i] - ref) > 14 and abs(y[i + 1] - ref) < 6 and abs(y[i - 1] - ref) > 14:
             t = i / fps
