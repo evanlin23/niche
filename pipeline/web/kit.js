@@ -259,7 +259,10 @@ export class Kit {
     const k = this.L.short ? clamp(t / stage.duration) : ease(clamp(t / stage.duration));   // Shorts: moving from frame 1
     const dir = dirFrom(R.elev, lerp(-R.amp, R.amp, k));
     cam.clearViewOffset();
-    placeCam(cam, R.look, dir, lerp(R.d0, R.d1, k));
+    // Shorts open on a quick dolly-in, fastest at frame 1 and settled by 1.2 s (motion in the first second is the
+    // retention gate); the slow orbit carries on from there
+    const open = this.L.short && this.spec.short.first ? 0.14 * (1 - clamp(t / 1.2)) ** 2 : 0;
+    placeCam(cam, R.look, dir, lerp(R.d0, R.d1, k) * (1 + open));
     cam.setViewOffset(stage.W, stage.H, -R.dx, -R.dy, stage.W, stage.H);
     cam.updateProjectionMatrix(); cam.updateMatrixWorld();
   }
