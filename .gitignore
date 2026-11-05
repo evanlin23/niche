@@ -31,3 +31,4 @@ sims/sorry/sorrysim
 sims/checkers/cksim
 sims/gin/ginsim
 sims/*/*.test
+episodes/*/voice/_input_check.json

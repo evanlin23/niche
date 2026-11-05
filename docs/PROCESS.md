@@ -46,7 +46,13 @@ between lines. Fumble = pause, redo the whole sentence (the last take wins). Sen
 ## 4. Voice pipeline: `make voice SLUG=<slug> REC=rec.m4a` (gate)
 One command runs the chain below in order, stops at the first failing step (resume with `FROM=<step>`), then the
 final check (transcript vs script, abrupt endings, digital silence, clipping, long gaps) and writes the report and
-the listen file. The individual steps, for reference:
+the listen file.
+Two input guards run first (`pipeline/voice_source.py`): a recording whose peaks are stored above full scale (a
+float m4a) is gain-reduced to a -4.5 dBFS peak in `voice/_input/` before splitting, so nothing clips downstream
+(reported at the top of the voice report); and `voice/_orig/` backups are keyed to the recording each line was
+split from (fingerprint in every line's json): a new recording refreshes them, an unfingerprinted backup is
+refused (`LEGACY_ORIG=1` to reuse one on purpose). Never silently reused.
+The individual steps, for reference:
 ```
 python -m pipeline.split_recording episodes/<slug> rec.m4a          # per-line clips + json timing
 python -m pipeline.extend_tails   episodes/<slug> rec.m4a          # restore chopped word endings

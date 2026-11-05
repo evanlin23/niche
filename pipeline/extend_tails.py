@@ -55,8 +55,14 @@ def main():
     ap.add_argument("episode"); ap.add_argument("recordings", nargs="+")
     ap.add_argument("--max-ext", type=float, default=1.2)
     ap.add_argument("--lines", nargs="*")
+    ap.add_argument("--legacy-orig", action="store_true", help="accept _orig/ backups without a recording fingerprint")
     a = ap.parse_args()
     ep = Path(a.episode); od = ep / "voice" / "_orig"; bk = ep / "voice" / "_orig_pre_extend"; bk.mkdir(exist_ok=True)
+    from .voice_source import StaleBackup, sync_orig
+    try:                                          # _orig/ = the CURRENT split (a new recording refreshes it)
+        sync_orig(ep / "voice", a.lines, allow_legacy=a.legacy_orig)
+    except StaleBackup as e:
+        raise SystemExit(f"extend_tails: {e}")
     srcs = [(Path(r).name, load(r)) for r in a.recordings]
     srcs_ds = [(n, x, down(x)) for n, x in srcs]
     floor = {n: np.percentile(frame_db(x), 10) for n, x, _ in srcs_ds}
@@ -111,8 +117,10 @@ def main():
                 f = int(0.02 * SR); extra[:f] *= np.linspace(0, 1, f)
                 clip = np.concatenate([extra, clip]); added_head = len(extra) / SR
         if added_tail or added_head:
+            src = json.loads(js.read_text()).get("source")
+            stale = (bk / js.name).exists() and json.loads((bk / js.name).read_text()).get("source") != src
             for p in (wav, js):
-                if not (bk / p.name).exists():
+                if stale or not (bk / p.name).exists():
                     shutil.copy2(p, bk / p.name)
             meta = json.loads(js.read_text())
             meta["words"] = [[w, round(s + added_head, 3), round(e + added_head, 3)] for w, s, e in meta["words"]]

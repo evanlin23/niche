@@ -202,7 +202,9 @@ def main():
         lines = {k: v for k, v in lines.items() if k in a.only}
     full = load(a.recording, SR)
     cache = out / "_transcript.json"
-    key = f"{Path(a.recording).stat().st_size}:{a.model}"
+    from .voice_source import fingerprint
+    src = fingerprint(a.recording)                 # every line remembers which recording it was cut from
+    key = f"{src}:{a.model}"
     if cache.exists() and json.loads(cache.read_text()).get("key") == key:
         words = [tuple(w) for w in json.loads(cache.read_text())["words"]]
     else:
@@ -264,7 +266,7 @@ def main():
             audio.append(seg); t += len(seg) / SR
         y = np.concatenate(audio)
         write_wav(out / f"{lid}.wav", y)
-        (out / f"{lid}.json").write_text(json.dumps({"duration": len(y) / SR, "words": wts}))
+        (out / f"{lid}.json").write_text(json.dumps({"duration": len(y) / SR, "words": wts, "source": src}))
         score = min(m["score"] for _, m in got)
         retake = any(m["takes"] > 1 for _, m in got)
         flag = "CHECK " if (score < 0.75 or missing) else "ok    "

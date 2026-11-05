@@ -1,7 +1,8 @@
 """Tighten recorded narration: shorter pauses inside lines, trimmed lead/tail, optional cuts (stumbles).
 
 Rewrites VOICE_DIR/<id>.wav and <id>.json in place (word timings shifted to match), keeping the untouched
-originals in VOICE_DIR/_orig/ the first time it runs, so it can always be re-run from the originals.
+originals in VOICE_DIR/_orig/, so it can always be re-run from the originals. The backups are keyed to the
+recording each line was split from (voice_source.sync_orig): a new recording refreshes them, never stale.
 
     python -m pipeline.tighten_voice episodes/<slug>/voice [--max-pause 0.35] [--cuts cuts.json]
 
@@ -10,7 +11,6 @@ cuts.json: {"<line id>": [[start, end], ...]}  seconds in the ORIGINAL file, rem
 """
 import argparse
 import json
-import shutil
 from pathlib import Path
 
 import numpy as np
@@ -123,8 +123,15 @@ def main():
     ap.add_argument("--lines", nargs="*", help="only rebuild these lines (others keep their QA edits)")
     ap.add_argument("--cuts", default=None)
     ap.add_argument("--words", default=None, help="verbatim word timings {id: [[w,s,e],...]} (find_stumbles)")
+    ap.add_argument("--legacy-orig", action="store_true",
+                    help="reuse _orig/ backups that carry no recording fingerprint (made before the guard)")
     a = ap.parse_args()
-    d = Path(a.voice_dir); orig = d / "_orig"; orig.mkdir(exist_ok=True)
+    d = Path(a.voice_dir); orig = d / "_orig"
+    from .voice_source import StaleBackup, sync_orig
+    try:                                          # backups must come from the current recording (never stale)
+        sync_orig(d, a.lines, allow_legacy=a.legacy_orig)
+    except StaleBackup as e:
+        raise SystemExit(f"tighten_voice: {e}")
     cuts = json.loads(Path(a.cuts).read_text()) if a.cuts else {}
     vwords = json.loads(Path(a.words).read_text()) if a.words else {}
     mpath = d / "_manual_cuts.json"   # hand-picked cuts in FINAL (tightened) line time, applied last
@@ -136,9 +143,6 @@ def main():
         wav = js.with_suffix(".wav")
         if not wav.exists():
             continue
-        for p in (wav, js):                       # originals kept once; always work from them
-            if not (orig / p.name).exists():
-                shutil.copy2(p, orig / p.name)
         audio, sr = sf.read(orig / wav.name, dtype="float32")
         meta = json.loads((orig / js.name).read_text())
         vw = vwords.get(js.stem)

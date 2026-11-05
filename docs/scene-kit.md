@@ -261,7 +261,12 @@ Output: `out/qa/visual.txt` (readable; problems repeated across 3+ scenes printe
 `contact.png` (mid + cut frame of every scene, or every 10 s of the video). Exit 1 on any error.
 
 ### Voice: `make voice SLUG=<slug> REC=rec.m4a [FROM=n]`
-Runs split -> extend_tails -> find_stumbles -> tighten -> audio_qa -> match_voice (stops at the first failing step;
+Two input guards run first (`pipeline/voice_source.py`): a recording whose peaks are stored above full scale (a
+float m4a) is gain-reduced to a -4.5 dBFS peak in `voice/_input/` before splitting, so nothing clips downstream
+(reported at the top of the voice report); and `voice/_orig/` backups are keyed to the recording each line was
+split from (fingerprint in every line's json): a new recording refreshes them, an unfingerprinted backup is
+refused (`LEGACY_ORIG=1` to reuse one on purpose). Never silently reused.
+Then it runs split -> extend_tails -> find_stumbles -> tighten -> audio_qa -> match_voice (stops at the first failing step;
 resume with `FROM=n`), then the final check per line: transcript vs script (Whisper, number words normalised;
 missing/extra words listed), abrupt starts/ends, leftover speech outside the script, digital silence >= 10 ms,
 clipping (>= -0.3 dBFS or 3+ samples at full scale), pauses > 0.6 s inside a line, gaps > 1.5 s between lines, digital
