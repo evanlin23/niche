@@ -20,14 +20,64 @@ def run(rules, base=NORMAL, test=None, games=500_000, allsame=False, players=4):
     return json.loads(subprocess.run(cmd, capture_output=True, text=True, check=True).stdout)
 
 
+# ---------------------------------------------------------------- v2: "the best way to play Uno"
+BEST = dict(NORMAL, name="best", hold_wilds=True, attack_small=2, change_color=True, challenge="smart", stack_prob=1.0, jump_prob=1.0)
+MINE = {"stack": True, "multi": True, "free_d4": True}          # how the creator plays: same-type stacking, multi-play, free +4
+TOGGLES = ["seven_zero", "jump_in", "draw_until", "free_d4", "multi", "no_action_out"]
+
+
+def combos():
+    import itertools
+    for st in ("none", "same", "mixed"):
+        for bits in itertools.product((0, 1), repeat=len(TOGGLES)):
+            R = {k: True for k, b in zip(TOGGLES, bits) if b}
+            if st != "none": R["stack"] = True
+            if st == "mixed": R["stack_mix"] = True
+            yield R
+
+
+def key(R):
+    return "+".join(k for k in ["stack", "stack_mix"] + TOGGLES if R.get(k)) or "official"
+
+
+def run_v2(G):
+    res = {"games_per_test": G, "best": BEST, "normal": NORMAL, "mine": MINE, "combos": []}
+    for R in combos():
+        t = run(R, games=G, allsame=True); b = run(R, test=BEST, games=G)
+        res["combos"].append({"key": key(R), "rules": R, "turns": t["mean_turns"], "p90": t["p90_turns"], "first": t["first_seat_win"],
+                              "best": b["test_win_rate"], "hits": t["share_rounds_max_hit_at_least"]})
+        print(f"{key(R):60s} turns {t['mean_turns']:6.1f} best {b['test_win_rate']*100:5.2f}", flush=True)
+    # habits under the official rules and under "how I play" (one change vs a normal table)
+    HAB = [("hold wilds", {"hold_wilds": True}), ("random colour", {"color_choice": "random"}), ("switch to best colour", {"change_color": True}),
+           ("always stack", {"stack_prob": 1.0}), ("never stack", {"stack_prob": 0.0}), ("one card at a time", {"multi": "one"}),
+           ("attack when next has <=2", {"attack_small": 2}), ("dump high cards", {"dump_high": True}), ("all best habits", {k: v for k, v in BEST.items() if k != "name"})]
+    res["habits_mine"] = {lab: run(MINE, test=dict(NORMAL, name=lab, **ch), games=G)["test_win_rate"] for lab, ch in HAB}
+    # calling UNO (GDJ85: forget and get caught before the next turn -> draw 2). Table: forgets 1 in 4, catches half the time (assumption).
+    U = dict(NORMAL, forget=0.25, catch=0.5)
+    res["uno_table"] = {"forget": 0.25, "catch": 0.5}
+    res["uno"] = {}
+    for rname, R in [("official", {"uno_call": True}), ("penalty4", {"uno_call": True, "uno_penalty": 4}), ("mine", dict(MINE, uno_call=True))]:
+        r = {}
+        for lab, ch in [("normal", {}), ("never forgets", {"forget": 0.0}), ("forgets half", {"forget": 0.5}), ("always forgets", {"forget": 1.0}),
+                        ("always catches", {"catch": 1.0}), ("never catches", {"catch": 0.0})]:
+            r[lab] = run(R, base=U, test=dict(U, name=lab, **ch), games=G)["test_win_rate"]
+        r["table"] = run(R, base=U, games=G, allsame=True)
+        res["uno"][rname] = r
+        print(rname, {k: round(v * 100, 2) for k, v in r.items() if k != "table"}, flush=True)
+    return res
+
+
 def main():
     global SEED
     ap = argparse.ArgumentParser(); ap.add_argument("--games", type=int, default=500_000)
     ap.add_argument("--seed", type=int, default=1); ap.add_argument("--all", action="store_true", help="accepted for workflow compatibility"); ap.add_argument("--out", default=None)
+    ap.add_argument("--v2", action="store_true", help="skill meter: every rule combination, UNO calling, 'how I play' -> v2.json")
     ap.add_argument("--matches", type=int, default=0, help="only play N whole games to 500 points per rule set -> matches.json")
     a = ap.parse_args(); SEED = a.seed; G = a.games
     out = Path(a.out) if a.out else Path(__file__).resolve().parent / "data"; out.mkdir(parents=True, exist_ok=True)
     subprocess.run(["go", "build", "-o", str(BIN), "."], cwd=BIN.parent, check=True)
+    if a.v2:
+        (out / "v2.json").write_text(json.dumps(run_v2(G), indent=1)); print("wrote", out / "v2.json"); return
     if a.matches:
         m = {"games_per_rule_set": a.matches}
         for name in ("official", "draw_until", "stacking", "seven_zero", "jump_in", "free_draw4", "everything"):

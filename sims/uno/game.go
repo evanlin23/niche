@@ -32,15 +32,19 @@ func (c Card) points() int {
 }
 
 type Rules struct {
-	Stack     bool `json:"stack"`      // Draw Two on Draw Two, Wild Draw 4 on Wild Draw 4; penalties add up
-	StackMix  bool `json:"stack_mix"`  // also +4 on +2 (and +2 on +4 of matching colour)
-	SevenZero bool `json:"seven_zero"` // 7 swaps hands with a chosen player, 0 rotates all hands
-	JumpIn    bool `json:"jump_in"`    // identical card can be played out of turn
-	DrawUntil bool `json:"draw_until"` // draw until you can play (then play it)
-	Forced    bool `json:"forced"`     // must play if able
-	FreeD4    bool `json:"free_d4"`    // Wild Draw 4 any time, no challenges
-	NoShuffle bool `json:"no_shuffle"` // remove the Wild Shuffle Hands card
-	NoCustom  bool `json:"no_custom"`  // remove the 3 blank wilds (older 108-card decks)
+	Stack     bool `json:"stack"`         // Draw Two on Draw Two, Wild Draw 4 on Wild Draw 4; penalties add up
+	StackMix  bool `json:"stack_mix"`     // also +4 on +2 (and +2 on +4 of matching colour)
+	SevenZero bool `json:"seven_zero"`    // 7 swaps hands with a chosen player, 0 rotates all hands
+	JumpIn    bool `json:"jump_in"`       // identical card can be played out of turn
+	DrawUntil bool `json:"draw_until"`    // draw until you can play (then play it)
+	Forced    bool `json:"forced"`        // must play if able
+	FreeD4    bool `json:"free_d4"`       // Wild Draw 4 any time, no challenges
+	NoShuffle bool `json:"no_shuffle"`    // remove the Wild Shuffle Hands card
+	NoCustom  bool `json:"no_custom"`     // remove the 3 blank wilds (older 108-card decks)
+	MultiPlay bool `json:"multi"`         // house rule: play several cards of the same NUMBER in one turn; the last one sets the colour
+	NoActOut  bool `json:"no_action_out"` // house rule: you can't go out on an action card or a Wild
+	UnoCall   bool `json:"uno_call"`      // GDJ85: forget "UNO" and get caught before the next turn -> draw UnoPen
+	UnoPen    int  `json:"uno_penalty"`   // 0 = official 2 cards
 }
 
 type Policy struct {
@@ -57,25 +61,30 @@ type Policy struct {
 	Random      float64 `json:"random"`       // prob. of just playing a random legal card
 	SwapTarget  string  `json:"swap_target"`  // 7-0: fewest | random
 	ChangeColor bool    `json:"change_color"` // prefer switching to my best colour when possible
+	Multi       string  `json:"multi"`        // multi-play rule: "" = play every card of that number, "one" = one at a time
+	Forget      float64 `json:"forget"`       // prob. of forgetting to say UNO (uno_call rule)
+	Catch       float64 `json:"catch"`        // prob. of catching each player who forgot
 }
 
 type Game struct {
-	rng       *rand.Rand
-	R         *Rules
-	deck      []Card
-	discard   []Card
-	hands     [][]Card
-	pols      []*Policy
-	cur, dir  int
-	color     int8
-	pending   int  // stacked draw penalty waiting for the current player
-	pendKind  int8 // DrawTwo or WildD4
-	turns     int
-	drawn     []int
-	maxHit    int // biggest single penalty taken
-	lastD4Ill bool
-	lastD4Who int
-	dry       int // times a draw found no cards left anywhere
+	rng        *rand.Rand
+	R          *Rules
+	deck       []Card
+	discard    []Card
+	hands      [][]Card
+	pols       []*Policy
+	cur, dir   int
+	color      int8
+	pending    int  // stacked draw penalty waiting for the current player
+	pendKind   int8 // DrawTwo or WildD4
+	turns      int
+	drawn      []int
+	maxHit     int // biggest single penalty taken
+	lastD4Ill  bool
+	lastD4Who  int
+	dry        int // times a draw found no cards left anywhere
+	unoCaught  int // forgotten UNO calls that were caught
+	multiPlays int
 }
 
 func newDeck(r *Rules) []Card {
@@ -241,6 +250,9 @@ func (g *Game) choose(p int) int { // index into hand, -1 = draw
 			if c.K == WildD4 && !g.R.FreeD4 && g.hasColor(p, g.color) {
 				continue // illegal Wild Draw 4 handled by bluff below
 			}
+			if !g.canOut(p, c) {
+				continue
+			}
 			legalIdx = append(legalIdx, i)
 		}
 	}
@@ -314,13 +326,63 @@ func (g *Game) wantsChallenge(victim, player int) bool {
 
 // ---------------------------------------------------------------- play
 type Result struct {
-	Winner, Turns, MaxHit, Points, Dry int
-	Drawn                         []int
+	Winner, Turns, MaxHit, Points, Dry, UnoCaught, Multi int
+	Drawn                                                []int
 }
 
+// canOut: house rule "no going out on an action card or a Wild" (only matters for a player's last card).
+func (g *Game) canOut(p int, c Card) bool {
+	return !(g.R.NoActOut && len(g.hands[p]) == 1 && c.K > 9)
+}
+
+// play = the card play itself, then the UNO call (house/official penalty when forgotten and caught).
 func (g *Game) play(p, i int) (won bool) {
+	if g.playCore(p, i) {
+		return true
+	}
+	if g.R.UnoCall && len(g.hands[p]) == 1 && g.rng.Float64() < g.pols[p].Forget {
+		for q := range g.hands {
+			if q != p && g.rng.Float64() < g.pols[q].Catch {
+				pen := g.R.UnoPen
+				if pen == 0 {
+					pen = 2
+				}
+				g.give(p, pen)
+				g.unoCaught++
+				break
+			}
+		}
+	}
+	return false
+}
+
+func (g *Game) playCore(p, i int) (won bool) {
 	c := g.remove(p, i)
 	illegalD4 := c.K == WildD4 && !g.R.FreeD4 && g.hasColor(p, g.color)
+	if g.R.MultiPlay && c.K <= 9 && g.pols[p].Multi != "one" {
+		// every other card of the same number goes down too; the last one played sets the colour
+		group := []Card{c}
+		for k := len(g.hands[p]) - 1; k >= 0; k-- {
+			if g.hands[p][k].K == c.K && !g.hands[p][k].isWild() {
+				group = append(group, g.remove(p, k))
+			}
+		}
+		if len(group) > 1 {
+			last := g.rng.Intn(len(group))
+			if g.pols[p].ChangeColor { // finish on the colour I hold the most of
+				best := -1
+				for k, x := range group {
+					if n := g.countColor(p, x.C); n > best {
+						best, last = n, k
+					}
+				}
+			}
+			group[last], group[len(group)-1] = group[len(group)-1], group[last]
+			g.discard = append(g.discard, group[:len(group)-1]...)
+			c = group[len(group)-1]
+			g.multiPlays++
+		}
+	}
 	g.discard = append(g.discard, c)
 	if c.isWild() {
 		g.color = g.bestColor(p)
@@ -442,7 +504,7 @@ func (g *Game) Play() Result {
 			idx := -1
 			if g.rng.Float64() < g.pols[p].StackProb {
 				for i, c := range g.hands[p] {
-					if c.K == g.pendKind || (g.R.StackMix && (c.K == DrawTwo || c.K == WildD4) && (c.K == WildD4 || c.C == g.color)) {
+					if (c.K == g.pendKind || (g.R.StackMix && (c.K == DrawTwo || c.K == WildD4) && (c.K == WildD4 || c.C == g.color))) && g.canOut(p, c) {
 						idx = i
 						break
 					}
@@ -503,5 +565,5 @@ func (g *Game) result(w int) Result {
 			pts += c.points()
 		}
 	}
-	return Result{Winner: w, Turns: g.turns, MaxHit: g.maxHit, Points: pts, Drawn: g.drawn, Dry: g.dry}
+	return Result{Winner: w, Turns: g.turns, MaxHit: g.maxHit, Points: pts, Drawn: g.drawn, Dry: g.dry, UnoCaught: g.unoCaught, Multi: g.multiPlays}
 }

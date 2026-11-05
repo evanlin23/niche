@@ -234,3 +234,71 @@ func TestDrawRunsDry(t *testing.T) {
 		t.Fatal("with no cards anywhere, nothing can be drawn")
 	}
 }
+
+func TestMultiPlaySameNumber(t *testing.T) {
+	g := fresh(t, Rules{MultiPlay: true}, 3)
+	g.hands[0] = []Card{{0, 2}, {1, 2}, {3, 2}, {2, 9}}
+	g.play(0, 0)
+	if len(g.hands[0]) != 1 || g.hands[0][0] != (Card{2, 9}) {
+		t.Fatalf("all three 2s should go down together, hand %v", g.hands[0])
+	}
+	if g.top().K != 2 || g.color != g.top().C {
+		t.Fatal("the last card played sets the colour")
+	}
+	g = fresh(t, Rules{MultiPlay: true}, 3)
+	g.pols[0] = &Policy{ColorChoice: "most", PlayDrawn: true, Multi: "one"}
+	g.hands[0] = []Card{{0, 2}, {1, 2}, {2, 9}}
+	g.play(0, 0)
+	if len(g.hands[0]) != 2 {
+		t.Fatal("multi: one plays a single card")
+	}
+	g = fresh(t, Rules{}, 3)
+	g.hands[0] = []Card{{0, 2}, {1, 2}, {2, 9}}
+	g.play(0, 0)
+	if len(g.hands[0]) != 2 {
+		t.Fatal("official: one card per turn")
+	}
+}
+
+func TestNoActionOut(t *testing.T) {
+	g := fresh(t, Rules{NoActOut: true}, 3)
+	g.hands[0] = []Card{{0, Skip}}
+	if g.choose(0) != -1 {
+		t.Fatal("can't go out on a Skip under the house rule")
+	}
+	g.hands[0] = []Card{{0, 3}}
+	if g.choose(0) != 0 {
+		t.Fatal("a number card is fine")
+	}
+	g = fresh(t, Rules{}, 3)
+	g.hands[0] = []Card{{0, Skip}}
+	if g.choose(0) != 0 {
+		t.Fatal("official: going out on a Skip is fine")
+	}
+}
+
+func TestUnoCall(t *testing.T) {
+	forget := &Policy{ColorChoice: "most", PlayDrawn: true, Forget: 1}
+	catcher := &Policy{ColorChoice: "most", PlayDrawn: true, Catch: 1}
+	g := fresh(t, Rules{UnoCall: true}, 3)
+	g.pols = []*Policy{forget, catcher, catcher}
+	g.hands[0] = []Card{{0, 3}, {0, 5}}
+	g.play(0, 0)
+	if len(g.hands[0]) != 3 {
+		t.Fatalf("forgot UNO and caught: 1 + 2 penalty cards, got %d", len(g.hands[0]))
+	}
+	g = fresh(t, Rules{UnoCall: true, UnoPen: 4}, 3)
+	g.pols = []*Policy{forget, catcher, catcher}
+	g.hands[0] = []Card{{0, 3}, {0, 5}}
+	g.play(0, 0)
+	if len(g.hands[0]) != 5 {
+		t.Fatalf("house penalty 4, got %d", len(g.hands[0]))
+	}
+	g = fresh(t, Rules{UnoCall: true}, 3)
+	g.pols = []*Policy{forget, normal, normal}
+	g.hands[0] = []Card{{0, 3}, {0, 5}}
+	g.play(0, 0)
+	if len(g.hands[0]) != 1 {
+		t.Fatal("nobody catches: no penalty")
+	}
+}
