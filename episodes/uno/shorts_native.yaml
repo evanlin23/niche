@@ -3,125 +3,163 @@
 # Titles are questions (no "N games simulated", no big number first).
 game: "Uno"   # context pill above the hook
 shorts:
-- id: draw-until
-  hook: "The Uno rule that\nbreaks the round"
-  title: "Which Uno house rule makes every round drag on?"
-  description: "Draw until you can play: rounds 75% longer. Full video with every house rule on my channel. #uno #cardgames #boardgames"
-  scenes:
-  - id: du-length
-    render: bars
-    lines: [x3]
-    params:
-      callouts:
-      - {text: "A different animal", at: x3@different, color: CORAL}
-      - {text: "75% longer", at: x3@seventy, color: CORAL}
-      chart:
-        players: 4
-        unit: ''
-        decimals: 0
-        items:
-        - {label: Official, value: "=results.json:variants.official.table.mean_turns", at: x3@draw, color: TEAL}
-        - {label: Draw until you can play, value: "=results.json:variants.draw_until.table.mean_turns", at: x3@eighty, color: CORAL, hl: true}
-  - id: du-drawn
-    render: bars
-    lines: [x5]
-    params:
-      callouts:
-      - {text: "It's just cards", at: x5@reason}
-      - {text: "Nearly three times as many", at: x5@nearly}
-      - {text: "Losers hold about 40% more points", at: x5@forty, color: CORAL}
-      chart:
-        players: 4
-        unit: ''
-        decimals: 0
-        items:
-        - {label: Official, value: "=results.json:variants.official.table.mean_cards_drawn_per_round", at: x5@twenty, color: TEAL}
-        - {label: Draw until you can play, value: "=results.json:variants.draw_until.table.mean_cards_drawn_per_round", at: x5@seventy, color: CORAL, hl: true}
+- id: skill-or-luck
+  hook: 'Is Uno skill
 
-- id: stacking
-  hook: "Can you stack\nDraw Twos in Uno?"
-  title: "Are you actually allowed to stack +2s in Uno?"
-  description: "The official rule sheet says no. And it barely matters. Full video on my channel. #uno #cardgames #boardgames"
+    or luck?'
+  title: Is Uno actually a game of skill?
+  description: 'My best bot vs three normal players, official rules. Full video with every house rule on my channel. #uno #cardgames #boardgames'
   scenes:
-  - id: st-sheet
-    render: statement
-    lines: ["c2@you"]
-    params:
-      lines:
-      - 'The rule sheet:'
-      - {text: "no stacking.", color: CORAL, at: c2@stack}
-      - {text: "draw ONE card.", color: MUSTARD, at: c2@one}
-  - id: st-hits
+  - id: sl-meter
     render: bars
-    lines: ["s2@with"]
+    lines:
+    - m2
+    - m3
+    - m4
     params:
       callouts:
-      - {text: "About 1 in 100 rounds", at: s2@hundred}
-      - {text: "Draw Fours join: about 5 in 100", at: s2@join, color: CORAL}
-      chart:
-        players: 4
-        unit: ''
-        decimals: 1
-        maxV: 8
-        items:
-        - {label: "Draw Twos stack", value: "=results.json:variants.stacking.table.share_rounds_with_10plus_draw*100", at: s2@hundred, color: MUSTARD}
-        - {label: "Draw Fours join in", value: "=results.json:variants.stacking_mixed.table.share_rounds_with_10plus_draw*100", at: s2@five, color: CORAL}
-  - id: st-move
-    render: table
-    lines: [s3]
-    params:
-      players: 4
-      names: [PLAYER 1, PLAYER 2, PLAYER 3, PLAYER 4]
-      hands: 6
-      highlight: [[3, s3@one]]
-      turns:
-      - {at: s3@stack, seat: 0, ev: play, card: 'uno:0:12', label: DRAW TWO}
-      - {at: s3@moves, seat: 1, ev: play, card: 'uno:3:12', label: PASS IT ON}
-      - {at: s3@three, seat: 2, ev: play, card: 'uno:2:12', label: PASS IT ON}
-      - {at: s3@six, seat: 3, ev: draw, label: DRAWS ALL SIX}
-      callouts:
-      - {text: "A stack moves cards, it doesn't add them", at: s3@add}
-      - {text: "About 24 cards a round either way", at: s3@twenty}
-
-- id: seven-zero
-  hook: "Seven Zero: who do\nyou swap with?"
-  title: "Who should you swap hands with in Seven Zero?"
-  description: "Swap with a random player and you win less than with any other habit I tested. Full video on my channel. #uno #cardgames #boardgames"
-  scenes:
-  - id: sz-swap
-    render: table
-    lines: ["z4@when"]
-    params:
-      players: 4
-      names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
-      hands: [6, 2, 7, 5]
-      highlight: [[1, z4@fewest], [0, z4@seven]]
-      turns:
-      - {at: z4@seven, seat: 0, ev: play, card: 'uno:3:7', label: SEVEN!}
-      - {at: z4@fewest, seat: 1, ev: draw, label: FEWEST CARDS}
-      - {at: z4@random, seat: 2, ev: draw, label: RANDOM SWAP}
-      callouts:
-      - {text: "Swap with the fewest cards", at: z4@swap}
-      - {text: "Random swap: 21.5% (fair share 25%)", at: z4@twenty, color: CORAL}
-      - {text: "Worse than any single official habit", at: z4@worse, color: CORAL}
-
-- id: hold-wilds
-  hook: "Should you play\nyour Wild right away?"
-  title: "Should you save your Wild cards in Uno?"
-  description: "Holding your Wilds is the one habit that actually wins more Uno. Full video on my channel. #uno #cardgames #boardgames"
-  scenes:
-  - id: hw-hold
-    render: bars
-    lines: [h2, h3]
-    params:
-      callouts:
-      - {text: "Don't play a Wild if anything else fits", at: h2@don't}
-      - {text: "From 25% to 29%", at: h2@takes}
-      - {text: "Call the color you hold most", at: h3@call}
+      - text: 'Pure luck: 1 in 4'
+        at: m2@luck
+      - text: Mostly the cards you're dealt
+        at: m3@dealt
+        color: CREAM
       chart:
         players: 4
         fair: 25
         decimals: 1
+        maxV: 54
         items:
-        - {label: Hold your Wilds, value: "=results.json:habits.hold wilds*100", at: h2@hold, color: MUSTARD, hl: true}
-        - {label: Random Wild color, value: "=results.json:habits.random colour choice*100", at: h3@twenty, color: CORAL}
+        - label: Uno, official rules
+          value: =v2.json:combos[key=official].best*100
+          at: m3@twenty
+          color: TEAL
+          pulse:
+          - m4@luck
+        - label: Exploding Kittens
+          value: =../../exploding-kittens/data/final.json:vs_casual.4.win*100
+          at: m4@forty
+          color: MUSTARD
+          hl: true
+          pulse:
+          - m4@size
+- id: free-plus-four
+  hook: 'Is the free +4
+
+    a real rule?'
+  title: Can you really play a +4 whenever you want in Uno?
+  description: 'The free plus four is the biggest skill boost of any single house rule. Full video on my channel. #uno #cardgames #boardgames'
+  scenes:
+  - id: f4-hand
+    render: fan
+    lines:
+    - r5
+    params:
+      seat_label: YOUR HAND
+      pill: 4 players
+      cards:
+      - uno:4:14
+      - uno:0:5
+      - uno:0:9
+      - uno:2:3
+      - uno:4:14
+      highlights:
+      - card: 0
+        at: r5@free
+        label: DRAW FOUR
+      - card: 1
+        at: r5@time
+        label: STILL HAVE RED? PLAY IT ANYWAY
+      - card: 4
+        at: r5@highest
+        label: ANOTHER ONE
+      play:
+      - card: 0
+        at: r5@challenges
+      - card: 4
+        at: r5@knowing
+      callouts:
+      - text: 'Skill meter: 31%'
+        at: r5@thirty
+        color: MUSTARD
+- id: seven-zero
+  hook: 'Does Seven Zero
+
+    ruin Uno?'
+  title: Does Seven Zero make Uno more luck?
+  description: 'Swapping hands drags the skill meter down and wipes out the edge of going first. Full video on my channel. #uno #cardgames #boardgames'
+  scenes:
+  - id: sz-hand
+    render: fan
+    lines:
+    - r3
+    params:
+      seat_label: YOUR HAND
+      pill: 4 players
+      cards:
+      - uno:3:7
+      - uno:0:4
+      - uno:1:9
+      - uno:2:2
+      - uno:4:13
+      - uno:0:0
+      highlights:
+      - card: 0
+        at: r3@seven#2
+        label: 'A SEVEN: SWAP WITH SOMEONE'
+      - card: 5
+        at: r3@zero#2
+        label: 'A ZERO: EVERYONE PASSES'
+      - card: 4
+        at: r3@plan
+        label: YOUR PLAN…
+      - card: 1
+        at: r3@take
+        label: …NOW SOMEONE ELSE'S
+      - card: 2
+        at: r3@starts
+        label: 'GOING FIRST: NO EDGE LEFT'
+      play:
+      - card: 0
+        at: r3@swaps
+      callouts:
+      - text: 'Skill meter: 26%'
+        at: r3@twenty
+        color: CORAL
+      - text: 'Going first: almost 27% officially'
+        at: r3@official
+- id: say-uno
+  hook: 'What if you never
+
+    forget to say Uno?'
+  title: How much does forgetting to say Uno cost you?
+  description: 'Everyone forgets one time in four. Full video on my channel. #uno #cardgames #boardgames'
+  scenes:
+  - id: su-bars
+    render: bars
+    lines:
+    - u3
+    - u4
+    params:
+      callouts:
+      - text: Everyone forgets 1 time in 4
+        at: u3@forgets
+      - text: Caught half the time
+        at: u3@half
+        color: CREAM
+      chart:
+        players: 4
+        fair: 25
+        decimals: 1
+        maxV: 46
+        items:
+        - label: Never forgets
+          value: =v2.json:uno.official.never forgets*100
+          at: u3@thirty
+          color: MUSTARD
+          hl: true
+        - label: Always forgets
+          value: =v2.json:uno.official.always forgets*100
+          at: u4@five
+          color: CORAL
+          pulse:
+          - u4@uno
