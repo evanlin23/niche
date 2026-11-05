@@ -22,11 +22,11 @@ scenes:
     players: 4
     names: [THE STACKER, THE SWAPPER, THE KEEP-DRAWER, THE RULES LAWYER]
     hands: 7
-    highlight: [[0, o2@stacks], [1, o2@swaps], [2, o2@keep], [3, o2@says]]
+    highlight: [[0, o2@stack], [1, o2@swap], [2, o2@keep], [3, o2@say#2]]
     turns:
     - {at: o1@differently, seat: 3, ev: play, card: 'uno:3:4'}
-    - {at: o2@stacks, seat: 0, ev: play, card: 'uno:0:12', label: STACKED!}
-    - {at: o2@swaps, seat: 1, ev: play, card: 'uno:0:7', label: SWAP HANDS}
+    - {at: o2@stack, seat: 0, ev: play, card: 'uno:0:12', label: STACKED!}
+    - {at: o2@swap, seat: 1, ev: play, card: 'uno:0:7', label: SWAP HANDS}
     - {at: o2@drawing, seat: 2, ev: draw, label: KEEP DRAWING}
     - {at: o2@until, seat: 2, ev: draw}
     - {at: o2@real, seat: 3, ev: play, card: 'uno:2:7', label: NOT A REAL RULE}
