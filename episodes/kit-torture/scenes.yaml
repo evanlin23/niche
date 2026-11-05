@@ -53,3 +53,26 @@ scenes:
     frames:
     - {at: a5@grid, total: 30, hits: 4, head: "30 cards", sub: "4 hits"}
     - {at: a5@fifteen, total: 15, hits: 4, head: "15 cards", sub: "4 hits"}
+- id: together
+  render: table
+  lines: [a6]
+  params:
+    players: 4
+    hands: 6
+    names: [ONE, TWO, THREE, FOUR]
+    turns:
+    - {at: a6@now, seat: 0, ev: play, card: 2}
+    - {at: a6@now, seat: 1, ev: play, card: 3}
+    - {at: a6@now, seat: 2, ev: play, card: 6}
+    - {at: a6@together, seat: 3, ev: play, card: 7}
+    - {at: a6@together, seat: 0, ev: play, card: 1}
+- id: fanpair
+  render: fan
+  lines: [a7]
+  params:
+    seat_label: TOGETHER
+    cards: [0, 1, 2, 3, 4, 5]
+    play:
+    - {card: 5, at: a7@once}
+    - {card: 4, at: a7@once}
+    - {card: 3, at: a7@together}

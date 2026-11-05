@@ -144,6 +144,7 @@ cards" in docs/LESSONS.md. Custom scenes must use them too (the static gate fail
     - {at: o2@plays, seat: 2, ev: play, card: 2, label: ATTACK}
     - {at: o2@steals, seat: 4, ev: draw}
     turns_auto: {from: 0.4, every: 1.2}         # optional: keep play going round the table
+    # plays may share an anchor: they are staggered by a few frames and stack in landing order, never in each other
     out: [[3, o3@out]]                          # pawn tips over
 ```
 

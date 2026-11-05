@@ -90,6 +90,11 @@ structurally prevented and every render is checked:
 - **Motion paths respect layers.** A card moving within a row is pulled out toward the viewer, moved, and pushed back
   in at its new height; a played card rises clear of the hand, travels over it, then descends and lands flat; a fanned
   hand shares one plane (tilts are in-plane). Lifting, dropping or sliding straight through other cards is a bug.
+- **Coincident landings can't share a layer.** Every card sent to a pile (table plays, fan plays) gets its own
+  depth slot in LANDING order (`scheduleLandings` in kit.js); events on the same word are staggered (table: 0.12 s,
+  fan: 0.3 s, so the first card is clear of the hand before the next travels), and every card in the air has its own
+  flight. Two Uno plays on one word used to land inside each other (0.03 deep) and were worked around by moving a
+  word anchor; the torture test now plays 3 + 2 cards on the same words (table) and 2 at once (fan).
 - **Clipping check (probe, every frame):** oriented boxes for every card/piece/pawn/bar, pairwise separating-axis
   test: any interpenetration, parallel overlapping cards closer than 0.003 along their normal, or a card under the
   table is an error.
