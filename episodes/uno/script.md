@@ -25,87 +25,91 @@ Lines marked (creator) are the creator's own wording, verbatim; the rest is a dr
 - Exploding Kittens reference: episodes/exploding-kittens/data/final.json `vs_casual.4.win` = 40.5 (fair 25).
 - Engine check: opening hand has a Wild, math 55.81%, engine 55.84% (data/engine_check.json).
 - Rules: Mattel GDJ85 sheet (no stacking, draw one, +4 only without the current colour, challenge 4/6, UNO: caught -> 2).
-- "Billions": results.json 12.6B + v2.json 7.7B rounds.
+- Total rounds: results.json 12.6B + v2.json 414 tests x 20M = 8.28B + extras.json 28 tests x 100M = 2.8B = 23.68B
+  ("over twenty three billion"; re-check after the Actions merges).
+- u6 race (local 2M, seed 11; re-run on Actions): table forget 0.5 + catch 1 (= coin-flip race); never loses race 40.9 (official),
+  always loses 0.0 (official; caught at one card every time, draws to 3). b3: v2 `stack+seven_zero+jump_in+free_d4+multi` 27.5.
 - Local runs (200k-500k per test) until the Actions runs merge; re-check every number after.
 
 ## Cold open
 [o1] Everybody plays Uno a little bit differently.
-[o2] Some people allow plus twos to stack. Some people say that we need to swap hands when anyone plays a seven. And some people will force you to keep drawing and drawing and drawing until you can play, and somebody else always says that that isn't a real rule.
-[o3] So, I took every house rule I could find, gave them to bots, and played billions of rounds of Uno.
-[o4] I wanted to find the best way to play. Rounds that don't drag on forever, where playing well actually wins you more games.
-[o5] Turns out the rules decide how much skill Uno even has. Some rule sets let a good player win more than a third of the time. One makes playing well lose you games. And a bunch of the rules you think are official, aren't.
+[o2] Some people will allow plus twos to stack. Some people will say that you have to swap hands with someone whenever you play a seven. And some people will force you to keep drawing and drawing until you can play, and somebody else will always say that that isn't a real rule.
+[o3] So, I took every house rule I could find, gave them to bots, and played over twenty three billion rounds of Uno.
+[o4] I wanted to find the best way to play. Rounds that don't drag on forever, and where playing well actually wins you more games.
+[o5] And the rules decide how much skill Uno even has. Some rule sets let a good player win more than a third of the time. One makes playing well lose you games. And a bunch of the rules you think are official, actually aren't.
 
 ## The game in thirty seconds
 [g1] If it's been a while since you've played, the rule sheet goes like this. Everyone gets seven cards, and one card gets flipped face up from the deck to start the pile.
-[g2] On your turn you match the top card by color or by number, or you play a Wild. First one to get to zero cards wins the round.
-[g3] Skip makes the next player miss a turn. Reverse flips the direction. Draw Two makes the next player draw two and lose their turn. A Wild lets you pick the color.
-[g4] Now, the Wild Draw Four. I'd bet most people have never heard this part. Officially, you can only play it when you have nothing in the current color. If someone thinks you cheated, they can challenge you, and if you're caught, you draw the four yourself.
-[g6] The sheet also says you can't stack plus twos. And when you can't play, you draw one card. One. Not until you find something.
-[g5] Fun fact, that challenge barely matters. Challenging every plus four, or bluffing one, changes your win rate by about half a point.
+[g2] On your turn you can play a card that matches the top card either by color or by number, or you can play a Wild. The first one to get to zero cards wins the game.
+[g3] A Skip makes the next player miss a turn. Reverse flips the direction. Draw Two makes the next player draw two and they lose their turn. A Wild lets you pick the color.
+[g4] Now, the Wild Draw Four. I'd bet most people have never even heard of this part. Officially, you can only play it when you have nothing left in the current color. If someone thinks you cheated, they can challenge you, and if you're caught, you have to draw the four cards yourself.
+[g5] And fun fact, that challenge barely even matters anyway. Challenging every plus four, or bluffing one, changes your win rate by about half a point.
+[g6] The sheet also says you can't stack plus twos. And when you can't play, you draw one card. One. Not to draw cards until you find something you can play.
 
 ## Can you trust it
-[c3] I checked my simulator against plain math. The chance your opening hand has at least one Wild is fifty five point eight percent, and over ten million deals my simulator got the same.
-[c6] The bots only know what a real player knows: their own hand, the top card, and how many cards everyone's holding. A normal bot plays any card that matches and picks the color it holds the most of.
+[c3] I checked my simulator against plain math. The chance that your opening hand has at least one Wild is fifty five point eight percent, and over ten million deals my simulator got the same.
+[c6] Also, the bots only know what a real player would know: their own hand, the top card, and how many cards everyone's holding. A normal bot plays any card that matches and picks the color it holds the most of.
 
 ## How much skill is in Uno?
-[m1] How do you measure skill in a card game? I take my best bot, give it every good habit I could find, and sit it down with three normal players.
-[m2] If Uno were pure luck, it would win one round in four. Twenty five percent.
-[m3] Under the official rules, it wins twenty nine. Four points of skill. Most of official Uno is the cards you're dealt.
-[m4] For comparison, my best Exploding Kittens bot won forty and a half percent at the same size table. So official Uno sits pretty close to the luck end.
+[m1] How do you even measure skill in a card game? For me, I took my best bot, gave it every good habit I could find, and sat it down with three normal players.
+[m2] If Uno was pure luck, it would win one round in four. Exactly twenty five percent.
+[m3] Under the official rules, it wins twenty nine. Four points of skill. If we follow the official rules, most of the game is just the cards that you're dealt and the cards you draw.
+[m4] And for comparison, when I tested Exploding Kittens, my best bot won forty and a half percent at a table of the same size. So the official version of Uno sits pretty close to the luck end.
 
 ## House rules on the meter
-[r1] Now let's put the house rules on the meter, one at a time.
-[r2] Stacking, the rule everybody looks up, nudges it to thirty. Barely a bump.
-[r3] Seven Zero, where a seven swaps hands, drags it down to twenty six. My guess is it's hard to plan a hand when someone can take it from you. It also wipes out the edge for going first. Officially, whoever starts wins almost twenty seven percent of rounds. With Seven Zero, it's dead even.
-[r4] Jump In, where anyone holding the exact same card can slap it down out of turn, pushes it up to thirty and a half.
-[r5] The free plus four, the way most people play it, any time, no challenges? Thirty one. That's the highest of any single house rule. I've played it that way my whole life without knowing it wasn't the real rule.
-[r6] Draw until you can play barely moves the meter at all. It makes everything take forever. Eighty two turns a round instead of forty seven, and one round in ten goes past a hundred and seventy.
-[r7] The one that kills skill? Not being allowed to go out on an action card or a Wild. That drops the meter to twenty five and a half, basically pure luck, and the rounds get longer too.
-[r8] What if you throw every house rule in at once? Stacking, Seven Zero, Jump In, draw until you can play, the free plus four. You get eighty six turns a round, and less skill than the official game. Twenty eight and a half.
-[r9] One more I tried for fun: Bounce, where a Reverse sends a plus two right back at whoever played it. Twenty nine. It changes nothing. It just feels amazing.
+[r1] Now let's check each of the house rules, one at a time.
+[r2] Stacking, which I'd guess is the rule everybody has looked up at least once, nudges the best bot to thirty percent. That's barely anything.
+[r3] Seven Zero, where playing a seven swaps your hand with someone and playing a zero passes everyone's hand around the table, drags it down to twenty six percent. My guess is that it's hard to plan a hand strategically when someone can just take it from you at any time. This rule also wipes out the edge for going first. If we follow the official rules, whoever starts wins almost twenty seven percent of rounds. With Seven Zero, it's dead even.
+[r4] Jump In, where anyone holding the exact same card can slap it down out of turn, pushes it up to thirty and a half percent.
+[r5] The free plus four is how a lot of people play it: a plus four any time you want, no challenges. That brings us to thirty one percent. That's the highest of any single house rule. And I've essentially played it that way my whole life without knowing it wasn't a real rule.
+[r6] Draw until you can play barely moves the meter at all. All it does is make everything take forever. Rounds take eighty two turns instead of forty seven normally, and one round in ten even takes over a hundred and seventy turns.
+[r7] The rule that kills skill is not being allowed to go out on an action card or a Wild. That drops the meter to twenty five and a half percent, basically pure luck, and the rounds get longer too.
+[r8] And what if you throw every house rule in at once? Stacking, Seven Zero, Jump In, draw until you can play, the free plus four. You get eighty six turns a round, and less skill than the official game at twenty eight and a half percent.
+[r9] Another thing I tried for fun was Bounce, where a Reverse sends a plus two right back at whoever played it. The win rate stays at twenty nine. It changes nothing. It's just really funny to do.
 
 ## How I play
-[i1] This is how I've always played. Plus twos stack on plus twos and plus fours on plus fours, but you can't mix them. Plus four whenever you want. And if you have a bunch of the same number, you can dump them all at once.
-[i2] That last one changes a lot. Rounds drop from forty seven turns to about forty, and my best bot wins thirty one percent.
-[i3] Out of a hundred and ninety two rule combinations I tested, that lands in the top sixth for skill. So apparently I've been playing one of the better versions of Uno this whole time.
-[i4] One habit matters a ton with that rule. If you hold back and play your matching numbers one at a time, you win fourteen percent of rounds instead of twenty five. That's one of the biggest mistakes in this whole video.
-[i5] The giant stacks people love? With my rules, someone draws eight or more at once in about one round in nine. Ten or more, less than one round in a hundred.
+[i1] This is how I've always played. Plus twos stack on plus twos and plus fours on plus fours, but you can't mix them. You can play a plus four whenever you want. And if you have a bunch of the same number, you can dump them all at once.
+[i2] That last one changes a lot. Rounds drop from forty seven turns to around forty, and my best bot wins thirty one percent of the time.
+[i3] Out of the one hundred and ninety two rule combinations I tested, this combination lands in the top sixth for skill. So apparently I've been playing one of the better versions of Uno my entire life.
+[i4] One habit matters a ton with this combination. If you hold back and play your matching numbers one at a time, you win fourteen percent of rounds instead of twenty five. Basically, if you can dump your numbers, dump them.
+[i5] I also checked how big the stacks get. With my rules, in about one round in nine, somebody has to pick up eight or more cards at once. Ten or more happens in less than one round in a hundred.
 
 ## Other tables
-[t1] If you mostly play one on one, the meter shifts. My best bot wins fifty four percent, against a fair share of fifty, and whoever goes first wins fifty one and a half.
-[t2] With Seven Zero, every seven swaps your hand with your only opponent, and the best bot falls to barely over fifty.
-[p1] More people? The box says up to ten. Every extra player adds about seven turns, so a ten player round takes about ninety one.
+[t1] If you mostly play one on one, the meter shifts. My best bot wins fifty four percent, against a fair share of fifty, and whoever goes first wins fifty one and a half percent of the time.
+[t2] With Seven Zero, every seven swaps your hand with your only opponent, and the best bot falls to barely over fifty percent.
+[p1] Also, if we have more people, every extra player adds about seven turns, so a ten player round takes around ninety one.
 
 ## The extremes
 [x1] What if you wanted Uno to be pure luck? Easy. After every single turn, everyone passes their entire hand to the next player.
-[x2] My best bot drops to twenty four percent. That's below a fair share. Under that rule, being good at Uno makes you worse at Uno. My guess is every good move you set up gets handed to the next person.
-[x3] Or you could use a rule Mattel actually prints on the rule sheet, as an idea for the blank cards. Tell a joke. If anybody laughs, you discard down to one card. If nobody laughs, you draw four.
-[x4] I counted a laugh as a coin flip, because my bots aren't funny. It drags the meter down to twenty six and a half. The official suggestion turns Uno into a coin toss.
-[x7] Without any silly rules, the most luck-driven Uno I found is draw until you can play, dumping matching numbers, and no going out on an action card. The best bot wins twenty three and a half. Below fair. Nobody should play this.
-[x5] The most skillful Uno I could find? Stacking, Jump In, the free plus four, and, of all things, draw until you can play. The best bot wins thirty five percent.
-[x6] The catch is that a round takes eighty four turns. Nobody has that kind of time.
+[x2] My best bot drops to twenty four percent, which is below a fair share of twenty five. Under that rule, being good at Uno makes you worse at Uno. My guess is every good move you set up gets handed to the next person.
+[x3] Or you could use one of the ideas printed on the official rule sheet for the blank cards. You tell a joke, and if anybody laughs, you get to discard down to one card. If nobody laughs, you have to draw four.
+[x4] I simulated a laugh as a coin flip, because my bots aren't funny enough. This rule drags the meter down to twenty six and a half percent. The official suggestion turns Uno into mostly a coin toss.
+[x7] Without any silly rules, the most luck-driven Uno I found is this one. Draw until you can play, dump your matching numbers, and no going out on an action card. The best bot wins twenty three and a half, which is below the fair share. In my opinion, nobody should play like this.
+[x5] On the other hand, here's the most skillful Uno I could find. Stacking, Jump In, the free plus four, and, of all things, draw until you can play. The best bot wins thirty five percent.
+[x6] The only catch is that a round now takes eighty four turns, almost double the official version.
 
 ## The best way to play
-[b1] Here's what I'd play, if you want it fast and you want playing well to pay off.
-[b2] Stacking, Jump In, the free plus four, and dumping all your matching numbers at once. Rounds take about thirty nine turns, faster than the official game, and the best bot wins thirty two percent. That's almost twice the skill of the official rules.
+[b1] Now, here's what I would play, if you want games to be both fast and skill based.
+[b2] Stacking, Jump In, the free plus four, and dumping all your matching numbers at once. Rounds take around thirty nine turns, faster than the official game, and the best bot wins thirty two percent. That's almost twice the skill of the official rules.
 [b3] If you'd rather keep it a coin toss so anyone at the table can win, add Seven Zero.
 
 ## How to win
-[w1] Now, how to win under those rules, biggest habit first. Every number is one bot changing one habit, against three normal players.
-[w2] Number one. Dump every card of a number together. Hold some back and you drop from twenty five percent to fifteen.
-[w3] Number two. Hold your Wilds. Don't play a Wild while you've got another card you can play. That alone gets you to twenty nine.
-[w4] Number three. Always stack when you can. A bot that never stacks, and just eats the cards, wins about twenty two and a half.
-[w5] The rest is small stuff. Switching into the color you hold the most of is worth about a point and a half, and jumping in whenever you can is worth about one.
-[w6] There's one more habit that beats almost all of these, and it's the one my bots were never allowed to get wrong.
+[w1] Now, how do you win under those rules? There are four big habits to follow. Every number is one bot changing one habit, against three normal players.
+[w2] Number one. Dump every card of a number together. If you hold any back, you drop from winning twenty five percent to fifteen.
+[w3] Number two. Hold your Wilds. Don't play a Wild while you've got another card you can play. That alone gets you to twenty nine percent.
+[w4] Number three. Always stack when you can. A bot that never stacks, and just takes the cards instead of passing them on, wins about twenty two and a half percent of the time.
+[w5] The rest is all just small stuff. Switching into the color you hold the most of is worth about a point and a half, and jumping in whenever you can is worth about one.
+[w6] Finally, there's one more habit that beats almost all of these, and it's the one my bots were never allowed to get wrong.
 
 ## Saying Uno
-[u1] Remember how my bots never argue about the rules? They also never forgot to say Uno. So I made them forget.
+[u1] Remember how my bots never argue about the rules? They also never forget to say Uno. So, I made them forget.
 [u2] Officially, if you forget and someone catches you before the next player goes, you draw two cards.
-[u3] I set the table so everyone forgets one time in four, and catches a forgetter half the time. A bot that never forgets wins thirty percent. That's a bigger edge than holding your Wilds.
-[u4] A bot that always forgets wins five. And catching other people barely matters, about half a point. Just say Uno.
-[u5] Some tables make it four cards instead of two. Then never forgetting gets you to thirty two percent. Under the rules I'd play, it's twenty nine, right up there with holding your Wilds.
+[u3] I set the table so everyone forgets to say Uno one time in four, and someone catches a forgetter half the time. A bot that never forgets wins thirty percent, which is a bigger edge than holding onto your Wilds.
+[u4] A bot that always forgets wins five percent of the time. Catching other people that forget barely matters, about half a point. So, just make sure you say Uno.
+[u5] Also, some tables make you draw four cards instead of just two. Then never forgetting gets you to thirty two percent. Under the rules I would play, it lands at twenty nine, right up there with holding onto your Wilds.
+[u6] And at a lot of tables it's a race. The second you're down to one card, if someone else yells Uno before you do, you draw two. I made that race a coin flip. A bot that always wins the race wins forty one percent of rounds. A bot that always loses it, under the official rules, never wins. Not once. Every time it gets to one card, it's back up to three.
 
 ## Close
-[e1] Under the official rules, Uno is mostly luck. Under the rules I'd play, a good player gets almost twice the edge, and a round is over in thirty nine turns. That's the best way to play Uno I found.
+[e1] Under the official rules, Uno is mostly luck. Under the rules I'd play, a good player gets almost twice the edge, and a round is over in thirty nine turns, about eight turns faster. That's the best way to play Uno that I've found.
 [n1] Next up is Sorry!. It's supposed to be pure luck, but my best bot won a third of its games.
 [e2] Tell me where your table lands on the meter, and what rule you'd add to it. I'll read every one.
