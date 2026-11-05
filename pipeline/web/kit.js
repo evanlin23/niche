@@ -886,7 +886,7 @@ T.table = async (stage, spec) => {
     const name = (p.names || [])[i] || `PLAYER ${i + 1}`;
     const lab = K.worldLabel({ text: name, size: vert ? 30 : 26, role: 'label', at: -1, color: GN.muted, maxW: vert ? 320 : 360 },
       new THREE.Vector3(pawn.position.x, front ? 0 : 2.0, pawn.position.z + (front ? 0.9 : 0)), front ? 4 : -34);
-    seats.push({ i, sx, sz, dir, pawn, hand, lab, home: pawn.position.clone() });
+    seats.push({ i, sx, sz, dir, cnt, pawn, hand, lab, home: pawn.position.clone() });
   }
   const hl = (p.highlight || p.seat_hl || []).filter((h) => typeof h[1] === 'number');
   const hlK = hl.map(([s, at]) => K.tw(`seat ${s} hop`, at, 2.3));
@@ -901,6 +901,27 @@ T.table = async (stage, spec) => {
   scheduleLandings(turns, 0.12, (e) => K.tw(`${e.ev} by seat ${e.seat}`, e.start, 0.75).dur);   // lands before the cut
   const plays = turns.filter((x) => x.ev === 'play');
   plays.map((e, i) => ({ e, i })).sort((a, b) => a.e.lands - b.e.lands || a.i - b.i).forEach(({ e }, slot) => { e.slot = slot; });   // pile layers among plays, landing order
+  // hands change size (Uno session): a play takes a card out of that seat's hand as it leaves, a draw adds one when it lands
+  seats.forEach((st) => {
+    const extra = turns.filter((x) => x.ev === 'draw' && x.seat % n === st.i).length;
+    for (let k = 0; k < extra; k++) { const c = kitCard(stage, p.back || 'back'); c.visible = false; K.key(c, 'decor'); st.hand.push(c); }
+  });
+  const handCount = (st, t, soft) => {        // soft: eased count for spacing (cards slide together/apart over 0.3 s)
+    let c = st.cnt;
+    for (const x of turns) {
+      if (x.seat % n !== st.i) continue;
+      const t0 = x.ev === 'play' ? x.start : x.lands;
+      const u = soft ? ease(clamp((t - t0) / 0.3)) : (t >= t0 ? 1 : 0);
+      c += x.ev === 'play' ? -u : u;
+    }
+    return Math.max(0, c);
+  };
+  const handSlot = (st, k, span) => { const off = (k - (Math.max(span, 1) - 1) / 2) * 0.42;
+    return new THREE.Vector3(st.sx * 0.82 + Math.cos(st.dir) * off, layerY(k, 0.02), st.sz * 0.82 - Math.sin(st.dir) * off); };
+  // flights start/end exactly where the hand card is: a play leaves from the top card's slot, a draw lands in the next
+  // slot (the hand re-spaces from there)
+  turns.forEach((x) => { const st = seats[x.seat % n], c = Math.round(handCount(st, (x.ev === 'play' ? x.start : x.lands) - 1e-4, false));
+    x.handP = x.ev === 'play' ? handSlot(st, Math.max(0, c - 1), c) : handSlot(st, c, c); });
   turns.forEach((e, k) => { e.mover = kitCard(stage, 'back'); e.mover.visible = false; K.key(e.mover); });
   // arc lanes by what's already in the air: a flight that starts while others fly takes the lowest free lane, and
   // lanes sit a card's height apart (cards flip in the air: two flips 0.24 s apart on one arc height clipped)
@@ -925,6 +946,15 @@ T.table = async (stage, spec) => {
       s.pawn.rotation.z = ko * Math.PI / 2.2; s.pawn.position.y += ko * 0.3;
       s.pawn.position.y += hop;
     });
+    seats.forEach((st) => {
+      const shown = Math.round(handCount(st, t, false)), span = handCount(st, t, true);
+      st.hand.forEach((c, k) => {
+        c.visible = k < shown;
+        if (!c.visible) return;
+        c.position.copy(handSlot(st, k, span));
+        c.rotation.set(0, st.dir + Math.PI, 0);
+      });
+    });
     // turns
     let e = null; for (const x of turns) if (t >= x.start && t < x.start + x.dur + 0.25) e = x;
     // landed plays: each in its own layer (its landing slot), drawn as pile cards
@@ -936,16 +966,21 @@ T.table = async (stage, spec) => {
       const s = seats[x.seat % n], k = ease(clamp((t - x.start) / x.dur));
       x.mover.visible = t >= x.start && k < 1;
       if (!x.mover.visible) continue;
-      const seatP = new THREE.Vector3(s.sx * 0.82, layerY(14, 0.02), s.sz * 0.82), deckP = new THREE.Vector3(-0.9, layerY(24, 0.03), 0);
+      const seatP = x.handP, deckP = new THREE.Vector3(-0.9, layerY(24, 0.03), 0);
       // an eased arc (k eased, so it leaves and lands with zero speed); a played card flips face-up in the air (edge-on
       // at the swap, flat again by 80% of the flight); a drawn card turns to face its seat
-      if (x.ev === 'draw') x.mover.position.lerpVectors(deckP, seatP, k); else x.mover.position.lerpVectors(seatP, pileAt(x.slot), k);
-      x.mover.position.y += Math.sin(k * Math.PI) * (1.3 + LANE * x.lane);
-      if (x.ev === 'draw') { x.mover.setFace(p.back || 'back'); x.mover.rotation.set(0, lerp(0, s.dir + Math.PI, k), 0); }
+      // rise first, travel across at height, then come down near-vertically: a card from the far seats used to cross
+      // the 24-card deck already descending (and mid-flip) and clipped it
+      const kx = ease(clamp((k - 0.15) / 0.7)), from = x.ev === 'draw' ? deckP : seatP, to = x.ev === 'draw' ? seatP : pileAt(x.slot);
+      x.mover.position.set(lerp(from.x, to.x, kx), lerp(from.y, to.y, k), lerp(from.z, to.z, kx));
+      x.mover.position.y += Math.sin(k * Math.PI) * (1.6 + LANE * x.lane);
+      // yaw: from the pile's (0) to the hand's turn, or back, the short way round, over the first/last half of the flight
+      const handYaw = s.dir + Math.PI, dYaw = Math.atan2(Math.sin(handYaw), Math.cos(handYaw));
+      if (x.ev === 'draw') { x.mover.setFace(p.back || 'back'); x.mover.rotation.set(0, dYaw * ease(clamp((k - 0.5) / 0.5)), 0); }
       else {
         const fk = ease(clamp((k - 0.25) / 0.5));                 // 0 -> 1: back up -> face up, only while clear of hands and pile
         x.mover.setFace(fk < 0.5 ? (p.back || 'back') : x.card);
-        x.mover.rotation.set(fk < 0.5 ? fk * Math.PI : (fk - 1) * Math.PI, 0, 0);
+        x.mover.rotation.set(fk < 0.5 ? fk * Math.PI : (fk - 1) * Math.PI, dYaw * (1 - ease(clamp(k / 0.5))), 0);   // leaves turned like the hand
       }
     }
     if (e) {
