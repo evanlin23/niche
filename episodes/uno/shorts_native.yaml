@@ -1,0 +1,127 @@
+# Native 9:16 Shorts (python -m pipeline.shorts_native uno). Kit templates, long-video timing, audio cut from the
+# long video. Numbers come from data/*.json. Each opens on its spoken hook with the main visual already on screen.
+# Titles are questions (no "N games simulated", no big number first).
+game: "Uno"   # context pill above the hook
+shorts:
+- id: draw-until
+  hook: "The Uno rule that\nbreaks the round"
+  title: "Which Uno house rule makes every round drag on?"
+  description: "Draw until you can play: rounds 75% longer. Full video with every house rule on my channel. #uno #cardgames #boardgames"
+  scenes:
+  - id: du-length
+    render: bars
+    lines: [x3]
+    params:
+      callouts:
+      - {text: "A different animal", at: x3@different, color: CORAL}
+      - {text: "75% longer", at: x3@seventy, color: CORAL}
+      chart:
+        players: 4
+        unit: ''
+        decimals: 0
+        items:
+        - {label: Official, value: "=results.json:variants.official.table.mean_turns", at: x3@draw, color: TEAL}
+        - {label: Draw until you can play, value: "=results.json:variants.draw_until.table.mean_turns", at: x3@eighty, color: CORAL, hl: true}
+  - id: du-drawn
+    render: bars
+    lines: [x5]
+    params:
+      callouts:
+      - {text: "It's just cards", at: x5@reason}
+      - {text: "Nearly three times as many", at: x5@nearly}
+      - {text: "Losers hold about 40% more points", at: x5@forty, color: CORAL}
+      chart:
+        players: 4
+        unit: ''
+        decimals: 0
+        items:
+        - {label: Official, value: "=results.json:variants.official.table.mean_cards_drawn_per_round", at: x5@twenty, color: TEAL}
+        - {label: Draw until you can play, value: "=results.json:variants.draw_until.table.mean_cards_drawn_per_round", at: x5@seventy, color: CORAL, hl: true}
+
+- id: stacking
+  hook: "Can you stack\nDraw Twos in Uno?"
+  title: "Are you actually allowed to stack +2s in Uno?"
+  description: "The official rule sheet says no. And it barely matters. Full video on my channel. #uno #cardgames #boardgames"
+  scenes:
+  - id: st-sheet
+    render: statement
+    lines: ["c2@you"]
+    params:
+      lines:
+      - 'The rule sheet:'
+      - {text: "no stacking.", color: CORAL, at: c2@stack}
+      - {text: "draw ONE card.", color: MUSTARD, at: c2@one}
+  - id: st-hits
+    render: bars
+    lines: ["s2@with"]
+    params:
+      callouts:
+      - {text: "About 1 in 100 rounds", at: s2@hundred}
+      - {text: "Draw Fours join: about 5 in 100", at: s2@join, color: CORAL}
+      chart:
+        players: 4
+        unit: ''
+        decimals: 1
+        maxV: 8
+        items:
+        - {label: "Draw Twos stack", value: "=results.json:variants.stacking.table.share_rounds_with_10plus_draw*100", at: s2@hundred, color: MUSTARD}
+        - {label: "Draw Fours join in", value: "=results.json:variants.stacking_mixed.table.share_rounds_with_10plus_draw*100", at: s2@five, color: CORAL}
+  - id: st-move
+    render: table
+    lines: [s3]
+    params:
+      players: 4
+      names: [PLAYER 1, PLAYER 2, PLAYER 3, PLAYER 4]
+      hands: 6
+      highlight: [[3, s3@one]]
+      turns:
+      - {at: s3@stack, seat: 0, ev: play, card: 'uno:0:12', label: DRAW TWO}
+      - {at: s3@moves, seat: 1, ev: play, card: 'uno:3:12', label: PASS IT ON}
+      - {at: s3@three, seat: 2, ev: play, card: 'uno:2:12', label: PASS IT ON}
+      - {at: s3@six, seat: 3, ev: draw, label: DRAWS ALL SIX}
+      callouts:
+      - {text: "A stack moves cards, it doesn't add them", at: s3@add}
+      - {text: "About 24 cards a round either way", at: s3@twenty}
+
+- id: seven-zero
+  hook: "Seven Zero: who do\nyou swap with?"
+  title: "Who should you swap hands with in Seven Zero?"
+  description: "Swap with a random player and you win less than with any other habit I tested. Full video on my channel. #uno #cardgames #boardgames"
+  scenes:
+  - id: sz-swap
+    render: table
+    lines: ["z4@when"]
+    params:
+      players: 4
+      names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
+      hands: [6, 2, 7, 5]
+      highlight: [[1, z4@fewest], [0, z4@seven]]
+      turns:
+      - {at: z4@seven, seat: 0, ev: play, card: 'uno:3:7', label: SEVEN!}
+      - {at: z4@fewest, seat: 1, ev: draw, label: FEWEST CARDS}
+      - {at: z4@random, seat: 2, ev: draw, label: RANDOM SWAP}
+      callouts:
+      - {text: "Swap with the fewest cards", at: z4@swap}
+      - {text: "Random swap: 21.5% (fair share 25%)", at: z4@twenty, color: CORAL}
+      - {text: "Worse than any single official habit", at: z4@worse, color: CORAL}
+
+- id: hold-wilds
+  hook: "Should you play\nyour Wild right away?"
+  title: "Should you save your Wild cards in Uno?"
+  description: "Holding your Wilds is the one habit that actually wins more Uno. Full video on my channel. #uno #cardgames #boardgames"
+  scenes:
+  - id: hw-hold
+    render: bars
+    lines: [h2, h3]
+    params:
+      callouts:
+      - {text: "Don't play a Wild if anything else fits", at: h2@don't}
+      - {text: "From 25% to 29%", at: h2@takes}
+      - {text: "Call the color you hold most", at: h3@call}
+      chart:
+        players: 4
+        fair: 25
+        decimals: 1
+        items:
+        - {label: Hold your Wilds, value: "=results.json:habits.hold wilds*100", at: h2@hold, color: MUSTARD, hl: true}
+        - {label: Random Wild color, value: "=results.json:habits.random colour choice*100", at: h3@twenty, color: CORAL}
