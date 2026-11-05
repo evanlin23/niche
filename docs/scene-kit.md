@@ -50,7 +50,8 @@ Code: `pipeline/web/kit.js` (templates), `pipeline/kit.py` (anchors, data refs, 
   from the aligned voice) above a compact "Full video on my channel" + Buh. The scene title is replaced by the
   hook; the player pill stays. **The first second decides everything** (the first EK Short kept 24% of viewers:
   it opened on an empty table): in a Short every template's main visual (`K.build`) is pre-built so frame 1 shows
-  it half-built and growing, the word anchors become emphasis pulses, and the camera moves linearly from frame 1.
+  it nearly built and still growing, the word anchors become emphasis pulses, and the camera opens on a quick
+  sideways swing (fastest at frame 1, settled by 1.2 s, included in the camera fit) at full framing.
 
 Common params on every template: `title`, `pill` (free text), `callouts: [{text, at, color?: CORAL|CREAM}]`
 (one at a time, word-timed), `notes: [{text, at}]` (stay until the next note), `no_brand`, `yaw` (orbit degrees).

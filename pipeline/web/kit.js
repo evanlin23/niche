@@ -155,7 +155,7 @@ export class Kit {
   // pre-built in the first ~0.4 s (staggered by idx) and the word becomes an emphasis pulse instead.
   build(name, at, dur = 0.9, idx = 0) {
     if (!this.L.short) { const k = this.tw(name, at, dur); k.emph = () => 0; return k; }
-    const k = this.tw(`${name} (pre-built)`, -0.45 + idx * 0.04, 0.6);   // frame 1: ~85% built AND still moving
+    const k = this.tw(`${name} (pre-built)`, -0.52 + idx * 0.03, 0.6);   // frame 1: ~95% built AND still moving
     const e = this.tw(`${name} emphasis`, at, 0.7);
     k.emph = (t) => (t >= at ? Math.sin(Math.PI * e(t)) : 0);
     return k;
@@ -244,6 +244,7 @@ export class Kit {
     look = look ? new THREE.Vector3(...look) : bb.getCenter(new THREE.Vector3());
     const amp = Math.min(yaw, 0.5 * stage.duration);          // ~1 deg/s, never more than +/- yaw
     const dirs = [dirFrom(elev, -amp), dirFrom(elev, 0), dirFrom(elev, amp)];
+    if (this.L.short && this.spec.short.first) dirs.push(dirFrom(elev, -amp - 12));   // the opening swing stays in frame too
     const dEnd = fitDistance(stage, pts, look, dirs, r.w * (1 - 2 * margin), r.h * (1 - 2 * margin));
     // view offset so the fitted content is centred in the rect (measured at the middle pose)
     placeCam(cam, look, dirs[1], dEnd);
@@ -262,12 +263,14 @@ export class Kit {
     const R = this.rig; if (!R) return;
     const stage = this.stage, cam = stage.camera;
     const k = this.L.short ? clamp(t / stage.duration) : ease(clamp(t / stage.duration));   // Shorts: moving from frame 1
-    const dir = dirFrom(R.elev, lerp(-R.amp, R.amp, k));
+    // Shorts open on a quick sideways swing, fastest at frame 1 and settled by 1.2 s: motion from the first frame
+    // without starting smaller (an opening dolly-out made frame 1 emptier than the rest: opening gate)
+    const swing = this.L.short && this.spec.short.first ? 12 * (1 - clamp(t / 1.2)) ** 2 : 0;
+    const dir = dirFrom(R.elev, lerp(-R.amp, R.amp, k) - swing);
     cam.clearViewOffset();
     // Shorts open on a quick dolly-in, fastest at frame 1 and settled by 1.2 s (motion in the first second is the
     // retention gate); the slow orbit carries on from there
-    const open = this.L.short && this.spec.short.first ? 0.14 * (1 - clamp(t / 1.2)) ** 2 : 0;
-    placeCam(cam, R.look, dir, lerp(R.d0, R.d1, k) * (1 + open));
+    placeCam(cam, R.look, dir, lerp(R.d0, R.d1, k));
     cam.setViewOffset(stage.W, stage.H, -R.dx, -R.dy, stage.W, stage.H);
     cam.updateProjectionMatrix(); cam.updateMatrixWorld();
   }
