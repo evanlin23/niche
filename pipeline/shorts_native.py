@@ -39,6 +39,8 @@ def load(slug):
     import yaml
     from .timeline import build, load_yaml, parse_script
     ep = ROOT / "episodes" / slug
+    if any((ep / "voice").glob("*.json")):        # a recorded episode: always use its real timing, never TTS estimates
+        os.environ.setdefault("TTS_ENGINE", "recorded"); os.environ.setdefault("VOICE_DIR", str(ep / "voice"))
     cfg = yaml.safe_load((ep / "shorts_native.yaml").read_text())
     texts = parse_script(ep / "script.md")
     long_scenes = build(load_yaml(ep / "scenes.yaml")["scenes"], dict(texts), ROOT / ".cache" / "tts")
