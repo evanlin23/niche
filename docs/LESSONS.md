@@ -94,8 +94,9 @@ structurally prevented and every render is checked:
   test: any interpenetration, parallel overlapping cards closer than 0.003 along their normal, or a card under the
   table is an error.
 - **Flicker check (pixels):** pixels that flip and flip back (A->B->A) at least 3 times per second in place; more
-  than 0.02% of the frame fails. The first native same-cards Short measured 1.75%; fixed renders ~0.0004%.
-  A fast-moving card toggles each pixel once and does not count.
+  than 0.02% of the frame fails. The reviewed same-cards Short measures 1.68%; fixed renders ~0.001-0.004%.
+  Objects the stage probe sees moving are masked out (z-fighting is a still-surface defect; moving objects are covered
+  by the clipping check; a field of identical cards gliding fast strobes at pixel level without any depth problem).
 - **Torture test in CI** (`episodes/kit-torture`, `.github/workflows/kit-ci.yml`): 5 seats x 9-card hands with plays
   every 0.5 s, 40/30/20-card piles, the deck spread with the hero moving top/middle/bottom/top, a 10-card hand with 4
   plays and lifts, 15 cards leaving a 30-card grid at once; orbiting cameras; rendered in 16:9 and 9:16 on every push

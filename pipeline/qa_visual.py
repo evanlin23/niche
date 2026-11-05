@@ -388,12 +388,42 @@ def pixel_checks(video: Path, timeline):
     return out, ys
 
 
-def flicker_check(video: Path, timeline, w=540, h=960, T=24, min_repeats=3, limit=0.0002):
+def moving_rects(sp, states, timeline, fps=30):
+    """frame -> screen rects (0-1) of objects moving around that frame, from the per-scene probe states."""
+    starts = {t["id"]: t["start"] for t in timeline}
+    samples = []                                           # (abs_t0, abs_t1, [rects])
+    for sc, spec in sp:
+        st = [x for x in states.get(sc.id, []) if "error" not in x]
+        W, H = spec["W"], spec["H"]
+        for a, b in zip(st, st[1:]):
+            pa = {o["id"]: o["p"] for o in a["objs"]}
+            rs = []
+            for o in b["objs"]:
+                q = pa.get(o["id"])
+                if o["r"] and (q is None or max(abs(x - y) for x, y in zip(o["p"], q)) > 0.002):
+                    r = o["r"]; rs.append((r[0] / W, r[1] / H, r[2] / W, r[3] / H))
+            s0 = starts.get(sc.id, 0)
+            samples.append((s0 + a["t"], s0 + b["t"], rs))
+    def at(frame):
+        t = frame / fps
+        out = []
+        for t0, t1, rs in samples:
+            if t0 - 0.1 <= t <= t1 + 0.1:
+                out += rs
+        return out
+    return at
+
+
+def flicker_check(video: Path, timeline, w=540, h=960, T=24, min_repeats=3, limit=0.0002, moving=None):
     """Z-fighting / shimmer: pixels whose brightness jumps and comes straight back (A -> B -> A) between consecutive
     frames, REPEATEDLY in the same place (>= 3 times within 1 s). A fast-moving card toggles each pixel once as it
     passes; coplanar faces fighting in the depth buffer toggle in place, frame after frame.
     Error when, in any 1 s window, more than 0.02% of the frame's pixels flicker like that (the card hands in the first
-    native same-cards Short: well over; clean renders: ~0)."""
+    native same-cards Short: well over; clean renders: ~0).
+    `moving(frame) -> [(x0, y0, x1, y1), ...]` (0-1 screen rects of objects moving at that frame, from the stage
+    probe) masks moving objects out: z-fighting is a still-surface defect (the creator's flickering hands sat still);
+    moving objects are covered by the probe's geometric clipping check, and a field of identical cards gliding at
+    speed strobes at pixel level without any depth problem."""
     import numpy as np
     vw, vh = (w, h)
     pr = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height",
@@ -412,7 +442,11 @@ def flicker_check(video: Path, timeline, w=540, h=960, T=24, min_repeats=3, limi
         f = np.frombuffer(buf, np.uint8).reshape(vh, vw).astype(np.int16)
         if prev2 is not None:
             d1, d2 = prev1 - prev2, f - prev1
-            toggles.append((np.abs(d1) > T) & (np.abs(d2) > T) & (np.sign(d1) != np.sign(d2)) & (np.abs(f - prev2) < T // 2))
+            tg = (np.abs(d1) > T) & (np.abs(d2) > T) & (np.sign(d1) != np.sign(d2)) & (np.abs(f - prev2) < T // 2)
+            if moving is not None:
+                for x0, y0, x1, y1 in moving(len(toggles) + 1):
+                    tg[max(0, int(y0 * vh) - 4):int(y1 * vh) + 5, max(0, int(x0 * vw) - 4):int(x1 * vw) + 5] = False
+            toggles.append(tg)
         prev2, prev1 = prev1, f
     p.wait()
     def where(t):
@@ -554,7 +588,7 @@ def run(slug, video=None, only=None, vertical=False, stills=True, out_dir=None, 
         if timeline is None:
             timeline = json.loads(tl.read_text()) if tl.exists() else [{"id": s.id, "start": s.start, "duration": s.duration} for s in scenes]
         pix, _ = pixel_checks(Path(video), timeline)
-        fl, fm = flicker_check(Path(video), timeline)
+        fl, fm = flicker_check(Path(video), timeline, moving=moving_rects(sp, states, timeline))
         pix += fl
         res["flicker"] = fm
         if short:

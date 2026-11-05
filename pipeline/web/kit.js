@@ -677,7 +677,7 @@ function deckRow(K, stage, spec) {
   K.worldLabel({ text: ends[0], size: 26, role: 'label', color: GN.mustard, at: -1, align: 'left' }, new THREE.Vector3(RX - CARD.W * SC / 2, 0, RZ + CARD.H * SC / 2 + 0.2), 4);
   K.worldLabel({ text: ends[1], size: 26, role: 'label', color: GN.muted, at: -1, align: 'right' }, new THREE.Vector3(RX + (n + 0.8) * RS + CARD.W * SC / 2, 0, RZ + CARD.H * SC / 2 + 0.2), 4);
   const plan = (p.plan || [[0.6, Math.floor(n / 2)]]).map(([a, s]) => [typeof a === 'number' ? a : 0.6, s]);
-  if (K.L.short) plan[0][0] = Math.min(plan[0][0], 0.6);     // Shorts: the hero card is on the table from frame 1
+  if (K.L.short) plan[0][0] = Math.min(plan[0][0], -0.6);    // Shorts: the hero card is already in its slot in frame 1
   const planDur = plan.map(([a, s], i) => K.tw(`hero to slot ${s}`, a, i === 0 ? 0.6 : 0.9).dur);
   const rowPts = boxPoints(RX - CARD.W * SC / 2, 0, RZ - CARD.H * SC / 2 - 0.4, RX + n * RS + CARD.W * SC / 2, 1.4, RZ + CARD.H * SC / 2 + 0.5);
   K.fit(chart ? [...rowPts, ...chart.pts] : rowPts, { elev: chart ? (vert ? 30 : 22) : 40, yaw: 4, push: 0.05,
