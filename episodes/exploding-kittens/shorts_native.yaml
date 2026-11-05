@@ -126,6 +126,8 @@ shorts:
         fair: 50
         items:
         - {label: goes first, value: "=results.json:seats.2.seat_win.0*100", color: MUSTARD, at: t2@fifty, hl: true}
+        # the complement of the spoken 52% (2 players): context, not a claim (number gate: context role)
+        - {label: goes second, value: "=results.json:seats.2.seat_win.1*100", context: true}
   - id: gf-five
     render: bars
     lines: [t3]

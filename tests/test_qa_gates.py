@@ -156,6 +156,23 @@ def test_short_opening():
     assert opening_checks(d / "good.mp4")[0] == []
 
 
+def test_flicker():
+    import subprocess, tempfile
+    from pathlib import Path
+    from pipeline.qa_visual import flicker_check
+    d = Path(tempfile.mkdtemp())
+    # bad: a patch that toggles light/dark every frame (z-fighting), on a slowly panning background
+    move = "drawbox=x='40+t*60':y=300:w=200:h=140:c=0xf2b134:t=fill"     # smooth motion: must NOT count as flicker
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=0x33504b:s=540x960:r=30:d=2",
+                    "-vf", move + ",drawbox=x=200:y=600:w=120:h=60:c=white:t=fill:enable='mod(n,2)'",
+                    "-c:v", "libx264", "-crf", "12", "-pix_fmt", "yuv420p", str(d / "bad.mp4")], check=True)
+    iss, m = flicker_check(d / "bad.mp4", [{"id": "s", "start": 0, "duration": 2}])
+    assert iss and "flicker" in iss[0]["msg"], m
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=0x33504b:s=540x960:r=30:d=2",
+                    "-vf", move, "-c:v", "libx264", "-crf", "12", "-pix_fmt", "yuv420p", str(d / "ok.mp4")], check=True)
+    assert flicker_check(d / "ok.mp4", [{"id": "s", "start": 0, "duration": 2}])[0] == []
+
+
 if __name__ == "__main__":
     import sys
     fails = 0

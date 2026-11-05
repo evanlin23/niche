@@ -158,6 +158,420 @@
       14.4,
       14.4
      ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#7 is only -0.0010 from card#8 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      16.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#8 is only -0.0010 from card#9 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.8
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 is only -0.0010 from card#10 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      14.8
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 is only -0.0010 from card#11 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      14.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 is only -0.0010 from card#12 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      13.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 is only -0.0010 from card#13 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      12.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 is only -0.0010 from card#14 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      11.5
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 is only -0.0010 from card#15 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      11
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 is only -0.0010 from card#16 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      9.5
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 is only -0.0010 from card#17 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      7.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 is only -0.0010 from card#18 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      6.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#18 is only -0.0010 from card#19 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      2.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#22 is only 0.0000 from card#23 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      20.23
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#23 is only 0.0000 from card#24 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      17.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#24 is only 0.0000 from card#25 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      16.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#25 is only 0.0000 from card#26 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      7.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#26 is only 0.0000 from card#27 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      2.8
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#29 is only 0.0000 from card#30 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      12.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#30 is only 0.0000 from card#31 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      10
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#31 is only 0.0000 from card#32 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      4.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#32 is only 0.0000 from card#33 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      3.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#33 is only 0.0000 from card#34 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      3.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#34 is only 0.0000 from card#35 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      1.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#35 is only 0.0000 from card#36 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      0.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#38 is only 0.0000 from card#39 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      18.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#39 is only 0.0000 from card#40 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      18.2
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#40 is only 0.0000 from card#41 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      17.2
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#41 is only 0.0000 from card#42 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      17.2
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#42 is only 0.0000 from card#43 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#43 is only 0.0000 from card#44 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      5.2
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#44 is only 0.0000 from card#45 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      4.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#47 is only 0.0000 from card#48 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      11.5
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#48 is only 0.0000 from card#49 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      11.5
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#49 is only 0.0000 from card#50 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      11.5
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#50 is only 0.0000 from card#51 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      1.4
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#51 is only 0.0000 from card#52 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      0.4
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#54 is only 0.0000 from card#55 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      16.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#55 is only 0.0000 from card#56 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.8
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#56 is only 0.0000 from card#57 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      11.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#57 is only 0.0000 from card#58 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      8.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#58 is only 0.0000 from card#59 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      8.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#59 is only 0.0000 from card#60 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      8.1
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#60 is only 0.0000 from card#63 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      2.4,
+      3.8
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 is only -0.0011 from card#61 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.6,
+      3.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#61 (depth 0.032)",
+     "t": [
+      3.6,
+      3.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 is only -0.0009 from card#61 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.6,
+      3.6
+     ]
     }
    ],
    "event_times": [
@@ -697,6 +1111,420 @@
       3.8,
       3.8
      ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#3 is only 0.0010 from card#4 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0.7,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#4 is only 0.0010 from card#5 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0.7,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#5 is only 0.0010 from card#6 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0.7,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#8 is only 0.0010 from card#9 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 is only 0.0010 from card#10 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 is only 0.0010 from card#11 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 is only 0.0010 from card#12 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 is only 0.0010 from card#13 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 is only 0.0010 from card#16 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      1.3,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 is only 0.0010 from card#17 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      1.3,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 is only 0.0010 from card#18 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      1.3,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#21 is only 0.0010 from card#22 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      1.7,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#22 is only 0.0010 from card#23 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      1.7,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#23 is only 0.0010 from card#24 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      1.7,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#26 is only 0.0010 from card#27 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      2.1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#27 is only 0.0010 from card#28 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      2.1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#28 is only 0.0010 from card#29 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      2.1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#31 is only 0.0010 from card#32 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      2.4,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#32 is only 0.0010 from card#33 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      2.4,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#33 is only 0.0010 from card#34 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      2.4,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#36 is only 0.0010 from card#37 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      2.7,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#37 is only 0.0010 from card#38 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      2.7,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#38 is only 0.0010 from card#39 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      2.7,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#39 is only 0.0010 from card#40 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      2.7,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#42 is only 0.0010 from card#43 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#43 is only 0.0010 from card#44 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#44 is only 0.0010 from card#45 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#45 is only 0.0010 from card#46 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.1,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#48 is only 0.0010 from card#49 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#49 is only 0.0010 from card#50 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#50 is only 0.0010 from card#51 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#51 is only 0.0010 from card#52 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#52 is only 0.0010 from card#53 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#53 is only 0.0010 from card#54 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#54 is only 0.0010 from card#55 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#55 is only 0.0010 from card#56 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#56 is only 0.0010 from card#57 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#58 is only 0.0010 from card#59 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#59 is only 0.0010 from card#60 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#60 is only 0.0010 from card#61 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#61 is only 0.0010 from card#62 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#62 is only 0.0010 from card#63 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#63 is only 0.0010 from card#64 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#64 is only 0.0010 from card#65 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#65 is only 0.0010 from card#66 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#66 is only 0.0010 from card#67 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      3.5,
+      54
+     ]
     }
    ],
    "event_times": [
@@ -950,6 +1778,564 @@
      "t": [
       3,
       15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#2 is only -0.0010 from card#3 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#3 is only -0.0010 from card#4 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#4 is only -0.0010 from card#5 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#5 is only -0.0010 from card#6 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#6 is only -0.0010 from card#7 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#7 is only -0.0010 from card#8 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#8 is only -0.0010 from card#9 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 is only -0.0010 from card#10 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 is only -0.0010 from card#11 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 is only -0.0010 from card#12 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 is only -0.0010 from card#13 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 is only -0.0010 from card#14 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 is only -0.0010 from card#15 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 is only -0.0010 from card#16 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 is only -0.0010 from card#17 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 is only -0.0010 from card#18 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#18 is only -0.0010 from card#19 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#19 is only -0.0010 from card#20 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#20 is only -0.0010 from card#21 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#21 is only -0.0010 from card#22 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#22 is only -0.0010 from card#23 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#25 is only 0.0000 from card#26 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#26 is only 0.0000 from card#27 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#27 is only 0.0000 from card#28 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#28 is only 0.0000 from card#29 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#29 is only 0.0000 from card#30 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#30 is only 0.0000 from card#31 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#31 is only 0.0000 from card#32 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#34 is only 0.0000 from card#35 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#35 is only 0.0000 from card#36 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#36 is only 0.0000 from card#37 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#37 is only 0.0000 from card#38 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#38 is only 0.0000 from card#39 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#39 is only 0.0000 from card#40 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#40 is only 0.0000 from card#41 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#43 is only 0.0000 from card#44 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#44 is only 0.0000 from card#45 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#45 is only 0.0000 from card#46 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#46 is only 0.0000 from card#47 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#47 is only 0.0000 from card#48 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#48 is only 0.0000 from card#49 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#49 is only 0.0000 from card#50 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#52 is only 0.0000 from card#53 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#53 is only 0.0000 from card#54 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#54 is only 0.0000 from card#55 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#55 is only 0.0000 from card#56 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#56 is only 0.0000 from card#57 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#57 is only 0.0000 from card#58 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#58 is only 0.0000 from card#59 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#59 is only 0.0000 from card#60 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#62 intersects card#63 (depth 0.043)",
+     "t": [
+      2.9,
+      5.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#62 intersects card#64 (depth 0.034)",
+     "t": [
+      2.9,
+      5.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#63 intersects card#64 (depth 0.042)",
+     "t": [
+      2.9,
+      5.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#63 intersects card#65 (depth 0.034)",
+     "t": [
+      2.9,
+      5.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#64 intersects card#65 (depth 0.046)",
+     "t": [
+      2.9,
+      5.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#64 intersects card#66 (depth 0.033)",
+     "t": [
+      2.9,
+      5.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#65 intersects card#66 (depth 0.046)",
+     "t": [
+      2.9,
+      5.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#67 intersects card#68 (depth 0.025)",
+     "t": [
+      4.2,
+      5.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#68 intersects card#69 (depth 0.025)",
+     "t": [
+      4.2,
+      5.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#70 (depth 0.031)",
+     "t": [
+      6.5,
+      6.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#70 (depth 0.002)",
+     "t": [
+      6.5,
+      6.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 is only 0.0000 from card#70 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      6.6,
+      6.9
      ]
     }
    ],
@@ -1314,6 +2700,1545 @@
      "t": [
       5.1,
       5.1
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#10 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#20 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#21 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#11 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#21 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#22 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#12 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#22 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#23 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#13 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#23 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#24 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#14 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#24 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#25 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#15 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#25 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#26 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#16 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#26 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#27 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#27 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 intersects card#18 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#18 intersects card#19 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#19 intersects card#20 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#20 intersects card#21 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#21 intersects card#22 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#22 intersects card#23 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#23 intersects card#24 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#24 intersects card#25 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#25 intersects card#26 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#26 intersects card#27 (depth 0.032)",
+     "t": [
+      7.4,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#11 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#19 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#22 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#12 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#20 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#23 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#13 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#21 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#24 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#14 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#22 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#25 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#15 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#23 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#26 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#16 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#24 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#27 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#25 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#26 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 intersects card#19 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#18 intersects card#20 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#19 intersects card#21 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#20 intersects card#22 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#21 intersects card#23 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#22 intersects card#24 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#23 intersects card#25 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#24 intersects card#26 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#25 intersects card#27 (depth 0.032)",
+     "t": [
+      7.6,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#12 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#18 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#23 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#13 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#19 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#24 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#14 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#20 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#25 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#15 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#21 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#26 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#16 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#22 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#27 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#23 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#24 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#25 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 intersects card#20 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#18 intersects card#21 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#19 intersects card#22 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#20 intersects card#23 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#21 intersects card#24 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#22 intersects card#25 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#23 intersects card#26 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#24 intersects card#27 (depth 0.032)",
+     "t": [
+      7.7,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#13 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#14 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#15 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#16 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#17 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#24 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#25 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#26 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#27 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#14 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#15 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#16 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#17 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#18 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#25 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#26 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#27 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#15 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#16 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#17 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#18 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#19 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#26 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#11 intersects card#27 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#16 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#17 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#18 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#19 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#20 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#27 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#17 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#18 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#19 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#20 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#21 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#18 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#19 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#20 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#21 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#22 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#19 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#20 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#21 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#22 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#23 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#20 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#21 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#22 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#23 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#24 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 intersects card#21 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 intersects card#22 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 intersects card#23 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 intersects card#24 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#18 intersects card#22 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#18 intersects card#23 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#18 intersects card#24 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#18 intersects card#25 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#19 intersects card#23 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#19 intersects card#24 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#19 intersects card#25 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#19 intersects card#26 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#20 intersects card#24 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#20 intersects card#25 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#20 intersects card#26 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#20 intersects card#27 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#21 intersects card#25 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#21 intersects card#26 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#21 intersects card#27 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#22 intersects card#26 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#22 intersects card#27 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#23 intersects card#27 (depth 0.032)",
+     "t": [
+      7.8,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#17 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#17 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#18 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#17 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#18 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#19 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 intersects card#25 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 intersects card#26 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#17 intersects card#27 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#18 intersects card#26 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#18 intersects card#27 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#19 intersects card#27 (depth 0.032)",
+     "t": [
+      7.9,
+      7.9
      ]
     }
    ],
@@ -1716,6 +4641,168 @@
       5,
       5
      ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#13 (depth 0.032)",
+     "t": [
+      5.2,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#14 (depth 0.032)",
+     "t": [
+      5.2,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#16 (depth 0.032)",
+     "t": [
+      5.2,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#16 intersects card#17 (depth 0.032)",
+     "t": [
+      5.2,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#14 (depth 0.032)",
+     "t": [
+      5.5,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#17 (depth 0.032)",
+     "t": [
+      5.5,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#17 (depth 0.032)",
+     "t": [
+      5.5,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#15 (depth 0.032)",
+     "t": [
+      5.6,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#12 intersects card#16 (depth 0.032)",
+     "t": [
+      5.6,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#15 (depth 0.032)",
+     "t": [
+      5.6,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#16 (depth 0.032)",
+     "t": [
+      5.6,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#13 intersects card#17 (depth 0.032)",
+     "t": [
+      5.6,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#15 (depth 0.032)",
+     "t": [
+      5.6,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#16 (depth 0.032)",
+     "t": [
+      5.6,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#14 intersects card#17 (depth 0.032)",
+     "t": [
+      5.6,
+      5.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#10 (depth 0.032)",
+     "t": [
+      7.7,
+      8.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 intersects card#11 (depth 0.032)",
+     "t": [
+      7.7,
+      8.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#11 (depth 0.032)",
+     "t": [
+      8,
+      8.3
+     ]
     }
    ],
    "event_times": [
@@ -1843,6 +4930,96 @@
      "t": [
       10.7,
       10.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 intersects card#19 (depth 0.019)",
+     "t": [
+      6.2,
+      7.8
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#9 is only -0.0014 from card#19 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      6.3,
+      7.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#10 is only -0.0014 from card#19 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      6.3,
+      7.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 is only -0.0014 from card#19 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      8.5,
+      19.5
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#15 intersects card#19 (depth 0.039)",
+     "t": [
+      19.6,
+      19.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#4 is only -0.0014 from card#19 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      20.3,
+      32.33
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#5 is only -0.0014 from card#19 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      24,
+      28.1
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#4 intersects card#19 (depth 0.022)",
+     "t": [
+      25,
+      25
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#6 is only -0.0014 from card#19 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      25.7,
+      28.1
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#5 intersects card#19 (depth 0.029)",
+     "t": [
+      28.2,
+      28.2
      ]
     }
    ],
@@ -2399,6 +5576,96 @@
       0,
       0
      ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#2 intersects card#3 (depth 0.022)",
+     "t": [
+      0,
+      14.73
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#2 intersects card#4 (depth 0.012)",
+     "t": [
+      0,
+      14.73
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#2 is only -0.0020 from card#5 along its normal (parallel overlapping cards need >= 0.003)",
+     "t": [
+      0,
+      14.73
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#3 intersects card#4 (depth 0.022)",
+     "t": [
+      0,
+      14.73
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#3 intersects card#5 (depth 0.012)",
+     "t": [
+      0,
+      14.73
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#4 intersects card#5 (depth 0.022)",
+     "t": [
+      0,
+      14.73
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#4 intersects card#6 (depth 0.012)",
+     "t": [
+      0,
+      14.73
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#5 intersects card#6 (depth 0.022)",
+     "t": [
+      0,
+      14.73
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#5 intersects card#7 (depth 0.012)",
+     "t": [
+      0,
+      14.73
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "clipping",
+     "msg": "card#6 intersects card#7 (depth 0.022)",
+     "t": [
+      0,
+      14.73
+     ]
     }
    ],
    "event_times": [
@@ -2584,7 +5851,105 @@
     0.7,
     0.7
    ]
+  },
+  "static": {
+   "issues": [
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 3: imports a raw card builder (use kitCard from /pipeline/web/kit.js)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 60: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 61: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 75: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 79: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 95: hand-picked card stacking step (use layerY(i))"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 184: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 185: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 186: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 334: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 429: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 619: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 646: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 660: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 735: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 736: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 775: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 794: builds a card outside the kit (use kitCard / kit templates)"
+    },
+    {
+     "sev": "error",
+     "check": "static",
+     "msg": "episodes/exploding-kittens/web/scenes.js line 821: builds a card outside the kit (use kitCard / kit templates)"
+    }
+   ]
   }
- },
- "contact": "/home/user/niche/episodes/exploding-kittens/out/qa/contact.png"
+ }
 }

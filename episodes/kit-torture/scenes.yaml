@@ -1,0 +1,55 @@
+# Kit torture test: tight fans, tall piles, spread, multi-play, cards moving hand <-> pile, orbiting cameras.
+engine: 3d
+look: clean-sage
+quality: normal
+burn_captions: false
+scenes:
+- id: table5
+  render: table
+  lines: [a1]
+  params:
+    players: 5
+    hands: 9
+    names: [ONE, TWO, THREE, FOUR, FIVE]
+    turns_auto: {from: 0.2, every: 0.5, cards: [2, 3, 6, 7, 1, 4, 8]}
+    yaw: 8
+- id: piles
+  render: deck
+  lines: [a2]
+  params:
+    pill: torture
+    name_words: {forty: 0, thirty: 1, cats: 2}
+    piles:
+    - {card: 1, count: 40, label: 40 cards}
+    - {card: 2, count: 30, label: 30 cards}
+    - {card: [8, 9, 10, 11, 12], count: 20, label: 20 cats}
+- id: spread
+  render: deck
+  lines: [a3]
+  params:
+    row: {count: 12}
+    hero: 0
+    plan: [[a3@top, 0], [a3@middle, 6], [a3@bottom, 12], [a3@back, 0]]
+    chart: {players: 4, fair: 25, items: [{label: a, value: 30, at: a3@top}, {label: b, value: 20, at: a3@bottom}]}
+- id: hand10
+  render: fan
+  lines: [a4]
+  params:
+    seat_label: TORTURE
+    cards: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    highlights:
+    - {card: 0, at: a4@ten, label: ONE}
+    - {card: 5, at: a4@four, label: TWO}
+    - {card: 9, at: a4@lifted, label: THREE}
+    play:
+    - {card: 9, at: a4@played}
+    - {card: 8, at: a4@after}
+    - {card: 7, at: a4@onto}
+    - {card: 6, at: a4@pile}
+- id: grid30
+  render: odds
+  lines: [a5]
+  params:
+    frames:
+    - {at: a5@grid, total: 30, hits: 4, head: "30 cards", sub: "4 hits"}
+    - {at: a5@fifteen, total: 15, hits: 4, head: "15 cards", sub: "4 hits"}
