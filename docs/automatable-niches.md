@@ -46,8 +46,9 @@ code, checked against real data" is worth saying on screen.
 | Squid Game | 29.0M all-time, 0.5M this year | | the fad is over |
 
 ## 3. Shortlist, ranked
-1. **Chess from real games: what actually wins at your rating.** Lichess publishes every rated game for free, and its
-   opening explorer gives win rates by rating band without any download. Code does the analysis and draws the board;
+1. **Chess from real games: what actually wins at your rating.** Lichess publishes every rated game monthly under CC0
+   (database.lichess.org: "Use them for research, commercial purpose, publication, anything you like"). Its opening
+   explorer gives win rates by rating band, but now needs a free Lichess API token (our request got a 401). Code does the analysis and draws the board;
    a chess engine marks the mistakes. Example titles: "The Opening That Wins Most Under 1200", "The Move That Loses the
    Most Games at Every Rating", "Does the London System Actually Win More?". It's multiplayer and about beating real
    people, and it uses real human games rather than bots, a stronger claim than ours or Perfect Play's. Their viewers
@@ -67,5 +68,5 @@ finance (crowded, credibility-heavy), Squid Game (fad over).
 
 ## 4. How to test cheaply
 Add chess as lane D in the Shorts probe (`docs/simulation-niche-research.md` §7.2): three Shorts from the Lichess opening
-explorer (free, no download), one question each ("Is the Fried Liver trap worth it under 1000?"). They need a board
+explorer (free, needs an API token from a Lichess account) or one monthly CC0 database file, one question each ("Is the Fried Liver trap worth it under 1000?"). They need a board
 template (new visual code) and narration. Map Shorts (lane E) come next, once a map template exists; they need no voice.
