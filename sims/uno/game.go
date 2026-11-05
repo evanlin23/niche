@@ -45,6 +45,7 @@ type Rules struct {
 	NoActOut  bool `json:"no_action_out"` // house rule: you can't go out on an action card or a Wild
 	UnoCall   bool `json:"uno_call"`      // GDJ85: forget "UNO" and get caught before the next turn -> draw UnoPen
 	UnoPen    int  `json:"uno_penalty"`   // 0 = official 2 cards
+	PassEvery bool `json:"pass_every"`    // joke rule: after every turn, everyone passes their whole hand to the next player
 }
 
 type Policy struct {
@@ -498,6 +499,13 @@ func (g *Game) Play() Result {
 	n := len(g.hands)
 	for g.turns < 5000 {
 		g.turns++
+		if g.R.PassEvery && g.turns > 1 {
+			nh := make([][]Card, len(g.hands))
+			for q := range g.hands {
+				nh[g.nextFrom(q)] = g.hands[q]
+			}
+			g.hands = nh
+		}
 		p := g.cur
 		if g.pending > 0 {
 			// stacking: may add a matching draw card, otherwise take the lot
