@@ -180,7 +180,7 @@ export function makeCard(stage, type, faceUp = true) {
   const face = new THREE.Mesh(_faceGeo, new THREE.MeshStandardMaterial({ map: cardTexture(faceUp ? type : 'back'), roughness: 0.55,
     alphaTest: 0.5, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -4 }));
   face.rotation.x = -Math.PI / 2; face.position.y = CT / 2 + 0.004; grp.add(face);
-  grp.userData = { face, type };
+  grp.userData = { face, type, card: true }; grp.name = 'card';   // probe: cards get the clipping / gap checks
   grp.setFace = (tp) => { face.material.map = cardTexture(tp); face.material.needsUpdate = true; };
   stage.scene.add(grp);
   return grp;

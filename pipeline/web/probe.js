@@ -65,9 +65,75 @@ function qaState(t) {
     objs.push({ id: id(o), kind, name: o.name || o.type, op: +op.toFixed(3), p: [c.x, c.y, c.z].map((v) => +v.toFixed(4)),
       s: [+o.scale.x.toFixed(4)], r: behind ? null : [x0, y0, x1, y1].map((v) => +v.toFixed(1)) });
   }
+  // ---- geometric clipping: oriented boxes for every unit, pairwise separating-axis test
+  const obbs = [];
+  const inv = new window.__M4(), rel = new window.__M4();
+  for (const [o, kind] of units) {
+    let vis = true, e = o; while (e) { if (!e.visible) { vis = false; break; } e = e.parent; }
+    if (!vis) continue;
+    o.updateMatrixWorld(true);
+    inv.copy(o.matrixWorld).invert();
+    let lo = [1e9, 1e9, 1e9], hi = [-1e9, -1e9, -1e9], op = 1;
+    o.traverse((m) => {
+      if (!m.isMesh || !m.visible || !m.geometry) return;
+      const ms = Array.isArray(m.material) ? m.material : [m.material];
+      for (const mt of ms) if (mt.transparent) op = Math.min(op, mt.opacity);
+      if (!m.geometry.boundingBox) m.geometry.computeBoundingBox();
+      const bb = m.geometry.boundingBox; rel.multiplyMatrices(inv, m.matrixWorld);
+      for (const x of [bb.min.x, bb.max.x]) for (const y of [bb.min.y, bb.max.y]) for (const z of [bb.min.z, bb.max.z]) {
+        const v = window.__v2.set(x, y, z).applyMatrix4(rel);
+        lo = [Math.min(lo[0], v.x), Math.min(lo[1], v.y), Math.min(lo[2], v.z)]; hi = [Math.max(hi[0], v.x), Math.max(hi[1], v.y), Math.max(hi[2], v.z)];
+      }
+    });
+    if (lo[0] > hi[0] || op < 0.05) continue;
+    const me = o.matrixWorld.elements, ax = [], ext = [];
+    for (let k = 0; k < 3; k++) {
+      const L = Math.hypot(me[k * 4], me[k * 4 + 1], me[k * 4 + 2]) || 1;
+      ax.push([me[k * 4] / L, me[k * 4 + 1] / L, me[k * 4 + 2] / L]); ext.push((hi[k] - lo[k]) / 2 * L);
+    }
+    const lc = window.__v2.set((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (lo[2] + hi[2]) / 2).applyMatrix4(o.matrixWorld);
+    const c = [lc.x, lc.y, lc.z];
+    if (kind === 'auto' && Math.max(...ext) > 4) continue;            // room / table / floor
+    const name = (o.userData.card ? 'card' : o.name || o.type) + '#' + id(o);
+    if (o.userData.noclip) continue;                                   // containers (connect-4 frame) hold their pieces
+    obbs.push({ c, ax, ext, name, card: !!o.userData.card });
+  }
+  const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  const overlapOn = (A, B, d, L) => {          // overlap of the two boxes' projections on axis L (negative = gap)
+    const ra = A.ext[0] * Math.abs(dot(A.ax[0], L)) + A.ext[1] * Math.abs(dot(A.ax[1], L)) + A.ext[2] * Math.abs(dot(A.ax[2], L));
+    const rb = B.ext[0] * Math.abs(dot(B.ax[0], L)) + B.ext[1] * Math.abs(dot(B.ax[1], L)) + B.ext[2] * Math.abs(dot(B.ax[2], L));
+    return ra + rb - Math.abs(dot(d, L));
+  };
+  const clips = [];
+  for (let i = 0; i < obbs.length; i++) {
+    const A = obbs[i];
+    if (A.card) {                             // cards never go below the table surface
+      let minY = A.c[1]; for (let k = 0; k < 3; k++) minY -= A.ext[k] * Math.abs(A.ax[k][1]);
+      if (minY < -0.002) clips.push([A.name, 'table', +(-minY).toFixed(4), 'below']);
+    }
+    for (let j = i + 1; j < obbs.length; j++) {
+      const B = obbs[j];
+      const d = [B.c[0] - A.c[0], B.c[1] - A.c[1], B.c[2] - A.c[2]];
+      const rA = Math.hypot(...A.ext), rB = Math.hypot(...B.ext);
+      if (Math.hypot(...d) > rA + rB) continue;
+      const axes = [...A.ax, ...B.ax];
+      for (const a of A.ax) for (const b of B.ax) { const x = cross(a, b), n = Math.hypot(...x); if (n > 1e-6) axes.push(x.map((v) => v / n)); }
+      let minOv = 1e9; for (const L of axes) minOv = Math.min(minOv, overlapOn(A, B, d, L));
+      if (minOv > 0.002) { clips.push([A.name, B.name, +minOv.toFixed(4), 'intersect']); continue; }
+      if (A.card && B.card) {                 // parallel overlapping cards: enough air along the normal?
+        const nA = A.ax[1], nB = B.ax[1];
+        if (Math.abs(dot(nA, nB)) > 0.999) {
+          const inPlane = overlapOn(A, B, d, A.ax[0]) > 0.01 && overlapOn(A, B, d, A.ax[2]) > 0.01;
+          const gap = -overlapOn(A, B, d, nA);
+          if (inPlane && gap < 0.003) clips.push([A.name, B.name, +gap.toFixed(4), 'too-close']);
+        }
+      }
+    }
+  }
   const tw = ((S.qa && S.qa.tweens) || []).filter((w) => t > w.at + 1e-4 && t < w.at + w.dur - 1e-4).map((w) => w.name);
   const content = S.qa && S.qa.content ? [S.qa.content.l, S.qa.content.t, S.qa.content.r, S.qa.content.b] : null;
-  return { t: +t.toFixed(3), texts, objs, tw, content };
+  return { t: +t.toFixed(3), texts, objs, tw, content, clips: clips.slice(0, 200) };
 }
 
 (async () => {
@@ -84,7 +150,7 @@ function qaState(t) {
     const n = await page.evaluate((u) => window.setup(u), it.spec);
     if (job.mode === 'probe') {
       await page.evaluate(async () => {
-        const T = await import('three'); window.__box = new T.Box3(); window.__v1 = new T.Vector3(); window.__v2 = new T.Vector3();
+        const T = await import('three'); window.__box = new T.Box3(); window.__v1 = new T.Vector3(); window.__v2 = new T.Vector3(); window.__M4 = T.Matrix4;
       });
       await page.evaluate(`window.qaState = ${qaState.toString()}`);
       const lines = [];

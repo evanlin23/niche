@@ -1,0 +1,8 @@
+# Kit torture test (never published): every card layout at its worst, both orientations, all gates must pass.
+Timing: TTS_ENGINE=silent. CI: .github/workflows/kit-ci.yml on every push touching pipeline/web/** or the kit.
+
+[a1] Five players, nine cards each, and the cards fly between the hands and the pile every half second while the camera circles the whole table.
+[a2] Tall piles: forty cards in one stack, thirty in the next, and a fan of twenty cats.
+[a3] The deck spread, with the Kitten moving from the top to the middle to the bottom and back to the top again.
+[a4] A ten card hand, four cards played one after another onto the pile, and every card lifted in turn.
+[a5] A grid of thirty cards with four hits, then fifteen of them leave for the discard pile at once.

@@ -246,13 +246,14 @@ def check_scene(sc, spec, states, script, cfg):
         static = t <= 0.25 and not line
         # meta numbers (player count, fair share, "Mistake 4") are context, not claims: only FYI when unsaid
         meta = role in ("pill", "fair", "title", "kicker", "context") or bool(re.search(r"fair share|\bplayers?\b|mistake", txt, re.I))
+        pct = {float(m.replace(",", "")) for m in re.findall(r"(\d[\d,]*(?:\.\d+)?)\s*%", txt)}
         for x in nums:
             if meta:
                 if not agrees(x, all_said):
                     issues.append(_issue("info", "numbers", f"'{txt}' shows {x:g} (context, not said)", t))
                 continue
             said_here = scene_said.get(line) or []
-            if "%" in txt:          # a percentage is compared with percentage-like numbers ("the first seat" is not 1%)
+            if x in pct:            # a percentage is compared with percentage-like numbers ("the first seat" is not 1%)
                 said_here = [v for v in said_here if v > 5]
             if line and said_here:
                 if not agrees(x, said_here):
@@ -262,6 +263,20 @@ def check_scene(sc, spec, states, script, cfg):
                 sev = "info" if static else "warn"
                 issues.append(_issue(sev, "numbers", f"'{txt}' shows {x:g}, not said in this scene"
                                                      + (f" (anchored to {line})" if line else ""), t))
+
+    # ---- clipping: interpenetrating objects, cards too close to their neighbour (z-fight), cards under the table
+    clip = {}
+    for st in states:
+        for a, b, depth, kind in st.get("clips", []):
+            k = (a, b, kind)
+            c = clip.setdefault(k, [st["t"], st["t"], depth]); c[1] = st["t"]
+            c[2] = max(c[2], depth) if kind != "too-close" else min(c[2], depth)
+    WHAT = {"intersect": "intersects", "too-close": "is too close to (z-fight risk, gap", "below": "sinks into the"}
+    for (a, b, kind), (t0, t1, depth) in sorted(clip.items(), key=lambda kv: kv[1][0]):
+        msg = (f"{a} intersects {b} (depth {depth:.3f})" if kind == "intersect" else
+               f"{a} is only {depth:.4f} from {b} along its normal (parallel overlapping cards need >= 0.003)" if kind == "too-close"
+               else f"{a} sinks {depth:.3f} below the table surface")
+        issues.append(_issue("error", "clipping", msg, t0, t1))
 
     # ---- fill (Shorts): the main visual must fill the content band (creator: "too small, empty middle")
     if spec.get("short"):
@@ -373,11 +388,12 @@ def pixel_checks(video: Path, timeline):
     return out, ys
 
 
-def flicker_check(video: Path, timeline, w=540, h=960, T=24, win_max=0.0002):
+def flicker_check(video: Path, timeline, w=540, h=960, T=24, min_repeats=3, limit=0.0002):
     """Z-fighting / shimmer: pixels whose brightness jumps and comes straight back (A -> B -> A) between consecutive
-    frames. Camera moves are smooth, so real motion doesn't toggle; coplanar faces fighting in the depth buffer do.
-    Error when, over any 1 s window, more than 0.02% of pixels toggle per frame (the flickering card hands in the
-    first native same-cards Short measured 0.27%; clean Shorts measure ~0.001%)."""
+    frames, REPEATEDLY in the same place (>= 3 times within 1 s). A fast-moving card toggles each pixel once as it
+    passes; coplanar faces fighting in the depth buffer toggle in place, frame after frame.
+    Error when, in any 1 s window, more than 0.02% of the frame's pixels flicker like that (the card hands in the first
+    native same-cards Short: well over; clean renders: ~0)."""
     import numpy as np
     vw, vh = (w, h)
     pr = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height",
@@ -386,9 +402,9 @@ def flicker_check(video: Path, timeline, w=540, h=960, T=24, win_max=0.0002):
         vw, vh = h, w                                      # landscape video
     p = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-i", str(video), "-vf", f"scale={vw}:{vh},format=gray",
                           "-f", "rawvideo", "-"], stdout=subprocess.PIPE)
-    n = vw * vh
+    n, fps = vw * vh, 30
     prev2 = prev1 = None
-    fracs, boxes = [], []
+    toggles = []                                           # per frame: boolean toggle mask (packed)
     while True:
         buf = p.stdout.read(n)
         if len(buf) < n:
@@ -396,37 +412,36 @@ def flicker_check(video: Path, timeline, w=540, h=960, T=24, win_max=0.0002):
         f = np.frombuffer(buf, np.uint8).reshape(vh, vw).astype(np.int16)
         if prev2 is not None:
             d1, d2 = prev1 - prev2, f - prev1
-            tog = (np.abs(d1) > T) & (np.abs(d2) > T) & (np.sign(d1) != np.sign(d2)) & (np.abs(f - prev2) < T // 2)
-            fracs.append(float(tog.mean()))
-            ys, xs = np.nonzero(tog)
-            boxes.append((xs.min(), ys.min(), xs.max(), ys.max()) if len(xs) > 20 else None)
+            toggles.append((np.abs(d1) > T) & (np.abs(d2) > T) & (np.sign(d1) != np.sign(d2)) & (np.abs(f - prev2) < T // 2))
         prev2, prev1 = prev1, f
     p.wait()
-    fps = 30.0
-    fr = np.array(fracs) if fracs else np.zeros(1)
     def where(t):
         for sc in timeline:
             if sc["start"] <= t < sc["start"] + sc["duration"]:
                 return sc["id"]
         return "?"
-    issues, k = [], int(fps)
-    bad = [i for i in range(0, max(1, len(fr) - k + 1), k // 2) if fr[i:i + k].mean() > win_max]
-    runs = []
-    for i in bad:
-        if runs and i <= runs[-1][1]:
-            runs[-1][1] = i + k
-        else:
-            runs.append([i, i + k])
-    for i0, i1 in runs:
-        bx = [b for b in boxes[i0:i1] if b]
-        loc = ""
-        if bx:
-            sx, sy = W_ = vw / 100.0, vh / 100.0
-            loc = f", around x {min(b[0] for b in bx) / vw:.0%}-{max(b[2] for b in bx) / vw:.0%}, y {min(b[1] for b in bx) / vh:.0%}-{max(b[3] for b in bx) / vh:.0%} of the frame"
+    issues, worst, runs = [], 0.0, []
+    for i in range(0, max(1, len(toggles) - fps + 1), fps // 2):
+        win = toggles[i:i + fps]
+        if not win:
+            break
+        cnt = np.sum(win, axis=0)
+        bad = cnt >= min_repeats
+        frac = float(bad.mean())
+        worst = max(worst, frac)
+        if frac > limit:
+            ys, xs = np.nonzero(bad)
+            box = (xs.min() / vw, ys.min() / vh, xs.max() / vw, ys.max() / vh)
+            if runs and i <= runs[-1][1]:
+                runs[-1][1] = i + fps; runs[-1][2] = max(runs[-1][2], frac)
+            else:
+                runs.append([i, i + fps, frac, box])
+    for i0, i1, frac, box in runs:
         t0, t1 = (i0 + 1) / fps, (i1 + 1) / fps
-        issues.append(_issue("error", "flicker", f"flicker (z-fighting/shimmer) in {where(t0)}: {fr[i0:i1].mean():.3%} of pixels "
-                                                 f"toggle per frame (limit {win_max:.2%}){loc}", t0, t1, scene=where(t0)))
-    return issues, {"flicker_mean": round(float(fr.mean()), 6), "flicker_worst_1s": round(float(max([fr[i:i + k].mean() for i in range(0, max(1, len(fr) - k + 1))] or [0])), 6)}
+        issues.append(_issue("error", "flicker", f"flicker (z-fighting/shimmer) in {where(t0)}: {frac:.3%} of pixels toggle "
+                                                 f">= {min_repeats}x per second in place (limit {limit:.2%}), around x "
+                                                 f"{box[0]:.0%}-{box[2]:.0%}, y {box[1]:.0%}-{box[3]:.0%}", t0, t1, scene=where(t0)))
+    return issues, {"flicker_worst_1s": round(worst, 6)}
 
 
 def opening_checks(video: Path, band=(0.20, 0.78)):
@@ -518,6 +533,9 @@ def run(slug, video=None, only=None, vertical=False, stills=True, out_dir=None, 
     out_dir = Path(out_dir) if out_dir else ep / "out" / ("qa-v" if vertical else "qa")
     out_dir.mkdir(parents=True, exist_ok=True)
     anchor_issues = check_anchors([s for s in scenes if not only or s.id in only], ep)
+    from .qa_static import run as static_run           # hand-built cards in the episode's scene code
+    own_code = any(str(spec.get("module", "")).startswith(f"/episodes/{slug}/web/") for _, spec in sp)
+    st_bad = static_run([slug]) if (ep / "web").is_dir() and own_code else {}   # only when scenes run its own code
     print(f"[qa] probing {len(sp)} scenes ...", flush=True)
     states = probe([(sc.id, spec) for sc, spec in sp], out_dir)
     res = {"slug": slug, "vertical": vertical, "scenes": {}}
@@ -528,6 +546,9 @@ def run(slug, video=None, only=None, vertical=False, stills=True, out_dir=None, 
         issues = anchor_issues.get(sc.id, []) + issues
         res["scenes"][sc.id] = {"duration": spec["duration"], "events": len(events), "issues": issues, **spec.get("_metrics", {}),
                                 "event_times": [round(e[0], 2) for e in events][:400]}
+    for f, v in st_bad.items():
+        res["scenes"].setdefault("static", {"issues": []})["issues"] += [
+            _issue("error", "static", f"{f} line {x['line']}: {x['why']}") for x in v]
     if video:
         tl = ep / "out" / "final" / "timeline.json"
         if timeline is None:
