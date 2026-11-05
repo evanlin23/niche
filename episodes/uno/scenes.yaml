@@ -85,29 +85,39 @@ scenes:
     - text: 23,000,000,000+ rounds
       at: o3@billion
 - id: hook
-  render: statement
+  render: fan
   lines:
   - o4
   - o5
   params:
-    lines:
-    - The best way to play Uno
-    - text: fast rounds, real skill
-      color: MUSTARD
+    title: The best way to play Uno
+    seat_label: HOUSE RULES
+    pill: 4 players
+    cards:
+    - uno:0:12
+    - uno:3:7
+    - uno:4:14
+    - uno:2:0
+    - uno:1:5
+    highlights:
+    - card: 0
       at: o4@rounds
-    - text: The rules decide
+      label: FAST ROUNDS
+    - card: 2
       at: o5@rules
-    - text: how much skill there is
-      color: CORAL
-      at: o5@skill
-    - text: One rule punishes playing well
-      at: o5@lose
-      color: CORAL
-    - text: Some 'official' rules aren't
-      at: o5@aren't
-    callouts:
-    - text: 'Good player: more than a third'
+      label: THE RULES DECIDE
+    - card: 4
       at: o5@third
+      label: 'A GOOD PLAYER: OVER 1 IN 3'
+    - card: 1
+      at: o5@lose
+      label: ONE RULE PUNISHES PLAYING WELL
+    - card: 3
+      at: o5@aren't
+      label: '''OFFICIAL''? NOPE'
+    play:
+    - card: 2
+      at: o5@skill
 - id: title
   render: title
   min_duration: 2.5
@@ -336,7 +346,7 @@ scenes:
     - card: 4
       at: c6@top
       label: THE TOP CARD
-    - card: 1
+    - card: 2
       at: c6@matches
       label: ANY MATCHING CARD
     - card: 3
@@ -417,6 +427,7 @@ scenes:
         at: m3@twenty
         color: TEAL
         pulse:
+        - m3@dealt
         - m4@luck
       - label: Exploding Kittens
         value: =../../exploding-kittens/data/final.json:vs_casual.4.win*100
@@ -602,13 +613,18 @@ scenes:
       items:
       - label: Official
         value: =v2.json:combos[key=official].turns
-        at: r6@forty
+        at: r6@barely
         color: TEAL
+        pulse:
+        - r6@forever
       - label: Draw until you can play
         value: =v2.json:combos[key=draw_until].turns
         at: r6@eighty
         color: CORAL
         hl: true
+        pulse:
+        - r6@ten
+        - r6@hundred
 - id: noout
   render: fan
   lines:
@@ -754,12 +770,17 @@ scenes:
         value: =v2.json:combos[key=official].best*100
         at: 0.0
         color: TEAL
+        pulse:
+        - i2@changes
+        - i2@forty
+        context: true
       - label: My rules
         value: =v2.json:combos[key=stack+free_d4+multi].best*100
         at: i2@thirty
         color: MUSTARD
         hl: true
         pulse:
+        - i3@combinations
         - i3@sixth
         - i3@entire
 - id: dump
@@ -798,23 +819,74 @@ scenes:
       at: i4@basically
       color: MUSTARD
 - id: stacks
-  render: statement
+  render: table
   lines:
   - i5
   params:
-    lines:
-    - 'With my rules:'
+    players: 4
+    elev: 40
+    yaw: 5
+    push: 0.1
+    names:
+    - YOU
+    - PLAYER 2
+    - PLAYER 3
+    - PLAYER 4
+    hands: 6
+    turns:
+    - at: i5@stacks
+      seat: 1
+      ev: play
+      card: uno:0:12
+      label: DRAW TWO
+    - at: i5@rules
+      seat: 2
+      ev: play
+      card: uno:3:12
+      label: STACKED
+    - at: i5@nine
+      seat: 3
+      ev: play
+      card: uno:4:14
+      label: STACKED AGAIN
+    - at: i5@pick+0.00
+      seat: 0
+      ev: draw
+      label: PICK UP EIGHT
+    - at: i5@pick+0.18
+      seat: 0
+      ev: draw
+    - at: i5@pick+0.36
+      seat: 0
+      ev: draw
+    - at: i5@pick+0.54
+      seat: 0
+      ev: draw
+    - at: i5@pick+0.72
+      seat: 0
+      ev: draw
+    - at: i5@pick+0.90
+      seat: 0
+      ev: draw
+    - at: i5@pick+1.08
+      seat: 0
+      ev: draw
+    - at: i5@pick+1.26
+      seat: 0
+      ev: draw
+    - at: i5@ten
+      seat: 0
+      ev: play
+      card: uno:1:3
+    highlight:
+    - - 0
+      - i5@hundred
+    callouts:
     - text: '8+ cards at once: 1 round in 9'
       at: i5@eight
-    - text: '10+: under 1 in 100'
       color: CORAL
-      at: i5@ten
-    callouts:
-    - text: How big do the stacks get?
-      at: i5@checked
-      color: CREAM
-    - text: Somebody picks up 8 or more
-      at: i5@pick
+    - text: '10+: under 1 in 100'
+      at: i5@hundred
 - id: twoplayer
   chapter: Other tables
   render: bars
@@ -838,10 +910,14 @@ scenes:
         value: =results.json:two_player.official.smart_vs_normal*100
         at: t1@fifty
         color: MUSTARD
+        pulse:
+        - t2@seven
       - label: Whoever goes first
         value: =results.json:two_player.official.table.first_seat_win*100
         at: t1@first
         color: TEAL
+        pulse:
+        - t2@opponent
       - label: Best bot, Seven Zero
         value: =results.json:two_player.seven_zero.smart_vs_normal*100
         at: t2@barely
@@ -925,6 +1001,10 @@ scenes:
         at: x2@twenty
         color: CORAL
         hl: true
+        pulse:
+        - x2@below
+        - x2@worse
+        - x2@handed
 - id: joke
   render: fan
   lines:
@@ -1045,6 +1125,11 @@ scenes:
     - text: 84 turns a round
       at: x6@eighty
       color: CORAL
+    play:
+    - card: 2
+      at: x6@catch
+    - card: 3
+      at: x6@double
 - id: best
   chapter: The best way to play
   render: checklist
@@ -1071,15 +1156,15 @@ scenes:
       at: b2@thirty#2
       verdict: SKILL
       color: MUSTARD
+    - at: b2@twice
+      color: MUSTARD
+      text: Almost twice the official skill
     - text: Want a coin toss? Add Seven Zero
       at: b3@add
       color: CORAL
     callouts:
     - text: Fast, and skill counts
       at: b1@fast
-    - text: Almost twice the official skill
-      at: b2@twice
-      color: MUSTARD
     cards:
     - uno:0:12
     - uno:3:12
@@ -1144,9 +1229,12 @@ scenes:
       items:
       - label: Holds Wilds
         value: =extras.json:habits_pick.hold wilds*100
-        at: w3@twenty
+        at: w3@hold
         color: MUSTARD
         hl: true
+        pulse:
+        - w3@don't
+        - w3@alone
     callouts:
     - text: Don't play a Wild if anything else fits
       at: w3@don't
@@ -1226,6 +1314,7 @@ scenes:
   lines:
   - u1
   - u2
+  - u3
   params:
     players: 4
     names:
@@ -1258,6 +1347,21 @@ scenes:
       seat: 1
       ev: draw
       label: DRAW TWO
+    - at: u3@forgets
+      seat: 2
+      ev: play
+      card: uno:2:6
+      label: FORGOT
+    - at: u3@catches
+      seat: 3
+      ev: play
+      card: uno:2:1
+      label: CAUGHT!
+    - at: u3@never
+      seat: 0
+      ev: play
+      card: uno:2:9
+      label: NEVER FORGETS
     turns_auto:
       from: 0.4
       every: 1.7
@@ -1268,19 +1372,21 @@ scenes:
       color: CORAL
     - text: 'Caught before the next turn: draw 2'
       at: u2@officially
+    highlight:
+    - - 0
+      - u3@thirty
 - id: sayuno
   render: bars
   lines:
-  - u3
   - u4
   - u5
   params:
     title: 'Saying Uno: one bot vs three normal players'
     callouts:
-    - text: Everyone forgets 1 time in 4
-      at: u3@forgets
-    - text: Caught half the time
-      at: u3@half
+    - text: Catching others barely matters
+      at: u4@catching
+    - text: Penalty of 4 cards
+      at: u5@four
       color: CREAM
     chart:
       players: 4
@@ -1290,18 +1396,18 @@ scenes:
       items:
       - label: Never forgets
         value: =v2.json:uno.official.never forgets*100
-        at: u3@thirty
+        at: 0.0
         color: MUSTARD
         hl: true
         pulse:
         - u4@catching
-        - u5@holding
+        - u4@say
+        - u5@some
+        context: true
       - label: Always forgets
         value: =v2.json:uno.official.always forgets*100
         at: u4@five
         color: CORAL
-        pulse:
-        - u4@uno
       - label: Never forgets, 4-card penalty
         value: =v2.json:uno.penalty4.never forgets*100
         at: u5@thirty
