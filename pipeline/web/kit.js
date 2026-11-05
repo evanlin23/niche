@@ -151,6 +151,15 @@ export class Kit {
     return f;
   }
   key(obj, kind = 'key') { obj.userData.qa = kind; return obj; }
+  // the main visual: in a long video it builds on its word; in a Short (first second decides everything) it is
+  // pre-built in the first ~0.4 s (staggered by idx) and the word becomes an emphasis pulse instead.
+  build(name, at, dur = 0.9, idx = 0) {
+    if (!this.L.short) { const k = this.tw(name, at, dur); k.emph = () => 0; return k; }
+    const k = this.tw(`${name} (pre-built)`, -0.3 + idx * 0.05, 0.6);   // frame 1: already ~half built AND moving
+    const e = this.tw(`${name} emphasis`, at, 0.7);
+    k.emph = (t) => (t >= at ? Math.sin(Math.PI * e(t)) : 0);
+    return k;
+  }
 
   // ---------------------------------------------------------------- header rows
   _row(h, gap = 10) { const y = this.rowY; this.rowY += h + gap; return y; }
@@ -177,7 +186,8 @@ export class Kit {
     const L = this.L;
     const its = list.map((c, i) => {
       const next = list[i + 1] ? list[i + 1].at : 1e9;
-      const until = persistent ? next - 0.02 : Math.min(next - 0.05, c.at + (c.hold || hold));
+      let until = persistent ? next - 0.02 : Math.min(next - 0.05, c.at + (c.hold || hold));
+      if (until > this.stage.duration - 0.3) until = 1e9;      // would fade right at the cut: hold through it
       return this.label({ text: c.text, size, role, at: c.at, until, fade: 0.14, anchor: c.at_ref, maxW: L.sw, x: L.cx,
         pill: c.color === 'CORAL' ? GN.coral : c.color === 'CREAM' ? 'rgba(244,234,213,0.95)' : (c.pill ? col(c.pill) : GN.mustard) });
     });
@@ -246,7 +256,7 @@ export class Kit {
   applyCam(t) {
     const R = this.rig; if (!R) return;
     const stage = this.stage, cam = stage.camera;
-    const k = ease(clamp(t / stage.duration));
+    const k = this.L.short ? clamp(t / stage.duration) : ease(clamp(t / stage.duration));   // Shorts: moving from frame 1
     const dir = dirFrom(R.elev, lerp(-R.amp, R.amp, k));
     cam.clearViewOffset();
     placeCam(cam, R.look, dir, lerp(R.d0, R.d1, k));
@@ -263,31 +273,30 @@ export class Kit {
   // ---------------------------------------------------------------- Shorts chrome (hook, captions, CTA + Buh)
   _shortChrome() {
     const L = this.L, sh = this.stage.spec.short, S = L.safe;
-    this.label({ text: 'BUH SIMULATES', size: 34, weight: 700, color: GN.muted, role: 'brand', at: -1, x: L.cx, y: S.t + 10 });
     const lines = String(sh.hook || '').split('\n');
-    let y = S.t + 70;
+    let y = S.t;
     lines.forEach((ln, i) => {
-      const it = this.label({ text: ln, size: lines.length > 2 ? 70 : 84, role: 'hook', at: -1, x: L.cx, y, maxW: L.sw,
+      const it = this.label({ text: ln, size: lines.length > 2 ? 58 : 68, role: 'hook', at: -1, x: L.cx, y, maxW: L.sw,
         color: i === lines.length - 1 ? GN.mustard : GN.text, lh: 1.04 });
       y += this.labels.measure(it)[1] + 4;
     });
-    this.rowY = y + 24;
+    this.rowY = y + 14;
     // CTA at the bottom: Buh + "Full video on my channel"
-    const ctaH = 230, ctaY = S.b - ctaH;
+    const ctaH = 160, ctaY = S.b - ctaH;
     const box = document.createElement('div');
     Object.assign(box.style, { position: 'absolute', left: S.l + 'px', top: ctaY + 'px', width: L.sw + 'px', height: ctaH + 'px',
       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '30px', opacity: 1 });
     const img = document.createElement('img'); img.src = '/branding/buh-happy.png';
-    Object.assign(img.style, { width: '210px', height: '210px', borderRadius: '50%', objectFit: 'cover', objectPosition: '50% 58%' });
+    Object.assign(img.style, { width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', objectPosition: '50% 58%' });
     img.dataset.qa = 'buh';
     const txt = document.createElement('div');
-    txt.innerHTML = `<div data-qa="cta" style="font:900 62px ${FONT};color:${GN.text};letter-spacing:-0.5px">Full video</div>` +
-      `<div data-qa="cta" style="font:700 50px ${FONT};color:${GN.mustard}">on my channel ▶</div>`;
+    txt.innerHTML = `<div data-qa="cta" style="font:900 52px ${FONT};color:${GN.text};letter-spacing:-0.5px">Full video</div>` +
+      `<div data-qa="cta" style="font:700 42px ${FONT};color:${GN.mustard}">on my channel ▶</div>`;
     box.appendChild(img); box.appendChild(txt); this.stage.ov.appendChild(box);
     // captions: big 1-3 word chunks, timed from the aligned words, just above the CTA
-    const capH = 200;
-    this.bottomY = ctaY - capH - 10;
-    const capY = ctaY - capH + 20;
+    const capH = 120;
+    this.bottomY = ctaY - capH - 4;
+    const capY = ctaY - capH + 6;
     const words = sh.words || [];
     const chunks = []; let cur = [];
     for (const w of words) {
@@ -300,7 +309,9 @@ export class Kit {
       let until = nx - c[c.length - 1][2] > 0.6 ? c[c.length - 1][2] + 0.35 : nx;
       if (until > this.stage.duration - 0.2) until = 1e9;     // runs into the cut: hold, never fade at the cut
       const text = c.map((x) => x[0]).join(' ').toUpperCase().replace(/%/g, ' PERCENT').replace(/\s+/g, ' ').trim();
-      this.label({ text, size: 86, role: 'caption', at: a, until, fade: 0.04, rise: false, x: L.cx, y: capY, maxW: L.sw,
+      // one line always: long chunks shrink (Rubik Black caps ~0.66 em per character) instead of wrapping into the CTA
+      const size = Math.round(Math.min(80, L.sw / (0.66 * Math.max(1, text.length))));
+      this.label({ text, size, role: 'caption', at: a, until, fade: 0.04, rise: false, x: L.cx, y: capY + (80 - size) / 2,
         color: GN.text, stroke: '3px #14281f' });
     });
   }
@@ -486,11 +497,11 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     const x = x0 + gap * (i + 0.5);
     m.position.set(x, 0, z); m.castShadow = m.receiveShadow = true; m.scale.y = 0.001; m.visible = false;
     K.key(m); stage.scene.add(m);
-    const k = K.tw(`bar ${it.label}`, it.at ?? 0.3, 0.9);
+    const k = K.build(`bar ${it.label}`, it.at ?? 0.3, 0.9, i);
     const H = it.value / maxV * height;
-    const val = K.worldLabel({ text: '', size: K.L.vert ? 46 : 44, role: 'value', at: it.at ?? 0.3, anchor: it.at_ref, fade: 0.3,
+    const val = K.worldLabel({ text: '', size: K.L.vert ? 46 : 44, role: 'value', at: K.L.short ? -1 : it.at ?? 0.3, anchor: it.at_ref, fade: 0.3,
       color: it.hl ? GN.mustard : GN.text }, () => new THREE.Vector3(x, Math.max(0.001, H * k(K.t)) + 0.2, z), -58);
-    const lab = K.worldLabel({ text: it.label, size: K.L.vert ? 30 : 26, weight: 700, role: 'label', at: it.at ?? 0.3, fade: 0.3,
+    const lab = K.worldLabel({ text: it.label, size: K.L.vert ? 30 : 26, weight: 700, role: 'label', at: K.L.short ? -1 : it.at ?? 0.3, fade: 0.3,
       color: GN.muted, lh: 1.08 }, new THREE.Vector3(x, 0, z + bw / 2 + 0.3), 6);
     return { m, it, k, H, val, lab, x };
   });
@@ -499,7 +510,7 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     const fy = ch.fair / maxV * height;
     fairMesh = new THREE.Mesh(new THREE.BoxGeometry(width + 0.6, 0.03, 0.05), new THREE.MeshStandardMaterial({ color: GN.text, emissive: GN.text, emissiveIntensity: 0.4 }));
     fairMesh.position.set(x0 + width / 2, fy, z + bw / 2 + 0.05); fairMesh.visible = false; K.key(fairMesh); stage.scene.add(fairMesh);
-    const first = Math.min(...items.map((i) => i.at ?? 0.3));
+    const first = K.L.short ? -1 : Math.min(...items.map((i) => i.at ?? 0.3));
     // 16:9: beside the end of the line (room reserved in the fit); 9:16: the player pill already says it
     if (!K.L.vert) fairLab = K.worldLabel({ text: `fair share ${ch.fair}${unit}`, size: 26, weight: 700, role: 'fair', at: first, fade: 0.4, align: 'left' },
       new THREE.Vector3(x0 + width + 0.45, fy, z + bw / 2 + 0.05), -16);
@@ -515,11 +526,13 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     },
     update(t) {
       for (const B of bars) {
-        const k = B.k(t), h = Math.max(0.001, B.H * k);
+        const k = B.k(t), h = Math.max(0.001, B.H * k), e = B.k.emph(t);
         B.m.scale.y = h; B.m.position.y = h / 2; B.m.visible = k > 0.002;
+        B.m.scale.x = B.m.scale.z = 1 + 0.18 * e;                       // emphasis on the word (Shorts)
+        B.val.el.style.color = e > 0.05 || B.it.hl ? GN.mustard : GN.text;
         B.val.el.textContent = `${(B.it.value * Math.min(1, k * 1.02)).toFixed(dec)}${unit}`;
       }
-      if (fairMesh) fairMesh.visible = clamp((t - Math.min(...bars.map((B) => B.it.at ?? 0.3))) / 0.4) > 0.01;
+      if (fairMesh) fairMesh.visible = clamp((t - (K.L.short ? -1 : Math.min(...bars.map((B) => B.it.at ?? 0.3)))) / 0.4) > 0.01;
     },
   };
 }
@@ -534,7 +547,7 @@ T.bars = async (stage, spec) => {
   const vert = K.L.vert, n = ch.items.length;
   const r = K.content;
   const width = vert ? Math.min(8.4, 1.9 * n + 0.6) : Math.min(13.5, 2.6 * n + 1.5);
-  const height = clamp(width * (r.h - 130) / r.w * (vert ? 1.0 : 1.25), 3.6, vert ? 9 : 6.4);   // fill the rect
+  const height = clamp(width * (r.h - 130) / r.w * (vert ? (K.L.short ? 1.5 : 1.0) : 1.25), 3.6, vert ? 11 : 6.4);   // fill the rect
   const B = buildBars(K, ch, { x0: -width / 2, width, height });
   K.fit(B.pts, { rect: { ...r, t: r.t + 50, b: r.b - (vert ? 110 : 80), h: r.h - 50 - (vert ? 110 : 80) }, elev: 18, yaw: K.p.yaw ?? 6, push: 0.06 });
   B.layoutLabels();
@@ -562,7 +575,7 @@ function deckPiles(K, stage, spec) {
     const n = pl.count || 4, fanW = Math.min(n, 10) * 0.12;
     const gx = (cIx - (inRow - 1) / 2) * SX, gz = (row - (nrow - 1) / 2) * SZ - 0.4;
     const at = pl.at ?? (0.3 + gi * 0.3);
-    const k = K.tw(`pile ${gi}`, at, 0.5);
+    const k = K.build(`pile ${gi}`, at, 0.5, gi);
     const cards = [];
     for (let j = 0; j < n; j++) {
       const c = kitCard(stage, Array.isArray(pl.card) ? pl.card[j % pl.card.length] : pl.card);
@@ -623,6 +636,7 @@ function deckRow(K, stage, spec) {
   K.worldLabel({ text: ends[0], size: 26, role: 'label', color: GN.mustard, at: -1, align: 'left' }, new THREE.Vector3(RX - CARD.W * SC / 2, 0, RZ + CARD.H * SC / 2 + 0.2), 4);
   K.worldLabel({ text: ends[1], size: 26, role: 'label', color: GN.muted, at: -1, align: 'right' }, new THREE.Vector3(RX + (n + 0.8) * RS + CARD.W * SC / 2, 0, RZ + CARD.H * SC / 2 + 0.2), 4);
   const plan = (p.plan || [[0.6, Math.floor(n / 2)]]).map(([a, s]) => [typeof a === 'number' ? a : 0.6, s]);
+  if (K.L.short) plan[0][0] = Math.min(plan[0][0], 0.6);     // Shorts: the hero card is on the table from frame 1
   const planDur = plan.map(([a, s], i) => K.tw(`hero to slot ${s}`, a, i === 0 ? 0.6 : 0.7).dur);
   const rowPts = boxPoints(RX - CARD.W * SC / 2, 0, RZ - CARD.H * SC / 2 - 0.4, RX + n * RS + CARD.W * SC / 2, 1.4, RZ + CARD.H * SC / 2 + 0.5);
   K.fit(chart ? [...rowPts, ...chart.pts] : rowPts, { elev: chart ? (vert ? 30 : 22) : 40, yaw: 4, push: 0.05,
@@ -634,7 +648,7 @@ function deckRow(K, stage, spec) {
     let pd = 0.7; plan.forEach(([at, s], i) => { if (t >= at) { prev = slot; slot = s; ts = at; pd = planDur[i]; } });
     const k = ease((t - ts) / pd), sl = lerp(prev, slot, k);
     row.forEach((c, j) => { const g = clamp(j - sl + 1); c.position.x = RX + j * RS + g * RS * 1.8; c.position.y = rowY(j); });
-    const arrive = ease((t - plan[0][0]) / 0.6);
+    const arrive = ease((t - plan[0][0] + 0.6) / 0.6);
     hero.visible = t >= plan[0][0] - 0.6;
     // deck order = stacking order: under the card before it, over the card after it (nothing under it at the bottom)
     hero.position.set(RX + (sl + 0.4) * RS, rowY(sl) + DY * 0.5 + Math.sin(k * Math.PI) * 1.2 + (1 - arrive) * 1.5, RZ);
@@ -795,7 +809,7 @@ T.lineup = async (stage, spec) => {
     const r = Math.floor(i / perRow), inRow = Math.min(perRow, n - r * perRow), ci = i - r * perRow;
     const x = (ci - (inRow - 1) / 2) * gap, z = r * 3.2 - (Math.ceil(n / perRow) - 1) * 1.6;
     const g = makePawn(stage, b.color || 'CREAM', 1.1); g.position.set(x, 0, z); K.key(g);
-    const appear = K.tw(`pawn ${b.name}`, 0.2 + i * 0.18, 0.5);
+    const appear = K.L.short ? K.tw(`pawn ${b.name}`, -0.3 + i * 0.05, 0.6) : K.tw(`pawn ${b.name}`, 0.2 + i * 0.18, 0.5);
     if (typeof b.at === 'number') K.tw(`focus ${b.name}`, b.at, 0.35);
     (b.habits || []).forEach((h) => typeof h.at === 'number' && K.tw(`habit ${h.text}`, h.at, 0.2));
     const lab = K.worldLabel({ text: b.name, size: vert ? 30 : 28, role: 'label', at: 0.4 + i * 0.18, maxW: vert ? 280 : 300 }, new THREE.Vector3(x, 0, z + 0.9), 4);
@@ -1026,7 +1040,7 @@ T.odds = async (stage, spec) => {
     let fi = 0; frames.forEach((f, i) => { if (t >= f.at) fi = i; });
     const f = frames[fi], prev = frames[Math.max(0, fi - 1)];
     const k = fi === 0 ? 1 : ease(clamp((t - f.at) / 0.8));
-    const hits = hitIdx(f.total, f.hits), appear = ease(clamp((t - (frames[0].at - 0.6)) / 0.6));
+    const hits = hitIdx(f.total, f.hits), appear = K.L.short ? ease(clamp((t + 0.3) / 0.4)) : ease(clamp((t - (frames[0].at - 0.6)) / 0.6));
     items.forEach((c, i) => {
       const inNow = i < f.total, inPrev = i < prev.total;
       const [px, , pz] = slot(Math.min(i, prev.total - 1), prev.total), [nx, y, nz] = slot(Math.min(i, f.total - 1), f.total);

@@ -251,10 +251,13 @@ def check_scene(sc, spec, states, script, cfg):
                 if not agrees(x, all_said):
                     issues.append(_issue("info", "numbers", f"'{txt}' shows {x:g} (context, not said)", t))
                 continue
-            if line and scene_said.get(line):
-                if not agrees(x, scene_said[line]):
+            said_here = scene_said.get(line) or []
+            if "%" in txt:          # a percentage is compared with percentage-like numbers ("the first seat" is not 1%)
+                said_here = [v for v in said_here if v > 5]
+            if line and said_here:
+                if not agrees(x, said_here):
                     issues.append(_issue("error", "numbers", f"'{txt}' shows {x:g} but {line} says "
-                                                             f"{', '.join(f'{v:g}' for v in scene_said[line])}", t))
+                                                             f"{', '.join(f'{v:g}' for v in said_here)}", t))
             elif not agrees(x, all_said):
                 sev = "info" if static else "warn"
                 issues.append(_issue(sev, "numbers", f"'{txt}' shows {x:g}, not said in this scene"
@@ -347,6 +350,33 @@ def pixel_checks(video: Path, timeline):
     return out, ys
 
 
+def opening_checks(video: Path, band=(0.20, 0.78)):
+    """Shorts: the first second decides everything (first EK Short kept 24% of viewers; it opened on an empty table).
+    Frame 1 must already be populated (non-background pixels in the content band >= 60% of the clip's median frame)
+    and moving (median frame-to-frame change over the first 0.5 s >= 0.1 grey levels, mean over 1 s >= 0.25)."""
+    import numpy as np
+    w, h = 72, 128
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(video), "-vf", f"scale={w}:{h},format=gray",
+                          "-f", "rawvideo", "-"], capture_output=True, check=True).stdout
+    f = np.frombuffer(raw, np.uint8).reshape(-1, h, w).astype(np.float32)[:, int(h * band[0]):int(h * band[1])]
+    if len(f) < 32:
+        return [_issue("error", "opening", "clip shorter than a second")], {}
+    busy = np.array([(np.abs(x - np.median(x)) > 14).mean() for x in f])
+    med = float(np.median(busy))
+    mot = np.abs(np.diff(f[:31], axis=0)).mean(axis=(1, 2))
+    m = {"first_frame_fill": round(float(busy[0]), 3), "median_fill": round(med, 3),
+         "fill_ratio": round(float(busy[0]) / max(med, 1e-6), 2), "motion_first_half_s": round(float(np.median(mot[:15])), 3),
+         "motion_first_s": round(float(mot.mean()), 3)}
+    out = []
+    if busy[0] < 0.6 * med:
+        out.append(_issue("error", "opening", f"frame 1 is nearly empty: {m['fill_ratio']:.0%} as full as a typical frame "
+                                              f"(need 60%): start with the main visual already on screen", 0))
+    if m["motion_first_half_s"] < 0.1 or m["motion_first_s"] < 0.25:
+        out.append(_issue("error", "opening", f"too still in the first second (frame change {m['motion_first_half_s']:.2f} "
+                                              f"/ {m['motion_first_s']:.2f}; need 0.10 / 0.25): move from frame 1", 0, 1))
+    return out, m
+
+
 def contact_from_video(video: Path, out: Path, every=10):
     dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(video)],
                                capture_output=True, text=True).stdout.strip() or 0)
@@ -424,6 +454,10 @@ def run(slug, video=None, only=None, vertical=False, stills=True, out_dir=None, 
         if timeline is None:
             timeline = json.loads(tl.read_text()) if tl.exists() else [{"id": s.id, "start": s.start, "duration": s.duration} for s in scenes]
         pix, _ = pixel_checks(Path(video), timeline)
+        if short:
+            op, metrics = opening_checks(Path(video))
+            pix += op
+            res["opening"] = metrics
         for it in pix:
             res["scenes"].setdefault(it.get("scene", "video"), {"issues": []})["issues"].append(it)
         res["contact"] = str(contact_from_video(Path(video), out_dir / "contact.png", contact_every))

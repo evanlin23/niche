@@ -133,6 +133,23 @@ def test_pixel_flash_and_black():
     assert pixel_checks(d / "step.mp4", [{"id": "s", "start": 0, "duration": 4}])[0] == []
 
 
+def test_short_opening():
+    import subprocess, tempfile
+    from pathlib import Path
+    from pipeline.qa_visual import opening_checks
+    d = Path(tempfile.mkdtemp())
+    # bad: 1.5 s of an empty, still frame, then a busy moving pattern
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=0x3a5a52:s=270x480:r=30:d=1.5",
+                    "-f", "lavfi", "-i", "testsrc2=s=270x480:r=30:d=3", "-filter_complex", "[0][1]concat=n=2:v=1",
+                    "-c:v", "libx264", "-pix_fmt", "yuv420p", str(d / "bad.mp4")], check=True)
+    iss, _ = opening_checks(d / "bad.mp4")
+    msgs = " ".join(i["msg"] for i in iss)
+    assert "empty" in msgs and "still" in msgs, msgs
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "testsrc2=s=270x480:r=30:d=3",
+                    "-c:v", "libx264", "-pix_fmt", "yuv420p", str(d / "good.mp4")], check=True)
+    assert opening_checks(d / "good.mp4")[0] == []
+
+
 if __name__ == "__main__":
     import sys
     fails = 0

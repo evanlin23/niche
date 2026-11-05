@@ -44,9 +44,11 @@ Code: `pipeline/web/kit.js` (templates), `pipeline/kit.py` (anchors, data refs, 
   so a word anchored to the very end of a scene can't produce a cut-off animation.
 - Hard cuts; only the end card fades. Cards square-on, stacked by real thickness, inserted cards between their
   neighbours' heights (deck order = stacking order).
-- Shorts chrome (only when rendered as a Short): BUH SIMULATES kicker + hook on top, big word-timed captions
-  (1-3 words, from the aligned voice) above "Full video on my channel" + Buh at the bottom. The scene title is
-  replaced by the hook; the player pill stays.
+- Shorts chrome (only when rendered as a Short): hook on top, big word-timed captions (1-3 words, one line,
+  from the aligned voice) above a compact "Full video on my channel" + Buh. The scene title is replaced by the
+  hook; the player pill stays. **The first second decides everything** (the first EK Short kept 24% of viewers:
+  it opened on an empty table): in a Short every template's main visual (`K.build`) is pre-built so frame 1 shows
+  it half-built and growing, the word anchors become emphasis pulses, and the camera moves linearly from frame 1.
 
 Common params on every template: `title`, `pill` (free text), `callouts: [{text, at, color?: CORAL|CREAM}]`
 (one at a time, word-timed), `notes: [{text, at}]` (stay until the next note), `no_brand`, `yaw` (orbit degrees).
@@ -242,6 +244,7 @@ Probes the stage state of every scene (every 0.1 s + the last two frames) withou
 | numbers | numbers on screen agree with the script line they're anchored to (spoken forms understood: "thirty five", "eleven and a half", "ten billion", "thirteen point oh four"); unsaid numbers warn; player count / fair share are context | error / warn |
 | captions | `burn_captions: false` -> nothing burned in | error |
 | pixels (with VIDEO) | no black frames, no 1-2 frame brightness flashes or dips | error |
+| opening (Shorts) | frame 1 at least 60% as full as the clip's median frame (content band), frame-to-frame motion in the first 0.5 s / 1 s | error |
 
 Output: `out/qa/visual.txt` (readable; problems repeated across 3+ scenes printed once), `visual.json`,
 `contact.png` (mid + cut frame of every scene, or every 10 s of the video). Exit 1 on any error.
@@ -268,11 +271,13 @@ shorts:
   title: "..."
   description: "..."
   scenes:                                   # kit templates; lines from script.md; same anchors as the long video
-  - {id: kp-spread, render: deck, lines: [k2, k3], params: {...}}
+  - {id: kp-bottom, render: deck, lines: [k3], params: {...}}         # open on the spoken hook
+  - {id: kp-random, render: deck, lines: ["k2@most"], params: {...}}  # then go back; 'k2@most' starts at that word
   - {id: kp-best, render: deck, lines: [k4, k5], params: {...}}
 ```
-The Short uses the long video's own timing (span = first line - 0.15 s to last line + 0.8 s, scenes cut halfway
-between lines), so the audio cut from `out/final/<slug>.mp4` lines up word for word. CI renders ~6 s chunks in
+Each scene is one contiguous span of the long video, but scenes can come from anywhere, so the Short opens on
+its hook (spoken within ~1 s) and then gives the setup. The audio is those spans cut from `out/final/<slug>.mp4`
+and joined (15 ms fades), so it lines up word for word. CI renders ~6 s chunks in
 parallel (`shorts.yml`), assembles, runs the visual gate in 9:16 and uploads `<id>.mp4` + `<id>.txt` + QA. CI has
 no voice or music, so its files carry a silent track; the local `--assemble --audio ...` run puts the mix in (and
 normalises to -14 LUFS through the same `compose.mux` as the long video).
