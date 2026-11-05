@@ -196,15 +196,22 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - Plan ~14 episodes ahead; research + build in parallel with docs/agent-prompts/game-research-and-sim.md
   (give that agent its own branch).
 
+## Gates, not eyeballs
+- The creator wants quality ensured by a process. Every rule above that can be measured is a gate
+  (`make voice`, `make qa-visual`, `make qa-final`); a new lesson that can be measured becomes a check in
+  `pipeline/qa_visual.py` / `voice_gate.py` / `qa_final.py` plus a test in `tests/test_qa_gates.py` that proves it fires.
+- What no gate caught (the Kitten "at the bottom" with a card under it) is a reason to add a template rule,
+  not to eyeball harder.
+
 ## Per-episode checklist
 1. Demand/competition scan → pick game → confirm public rules (save source link in RULES.md).
 2. Go engine + rule tests → baseline "normal" bot → one-variable experiments → mirror check → big run on Actions.
 3. Script in the PerfectPlay-style structure → lint → read aloud.
-4. Scenes: map every line; contact sheet of stills.
-5. Recording sheet → one long take → `make split` → `find_stumbles` → `tighten_voice` → `audio_qa`
-   → `match_voice` → full-narration check vs script → listen-list (narration mp3 + cut list) → pick-ups.
-6. Render on Actions (recorded timing) → assemble locally with voice + music → contact sheet, brightness-dip
-   scan, loudness (-14 LUFS), caption check.
+4. Scenes from the kit (docs/scene-kit.md): map every line; `make stills` (+ `VERTICAL=1`); `make qa-visual` PASS.
+5. Recording sheet → one long take → `make voice SLUG=... REC=...` (whole chain + final check) PASS → send
+   `voice/_listen.mp3` + the cut list from `voice/_report_voice.txt` → pick-ups.
+6. Render on Actions (recorded timing) → assemble locally with voice + music → `make qa-visual VIDEO=...` and
+   `make qa-final` PASS (contact sheet, black frames/flashes, -14 LUFS, peak, length, captions).
 7. Upload kit: 3 titles + 3 thumbnails, description with chapters, SRT, pinned comment, end screen.
 
 ## Shorts
