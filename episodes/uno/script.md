@@ -23,6 +23,7 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 - Rules: Mattel instruction sheet GDJ85 (read 2026-11-04): no stacking ("only on a matching colour or another Draw Two",
   victim draws and misses turn), draw ONE card and may play it, Wild Draw 4 only without the current colour, challenge
   4/6, Shuffle Hands + 3 Customizable, 2-10 players, first to 500.
+- n1 tease: episodes/sorry/script.md + data/results.json, best bot 33.78% at 4 players (fair 25) = "a third".
 - "Billions": results.json total_games = 63 tests x 200M = 12.6 billion rounds (Actions run 41924460193, 20 shards,
   2026-11-04). Every rounded number above re-checked against it; nothing moved.
 
@@ -122,4 +123,5 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 
 ## Close
 [e1] Remember the one thing my bots never do? Argue about the rules. Which might be the real reason Uno takes forever at your house.
+[n1] Next, I'm simulating Sorry!. It's supposed to be pure luck, but my best bot won a third of its games.
 [e2] So here's my question. Is draw until you can play a real rule at your house? Defend it in the comments. I'll be reading every one.

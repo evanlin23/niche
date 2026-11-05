@@ -105,4 +105,5 @@ THE RECIPE
 
 CLOSE
 [e1]  Remember the one thing my bots never do? Argue about the rules. Which might be the real reason Uno takes forever at your house.
+[n1]  Next, I'm simulating Sorry!. It's supposed to be pure luck, but my best bot won a third of its games.
 [e2]  So here's my question. Is draw until you can play a real rule at your house? Defend it in the comments. I'll be reading every one.
