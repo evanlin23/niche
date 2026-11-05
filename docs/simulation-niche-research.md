@@ -313,9 +313,9 @@ videos) and the thumbnail check below.
 2. **Execution was good, but not unique.** Four copycats (Seeded, Jacab Thomas, Dice Lab, Million Game Lab) use nearly
    the same thumbnail: a 3D board, a tall yellow bar, a big percentage next to a small one. They got 59 to 8.5K views.
    Looking the same isn't enough once the slot is taken. Being first on the biggest topic was the edge.
-3. **Personality wasn't the reason.** The second-most-liked comment group is about the voice: "what's up with the random
-   accent changes" (782 likes) and "are there two people running the channel?". Five of the top 200 comments, 903 likes
-   between them. That suggests a synthetic voice. Their weak loyalty numbers fit this (0.59% likes, 2.6 subs per 1,000
+3. **Personality wasn't the reason.** The third most-liked comment is about the voice, "what's up with the random
+   accent changes" (782 likes), and others ask "are there two people running the channel?" (5 of the top 200 comments,
+   903 likes). That suggests a synthetic voice. Their weak loyalty numbers fit this (0.59% likes, 2.6 subs per 1,000
    views, §5).
 4. **The video starts arguments, and they act on requests.** The top comment (2.7K likes) says the model ignores human
    psychology. Others add house rules and the 32-house limit. The Catan description opens "This one's for everyone who
