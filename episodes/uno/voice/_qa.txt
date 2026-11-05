@@ -205,24 +205,24 @@
     6.91s  unsure word 'five.' (score 0.012) -> listen: mumble / leftover restart?
 
 [i5]
-    0.00- 0.43s  voiced  +45.4 dB  (flat 0.003, 867 Hz, low 0.25)
-    4.70- 4.76s  voiced  +13.7 dB  (flat 0.006, 1645 Hz, low 0.01)
-    5.93- 5.99s  voiced  +28.0 dB  (flat 0.003, 561 Hz, low 0.03)
-    1.34s  unsure word 'checked' (score 0.113) -> listen: mumble / leftover restart?
-    1.54s  unsure word 'how' (score 0.0) -> listen: mumble / leftover restart?
-    2.33s  unsure word 'get.' (score 0.108) -> listen: mumble / leftover restart?
-    4.29s  unsure word 'of' (score 0.0) -> listen: mumble / leftover restart?
-    4.39s  unsure word 'nine,' (score 0.128) -> listen: mumble / leftover restart?
+    0.00- 0.61s  voiced  +44.4 dB  (flat 0.003, 601 Hz, low 0.52)
+    4.90- 4.94s  voiced  +13.3 dB  (flat 0.005, 1659 Hz, low 0.0)
+    6.11- 6.17s  voiced  +27.6 dB  (flat 0.003, 558 Hz, low 0.03)
+    1.52s  unsure word 'checked' (score 0.114) -> listen: mumble / leftover restart?
+    1.72s  unsure word 'how' (score 0.0) -> listen: mumble / leftover restart?
+    2.50s  unsure word 'get.' (score 0.116) -> listen: mumble / leftover restart?
+    4.47s  unsure word 'of' (score 0.0) -> listen: mumble / leftover restart?
+    4.57s  unsure word 'nine,' (score 0.167) -> listen: mumble / leftover restart?
 
 [i5]
-    0.00- 0.43s  voiced  +45.4 dB  (flat 0.003, 867 Hz, low 0.25)  -> keep
-    4.70- 4.76s  voiced  +13.7 dB  (flat 0.006, 1645 Hz, low 0.01)  -> keep
-    5.93- 5.99s  voiced  +28.0 dB  (flat 0.003, 561 Hz, low 0.03)  -> keep
-    1.34s  unsure word 'checked' (score 0.113) -> listen: mumble / leftover restart?
-    1.54s  unsure word 'how' (score 0.0) -> listen: mumble / leftover restart?
-    2.33s  unsure word 'get.' (score 0.108) -> listen: mumble / leftover restart?
-    4.29s  unsure word 'of' (score 0.0) -> listen: mumble / leftover restart?
-    4.39s  unsure word 'nine,' (score 0.128) -> listen: mumble / leftover restart?
+    0.00- 0.61s  voiced  +44.4 dB  (flat 0.003, 601 Hz, low 0.52)  -> keep
+    4.90- 4.94s  voiced  +13.3 dB  (flat 0.005, 1659 Hz, low 0.0)  -> keep
+    6.11- 6.17s  voiced  +27.6 dB  (flat 0.003, 558 Hz, low 0.03)  -> keep
+    1.52s  unsure word 'checked' (score 0.114) -> listen: mumble / leftover restart?
+    1.72s  unsure word 'how' (score 0.0) -> listen: mumble / leftover restart?
+    2.50s  unsure word 'get.' (score 0.116) -> listen: mumble / leftover restart?
+    4.47s  unsure word 'of' (score 0.0) -> listen: mumble / leftover restart?
+    4.57s  unsure word 'nine,' (score 0.167) -> listen: mumble / leftover restart?
 
 [t1]
     0.08- 1.46s  voiced  +39.4 dB  (flat 0.02, 511 Hz, low 0.58)
@@ -348,38 +348,34 @@
     1.67s  unsure word 'here's' (score 0.177) -> listen: mumble / leftover restart?
 
 [b2]
-    0.84- 0.88s  click   +45.4 dB  (flat 0.0, 715 Hz, low 0.1)
-    3.15- 3.99s  voiced  +49.8 dB  (flat 0.041, 701 Hz, low 0.45)
-    8.75- 8.88s  voiced  +20.1 dB  (flat 0.01, 1817 Hz, low 0.0)
-   12.97-13.03s  voiced  +24.5 dB  (flat 0.033, 4150 Hz, low 0.01)
-    0.00s  unsure word 'Stacking,' (score 0.001) -> listen: mumble / leftover restart?
-    0.16s  unsure word 'Jump' (score 0.0) -> listen: mumble / leftover restart?
-    0.24s  unsure word 'In,' (score 0.0) -> listen: mumble / leftover restart?
+    2.68- 2.72s  voiced  +20.0 dB  (flat 0.054, 5155 Hz, low 0.0)
+    3.16- 4.00s  voiced  +49.8 dB  (flat 0.041, 700 Hz, low 0.45)
+    8.76- 8.88s  voiced  +19.9 dB  (flat 0.011, 1802 Hz, low 0.01)
+   12.99-13.04s  click   +21.4 dB  (flat 0.027, 4058 Hz, low 0.0)
+    0.00s  unsure word 'Stacking,' (score 0.0) -> listen: mumble / leftover restart?
+    0.18s  unsure word 'Jump' (score 0.0) -> listen: mumble / leftover restart?
+    0.26s  unsure word 'In,' (score 0.0) -> listen: mumble / leftover restart?
     0.30s  unsure word 'the' (score 0.0) -> listen: mumble / leftover restart?
     0.36s  unsure word 'free' (score 0.0) -> listen: mumble / leftover restart?
     0.46s  unsure word 'plus' (score 0.0) -> listen: mumble / leftover restart?
-    0.62s  unsure word 'four,' (score 0.03) -> listen: mumble / leftover restart?
-    6.42s  unsure word 'thirty' (score 0.228) -> listen: mumble / leftover restart?
-    9.85s  unsure word 'thirty' (score 0.017) -> listen: mumble / leftover restart?
-   10.13s  unsure word 'two' (score 0.066) -> listen: mumble / leftover restart?
+    0.62s  unsure word 'four,' (score 0.021) -> listen: mumble / leftover restart?
+    9.85s  unsure word 'thirty' (score 0.013) -> listen: mumble / leftover restart?
+   10.13s  unsure word 'two' (score 0.029) -> listen: mumble / leftover restart?
 
 [b2]
-    0.84- 0.88s  click   +45.4 dB  (flat 0.0, 715 Hz, low 0.1)  -> keep
-    3.15- 3.99s  voiced  +49.8 dB  (flat 0.041, 701 Hz, low 0.45)  -> keep
-    8.75- 8.88s  voiced  +20.1 dB  (flat 0.01, 1817 Hz, low 0.0)  -> fill
-   12.97-13.03s  voiced  +24.5 dB  (flat 0.033, 4150 Hz, low 0.01)  -> keep
-    0.00s  unsure word 'Stacking,' (score 0.001) -> listen: mumble / leftover restart?
-    0.16s  unsure word 'Jump' (score 0.0) -> listen: mumble / leftover restart?
-    0.24s  unsure word 'In,' (score 0.0) -> listen: mumble / leftover restart?
+    2.68- 2.72s  voiced  +20.0 dB  (flat 0.054, 5155 Hz, low 0.0)  -> keep
+    3.16- 4.00s  voiced  +49.8 dB  (flat 0.041, 700 Hz, low 0.45)  -> keep
+    8.76- 8.88s  voiced  +19.9 dB  (flat 0.011, 1802 Hz, low 0.01)  -> fill
+   12.99-13.04s  click   +21.4 dB  (flat 0.027, 4058 Hz, low 0.0)  -> keep
+    0.00s  unsure word 'Stacking,' (score 0.0) -> listen: mumble / leftover restart?
+    0.18s  unsure word 'Jump' (score 0.0) -> listen: mumble / leftover restart?
+    0.26s  unsure word 'In,' (score 0.0) -> listen: mumble / leftover restart?
     0.30s  unsure word 'the' (score 0.0) -> listen: mumble / leftover restart?
     0.36s  unsure word 'free' (score 0.0) -> listen: mumble / leftover restart?
     0.46s  unsure word 'plus' (score 0.0) -> listen: mumble / leftover restart?
-    0.62s  unsure word 'four,' (score 0.03) -> listen: mumble / leftover restart?
-    6.42s  unsure word 'thirty' (score 0.228) -> listen: mumble / leftover restart?
-    9.85s  unsure word 'thirty' (score 0.017) -> listen: mumble / leftover restart?
-   10.13s  unsure word 'two' (score 0.066) -> listen: mumble / leftover restart?
-
-[b2] skipped fill 8.75-8.88s: it removed words
+    0.62s  unsure word 'four,' (score 0.021) -> listen: mumble / leftover restart?
+    9.85s  unsure word 'thirty' (score 0.013) -> listen: mumble / leftover restart?
+   10.13s  unsure word 'two' (score 0.029) -> listen: mumble / leftover restart?
 
 [b3]
     1.96- 2.00s  voiced  +46.1 dB  (flat 0.002, 683 Hz, low 0.06)  -> keep
@@ -406,18 +402,18 @@
     1.12- 1.23s  voiced  +39.1 dB  (flat 0.0, 331 Hz, low 0.87)
     4.55- 4.60s  voiced  +22.3 dB  (flat 0.001, 620 Hz, low 0.05)
     5.60- 5.64s  voiced  +25.5 dB  (flat 0.004, 310 Hz, low 0.91)
-    0.92s  unsure word 'two.' (score 0.067) -> listen: mumble / leftover restart?
-    5.84s  unsure word 'twenty' (score 0.003) -> listen: mumble / leftover restart?
-    6.12s  unsure word 'nine' (score 0.002) -> listen: mumble / leftover restart?
+    0.92s  unsure word 'two.' (score 0.061) -> listen: mumble / leftover restart?
+    5.84s  unsure word 'twenty' (score 0.002) -> listen: mumble / leftover restart?
+    6.12s  unsure word 'nine' (score 0.001) -> listen: mumble / leftover restart?
 
 [w3]
     0.00- 0.29s  voiced  +42.3 dB  (flat 0.001, 520 Hz, low 0.25)  -> keep
     1.12- 1.23s  voiced  +39.1 dB  (flat 0.0, 331 Hz, low 0.87)  -> keep
     4.55- 4.60s  voiced  +22.3 dB  (flat 0.001, 620 Hz, low 0.05)  -> keep
     5.60- 5.64s  voiced  +25.5 dB  (flat 0.004, 310 Hz, low 0.91)  -> keep
-    0.92s  unsure word 'two.' (score 0.067) -> listen: mumble / leftover restart?
-    5.84s  unsure word 'twenty' (score 0.003) -> listen: mumble / leftover restart?
-    6.12s  unsure word 'nine' (score 0.002) -> listen: mumble / leftover restart?
+    0.92s  unsure word 'two.' (score 0.061) -> listen: mumble / leftover restart?
+    5.84s  unsure word 'twenty' (score 0.002) -> listen: mumble / leftover restart?
+    6.12s  unsure word 'nine' (score 0.001) -> listen: mumble / leftover restart?
 
 [w4]
     0.62- 0.70s  voiced  +27.3 dB  (flat 0.001, 587 Hz, low 0.13)  -> keep
@@ -512,19 +508,19 @@
     3.07s  unsure word 'won' (score 0.119) -> listen: mumble / leftover restart?
 
 [e2]
-    0.00- 0.18s  voiced  +47.5 dB  (flat 0.0, 420 Hz, low 0.28)
-    2.05- 2.14s  voiced  +32.2 dB  (flat 0.002, 1086 Hz, low 0.32)
-    3.72- 3.76s  click   +50.8 dB  (flat 0.005, 776 Hz, low 0.09)
-    4.28- 4.32s  voiced  +47.9 dB  (flat 0.0, 336 Hz, low 0.89)
-    2.79s  unsure word 'you'd' (score 0.183) -> listen: mumble / leftover restart?
-    2.97s  unsure word 'add' (score 0.028) -> listen: mumble / leftover restart?
-    3.80s  unsure word 'I'll' (score 0.017) -> listen: mumble / leftover restart?
+    0.00- 0.36s  voiced  +51.4 dB  (flat 0.0, 423 Hz, low 0.54)
+    2.23- 2.32s  voiced  +31.9 dB  (flat 0.002, 1122 Hz, low 0.29)
+    3.90- 3.94s  click   +50.6 dB  (flat 0.005, 772 Hz, low 0.09)
+    4.46- 4.50s  voiced  +47.7 dB  (flat 0.0, 337 Hz, low 0.88)
+    2.97s  unsure word 'you'd' (score 0.188) -> listen: mumble / leftover restart?
+    3.15s  unsure word 'add' (score 0.028) -> listen: mumble / leftover restart?
+    3.98s  unsure word 'I'll' (score 0.025) -> listen: mumble / leftover restart?
 
 [e2]
-    0.00- 0.18s  voiced  +47.5 dB  (flat 0.0, 420 Hz, low 0.28)  -> keep
-    2.05- 2.14s  voiced  +32.2 dB  (flat 0.002, 1086 Hz, low 0.32)  -> keep
-    3.72- 3.76s  click   +50.8 dB  (flat 0.005, 776 Hz, low 0.09)  -> keep
-    4.28- 4.32s  voiced  +47.9 dB  (flat 0.0, 336 Hz, low 0.89)  -> keep
-    2.79s  unsure word 'you'd' (score 0.183) -> listen: mumble / leftover restart?
-    2.97s  unsure word 'add' (score 0.028) -> listen: mumble / leftover restart?
-    3.80s  unsure word 'I'll' (score 0.017) -> listen: mumble / leftover restart?
+    0.00- 0.36s  voiced  +51.4 dB  (flat 0.0, 423 Hz, low 0.54)  -> keep
+    2.23- 2.32s  voiced  +31.9 dB  (flat 0.002, 1122 Hz, low 0.29)  -> keep
+    3.90- 3.94s  click   +50.6 dB  (flat 0.005, 772 Hz, low 0.09)  -> keep
+    4.46- 4.50s  voiced  +47.7 dB  (flat 0.0, 337 Hz, low 0.88)  -> keep
+    2.97s  unsure word 'you'd' (score 0.188) -> listen: mumble / leftover restart?
+    3.15s  unsure word 'add' (score 0.028) -> listen: mumble / leftover restart?
+    3.98s  unsure word 'I'll' (score 0.025) -> listen: mumble / leftover restart?
