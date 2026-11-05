@@ -133,7 +133,9 @@ function qaState(t) {
   }
   const tw = ((S.qa && S.qa.tweens) || []).filter((w) => t > w.at + 1e-4 && t < w.at + w.dur - 1e-4).map((w) => w.name);
   const content = S.qa && S.qa.content ? [S.qa.content.l, S.qa.content.t, S.qa.content.r, S.qa.content.b] : null;
-  return { t: +t.toFixed(3), texts, objs, tw, content, clips: clips.slice(0, 200) };
+  const cd = window.__v1.set(0, 0, -1).applyQuaternion(cam.quaternion);           // camera: continuity across cuts
+  const camState = { p: cam.position.toArray().map((v) => +v.toFixed(4)), d: [cd.x, cd.y, cd.z].map((v) => +v.toFixed(5)), fov: +cam.fov.toFixed(3) };
+  return { t: +t.toFixed(3), texts, objs, tw, content, cam: camState, clips: clips.slice(0, 200) };
 }
 
 (async () => {

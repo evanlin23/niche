@@ -52,17 +52,19 @@ function cleanRoom(stage, L) {
   S.add(new THREE.HemisphereLight(0xffffff, new THREE.Color(L.bg), 1.1));
   const key = new THREE.DirectionalLight(0xfff4e6, 2.2);
   key.position.set(-6, 18, 10); key.castShadow = true;
-  key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 10; key.shadow.blurSamples = 12; key.shadow.bias = -0.0005;
+  // PCF soft shadows (VSM bled light and smeared under thin flying cards: detached, wobbling shadows); the kit fits
+  // the shadow camera to each shot (Kit.fitShadows), these are the defaults for everything else
+  key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 4; key.shadow.bias = -0.0002; key.shadow.normalBias = 0.015;
   Object.assign(key.shadow.camera, { left: -14, right: 14, top: 14, bottom: -14, near: 1, far: 60 });
-  S.add(key);
+  S.add(key); S.add(key.target);
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshStandardMaterial({ color: L.floor, roughness: 1 }));
   floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; S.add(floor);
   if (stage.spec.quality === 'high') {
     const pm = new THREE.PMREMGenerator(stage.renderer);
     S.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; S.environmentIntensity = 0.25;
   }
-  stage.renderer.shadowMap.type = THREE.VSMShadowMap;
-  return { floor };
+  stage.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  return { floor, key };
 }
 
 export function buildRoom(stage, { feltW = 16, feltD = 10 } = {}) {

@@ -8,3 +8,5 @@ Timing: TTS_ENGINE=silent. CI: .github/workflows/kit-ci.yml on every push touchi
 [a5] A grid of thirty cards with four hits, then fifteen of them leave for the discard pile at once.
 [a6] Three players play on the same word, now, and then two more land together on the pile.
 [a7] Two cards from one hand are played at once, together, onto the pile.
+[a8] The same table again, so the shot carries on: a pawn hops, cards fly high with their shadows, and one is drawn back.
+[a9] And now a new angle on that table, clearly different from the last one.

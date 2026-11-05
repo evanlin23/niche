@@ -40,7 +40,7 @@ scenes:
     highlights:
     - {card: 0, at: a4@ten, label: ONE}
     - {card: 5, at: a4@four, label: TWO}
-    - {card: 9, at: a4@lifted, label: THREE}
+    - {card: 2, at: a4@lifted, label: THREE}     # (card 9 is on the pile by then: nothing to lift)
     play:
     - {card: 9, at: a4@played}
     - {card: 8, at: a4@after}
@@ -66,6 +66,29 @@ scenes:
     - {at: a6@now, seat: 2, ev: play, card: 6}
     - {at: a6@together, seat: 3, ev: play, card: 7}
     - {at: a6@together, seat: 0, ev: play, card: 1}
+- id: hops            # same template right after 'together': continuous shot; pawn hops + flying-card shadows
+  render: table
+  lines: [a8]
+  params:
+    players: 4
+    hands: 6
+    names: [ONE, TWO, THREE, FOUR]
+    highlight: [[1, a8@hops]]
+    turns:
+    - {at: a8@fly, seat: 2, ev: play, card: 4}
+    - {at: a8@shadows, seat: 3, ev: play, card: 8}
+    - {at: a8@drawn, seat: 0, ev: draw}
+- id: newshot         # same template again, but `shot: new`: a clearly different angle
+  render: table
+  lines: [a9]
+  params:
+    shot: new
+    players: 4
+    hands: 6
+    names: [ONE, TWO, THREE, FOUR]
+    turns:
+    - {at: a9@angle, seat: 1, ev: play, card: 6}
+    - {at: a9@different, seat: 2, ev: play, card: 2}
 - id: fanpair
   render: fan
   lines: [a7]

@@ -227,6 +227,10 @@ def build_spec(ctx, module: str | None = None, charts: dict | None = None) -> di
     s["params"] = R.all(params, "params")
     if "chart" in s["params"]:
         s["chart"] = s["params"]["chart"]
+    if getattr(sc, "chain", None) and not getattr(ctx, "short", None):
+        s["chain"] = sc.chain                   # continuous camera across same-template cuts (kit.js fit/applyCam)
+    if params.get("shot") == "new":
+        s["shot_new"] = True                    # a clearly different shot from the previous same-template scene
     if getattr(ctx, "short", None):
         s["short"] = ctx.short
     s["qa"] = {"anchors": R.anchors, "anchor_errors": R.errors}
