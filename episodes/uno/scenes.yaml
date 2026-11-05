@@ -275,7 +275,7 @@ scenes:
   lines: [r5]
   params:
     players: 4
-    elev: 80
+    elev: 66
     yaw: 0
     push: 0.1
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
