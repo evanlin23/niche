@@ -7,7 +7,7 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
   (+0.9), stacking 49.9 (+2.9), free_draw4 50.0 (+3.0), forced_play 47.1 (identical: bots never decline a playable card),
   draw_until 82.3 (+75%, p90 172-173), everything 86.4 (10+ hit 5.9-6.0%).
   Cards drawn/round: official 24.7, draw_until 72.9. Losers' points at round end: official ~124, draw_until ~176 (+42%).
-  10+ card hit: stacking 0.9%, stacking_mixed 4.6%. First seat: official 26.8%, seven_zero 25.1%.
+  10+ card hit: stacking 0.9% (~1 in 100), stacking_mixed 4.6% (~5 in 100). First seat: official 26.8%, seven_zero 25.1%.
 - `variants.*.smart_vs_normal`: official 29.0, seven_zero 26.2 (edge 4.0 -> 1.2), free_draw4 31.1.
 - `habits`: hold wilds 28.7, random colour 22.4, switch to best colour 26.3, challenges 24.4-25.2, bluff 25.1,
   attack small 25.5, dump high 23.8.
@@ -60,7 +60,7 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 
 ## The results
 [x1] Under the official rules, a four player round takes about forty seven turns.
-[x2] Jump In makes rounds about six percent shorter. Seven Zero adds about one turn, and stacking and the free plus four add about three.
+[x2] Jump In takes it down to about forty four, six percent shorter. Seven Zero makes it forty eight, and stacking and the free plus four both land at fifty.
 [x6] Forced play changed nothing, because my bots already play whenever they can.
 [x3] Draw until you can play is a different animal. Eighty two turns on average. Seventy five percent longer.
 [x4] The average actually hides the worst of it. Under the official rules, one round in ten goes past seventy six turns. With draw until you can play, one in ten goes past a hundred and seventy.
@@ -71,13 +71,13 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 
 ## Bigger tables
 [p1] It gets worse with more people, and the box says two to ten players.
-[p2] Under the official rules, every extra player adds about seven turns to a round, so ten players take about ninety one.
+[p2] Under the official rules, four players take about forty seven turns. Every extra player adds about seven more, so ten players take about ninety one.
 [p3] Ten players with draw until you can play take about a hundred and thirty eight. That's four whole two player rounds, back to back, for one round of Uno.
 [cta] If this just settled an argument at your house, a subscribe really helps. Now, the rule everyone actually fights about.
 
 ## Stacking
 [s1] Stacking is the rule people look up the most. Videos asking whether it's allowed have something like fourteen million views.
-[s2] It's also where the best stories come from, like the round where somebody got hit with sixteen cards. I figured those happened all the time. They don't. With plus twos on plus twos, only about one round in a hundred has anyone draw ten or more at once. Let plus fours join the stack and it's still under one in twenty.
+[s2] It's also where the best stories come from, like the round where somebody got hit with sixteen cards. I figured those happened all the time. They don't. With plus twos on plus twos, only about one round in a hundred has anyone draw ten or more at once. Let plus fours join the stack and it's still only about five rounds in a hundred.
 [s3] It barely changes the game because a stack doesn't add cards, it just moves them. Instead of three people drawing two each, one person draws six. The table draws about twenty four cards a round with stacking, which is about what it draws without it.
 [s4] One thing does matter if you stack. Stack every time you can. A bot that always stacks wins twenty five and a half percent, and one that never stacks and just eats the cards wins twenty two and a half.
 

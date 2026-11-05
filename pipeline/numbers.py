@@ -13,8 +13,10 @@ ORD = {"first": 1, "second": 2, "third": 3, "fourth": 4, "fifth": 5, "half": 0.5
 
 
 def spoken_numbers(text: str) -> list[float]:
-    """All numbers in a narration line (words or digits)."""
-    toks = re.findall(r"[a-z]+|\d[\d,]*(?:\.\d+)?", text.lower().replace("-", " "))
+    """All numbers in a narration line (words or digits). Punctuation ends a number ("plus four, thirty one" is
+    4 and 31), a unit word can't follow another unit or a teen ("four thirty" is two numbers), and "a hundred and
+    thirty eight" is 138."""
+    toks = re.findall(r"[a-z]+|\d[\d,]*(?:\.\d+)?|[.,;:!?]", text.lower().replace("-", " "))
     out, i = [], 0
     while i < len(toks):
         t = toks[i]
@@ -25,29 +27,35 @@ def spoken_numbers(text: str) -> list[float]:
             out.append(v); i += 1; continue
         if t in ORD and t != "half":                                    # "third" (from the top)
             out.append(float(ORD[t])); i += 1; continue
-        if t == "a" and i + 1 < len(toks) and toks[i + 1] in SCALES:      # "a billion", "a hundred"
-            out.append(SCALES[toks[i + 1]]); i += 2; continue
+        if t == "a" and i + 1 < len(toks) and toks[i + 1] in SCALES:      # "a billion", "a hundred (and ...)"
+            toks[i] = "one"; t = "one"
+        if t == "hundred" and (i == 0 or toks[i - 1] not in UNITS and toks[i - 1] not in TENS):   # "all hundred and twelve"
+            toks.insert(i, "one"); t = "one"
         if t not in UNITS and t not in TENS or (t == "oh"):
             i += 1; continue
-        total, cur, j = 0.0, 0.0, i
+        total, cur, j, last = 0.0, 0.0, i, None      # last: kind of the previous word (unit/teen/tens/scale)
         while j < len(toks) and (toks[j] in UNITS or toks[j] in TENS or toks[j] in SCALES or toks[j] == "and"):
             w = toks[j]
             if w == "and":
                 if j + 2 < len(toks) and toks[j + 1] == "a" and toks[j + 2] == "half":
                     cur += 0.5; j += 3; break
                 if j + 1 < len(toks) and (toks[j + 1] in UNITS or toks[j + 1] in TENS) and (cur >= 100 or total > 0):
-                    j += 1; continue
+                    j += 1; last = "scale"; continue
                 break
-            if w in UNITS and w != "oh":
-                cur += UNITS[w]
+            if w == "oh":
+                break
+            if w in UNITS:
+                if last in ("unit", "teen"):
+                    break                                 # "four thirty", "one two": separate numbers
+                cur += UNITS[w]; last = "teen" if UNITS[w] >= 10 else "unit"
             elif w in TENS:
-                cur += TENS[w]
+                if last in ("unit", "teen", "tens"):
+                    break
+                cur += TENS[w]; last = "tens"
             elif w == "hundred":
-                cur = max(cur, 1) * 100
-            elif w in SCALES:
-                total += max(cur, 1) * SCALES[w]; cur = 0
-            elif w == "oh":
-                break
+                cur = max(cur, 1) * 100; last = "scale"
+            else:
+                total += max(cur, 1) * SCALES[w]; cur = 0; last = "scale"
             j += 1
         v = total + cur
         if j < len(toks) and toks[j] == "point":            # "thirteen point oh four"

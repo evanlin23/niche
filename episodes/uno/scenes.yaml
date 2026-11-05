@@ -1,285 +1,621 @@
-# UNO: scene list. `lines` = narration ids in script.md. Chart values come from data/results.json.
-music:              # same Audio Library tracks as video 1 (local only)
+# Uno: scene list (scene kit templates, docs/scene-kit.md). `lines` = narration ids in script.md.
+# Bar values are data refs into data/*.json. Typed numbers in callouts/statements are traced in script.md's header.
+# Card names are written as words ("Draw Two"), so the numbers gate only sees real claims.
+music:              # YouTube Audio Library, no attribution required (local only, not in git)
   - music/days-are-long-silent-partner.mp3
   - music/renunciation-asher-fulero.mp3
   - music/ponderous-days-joel-cummins.mp3
 engine: 3d
+grade: eq=saturation=1.12:contrast=1.04   # light colour grade baked into every scene
+burn_captions: false  # creator: no burned-in captions; YouTube CC covers it, animations carry the screen
+voice_style: studio   # no-AI studio chain: de-reverb, broadcast EQ, compression (pipeline/studio_voice.py)
 look: clean-sage
 quality: high
 ssaa: 1.5
 scenes:
+# ------------------------------------------------------------------ cold open
 - id: cold
   chapter: Every family plays differently
-  render: unotable
-  lines:
-  - o1
-  - o2
-  - o3
-  pad:
-  - 0.4
-  - 0.6
+  render: table
+  lines: [o1, o2, o3]
+  pad: [0.4, 0.5]
   params:
-    notes:
-    - text: Billions of rounds simulated
-      at: o3
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 56
-      color: MUSTARD
+    players: 4
+    names: [THE STACKER, THE SWAPPER, THE KEEP-DRAWER, THE RULES LAWYER]
+    hands: 7
+    highlight: [[0, o2@stacks], [1, o2@swaps], [2, o2@keep], [3, o2@says]]
+    turns:
+    - {at: o1@differently, seat: 3, ev: play, card: 'uno:3:4'}
+    - {at: o2@stacks, seat: 0, ev: play, card: 'uno:0:12', label: STACKED!}
+    - {at: o2@swaps, seat: 1, ev: play, card: 'uno:0:7', label: SWAP HANDS}
+    - {at: o2@drawing, seat: 2, ev: draw, label: KEEP DRAWING}
+    - {at: o2@until, seat: 2, ev: draw}
+    - {at: o2@real, seat: 3, ev: play, card: 'uno:2:7', label: NOT A REAL RULE}
+    callouts:
+    - {text: "Every house rule vs the official game", at: o3@every}
+    - {text: "Billions of rounds", at: o3@billions}
 - id: hook
-  render: bars
-  lines:
-  - o4
+  render: statement
+  lines: [o4, o5]
   params:
-    chart: hook
-    title: Average turns per round
+    lines:
+    - 'One house rule:'
+    - {text: "75% longer rounds", color: CORAL, at: o4@seventy}
+    - {text: "1 in 10 goes past 170 turns", at: o4@marathon}
+    callouts:
+    - {text: "It's not stacking", at: o5@stacking}
+    - {text: "The rule everybody looks up", at: o5@looks, color: CREAM}
 - id: title
   render: title
   min_duration: 2.5
-  pad:
-  - 0
-  - 0
+  pad: [0, 0]
   params:
-    lines:
-    - Every Uno
-    - House Rule, Tested
-- id: primer
-  render: unotable
-  lines:
-  - g1
+    lines: [Every Uno House Rule, {text: One breaks the round, color: MUSTARD}]
+
+# ------------------------------------------------------------------ the game
+- id: deal
+  chapter: The game in thirty seconds
+  render: table
+  lines: [g1, g2]
   params:
-    from: 0.2
-    every: 0.8
-- id: deck
+    players: 4
+    names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
+    hands: 7
+    highlight: [[0, g2@turn]]
+    turns:
+    - {at: g1@while, seat: 1, ev: draw}
+    - {at: g1@seven, seat: 0, ev: draw, label: SEVEN CARDS EACH}
+    - {at: g1@flipped, seat: 3, ev: play, card: 'uno:0:5', label: START THE PILE}
+    - {at: g2@color, seat: 0, ev: play, card: 'uno:0:9', label: SAME COLOR}
+    - {at: g2@number, seat: 1, ev: play, card: 'uno:3:9', label: SAME NUMBER}
+    - {at: g2@wild, seat: 2, ev: play, card: 'uno:4:13', label: WILD}
+    - {at: g2@first, seat: 3, ev: play, card: 'uno:1:2', label: OUT OF CARDS}
+    - {at: g2@scores, seat: 3, ev: draw, label: "SCORES THE OTHERS' CARDS"}
+    callouts:
+    - {text: "First to 500 points wins", at: g2@hundred}
+- id: cards
+  render: deck
+  lines: [g3, g4, g5, c1]
+  params:
+    title: "What's in the box"
+    pill: 2 to 10 players
+    piles:
+    - {card: ['uno:0:3', 'uno:1:8', 'uno:2:1', 'uno:3:6'], count: 30, label: Number cards}
+    - {card: 'uno:3:10', count: 8, label: Skip}
+    - {card: 'uno:2:11', count: 8, label: Reverse}
+    - {card: 'uno:0:12', count: 8, label: Draw Two}
+    - {card: 'uno:4:13', count: 4, label: Wild}
+    - {card: 'uno:4:14', count: 4, label: Wild Draw Four}
+    - {card: 'uno:4:15', count: 1, label: Shuffle Hands}
+    - {card: 'uno:4:16', count: 3, label: Blank Wild}
+    highlights: [[1, g3@skip], [2, g3@reverse], [3, g3@draw], [4, g3@wild], [5, g4@wild], [6, g5@shuffle], [7, c1@blank], [0, c1@hundred]]
+    callouts:
+    - {text: "No card in that color? Then it's legal", at: g4@nothing}
+    - {text: "Challenger draws if wrong", at: g4@cheated, color: CREAM}
+    - {text: "Newer decks", at: g5@newer, color: CREAM}
+    - {text: "Card designs are my own", at: c1@version, color: CREAM}
+    - {text: "Next player draws 4", at: g4@next}
+    - {text: "Only with nothing in the current color", at: g4@only}
+    - {text: "Think they cheated? Challenge", at: g4@challenge}
+    - {text: "Guilty: you draw the 4", at: g4@guilty, color: CORAL}
+    - {text: "Innocent: they draw 6", at: g4@innocent, color: CORAL}
+    - {text: "Every hand collected", at: g5@every}
+    - {text: "Shuffled and dealt back out", at: g5@dealt}
+    - {text: "Today's box: 112 cards", at: c1@hundred}
+    - {text: "Write your own rule on the blanks", at: c1@write}
+    - {text: "My bots play them as plain Wilds", at: c1@bots}
+
+# ------------------------------------------------------------------ trust
+- id: sheet
   chapter: Can you trust it?
-  render: unodeck
-  lines:
-  - c1
-  pad:
-  - 0.5
-  - 1.0
-- id: surprise
   render: statement
-  lines:
-  - c2
+  lines: [c2]
   params:
     lines:
-    - 'Official rules:'
-    - text: no stacking.
-      color: CORAL
-    - text: draw ONE card.
-      color: MUSTARD
+    - 'The rule sheet:'
+    - {text: "no stacking.", color: CORAL, at: c2@stack}
+    - {text: "draw ONE card.", color: MUSTARD, at: c2@one}
 - id: check
-  render: statement
-  lines:
-  - c3
-  - c4
+  render: bars
+  lines: [c3, c7]
   params:
-    lines:
-    - 'Opening hand has a Wild:'
-    - math says 55.81%
-    - text: 'engine: 55.84%'
-      color: MUSTARD
-- id: limits
-  render: unotable
-  lines:
-  - c5
+    title: Opening hand has a Wild
+    pill: 4 players · 112-card deck
+    callouts:
+    - {text: "At least one Wild in seven cards", at: c3@least}
+    - {text: "No new Wilds", at: c7@without, color: CREAM}
+    - {text: "Plain math vs my simulator", at: c3@checked}
+    - {text: "Ten million deals", at: c3@ten}
+    - {text: "The older 108-card deck", at: c7@older}
+    - {text: "Same round length", at: c7@same}
+    - {text: "Older deck? Nothing changes", at: c7@nothing, color: CREAM}
+    chart:
+      unit: '%'
+      decimals: 1
+      maxV: 75
+      items:
+      - {label: Plain math, value: "=engine_check.json:math_opening_hand_has_wild*100", at: c3@fifty, color: TEAL}
+      - {label: My simulator, value: "=engine_check.json:opening_hand_has_wild*100", at: c3@simulator, color: MUSTARD, hl: true}
+- id: bots
+  render: fan
+  lines: [c6, c5]
   params:
-    notes:
-    - text: Bots never argue about the rules
-      at: c5
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 50
-      color: MUSTARD
-- id: rules
+    title: A normal bot
+    seat_label: NORMAL BOT
+    pill: 4 players
+    cards: ['uno:0:5', 'uno:0:9', 'uno:3:5', 'uno:4:13', 'uno:1:2', 'uno:0:12', 'uno:2:7']
+    highlights:
+    - {card: 0, at: c6@own, label: ITS OWN HAND}
+    - {card: 4, at: c6@top, label: THE TOP CARD}
+    - {card: 1, at: c6@matches, label: ANY MATCHING CARD}
+    - {card: 3, at: c6@color, label: CALLS ITS BEST COLOR}
+    play:
+    - {card: 1, at: c6@challenges}
+    callouts:
+    - {text: "Knows how many cards everyone holds", at: c6@holding}
+    - {text: "Challenges a Draw Four three times in ten", at: c6@challenges}
+    - {text: "Not quite like real people", at: c5@real, color: CREAM}
+    - {text: "Always says UNO", at: c5@forget}
+    - {text: "Never argues about the rules", at: c5@argue, color: CORAL}
+    - {text: "Remember that one", at: c5@comes, color: CREAM}
+
+# ------------------------------------------------------------------ the house rules
+- id: houserules
   chapter: The house rules
   render: checklist
-  lines:
-  - r1
-  - r2
-  - r3
+  lines: [r1, r2, r3]
   params:
-    title: The house rules
-    step: 110
-    size: 42
+    title: The house rules, one at a time
     items:
-    - text: Stacking +2s (and +4s)
-      at: r2+0.5
-    - text: 'Seven Zero: swap and rotate hands'
-      at: r2+3.5
-    - text: 'Jump In: same card, out of turn'
-      at: r2+7
-    - text: Draw until you can play
-      at: r3
-    - text: Forced play
-      at: r3+2
-    - text: 'Free +4: no color rule, no challenges'
-      at: r3+3.5
+    - {text: "Stacking: Draw Two on Draw Two", at: r2@stacking}
+    - {text: "Seven Zero: swap and pass hands", at: r2@seven}
+    - {text: "Jump In: same card, out of turn", at: r2@jump}
+    - {text: Draw until you can play, at: r3@draw}
+    - {text: Forced play, at: r3@forced}
+    - {text: "Free Draw Four: no color rule", at: r3@free}
+    callouts:
+    - {text: "Holding the exact same card", at: r2@holding}
+    - {text: "Swap with someone else", at: r2@someone, color: CREAM}
+    - {text: "Around the table", at: r2@table, color: CREAM}
+    - {text: "With your own Draw Two", at: r2@own, color: CREAM}
+    - {text: "Anybody, any time", at: r2@anybody}
+    - {text: "Pass the pile along", at: r2@pass}
+    - {text: "A seven swaps with one player", at: r2@swaps}
+    - {text: "A zero passes every hand along", at: r2@zero}
+    - {text: "The exact same card", at: r2@exact}
+    - {text: "Slap it down out of turn", at: r2@slap}
+    - {text: "Must play if you can", at: r3@have}
+    - {text: "No challenges either", at: r3@challenges}
+    cards: ['uno:0:12', 'uno:3:7', 'uno:1:0', 'uno:4:14', 'uno:2:4', 'uno:0:4']
+
+# ------------------------------------------------------------------ results
 - id: length
+  chapter: The rule that breaks the round
   render: bars
-  lines:
-  - x1
-  - x2
-  - x3
-  - x4
-  - x5
+  lines: [x1, x2, x6, x3]
   params:
-    chart: length
     title: Average turns per round
-    notes:
-    - text: 1 round in 10 lasts over 76 turns (official) vs 172 (draw until)
-      at: x4
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 32
-      pill: CORAL
-    - text: 'Cards drawn per round: 25 → 73'
-      at: x5
-      pos:
-      - 960
-      - 215
-      align: center
-      size: 36
-      pill: CREAM
-  chapter: The game breaker
-- id: stackdemo
-  chapter: Stacking
-  render: unotable
-  lines:
-  - s1
-  params:
-    stack: true
-    from: 0.3
-    every: 0.6
-- id: stack
-  render: bars
-  lines:
-  - s2
-  - s3
-  params:
-    chart: stack
-    title: Rounds where someone draws 10+ at once
-- id: sevenzero
-  render: bars
-  lines:
-  - z1
-  - z2
-  - z3
-  params:
-    chart: sevenzero
-    title: 'Seven Zero: first-player edge and skill'
-  chapter: Seven Zero
-- id: everything
-  render: bars
-  lines:
-  - a1
-  - a2
-  params:
-    chart: everything
-    title: All the house rules at once
-    notes:
-    - text: '6 rounds in 100: someone draws 10+'
-      at: a2+3
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 36
-      pill: CORAL
-  chapter: Everything at once
-- id: twoplayer
-  render: bars
-  lines:
-  - t1
-  - t2
-  params:
-    chart: twoplayer
-    title: Two players
-  chapter: Two players
-- id: getgood
+    callouts:
+    - {text: "Jump In: 6% shorter", at: x2@six}
+    - {text: "Forced play changed nothing", at: x6@nothing}
+    - {text: "My bots already play when they can", at: x6@already, color: CREAM}
+    - {text: "A different animal", at: x3@different, color: CORAL}
+    - {text: "75% longer", at: x3@seventy, color: CORAL}
+    chart:
+      players: 4
+      unit: ''
+      decimals: 0
+      items:
+      - {label: Official, value: "=results.json:variants.official.table.mean_turns", at: x1@forty, color: TEAL}
+      - {label: Jump In, value: "=results.json:variants.jump_in.table.mean_turns", at: x2@forty}
+      - {label: Seven Zero, value: "=results.json:variants.seven_zero.table.mean_turns", at: x2@seven}
+      - {label: Stacking, value: "=results.json:variants.stacking.table.mean_turns", at: x2@stacking}
+      - {label: Free Draw Four, value: "=results.json:variants.free_draw4.table.mean_turns", at: x2@fifty}
+      - {label: Forced play, value: "=results.json:variants.forced_play.table.mean_turns", at: x6@forced}
+      - {label: Draw until you can play, value: "=results.json:variants.draw_until.table.mean_turns", at: x3@eighty, color: CORAL, hl: true}
+- id: tail
   render: statement
-  lines:
-  - k1
+  lines: [x4]
+  params:
+    lines:
+    - 'One round in ten:'
+    - {text: 'official: 76+ turns', at: x4@official}
+    - {text: 'draw until: 170+ turns', color: CORAL, at: x4@hundred}
+    callouts:
+    - {text: "1 round in 10", at: x4@ten}
+    - {text: "With draw until you can play", at: x4@with, color: CORAL}
+    - {text: "The average hides the worst of it", at: x4@hides}
+- id: drawn
+  render: bars
+  lines: [x5]
+  params:
+    title: Cards drawn per round, whole table
+    callouts:
+    - {text: "Somebody finally goes out", at: x5@finally, color: CREAM}
+    - {text: "It's just cards", at: x5@reason}
+    - {text: "Nearly three times as many", at: x5@nearly}
+    - {text: "Losers hold about 40% more points", at: x5@forty, color: CORAL}
+    chart:
+      players: 4
+      unit: ''
+      decimals: 0
+      items:
+      - {label: Official, value: "=results.json:variants.official.table.mean_cards_drawn_per_round", at: x5@twenty, color: TEAL}
+      - {label: Draw until you can play, value: "=results.json:variants.draw_until.table.mean_cards_drawn_per_round", at: x5@seventy, color: CORAL, hl: true}
+- id: twist
+  render: bars
+  lines: [x7, x8, x9]
+  params:
+    title: Rounds in a game to 500 points
+    callouts:
+    - {text: "A twist", at: x7@twist, color: CREAM}
+    - {text: "Never keep score?", at: x8@family}
+    - {text: "Where it hurts", at: x8@hurts, color: CORAL}
+    - {text: "Bigger rounds, bigger point hauls", at: x7@points}
+    - {text: "Draw until rounds pay out more", at: x7@pay}
+    - {text: "Didn't expect that", at: x8@expect, color: CREAM}
+    - {text: "Whole game only about 15% longer", at: x8@fifteen}
+    - {text: "Bigger rounds finish it sooner", at: x8@sooner}
+    - {text: "Playing to 500? Annoying", at: x8@annoying}
+    - {text: "No score kept? Every round is the game", at: x8@never, color: CORAL}
+    - {text: "Slowest full game: free Draw Four", at: x9@drags, color: CORAL}
+    - {text: "Smaller point hauls per round", at: x9@smaller}
+    - {text: "About a quarter longer", at: x9@quarter, color: CORAL}
+    chart:
+      players: 4
+      unit: ''
+      decimals: 1
+      items:
+      - {label: Official, value: "=matches.json:official.mean_rounds_per_game", at: x7@ten, color: TEAL}
+      - {label: Draw until you can play, value: "=matches.json:draw_until.mean_rounds_per_game", at: x7@six, color: MUSTARD, hl: true}
+      - {label: Free Draw Four, value: "=matches.json:free_draw4.mean_rounds_per_game", at: x9@twelve, color: CORAL}
+- id: tables
+  render: bars
+  lines: [p1, p2, p3]
+  params:
+    title: Turns per round by table size
+    pill: 4 or 10 players
+    callouts:
+    - {text: "The box: 2 to 10 players", at: p1@box}
+    - {text: "About 7 more turns per extra player", at: p2@seven}
+    - {text: "Four two-player rounds, back to back", at: p3@four, color: CREAM}
+    chart:
+      unit: ''
+      decimals: 0
+      items:
+      - {label: "4 players", value: "=results.json:players.4.official.mean_turns", at: p2@forty, color: TEAL}
+      - {label: "10 players", value: "=results.json:players.10.official.mean_turns", at: p2@ninety, color: MUSTARD}
+      - {label: "10 players, draw until", value: "=results.json:players.10.draw_until.mean_turns", at: p3@hundred, color: CORAL, hl: true}
+- id: cta
+  render: statement
+  lines: [cta]
+  params:
+    lines:
+    - Settled an argument?
+    - {text: "Subscribe.", color: MUSTARD, at: cta@subscribe}
+    - {text: "Now, stacking.", color: CORAL, at: cta@now}
+
+# ------------------------------------------------------------------ stacking
+- id: stackhits
+  chapter: Stacking
+  render: bars
+  lines: [s1, s2]
+  params:
+    title: Rounds in 100 where someone draws 10+ at once
+    callouts:
+    - {text: "Draw Fours join: about 5 in 100", at: s2@join}
+    - {text: "The rule people look up the most", at: s1@look}
+    - {text: "Fourteen million views asking", at: s1@fourteen}
+    - {text: "The best stories", at: s2@stories}
+    - {text: "The 16-card round", at: s2@sixteen, color: CORAL}
+    - {text: "All the time? No.", at: s2@don't}
+    chart:
+      players: 4
+      unit: ''
+      decimals: 1
+      maxV: 8
+      items:
+      - {label: "Draw Twos stack", value: "=results.json:variants.stacking.table.share_rounds_with_10plus_draw*100", at: s2@hundred, color: MUSTARD}
+      - {label: "Draw Fours join in", value: "=results.json:variants.stacking_mixed.table.share_rounds_with_10plus_draw*100", at: s2@five, color: CORAL}
+- id: stackmove
+  render: table
+  lines: [s3]
+  params:
+    players: 4
+    names: [PLAYER 1, PLAYER 2, PLAYER 3, PLAYER 4]
+    hands: 6
+    highlight: [[3, s3@one]]
+    turns:
+    - {at: s3@stack, seat: 0, ev: play, card: 'uno:0:12', label: DRAW TWO}
+    - {at: s3@moves, seat: 1, ev: play, card: 'uno:3:12', label: PASS IT ON}
+    - {at: s3@three, seat: 2, ev: play, card: 'uno:2:12', label: PASS IT ON}
+    - {at: s3@six, seat: 3, ev: draw, label: DRAWS ALL SIX}
+    callouts:
+    - {text: "A stack moves cards, it doesn't add them", at: s3@add}
+    - {text: "About 24 cards a round either way", at: s3@twenty}
+    - {text: "Same as without stacking", at: s3@without, color: CREAM}
+- id: stackhabit
+  render: bars
+  lines: [s4]
+  params:
+    title: "If you stack: one bot vs three normal players"
+    callouts:
+    - {text: "Never stacks, just eats the cards", at: s4@never, color: CORAL}
+    - {text: "Stack every time you can", at: s4@every}
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      items:
+      - {label: Always stacks, value: "=results.json:house_habits.always stack.win*100", at: s4@always, color: MUSTARD, hl: true}
+      - {label: Never stacks, value: "=results.json:house_habits.never stack.win*100", at: s4@eats, color: CORAL}
+
+# ------------------------------------------------------------------ seven zero
+- id: sevenfirst
+  chapter: Seven Zero
+  render: bars
+  lines: [z1, z2]
+  params:
+    title: Wins for whoever goes first
+    callouts:
+    - {text: "Something quieter", at: z1@quieter, color: CREAM}
+    - {text: "Fair share: 25%", at: z2@fair}
+    - {text: "With Seven Zero, the edge is gone", at: z2@gone}
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 36
+      items:
+      - {label: Official, value: "=results.json:variants.official.table.first_seat_win*100", at: z2@almost, color: TEAL}
+      - {label: Seven Zero, value: "=results.json:variants.seven_zero.table.first_seat_win*100", at: z2@seven, color: MUSTARD, hl: true}
+- id: sevenskill
+  render: bars
+  lines: [z3, z5]
+  params:
+    title: Best bot vs three normal players
+    callouts:
+    - {text: "More on that later", at: z5@later, color: CREAM}
+    - {text: "When your hand can be taken", at: z5@taken}
+    - {text: "Its edge shrinks by more than half", at: z3@shrinks}
+    - {text: "Holding Wilds: the best official habit", at: z5@holding}
+    - {text: "With Seven Zero: worth less than a point", at: z5@less, color: CORAL}
+    - {text: "My guess: planning stops paying off", at: z5@guess, color: CREAM}
+    - {text: "Not tested", at: z5@tested, color: CREAM}
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      items:
+      - {label: "Official rules", value: "=results.json:variants.official.smart_vs_normal*100", at: z3@flattens, color: TEAL}
+      - {label: "Seven Zero", value: "=results.json:variants.seven_zero.smart_vs_normal*100", at: z3@edge, color: MUSTARD, hl: true}
+- id: sevenswap
+  render: table
+  lines: [z4]
+  params:
+    players: 4
+    names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
+    hands: [6, 2, 7, 5]
+    highlight: [[1, z4@fewest], [0, z4@seven]]
+    turns:
+    - {at: z4@seven, seat: 0, ev: play, card: 'uno:3:7', label: SEVEN!}
+    - {at: z4@fewest, seat: 1, ev: draw, label: FEWEST CARDS}
+    - {at: z4@random, seat: 2, ev: draw, label: RANDOM SWAP}
+    callouts:
+    - {text: "This one surprised me", at: z4@surprised, color: CREAM}
+    - {text: "Swap with the fewest cards", at: z4@swap}
+    - {text: "Random swap: 21.5% (fair share 25%)", at: z4@twenty, color: CORAL}
+    - {text: "Worse than any single official habit", at: z4@worse, color: CORAL}
+
+# ------------------------------------------------------------------ jump in
+- id: jumpin
+  chapter: Jump In
+  render: bars
+  lines: [j1, j2]
+  params:
+    title: "Jump In: one bot vs three normal players"
+    callouts:
+    - {text: "Paying attention pays", at: j1@paying}
+    - {text: "A four point swing", at: j2@four}
+    - {text: "Watch the pile on other turns", at: j2@watching, color: CREAM}
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      items:
+      - {label: Always jumps in, value: "=results.json:house_habits.always jump in.win*100", at: j2@twenty, color: MUSTARD, hl: true}
+      - {label: Never jumps in, value: "=results.json:house_habits.never jump in.win*100", at: j2@twenty#2, color: CORAL}
+
+# ------------------------------------------------------------------ free draw four
+- id: freefour
+  chapter: The free plus four
+  render: bars
+  lines: [f1, f2, f3]
+  params:
+    title: Best bot vs three normal players
+    callouts:
+    - {text: "You'd think: more random", at: f1@think}
+    - {text: "Official rules: 29%", at: f2@official}
+    - {text: "With the free Draw Four", at: f3@with}
+    - {text: "The result I'd least have guessed", at: f1@least, color: CREAM}
+    - {text: "No restrictions = more random?", at: f1@random}
+    - {text: "Skill matters more", at: f1@only, color: CORAL}
+    - {text: "Mostly holding your Wilds", at: f3@holding}
+    - {text: "That habit alone: 5+ points", at: f3@five, color: MUSTARD}
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      items:
+      - {label: Official rules, value: "=results.json:variants.official.smart_vs_normal*100", at: f2@twenty, color: TEAL}
+      - {label: Free Draw Four, value: "=results.json:variants.free_draw4.smart_vs_normal*100", at: f2@thirty, color: MUSTARD, hl: true}
+
+# ------------------------------------------------------------------ everything / two players
+- id: everything
+  chapter: Everything at once
+  render: checklist
+  lines: [a1, a2]
+  params:
+    title: All the house rules at once
+    items:
+    - {text: Stacking, at: a2@stacking}
+    - {text: Seven Zero, at: a2@seven}
+    - {text: Jump In, at: a2@jump}
+    - {text: Draw until you can play, at: a2@draw}
+    - {text: Free Draw Four, at: a2@free}
+    - {text: "Average: 86 turns a round", at: a2@eighty, color: CORAL}
+    callouts:
+    - {text: "Average: 86 turns", at: a2@average}
+    - {text: "Somebody draws 10+", at: a2@somebody, color: CORAL}
+    - {text: "All of them, same table", at: a1@all}
+    - {text: "6 rounds in 100: someone draws 10+", at: a2@six, color: CORAL}
+    - {text: "In one go", at: a2@go, color: CREAM}
+    cards: ['uno:0:12', 'uno:3:7', 'uno:1:0', 'uno:4:14', 'uno:2:4', 'uno:0:4']
+- id: twoplayer
+  chapter: Two players
+  render: bars
+  lines: [t1, t2, t3]
+  params:
+    title: One on one
+    callouts:
+    - {text: "Best bot: 54% → barely over 50%", at: t2@drops, color: CORAL}
+    - {text: "Seven Zero hits harder", at: t2@harder}
+    - {text: "Every seven swaps with your only opponent", at: t2@every}
+    - {text: "Draw until still hurts", at: t3@hurts}
+    - {text: "34 → 53 turns a round", at: t3@thirty, color: CORAL}
+    chart:
+      players: 2
+      fair: 50
+      decimals: 1
+      maxV: 70
+      items:
+      - {label: Whoever goes first, value: "=results.json:two_player.official.table.first_seat_win*100", at: t2@fifty, color: TEAL}
+      - {label: "Best bot, official", value: "=results.json:two_player.official.smart_vs_normal*100", at: t2@four, color: MUSTARD}
+      - {label: "Best bot, Seven Zero", value: "=results.json:two_player.seven_zero.smart_vs_normal*100", at: t2@barely, color: CORAL}
+
+# ------------------------------------------------------------------ skill
+- id: getgood
+  chapter: Can you get good at Uno?
+  render: statement
+  lines: [k1]
   params:
     lines:
     - Can you actually
-    - text: get good at Uno?
-      color: MUSTARD
-  chapter: Can you get good at Uno?
+    - {text: "get good at Uno?", color: MUSTARD, at: k1@get}
 - id: luck
   render: bars
-  lines:
-  - k2
-  - k3
+  lines: [k2, k3]
   params:
-    chart: luck
-    title: Best bot vs a normal table
+    title: Every helpful habit vs three normal players
+    callouts:
+    - {text: "A real edge, but a small one", at: k3@real}
+    - {text: "Mostly the cards you're dealt", at: k3@cards, color: CORAL}
+    - {text: "Maybe why everyone plays it", at: k3@probably, color: CREAM}
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 40
+      items:
+      - {label: Normal bot, value: "=results.json:habits.play randomly*100", at: k2@three, color: TEAL}
+      - {label: My best bot, value: "=results.json:habits.all smart habits*100", at: k2@twenty, color: MUSTARD, hl: true}
 - id: habits
-  render: bars
-  lines:
-  - h1
-  - h2
-  - h3
-  - h4
-  - h5
-  params:
-    chart: habits
-    title: The habits that help (and hurt)
   chapter: The habits that help
-- id: recipe
+  render: bars
+  lines: [h1, h2, h3, h6]
+  params:
+    title: One habit changed, three normal players
+    callouts:
+    - {text: "Helps too", at: h6@helps, color: CREAM}
+    - {text: "Into the color you have more of", at: h6@more}
+    - {text: "Calling a random color", at: h3@random, color: CORAL}
+    - {text: "A plain card that switches colors", at: h6@plain}
+    - {text: "Worth about a point", at: h6@worth}
+    - {text: "Almost all of it: one habit", at: h1@one}
+    - {text: "Don't play a Wild if anything else fits", at: h2@don't}
+    - {text: "From 25% to 29%", at: h2@takes}
+    - {text: "Call the color you hold most", at: h3@call}
+    - {text: "Switch into your best color", at: h6@switching}
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      items:
+      - {label: Hold your Wilds, value: "=results.json:habits.hold wilds*100", at: h2@twenty, color: MUSTARD, hl: true}
+      - {label: Random Wild color, value: "=results.json:habits.random colour choice*100", at: h3@twenty, color: CORAL}
+      - {label: Switch to your best color, value: "=results.json:habits.switch to your best colour*100", at: h6@point, color: TEAL}
+- id: argued
+  render: bars
+  lines: [h4, h5]
+  params:
+    title: What people argue about
+    callouts:
+    - {text: "For whoever is about to win", at: h4@win, color: CREAM}
+    - {text: "It all lands close", at: h4@lands}
+    - {text: "What people argue about", at: h4@argue, color: CREAM}
+    - {text: "Challenging a Draw Four", at: h4@challenging}
+    - {text: "Bluffing one", at: h4@bluffing}
+    - {text: "Saving Skips and Draw Twos", at: h4@saving}
+    - {text: "Barely matters", at: h4@barely}
+    - {text: "All within about half a point", at: h4@half, color: CREAM}
+    - {text: "Backfires", at: h5@backfires, color: CORAL}
+    - {text: "Feels smart. Isn't.", at: h5@feels, color: CORAL}
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 36
+      items:
+      - {label: Always challenge, value: "=results.json:habits.always challenge*100", at: h4@challenging}
+      - {label: Bluff a Draw Four, value: "=results.json:habits.bluff Draw 4 half the time*100", at: h4@bluffing}
+      - {label: Save attack cards, value: "=results.json:habits.attack when next has <=2*100", at: h4@saving}
+      - {label: Dump high cards, value: "=results.json:habits.dump high cards*100", at: h5@dumping, color: CORAL}
+
+# ------------------------------------------------------------------ verdict + close
+- id: verdict
   chapter: The verdict
   render: checklist
-  lines:
-  - w1
-  - w2
-  - w3
+  lines: [w1, w2, w3]
   params:
-    title: The house-rule verdict
-    step: 120
-    size: 44
+    title: The house rule verdict
     items:
-    - text: 'Shorter rounds: add Jump In'
-      at: w2
-    - text: 'Chaos stories: add stacking'
-      at: w2+2.5
-    - text: 'More luck: add Seven Zero'
-      at: w2+4.5
-    - text: 'Never: draw until you can play'
-      at: w3
-      verdict: BROKEN
-      color: CORAL
+    - {text: "Jump In: add it", at: w2@jump, verdict: SHORTER, color: MUSTARD}
+    - {text: "Stacking: fine, mostly stories", at: w2@stacking}
+    - {text: "Seven Zero: more luck", at: w2@seven}
+    - {text: "Free Draw Four: more skill", at: w2@free}
+    - {text: Draw until you can play, at: w3@draw, verdict: NEVER, color: CORAL}
+    callouts:
+    - {text: "Shorter rounds, attention rewarded", at: w2@shorter}
+    - {text: "Unless you like drawing cards", at: w3@unless, color: CREAM}
+    cards: ['uno:0:12', 'uno:3:7', 'uno:1:0', 'uno:4:14', 'uno:2:4', 'uno:0:4']
 - id: argue
+  render: table
+  lines: [e1]
+  params:
+    players: 4
+    names: [YOU, YOUR AUNT, YOUR BROTHER, THE RULES LAWYER]
+    hands: 5
+    highlight: [[3, e1@argue], [0, e1@house]]
+    turns:
+    - {at: e1@never, seat: 1, ev: play, card: 'uno:0:12', label: STACKED!}
+    - {at: e1@argue, seat: 3, ev: play, card: 'uno:2:7', label: NOT A REAL RULE}
+    - {at: e1@forever, seat: 2, ev: draw, label: STILL DRAWING}
+- id: next
   render: statement
-  lines:
-  - e1
+  lines: [n1, e2]
+  pad: [0.3, 1.2]
   params:
     lines:
-    - Argue about the rules.
-    - text: (That might be the real reason.)
-      color: MUSTARD
-- id: ask
-  render: statement
-  lines:
-  - e2
-  params:
-    lines:
-    - text: Your opening move?
-      color: MUSTARD
-  pad:
-  - 0.3
-  - 1.2
+    - 'Next: Sorry!'
+    - {text: Draw until you can play, at: e2@draw}
+    - {text: "real rule at your house?", color: MUSTARD, at: e2@real}
+    callouts:
+    - {text: "Supposed to be pure luck", at: n1@supposed}
+    - {text: "Best bot: a third of its games", at: n1@third}
+    - {text: "Defend it in the comments", at: e2@defend}
 - id: endcard
   render: endcard
   min_duration: 12
-  pad:
-  - 0
-  - 0
+  pad: [0, 0]
   params:
-    next_title: How to Beat Your Friends at Connect 4
+    next_title: "Sorry! Isn't Pure Luck"
