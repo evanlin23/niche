@@ -18,10 +18,15 @@ runs:
         sudo apt-get update -qq
         sudo apt-get install -y -qq ffmpeg libegl1 libgl1 fonts-inter >/dev/null || sudo apt-get install -y -qq ffmpeg libegl1 libgl1 >/dev/null
         pip install -q numpy pillow skia-python pyyaml kokoro-onnx soundfile noisereduce faster-whisper
-        npm install --no-save --silent three@0.170.0
+        # npm failures used to vanish behind --silent (exit 1, no reason): show npm's own output and fail loudly
+        npm_or_die() { if ! npm "$@" > /tmp/npm.log 2>&1; then echo "::error title=npm $1 failed::npm $* failed (pinned versions in package.json?)"; cat /tmp/npm.log; exit 1; fi; }
+        npm_or_die install --no-save three@0.170.0
         (cd sims/ek && go build -o eksim .)
     - if: inputs.browser == 'true'
       shell: bash
       run: |
-        npm install --no-save --silent playwright@1.48.2
-        npx playwright install --with-deps chromium >/dev/null
+        npm_or_die() { if ! npm "$@" > /tmp/npm.log 2>&1; then echo "::error title=npm $1 failed::npm $* failed (pinned versions in package.json?)"; cat /tmp/npm.log; exit 1; fi; }
+        npm_or_die install --no-save playwright@1.48.2
+        if ! npx playwright install --with-deps chromium > /tmp/pw.log 2>&1; then
+          echo "::error title=playwright install failed::Chromium for Playwright could not be installed"; cat /tmp/pw.log; exit 1
+        fi
