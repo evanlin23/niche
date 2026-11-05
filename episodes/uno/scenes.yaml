@@ -84,6 +84,7 @@ scenes:
 - id: cards
   render: deck
   lines: [g3]
+  pad: [0.2, 1.0]
   params:
     title: "The action cards"
     pill: 2 to 10 players
@@ -156,6 +157,7 @@ scenes:
 - id: bots
   render: fan
   lines: [c6]
+  pad: [0.2, 1.0]
   params:
     title: A normal bot
     seat_label: NORMAL BOT
@@ -212,30 +214,32 @@ scenes:
   render: table
   lines: [r1, r2]
   params:
-    players: 35
+    players: 4
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
+    highlight: [[2, r2@nudges]]
     turns:
     - {at: r2@stacking, seat: 0, ev: play, card: 'uno:0:12', label: DRAW TWO}
-    - {at: r2@looked, seat: 1, ev: play, card: 'uno:3:12', label: "STACKED!"}
-    - {at: r2@nudges, seat: 2, ev: draw, label: TAKES FOUR}
-    turns_auto: {from: 0.4, every: 1.6}
+    - {at: r2@everybody, seat: 1, ev: play, card: 'uno:3:12', label: "STACKED!"}
+    - {at: r1@check, seat: 3, ev: play, card: 'uno:2:4'}
+    - {at: r2@barely, seat: 0, ev: play, card: 'uno:1:6'}
     callouts:
     - {text: "One house rule at a time", at: r1@one}
     - {text: "The rule everybody looks up", at: r2@looked, color: CREAM}
+    - {text: "Player 3 takes four", at: r2@nudges, color: CORAL}
     - {text: "Skill meter: 30%", at: r2@thirty, color: MUSTARD}
     - {text: "Barely anything", at: r2@barely}
 - id: sevenzero
   render: table
   lines: [r3]
   params:
-    players: 35
+    players: 4
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: [6, 3, 7, 5]
-    highlight: [[0, r3@seven], [1, r3@zero], [3, r3@starts]]
+    highlight: [[0, r3@seven#2], [1, r3@zero#2], [3, r3@starts]]
     turns:
-    - {at: r3@seven, seat: 0, ev: play, card: 'uno:3:7', label: "SEVEN: SWAP"}
-    - {at: r3@zero, seat: 1, ev: play, card: 'uno:2:0', label: "ZERO: PASS ALL"}
+    - {at: r3@seven#2, seat: 0, ev: play, card: 'uno:3:7', label: "SEVEN: SWAP"}
+    - {at: r3@zero#2, seat: 1, ev: play, card: 'uno:2:0', label: "ZERO: PASS ALL"}
     - {at: r3@take, seat: 2, ev: draw}
     - {at: r3@starts, seat: 3, ev: play, card: 'uno:1:4', label: GOES FIRST}
     callouts:
@@ -247,7 +251,7 @@ scenes:
   render: table
   lines: [r4]
   params:
-    players: 35
+    players: 4
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
     highlight: [[2, r4@slap]]
@@ -262,7 +266,7 @@ scenes:
   render: table
   lines: [r5]
   params:
-    players: 35
+    players: 4
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
     turns:
@@ -295,7 +299,7 @@ scenes:
   render: table
   lines: [r7]
   params:
-    players: 35
+    players: 4
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: [1, 5, 4, 6]
     turns:
@@ -327,7 +331,7 @@ scenes:
   render: table
   lines: [r9]
   params:
-    players: 35
+    players: 4
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
     highlight: [[1, r9@reverse]]
@@ -357,6 +361,8 @@ scenes:
   params:
     title: "My rules on the skill meter"
     callouts:
+    - {text: "Out of 192 rule combinations", at: i3@combinations}
+    - {text: "Best bot: 31%", at: i2@bot, color: MUSTARD}
     - {text: "Rounds: 47 → about 40 turns", at: i2@drop}
     - {text: "Top sixth of 192 combinations", at: i3@sixth, color: MUSTARD}
     - {text: "One of the better versions all along", at: i3@apparently, color: CREAM}
@@ -366,7 +372,7 @@ scenes:
       decimals: 1
       maxV: 40
       items:
-      - {label: "Official", value: "=v2.json:combos[key=official].best*100", at: i2@last, color: TEAL}
+      - {label: "Official", value: "=v2.json:combos[key=official].best*100", at: 0.0, color: TEAL}
       - {label: "My rules", value: "=v2.json:combos[key=stack+free_d4+multi].best*100", at: i2@thirty, color: MUSTARD, hl: true}
 - id: dump
   render: fan
@@ -394,6 +400,10 @@ scenes:
     - 'With my rules:'
     - {text: "8+ cards at once: 1 round in 9", at: i5@eight}
     - {text: "10+: under 1 in 100", color: CORAL, at: i5@ten}
+    callouts:
+    - {text: "How big do the stacks get?", at: i5@checked, color: CREAM}
+    - {text: "Somebody picks up 8 or more", at: i5@pick}
+
 - id: twoplayer
   chapter: Other tables
   render: bars
@@ -425,7 +435,7 @@ scenes:
   render: table
   lines: [x1]
   params:
-    players: 35
+    players: 4
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
     turns:
@@ -433,7 +443,7 @@ scenes:
     - {at: x1@easy, seat: 1, ev: play, card: 'uno:0:8'}
     - {at: x1@single, seat: 2, ev: draw}
     - {at: x1@force, seat: 3, ev: play, card: 'uno:3:8', label: PASS YOUR HAND}
-    turns_auto: {from: 0.3, every: 1.3}
+    turns_auto: {from: 0.9, every: 2.1}
     callouts:
     - {text: "Pure luck? Easy.", at: x1@easy, color: CREAM}
     - {text: "Everyone passes their hand. Every turn.", at: x1@force, color: CORAL}
@@ -452,7 +462,6 @@ scenes:
       decimals: 1
       maxV: 40
       items:
-      - {label: "Best bot, official", value: "=v2.json:combos[key=official].best*100", at: x2@best, color: TEAL}
       - {label: "Best bot, pass every turn", value: "=extras.json:rules.pass_every.best*100", at: x2@twenty, color: CORAL, hl: true}
 - id: joke
   render: fan
@@ -485,7 +494,7 @@ scenes:
       decimals: 1
       maxV: 40
       items:
-      - {label: "Official", value: "=v2.json:combos[key=official].best*100", at: x4@simulated, color: TEAL}
+      - {label: "Official", value: "=v2.json:combos[key=official].best*100", at: 0.0, color: TEAL}
       - {label: "Joke cards", value: "=extras.json:rules.joke_cards.best*100", at: x4@twenty, color: CORAL, hl: true}
 - id: luckiest
   render: checklist
@@ -538,7 +547,7 @@ scenes:
   lines: [b3]
   params:
     lines:
-    - 'Want a coin toss?'
+    - {text: "Want a coin toss?", at: b3@coin}
     - {text: "Add Seven Zero.", color: CORAL, at: b3@add}
 - id: fourhabits
   chapter: How to win
@@ -586,7 +595,7 @@ scenes:
   render: table
   lines: [w4]
   params:
-    players: 35
+    players: 4
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
     turns:
@@ -614,7 +623,7 @@ scenes:
   render: table
   lines: [u1, u2]
   params:
-    players: 46
+    players: 4
     names: [BEST BOT, NORMAL BOT, NORMAL BOT, NORMAL BOT]
     hands: [5, 1, 4, 6]
     turns:
