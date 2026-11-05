@@ -15,18 +15,22 @@ runs:
       with: { node-version: "22" }
     - shell: bash
       run: |
-        sudo apt-get update -qq
-        sudo apt-get install -y -qq ffmpeg libegl1 libgl1 fonts-inter >/dev/null || sudo apt-get install -y -qq ffmpeg libegl1 libgl1 >/dev/null
-        pip install -q numpy pillow skia-python pyyaml kokoro-onnx soundfile noisereduce faster-whisper
+        # a hung apt/Chromium install used to stall a job for 40+ min: every install is time-boxed and retried once,
+        # each stage is announced (so the log shows where it stopped)
+        retry() { local n=1; until timeout 600 "$@"; do [ $n -ge 2 ] && { echo "::error title=setup step failed twice::$*"; return 1; }; echo "retrying: $*"; n=$((n+1)); sleep 5; done; }
+        echo "setup: apt"; retry sudo apt-get update -qq
+        retry sudo apt-get install -y -qq ffmpeg libegl1 libgl1 fonts-inter >/dev/null || retry sudo apt-get install -y -qq ffmpeg libegl1 libgl1 >/dev/null
+        echo "setup: pip"
+        retry pip install -q numpy pillow skia-python pyyaml kokoro-onnx soundfile noisereduce faster-whisper
         # npm failures used to vanish behind --silent (exit 1, no reason): show npm's own output and fail loudly
         npm_or_die() { if ! npm "$@" > /tmp/npm.log 2>&1; then echo "::error title=npm $1 failed::npm $* failed (pinned versions in package.json?)"; cat /tmp/npm.log; exit 1; fi; }
-        npm_or_die install --no-save three@0.170.0
+        echo "setup: npm three"; npm_or_die install --no-save three@0.170.0
         (cd sims/ek && go build -o eksim .)
     - if: inputs.browser == 'true'
       shell: bash
       run: |
         npm_or_die() { if ! npm "$@" > /tmp/npm.log 2>&1; then echo "::error title=npm $1 failed::npm $* failed (pinned versions in package.json?)"; cat /tmp/npm.log; exit 1; fi; }
-        npm_or_die install --no-save playwright@1.48.2
-        if ! npx playwright install --with-deps chromium > /tmp/pw.log 2>&1; then
-          echo "::error title=playwright install failed::Chromium for Playwright could not be installed"; cat /tmp/pw.log; exit 1
-        fi
+        echo "setup: npm playwright"; npm_or_die install --no-save playwright@1.48.2
+        echo "setup: chromium"
+        ok=0; for n in 1 2; do if timeout 600 npx playwright install --with-deps chromium > /tmp/pw.log 2>&1; then ok=1; break; fi; echo "chromium install attempt $n failed or timed out"; tail -20 /tmp/pw.log; done
+        if [ $ok = 0 ]; then echo "::error title=playwright install failed::Chromium for Playwright could not be installed"; cat /tmp/pw.log; exit 1; fi
