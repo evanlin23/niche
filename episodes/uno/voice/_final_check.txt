@@ -1,13 +1,6 @@
-g5: extra speech 2.24-2.72s 'anyway'
-g5: extra speech 3.07-4.98s 'every plus four or bluffing one'
-g5: extra speech 4.99-6.01s 'changes your win rate by about'
-g5: extra speech 6.44-7.19s 'fun fact'
-g5: extra speech 7.55-8.33s 'fun fact that'
+g5: 120 ms of digital silence (dropout)
 c6: 120 ms of digital silence (dropout)
-r3: 105 ms of digital silence (dropout)
-x1: 120 ms of digital silence (dropout)
-x5: starts abruptly
-x5: extra speech 0.0-0.34s 'my opinion'
-x5: extra speech 0.68-1.38s 'should play like'
-b2: extra speech 4.18-5.02s 'take around'
-u3: ends abruptly (last 30 ms at +28 dB)
+b2: 105 ms of digital silence (dropout)
+w2: ends abruptly (last 30 ms at +38 dB)
+w3: 120 ms of digital silence (dropout)
+e2: ends abruptly (last 30 ms at +42 dB)
