@@ -67,7 +67,7 @@ Lines marked (creator) are the creator's own wording, verbatim; the rest is a dr
 [r4] Now we can look at Jump In, where anyone holding the exact same card can slap it down out of turn, and this pushes it up to thirty and a half percent.
 [r5] Now the free plus four is how most people play it, a plus four at any time you want with no challenges. This brings us up to thirty one percent. That's the highest of any single house rule, and I've essentially played it like this my whole life without even knowing it wasn't a real rule.
 [r6] The rule that says that you have to draw until you can play barely moves the meter at all. All it does is make everything take forever. Rounds take eighty two turns instead of forty seven normally, and one round in ten even takes over a hundred and seventy turns.
-[r7] The rule that kills skill is not being allowed to go out on an action card or a Wild. This drops the meter to twenty five and a half percent, which is basically pure luck, and the rounds get longer too.
+[r7] The rule that actually kills skill is not being allowed to go out on an action card or a Wild. This drops the meter to twenty five and a half percent, which is basically pure luck, and the rounds get longer too.
 [r8] And what if you throw every house rule in at once? Stacking, Seven Zero, Jump In, draw until you can play, the free plus four. You get eighty six turns a round, and less skill than the official game at twenty eight and a half percent.
 [r9] Another thing I tried for fun was Bounce, where a Reverse sends a plus two right back at whoever played it. The win rate stays at twenty nine, it changes nothing, it's just really fun to do.
 
