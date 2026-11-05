@@ -45,7 +45,7 @@ TTS ?= recorded
 VOICE_ENV = TTS_ENGINE=$(TTS) VOICE_DIR=episodes/$(SLUG)/voice
 
 voice:            ## whole voice chain + final check: make voice SLUG=... REC=rec.m4a   (report + listen file)
-	$(PY) -m pipeline.voice_gate episodes/$(SLUG) $(REC) $(if $(FROM),--from-step $(FROM),)
+	$(PY) -m pipeline.voice_gate episodes/$(SLUG) $(REC) $(if $(FROM),--from-step $(FROM),) $(if $(LEGACY_ORIG),--legacy-orig,)
 
 qa-visual:        ## visual gate (stage state per frame): make qa-visual SLUG=... [VIDEO=out.mp4] [VERTICAL=1] [TTS=silent]
 	$(VOICE_ENV) $(PY) -m pipeline.qa_visual $(SLUG) $(if $(VIDEO),--video $(VIDEO),) $(if $(VERTICAL),--vertical,) $(if $(ONLY),--only $(ONLY),)

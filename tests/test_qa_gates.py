@@ -111,6 +111,59 @@ def test_voice_measurements():
     assert extra and not miss
 
 
+def test_voice_input_headroom():
+    """A float recording with peaks ABOVE full scale is gain-reduced before splitting; a normal one is untouched."""
+    import json
+    import subprocess
+    import tempfile
+    from pathlib import Path
+    import numpy as np
+    import soundfile as sf
+    from pipeline.voice_source import decode_peak, headroom_gain_db, prepare_inputs
+    assert headroom_gain_db(0.9) == 0.0 and headroom_gain_db(1.0) == 0.0
+    assert abs(headroom_gain_db(2.0) - (-4.5 - 6.02)) < 0.01
+    d = Path(tempfile.mkdtemp())
+    t = np.arange(48000 * 2) / 48000
+    hot = (1.6 * np.sin(2 * np.pi * 220 * t)).astype(np.float32)            # +4.1 dBFS, stored as float
+    sf.write(d / "hot.wav", hot, 48000, subtype="FLOAT")
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(d / "hot.wav"), "-c:a", "aac", "-b:a", "256k",
+                    str(d / "hot.m4a")], check=True)                       # the real case: a float m4a
+    sf.write(d / "ok.wav", (0.5 * hot / 1.6).astype(np.float32), 48000, subtype="FLOAT")
+    assert decode_peak(d / "hot.m4a") > 1.2
+    used, log = prepare_inputs(d / "voice", [str(d / "hot.m4a"), str(d / "ok.wav")])
+    assert log[0]["gain_db"] < 0 and used[0].endswith(".headroom.wav")
+    assert abs(log[0]["peak_after_dbfs"] - (-4.5)) < 0.3, log[0]
+    assert log[1]["gain_db"] == 0.0 and used[1] == str(d / "ok.wav")
+    assert json.loads((d / "voice" / "_input_check.json").read_text())[0]["recording"] == "hot.m4a"
+
+
+def test_voice_orig_backups_keyed_to_recording():
+    """voice/_orig/ backups: reused for the same recording, refreshed for a new one, refused when unfingerprinted."""
+    import json
+    import tempfile
+    from pathlib import Path
+    from pipeline.voice_source import StaleBackup, fingerprint, sync_orig
+    d = Path(tempfile.mkdtemp())
+    (d / "a.m4a").write_bytes(b"take one"); (d / "b.m4a").write_bytes(b"take two")
+    fa, fb = fingerprint(d / "a.m4a"), fingerprint(d / "b.m4a")
+    assert fa != fb and fa == fingerprint(d / "a.m4a")
+    v = d / "voice"; v.mkdir()
+    def split(src, audio):                     # what split_recording writes
+        (v / "l1.wav").write_bytes(audio); (v / "l1.json").write_text(json.dumps({"words": [], "source": src}))
+    split(fa, b"split-A")
+    assert sync_orig(v) == {"l1": "backed-up"}
+    (v / "l1.wav").write_bytes(b"tightened-A")             # tighten_voice output (meta keeps the source)
+    assert sync_orig(v) == {"l1": "reused"} and (v / "_orig" / "l1.wav").read_bytes() == b"split-A"
+    split(fb, b"split-B")                                  # NEW recording: the old backup must not be used
+    assert sync_orig(v) == {"l1": "refreshed"} and (v / "_orig" / "l1.wav").read_bytes() == b"split-B"
+    (v / "l1.json").write_text(json.dumps({"words": []}))   # split before the guard: can't tell -> refuse
+    try:
+        sync_orig(v); assert False, "unfingerprinted backup was reused silently"
+    except StaleBackup:
+        pass
+    assert sync_orig(v, allow_legacy=True) == {"l1": "reused"}
+
+
 def test_pixel_flash_and_black():
     import subprocess, tempfile
     from pathlib import Path
