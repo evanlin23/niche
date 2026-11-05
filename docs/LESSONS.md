@@ -174,6 +174,9 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   file, lowering the ceiling until the decoded peak is <= -1 dBFS.
 
 ## Packaging
+- **Titles never use the copycat template** ("Tested on N games", "I simulated N games", a big number first):
+  ~40 copycat channels use it (median 58 views). Lead with one specific claim or question; numbers stay inside
+  the video. Same for Short titles, hooks, description first lines and thumbnails (no small % next to a big %).
 - **Never link the code** (repo, simulator) in descriptions, end cards or comments. The creator's call.
 - **Length: at least 8:00** (mid-roll ads), with margin (aim ~8:20). If short, add real content from unused
   data or a fuller game primer (rules from the official sheet), never filler. Order: what the game is ->

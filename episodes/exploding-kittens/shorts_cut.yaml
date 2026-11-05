@@ -1,18 +1,18 @@
 # Shorts cut from the long video (python -m pipeline.shorts_cut episodes/exploding-kittens).
 # Each one links back to the long video (YouTube: Shorts -> "Related video").
-context: "I simulated 10 billion games of Exploding Kittens"
+context: "Exploding Kittens"
 shorts:
   - id: kitten-placement
     from: k2
     to: k5
     hook: "Where do you put\nthe Kitten back?"
-    title: "Where should you put the Exploding Kitten back? (10 billion games simulated)"
+    title: "Where should you put the Exploding Kitten back?"
     description: "Bottom of the deck is worse than random. Full video with all five mistakes on my channel. #explodingkittens #boardgames #cardgames"
   - id: same-cards
     from: o1
     to: o5
     hook: "Same cards.\n35% vs 11%"
-    title: "Same cards, 3x the wins. I simulated 10 billion games of Exploding Kittens"
+    title: "Same cards, three times the wins. What is the best Exploding Kittens player doing?"
     description: "Five mistakes most tables make. Full video on my channel. #explodingkittens #boardgames #cardgames"
   - id: steal
     crop: [250, 1420]
@@ -26,5 +26,5 @@ shorts:
     from: t1
     to: t3
     hook: "Does going first\nmatter?"
-    title: "Does going first matter in Exploding Kittens? I simulated it"
+    title: "Does going first matter in Exploding Kittens?"
     description: "With two players it does. With five, it flips. Full video on my channel. #explodingkittens #boardgames #cardgames"
