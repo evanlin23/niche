@@ -276,3 +276,13 @@ between lines), so the audio cut from `out/final/<slug>.mp4` lines up word for w
 parallel (`shorts.yml`), assembles, runs the visual gate in 9:16 and uploads `<id>.mp4` + `<id>.txt` + QA. CI has
 no voice or music, so its files carry a silent track; the local `--assemble --audio ...` run puts the mix in (and
 normalises to -14 LUFS through the same `compose.mux` as the long video).
+
+## Status (2026-11-05)
+- Kit: 12 templates; `episodes/kit-demo` passes `qa-visual` in 16:9 and 9:16 (0 errors).
+- Gates: `make test-gates` (11 tests, each check fires on a known-bad case). EK run: `docs/qa/exploding-kittens.md`.
+- Shorts: EK `kitten-placement` (29.4 s) and `same-cards` (33.1 s) rendered natively at 1080x1920 on Actions
+  ("Render native Shorts" run #3), both PASS the 9:16 gate. They carry a silent track until the local
+  `--assemble --audio` run (voice/music are local only).
+- Not yet exercised end to end: `make voice` on a real recording (needs the creator's next take; the step
+  chain is the existing tools, the new final-check measurements are unit-tested) and `qa-final` on a full
+  episode mix (tested on a synthetic mux; EK's final file is local to the creator).
