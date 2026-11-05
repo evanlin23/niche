@@ -730,7 +730,7 @@ SCENES.placement = async (stage, spec) => {
   // the deck laid out as a spread row: left = top of the deck. Each card sits a little lower than the one
   // before it (cards overlapping at the same height z-fought and flickered).
   const row = [];
-  const RX = -7.5, RS = 0.6, Y0 = 0.06, DY = 0.05, SC = 1.45, RZ = 0.2;   // bigger and closer: the Kitten must be easy to see
+  const RX = -7.5, RS = 0.6, Y0 = 0.06, DY = 0.09, SC = 1.45, RZ = 0.2;   // DY > 2 card thicknesses: the Kitten fits between two cards   // bigger and closer: the Kitten must be easy to see
   const rowY = (j) => Y0 + (12 - j) * DY;
   for (let k = 0; k < 12; k++) { const c = makeCard(stage, 'back', false); c.scale.setScalar(SC); c.position.set(RX + k * RS, rowY(k), RZ); row.push(c); }
   const kitten = makeCard(stage, 0, true); kitten.scale.setScalar(SC);
@@ -752,13 +752,16 @@ SCENES.placement = async (stage, spec) => {
     const k = ease((t - ts) / 0.7);
     const sl = lerp(prev, slot, k);
     // a smooth gap opens where the Kitten goes (no snapping card by card)
-    row.forEach((c, j) => { const g = clamp(j - sl + 1); c.position.x = RX + j * RS + g * RS; c.position.y = rowY(j); });
+    // the gap is 1.8 card steps wide and the Kitten sits 0.4 step in, so ~1.4 steps of it always show
+    row.forEach((c, j) => { const g = clamp(j - sl + 1); c.position.x = RX + j * RS + g * RS * 1.8; c.position.y = rowY(j); });
     const lift = Math.sin(k * Math.PI) * 1.2;
     const arrive = ease((t - plan[0][0]) / 0.6);
-    kitten.position.set(RX + sl * RS, rowY(Math.min(11, Math.max(0, Math.round(sl)))) + DY * 0.6 + lift + (1 - arrive) * 1.5, RZ);
+    // stacking follows deck order: the Kitten lies UNDER the card before it and OVER the card after it
+    // (it used to sit on top of its neighbour, so at the bottom slot a card showed under it: creator feedback)
+    kitten.position.set(RX + (sl + 0.4) * RS, rowY(sl) + DY * 0.5 + lift + (1 - arrive) * 1.5, RZ);
     kitten.visible = t >= plan[0][0] - 0.6;
     const [tx, ty] = stage.project(new THREE.Vector3(RX, 0, RZ + 1.2));
-    const [bx, by] = stage.project(new THREE.Vector3(RX + 12.5 * RS, 0, RZ + 1.2));
+    const [bx, by] = stage.project(new THREE.Vector3(RX + 13.3 * RS, 0, RZ + 1.2));
     topLab.el.style.left = tx - 60 + 'px'; topLab.el.style.top = ty + 'px'; topLab.el.style.opacity = 1;
     botLab.el.style.left = bx - 30 + 'px'; botLab.el.style.top = by + 'px'; botLab.el.style.opacity = 1;
     bars.update(t);

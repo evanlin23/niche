@@ -186,9 +186,19 @@ class ElevenLabs:
         return words
 
 
+class Silent:
+    """No voice at all: silence of the estimated reading length (~2.9 words/s) with estimated word timings.
+    For layout previews, kit demos and QA runs before the creator has recorded (never published)."""
+    name = "silent"
+    WPS = 2.9
+
+    def key(self) -> str:
+        return "silent"
+
+
 def engine():
     name = os.environ.get("TTS_ENGINE", "kokoro")
-    return {"piper": Piper, "kokoro": Kokoro, "recorded": Recorded, "elevenlabs": ElevenLabs}[name]()
+    return {"piper": Piper, "kokoro": Kokoro, "recorded": Recorded, "elevenlabs": ElevenLabs, "silent": Silent}[name]()
 
 
 _ENGINE = None
@@ -233,6 +243,9 @@ def _studio_on(voice_dir: Path) -> bool:
 def speak(text: str, cache_dir: Path, eng=None, line_id: str | None = None) -> Speech:
     eng = eng or default_engine()
     cache_dir.mkdir(parents=True, exist_ok=True)
+    if isinstance(eng, Silent):
+        dur = max(0.6, len(text.split()) / Silent.WPS)
+        return Speech(np.zeros(int(dur * SR), np.float32), estimate_words(text, dur))
     if isinstance(eng, Recorded):
         src = eng.find(line_id) if line_id else None
         meta_only = eng.dir / f"{line_id}.json" if line_id else None
