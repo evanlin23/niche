@@ -1,1 +1,1 @@
-b2: extra speech 4.19-4.82s 'take around'
+x7: ends abruptly (last 30 ms at +24 dB)
