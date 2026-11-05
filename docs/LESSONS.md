@@ -69,6 +69,9 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   a torture-test scene in CI for any change to pipeline/web, and renders FAIL in CI when a visual gate errors.
 
 ## Visuals follow the voice (creator feedback on video 1)
+- **"Everything I say, if it can be shown, should get a scene."** (creator rule) One beat per scene (~5-20 s): rules
+  played out at a table, habits shown in a hand, numbers charted or called out as they're said. Never park a topic on
+  one chart for 40+ s. (Uno went from 27 to 47 scenes because of this.)
 - **Always motion, and animation that follows what is said.** Every visual event is tied to the WORD that says it
   (`'line@word'` anchors resolved from the force-aligned voice), never to fixed offsets. Check: no line may have
   more than ~5 s of speech without something new on screen (bar, card, bot, deck change, callout chip).
