@@ -69,6 +69,9 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   a torture-test scene in CI for any change to pipeline/web, and renders FAIL in CI when a visual gate errors.
 
 ## Visuals follow the voice (creator feedback on video 1)
+- **If it's said and it can be shown, it gets a scene** (creator, video 2): every rule, habit, example and number on
+  its own short scene (table demo, hand, chart, callout), ~5-20 s each. Uno v1 grouped lines into 27 scenes of up to
+  75 s on one chart and the creator rejected it; the rebuild has 47.
 - **Always motion, and animation that follows what is said.** Every visual event is tied to the WORD that says it
   (`'line@word'` anchors resolved from the force-aligned voice), never to fixed offsets. Check: no line may have
   more than ~5 s of speech without something new on screen (bar, card, bot, deck change, callout chip).
