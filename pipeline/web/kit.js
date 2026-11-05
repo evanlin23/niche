@@ -244,7 +244,7 @@ export class Kit {
     look = look ? new THREE.Vector3(...look) : bb.getCenter(new THREE.Vector3());
     const amp = Math.min(yaw, 0.5 * stage.duration);          // ~1 deg/s, never more than +/- yaw
     const dirs = [dirFrom(elev, -amp), dirFrom(elev, 0), dirFrom(elev, amp)];
-    if (this.L.short && this.spec.short.first) dirs.push(dirFrom(elev, -amp - 12));   // the opening swing stays in frame too
+    if (this.L.short && this.spec.short.first) dirs.push(dirFrom(elev, -amp - (this.swingDeg ?? 12)));   // the opening swing stays in frame too
     const dEnd = fitDistance(stage, pts, look, dirs, r.w * (1 - 2 * margin), r.h * (1 - 2 * margin));
     // view offset so the fitted content is centred in the rect (measured at the middle pose)
     placeCam(cam, look, dirs[1], dEnd);
@@ -265,7 +265,7 @@ export class Kit {
     const k = this.L.short ? clamp(t / stage.duration) : ease(clamp(t / stage.duration));   // Shorts: moving from frame 1
     // Shorts open on a quick sideways swing, fastest at frame 1 and settled by 1.2 s: motion from the first frame
     // without starting smaller (an opening dolly-out made frame 1 emptier than the rest: opening gate)
-    const swing = this.L.short && this.spec.short.first ? 12 * (1 - clamp(t / 1.2)) ** 2 : 0;
+    const swing = this.L.short && this.spec.short.first ? (this.swingDeg ?? 12) * (1 - clamp(t / 1.2)) ** 2 : 0;
     const dir = dirFrom(R.elev, lerp(-R.amp, R.amp, k) - swing);
     cam.clearViewOffset();
     // Shorts open on a quick dolly-in, fastest at frame 1 and settled by 1.2 s (motion in the first second is the
@@ -665,7 +665,10 @@ function deckPiles(K, stage, spec) {
 }
 function deckRow(K, stage, spec) {
   const p = K.p, vert = K.L.vert, R = p.row, n = R.count || 12;
-  const SC = 1.45, RS = 0.6, DY = 2 * CARD_SEP * SC + 0.004;   // two layers per slot: the hero fits between two cards
+  // Shorts: a gentle opening swing over a row (a fast swing slid the row's evenly spaced thin card edges across the
+  // same pixels again and again: shimmer, flicker gate)
+  if (K.L.short) K.swingDeg = 2.5;
+  const SC = 1.45, RS = 0.6 * SC / 1.45, DY = 2 * CARD_SEP * SC + 0.004;   // two layers per slot: the hero fits between two cards
   const rowW = (n + 1.8) * RS;
   let RX, RZ = 0, chart = null;
   if (p.chart) {

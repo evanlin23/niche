@@ -403,6 +403,11 @@ def moving_rects(sp, states, timeline, fps=30):
                 if o["r"] and (q is None or max(abs(x - y) for x, y in zip(o["p"], q)) > 0.002):
                     r = o["r"]; rs.append((r[0] / W, r[1] / H, r[2] / W, r[3] / H))
             s0 = starts.get(sc.id, 0)
+            ta = {x["id"]: (x["r"], x["text"]) for x in a["texts"]}     # labels sliding or counting are motion too
+            for x in b["texts"]:
+                q = ta.get(x["id"])
+                if q is None or q[1] != x["text"] or max(abs(u - v) for u, v in zip(q[0], x["r"])) > 0.5:
+                    r = x["r"]; rs.append((r[0] / W, r[1] / H, r[2] / W, r[3] / H))
             samples.append((s0 + a["t"], s0 + b["t"], rs))
     def at(frame):
         t = frame / fps
