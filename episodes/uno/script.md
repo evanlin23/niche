@@ -26,9 +26,8 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 - n1 tease: episodes/sorry/script.md + data/results.json, best bot 33.78% at 4 players (fair 25) = "a third".
 - s1: "uno stacking rule" ~13.9M top-20 views (docs/next-episodes.md, scan 2026-11-04). s3: cards drawn per round
   stacking 23.8 vs official 24.7. p3: 10p draw_until 137.7 ~ four 2-player official rounds (4 x 33.9 = 135.6).
-- True process moments: c4 check bug; c8 scoring bug (40 vs 50) found reading GDJ85, everything re-run (big run);
-  x6 forced play came out identical and I checked the code; x8 the five-hundred result came from a test added after
-  noticing bigger point hauls.
+- z4: seven_zero random swap 21.44 < every official habit (lowest: random colour 22.47).
+- Reactions are to results only (creator: no process/debugging stories).
 - "Billions": results.json total_games = 63 tests x 200M = 12.6 billion rounds (Actions run 41924460193, 20 shards,
   2026-11-04). Every rounded number above re-checked against it; nothing moved.
 
@@ -49,9 +48,7 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 ## Can you trust it
 [c1] My version follows the rule sheet that comes in the box today. All hundred and twelve cards, including Shuffle Hands and the three blank Wilds you can write your own rule on. My bots treat those as plain Wilds.
 [c2] Reading that sheet properly was the first surprise. You can't stack plus twos. When you can't play, you draw one card, not until you find one.
-[c3] Before trusting any of it, I checked the engine against plain math. The chance your opening hand has at least one Wild is fifty five point eight percent. Over ten million deals my engine got the same, to a tenth of a percent.
-[c4] I'll be honest, the first time I ran that check it was off. I'd been looking at hands after the first card was flipped, so a starting Draw Two had already changed some of them. The bug was in the check, not the game.
-[c8] The rule sheet caught a second one. Shuffle Hands and the blank Wilds are worth forty points, and I had them at fifty. Tiny thing, but I fixed it and re-ran everything from scratch, which is where the twelve and a half billion rounds come from.
+[c3] I checked it against plain math, too. The chance your opening hand has at least one Wild is fifty five point eight percent, and over ten million deals my simulator got the same.
 [c7] I ran the older deck too, the hundred and eight card one without the new Wilds. Rounds came out the same length, so if your deck is older, nothing here changes.
 [c6] The bots only know what a real player knows: their own hand, the top card, and how many cards everyone's holding. A normal bot plays any card that matches, picks the color it holds the most of, and challenges a plus four about three times in ten.
 [c5] They're not quite like real people, though. They never forget to say Uno, and they never argue about the rules. That second one comes back at the end.
@@ -64,12 +61,12 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 ## The results
 [x1] Under the official rules, a four player round takes about forty seven turns.
 [x2] Jump In makes rounds about six percent shorter. Seven Zero adds about one turn, and stacking and the free plus four add about three.
-[x6] Forced play came out identical to the official game, to the decimal. I assumed I'd broken something. I hadn't. My bots already play whenever they can, so forcing them changes nothing. If your family likes holding cards back on purpose, it'll matter more at your table than it did at mine.
+[x6] Forced play changed nothing, because my bots already play whenever they can.
 [x3] Draw until you can play is a different animal. Eighty two turns on average. Seventy five percent longer.
 [x4] The average actually hides the worst of it. Under the official rules, one round in ten goes past seventy six turns. With draw until you can play, one in ten goes past a hundred and seventy.
 [x5] The reason is just cards. The official table draws about twenty five cards a round. With draw until you can play it draws seventy three. Nearly three times as many. By the time somebody finally goes out, the losers are sitting on about forty percent more points.
 [x7] Those points set up a twist. Under the official rules, a full game to five hundred takes about ten rounds. Draw until rounds pay out so much that a game to five hundred only needs about six and a half of them.
-[x8] I did not see that coming. The whole game ends up only about fifteen percent longer, because the bigger rounds finish it sooner. If you play to five hundred, it's annoying. If your family never keeps score, every round is the whole game, and that's where it hurts.
+[x8] I didn't expect that at all. The whole game ends up only about fifteen percent longer, because the bigger rounds finish it sooner. If you play to five hundred, it's annoying. If your family never keeps score, every round is the whole game, and that's where it hurts.
 [x9] Over a full game, the rule that drags the most is actually the free plus four. Its rounds end with smaller point hauls, so a game takes almost twelve rounds instead of ten. That's about a quarter longer.
 
 ## Bigger tables
@@ -80,7 +77,7 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 
 ## Stacking
 [s1] Stacking is the rule people look up the most. Videos asking whether it's allowed have something like fourteen million views.
-[s2] It's also where the best stories come from, like the round where somebody got hit with sixteen cards. Those are rarer than they feel. With plus twos on plus twos, only about one round in a hundred has anyone draw ten or more at once. Let plus fours join the stack and it's still under one in twenty.
+[s2] It's also where the best stories come from, like the round where somebody got hit with sixteen cards. I figured those happened all the time. They don't. With plus twos on plus twos, only about one round in a hundred has anyone draw ten or more at once. Let plus fours join the stack and it's still under one in twenty.
 [s3] It barely changes the game because a stack doesn't add cards, it just moves them. Instead of three people drawing two each, one person draws six. The table draws about twenty four cards a round with stacking, which is about what it draws without it.
 [s4] One thing does matter if you stack. Stack every time you can. A bot that always stacks wins twenty five and a half percent, and one that never stacks and just eats the cards wins twenty two and a half.
 
@@ -89,14 +86,14 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 [z2] Under the official rules, whoever goes first wins almost twenty seven percent of four player rounds, when a fair share is twenty five. With Seven Zero that edge is gone.
 [z3] It flattens skill too. My best bot's edge over a normal player shrinks by more than half.
 [z5] Holding your Wilds is the best habit in the official game, more on that later, and with Seven Zero it's worth less than a point. My guess is that when your hand can get taken from you, planning ahead stops paying off, but I haven't tested that.
-[z4] One habit still matters a lot. Swap with whoever has the fewest cards. My normal bots always do, and a bot that swaps with a random player drops to twenty one and a half percent.
+[z4] One habit still matters a lot, and this one surprised me. When you play a seven, swap with whoever has the fewest cards. My normal bots always do. A bot that swaps with a random player drops to twenty one and a half percent. That's worse than any single habit I tested in the official game.
 
 ## Jump In
 [j1] Jump In rewards paying attention.
 [j2] A bot that jumps in every time it can wins about twenty seven percent. One that never jumps in wins about twenty three. Four points, just for watching the pile when it isn't your turn.
 
 ## The free plus four
-[f1] The free plus four is the odd one out. It's the only house rule that makes skill matter more, not less.
+[f1] The free plus four is the result I'd least have guessed. You'd think a rule with no restrictions would make the game more random. It's the only house rule that makes skill matter more.
 [f2] Under the official rules, my best bot wins twenty nine percent. With the free plus four, thirty one.
 [f3] Most of that is holding your Wilds. With the free plus four, that one habit is worth more than five points on its own.
 

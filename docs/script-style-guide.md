@@ -73,6 +73,8 @@ Sources: Wikipedia "Signs of AI writing" (WikiProject AI Cleanup) and creator no
 - Put the creator in it: what you expected before running it, what surprised you, what you play at home,
   which result you didn't believe and re-ran. At least one real "I thought... but" moment per section.
 - Uneven rhythm: some 3-word sentences, some long ones that run on a bit the way people talk.
+- At most one short credibility beat (the engine check). No debugging or re-run stories; personality comes from
+  reacting to results.
 - The creator re-words anything that doesn't sound like them while recording. Captions follow what they said.
 
 ## 8. Structure that works for "I simulated it" game videos
