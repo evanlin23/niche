@@ -1,0 +1,89 @@
+# Native 9:16 Shorts (pipeline/shorts_native.py): ~6 s chunks rendered in parallel, then assembled + QA-gated.
+# Voice/music never leave the creator's machine, so CI Shorts carry a silent track; locally:
+#   python -m pipeline.shorts_native <slug> --assemble --audio episodes/<slug>/out/final/<slug>.mp4
+name: Render native Shorts
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug: { description: Episode folder under episodes/, default: exploding-kittens }
+      only: { description: Optional space-separated short ids, default: "" }
+      ssaa: { description: Supersampling (1 = fast, 1.5 = smooth), default: "1.5" }
+  push:
+    branches: [claude/production-kit]
+    paths:
+      - episodes/*/shorts_native.yaml
+      - .github/workflows/shorts.yml
+
+concurrency:
+  group: shorts-${{ inputs.slug || 'exploding-kittens' }}
+  cancel-in-progress: true
+
+env:
+  SLUG: ${{ inputs.slug || 'exploding-kittens' }}
+  ONLY: ${{ inputs.only || '' }}
+  RENDER_SSAA: ${{ inputs.ssaa || '1.5' }}
+  TTS_ENGINE: recorded
+  VOICE_DIR: episodes/${{ inputs.slug || 'exploding-kittens' }}/voice
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  prep:
+    runs-on: ubuntu-latest
+    outputs:
+      jobs: ${{ steps.list.outputs.jobs }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - id: list
+        run: echo "jobs=$(python -m pipeline.shorts_native "$SLUG" --list ${ONLY:+--only $ONLY})" >> "$GITHUB_OUTPUT"
+
+  render:
+    needs: prep
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        job: ${{ fromJSON(needs.prep.outputs.jobs) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+        with: { browser: "true" }
+      - run: python -m pipeline.shorts_native "$SLUG" --job "$JOB"
+        env: { JOB: "${{ matrix.job }}" }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: part-${{ strategy.job-index }}
+          path: episodes/${{ env.SLUG }}/out/shorts-native/parts/*.mp4
+          retention-days: 3
+
+  assemble:
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+        with: { browser: "true" }
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: part-*
+          path: episodes/${{ env.SLUG }}/out/shorts-native/parts
+          merge-multiple: true
+      - name: Assemble + vertical QA gate
+        run: |
+          set -o pipefail
+          python -m pipeline.shorts_native "$SLUG" --assemble ${ONLY:+--only $ONLY} 2>&1 | tee qa.log
+      - name: QA summary
+        if: always()
+        run: |
+          for f in episodes/$SLUG/out/shorts-native/qa-*/visual.txt; do echo "== $f"; head -40 "$f"; done >> "$GITHUB_STEP_SUMMARY" || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ env.SLUG }}-shorts-native
+          path: |
+            episodes/${{ env.SLUG }}/out/shorts-native/*.mp4
+            episodes/${{ env.SLUG }}/out/shorts-native/*.txt
+            episodes/${{ env.SLUG }}/out/shorts-native/qa-*/
+          retention-days: 30

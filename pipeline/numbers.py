@@ -68,6 +68,8 @@ def agrees(x: float, said: list[float]) -> bool:
     for y in said:
         if abs(x - y) <= 0.051:
             return True
+        if float(y * 2).is_integer() and not float(y).is_integer() and abs(x - y) <= 0.25:   # "and a half"
+            return True
         if float(y).is_integer() and abs(x - y) < 1.0:     # said rounded: "thirty five" for 35.4
             return True
         if max(abs(x), abs(y)) >= 1000 and abs(x - y) / max(abs(x), abs(y)) <= 0.05:   # "ten billion" vs 10.2B

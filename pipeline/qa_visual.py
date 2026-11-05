@@ -126,8 +126,15 @@ def check_scene(sc, spec, states, script, cfg):
                     a = frame_bad.setdefault((o["id"], "frame"), [t, t, 0, o["name"], "warn", f"({o['kind']}) partly off-screen"]); a[1] = t; a[2] = max(a[2], out)
     for (eid, txt), (t0, t1, px, role) in safe_bad.items():
         issues.append(_issue("error", "safe", f"label '{txt}' ({role or 'text'}) leaves the title-safe area by {px:.0f}px", t0, t1))
+    loose = defaultdict(list)          # un-annotated objects (episodes not on the kit): one line per scene
     for (oid, _), (t0, t1, px, name, sev, what) in frame_bad.items():
-        issues.append(_issue(sev, "safe", f"object {name}#{oid} {what} by {px:.0f}px", t0, t1))
+        if sev == "warn":
+            loose[what].append((t0, t1, px))
+        else:
+            issues.append(_issue(sev, "safe", f"object {name}#{oid} {what} by {px:.0f}px", t0, t1))
+    for what, v in loose.items():
+        issues.append(_issue("warn", "safe", f"{len(v)} objects {what} (up to {max(x[2] for x in v):.0f}px): check props "
+                                             f"stay in frame", min(x[0] for x in v), max(x[1] for x in v)))
     for k, (t0, t1, ta, tb, ar) in over.items():
         issues.append(_issue("error", "overlap", f"labels overlap: '{ta}' and '{tb}' ({ar:.0f} px²)", t0, t1))
 
@@ -353,8 +360,20 @@ def write_report(res, out_dir: Path, title):
     lines.append(f"RESULT: {'FAIL' if nerr else 'PASS'}  ({nerr} errors, {nwarn} warnings)")
     lines.append("by check: " + ", ".join(f"{c} {s}:{n}" for (s, c), n in sorted(tot.items())))
     lines.append("")
+    # the same problem in many scenes (e.g. a shared label) is printed once
+    seen = defaultdict(list)
     for sid, r in res["scenes"].items():
-        its = [i for i in r["issues"] if i["sev"] != "info"]
+        for it in r["issues"]:
+            if it["sev"] != "info":
+                seen[(it["sev"], it["check"], it["msg"])].append(sid)
+    common = {k for k, v in seen.items() if len(v) >= 3}
+    if common:
+        lines.append("[across scenes]")
+        for k in sorted(common):
+            lines.append(f"  {k[0].upper():5s} {k[1]:9s} {'':14s} {k[2]}  -> {len(seen[k])} scenes: {', '.join(seen[k])}")
+        lines.append("")
+    for sid, r in res["scenes"].items():
+        its = [i for i in r["issues"] if i["sev"] != "info" and (i["sev"], i["check"], i["msg"]) not in common]
         if not its:
             continue
         lines.append(f"[{sid}]  ({r.get('duration', 0):.1f}s, {r.get('events', 0)} events)")

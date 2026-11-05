@@ -611,7 +611,7 @@ function deckRow(K, stage, spec) {
   const rowW = (n + 1.8) * RS;
   let RX, RZ = 0, chart = null;
   if (p.chart) {
-    if (vert) { RX = -rowW / 2; RZ = -9.5; chart = buildBars(K, p.chart, { x0: -4.0, width: 8.0, height: 6.5, z: 0.6 }); }
+    if (vert) { RX = -rowW / 2; RZ = -13; chart = buildBars(K, p.chart, { x0: -4.0, width: 8.0, height: 6.5, z: 0.6 }); }
     else { RX = -rowW - 0.6; RZ = 0.2; chart = buildBars(K, p.chart, { x0: 1.0, width: 6.6, height: 5.2, z: 0.5 }); }
   } else RX = -rowW / 2;
   const rowY = (j) => 0.06 + (n - j) * DY;
@@ -624,7 +624,7 @@ function deckRow(K, stage, spec) {
   const plan = (p.plan || [[0.6, Math.floor(n / 2)]]).map(([a, s]) => [typeof a === 'number' ? a : 0.6, s]);
   const planDur = plan.map(([a, s], i) => K.tw(`hero to slot ${s}`, a, i === 0 ? 0.6 : 0.7).dur);
   const rowPts = boxPoints(RX - CARD.W * SC / 2, 0, RZ - CARD.H * SC / 2 - 0.4, RX + n * RS + CARD.W * SC / 2, 1.4, RZ + CARD.H * SC / 2 + 0.5);
-  K.fit(chart ? [...rowPts, ...chart.pts] : rowPts, { elev: chart ? (vert ? 34 : 22) : 40, yaw: 4, push: 0.05,
+  K.fit(chart ? [...rowPts, ...chart.pts] : rowPts, { elev: chart ? (vert ? 30 : 22) : 40, yaw: 4, push: 0.05,
     rect: chart ? { ...K.content, t: K.content.t + 50, h: K.content.h - 120, b: K.content.b - 70 } : K.content });
   if (chart) chart.layoutLabels();
   return K.frame((t) => {
