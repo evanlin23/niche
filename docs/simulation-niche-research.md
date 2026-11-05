@@ -299,3 +299,32 @@ Issue #1 confirmed (thumbnail-only test, old B replaced). Found:
    (Sorry! r1, Gin m1, Checkers h2), "I'll come back to it" (Sorry! c5, Gin c4), "what ten billion games taught me"
    (EK w1), "turned those ... into bots" (Sorry! o3, Gin o3), "still up to you" (Sorry! x1, Gin y1). I wrote the
    Sorry!, Checkers and Gin scripts; reword before recording.
+
+## 8. Why Perfect Play won: an empty gap, or better work? (2026-11-05)
+Raw data: `docs/perfectplay-comments-2026-11-05.json` (top comments, tags and descriptions of the Monopoly and Catan
+videos) and the thumbnail check below.
+
+1. **The gap was empty.** Before 13 October, the biggest Monopoly videos were b2studios' "AI Learns Insane Monopoly
+   Strategies" (12.1M, Dec 2021), which is AI self-play, and What's What's "HOW TO WIN MONOPOLY EVERY TIME" (6.9M,
+   Dec 2022), a tips video. Nobody had tested the habits of real players on the biggest board games in a short,
+   polished video. Perfect Play's Monopoly video was the channel's **first upload**; commenters wrote "89 subscribers??"
+   and "a FANTASTIC first vid on your channel". It reached 2.78M with no audience at all, so the topic and the video
+   did the work.
+2. **Execution was good, but not unique.** Four copycats (Seeded, Jacab Thomas, Dice Lab, Million Game Lab) use nearly
+   the same thumbnail: a 3D board, a tall yellow bar, a big percentage next to a small one. They got 59 to 8.5K views.
+   Looking the same isn't enough once the slot is taken. Being first on the biggest topic was the edge.
+3. **Personality wasn't the reason.** The second-most-liked comment group is about the voice: "what's up with the random
+   accent changes" (782 likes) and "are there two people running the channel?". Five of the top 200 comments, 903 likes
+   between them. That suggests a synthetic voice. Their weak loyalty numbers fit this (0.59% likes, 2.6 subs per 1,000
+   views, §5).
+4. **The video starts arguments, and they act on requests.** The top comment (2.7K likes) says the model ignores human
+   psychology. Others add house rules and the 32-house limit. The Catan description opens "This one's for everyone who
+   asked for Catan after the Risk video". They also earn from day one with an Amazon affiliate link.
+5. **Topic size decides most of it, even for them.** Monopoly 2.78M, Catan 344K, Risk 197K, Minesweeper 46K.
+
+**What we can copy without copying them:** the method, not the format. Find the next empty gap before anyone else.
+That means huge demand, top results that are old or opinion-only, no data video yet, and a game we can build fast.
+Then ship quickly: Perfect Play posted 4 videos in 18 days. Their viewers' request list (Ticket to Ride, 7 Wonders,
+Carcassonne, Dominion, Chess, Battleship, Diplomacy, Wingspan, Splendor, Uno, Cribbage, Hearts) is where they and the
+copycats are heading next, so it's the place to avoid. Next research step: a "gap radar" scan that adds upload dates
+to the demand scans, so each candidate topic shows how old its best video is.
