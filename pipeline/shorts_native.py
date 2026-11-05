@@ -165,8 +165,10 @@ def assemble(slug, only=None, audio_src=None, qa=True):
         from . import qa_visual
         errs = 0
         for sh, final, scenes, specs in results:
-            errs += qa_visual.run(slug, video=None, vertical=True, out_dir=outd / f"qa-{sh['id']}",
-                                  scenes_override=(scenes, specs))
+            t0 = scenes[0].start          # the finished Short: stage-state checks + black frames / flashes on its pixels
+            tl = [{"id": sc.id, "start": sc.start - t0, "duration": sc.duration} for sc in scenes]
+            errs += qa_visual.run(slug, video=final, vertical=True, out_dir=outd / f"qa-{sh['id']}",
+                                  scenes_override=(scenes, specs), timeline=tl, contact_every=2)
         return errs
     return 0
 

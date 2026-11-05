@@ -385,7 +385,8 @@ def write_report(res, out_dir: Path, title):
     return nerr, "\n".join(lines)
 
 
-def run(slug, video=None, only=None, vertical=False, stills=True, out_dir=None, short=None, scenes_override=None):
+def run(slug, video=None, only=None, vertical=False, stills=True, out_dir=None, short=None, scenes_override=None,
+        timeline=None, contact_every=10):
     from .stills import contact, render_frames, specs
     from .timeline import load_yaml, parse_script
     ep = ROOT / "episodes" / slug
@@ -410,11 +411,12 @@ def run(slug, video=None, only=None, vertical=False, stills=True, out_dir=None, 
                                 "event_times": [round(e[0], 2) for e in events][:400]}
     if video:
         tl = ep / "out" / "final" / "timeline.json"
-        timeline = json.loads(tl.read_text()) if tl.exists() else [{"id": s.id, "start": s.start, "duration": s.duration} for s in scenes]
+        if timeline is None:
+            timeline = json.loads(tl.read_text()) if tl.exists() else [{"id": s.id, "start": s.start, "duration": s.duration} for s in scenes]
         pix, _ = pixel_checks(Path(video), timeline)
         for it in pix:
             res["scenes"].setdefault(it.get("scene", "video"), {"issues": []})["issues"].append(it)
-        res["contact"] = str(contact_from_video(Path(video), out_dir / "contact.png"))
+        res["contact"] = str(contact_from_video(Path(video), out_dir / "contact.png", contact_every))
     elif stills:
         jobs, pngs, labels = [], [], []
         for sc, spec in sp:
