@@ -33,6 +33,7 @@ class SceneCtx:
     ep_dir: Path
     captions: list = field(default_factory=list)   # [(start, end, text)] scene-relative
     hook: str | None = None       # shorts only
+    short: dict | None = None     # native Shorts: {hook, words, ...} (pipeline/shorts_native.py)
     engine: str = "2d"            # "2d" (skia) or "3d" (Three.js tabletop stage)
 
     @property
@@ -55,6 +56,9 @@ def load_scenes_module(ep_dir: Path):
 
 def load_3d_module(ep_dir: Path):
     path = ep_dir / "sim" / "scenes3d.py"
+    if not path.exists():                 # kit-only episode: pipeline/kit.py builds every spec
+        from . import kit
+        return kit
     sys.path.insert(0, str(ROOT))
     spec = importlib.util.spec_from_file_location(f"ep3d_{ep_dir.name.replace('-', '_')}", path)
     mod = importlib.util.module_from_spec(spec)

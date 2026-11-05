@@ -57,6 +57,10 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   of words not yet spoken sits on the floor. Statement scenes show their first line from the start (never
   open on an empty floor); later lines appear on their spoken cue.
 - Keep decorative props fully in frame and clear of text (the checklist card fan was half off-screen).
+- **Stacking order must match deck order.** In a spread row each card lies a little higher than the next; an
+  inserted card must sit between its neighbours' heights (under the card before it), with a gap at least two card
+  thicknesses tall and wide enough that ~1 card step of it shows. The Kitten "at the bottom" used to lie on top of
+  the last card, so a card showed under it (creator spotted it).
 - While a rules line names each card, light up that pile (lift + mustard label), timed from the word cues.
 
 ## Visuals follow the voice (creator feedback on video 1)
