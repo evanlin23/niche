@@ -63,7 +63,15 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   the last card, so a card showed under it (creator spotted it).
 - While a rules line names each card, light up that pile (lift + mustard label), timed from the word cues.
 
+## Cards never clip or flicker (structural rule, creator: "we've had the same glitchy cards so many times")
+- Fixing scenes by eye didn't hold. Guarantees instead: every card comes from one kit builder (min separation +
+  polygonOffset), a geometric clipping check on every probed frame (OBB pairs, cards vs table), a pixel flicker gate,
+  a torture-test scene in CI for any change to pipeline/web, and renders FAIL in CI when a visual gate errors.
+
 ## Visuals follow the voice (creator feedback on video 1)
+- **"Everything I say, if it can be shown, should get a scene."** (creator rule) One beat per scene (~5-20 s): rules
+  played out at a table, habits shown in a hand, numbers charted or called out as they're said. Never park a topic on
+  one chart for 40+ s. (Uno went from 27 to 47 scenes because of this.)
 - **Always motion, and animation that follows what is said.** Every visual event is tied to the WORD that says it
   (`'line@word'` anchors resolved from the force-aligned voice), never to fixed offsets. Check: no line may have
   more than ~5 s of speech without something new on screen (bar, card, bot, deck change, callout chip).
