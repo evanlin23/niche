@@ -285,9 +285,12 @@ normalises to -14 LUFS through the same `compose.mux` as the long video).
 ## Status (2026-11-05)
 - Kit: 12 templates; `episodes/kit-demo` passes `qa-visual` in 16:9 and 9:16 (0 errors).
 - Gates: `make test-gates` (11 tests, each check fires on a known-bad case). EK run: `docs/qa/exploding-kittens.md`.
-- Shorts: EK `kitten-placement` (29.4 s) and `same-cards` (33.1 s) rendered natively at 1080x1920 on Actions
-  ("Render native Shorts" run #3), both PASS the 9:16 gate. They carry a silent track until the local
-  `--assemble --audio` run (voice/music are local only).
+- Shorts: 4 EK Shorts rendered natively at 1080x1920 on Actions ("Render native Shorts" run #6), all PASS the
+  9:16 gate including the opening check (frame-1 fill vs clip median / first-second motion):
+  kitten-placement 25.5 s (0.64 / 0.61), same-cards 32.6 s (1.15 / 0.41), going-first 13.0 s (0.72 / 0.33),
+  steal 29.5 s (0.78 / 0.65). Each opens on its spoken hook. Runs #4-#5 failed this check before the fixes
+  (frame 1 half-empty, then too still), as did the earlier cut Shorts (0.34 / 0.56 fill). They carry a silent
+  track until the local `--assemble --audio` run (voice/music are local only).
 - Not yet exercised end to end: `make voice` on a real recording (needs the creator's next take; the step
   chain is the existing tools, the new final-check measurements are unit-tested) and `qa-final` on a full
   episode mix (tested on a synthetic mux; EK's final file is local to the creator).
