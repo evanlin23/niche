@@ -331,15 +331,17 @@ def pixel_checks(video: Path, timeline):
     for i in range(k, len(y) - k):
         if near_black[i]:
             continue
-        ref = np.median(np.r_[y[i - k:i - 1], y[i + 2:i + k]])
-        if abs(y[i] - ref) > 14 and abs(y[i - 1] - ref) < 6 or abs(y[i] - ref) > 14 and abs(y[i + 1] - ref) < 6 and abs(y[i - 1] - ref) > 14:
+        # a flash/dip differs from BOTH sides in the same direction (a hard cut is a step: one side agrees)
+        before, after = np.median(y[i - k:i]), np.median(y[i + 1:i + k + 1])
+        db, da = y[i] - before, y[i] - after
+        if abs(db) > 14 and abs(da) > 14 and np.sign(db) == np.sign(da):
             t = i / fps
-            issues.append(_issue("error", "pixels", f"brightness {'flash' if y[i] > ref else 'dip'} "
-                                                    f"({y[i]:.0f} vs {ref:.0f}) in {where(t)}", t, scene=where(t)))
+            issues.append(_issue("error", "pixels", f"brightness {'flash' if db > 0 else 'dip'} "
+                                                    f"({y[i]:.0f} vs {before:.0f}/{after:.0f}) in {where(t)}", t, scene=where(t)))
     # collapse neighbours
     out, last = [], None
     for it in issues:
-        if last and it["check"] == "pixels" and last["msg"] == it["msg"] and it["t"][0] - last["t"][1] < 0.2:
+        if last and it["check"] == "pixels" and last["msg"].split("(")[0] == it["msg"].split("(")[0] and it["t"][0] - last["t"][1] < 0.2:
             last["t"][1] = it["t"][1]; continue
         out.append(it); last = it
     return out, ys

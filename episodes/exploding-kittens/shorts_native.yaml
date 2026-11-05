@@ -44,8 +44,6 @@ shorts:
         fair: 25
         items:
         - {label: random, value: "=results.json:placement[value=random].win*100", at: k5@twenty}
-        - {label: bottom, value: "=results.json:placement[value=bottom].win*100", color: CORAL, at: k4@best}
-        - {label: top, value: "=results.json:placement[value=top].win*100", color: TEAL, at: k4@top}
         - {label: "next player's draw", value: "=results.json:placement[value=next].win*100", color: MUSTARD, at: k5@thirty, hl: true}
 
 - id: same-cards

@@ -297,7 +297,8 @@ export class Kit {
     if (cur.length) chunks.push(cur);
     chunks.forEach((c, i) => {
       const a = c[0][1], nx = chunks[i + 1] ? chunks[i + 1][0][1] : c[c.length - 1][2] + 0.4;
-      const until = nx - c[c.length - 1][2] > 0.6 ? c[c.length - 1][2] + 0.35 : nx;
+      let until = nx - c[c.length - 1][2] > 0.6 ? c[c.length - 1][2] + 0.35 : nx;
+      if (until > this.stage.duration - 0.2) until = 1e9;     // runs into the cut: hold, never fade at the cut
       const text = c.map((x) => x[0]).join(' ').toUpperCase().replace(/%/g, ' PERCENT').replace(/\s+/g, ' ').trim();
       this.label({ text, size: 86, role: 'caption', at: a, until, fade: 0.04, rise: false, x: L.cx, y: capY, maxW: L.sw,
         color: GN.text, stroke: '3px #14281f' });
@@ -758,7 +759,9 @@ T.table = async (stage, spec) => {
         if (e.ev === 'draw') mover.position.lerpVectors(deckP, seatP, k); else mover.position.lerpVectors(seatP, pileP, k);
         mover.position.y += Math.sin(k * Math.PI) * 1.3; mover.rotation.set(0, 0, 0);
       }
-      const [px, py] = K.project(new THREE.Vector3(s.pawn.position.x, 2.6, s.pawn.position.z));
+      const front = s.sz > 1;     // front seats: name below the pawn, pill above it; back seats: pill above the name
+      const [px, py0] = K.project(new THREE.Vector3(s.pawn.position.x, front ? 2.6 : 2.0, s.pawn.position.z));
+      const py = front ? py0 : py0 - 34 - s.lab.el.offsetHeight - 12;
       pill.el.textContent = e.label || '';
       const holdToCut = e.at + e.dur + 0.3 > stage.duration;     // a late event keeps its pill through the cut
       pill.o.alpha = (tt) => (e.label ? clamp((tt - e.at) / 0.1) * (holdToCut ? 1 : 1 - clamp((tt - e.at - e.dur - 0.1) / 0.12)) : 0);

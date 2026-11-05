@@ -23,6 +23,8 @@ def spoken_numbers(text: str) -> list[float]:
             if i + 1 < len(toks) and toks[i + 1] in SCALES and toks[i + 1] != "hundred":
                 v *= SCALES[toks[i + 1]]; i += 1
             out.append(v); i += 1; continue
+        if t in ORD and t != "half":                                    # "third" (from the top)
+            out.append(float(ORD[t])); i += 1; continue
         if t == "a" and i + 1 < len(toks) and toks[i + 1] in SCALES:      # "a billion", "a hundred"
             out.append(SCALES[toks[i + 1]]); i += 2; continue
         if t not in UNITS and t not in TENS or (t == "oh"):

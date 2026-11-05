@@ -90,6 +90,7 @@ def test_spoken_numbers():
     assert spoken_numbers("thirteen point oh four percent") == [13.04]
     assert spoken_numbers("more than ten billion times") == [1e10]
     assert spoken_numbers("a billion games") == [1e9]
+    assert spoken_numbers("Two more, third.") == [2.0, 3.0]
     assert agrees(35.4, [35]) and not agrees(31.0, [35]) and agrees(10.2e9, [1e10])
 
 
@@ -125,6 +126,11 @@ def test_pixel_flash_and_black():
     subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=0x3a5a52:s=320x180:r=30:d=3",
                     "-c:v", "libx264", "-pix_fmt", "yuv420p", str(d / "ok.mp4")], check=True)
     assert pixel_checks(d / "ok.mp4", [{"id": "s", "start": 0, "duration": 3}])[0] == []
+    # a hard cut to a darker scene is a step, not a dip
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=c=0x5a8a7e:s=320x180:r=30:d=2",
+                    "-f", "lavfi", "-i", "color=c=0x2c463f:s=320x180:r=30:d=2", "-filter_complex", "[0][1]concat=n=2:v=1",
+                    "-c:v", "libx264", "-pix_fmt", "yuv420p", str(d / "step.mp4")], check=True)
+    assert pixel_checks(d / "step.mp4", [{"id": "s", "start": 0, "duration": 4}])[0] == []
 
 
 if __name__ == "__main__":
