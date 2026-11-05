@@ -20,10 +20,10 @@ Your job, in order:
    ~5-20 s, never one chart for 40+ s).
 4. While they record: build the visuals to the EK v3 standard (always moving, word-anchored, player count
    shown, cards square-on, hard cuts). Local stills + contact sheet before any full render.
-4. When the recording arrives: voice pipeline (PROCESS.md §4), creator listen, fixes.
-5. Full render on Actions, local assemble (ask the creator to upload the three music mp3s from YouTube Audio
+5. When the recording arrives: voice pipeline (PROCESS.md §4), creator listen, fixes.
+6. Full render on Actions, local assemble (ask the creator to upload the three music mp3s from YouTube Audio
    Library into `music/`), QA, send 1080p + 720p.
-6. Upload kit as a GitHub issue (same shape as issue #1), with 3 thumbnails.
+7. Upload kit as a GitHub issue (same shape as issue #1), with 3 thumbnails.
 
 Rules: everything in PROCESS.md "Ground rules". Times to the creator in **US Central time**. Commit and push
 small commits to your branch; never commit voice audio, music or out/. Make production decisions yourself and
