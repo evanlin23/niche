@@ -1,0 +1,4176 @@
+{
+ "method": "yt-dlp, logged out, US, 2026-11-05 ~03:00 UTC. 'copy' = channels whose titles use the 'tested on / I simulated N games' template; 'win' = data/strategy channels with real views. For each: the channel's template video (full metadata), its latest 30 long videos and latest 30 Shorts (flat: title, views, duration).",
+ "perfect_play_snapshots": {
+  "2026-11-04T16:33Z": [
+   {
+    "id": "3XLDKvhrIjk",
+    "upload_date": "20261031",
+    "views": 325396,
+    "likes": 3015,
+    "comments": 294
+   },
+   {
+    "id": "NXHu0n9Ezco",
+    "upload_date": "20261016",
+    "views": 45581,
+    "likes": 928,
+    "comments": 111
+   },
+   {
+    "id": "S_2eVAaw1UM",
+    "upload_date": "20261013",
+    "views": 2763678,
+    "likes": 16283,
+    "comments": 577
+   }
+  ],
+  "2026-11-05T03:18Z": [
+   {
+    "id": "NXHu0n9Ezco",
+    "upload_date": "20261016",
+    "views": 45931,
+    "likes": 938,
+    "comments": 111,
+    "title": "The Best Minesweeper Strategy, Tested on 600 Million Games"
+   },
+   {
+    "id": "h5k-Q-zsa94",
+    "upload_date": "20261022",
+    "views": 197243,
+    "likes": 2495,
+    "comments": 242,
+    "title": "The Best Risk Strategy, Tested on 128 Million Games"
+   },
+   {
+    "id": "3XLDKvhrIjk",
+    "upload_date": "20261031",
+    "views": 343516,
+    "likes": 3175,
+    "comments": 301,
+    "title": "The Best Catan Strategy, Tested on 200 Million Games"
+   }
+  ]
+ },
+ "buh_simulates_2026-11-05T03:20Z": {
+  "subs": 173,
+  "long": [
+   {
+    "id": "pZLqJ_JYEXI",
+    "upload_date": "20261104",
+    "views_logged_out": 0,
+    "comments": 1,
+    "duration": 491
+   }
+  ],
+  "shorts": [
+   {
+    "id": "M7SU4jQZ2rs",
+    "views": 174,
+    "title": "Does going first matter in Exploding Kittens? I simulated it"
+   }
+  ]
+ },
+ "channels": [
+  {
+   "name": "Jacab Thomas",
+   "group": "copy",
+   "video": "u-LJ2lhFnY8",
+   "title": "The Best Catan Strategy, Tested on 3 Million Games",
+   "views": 8555,
+   "upload_date": "20261021",
+   "duration": 798,
+   "likes": 48,
+   "comments": 11,
+   "subs": 97,
+   "channel_url": "https://www.youtube.com/channel/UCMbmy19IVIiO-5MHXGapM0A",
+   "recent": [
+    [
+     "The Best Scrabble Strategy, Simulated on 100 Million Games",
+     755,
+     962
+    ],
+    [
+     "The Best Stratego Strategy, Simulated on 300 Million Games",
+     5700,
+     848
+    ],
+    [
+     "The Best Checkers Strategy, Simulated on 300 Million Games",
+     524,
+     886
+    ],
+    [
+     "The Best Connect 4 Strategy, Simulated on 300 Million Games",
+     1300,
+     840
+    ],
+    [
+     "The Best Guess Who Strategy, Simulated on 300 Million Games",
+     625,
+     976
+    ],
+    [
+     "The Best Yahtzee Strategy, Simulated on 300 Million Games",
+     4000,
+     1120
+    ],
+    [
+     "The Best Battleship Strategy, Tested on 100 Million Games",
+     10000,
+     900
+    ],
+    [
+     "The Best Sorry! Strategy, Tested on 10 Million Games",
+     620,
+     812
+    ],
+    [
+     "The Best Clue Strategy, Tested on 50 Million Games",
+     1300,
+     810
+    ],
+    [
+     "The Best Catan Strategy, Tested on 3 Million Games",
+     8500,
+     799
+    ],
+    [
+     "Is Australia a Trap? I Played Risk 1 Million Times",
+     699,
+     1526
+    ],
+    [
+     "peacefully resting my feet in the evening light",
+     76,
+     195
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Popperish",
+   "group": "copy",
+   "video": "pTyqhhWw614",
+   "title": "We Played 950 Million Games Of Monopoly... This is What We Found",
+   "views": 10457,
+   "upload_date": "20261023",
+   "duration": 550,
+   "likes": 76,
+   "comments": 10,
+   "subs": 4380,
+   "channel_url": "https://www.youtube.com/channel/UCcpfG1Cvp9cmd9RlyjPU_mQ",
+   "recent": [
+    [
+     "We Simulated The Binance Bank Run",
+     1100,
+     582
+    ],
+    [
+     "We Added Arms To A Double Pendulum Until It Became A Rope",
+     15000,
+     550
+    ],
+    [
+     "We Added Relativity To The Three-Body Problem",
+     46000,
+     537
+    ],
+    [
+     "We Threw A Million Apophises At Earth",
+     5100,
+     566
+    ],
+    [
+     "We Crashed The Milky Way Into Andromeda. 14 Stars Touched.",
+     29000,
+     559
+    ],
+    [
+     "There's A Triangle Around The Sun. Nothing Stands On It.",
+     8100,
+     515
+    ],
+    [
+     "We Packed 86,000 Shapes. Round Came Last.",
+     4500,
+     520
+    ],
+    [
+     "We Threw Three Stars Together 5 Million Times",
+     140000,
+     527
+    ],
+    [
+     "We Simulated A Million Folds Of The iPhone Duo",
+     9400,
+     572
+    ],
+    [
+     "I Solved Krillion",
+     20000,
+     549
+    ],
+    [
+     "We Played 1.64 Billion Games Of Risk... This is What We Found",
+     11000,
+     586
+    ],
+    [
+     "We Played 950 Million Games Of Monopoly... This is What We Found",
+     10000,
+     551
+    ],
+    [
+     "Jupiter Emptied These Lanes Without Touching Them",
+     3800,
+     531
+    ],
+    [
+     "These Two Moons Swap Places Every Four Years",
+     42000,
+     531
+    ],
+    [
+     "Nothing Is Balancing This Upside-Down Pendulum",
+     11000,
+     471
+    ],
+    [
+     "You Can Un-Stir Syrup (But Not Your Coffee)",
+     1700,
+     453
+    ],
+    [
+     "The Shoreline That Touches Three Lakes At Every Point",
+     8300,
+     477
+    ],
+    [
+     "How To Turn A Sphere Inside Out Without A Crease",
+     21000,
+     496
+    ],
+    [
+     "Three Equations, Nothing Random, And It Never Repeats",
+     3500,
+     566
+    ],
+    [
+     "15,000 Asteroids Circle A Point With Nothing In It",
+     98000,
+     514
+    ],
+    [
+     "Why Five Dimensions Have Fewer Perfect Shapes Than Four",
+     104000,
+     970
+    ],
+    [
+     "Stacking Oranges Took 400 Years And A Computer To Prove",
+     6800,
+     487
+    ],
+    [
+     "The Tile That Can Never Repeat",
+     128000,
+     441
+    ],
+    [
+     "The Tiny Program That Outruns The Universe",
+     7000,
+     474
+    ],
+    [
+     "Thousands Of Fireflies, One Beat, And No Leader",
+     1100,
+     457
+    ],
+    [
+     "Three-Body Chaos Hides A Perfect Figure-Eight",
+     452000,
+     451
+    ],
+    [
+     "Topple This Sandpile In Any Order, Get The Same Fractal",
+     9000,
+     438
+    ],
+    [
+     "Two Chemicals That Paint Spots All By Themselves",
+     988,
+     414
+    ],
+    [
+     "Two Pendulums, A Billionth Of A Degree Apart",
+     31000,
+     479
+    ],
+    [
+     "Nobody Designed The Mandelbrot Set",
+     12000,
+     495
+    ]
+   ],
+   "shorts": [
+    [
+     "We Widened The Hole Until 100,000 Depositors Ran",
+     1800
+    ],
+    [
+     "A Falling Rope Beats A Falling Stone",
+     4400
+    ],
+    [
+     "We Gave Three Stars A Real Size. 94% Crashed",
+     19000
+    ],
+    [
+     "18,309 Of A Million Apophis Copies Hit Earth",
+     4700
+    ],
+    [
+     "Andromeda Flies Through Us. Zero Stars Hit.",
+     4400
+    ],
+    [
+     "We Deleted Jupiter And The Triangle Melted",
+     14000
+    ],
+    [
+     "Marbles Are The Worst Way To Fill A Jar",
+     11000
+    ],
+    [
+     "This Map Is Perfectly Ordered. You Still Can't Predict It",
+     10000
+    ],
+    [
+     "Your Folding Phone Hides A Teardrop",
+     18000
+    ],
+    [
+     "Stop Typing Your First Krillion Answer",
+     26000
+    ],
+    [
+     "This Risk Bot Never Defends A Border",
+     7700
+    ],
+    [
+     "This Monopoly Bot Hides In Jail On Purpose",
+     3100
+    ],
+    [
+     "Jupiter Emptied Lanes Without Touching A Rock",
+     8300
+    ],
+    [
+     "The Moon That Catches Up Always Falls Behind",
+     30000
+    ],
+    [
+     "This Pendulum Balances Upside Down. Nothing Steers It.",
+     8600
+    ],
+    [
+     "You Can Un-Stir Syrup",
+     11000
+    ],
+    [
+     "Three Lakes Can Share One Shore",
+     8400
+    ],
+    [
+     "You Can Turn A Sphere Inside Out. No Cuts.",
+     29000
+    ],
+    [
+     "This Wheel Never Does The Same Thing Twice",
+     6800
+    ],
+    [
+     "Thousands Of Asteroids Circle Nothing",
+     79000
+    ],
+    [
+     "4D Has 6 Perfect Shapes. 5D Has Only 3.",
+     11000
+    ],
+    [
+     "Every Grocer Knows This. Proving It Took 387 Years",
+     13000
+    ],
+    [
+     "This One Shape Can Never Repeat",
+     18000
+    ],
+    [
+     "Ten Rules Ran 47,176,870 Steps. Then It Stopped.",
+     8300
+    ],
+    [
+     "Thousands Of Fireflies Sync With No Leader",
+     2100
+    ],
+    [
+     "The Three-Star Orbit That Doesn't Fall Apart",
+     18000
+    ],
+    [
+     "300,000 Grains On One Square Grow This",
+     5500
+    ],
+    [
+     "Spots Grow Out Of A Flat, Even Mix",
+     1500
+    ],
+    [
+     "Two Pendulums Swing As One. Then They Don't.",
+     2300
+    ],
+    [
+     "Pi Is Hiding In The Mandelbrot Set",
+     5700
+    ]
+   ]
+  },
+  {
+   "name": "Game Night Court",
+   "group": "copy",
+   "video": "1EApSmAKUjU",
+   "title": "Why Monopoly Never Ends (I Simulated 5 Million Games)",
+   "views": 5403,
+   "upload_date": "20261025",
+   "duration": 517,
+   "likes": 18,
+   "comments": 17,
+   "subs": 386,
+   "channel_url": "https://www.youtube.com/channel/UCXHR0InXU7x3IDNffIQYdBw",
+   "recent": [
+    [
+     "I Put Monopoly's Dirtiest Trick on Trial",
+     9,
+     515
+    ],
+    [
+     "Monopoly's Original Rulebook Gave Bad Advice",
+     32,
+     542
+    ],
+    [
+     "How to Win at Uno (I Simulated 100 Million Games)",
+     33,
+     491
+    ],
+    [
+     "Why Monopoly Never Ends (I Simulated 5 Million Games)",
+     5400,
+     518
+    ]
+   ],
+   "shorts": [
+    [
+     "What's the Best Strategy in the Original Monopoly?",
+     281
+    ],
+    [
+     "The Original Monopoly's 9-Hour Typo",
+     1300
+    ],
+    [
+     "Can Everyone Win at Monopoly?",
+     1400
+    ],
+    [
+     "When Should You Play a Wild Card in Uno?",
+     1300
+    ],
+    [
+     "Why Does Uno Take Forever?",
+     1300
+    ],
+    [
+     "Does Stacking Actually Ruin Uno?",
+     704
+    ],
+    [
+     "Which House Rule Ruins Monopoly?",
+     96
+    ],
+    [
+     "Does Free Parking Actually Ruin Monopoly?",
+     49
+    ]
+   ]
+  },
+  {
+   "name": "Seeded",
+   "group": "copy",
+   "video": "vQJeyTMmdPA",
+   "title": "The Best Monopoly Strategy, Tested on 500 Million Games",
+   "views": 4188,
+   "upload_date": "20261031",
+   "duration": 538,
+   "likes": 49,
+   "comments": 9,
+   "subs": 4150,
+   "channel_url": "https://www.youtube.com/channel/UCiekwXrT7tl9KJn9hB4niTQ",
+   "recent": [
+    [
+     "The Best Monopoly Strategy, Tested on 500 Million Games",
+     4100,
+     539
+    ],
+    [
+     "Why Old Games Look Better in 90 Seconds",
+     936,
+     90
+    ],
+    [
+     "We Broke 8 Rules of Pac-Man and Ran 648,000 Games",
+     10000,
+     705
+    ],
+    [
+     "Monopoly Was Supposed to Have an Ending",
+     1400,
+     499
+    ],
+    [
+     "Human Brain Cells Are Playing Doom",
+     771,
+     524
+    ],
+    [
+     "\"I'm Not a Robot\": Your Finger Looks Exactly Like an AI",
+     2600,
+     546
+    ],
+    [
+     "He Bet Tens of Millions on Trump. Did He Know Something?",
+     248,
+     523
+    ],
+    [
+     "Pac-Man's Ghosts Were Never a Team",
+     107000,
+     501
+    ],
+    [
+     "Your Computer Can't Roll a Die",
+     652,
+     382
+    ],
+    [
+     "Opus 5.5 Didn't Generate This Video. It Compiled It.",
+     1200,
+     315
+    ]
+   ],
+   "shorts": [
+    [
+     "Face ID: How It Unlocks in Total Darkness",
+     1400
+    ],
+    [
+     "Why Galaga's Aliens Run Out of Bullets",
+     132
+    ],
+    [
+     "We Tested the Three-House Rule in Monopoly",
+     1900
+    ],
+    [
+     "We Built a Monopoly Bot That Only Buys Railroads",
+     16000
+    ],
+    [
+     "Can You Play a Draw Two on a Draw Two in UNO?",
+     2300
+    ],
+    [
+     "How Hard Platformers Secretly Cheat for You",
+     28000
+    ],
+    [
+     "What if Kirby Couldn't Inhale?",
+     6700
+    ],
+    [
+     "What if Pac-Man Couldn't Cut Corners?",
+     14000
+    ],
+    [
+     "What if Flappy Bird Had Real Physics?",
+     24000
+    ],
+    [
+     "Sonic's Waterfall Wasn't See-Through",
+     19000
+    ],
+    [
+     "What if Donkey Kong's Barrels Couldn't Take Ladders?",
+     14000
+    ],
+    [
+     "What if Pac-Man's Ghosts All Chased Like Red?",
+     14000
+    ],
+    [
+     "What if Geometry Dash's Physics Ran at 60 Hz?",
+     7700
+    ],
+    [
+     "NES Tetris Crashes Because It Can't Multiply",
+     3400
+    ],
+    [
+     "iPhone Keyboard: Same Tap, Two Different Letters",
+     8000
+    ],
+    [
+     "What if Pac-Man's Ghosts Could Turn Around?",
+     7700
+    ],
+    [
+     "What if Monopoly Paid $400 for Passing Go?",
+     3300
+    ],
+    [
+     "Wordle Hid Every Future Answer in Its Own Code",
+     10000
+    ],
+    [
+     "What if Pac-Man's Red Ghost Never Sped Up?",
+     19000
+    ],
+    [
+     "Too Many Lives Gives You a Game Over in Super Mario Bros.",
+     15000
+    ],
+    [
+     "17,600 Books Typed by People Just Logging In",
+     27000
+    ],
+    [
+     "What if Pac-Man Had No Rules at All?",
+     35000
+    ],
+    [
+     "NES Games Flickered on Purpose",
+     28000
+    ],
+    [
+     "What if Monopoly Had No $200 for Passing Go?",
+     7900
+    ],
+    [
+     "What if Pac-Man Had No Power Pellets?",
+     19000
+    ],
+    [
+     "Why Galaga's Aliens Run Out of Bullets",
+     7500
+    ],
+    [
+     "It's really safe look Minecraft's Enderman Legs?",
+     12000
+    ],
+    [
+     "A 60% Chance of Rain, and It Stayed Dry. Wrong?",
+     4100
+    ],
+    [
+     "Dig Dug Pays Five Times More for the Same Dragon",
+     9000
+    ],
+    [
+     "Image captcha secret",
+     45000
+    ]
+   ]
+  },
+  {
+   "name": "Brute Force Lab",
+   "video": "yVqSdK5k8cY",
+   "error": "no json -do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
+  },
+  {
+   "name": "Million Games",
+   "group": "copy",
+   "video": "XdIMuJl6d9A",
+   "title": "How to Win at Catan Every Time (Tested on 11,000,000 Games)",
+   "views": 1674,
+   "upload_date": "20261028",
+   "duration": 356,
+   "likes": 24,
+   "comments": 7,
+   "subs": 28,
+   "channel_url": "https://www.youtube.com/channel/UCSgWGoBp5IkNkW71Gae9dag",
+   "recent": [
+    [
+     "How to Win at Monopoly Every Time (Tested on 170,000,000 Games)",
+     0,
+     589
+    ],
+    [
+     "The Best Carcassonne Strategy, Tested on 17 Million Games",
+     799,
+     526
+    ],
+    [
+     "The Best UNO Strategy, Tested on 1.2 Billion Games",
+     74,
+     452
+    ],
+    [
+     "How to Win at Blackjack Every Time (Tested on 1,100,000,000 Games)",
+     1600,
+     443
+    ],
+    [
+     "How to Win at Catan Every Time (Tested on 11,000,000 Games)",
+     1600,
+     356
+    ],
+    [
+     "The Chess Risk Strategy, Tested on 1 Million Games",
+     1400,
+     270
+    ]
+   ],
+   "shorts": [
+    [
+     "Why Your Opponent's Points Matter More Than Yours #carcassonne #boardgames",
+     662
+    ],
+    [
+     "Why Early Farmers Lose Carcassonne More Than You Think #carcassonne #boardgametips",
+     577
+    ],
+    [
+     "The Best Black Jack Strategy",
+     5
+    ],
+    [
+     "The Best Carcassonne Strategy",
+     1300
+    ],
+    [
+     "The Best Catan Strategy",
+     1700
+    ],
+    [
+     "The Best Catan Strategy",
+     1500
+    ],
+    [
+     "How to Win at Chess Every Time (Tested on 1,100,000 Games)",
+     1600
+    ],
+    [
+     "How to Win at Chess Every Time (Tested on 1,100,000 Games)",
+     1300
+    ]
+   ]
+  },
+  {
+   "name": "Untold Realities",
+   "video": "MUqeaex4FQ4",
+   "error": "no json -do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
+  },
+  {
+   "name": "Macro & Myth",
+   "group": "copy",
+   "video": "WJxgrd3tdOY",
+   "title": "The Best Monopoly Strategy, Tested on a Million Games",
+   "views": 247,
+   "upload_date": "20261028",
+   "duration": 521,
+   "likes": 6,
+   "comments": null,
+   "subs": 20,
+   "channel_url": "https://www.youtube.com/channel/UCo01E3VP-F2Ji1CAQNtZ8NQ",
+   "recent": [
+    [
+     "Risk Is Not a Game of Luck (Here's the Math)",
+     604,
+     520
+    ],
+    [
+     "The Best Monopoly Strategy, Tested on a Million Games",
+     244,
+     521
+    ],
+    [
+     "Isaac Newton Called the Bubble. Then He Bought Back In.",
+     7,
+     357
+    ],
+    [
+     "Neoliberalism Told You to Learn to Code. Then AI Learned It First.",
+     21,
+     341
+    ],
+    [
+     "Why Did Ancient Humans Start Farming If It Made Life Worse?",
+     35,
+     425
+    ],
+    [
+     "Why the AI Bubble Actually Makes Sense (to the People Inside It)",
+     423,
+     393
+    ],
+    [
+     "Why Britain Was Still Paying for World War One in 2015",
+     735,
+     311
+    ],
+    [
+     "How Did Ancient Humans Pay For Things Before Money?",
+     31,
+     363
+    ],
+    [
+     "Rent or Buy in Ancient Rome? (The Answer Will Surprise You)",
+     39,
+     571
+    ],
+    [
+     "So You Want to Own a Tavern in Medieval Europe?",
+     70,
+     490
+    ],
+    [
+     "How a Pacific Island Accidentally Invented Bitcoin",
+     62,
+     289
+    ]
+   ],
+   "shorts": [
+    [
+     "Eat 100 Bowls of Ramen, Make £500",
+     1700
+    ],
+    [
+     "Thomas Jefferson Died $107,000 in Debt",
+     262
+    ],
+    [
+     "Monopoly Was a Real Get Out of Jail Free Card",
+     7300
+    ],
+    [
+     "He Invented Europe's Banknotes. They Sentenced Him to Death.",
+     2900
+    ],
+    [
+     "The 1640 Trick Your Bank Still Uses",
+     1700
+    ],
+    [
+     "He Sold the Safety Pin for $400",
+     1400
+    ],
+    [
+     "He Sold QWERTY for $12,000. His Partner Made $1.5 Million.",
+     1500
+    ],
+    [
+     "Dickens' Father Went to Prison Over a Baker's Bill",
+     53
+    ],
+    [
+     "Lincoln Called It the National Debt",
+     173
+    ],
+    [
+     "Who Paid Nikola Tesla's Rent",
+     230
+    ],
+    [
+     "Ben Franklin's 200-Year Bet",
+     456
+    ],
+    [
+     "The Man Who Invented Printing Never Printed His Name",
+     76
+    ],
+    [
+     "The Starving Artist Who Wasn't",
+     948
+    ],
+    [
+     "The Greatest Showman Went Broke Over Clocks",
+     102
+    ],
+    [
+     "President Grant Went Broke, Then Wrote His Way Out",
+     635
+    ],
+    [
+     "Goodyear Invented Your Tires and Died in Debt",
+     1200
+    ],
+    [
+     "The House That Bankrupted Rembrandt",
+     434
+    ],
+    [
+     "400 Francs vs 82.5 Million Dollars",
+     1300
+    ],
+    [
+     "Mark Twain Said No to the Telephone",
+     86
+    ],
+    [
+     "Walter Scott Refused to Go Bankrupt",
+     23
+    ],
+    [
+     "Einstein Spent a Prize He Hadn't Won",
+     758
+    ],
+    [
+     "The Tea Party Wasn't About Expensive Tea",
+     675
+    ],
+    [
+     "Who Decided a Ring Costs Two Months' Salary?",
+     145
+    ],
+    [
+     "The Penny Wasn't the Worst Coin",
+     2400
+    ],
+    [
+     "This Check Bought Alaska",
+     1100
+    ],
+    [
+     "The Roman Empire Was Sold at Auction",
+     479
+    ],
+    [
+     "Ford's $5 Day Had a Catch",
+     163
+    ],
+    [
+     "Isaac Newton Bought the Top",
+     266
+    ],
+    [
+     "Hanoi Paid 1 Cent for Every Dead Rat",
+     317
+    ],
+    [
+     "He Shipped Ice From Boston to India in 1833",
+     1100
+    ]
+   ]
+  },
+  {
+   "name": "Odds Detective",
+   "group": "copy",
+   "video": "t-aAY67Tj9U",
+   "title": "How to Always Win at Scrabble (8.85 Million Games Tested)",
+   "views": 242,
+   "upload_date": "20261031",
+   "duration": 549,
+   "likes": 4,
+   "comments": null,
+   "subs": 3,
+   "channel_url": "https://www.youtube.com/channel/UC2evwO0psKIAF7RZ9Q3WVGA",
+   "recent": [
+    [
+     "I Simulated 15 Million Games of Solitaire. Most of Your Losses Were Winnable",
+     6,
+     582
+    ],
+    [
+     "The Liar Always Wins* (65 Million Games of Liar's Dice)",
+     14,
+     580
+    ],
+    [
+     "How to Always Win at Scrabble (8.85 Million Games Tested)",
+     242,
+     550
+    ],
+    [
+     "I Simulated 4 Million Games of Clue, and... ",
+     383,
+     557
+    ]
+   ],
+   "shorts": [
+    [
+     "Are you playing Yahtzee wrong? 🎲 #gaming #shorts",
+     435
+    ],
+    [
+     "Is Minesweeper secretly impossible? 💣 #gaming #shorts",
+     1200
+    ],
+    [
+     "Is this the perfect Battleship strategy? 🤔 #gaming #shorts",
+     80
+    ]
+   ]
+  },
+  {
+   "name": "Eyaci Ecin",
+   "group": "copy",
+   "video": "zEKe5cmobuY",
+   "title": "The Best Yahtzee Strategy, Tested on 100 Million Games",
+   "views": 136,
+   "upload_date": "20261022",
+   "duration": 540,
+   "likes": null,
+   "comments": null,
+   "subs": 1,
+   "channel_url": "https://www.youtube.com/channel/UCnPeXimLJXZhwi7UZF-QhsQ",
+   "recent": [
+    [
+     "The Best Solitaire Strategy, Tested on 100 Million Games",
+     5,
+     407
+    ],
+    [
+     "The Best Battleship Strategy, Tested on 100 Million Games",
+     20,
+     444
+    ],
+    [
+     "The Best UNO Strategy, Tested on 100 Million Games",
+     8,
+     447
+    ],
+    [
+     "The Best Yahtzee Strategy, Tested on 100 Million Games",
+     136,
+     540
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Every Outcome",
+   "group": "copy",
+   "video": "9mQbw3Bwc8U",
+   "title": "Is Uno Skill or Luck? I Simulated 231 Million Hands to Find Out",
+   "views": 118,
+   "upload_date": "20261027",
+   "duration": 1153,
+   "likes": 1,
+   "comments": null,
+   "subs": 51,
+   "channel_url": "https://www.youtube.com/channel/UCaQuVnd8VBYcbfD268kRPzA",
+   "recent": [
+    [
+     "Checkers Is Solved. Here's How a Computer Proved It.",
+     2,
+     1033
+    ],
+    [
+     "The Best Catan Opening Strategy, Tested in 27,500 Games",
+     981,
+     663
+    ],
+    [
+     "Is Uno Skill or Luck? I Simulated 231 Million Hands to Find Out",
+     118,
+     1153
+    ],
+    [
+     "Is Every FreeCell Game Winnable? I Tested 32,000 Deals",
+     69,
+     700
+    ],
+    [
+     "Best Monopoly Property? Where 16 Million Turns Actually Land",
+     23,
+     719
+    ]
+   ],
+   "shorts": [
+    [
+     "Why the Most Dots Lose in Catan",
+     11
+    ],
+    [
+     "One Uno Card Adds 14 Points to Your Win Rate",
+     521
+    ],
+    [
+     "This FreeCell Deal Is Impossible. I Checked All 71,775 Positions.",
+     79
+    ],
+    [
+     "Boardwalk Is Landed On LESS Than Average #Monopoly",
+     122
+    ]
+   ]
+  },
+  {
+   "name": "Dice Lab",
+   "group": "copy",
+   "video": "p7hlpw1vrqU",
+   "title": "Every Monopoly House Rule, Tested on 97 Million Games",
+   "views": 102,
+   "upload_date": "20261026",
+   "duration": 858,
+   "likes": 1,
+   "comments": null,
+   "subs": 6,
+   "channel_url": "https://www.youtube.com/channel/UC7I1SGaGrrnm-wrpCuX8huQ",
+   "recent": [
+    [
+     "The Best Connect Four Strategy, Tested on 1 Billion Games",
+     36,
+     882
+    ],
+    [
+     "The Best Yahtzee Strategy, Tested on 1 Billion Games",
+     29,
+     904
+    ],
+    [
+     "The Best Battleship Strategy, Tested on 912 Million Games",
+     67,
+     914
+    ],
+    [
+     "The Best Uno Strategy, Tested on 681 Million Hands",
+     32,
+     936
+    ],
+    [
+     "Every Monopoly House Rule, Tested on 97 Million Games",
+     101,
+     859
+    ]
+   ],
+   "shorts": [
+    [
+     "Driving ashok",
+     506
+    ]
+   ]
+  },
+  {
+   "name": "LowPolyBrokie",
+   "group": "copy",
+   "video": "vg2PajjymfY",
+   "title": "I simulated 1 million games of monopoly to find the optimal strategy",
+   "views": 87,
+   "upload_date": "20261026",
+   "duration": 554,
+   "likes": 5,
+   "comments": 2,
+   "subs": 18,
+   "channel_url": "https://www.youtube.com/channel/UCR2gr1TXwg_2Y4laKtv15_g",
+   "recent": [
+    [
+     "I Tried To Make Money From MCU Hype",
+     2,
+     444
+    ],
+    [
+     "I Calculated the Cheapest Diet a Human Can Survive On",
+     298,
+     646
+    ],
+    [
+     "I simulated 1 million games of monopoly to find the optimal strategy",
+     87,
+     554
+    ],
+    [
+     "Do Thumbnails Even Matter? I Tested 8,521 Videos",
+     312,
+     489
+    ]
+   ],
+   "shorts": [
+    [
+     "Costco Chicken analysis!",
+     688
+    ],
+    [
+     "The Cheapest food in America!",
+     2700
+    ],
+    [
+     "Mathematically Optimising Monopoly To Win Every Time.",
+     1300
+    ]
+   ]
+  },
+  {
+   "name": "Ten Thousand Runs",
+   "group": "copy",
+   "video": "U9xvL1L9EGI",
+   "title": "The Best Ludo Strategy, Tested on 10 Million Games",
+   "views": 77,
+   "upload_date": "20261024",
+   "duration": 397,
+   "likes": 1,
+   "comments": 1,
+   "subs": 4,
+   "channel_url": "https://www.youtube.com/channel/UCLF4tx6mggJUZNaBZMqDf0w",
+   "recent": [
+    [
+     "Same AI, Same Question. 42 Went From 99.9% to 5%.",
+     12,
+     477
+    ],
+    [
+     "Are You Just Autocomplete?",
+     5,
+     414
+    ],
+    [
+     "I Asked an AI About 40 People Who Don't Exist",
+     514,
+     523
+    ],
+    [
+     "The Best Ludo Strategy, Tested on 10 Million Games",
+     77,
+     398
+    ]
+   ],
+   "shorts": [
+    [
+     "One sentence that makes AI admit it doesn't know",
+     8
+    ],
+    [
+     "The only part of you an AI can't guess",
+     1
+    ],
+    [
+     "The AI was 90% sure. It was wrong 2 times in 3.",
+     null
+    ],
+    [
+     "They defended a choice they never made",
+     5
+    ],
+    [
+     "Change his name, and the AI moves his birthplace",
+     115
+    ],
+    [
+     "Is Ludo luck or skill? I tested 10 million games #ludo",
+     155
+    ],
+    [
+     "Finish this sentence: \"I'll have a cup of...\"",
+     7
+    ],
+    [
+     "The most dangerous square in Ludo #ludo #ludoking",
+     69
+    ],
+    [
+     "I invented a person. The AI named his birthplace.",
+     5
+    ],
+    [
+     "The most common Ludo move is the WORST one #ludo #ludoking",
+     39
+    ],
+    [
+     "How to win 9 out of 10 games of 1v1 Ludo #ludo #ludoking",
+     102
+    ]
+   ]
+  },
+  {
+   "name": "Humans Decoded",
+   "group": "copy",
+   "video": "wVkmgeWSK1I",
+   "title": "Can You Win Monopoly Without Building a Hotel? Tested on 120 Million Games",
+   "views": 58,
+   "upload_date": "20261027",
+   "duration": 486,
+   "likes": null,
+   "comments": 1,
+   "subs": 1,
+   "channel_url": "https://www.youtube.com/channel/UC7zmKWgL55Vnn4Fhlmc4I6A",
+   "recent": [
+    [
+     "Werewolf: Does a Doctor Help the Village?",
+     6,
+     478
+    ],
+    [
+     "Battleship: All 30,093,975,536 Boards Counted for a Rule You Can Play",
+     7,
+     1052
+    ],
+    [
+     "Does Stacking Actually Win at Uno? We Tested It",
+     5,
+     485
+    ],
+    [
+     "The Best Lottery Numbers to Play, Tested on 100 Million Tickets",
+     22,
+     483
+    ],
+    [
+     "Can You Win Monopoly Without Building a Hotel? Tested on 120 Million Games",
+     58,
+     487
+    ],
+    [
+     "The Best Catan Opening, Tested on 825,000 Games",
+     671,
+     602
+    ],
+    [
+     "Do House Rules Ruin Monopoly? I Tested 4 of Them on 200 Million Games",
+     316,
+     428
+    ],
+    [
+     "I Tested 5 Blackjack Strategies So You Don't Have To",
+     9,
+     235
+    ]
+   ],
+   "shorts": [
+    [
+     "Ports came last in 825,000 Catan games",
+     49
+    ],
+    [
+     "This ONE House Rule Makes Monopoly Never End",
+     29
+    ]
+   ]
+  },
+  {
+   "name": "Million Game Lab",
+   "group": "copy",
+   "video": "7GXHCknbHmA",
+   "title": "I Simulated 62 Million Games of Monopoly. Here's How to Win",
+   "views": 59,
+   "upload_date": "20261031",
+   "duration": 395,
+   "likes": 1,
+   "comments": 1,
+   "subs": null,
+   "channel_url": "https://www.youtube.com/channel/UCjl1seD_eilDDsdP7iTE7vw",
+   "recent": [
+    [
+     "Where Your Ships Are Safest in Battleship",
+     4,
+     602
+    ],
+    [
+     "The Catan Advice That Makes You Lose",
+     4,
+     321
+    ],
+    [
+     "I Simulated 62 Million Games of Monopoly. Here's How to Win",
+     59,
+     395
+    ]
+   ],
+   "shorts": [
+    [
+     "The Worst Way to Hide Your Ships in Battleship #shorts #boardgames",
+     369
+    ],
+    [
+     "The Catan Spot Everyone Fights For Is Wrong",
+     176
+    ],
+    [
+     "The Monopoly Trick That Makes You Lose",
+     1100
+    ]
+   ]
+  },
+  {
+   "name": "Forced Win",
+   "group": "copy",
+   "video": "_3h9RjWUyts",
+   "title": "The Best Catan Strategy, Tested on 3.7 Million Games",
+   "views": 49,
+   "upload_date": "20261027",
+   "duration": 662,
+   "likes": 2,
+   "comments": 1,
+   "subs": 3,
+   "channel_url": "https://www.youtube.com/channel/UC-vNOeFhJdRYG6bg76FWkVQ",
+   "recent": [
+    [
+     "The Best Catan Strategy, Tested on 3.7 Million Games",
+     49,
+     662
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Rulebook Math",
+   "group": "copy",
+   "video": "PcQzpEkKPcc",
+   "title": "I Solved Farkle. Taking Every Point Is a Mistake.",
+   "views": 14,
+   "upload_date": "20261027",
+   "duration": 389,
+   "likes": null,
+   "comments": null,
+   "subs": null,
+   "channel_url": "https://www.youtube.com/channel/UCywpFNVveXqrOUO_xgYNAMw",
+   "recent": [
+    [
+     "The Hardest Phase in Phase 10 Isn't 10",
+     2,
+     326
+    ],
+    [
+     "I Solved 42 Dice in Kingdom Come: Deliverance 2",
+     45,
+     309
+    ],
+    [
+     "I Solved Farkle. Taking Every Point Is a Mistake.",
+     14,
+     390
+    ],
+    [
+     "I Solved Shut the Box. Perfect Strategy Isn't What Matters.",
+     13,
+     237
+    ]
+   ],
+   "shorts": [
+    [
+     "Grozav's Lucky Die Is the Worst Die to Add in Kingdom Come 2. Six of Them Win 88%. #shorts",
+     476
+    ],
+    [
+     "Three 1s in Kingdom Come 2? Keep only ONE. #shorts",
+     1300
+    ],
+    [
+     "One die left in Farkle? Roll. Two dice left? Stop. #shorts",
+     34
+    ],
+    [
+     "Three 2s and a 1 in Farkle? Keep only the 1. #shorts",
+     21
+    ],
+    [
+     "Shut the Box: the most common final score is a perfect 0 #shorts",
+     10
+    ]
+   ]
+  },
+  {
+   "name": "Odds With Otto",
+   "group": "copy",
+   "video": "qz72pLRiFR4",
+   "title": "Every Monopoly Color Set Ranked, Tested on 10 Million Games",
+   "views": 12,
+   "upload_date": "20261027",
+   "duration": 646,
+   "likes": null,
+   "comments": null,
+   "subs": null,
+   "channel_url": "https://www.youtube.com/channel/UCK3Caohk-O6G5Zmle3zoS1g",
+   "recent": [
+    [
+     "The Best Uno Strategy, Tested on 10 Million Games",
+     0,
+     590
+    ],
+    [
+     "Every Monopoly Color Set Ranked, Tested on 10 Million Games",
+     12,
+     646
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Math of Play",
+   "group": "copy",
+   "video": "ALeGXlENJB8",
+   "title": "The Best Yahtzee Strategy, Tested on 10 Million Games",
+   "views": 12,
+   "upload_date": "20261031",
+   "duration": 506,
+   "likes": null,
+   "comments": null,
+   "subs": 3420,
+   "channel_url": "https://www.youtube.com/channel/UCR3p9Z_9JxUibiZLne9_lWA",
+   "recent": [
+    [
+     "The Best Connect 4 Strategy, Tested on 1 Million Games",
+     5,
+     507
+    ],
+    [
+     "The Best Yahtzee Strategy, Tested on 10 Million Games",
+     12,
+     507
+    ],
+    [
+     "I Simulated 1 Million Games of Snakes and Ladders Is It Pure Luck",
+     5,
+     440
+    ],
+    [
+     "Everyone Plays Uno Wrong The Best Strategy, Tested on 5 Million Games",
+     2,
+     520
+    ],
+    [
+     "I Tested 10 Million Monopoly Games So You Don’t Have To",
+     7,
+     664
+    ],
+    [
+     "Next Month Voyager 1 Becomes One Light Day Away — After 49 Years Without a Single Crash",
+     8,
+     653
+    ],
+    [
+     "Voyager 1 Has Flown Almost 16 Billion Miles Without Hitting Anything - Here’s Why",
+     2,
+     781
+    ],
+    [
+     "What If Every Black Hole Replaced Our Moon",
+     2,
+     810
+    ],
+    [
+     "Every Time Earth Almost Got Destroyed From Space Explained",
+     9,
+     792
+    ],
+    [
+     "Every Way The Sun Could Kill Us Explained",
+     11,
+     815
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "8 Minute Analysis",
+   "group": "copy",
+   "video": "jfloCCRfUs8",
+   "title": "You're Picking Checkout Lines Wrong",
+   "views": 12,
+   "upload_date": "20261024",
+   "duration": 543,
+   "likes": 1,
+   "comments": null,
+   "subs": 10,
+   "channel_url": "https://www.youtube.com/channel/UCryIo7j2uCwLBMoZH9ENiJA",
+   "recent": [
+    [
+     "You’re Probably Playing Scrabble Wrong",
+     7,
+     716
+    ],
+    [
+     "Is Yahtzee Really Luck?",
+     6,
+     526
+    ],
+    [
+     "Your Uno Games Last 95% Longer Than They Should",
+     109,
+     532
+    ],
+    [
+     "The Best Catan Starting Spot, Tested on 500 Million Games",
+     51,
+     567
+    ],
+    [
+     "Why You Always Pick the Slow Checkout Line",
+     12,
+     543
+    ],
+    [
+     "I Predicted the Next Michelin Star Restaurant",
+     7,
+     533
+    ]
+   ],
+   "shorts": [
+    [
+     "The Best First Move in Scrabble Is 128 Points #scrabble #wordgames",
+     467
+    ],
+    [
+     "The Best Seven Tiles in Scrabble #scrabble #wordgames",
+     28
+    ],
+    [
+     "Why Big Uno Games Take Forever #uno  #cardgames",
+     4000
+    ],
+    [
+     "Why Big Uno Games Take Forever #uno  #cardgames",
+     1400
+    ],
+    [
+     "You're Probably Playing Uno Wrong #uno  #cardgames",
+     1400
+    ],
+    [
+     "3 House Rules That Make Uno Games Shorter #uno #boardgames",
+     1400
+    ],
+    [
+     "Don’t Pick Your Catan Spot by Dots Alone #catan #boardgames #catanstrategy",
+     1100
+    ],
+    [
+     "Don't Make This Mistake In Catan #catan #boardgames #catanstrategy",
+     1200
+    ],
+    [
+     "Don't Make This Mistake In Catan #catan #boardgames #catanstrategy",
+     1500
+    ],
+    [
+     "Where to Start in Catan #catan #boardgames",
+     1100
+    ]
+   ]
+  },
+  {
+   "name": "ThousandTurns",
+   "group": "copy",
+   "video": "VhGSaUsR2Vw",
+   "title": "Best Ludo Strategy? We Simulated 1,008,000 Games",
+   "views": 10,
+   "upload_date": "20261101",
+   "duration": 600,
+   "likes": 1,
+   "comments": 2,
+   "subs": 11,
+   "channel_url": "https://www.youtube.com/channel/UCqWiBeLMlN2nKUYDcYxSMgQ",
+   "recent": [
+    [
+     "The Ghostwriter Ep 1: The First Commission | Mystery Thriller Series",
+     7,
+     775
+    ],
+    [
+     "Best Ludo Strategy? We Simulated 1,008,000 Games",
+     10,
+     600
+    ]
+   ],
+   "shorts": [
+    [
+     "Ludo Strategy: Should You Capture Every Time? (Part 6/11) #ludo #boardgames #statistics #probability",
+     39
+    ],
+    [
+     "Ludo Mistake: A New Token on Every 6 Loses (Part 5/11)  #boardgames #ludostrategy #statistics #ludo",
+     148
+    ],
+    [
+     "Best Ludo Strategy: 1,008,000 Games Ranked (Part 4/11)  #boardgames #ludostrategy #ludo #ludotips",
+     42
+    ],
+    [
+     "Ludo Strategy: Which of These 8 Players Are You? (Part 3/11)  #ludo #boardgames #ludostrategy",
+     325
+    ],
+    [
+     "Ludo Rules: The One That Costs You 6 Turns (Part 2/11) #ludo #ludostrategy #boardgames #statistics",
+     773
+    ],
+    [
+     "Is Ludo Just Luck? We Played 1,008,000 Games (Part 1/11)",
+     1100
+    ]
+   ]
+  },
+  {
+   "name": "Ten Thousand Lloyds",
+   "group": "copy",
+   "video": "6cz9opn3wJM",
+   "title": "I Simulated 10,000 Shoppers to Find the Fastest Checkout Line",
+   "views": 8,
+   "upload_date": "20260926",
+   "duration": 540,
+   "likes": null,
+   "comments": 1,
+   "subs": null,
+   "channel_url": "https://www.youtube.com/channel/UCNQ3a28huwltug5v5pBPt5w",
+   "recent": [
+    [
+     "I Simulated 10,000 Shoppers to Find the Fastest Checkout Line",
+     8,
+     540
+    ]
+   ],
+   "shorts": [
+    [
+     "I gave a shopper psychic powers. It saved him 12 seconds.",
+     555
+    ],
+    [
+     "The other line is faster 61% of the time",
+     1100
+    ],
+    [
+     "Which line is faster: 1 person with 30 items, or 4 people with 5?",
+     13
+    ]
+   ]
+  },
+  {
+   "name": "Solved by Code",
+   "group": "copy",
+   "video": "uJO1uW3aGf0",
+   "title": "I Simulated 13 Billion Games of Candy Land. About 3 in 100 Never End (If You Don't Shuffle).",
+   "views": 4,
+   "upload_date": "20261018",
+   "duration": 285,
+   "likes": null,
+   "comments": null,
+   "subs": null,
+   "channel_url": "https://www.youtube.com/channel/UCP-mpbBgC9DOGfjiCN7ZXZA",
+   "recent": [
+    [
+     "Yahtzee Two Pairs: Keep One, Not Both (Perfect Play, Solved)",
+     7,
+     256
+    ],
+    [
+     "Is \"Hold at 20\" the Best Strategy in Pig? I Rebuilt the Solution",
+     8,
+     241
+    ],
+    [
+     "Best First Move in Mancala: 4 of 6 Openings Lose (Solved)",
+     9,
+     304
+    ],
+    [
+     "How to Win at Uno (I Built a Cheater to Find Out)",
+     15,
+     247
+    ],
+    [
+     "Dots and Boxes Is Solved: The First Player Loses on 3x3, Whatever They Draw",
+     25,
+     243
+    ],
+    [
+     "I Simulated 13 Billion Games of Candy Land. About 3 in 100 Never End (If You Don't Shuffle).",
+     4,
+     286
+    ],
+    [
+     "Even Flawless Logic Loses 65% of Minesweeper Expert Games (140 Million Simulated)",
+     14,
+     243
+    ],
+    [
+     "Can a Game of War Last Forever? I Played 2.8 Billion Games",
+     5,
+     231
+    ],
+    [
+     "I Checked 10,000 Windows Solitaire Deals. 1 in 6 Can't Be Won.",
+     11,
+     282
+    ],
+    [
+     "I Checked All 32,000 Windows FreeCell Deals. One Can't Be Won.",
+     373,
+     384
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Every Game Solved",
+   "group": "copy",
+   "video": "ZciDGnalGDA",
+   "title": "We Played 15,000,000 Games of Risk",
+   "views": 4,
+   "upload_date": "20261026",
+   "duration": 1015,
+   "likes": null,
+   "comments": null,
+   "subs": 1,
+   "channel_url": "https://www.youtube.com/channel/UC4UntGjp7QIvQGP-SG6pDtg",
+   "recent": [
+    [
+     "We Dropped 9,000,000 Plinko Chips to Beat The Price Is Right",
+     9,
+     774
+    ],
+    [
+     "We Played 15,000,000 Games of Risk",
+     4,
+     1015
+    ],
+    [
+     "We Sent 52,739,010 Shoppers Through the Checkout",
+     15,
+     1138
+    ]
+   ],
+   "shorts": [
+    [
+     "We Boarded 1,000,000 Planes. Back Rows First Is Slower Than No Order at All.",
+     1400
+    ],
+    [
+     "We Counted 240,347 Minecraft Diamonds. You're Mining 6 Blocks Too Deep",
+     1400
+    ],
+    [
+     "Checkout lines which is faster",
+     1100
+    ],
+    [
+     "We Played 7,500,000 Games of Expert Minesweeper. The Safest Square Still Loses 62%",
+     42
+    ]
+   ]
+  },
+  {
+   "name": "Reroll Reality",
+   "group": "copy",
+   "video": "dUNdE32e2Pc",
+   "title": "The Best Starting Spot in Catan, Tested in 2.5M Games",
+   "views": 3,
+   "upload_date": "20261102",
+   "duration": 335,
+   "likes": null,
+   "comments": null,
+   "subs": null,
+   "channel_url": "https://www.youtube.com/channel/UCUtiK_KGfvMcMOSi8-2lJYQ",
+   "recent": [
+    [
+     "Which Checkout Line Is Fastest? 10 Million Shoppers Tested",
+     0,
+     292
+    ],
+    [
+     "The Best Starting Spot in Catan, Tested in 2.5M Games",
+     3,
+     335
+    ],
+    [
+     "The Best Ludo Strategy, Tested in 1,000,000 Games",
+     15,
+     330
+    ],
+    [
+     "You Go to a Party Sick. How Many Do You Infect?",
+     7,
+     368
+    ]
+   ],
+   "shorts": [
+    [
+     "More Dots Isn't Enough in Catan #Shorts",
+     7
+    ],
+    [
+     "Why 6s and 8s Can Hurt You in Catan #Shorts",
+     17
+    ],
+    [
+     "Most People You Infect, You Never Talked To #Shorts",
+     7
+    ],
+    [
+     "This One House Rule Changes Ludo #Shorts",
+     134
+    ],
+    [
+     "Hunting Every Piece Is a Bad Ludo Strategy #Shorts",
+     216
+    ]
+   ]
+  },
+  {
+   "name": "Game Night Math",
+   "group": "copy",
+   "video": "DE1KgThCWMc",
+   "title": "Yahtzee's Most Expensive Habit, Tested on 117 Million Games",
+   "views": 3,
+   "upload_date": "20261031",
+   "duration": 510,
+   "likes": 1,
+   "comments": 1,
+   "subs": null,
+   "channel_url": "https://www.youtube.com/channel/UCGh5108bYu-j54FrVZequMw",
+   "recent": [
+    [
+     "When to Stop Rolling in Farkle (112 Million Games Tested)",
+     0,
+     329
+    ],
+    [
+     "Never Let Your Ships Touch in Battleship (105 Million Games Tested)",
+     2,
+     367
+    ],
+    [
+     "Yahtzee's Most Expensive Habit, Tested on 117 Million Games",
+     3,
+     511
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "The Odds Engine",
+   "group": "copy",
+   "video": "03embHRasaY",
+   "title": "Every Mancala Strategy, Tested on 500 Million Games",
+   "views": 3,
+   "upload_date": "20261101",
+   "duration": 501,
+   "likes": null,
+   "comments": null,
+   "subs": 13,
+   "channel_url": "https://www.youtube.com/channel/UCiQi_P8F6AIR5qQxanWUYEQ",
+   "recent": [
+    [
+     "Every Backgammon Strategy, Tested on 100 Million Games",
+     0,
+     522
+    ],
+    [
+     "Every Mancala Strategy, Tested on 500 Million Games",
+     3,
+     502
+    ],
+    [
+     "Every Battleship Strategy, Tested on 1 Billion Games",
+     989,
+     455
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Optimal Move",
+   "group": "copy",
+   "video": "YpfUo9yxayk",
+   "title": "How to Win at Yahtzee, Tested on 100 Million Games",
+   "views": 2,
+   "upload_date": "20261103",
+   "duration": 502,
+   "likes": null,
+   "comments": null,
+   "subs": null,
+   "channel_url": "https://www.youtube.com/channel/UCy4muVLYag3f6oGVqgAokMQ",
+   "recent": [
+    [
+     "How to Win at Yahtzee, Tested on 100 Million Games",
+     2,
+     502
+    ],
+    [
+     "The Best Rock Paper Scissors Strategy, Tested on 10 Million Games",
+     0,
+     290
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Run It a Million",
+   "group": "copy",
+   "video": "0BrNV_vBtgY",
+   "title": "Monopoly House Rules on Trial: Tested on 100 Million Games",
+   "views": 3,
+   "upload_date": "20261104",
+   "duration": 666,
+   "likes": 1,
+   "comments": null,
+   "subs": 142,
+   "channel_url": "https://www.youtube.com/channel/UCmY87Kq_2NwiVzlH8_X9W3A",
+   "recent": [
+    [
+     "Monopoly House Rules on Trial: Tested on 100 Million Games",
+     4,
+     666
+    ],
+    [
+     "The Best Uno Strategy, Tested on 100 Million Games",
+     15,
+     613
+    ]
+   ],
+   "shorts": [
+    [
+     "#pubg #pubgmobile #gaming немного классики на мой канал #games #pubgm",
+     428
+    ],
+    [
+     "#игры #metroroyale #pubgmobile #pubg восстал как Годзилла на 7 карте ,спустя долгое время я вернулся",
+     480
+    ],
+    [
+     "Тутор как слить 20млн ,самое худшее открытие #gaming #pubgmobile #pubg #pubgm #metroroyale #metro",
+     104
+    ],
+    [
+     "Кому тоже сипит радка? В итоге вышло 6,4 стоимость #метророяль #pubgmobile #metroroyale #gaming",
+     13000
+    ],
+    [
+     "Обожаю 7 карту за ее файты #gaming #pubgmobile #pubg #pubgm #metro #метророяль",
+     494
+    ],
+    [
+     "Дефолтные катки на 7 карте 💪💪 покупаете вещи в нашем метро шопе #gaming #pubgmobile #pubg #pubgm",
+     979
+    ]
+   ]
+  },
+  {
+   "name": "OddsProof",
+   "group": "copy",
+   "video": "wWq1Gt7JTIk",
+   "title": "I Played 20 Million Hands of Blackjack Perfectly. Here's What It Costs",
+   "views": 35264,
+   "upload_date": "20261030",
+   "duration": 438,
+   "likes": 264,
+   "comments": 32,
+   "subs": 230,
+   "channel_url": "https://www.youtube.com/channel/UCLEyrVGPnZSjGgUVPhfiiYA",
+   "recent": [
+    [
+     "I Played 100 Million Hands of Poker. Here’s Who Actually Wins",
+     79,
+     493
+    ],
+    [
+     "I Dropped 10,000,000 Plinko Balls. Here’s Where the Money Goes",
+     1200,
+     514
+    ],
+    [
+     "I Gave 420,000 People $1,000 to Bet on Real Sports Odds",
+     215,
+     538
+    ],
+    [
+     "I Played 20 Million Hands of Blackjack Perfectly. Here's What It Costs",
+     35000,
+     438
+    ],
+    [
+     "The Best Lottery Strategy, Tested on 34 Years of Real Draws",
+     145,
+     533
+    ],
+    [
+     "Which Roulette Number Hits the Most? I Simulated 100 Million Spins",
+     10000,
+     704
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Hypergeomancer",
+   "group": "copy",
+   "video": "tyQ-Yh1yfRA",
+   "title": "I Simulated 5 Million Games to Solve Affinity's Manabase",
+   "views": 22240,
+   "upload_date": "20260707",
+   "duration": 827,
+   "likes": 1136,
+   "comments": 181,
+   "subs": 2530,
+   "channel_url": "https://www.youtube.com/channel/UCd6AHUBx3-Y1-d7AZgM0OSg",
+   "recent": [
+    [
+     "Spy & Chill #3 — Post-Moravia Momentum | Spy Combo Pauper MTGO League",
+     1000,
+     9405
+    ],
+    [
+     "IPT Moravia Spy Walls TOP 4, 2500 Subs & HyperBirthday Celebration!",
+     1200,
+     9732
+    ],
+    [
+     "HyperNews: Join the HyperCommunity Discord Server for FREE!",
+     389,
+     134
+    ],
+    [
+     "Trophy with Spy! 5-0 Replay Walkthrough | Spy Combo Pauper MTGO League",
+     2800,
+     6528
+    ],
+    [
+     "Spy & Chill #2 — Decline or Fail to Find? | Spy Combo Pauper MTGO League",
+     1900,
+     9227
+    ],
+    [
+     "1st Place with Spy Walls at the Store Championship Tournament – Game Replays & Commentary",
+     3400,
+     2840
+    ],
+    [
+     "Spy & Chill #1 — Where’s the Zeta Update? | Spy Combo Pauper MTGO League",
+     1300,
+     11846
+    ],
+    [
+     "Dimir Affinity: Can It Work? | Dimir Affinity vs. Jund Wildfire | MTG Pauper Gameplay",
+     2000,
+     4030
+    ],
+    [
+     "20-1 with Spy?! | Replay Walkthrough — Part 2 | Spy Combo Pauper MTGO League",
+     2000,
+     8461
+    ],
+    [
+     "Dimir Affinity: Can It Work? | Dimir Affinity vs. Dimir Terror | MTG Pauper Gameplay",
+     1400,
+     1447
+    ],
+    [
+     "Dimir Affinity: Can It Work? | Dimir Affinity vs. Monster Tron | MTG Pauper Gameplay",
+     1800,
+     1777
+    ],
+    [
+     "20-1 with Spy?! | Replay Walkthrough — Part 1 | Spy Combo Pauper MTGO League",
+     3800,
+     12086
+    ],
+    [
+     "First Spy Mission | Spy Combo Pauper MTGO League",
+     2800,
+     11676
+    ],
+    [
+     "Dimir Affinity: Can It Work? | Dimir Affinity vs. Mono Blue Terror | MTG Pauper Gameplay",
+     876,
+     1341
+    ],
+    [
+     "Dimir Affinity: Can It Work? | Dimir Affinity vs. Mono Red Rally | MTG Pauper Gameplay",
+     860,
+     1927
+    ],
+    [
+     "Monster Tron Masterclass ft. Andrea Feltrin | Common Crowns Ep. 1",
+     6400,
+     6910
+    ],
+    [
+     "GAS  - Grixis Affinity Speedrun #2",
+     628,
+     91
+    ],
+    [
+     "I Simulated 5 Million Games to Solve Affinity's Manabase",
+     22000,
+     828
+    ],
+    [
+     "Grixis Affinity vs Spy Combo | Paupergeddon Playtesting | June 2026",
+     1500,
+     2548
+    ],
+    [
+     "Grixis Affinity vs Elves | Paupergeddon Playtesting | June 2026",
+     1500,
+     1435
+    ],
+    [
+     "Grixis Affinity vs Gates Skybow | Paupergeddon Playtesting | June 2026",
+     710,
+     1813
+    ],
+    [
+     "The BEST Grixis Affinity Build? Pre-Paupergeddon Deck Tech | Paupergeddon Playtesting | June 2026",
+     2500,
+     1045
+    ],
+    [
+     "Grixis Affinity vs Mono Blue Terror | Paupergeddon Playtesting | June 2026",
+     1200,
+     3776
+    ],
+    [
+     "Grixis Affinity vs Jund Wildfire | Paupergeddon Playtesting | June 2026",
+     1500,
+     2005
+    ],
+    [
+     "Grixis Affinity vs Mono Red Madness | Paupergeddon Playtesting | June 2026",
+     1800,
+     2781
+    ],
+    [
+     "GAS - Grixis Affinity Speedrun #1",
+     366,
+     77
+    ],
+    [
+     "Jund Wildfire: Probability of a Turn 2-Cleansing Wildfire",
+     866,
+     368
+    ],
+    [
+     "Grixis Affinity vs Persistent Petitioners Combo | MTGO Pauper League Gameplay | April 2026",
+     740,
+     2184
+    ],
+    [
+     "Grixis Affinity vs Mono Red Rally | MTGO Pauper League Gameplay | April 2026",
+     1200,
+     1332
+    ],
+    [
+     "Grixis Affinity vs Dimir Terror | MTGO Pauper League Gameplay | April 2026",
+     1200,
+     935
+    ]
+   ],
+   "shorts": [
+    [
+     "How important is the correct mindset to play Magic? #mtg #paupegeddon #pauper #advice #tournament",
+     78
+    ],
+    [
+     "They key card in Spy Walls #mtg #pauper #mtgstrategy #cardgames #competitive #metadeck #guide #mtgo",
+     294
+    ],
+    [
+     "Pauper community through the eyes of a Paupergeddon winner #mtg #paupegeddon #pauper #tournament",
+     284
+    ],
+    [
+     "Spy Walls tips: Lead the Stampede #mtg #pauper #tips #magiconline #guide #magicthegathering #meta",
+     592
+    ],
+    [
+     "Putting deck type labels in Pauper #mtg #paupegeddon #pauper #advice #tournament #magicthegathering",
+     185
+    ],
+    [
+     "The fork strategy in Spy Walls #mtg #pauper #mtgstrategy #cardgames #competitive #guide #tips",
+     720
+    ],
+    [
+     "Mathematically accurate keep #pauper #mtg #guide #math #gameplay #math #optimisation #mathematics",
+     858
+    ],
+    [
+     "Paupergeddon winner on his source of confidence #mtg #paupegeddon #pauper #advice #tournament #win",
+     202
+    ],
+    [
+     "Spy Walls tips: protect your gameplan #mtg #pauper #tips #magiconline #guide #competitive #gameplan",
+     583
+    ],
+    [
+     "Spy Walls 101: removal matchups #mtg #pauper #mtgstrategy #cardgames #competitive #guide #tips #mtgo",
+     570
+    ],
+    [
+     "We have a plan against counters #pauper #mtg #guide #math #gameplay #magicthegathering #strategy",
+     443
+    ],
+    [
+     "What is truly important in Magic: the Gathering? #mtg #paupegeddon #pauper #advice #tournament #win",
+     451
+    ],
+    [
+     "Mesmeric Fiend in spy Walls mirror #mtg #pauper #mtgstrategy #cardgames #competitive #guide #tips",
+     241
+    ],
+    [
+     "Giant’s boulder is a great addition to Monster Tron #pauper #mtg #guide #math #gameplay #best #cards",
+     323
+    ],
+    [
+     "Makeshift Munitions vs Nyxborn Hydra in Jund #mtg #paupegeddon #pauper #advice #tournament #win",
+     522
+    ],
+    [
+     "Non-deterministic combo with Spy Walls #mtg #pauper #mtgstrategy #cardgames #competitive #math",
+     638
+    ],
+    [
+     "Math of Tron lands #pauper #mtg #guide #math #optimisation #magicthegathering #math #mathematics",
+     902
+    ],
+    [
+     "Not closing Tron with Expedition Map? #pauper #mtg #guide #math #gameplay #magicthegathering #tricks",
+     1100
+    ],
+    [
+     "Paupergeddon winner: How to handle losses? #mtg #paupegeddon #pauper #advice #tournament #magic",
+     541
+    ],
+    [
+     "Avenging Hunter in Spy Walls?? #mtg #pauper #mtgstrategy #cardgames #competitive #casual #online",
+     618
+    ],
+    [
+     "Rooftop Percher in Monster Tron #pauper #mtg #guide #math #gameplay #magicthegathering #best #cards",
+     263
+    ],
+    [
+     "Paupergeddon winner's take on Sneaky Snacker #mtg #paupegeddon #pauper #advice #tournament #cards",
+     246
+    ],
+    [
+     "Taking risks with Spy Walls in Pauper #mtg #pauper #mtgstrategy #cardgames #competitive #magic",
+     397
+    ],
+    [
+     "Combat with Murmuring Mystic on the board #mtg #pauper #mtgstrategy #cardgames #competitive #tricks",
+     1000
+    ],
+    [
+     "How is the matchup Monster Tron vs. Dimir Terror? #pauper #mtg #guide #math #gameplay #matchup",
+     372
+    ],
+    [
+     "Downshifts in Pauper: Path to Exile? #mtg #paupegeddon #pauper #advice #tournament #modern #format",
+     581
+    ],
+    [
+     "Troll of Khazad-dûm in pauper Spy Walls #mtg #pauper #mtgstrategy #cardgames #competitive #online",
+     527
+    ],
+    [
+     "Unfathomable Truths in Monster Tron #pauper #mtg #guide #math #gameplay #magicthegathering #strategy",
+     590
+    ],
+    [
+     "Paupergeddon winner on Lembas #mtg #paupegeddon #pauper #advice #tournament #magicthegathering",
+     413
+    ],
+    [
+     "Playing from ahead#mtg #magic #gameplay #pauper #affinity #strategy #tricks #guide #mtgonline #game",
+     429
+    ]
+   ]
+  },
+  {
+   "name": "Sullen Balcorta",
+   "group": "copy",
+   "video": "LASvKy3uj-A",
+   "title": "Every Casino Betting System, Simulated 100 Million Times",
+   "views": 17803,
+   "upload_date": "20261029",
+   "duration": 1013,
+   "likes": 172,
+   "comments": 12,
+   "subs": 132,
+   "channel_url": "https://www.youtube.com/channel/UC26QjNJF05h_7L5mD79qAJQ",
+   "recent": [
+    [
+     "Every Sports Betting Strategy, Simulated 100 Million Times",
+     75,
+     1201
+    ],
+    [
+     "Every Stock Market Crash Strategy, Simulated 100 Million Times",
+     22,
+     1313
+    ],
+    [
+     "Why Most Day Traders Fail, Simulated 100 Million Times",
+     128,
+     1390
+    ],
+    [
+     "A Lifetime of Slot Machines, Simulated 100 Million Times",
+     140,
+     1270
+    ],
+    [
+     "Investing $1,000 a Month, Simulated on 100 Million Lifetimes",
+     1700,
+     1036
+    ],
+    [
+     "Every Casino Betting System, Simulated 100 Million Times",
+     17000,
+     1014
+    ],
+    [
+     "The Number Where Saving Stops Mattering, Simulated on 300M Careers",
+     47,
+     1067
+    ],
+    [
+     "Rent vs Buy, Simulated Across 130 Years of Housing",
+     44,
+     1146
+    ],
+    [
+     "When to Claim Social Security, Simulated on 10 Million Lifetimes",
+     122,
+     983
+    ],
+    [
+     "The Best Retirement Strategy, Simulated on 100 Million Retirements",
+     30,
+     1014
+    ],
+    [
+     "The bowling alley secret that changed everything",
+     54,
+     156
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Ohmhytte",
+   "group": "copy",
+   "video": "9jpsNc_6WIs",
+   "title": "I Simulated 1,000 Shoppers. The Shortest Queue Lost.",
+   "views": 21,
+   "upload_date": "20261021",
+   "duration": 650,
+   "likes": 5,
+   "comments": null,
+   "subs": 795,
+   "channel_url": "https://www.youtube.com/channel/UCL7KqPYAqhZsvklZ08L-abQ",
+   "recent": [
+    [
+     "Why Black Holes Can Launch Jets Instead of Swallowing Everything",
+     6,
+     546
+    ],
+    [
+     "Why Protein Crystals Can Grow Better in Space Than on Earth",
+     37,
+     584
+    ],
+    [
+     "Why Reaching Space Is Easier Than Staying in Orbit",
+     260,
+     583
+    ],
+    [
+     "Why Falcon 9 Can't Hover Before It Lands",
+     189,
+     551
+    ],
+    [
+     "Why the Space Station Is Always Falling but Never Hits Earth",
+     1200,
+     549
+    ],
+    [
+     "Why NASA Switches Off Voyager 1 to Keep It Alive",
+     297,
+     577
+    ],
+    [
+     "Why NASA's Swift Telescope Couldn't Stay in Orbit",
+     598,
+     586
+    ],
+    [
+     "Why Rockets to the Moon Never Point Straight at the Moon",
+     837,
+     556
+    ],
+    [
+     "Why Rockets Throw Away Their Own Stages",
+     436,
+     565
+    ],
+    [
+     "Why Starship Falls Sideways Before Landing Upright",
+     224,
+     561
+    ],
+    [
+     "Why We Can Still Hear Voyager 1 From Almost a Light-Day Away",
+     2200,
+     551
+    ],
+    [
+     "Why Computers Can Overheat in Freezing Space",
+     628,
+     573
+    ],
+    [
+     "Why the Sun's Atmosphere Is Hotter Than Its Surface",
+     195,
+     586
+    ],
+    [
+     "How a Spacecraft Survives the Heat of Reentry",
+     671,
+     557
+    ],
+    [
+     "The Giant Waves That Appear From Nowhere",
+     2500,
+     588
+    ],
+    [
+     "Why a Black Hole Can Tear a Star Apart",
+     1000,
+     528
+    ],
+    [
+     "The Ocean Has Waterfalls Bigger Than Anything on Land",
+     210,
+     554
+    ],
+    [
+     "An Asteroid Doesn't Have to Hit the Ground to Devastate a City",
+     578,
+     584
+    ],
+    [
+     "What Happens If Earth's Magnetic Field Reverses?",
+     798,
+     587
+    ],
+    [
+     "Why the Night Sky Isn't Blazing White",
+     549,
+     584
+    ],
+    [
+     "The Plane That Can Fly With One Engine Missing",
+     344,
+     567
+    ],
+    [
+     "Why a Magnet Falls Slowly Through a Copper Pipe",
+     1700,
+     570
+    ],
+    [
+     "Anthropic's AI Agents Found a Way Past a Safety Monitor",
+     175,
+     588
+    ],
+    [
+     "Google's New AI Finds Security Flaws—and It's Not Public Yet",
+     310,
+     572
+    ],
+    [
+     "The Computer Error That Came From Outer Space",
+     518,
+     585
+    ],
+    [
+     "Why the Same Side of the Moon Always Faces Earth",
+     905,
+     540
+    ],
+    [
+     "Why a Ship Can Float When a Steel Ball Sinks",
+     1400,
+     568
+    ],
+    [
+     "The Tiny Gap That Saves a Railway Track",
+     219,
+     592
+    ],
+    [
+     "Why Your Phone Knows Which Way Is Up",
+     1700,
+     575
+    ],
+    [
+     "Why a Rocket Nozzle Gets Wider at the End",
+     969,
+     572
+    ]
+   ],
+   "shorts": [
+    [
+     "How a Black Hole Fires a Jet Without Anything Escaping",
+     10
+    ],
+    [
+     "Why Protein Crystals Grow Differently in Space",
+     24
+    ],
+    [
+     "Why Reaching Space Isn't Enough",
+     125
+    ],
+    [
+     "Why a Landing Rocket Never Hovers",
+     144
+    ],
+    [
+     "Astronauts Don't Float Because Gravity Is Gone",
+     64
+    ],
+    [
+     "Why NASA Keeps Switching Off Parts of Voyager 1",
+     90
+    ],
+    [
+     "The Sun Pulled This NASA Telescope Down",
+     102
+    ],
+    [
+     "Aim a Rocket at the Moon and You'll Miss It",
+     105
+    ],
+    [
+     "Why Rockets Throw Away Perfectly Good Engines",
+     208
+    ],
+    [
+     "Why Starship Falls on Its Belly Before Landing",
+     157
+    ],
+    [
+     "How Is Voyager 1 Still Answering From a Light-Day Away?",
+     131
+    ],
+    [
+     "No Air, No Cooling: Why Computers Overheat in Space",
+     334
+    ],
+    [
+     "Step Away From the Sun. It Gets Hotter.",
+     187
+    ],
+    [
+     "4,000 Degrees Outside. Room Temperature Inside.",
+     75
+    ],
+    [
+     "A 17-Metre Wave in a 6-Metre Sea",
+     250
+    ],
+    [
+     "The Bigger Black Hole Lets Stars Live",
+     100
+    ],
+    [
+     "Earth's Biggest Waterfall Never Touches Air",
+     235
+    ],
+    [
+     "It Never Hit the Ground. Windows Broke Anyway.",
+     238
+    ],
+    [
+     "North Becomes South. It Takes Thousands of Years.",
+     154
+    ],
+    [
+     "Why Isn't the Whole Night Sky Bright?",
+     656
+    ],
+    [
+     "Why a Plane Doesn't Fall When an Engine Stops",
+     344
+    ],
+    [
+     "Why Copper Slows a Falling Magnet",
+     1100
+    ],
+    [
+     "Harmless-Looking Stories Passed an AI Safety Monitor",
+     324
+    ],
+    [
+     "Why Google's Security AI Isn't Public Yet",
+     105
+    ],
+    [
+     "The Particle From Space That Almost Never Reaches Your Computer",
+     931
+    ],
+    [
+     "The Moon Spins, and That's Why One Face Stays Toward Us",
+     561
+    ],
+    [
+     "The Same Steel Sinks as a Ball and Floats as a Box",
+     1100
+    ],
+    [
+     "How Sunshine Can Throw a Railway Track Sideways",
+     363
+    ],
+    [
+     "Your Phone Reads Zero When You Drop It",
+     541
+    ],
+    [
+     "Why a Rocket's Exhaust Speeds Up When the Nozzle Widens",
+     1400
+    ]
+   ]
+  },
+  {
+   "name": "QuantPulse",
+   "group": "copy",
+   "video": "6zKsJ5mL5jY",
+   "title": "I Simulated 10,000 Players Using the \"Unbeatable\" Casino Strategy",
+   "views": 10,
+   "upload_date": "20261030",
+   "duration": 335,
+   "likes": 3,
+   "comments": 1,
+   "subs": 61,
+   "channel_url": "https://www.youtube.com/channel/UC57kcndXgyC-Rm5vaZxYaoA",
+   "recent": [
+    [
+     "I Simulated Copying Every Stock Trade Congress Made (1,301 Filings Tested)",
+     32,
+     273
+    ],
+    [
+     "I Simulated 10,000 Players Using the \"Unbeatable\" Casino Strategy",
+     10,
+     335
+    ]
+   ],
+   "shorts": [
+    [
+     "I Copied Every Stock Trade Congress Made",
+     36
+    ],
+    [
+     "Turn $1,000 Into $2,000: Which Bet Actually Wins?",
+     2
+    ],
+    [
+     "10,000 Players Walked Into a Casino With $10,000,000",
+     3
+    ],
+    [
+     "I Tested the Betting Strategy That \"Can't Lose\"",
+     148
+    ]
+   ]
+  },
+  {
+   "name": "Visual Odds",
+   "group": "copy",
+   "video": "4ymDKqBl-Qc",
+   "title": "Nearly 1,000 PhDs Said She Was Wrong — The Monty Hall Problem, Played 30,000 Times",
+   "views": 1,
+   "upload_date": "20261105",
+   "duration": 588,
+   "likes": null,
+   "comments": null,
+   "subs": null,
+   "channel_url": "https://www.youtube.com/channel/UCYYZjfKjfsKAPZOzDN-br8w",
+   "recent": [
+    [
+     "Nearly 1,000 PhDs Said She Was Wrong — The Monty Hall Problem, Played 30,000 Times",
+     1,
+     588
+    ],
+    [
+     "Small Bets Are a Trap: The Math of Gambler's Ruin (Visualized)",
+     7,
+     717
+    ],
+    [
+     "The Birthday Paradox: Most Counterintuitive Result in Probability?",
+     1,
+     596
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Foomii",
+   "group": "copy",
+   "video": "g0pIqkPkylA",
+   "title": "Prisoner's Dilemma: We Simulated 1,000 Players and the Nicest Strategy Won",
+   "views": 651,
+   "upload_date": "20260720",
+   "duration": 542,
+   "likes": 29,
+   "comments": 8,
+   "subs": 22,
+   "channel_url": "https://www.youtube.com/channel/UCtVz60BH8jZJ1TZTFS6598Q",
+   "recent": [
+    [
+     "Tragedy of the Commons, Simulated: 1,000 Rational People Destroy Everything",
+     103,
+     515
+    ],
+    [
+     "Prisoner's Dilemma: We Simulated 1,000 Players and the Nicest Strategy Won",
+     651,
+     543
+    ]
+   ],
+   "shorts": [
+    [
+     "There's something behind my door... #Horror #Scary #Suspense #Creepy #aivideo",
+     20
+    ],
+    [
+     "Witness him, one last time. 🌅 #madmax#cinematic#melancholy#warboy#aftermath #aivideo #aimusic",
+     1600
+    ],
+    [
+     "Just a moment of pure bliss ✨ #ASMR#loop#satisfying#cute#animation #ai",
+     2100
+    ],
+    [
+     "This little guy has a BIG appetite! 😋 #loop #satisfying #oddlysatisfying #cutefood#animation",
+     2600
+    ],
+    [
+     "Every Sci-Fi Punk Genre in One AI Video #scifi #cinematic #worldbuilding #punk #steampunk #madmax",
+     1300
+    ],
+    [
+     "Mad Max meets China: Epic Motorcycle Ride #madmax #steampunk #wasteland #greatwall #motorcycle #ai",
+     295
+    ],
+    [
+     "A drop of magic for this little pup ✨  #cutedog #digitalart #animation #puppy #doglover",
+     79
+    ]
+   ]
+  },
+  {
+   "name": "Perfect Play",
+   "group": "win",
+   "video": "S_2eVAaw1UM",
+   "title": "The Best Monopoly Strategy, Tested on 300 Million Games",
+   "views": 2778049,
+   "upload_date": "20261013",
+   "duration": 528,
+   "likes": 16341,
+   "comments": 577,
+   "subs": 8810,
+   "channel_url": "https://www.youtube.com/channel/UCZinaimNt8G4IXmnxTGf5ng",
+   "recent": [
+    [
+     "The Best Catan Strategy, Tested on 200 Million Games",
+     343000,
+     750
+    ],
+    [
+     "The Best Risk Strategy, Tested on 128 Million Games",
+     197000,
+     529
+    ],
+    [
+     "The Best Minesweeper Strategy, Tested on 600 Million Games",
+     45000,
+     503
+    ],
+    [
+     "The Best Monopoly Strategy, Tested on 300 Million Games",
+     2700000,
+     528
+    ]
+   ],
+   "shorts": [
+    [
+     "Stop Starting Minesweeper in the Corner",
+     4000
+    ]
+   ]
+  },
+  {
+   "name": "Ballpark Figures",
+   "group": "win",
+   "video": "DOgb5wrb7mM",
+   "title": "I Solved Yahtzee*",
+   "views": 1121722,
+   "upload_date": "20260719",
+   "duration": 1996,
+   "likes": 23180,
+   "comments": 1300,
+   "subs": 35100,
+   "channel_url": "https://www.youtube.com/channel/UCdNvKM9hDMPmHMYV3-KmW3w",
+   "recent": [
+    [
+     "I Solved Wordle*",
+     2100000,
+     2649
+    ],
+    [
+     "I Tried to Solve Hangman",
+     592000,
+     2329
+    ],
+    [
+     "I Solved Yahtzee*",
+     1100000,
+     1996
+    ],
+    [
+     "I Analyzed All 30,093,975,536 Battleship Boards So You Don't Have To",
+     892000,
+     1132
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "2swap",
+   "group": "win",
+   "video": "KaljD3Q3ct0",
+   "title": "I Solved Connect 4",
+   "views": 1728499,
+   "upload_date": "20260408",
+   "duration": 1135,
+   "likes": 75133,
+   "comments": 3000,
+   "subs": 373000,
+   "channel_url": "https://www.youtube.com/channel/UCiNLr9wX35KksK77mrQgxiw",
+   "recent": [
+    [
+     "i’m so bad at billiards that i ended up in the hyperbolic plane",
+     4100000,
+     683
+    ],
+    [
+     "I Solved Connect 4",
+     1700000,
+     1136
+    ],
+    [
+     "Mystery of the Quintic",
+     824000,
+     1621
+    ],
+    [
+     "I Solved Klotski",
+     2000000,
+     740
+    ],
+    [
+     "Double Pendulums are Chaoticn't",
+     4400000,
+     538
+    ],
+    [
+     "What is PLUS times PLUS?",
+     2200000,
+     1708
+    ],
+    [
+     "Mandelbrot's Evil Twin",
+     2300000,
+     467
+    ],
+    [
+     "༄ GRAVITY BASINS ࿐",
+     961000,
+     375
+    ],
+    [
+     "Beating Connect 4 with Brute Force",
+     265000,
+     651
+    ],
+    [
+     "Claimeven - Connect 4 Strategy",
+     459000,
+     643
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Ioana Roman",
+   "group": "win",
+   "video": "nGszJM2BNi4",
+   "title": "I Analysed 47,000 Games of Catan. Here's How to Win Every Time (mathematically) 🎲🐑",
+   "views": 393757,
+   "upload_date": "20260510",
+   "duration": 1059,
+   "likes": 11223,
+   "comments": 734,
+   "subs": 33400,
+   "channel_url": "https://www.youtube.com/channel/UCQijc4_HAT7BcKCNFRHq_1A",
+   "recent": [
+    [
+     "The Mathematics of Doing Nothing | Why You Procrastinate (according to math) 🦥",
+     4600,
+     2141
+    ],
+    [
+     "I Ranked 15 Quantitative Skills by How Much They Actually Matter (Tier List) 📊🧮",
+     14000,
+     2081
+    ],
+    [
+     "Can Mathematics Find You the Optimal Partner? (The Maths of Dating Explained) 💖🫰",
+     8800,
+     984
+    ],
+    [
+     "The Hidden Mathematics of Tennis (Probability, Markov Chain models, and Game Theory) 🎾🧮",
+     13000,
+     1473
+    ],
+    [
+     "How I Balance Logic and Creativity as a Quant Dev 💻💭🎭",
+     4600,
+     1042
+    ],
+    [
+     "I Analysed 47,000 Games of Catan. Here's How to Win Every Time (mathematically) 🎲🐑",
+     393000,
+     1059
+    ],
+    [
+     "How to Think Like a Quant: 7 Mathematical Habits That Will Change How You See The World 📊🧮",
+     72000,
+     1099
+    ],
+    [
+     "What I'd Learn to Future Proof My Tech Career in 2026 | From a Quant Dev 👩‍💻💻",
+     12000,
+     806
+    ],
+    [
+     "How I Apply Quantitative Thinking to Fitness to Train Smarter (not harder) 🏋🏼‍♀️📊",
+     5000,
+     534
+    ],
+    [
+     "Why Probability Feels Wrong (The Maths of Chance) 🎲🎰🪙",
+     3200,
+     866
+    ],
+    [
+     "How I Stay Motivated Working a 9–6 (Without Burning Out) | Quantitative Developer in London 😮‍💨📊",
+     4000,
+     1134
+    ],
+    [
+     "Why Most People Don’t Actually Understand Statistics (from an Oxford Maths grad turned Quant Dev) 📊",
+     15000,
+     914
+    ],
+    [
+     "How Coding Changed the Way I Think (from an Oxford Maths Graduate turned Quant Developer) 👩🏼‍💻🧐",
+     7100,
+     656
+    ],
+    [
+     "Everything You Need to Learn in Machine Learning for Your Career (Quant Finance, AI etc.) 📚🤖👩🏼‍💻",
+     10000,
+     1120
+    ],
+    [
+     "How AI Is Transforming Quant Finance (and What It Means for You) 🤖📈",
+     21000,
+     760
+    ],
+    [
+     "Going to University This Autumn? Here's Everything You Need to Know (from an Oxford Maths Grad) 👩‍🎓",
+     1400,
+     729
+    ],
+    [
+     "Coming From Physics, CS, or Engineering? Here’s How to Learn Maths Properly 👩‍🎓📚",
+     12000,
+     968
+    ],
+    [
+     "A Day in the Life of a Graduate Quantitative Developer in London | realistic yet productive WFH 👩🏼‍💻",
+     12000,
+     1160
+    ],
+    [
+     "How to Become a Quantitative Developer in 2025 (Complete Roadmap) 🛣️📍👩🏼‍💻",
+     55000,
+     745
+    ],
+    [
+     "Maths was Hard Until I learnt This | Advice from an Oxford Maths grad 🧮👩🏼‍💻📚",
+     8400,
+     665
+    ],
+    [
+     "How to Learn Coding as a Mathematics student (for quant finance and software development roles) 👩🏼‍💻",
+     10000,
+     834
+    ],
+    [
+     "How to Get Good at Probability & Statistics (for Quants & Finance Careers) 📚👩🏼‍💻",
+     48000,
+     1035
+    ],
+    [
+     "How I Use Maths Every Day as a Quant Developer (everything you need to know!!) 🧮👩🏼‍💻📚",
+     20000,
+     850
+    ],
+    [
+     "What I Wish I Knew Before Becoming a Quant Developer (out of university) 👩🏼‍💻📚",
+     40000,
+     1068
+    ],
+    [
+     "Quant vs. Software Engineer vs. Data Scientist: Which Career is Right for You? 🧮👩🏼‍💻",
+     17000,
+     719
+    ],
+    [
+     "Exploring Oslo in Winter: Fjords, Saunas & Too Much Coffee (10K Special!) 🗺️🇳🇴🧖‍♀️",
+     2800,
+     1234
+    ],
+    [
+     "How to *Actually* Get Good at Maths - Advice from an Oxford Mathematics Grad 🧮📚",
+     35000,
+     779
+    ],
+    [
+     "How to get a Quant Internship or Graduate Role | Advice from a Quantitative Developer in London 💸📚",
+     75000,
+     856
+    ],
+    [
+     "Day in the Life of a Quantitative Developer in London (as a recent Oxford Mathematics graduate) 📈📚",
+     26000,
+     785
+    ],
+    [
+     "Everything I've learnt in my FOURTH YEAR as an OXFORD MATHEMATICS student... but make it a tier list",
+     16000,
+     1005
+    ]
+   ],
+   "shorts": [
+    [
+     "What OXFORD UNIVERSITY has REALLY taught me 👩‍🎓📚💻",
+     10000
+    ],
+    [
+     "The TRUTH behind TEACHING at the BEST UNIVERSITY in the WORLD | Oxford tutorial system explained 💻",
+     12000
+    ],
+    [
+     "Study with Me | Oxford Maths Revision Session #shorts #oxford #notetaking #ipad  #oxforduniversity",
+     4600
+    ],
+    [
+     "The best iPad NOTE TAKING app | Oxford Maths student perspective 💻📝 #shorts #notetaking #iPad",
+     4100
+    ],
+    [
+     "What I eat in a study-heavy day as a Mathematics student at Oxford University  🏫🌮🥙#shorts #oxford",
+     5300
+    ],
+    [
+     "Why you should read DO DICE PLAY GOD by Ian Stewart #shorts #bookreview #maths #booktube #oxford",
+     4800
+    ],
+    [
+     "Come with me to an Oxford University formal! 🧙‍♀️🪄 #shorts",
+     2700
+    ]
+   ]
+  },
+  {
+   "name": "Astroid Videos",
+   "group": "win",
+   "video": "mM7EhT5UdAE",
+   "title": "I Simulated 1,810,053 Battles to Find the Strongest Pokémon",
+   "views": 3112700,
+   "upload_date": "20240512",
+   "duration": 1333,
+   "likes": 99592,
+   "comments": 4700,
+   "subs": 423000,
+   "channel_url": "https://www.youtube.com/channel/UCtykdsdm9cBfh5JM8xscA0Q",
+   "recent": [
+    [
+     "I Put All 267 Abilities on 1 Pokémon",
+     1100000,
+     1675
+    ],
+    [
+     "Fusing Moves Until I Can One-Shot Every Pokémon",
+     977000,
+     1913
+    ],
+    [
+     "I Created the World's Luckiest Pokémon",
+     null,
+     782
+    ],
+    [
+     "Using VFX to Reveal the True Scale of Mega Pokémon",
+     1800000,
+     884
+    ],
+    [
+     "I Made a Pokémon that just Sits there... and still Wins",
+     null,
+     1031
+    ],
+    [
+     "The End of Pokémon Legends: Z-A",
+     72000,
+     3381
+    ],
+    [
+     "I Spent the Weekend in Pokémon Legends: Z-A... it was alright I guess?",
+     130000,
+     3048
+    ],
+    [
+     "It Only Takes 6 Abilities to Create an Immortal Pokémon",
+     1200000,
+     909
+    ],
+    [
+     "Using VFX to Reveal the True Weight of Pokémon",
+     1000000,
+     801
+    ],
+    [
+     "Pokémon, but They Can Evolve in Battle",
+     250000,
+     998
+    ],
+    [
+     "Video ends when I name All 1,025 Pokémon from Memory",
+     258000,
+     1179
+    ],
+    [
+     "I Created the Ultimate Pokémon Team (they can cheat)",
+     1100000,
+     1412
+    ],
+    [
+     "Level 1 to 100 Impossible Pokémon Battles",
+     1000000,
+     3058
+    ],
+    [
+     "Choose Your Starter, but They’re All Pokémon I’ve Made",
+     1100000,
+     1527
+    ],
+    [
+     "Using VFX to Reveal the True Scale of Pokémon",
+     5000000,
+     888
+    ],
+    [
+     "I Tried Every Weird Battle Mode in Pokémon",
+     339000,
+     2217
+    ],
+    [
+     "I Built an AI to Shiny Hunt Pokémon for Me",
+     244000,
+     1643
+    ],
+    [
+     "I Trained AI to Play Pokémon Platinum.. it was a mistake.",
+     595000,
+     2842
+    ],
+    [
+     "I Simulated A Billion Lions VS 1 of Every Pokemon",
+     1600000,
+     1336
+    ],
+    [
+     "How to 100% Pokémon",
+     1000000,
+     1047
+    ],
+    [
+     "Can You Walk Across Pokémon Scarlet in a Straight Line?",
+     297000,
+     1049
+    ],
+    [
+     "The Pokémon Ideas I Had to Abandon",
+     187000,
+     760
+    ],
+    [
+     "I Simulated 1,810,053 Battles to Find the Strongest Pokémon",
+     3100000,
+     1333
+    ],
+    [
+     "I Created an Immortal Pokémon",
+     1900000,
+     1523
+    ],
+    [
+     "I Created the Most Annoying Pokémon",
+     1700000,
+     887
+    ],
+    [
+     "I Solved Pokemon’s Hidden Damage Formula",
+     225000,
+     1380
+    ],
+    [
+     "A Portal Decides our Legendary Pokémon for a Battle",
+     329000,
+     883
+    ],
+    [
+     "I Tested Rare Pokémon Glitches",
+     205000,
+     770
+    ],
+    [
+     "Only 4 People Have Held this Pokémon Record",
+     547000,
+     684
+    ],
+    [
+     "I Made Your Dumb Pokémon Ideas",
+     489000,
+     1106
+    ]
+   ],
+   "shorts": [
+    [
+     "i made the most powerful pokemon #pokemon #gaming #creatingnewpokemon",
+     2300000
+    ],
+    [
+     "i made the most annoying pokemon ever #pokemon #gaming #creatingnewpokemon",
+     3600000
+    ],
+    [
+     "I know your search history",
+     463000
+    ],
+    [
+     "I Broke the Hardest Pokémon Battle",
+     915000
+    ],
+    [
+     "Pokémon but You Can't Deal Damage",
+     641000
+    ],
+    [
+     "Modding Pokémon Fusions into Sword and Shield",
+     133000
+    ],
+    [
+     "I Turned Myself into a Pokémon",
+     775000
+    ],
+    [
+     "Encounter A Pokémon, You Reset Your Game",
+     2600000
+    ],
+    [
+     "How I Got Away with Cheating in Pokémon",
+     1100000
+    ],
+    [
+     "Pokémon but Damage is Completely Random",
+     2900000
+    ],
+    [
+     "I Tried to Battle with NO POKEMON",
+     1600000
+    ],
+    [
+     "How Many Mods Does it Take to Crash Pokémon Sword?",
+     1800000
+    ],
+    [
+     "Remember the Pokewalker?",
+     9300000
+    ],
+    [
+     "What happens if the Catching Tutorial FAILS in Pokemon? #Shorts",
+     279000
+    ],
+    [
+     "How much YouTube Paid Me for My 1,000,000 Viewed Video #Shorts",
+     454000
+    ],
+    [
+     "Can you Fight the Champion WITHOUT Pokemon?? (Gen 2) #Shorts",
+     206000
+    ],
+    [
+     "Can you Fight the Champion WITHOUT Pokemon?? #Shorts",
+     3400000
+    ],
+    [
+     "Do the Gen 5 Badge Gates ACTUALLY Check Badges?? #Shorts",
+     3400000
+    ],
+    [
+     "The Hardest Boss I've ever Fought #Shorts",
+     38000
+    ],
+    [
+     "Do the Pokemon Badge Gates ACTUALLY Check Badges?? #Shorts",
+     4800000
+    ],
+    [
+     "Introducing our BRAND NEW Pokemon Series! #Shorts",
+     27000
+    ],
+    [
+     "My Thoughts on the NEW Diamond and Pearl Remakes #Shorts",
+     28000
+    ],
+    [
+     "NEW OPEN WORLD POKEMON GAME! (Pokemon Brilliant Diamond, Shining Pearl, & Legends Arceus) #Shorts",
+     50000
+    ],
+    [
+     "Wait for it... #Shorts",
+     35000
+    ],
+    [
+     "My True Form #Shorts",
+     17000
+    ]
+   ]
+  },
+  {
+   "name": "Gym Leader Matt",
+   "group": "win",
+   "video": "PBd7Toaczro",
+   "title": "I Simulated 17 Million Battles to Find the REAL Best Gen 1 Pokémon",
+   "views": 276467,
+   "upload_date": "20261023",
+   "duration": 3115,
+   "likes": 6808,
+   "comments": 1600,
+   "subs": 33200,
+   "channel_url": "https://www.youtube.com/channel/UCDZkdJNJMtU2J8tKmQrXv2Q",
+   "recent": [
+    [
+     "I Simulated 17 Million Battles to Find the REAL Best Gen 1 Pokémon",
+     276000,
+     3116
+    ],
+    [
+     "I Simulated 170,000 Battles to Rank All Generation 1 Pokémon",
+     809000,
+     3092
+    ],
+    [
+     "I Simulated 1.5 Billion MORE Weedle Battles Because of a Bug...",
+     94000,
+     1436
+    ],
+    [
+     "I Fused FARFETCH'D and MACHAMP in Pokémon Red",
+     15000,
+     1181
+    ],
+    [
+     "I Simulated 100,000,000 Battles to See If Weedle Could Beat Agatha",
+     223000,
+     1571
+    ],
+    [
+     "How FAST Can Magmar Beat Pokémon Red?",
+     14000,
+     2143
+    ],
+    [
+     "How OVERPOWERED Would Coalossal Be in Generation 1?",
+     27000,
+     2263
+    ],
+    [
+     "I Created Mewthree in Pokémon Red (And It's Insane)",
+     32000,
+     1320
+    ],
+    [
+     "Pokémon Red Just Evolved | Gen1Recomp",
+     29000,
+     623
+    ],
+    [
+     "How FAST Can Lickitung Beat Pokémon Red?",
+     9800,
+     1936
+    ],
+    [
+     "How FAST Can Electabuzz Beat Pokémon Red?",
+     6100,
+     943
+    ],
+    [
+     "How OVERPOWERED Would ULTRA Necrozma Be in Generation 1?",
+     12000,
+     1013
+    ],
+    [
+     "How FAST Can Keyogre Beat Pokémon Emerald?",
+     39000,
+     2221
+    ],
+    [
+     "How FAST Can Golbat Beat Pokémon Red?",
+     7100,
+     1803
+    ],
+    [
+     "How FAST Can Snorlax Beat Pokémon Yellow? | Prestige Run",
+     8800,
+     1847
+    ],
+    [
+     "How FAST Can Lugia Beat Pokémon HeartGold?",
+     8400,
+     2604
+    ],
+    [
+     "How OVERPOWERED Would ETERNAMAX Eternatus Be in Generation 1?",
+     22000,
+     1630
+    ],
+    [
+     "How FAST Can Ho-oh Beat Pokémon HeartGold?",
+     10000,
+     3808
+    ],
+    [
+     "How FAST Can Ursaring Beat Pokémon Emerald?",
+     7800,
+     1827
+    ],
+    [
+     "How OVERPOWERED Would Mega Starmie Be in Generation 1?",
+     16000,
+     2943
+    ],
+    [
+     "How FAST Can Mewtwo Beat Pokémon Red?",
+     15000,
+     2068
+    ],
+    [
+     "How FAST Can Larvitar Beat Pokémon Emerald?",
+     10000,
+     3015
+    ],
+    [
+     "How OVERPOWERED Would Hisuian Zoroark Be in Generation 1?",
+     14000,
+     2219
+    ],
+    [
+     "How FAST Can Tyranitar Beat Pokémon Emerald?",
+     48000,
+     2423
+    ],
+    [
+     "How FAST Can Gengar, Haunter, and Gastly Beat Pokémon Red?",
+     8600,
+     2462
+    ],
+    [
+     "How OVERPOWERED Is MEGA Dragonite in Pokémon Red?",
+     12000,
+     2040
+    ],
+    [
+     "How FAST Can Dragonite Beat Pokémon Yellow?",
+     10000,
+     1944
+    ],
+    [
+     "How FAST Can Mew Beat Pokémon Yellow? | Prestige Run",
+     8400,
+     2781
+    ],
+    [
+     "How FAST Can Poochyena Beat Pokémon Emerald?",
+     7400,
+     3014
+    ],
+    [
+     "How OVERPOWERED Would Kartana Be in Generation 1?",
+     54000,
+     2001
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Louis Weisz",
+   "error": "no video"
+  },
+  {
+   "name": "Dr Ruckus MTG",
+   "group": "win",
+   "video": "Xq4T44EvPvo",
+   "title": "GOOGLE ENGINEER SOLVES BEST DECK - SIMULATES 5 MILLION GAMES | MTG | Magic the Gathering",
+   "views": 213403,
+   "upload_date": "20220823",
+   "duration": 1728,
+   "likes": 16531,
+   "comments": 1900,
+   "subs": 42100,
+   "channel_url": "https://www.youtube.com/channel/UCvN4UAK_5ENuv-WA3aDp0YQ",
+   "recent": [
+    [
+     "76.3% win rate from Plat to Rank #29 Mythic - this tempo deck rocks!",
+     9600,
+     3279
+    ],
+    [
+     "I'm being bullied. This is not okay.",
+     4200,
+     178
+    ],
+    [
+     "Bumbling my way to Rank #80 Mythic - this scam is too OP to lose...",
+     4500,
+     2858
+    ],
+    [
+     "This rakdos deck is annihilating standard - Multiple Standard League 5-0s - 73.1% win rate to Mythic",
+     14000,
+     3115
+    ],
+    [
+     "71.8% win rate from Plat to Rank #15 Mythic??? (Mono Green Landfall)",
+     10000,
+     3145
+    ],
+    [
+     "Ranking up with THE BEST DECK IN THE WORLD",
+     8300,
+     3008
+    ],
+    [
+     "Spiciest deck from Top 8 Pro Tour absolutely DESTROYS ranked standard.",
+     8400,
+     3588
+    ],
+    [
+     "Boros catharsis tokens 5-0s the Standard League??? You won't BELIEVE this win rate 👀 👀",
+     6200,
+     3410
+    ],
+    [
+     "Stomping every meta deck with Izzet Elementals - This deck is powerful.",
+     12000,
+     3430
+    ],
+    [
+     "New ashling jeskai control with NO REVELATION - 5-0s the Standard League",
+     4300,
+     3048
+    ],
+    [
+     "This azorius flyers deck just 5-0d the Standard League - It's got some sweet starts!",
+     6300,
+     3161
+    ],
+    [
+     "This gearhulk toolbox deck just won the REGIONAL CHAMPIONSHIP",
+     4900,
+     1769
+    ],
+    [
+     "Azorius flyers just finished 3rd place at a big tournament - this deck is awesome!",
+     3500,
+     3179
+    ],
+    [
+     "This goblins tribal deck just 5-0d the Standard League!!",
+     7700,
+     3012
+    ],
+    [
+     "Top 1% Mythic with MERFOLK TRIBAL - my favorite new deck in Standard 😁",
+     12000,
+     3309
+    ],
+    [
+     "This new Elemental Evoke Scam deck just got 2nd place - It's Sick",
+     9300,
+     3845
+    ],
+    [
+     "This Tender Bloomtender deck just won the first Standard League Event (5-0)",
+     7500,
+     3218
+    ],
+    [
+     "The new best deck in standard - T4 win every game.",
+     15000,
+     3262
+    ],
+    [
+     "The ultimate ramp card - Brigid, Clahan's Heart [Lorwyn Eclipsed Gameplay]",
+     3900,
+     1931
+    ],
+    [
+     "Cheating in the elementals - Lorwyn Eclipsed Gameplay",
+     3200,
+     3128
+    ],
+    [
+     "Dimir tempo just got some huge upgrades [Lorwyn Eclipsed - Faerie Tribal Gameplay]",
+     4000,
+     3166
+    ],
+    [
+     "Merfolk tribal is actually sick: 0-mana sweepers and 0-mana draw 10s (Lorwyn Gameplay)",
+     5700,
+     3060
+    ],
+    [
+     "Mutavault in STANDARD - this deck runs SMOOTH (Lorwyn Eclipsed gameplay)",
+     3900,
+     2972
+    ],
+    [
+     "The new elf cards are awesome!!! 1 hour of Lorwyn Eclipsed unedited standard gameplay",
+     4600,
+     3310
+    ],
+    [
+     "Nobody saw this coming 😂 - Cheating in 7-Drops with Goliath Daydreamer [Lorwyn Gameplay]",
+     4800,
+     3048
+    ],
+    [
+     "This deck is f*****g insane 😂 - 8 mana on turn 3 - then cast entire deck for free (ECL Gameplay)",
+     12000,
+     3026
+    ],
+    [
+     "This card will break standard - it's going to be awful. [Lorwyn Eclipse Gameplay]",
+     12000,
+     3132
+    ],
+    [
+     "This sultai deck is rediculous 😂 - ranking up to Top #500 Mythic",
+     4700,
+     3172
+    ],
+    [
+     "Good ol' fashioned mono green stompy - Top #400 Mythic Gameplay",
+     5200,
+     3788
+    ],
+    [
+     "71.4% Win Rate dimir deck takes me to To;p #150 Mythic without trying - deck is too good vs the meta",
+     7000,
+     3039
+    ]
+   ],
+   "shorts": [
+    [
+     "Grixis Lich-Knights’ Conquest Reanimator [Standard]",
+     2400
+    ],
+    [
+     "Rank #98 Mythic Standard Selesnya Rabbits",
+     2200
+    ],
+    [
+     "Rank #88 Mythic Standard Red ZERO MICE Aggro",
+     1600
+    ],
+    [
+     "Rank #77 Mythic Standard Witch-Maw Reanimator",
+     1100
+    ],
+    [
+     "Top #200 Mythic Standard Naya Nalaar Discovery",
+     801
+    ],
+    [
+     "Top #100 Mythic Standard Esper Enchantments",
+     1000
+    ],
+    [
+     "Golgari Aggro Standard",
+     1000
+    ],
+    [
+     "Bant Control Standard",
+     745
+    ],
+    [
+     "Rakdos Fling Standard",
+     1000
+    ],
+    [
+     "Crab Beans Standard!",
+     635
+    ],
+    [
+     "Abzan Midrange Standard Gameplay",
+     815
+    ],
+    [
+     "Izzet Pirates Ranking Up In Standard",
+     703
+    ],
+    [
+     "The Best Elf Deck In Standard",
+     2800
+    ],
+    [
+     "Dimir Tempo King - Standard",
+     802
+    ],
+    [
+     "The Best Lifegain Deck In Standard",
+     6900
+    ],
+    [
+     "Kykar Blink In Standard!",
+     791
+    ],
+    [
+     "Jeskai Convoke! Standard",
+     859
+    ],
+    [
+     "HOMUNCULUS HORDE STANDARD",
+     1400
+    ],
+    [
+     "GOBLIN TRIBAL - Pioneer Masters Early Access",
+     653
+    ],
+    [
+     "JACE TRIBAL - Pioneer Masters",
+     722
+    ],
+    [
+     "LILIANA TRIBAL - Pioneer Masters",
+     715
+    ],
+    [
+     "ENTER THE INFINITE - Pioneer Masters",
+     3300
+    ],
+    [
+     "GIDEON IS BACK - Pioneer Masters",
+     688
+    ],
+    [
+     "CATS TRIBAL CRUSHES RANKED STANDARD",
+     921
+    ],
+    [
+     "Doomsday Executioner Mill Combo",
+     798
+    ],
+    [
+     "Humans Tribal! Standard",
+     521
+    ],
+    [
+     "Angels Tribal Mythic Standard",
+     621
+    ],
+    [
+     "Felidar Retreat Landfall Mythic Standard",
+     794
+    ],
+    [
+     "Temur Overlords Mythic Standard",
+     657
+    ],
+    [
+     "WUBRG JODAH - Top 1% Mythic Standard",
+     635
+    ]
+   ]
+  },
+  {
+   "name": "SmithPlays Pokémon",
+   "group": "win",
+   "video": "9_JZ64_qbb4",
+   "title": "I Simulated 3,372,750 Battles to Find The STRONGEST Mega Pokémon",
+   "views": 206636,
+   "upload_date": "20250720",
+   "duration": 2058,
+   "likes": 9022,
+   "comments": 985,
+   "subs": 298000,
+   "channel_url": "https://www.youtube.com/channel/UCzSgKn6BC9uYD89Hfut3sBg",
+   "recent": [
+    [
+     "I'm Fixing Pokémon's Worst Game",
+     236000,
+     2187
+    ],
+    [
+     "Starter Pokémon You're Using Wrong",
+     185000,
+     2022
+    ],
+    [
+     "How Pokémon Failed the Eeveelutions",
+     476000,
+     2138
+    ],
+    [
+     "Rarest Items In Every Pokémon Game!",
+     442000,
+     2480
+    ],
+    [
+     "Top 10 Strongest Pokémon in Diamond, Pearl & Platinum!",
+     138000,
+     1910
+    ],
+    [
+     "Pokémon's Third Gym has a Huge Problem",
+     387000,
+     2482
+    ],
+    [
+     "10 Pokémon that Game Freak RUINED",
+     null,
+     2175
+    ],
+    [
+     "Who is the Hardest Route Trainer in Every Pokémon Game?",
+     315000,
+     2178
+    ],
+    [
+     "The Design Rule that makes Grass Pokémon Bad",
+     382000,
+     1995
+    ],
+    [
+     "Most Overrated Pokémon in Every Game!",
+     367000,
+     1938
+    ],
+    [
+     "How Mew Eventually Ruined Pokémon",
+     554000,
+     2385
+    ],
+    [
+     "Most Underrated Pokémon in Every Game!",
+     497000,
+     2269
+    ],
+    [
+     "What is The Worst Move in Pokémon?",
+     326000,
+     2474
+    ],
+    [
+     "The Design Rule that makes Water Pokémon Broken",
+     363000,
+     2284
+    ],
+    [
+     "Why Pokémon’s Third Starter Always Sucks",
+     933000,
+     2731
+    ],
+    [
+     "Top 10 Strongest Pokémon in X & Y!",
+     97000,
+     2128
+    ],
+    [
+     "Fixing EVERYTHING Wrong with Pokémon Legends Z-A",
+     90000,
+     4836
+    ],
+    [
+     "Obscure Secrets in Pokémon Legends Z-A",
+     331000,
+     633
+    ],
+    [
+     "How Megas Kind Of Ruined Pokémon",
+     299000,
+     2360
+    ],
+    [
+     "10 Obscure Secrets In EVERY Pokémon Game",
+     603000,
+     3357
+    ],
+    [
+     "Most Overpowered Catch in EVERY Pokémon Game",
+     1000000,
+     2711
+    ],
+    [
+     "I Simulated 3,372,750 Battles to Find The STRONGEST Mega Pokémon",
+     206000,
+     2059
+    ],
+    [
+     "How Rayquaza Almost Ruined Pokémon",
+     839000,
+     2474
+    ],
+    [
+     "Pokémon's Worst Game Mechanic",
+     576000,
+     1987
+    ],
+    [
+     "So I Played Pokémon Platinum For The First Time..",
+     461000,
+     3890
+    ],
+    [
+     "10 Surprisingly Bad Legendary Pokémon",
+     626000,
+     1662
+    ],
+    [
+     "Obscure Catches in EVERY Pokémon Game!",
+     1200000,
+     3117
+    ],
+    [
+     "Do You Actually Need a Fire Type Pokémon?",
+     683000,
+     2757
+    ],
+    [
+     "TMs: Pokémon's Most Misunderstood Mechanic",
+     644000,
+     2756
+    ],
+    [
+     "Top 10 Strongest Pokémon in Fire Red & Leaf Green!",
+     1200000,
+     1786
+    ]
+   ],
+   "shorts": [
+    [
+     "Most Underrated Pokemon in Gen 2!",
+     60000
+    ],
+    [
+     "Most Underrated Pokemon in Gen 1! #pokemon #frlg #fireredleafgreen #redandblue",
+     133000
+    ],
+    [
+     "The PERFECT Pokemon Stadium Romhack",
+     53000
+    ],
+    [
+     "These Starter Pokemon are OP",
+     48000
+    ],
+    [
+     "Strongest Gym Leader in Pokemon Crystal",
+     47000
+    ],
+    [
+     "Strongest Gym Leader in Pokemon Emerald",
+     108000
+    ],
+    [
+     "Crystal Legacy Just Got a NEW Update (V1.3)",
+     124000
+    ],
+    [
+     "The WORST Move in Pokémon History...",
+     1100000
+    ],
+    [
+     "This Move was AMAZING In Gen 1 Pokemon!",
+     417000
+    ],
+    [
+     "I Made a Pokémon Gym Leader Forfeit!",
+     282000
+    ],
+    [
+     "Mewtwo is the Strongest Pokemon OF ALL TIME",
+     403000
+    ],
+    [
+     "What Pokémon Has the Highest HP in Gen 1?",
+     76000
+    ],
+    [
+     "Top 10 DEFENSE Pokémon in Gen 1!",
+     78000
+    ],
+    [
+     "What Pokémon Has the Highest Special in Gen 1?",
+     47000
+    ],
+    [
+     "What Pokémon has the Highest Attack in Gen 1?",
+     91000
+    ],
+    [
+     "What is the FASTEST Pokémon in Gen 1?",
+     77000
+    ],
+    [
+     "Top 10 Strongest Pokemon Trainers!",
+     38000
+    ],
+    [
+     "Pokémon Crystal Legacy Update 1.1 is LIVE!",
+     75000
+    ]
+   ]
+  }
+ ]
+}
