@@ -113,3 +113,40 @@ answer believable. Raw data: `docs/win-intent-scan-2026-11-05.txt` and `docs/win
    Cribbage don't appear at all; for Sorry! that may only be because "sorry" is a common word.
 5. **Limits:** search-result views aren't search volume; autocomplete counts are a rough popularity signal; one
    logged-out snapshot.
+
+## 6. Chess deep check (2026-11-05)
+Raw data: `docs/chess-deep-check-2026-11-05.json` (40 chess channels with their latest 20 long videos and Shorts,
+16 copycat searches, and all 1,231 chess phrases from YouTube autocomplete).
+
+**It's a channel's worth of questions, not one idea.** Of the 1,231 real chess searches: 251 are "how to win / get
+better", 216 are about Elo and rating, 197 about traps, 152 "best opening for ...", 100 name an opening (the London
+System alone 48: "is the london system good", "why is the london system hated") and 58 about mistakes and blunders.
+Almost all of them can be answered from real games, split by rating. That's dozens of videos: every popular opening,
+every famous trap, the most common mistakes at each rating.
+
+**The audience is huge, and newcomers are breaking through right now.**
+| Channel | Subs | Median, latest 20 long | Ratio | What they do |
+|---|---|---|---|---|
+| GothamChess | 8.44M | 979K | 0.12 | the giant; Shorts median 1.3M |
+| ChessPage1 | 680K | 1.75M | 2.6 | opening explainers |
+| iwantcheckmate | 229K | 164K | 0.72 | Shorts median 1.69M |
+| Chesstery | 15K | 73K | 4.8 | "EVERY Chess TITLE Explained" style explainers |
+| Esports Spotlight | 19K | 52K | 2.7 | players answer questions |
+| wintrcat | 32K | 84K | 2.6 | data and code: "Rare Anomalies in Chess" 1.2M |
+| Chess Explained | 21K | 51K | 2.5 | "Every Chess Move Rating Explained" 710K |
+| Chess Is Boring | 26K | 30K | 1.2 | "I Tested the Rarest Openings in Chess" |
+| Man vs Chess | 1.3K | 0.9K | 0.7 | "I Checked the Data" (41K and 37K best) |
+Seven of the 19 channels under 200K subscribers have ratios above 1, so small chess channels are being pushed. Chess
+Shorts are among the biggest in the whole research (median Shorts of 1.2-1.7M at Chess Talk, GothamChess and
+iwantcheckmate).
+
+**Data competition: thin, and the copycats are just starting.** The data-style chess videos with real views are
+BlitzKing's cheating-data video (772K), wintrcat (curiosities), Croissant "I Tested EVERY Viral Chess Trap to See if
+They Actually Work" (238K this year, personality-led), and Man vs Chess. The template has just arrived: Million Games
+("How to Win at Chess Every Time (Tested on 1,100,000 Games)", Shorts at 1.4-1.6K) and ChessMommy ("The 8 Deadliest
+Queen Traps In Chess, Ranked by 100 Million Games", 2.8K). Nobody owns "what actually wins at your rating".
+
+**Verdict.** Chess passes all four tests at the largest scale found, works as a long-running series, and fits the
+channel's existing promise (how to win the games people actually play), so it's a series inside Buh Simulates, not a
+pivot. Risks: chess fans are experts (every number must hold up), the giants own the personality side, and the copycat
+template is arriving, so being early matters.
