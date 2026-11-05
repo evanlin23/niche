@@ -93,6 +93,23 @@ def test_spoken_numbers():
     assert agrees(35.4, [35]) and not agrees(31.0, [35]) and agrees(10.2e9, [1e10])
 
 
+# ------------------------------------------------------------------ voice gate measurements
+def test_voice_measurements():
+    import numpy as np
+    from pipeline.voice_gate import clipping, digital_silence_ms, internal_gaps, word_diff
+    a = (np.random.default_rng(1).standard_normal(48000) * 0.01).astype(np.float32)
+    assert digital_silence_ms(a) < 10
+    b = a.copy(); b[1000:1000 + 960] = 0.0
+    assert digital_silence_ms(b) >= 19
+    c = a.copy(); c[500:505] = 1.0
+    pk, run = clipping(c)
+    assert pk >= -0.01 and run == 5 and clipping(a)[1] == 0
+    assert internal_gaps([["a", 0, 0.3], ["b", 1.2, 1.5], ["c", 1.6, 1.9]]) == [("a", 0.3, 0.9)]
+    assert word_diff("It won 35% of games.", "it won thirty five percent of games".split()) == ([], [])
+    miss, extra = word_diff("The best of them won.", "the best of the best of them won".split())
+    assert extra and not miss
+
+
 if __name__ == "__main__":
     import sys
     fails = 0
