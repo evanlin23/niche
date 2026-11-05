@@ -278,6 +278,15 @@ export class Kit {
     const L = this.L, sh = this.stage.spec.short, S = L.safe;
     const lines = String(sh.hook || '').split('\n');
     let y = S.t;
+    if (sh.game) {   // context: which game this is (no "I simulated N games": that's the copycat template)
+      const pill = document.createElement('div');
+      pill.textContent = sh.game; pill.dataset.qa = 'context';
+      Object.assign(pill.style, { position: 'absolute', left: L.cx + 'px', top: y + 'px', transform: 'translateX(-50%)',
+        font: `700 34px ${FONT}`, color: GN.text, background: '#14281f', padding: '10px 28px', borderRadius: '40px',
+        whiteSpace: 'nowrap', letterSpacing: '0.5px' });
+      this.stage.ov.appendChild(pill);
+      y += 74;
+    }
     lines.forEach((ln, i) => {
       const it = this.label({ text: ln, size: lines.length > 2 ? 58 : 68, role: 'hook', at: -1, x: L.cx, y, maxW: L.sw,
         color: i === lines.length - 1 ? GN.mustard : GN.text, lh: 1.04 });

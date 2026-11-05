@@ -3,10 +3,11 @@
 # Rule (first going-first Short kept 24% of viewers): open on the spoken hook, main visual already on screen and
 # moving in frame 1, emphasis on the words. Each scene = one contiguous span of the long video; 'k2@most' starts a
 # line at that word; scenes may jump (hook first, then the setup).
+game: "Exploding Kittens"   # context pill above the hook
 shorts:
 - id: kitten-placement
   hook: "Bottom of the deck?\nWorse than random."
-  title: "Where should you put the Exploding Kitten back? (10 billion games simulated)"
+  title: "Where should you put the Exploding Kitten back?"
   description: "Bottom of the deck is worse than random. Full video with all five mistakes on my channel. #explodingkittens #boardgames #cardgames"
   scenes:
   - id: kp-bottom
@@ -63,7 +64,7 @@ shorts:
 
 - id: same-cards
   hook: "Same cards.\n35% vs 11%"
-  title: "Same cards, 3x the wins. I simulated 10 billion games of Exploding Kittens"
+  title: "Same cards, three times the wins. What is the best Exploding Kittens player doing?"
   description: "Five mistakes most tables make. Full video on my channel. #explodingkittens #boardgames #cardgames"
   scenes:
   - id: sc-rank
@@ -111,7 +112,7 @@ shorts:
 
 - id: going-first
   hook: "Does going first\nmatter?"
-  title: "Does going first matter in Exploding Kittens? I simulated it"
+  title: "Does going first matter in Exploding Kittens?"
   description: "With two players it does. With five, it flips. Full video on my channel. #explodingkittens #boardgames #cardgames"
   scenes:
   - id: gf-two

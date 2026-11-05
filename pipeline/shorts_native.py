@@ -119,7 +119,7 @@ def specs_for(slug, only=None):
         for k, sc in enumerate(scenes):
             words = [(w, a, b) for c in sc.cues.values() for w, a, b in c.words]
             ctx = SceneCtx(sc, fmt, ep, [], engine="3d")
-            ctx.short = {"hook": sh["hook"], "words": words, "first": k == 0}
+            ctx.short = {"hook": sh["hook"], "words": words, "first": k == 0, "game": sh.get("game", cfg.get("game", ""))}
             specs.append((sc, kit.build_spec(ctx, module=sh.get("module", "/pipeline/web/kit.js"))))
         out.append((sh, segs, None, scenes, specs))
     return ep, out
