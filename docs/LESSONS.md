@@ -202,3 +202,10 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 6. Render on Actions (recorded timing) → assemble locally with voice + music → contact sheet, brightness-dip
    scan, loudness (-14 LUFS), caption check.
 7. Upload kit: 3 titles + 3 thumbnails, description with chapters, SRT, pinned comment, end screen.
+
+## Shorts
+- Cut from the finished long video (`python -m pipeline.shorts_cut episodes/<slug>`, segments in
+  `episodes/<slug>/shorts_cut.yaml`): hook headline on top, the 16:9 video full-width, big 1-3 word captions from
+  the aligned words, "Full video on my channel" + Buh at the bottom. Same voice and music as the long video.
+- Pick self-contained 15-35 s moments with a question or a surprising number. Always link the long video
+  (Shorts editor -> Related video). Use the caption-free render as the source.
