@@ -55,6 +55,45 @@ Voice cost is negligible whichever we pick. The choice is about quality and lice
 - Misread numbers (ElevenLabs prompting guide).
 - I found no published source for "sing-song" or pitch-spread thresholds, so those checks are mine.
 
-## 2. Audit of the free voices we can run here
-In progress: all 38 free voices (28 Kokoro, 10 Piper) have read the same passage from our scripts, and the automated
-scoring (`tools/voice_audit/`) is running. Results and a ranking will go here.
+## 2. Audit of the 38 free voices we can run here (28 Kokoro, 10 Piper)
+Same 10-line passage for every voice (numbers, game names, a question, "Buh"), each line synthesized separately as the
+pipeline does. Raw results: `docs/voice-audit-2026-11-05.json`. Method and metrics: `tools/voice_audit/README.md`.
+
+| Voice | Licence | Word error | Pitch spread (st) | Same ending tune | Pitch drift between lines (st) | Pauses /100 words | Verdict |
+|---|---|---|---|---|---|---|---|
+| Kokoro af_heart (female, US) | Apache-2.0 | 2.3% | 3.87 | 0.21 | 0.40 | 11.0 | **best overall** |
+| Kokoro bm_lewis (male, UK) | Apache-2.0 | 1.2% | 3.91 | 0.26 | 0.47 | 12.2 | **best male** |
+| Kokoro af_bella (female, US) | Apache-2.0 | 4.1% | 4.29 | 0.05 | 0.37 | 11.0 | good |
+| Kokoro am_michael (male, US, pipeline default) | Apache-2.0 | 3.5% | 3.38 | 0.47 | 0.45 | 10.5 | good, a little repetitive |
+| Kokoro am_echo, af_sky, af_sarah | Apache-2.0 | 2.9-5.2% | 3.7-3.9 | 0.23-0.53 | 0.2-0.5 | 8-11 | fine |
+| Kokoro bm_george, af_kore, af_alloy, am_eric, am_fenrir | Apache-2.0 | 4.7-5.8% | 3.2-4.8 | **0.79-0.88** | 0.3-0.6 | 3.5-12.8 | sing-song: nearly every line ends with the same tune |
+| Kokoro am_eric, am_liam, af_jessica | Apache-2.0 | 4.7-5.2% | 4.0-4.4 | 0.43-0.81 | 0.3-0.5 | 2.9-5.2 | rushed: about 3.5 words a second, few pauses |
+| Kokoro bm_fable | Apache-2.0 | 4.7% | 4.28 | 0.56 | 0.55 | **0.0** | no pauses at all inside lines |
+| Kokoro am_onyx, bf_emma, bf_isabella | Apache-2.0 | 4.7-5.2% | **2.2-2.7** | 0.31-0.51 | 0.2-0.3 | 4-6 | flat (monotone) |
+| Kokoro af_nicole, am_santa | Apache-2.0 | 1.2-4.7% | 4.8-5.4 | 0.04-0.11 | 0.4-0.7 | 8-17 | character voices (whispery, jolly) |
+| Piper cori, john (public domain) | usable | 2.9-3.5% | 3.3-4.0 | 0.33-0.46 | **1.5-2.1** | 9-11 | clear, but the pitch jumps between lines |
+| Piper joe (CC0), norman (PD), northern_english_male (CC-BY-SA) | usable | 7-10% | 2.5-3.9 | 0.12-0.47 | 0.5-1.4 | 6-12 | more errors and drift |
+| Piper ryan, hfc_male, lessac, amy, alan | not usable or unclear | 4.7-7% | 1.9-4.7 | 0.5-0.66 | 0.4-1.2 | 2-9 | licence rules them out |
+
+What the numbers say:
+1. **Kokoro beats Piper on every drift measure.** Between separately synthesized lines, Piper's pitch moves 0.4-2.1
+   semitones and its loudness 0.6-1.6 dB; Kokoro's moves 0.2-0.7 st and 0.1-0.6 dB. That's the "accent keeps
+   changing" tell, and the per-line pipeline makes it worse.
+2. **Five Kokoro voices are sing-song** (ending-tune correlation 0.79-0.88) and three are flat. Avoid them.
+3. **"Buh" is unstable.** Whisper heard it as "Bu", "Bah", "Ba", "Bo" and once "Imba" depending on the voice. The
+   mascot's name needs a fixed pronunciation (a phoneme override or a respelling, tested by ear). "Gin" coming back as
+   "jin" is a homophone, not an error.
+4. **Free isn't good enough on its own.** Our best free voice is Kokoro, and independent listeners rank Kokoro far
+   below the paid leaders (1061 vs 1334 on Artificial Analysis). The metrics pick the best free voice; they don't make
+   it human.
+5. Limits: no human baseline yet (the creator's dry recording would be the right one; the published video has music
+   under it), and the thresholds are my judgement, not published standards.
+
+## 3. Recommendation
+1. **For the probe, test your own voice against Kokoro af_heart or bm_lewis on the same Short** (§7.2 of
+   `docs/simulation-niche-research.md`). Stayed-to-watch decides.
+2. **Best route to full automation without losing the host: clone your own voice.** YouTube lists "Cloning one's own
+   voice to create voice overs or dubs" as needing no disclosure. Options: ElevenLabs (paid plan, the top-ranked
+   voice) or Chatterbox (MIT, open, watermarked). Run the same audit on the clone against your real recordings.
+3. Whatever voice: synthesize a paragraph at a time rather than line by line, normalise loudness over the whole
+   narration, fix the pronunciation of "Buh" and game names, and stop using Piper ryan (non-commercial).
