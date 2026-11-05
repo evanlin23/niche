@@ -14,7 +14,7 @@ quality: high
 ssaa: 1.5
 scenes:
 - id: cold
-  chapter: Every family plays differently
+  chapter: Everybody plays differently
   render: table
   lines:
   - o1
