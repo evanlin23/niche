@@ -292,7 +292,7 @@ export class Kit {
     // eased at both ends: long form = smoothstep over the scene (or the whole same-template chain, continuous across
     // its cuts); Shorts = fastest at frame 1 (retention gate) and settling into the cut (sine ease-out)
     const T = (this.spec.chain ? this.spec.chain.t0 : 0) + t;
-    const k = this.L.short ? Math.sin(clamp(t / stage.duration) * Math.PI / 2) : ease(clamp(T / R.span));
+    const k = this.L.short ? Math.sin(clamp(T / R.span) * Math.PI / 2) : ease(clamp(T / R.span));
     // Shorts open on a quick sideways swing, fastest at frame 1 and settled by 1.2 s: motion from the first frame
     // without starting smaller (an opening dolly-out made frame 1 emptier than the rest: opening gate)
     const swing = this.L.short && this.spec.short.first ? (this.swingDeg ?? 12) * (1 - clamp(t / 1.2)) ** 2 : 0;
@@ -587,6 +587,10 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     m.position.set(x, 0, z); m.castShadow = m.receiveShadow = true; m.scale.y = 0.001; m.visible = false;
     K.key(m); stage.scene.add(m);
     const k = K.build(`bar ${it.label}`, it.at ?? 0.3, 0.9, i);
+    // it.pulse [anchors]: the bar swells again on each later word that's about it (an object event on the word,
+    // not just a caption: coverage + sync gates)
+    const pulses = (it.pulse || []).filter((a) => typeof a === 'number').map((a) => K.tw(`bar ${it.label} pulse`, a, 0.7));
+    const emph0 = k.emph; k.emph = (t) => Math.max(emph0(t), ...pulses.map((f) => (f.dur && t >= 0 ? Math.sin(Math.PI * f(t)) : 0)));
     const H = it.value / maxV * height;
     // context: true = a value implied by what is said (e.g. the 2-player complement); the number gate treats it like the fair line
     const val = K.worldLabel({ text: '', size: K.L.vert ? 46 : 44, role: it.context ? 'context' : 'value', at: K.L.short ? -1 : it.at ?? 0.3, anchor: it.at_ref, fade: 0.3,
@@ -618,8 +622,9 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     update(t) {
       for (const B of bars) {
         const k = B.k(t), h = Math.max(0.001, B.H * k), e = B.k.emph(t);
-        B.m.scale.y = h; B.m.position.y = h / 2; B.m.visible = k > 0.002;
-        B.m.scale.x = B.m.scale.z = 1 + 0.18 * e;                       // emphasis on the word (Shorts)
+        const he = h * (1 + 0.1 * e);                                  // emphasis on the word (Shorts): the bar swells
+        B.m.scale.y = he; B.m.position.y = he / 2; B.m.visible = k > 0.002;   // (taller AND wider: a colour-only pulse
+        B.m.scale.x = B.m.scale.z = 1 + 0.18 * e;                       //  didn't read as anything happening)
         B.val.el.style.color = e > 0.05 || B.it.hl ? GN.mustard : GN.text;
         B.val.el.textContent = `${(B.it.value * Math.min(1, k * 1.02)).toFixed(dec)}${unit}`;
       }

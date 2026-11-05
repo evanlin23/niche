@@ -76,14 +76,33 @@ def build(scene_specs: list[dict], texts: dict[str, str], cache_dir: Path,
     return scenes
 
 
+TIMING = {"at", "until", "plan", "highlight", "highlights", "seat_hl", "turns", "turns_auto", "moves", "callouts", "notes",
+          "title", "kicker", "pill", "name_words", "lines", "play", "out", "frames", "label", "labels", "text", "head", "sub"}
+STRUCT = {"players", "hands", "rows", "cols", "style", "count", "length", "item", "fair"}
+
+
+def layout_sig(v, key=None):
+    """What decides a template's framing: structure (which parts exist, how many) but not timing or wording."""
+    if isinstance(v, dict):
+        return {k: layout_sig(x, k) for k, x in sorted(v.items()) if k not in TIMING and k != "shot"}
+    if isinstance(v, list):
+        return len(v)
+    return v if key in STRUCT else None
+
+
 def mark_chains(scenes):
     """Consecutive scenes on the same template share one continuous camera move (a cut between two shots of the same
-    layout from slightly different angles reads as a jump). `params: {shot: new}` starts a new, clearly different shot."""
+    layout from slightly different angles reads as a jump). If the layout differs (say a row, then the row + a chart),
+    the camera can't continue, so the next scene gets a clearly different shot (`shot: new`), as does an explicit
+    `params: {shot: new}`."""
     i = 0
     while i < len(scenes):
         j = i
         while j + 1 < len(scenes) and scenes[j + 1].render == scenes[i].render and \
                 (scenes[j + 1].params or {}).get("shot") != "new":
+            if layout_sig(scenes[j + 1].params or {}) != layout_sig(scenes[j].params or {}):
+                scenes[j + 1].params = dict(scenes[j + 1].params or {}, shot="new")
+                break
             j += 1
         if j > i:
             t0, total = scenes[i].start, sum(s.duration for s in scenes[i:j + 1])
