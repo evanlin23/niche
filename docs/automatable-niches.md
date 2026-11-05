@@ -136,7 +136,8 @@ every famous trap, the most common mistakes at each rating.
 | Chess Explained | 21K | 51K | 2.5 | "Every Chess Move Rating Explained" 710K |
 | Chess Is Boring | 26K | 30K | 1.2 | "I Tested the Rarest Openings in Chess" |
 | Man vs Chess | 1.3K | 0.9K | 0.7 | "I Checked the Data" (41K and 37K best) |
-Seven of the 19 channels under 200K subscribers have ratios above 1, so small chess channels are being pushed. Chess
+Six of the 19 channels under 200K subscribers have ratios above 1 (one of them, TowerChess, is tiny), so small chess
+channels are being pushed. Chess
 Shorts are among the biggest in the whole research (median Shorts of 1.2-1.7M at Chess Talk, GothamChess and
 iwantcheckmate).
 
