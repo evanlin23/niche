@@ -30,3 +30,14 @@ Pipeline bugs found while building the gates (fixed): `pipeline/render.py` impor
 path failed on machines without libEGL; EK's anchor resolver drops a callout whose word isn't spoken with only a log line
 ("callout skipped"; none in EK today): the anchors gate now fails on any unresolved anchor; kit tweens could outlast
 the last frame by one frame (the last frame is `(n-1)/fps`, not the duration).
+
+## Update: clipping, flicker and static card gates (later the same day)
+Re-run with the new checks: **461 errors**. New: 363 `clipping` errors (odds 171, cantlie 62, cold 46, rules 46,
+countdiv 18, placement 10, strategy 10) and 19 `static` errors (scenes.js builds its own cards).
+- Stacked cards in EK's own builders (`makeDeck`, pile/hand steps of 0.032-0.033) sit only 0.001 apart along their
+  normal (z-fight risk); with the lifted card face they now touch (-0.001). In placement, the Kitten intersects a row
+  card while moving.
+- The flicker pixel gate on 1080p renders of `cold` and `tables`: 0.002% and 0% (limit 0.02%), so the published
+  long video does not visibly flicker (long-video cameras are closer than the Shorts').
+- Consequence: EK's long scenes must move to the kit builders before any re-render; render.yml now fails on these
+  gates, so it cannot produce a new EK long render as is.
