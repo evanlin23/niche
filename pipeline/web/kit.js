@@ -155,7 +155,7 @@ export class Kit {
   // pre-built in the first ~0.4 s (staggered by idx) and the word becomes an emphasis pulse instead.
   build(name, at, dur = 0.9, idx = 0) {
     if (!this.L.short) { const k = this.tw(name, at, dur); k.emph = () => 0; return k; }
-    const k = this.tw(`${name} (pre-built)`, -0.3 + idx * 0.05, 0.6);   // frame 1: already ~half built AND moving
+    const k = this.tw(`${name} (pre-built)`, -0.45 + idx * 0.04, 0.6);   // frame 1: ~85% built AND still moving
     const e = this.tw(`${name} emphasis`, at, 0.7);
     k.emph = (t) => (t >= at ? Math.sin(Math.PI * e(t)) : 0);
     return k;
@@ -809,7 +809,7 @@ T.lineup = async (stage, spec) => {
     const r = Math.floor(i / perRow), inRow = Math.min(perRow, n - r * perRow), ci = i - r * perRow;
     const x = (ci - (inRow - 1) / 2) * gap, z = r * 3.2 - (Math.ceil(n / perRow) - 1) * 1.6;
     const g = makePawn(stage, b.color || 'CREAM', 1.1); g.position.set(x, 0, z); K.key(g);
-    const appear = K.L.short ? K.tw(`pawn ${b.name}`, -0.3 + i * 0.05, 0.6) : K.tw(`pawn ${b.name}`, 0.2 + i * 0.18, 0.5);
+    const appear = K.L.short ? K.tw(`pawn ${b.name}`, -0.45 + i * 0.04, 0.6) : K.tw(`pawn ${b.name}`, 0.2 + i * 0.18, 0.5);
     if (typeof b.at === 'number') K.tw(`focus ${b.name}`, b.at, 0.35);
     (b.habits || []).forEach((h) => typeof h.at === 'number' && K.tw(`habit ${h.text}`, h.at, 0.2));
     const lab = K.worldLabel({ text: b.name, size: vert ? 30 : 28, role: 'label', at: 0.4 + i * 0.18, maxW: vert ? 280 : 300 }, new THREE.Vector3(x, 0, z + 0.9), 4);
