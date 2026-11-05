@@ -2,7 +2,7 @@ SLUG ?= traffic-jams
 JOBS ?= 3
 PY ?= python3
 
-.PHONY: setup episode shorts preview preview-shorts thumb pack all test lint-script voice qa-visual qa-final qa stills shorts-native test-gates
+.PHONY: setup episode shorts preview preview-shorts thumb pack all test lint-script voice qa-visual qa-final qa stills shorts-native test-gates qa-static torture
 
 setup:            ## install deps + download default voice
 	$(PY) -m pip install -r requirements.txt
@@ -60,6 +60,12 @@ stills:           ## stills + contact sheet per scene: make stills SLUG=... [VER
 
 shorts-native:    ## native 9:16 Shorts (shorts_native.yaml): make shorts-native SLUG=... [ONLY=id] [AUDIO=long.mp4]
 	$(VOICE_ENV) $(PY) -m pipeline.shorts_native $(SLUG) $(if $(ONLY),--only $(ONLY),) $(if $(AUDIO),--audio $(AUDIO),)
+
+qa-static:        ## no hand-built cards in episode scene code (all episodes, or SLUG=...)
+	$(PY) -m pipeline.qa_static $(if $(filter command line,$(origin SLUG)),$(SLUG),)
+
+torture:          ## render the kit torture test and run every gate: make torture [VERTICAL=1]
+	TTS_ENGINE=silent $(PY) -m pipeline.render_check kit-torture $(if $(VERTICAL),--vertical,)
 
 test-gates:       ## every QA check fires on a known-bad case
 	$(PY) -m tests.test_qa_gates

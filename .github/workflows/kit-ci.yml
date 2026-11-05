@@ -1,0 +1,109 @@
+# Scene-kit CI: on every push that touches the kit, the kit demo + the torture test (5 seats x 9-card hands, tall
+# piles, deck spread, 10-card hand with 4 plays, discard flights; orbiting cameras) must pass every gate in 16:9 AND
+# 9:16, rendered: static card rule, stage checks (safe area, overlaps, cut, coverage, numbers, clipping), and pixels
+# (black frames, flashes, flicker). A red run = a kit change that would put glitches on screen.
+name: Kit CI (torture test + all gates)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - pipeline/web/**
+      - pipeline/kit.py
+      - pipeline/qa_*.py
+      - pipeline/render_check.py
+      - pipeline/stills.py
+      - episodes/kit-*/**
+      - tests/test_qa_gates.py
+      - .github/workflows/kit-ci.yml
+
+concurrency:
+  group: kit-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TTS_ENGINE: silent
+  RENDER_SSAA: "1.5"
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    outputs:
+      jobs: ${{ steps.list.outputs.jobs }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+        with: { browser: "true" }
+      - name: Gate self-tests (each check fires on a known-bad case)
+        run: python -m tests.test_qa_gates
+      - name: Static card rule (kit episodes must pass)
+        run: python -m pipeline.qa_static kit-demo kit-torture
+      - name: Static card rule, all episodes (report)
+        continue-on-error: true
+        run: python -m pipeline.qa_static
+      - name: Stage-state gates, both orientations
+        run: |
+          for e in kit-demo kit-torture; do
+            python -m pipeline.qa_visual $e --no-stills
+            python -m pipeline.qa_visual $e --no-stills --vertical
+          done
+      - id: list
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pipeline.render_check import jobs
+          out = [f"{o}|{j}" for o, v in (("h", False), ("v", True)) for j in jobs("kit-torture", v)]
+          print("jobs=" + json.dumps(out))
+          PY
+
+  render:
+    needs: gates
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        job: ${{ fromJSON(needs.gates.outputs.jobs) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+        with: { browser: "true" }
+      - run: |
+          O="${JOB%%|*}"; J="${JOB#*|}"
+          python -m pipeline.render_check kit-torture $([ "$O" = v ] && echo --vertical) --job "$J"
+        env: { JOB: "${{ matrix.job }}" }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: torture-part-${{ strategy.job-index }}
+          path: episodes/kit-torture/out/check-*/parts/*.mp4
+          retention-days: 3
+
+  assemble:
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+        with: { browser: "true" }
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: torture-part-*
+          path: episodes/kit-torture/out
+          merge-multiple: true
+      - name: Rendered video gates (incl. flicker), 16:9 and 9:16
+        run: |
+          set -o pipefail
+          ok=0
+          python -m pipeline.render_check kit-torture --assemble || ok=1
+          python -m pipeline.render_check kit-torture --vertical --assemble || ok=1
+          for f in episodes/kit-torture/out/check-*/qa/visual.txt; do echo "== $f"; head -30 "$f"; done >> "$GITHUB_STEP_SUMMARY"
+          exit $ok
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kit-torture-check
+          path: |
+            episodes/kit-torture/out/check-*/*.mp4
+            episodes/kit-torture/out/check-*/qa/
+          retention-days: 14

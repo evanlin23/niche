@@ -40,8 +40,11 @@ export function makeUno(stage, c, k) {
   const grp = new THREE.Group();
   const body = new THREE.Mesh(_geo, new THREE.MeshStandardMaterial({ color: 0xf4f1ea, roughness: 0.6 }));
   body.castShadow = true; body.receiveShadow = true; grp.add(body);
-  const face = new THREE.Mesh(_face, new THREE.MeshStandardMaterial({ map: unoTexture(c, k), roughness: 0.5 }));
-  face.rotation.x = -Math.PI / 2; face.position.y = CARD.T / 2 + 0.001; grp.add(face);
+  // face lifted clear of the body + polygon offset (0.001 z-fought: see gamenight.makeCard)
+  const face = new THREE.Mesh(_face, new THREE.MeshStandardMaterial({ map: unoTexture(c, k), roughness: 0.5,
+    polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -4 }));
+  face.rotation.x = -Math.PI / 2; face.position.y = CARD.T / 2 + 0.004; grp.add(face);
+  grp.userData.card = true; grp.name = 'card';
   grp.setFace = (c2, k2) => { face.material.map = unoTexture(c2, k2); face.material.needsUpdate = true; };
   stage.scene.add(grp);
   return grp;

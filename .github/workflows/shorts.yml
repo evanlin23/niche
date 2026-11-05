@@ -17,6 +17,8 @@ on:
       - pipeline/shorts_native.py
       - pipeline/web/kit.js
       - pipeline/kit.py
+      - pipeline/web/gamenight.js
+      - pipeline/web/stage.js
 
 concurrency:
   group: shorts-${{ inputs.slug || 'exploding-kittens' }}

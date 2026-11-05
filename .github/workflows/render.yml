@@ -120,7 +120,13 @@ jobs:
       - name: 720p preview (small, phone friendly)
         run: |
           ffmpeg -loglevel error -y -i "episodes/$SLUG/out/final/$SLUG.mp4" -vf scale=-2:720 -c:v libx264 -crf 26 -preset veryfast -c:a aac -b:a 128k "episodes/$SLUG/out/final/$SLUG-preview-720p.mp4"
+      - name: Visual gate (stage checks + black frames, flashes, flicker); a failing gate fails the run
+        run: |
+          set -o pipefail
+          python -m pipeline.qa_visual "$SLUG" --video "episodes/$SLUG/out/final/$SLUG.mp4" 2>&1 | tail -80
+          head -60 "episodes/$SLUG/out/qa/visual.txt" >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
+        if: always()        # the report + contact sheet are uploaded even when the gate fails
         with:
           name: ${{ inputs.slug }}-final
           path: |
@@ -129,4 +135,5 @@ jobs:
             episodes/${{ inputs.slug }}/out/final/*.json
             episodes/${{ inputs.slug }}/out/final/*.txt
             episodes/${{ inputs.slug }}/out/final/thumbnail.png
+            episodes/${{ inputs.slug }}/out/qa/
           retention-days: 30

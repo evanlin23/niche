@@ -27,6 +27,8 @@ Code: `pipeline/web/kit.js` (templates), `pipeline/kit.py` (anchors, data refs, 
    - before any render: `make qa-visual SLUG=<slug>` (and `VERTICAL=1` for anything that becomes a Short)
    - after the Actions render, locally: `make qa-visual SLUG=<slug> VIDEO=out/final/<slug>.mp4` (adds pixel checks)
    - after assembly: `make qa-final SLUG=<slug>`
+   - any change to the kit: `.github/workflows/kit-ci.yml` renders the torture test (`episodes/kit-torture`) in both
+     orientations and runs every gate; locally `python -m pipeline.render_check kit-torture [--vertical]`
    A gate that fails is fixed at the source (scenes.yaml, the take, the kit), never waived silently. If a rule is
    wrong, fix the rule in the gate with a test in `tests/test_qa_gates.py` (`make test-gates`).
 6. **Shorts**: `episodes/<slug>/shorts_native.yaml` (below), render on Actions with
@@ -48,7 +50,8 @@ Code: `pipeline/web/kit.js` (templates), `pipeline/kit.py` (anchors, data refs, 
   from the aligned voice) above a compact "Full video on my channel" + Buh. The scene title is replaced by the
   hook; the player pill stays. **The first second decides everything** (the first EK Short kept 24% of viewers:
   it opened on an empty table): in a Short every template's main visual (`K.build`) is pre-built so frame 1 shows
-  it half-built and growing, the word anchors become emphasis pulses, and the camera moves linearly from frame 1.
+  it nearly built and still growing, the word anchors become emphasis pulses, and the camera opens on a quick
+  sideways swing (fastest at frame 1, settled by 1.2 s, included in the camera fit) at full framing.
 
 Common params on every template: `title`, `pill` (free text), `callouts: [{text, at, color?: CORAL|CREAM}]`
 (one at a time, word-timed), `notes: [{text, at}]` (stay until the next note), `no_brand`, `yaw` (orbit degrees).
@@ -85,7 +88,9 @@ On 9:16 long lines wrap in two automatically. The first line is up from frame 0 
       - {label: The Patient One, value: "=ranking-5p.json:table[name=The Patient One].win*100", color: MUSTARD, at: b5@thirty, hl: true}
       - {label: The Hoarder, value: "=ranking-5p.json:table[name=The Hoarder].win*100", color: CORAL, at: b5@eleven}
 ```
-Each bar grows on its word and counts up; label wrap width and value size follow the bar spacing.
+Each bar grows on its word and counts up; label wrap width and value size follow the bar spacing. An item with
+`context: true` (a value implied by what is said, e.g. the 2-player complement) is shown without an anchor and the
+number gate treats it like the fair-share line.
 
 ### deck: card piles (rules) or a spread row (placement), optional chart
 ```yaml
@@ -110,6 +115,8 @@ Each bar grows on its word and counts up; label wrap width and value size follow
     chart: {players: 4, fair: 25, items: [...]}                 # beside on 16:9, below on 9:16
 ```
 Card faces: an EK type number, `'back'`, `'uno:<colour>:<kind>'`, or a generic face `{name: SKIP, color: BLUE, value: 7}`.
+Cards only ever come from `kitCard()` and stack with `layerY(i)` (`CARD_SEP` apart along the normal); see "Never again:
+cards" in docs/LESSONS.md. Custom scenes must use them too (the static gate fails hand-built cards).
 
 ### fan: a hand held by a seat
 ```yaml
@@ -244,6 +251,10 @@ Probes the stage state of every scene (every 0.1 s + the last two frames) withou
 | numbers | numbers on screen agree with the script line they're anchored to (spoken forms understood: "thirty five", "eleven and a half", "ten billion", "thirteen point oh four"); unsaid numbers warn; player count / fair share are context | error / warn |
 | captions | `burn_captions: false` -> nothing burned in | error |
 | pixels (with VIDEO) | no black frames, no 1-2 frame brightness flashes or dips | error |
+| clipping | oriented-box test on every probed frame: no interpenetration (cards, pieces, pawns, bars), parallel overlapping cards >= 0.003 apart along the normal, no card under the table | error |
+| fill (Shorts) | the built main visual (with its labels) fills >= 75% of the content band height (text-only scenes: either dimension) | error |
+| flicker (with VIDEO) | pixels toggling A->B->A >= 3x/s in place on <= 0.02% of the frame (z-fighting, shimmer) | error |
+| static | episode scene files build no cards themselves (`pipeline/qa_static.py`) | error |
 | opening (Shorts) | frame 1 at least 60% as full as the clip's median frame (content band), frame-to-frame motion in the first 0.5 s / 1 s | error |
 
 Output: `out/qa/visual.txt` (readable; problems repeated across 3+ scenes printed once), `visual.json`,

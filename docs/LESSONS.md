@@ -83,6 +83,31 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - Big 3D statements: fade in place with a gentle orbit (+/-3 deg), not a drop.
 - No burned-in captions (YouTube CC is enough); a light grade (+12% saturation, +4% contrast) baked per scene.
 
+## Never again: cards (flicker and clipping are gated, not hand-fixed)
+Flickering cards and objects clipping into each other came back many times, each fixed by hand. They are now
+structurally prevented and every render is checked:
+- **One card builder.** Every card comes from the kit (`kitCard`), and every stack, hand, fan, pile, spread and
+  discard is laid out with `layerY(i)` / `CARD_SEP` (card thickness + the lifted face + air), so overlapping cards are
+  never coplanar or interpenetrating. Card faces are opaque (alpha-test, not `transparent`), lifted 0.004 off the body
+  with a polygon offset; the kit's camera near plane scales with the shot (depth precision).
+  `pipeline/qa_static.py` fails any episode scene file that builds cards itself (makeCard/makeDeck/makeUno, card
+  geometry, hand-picked stacking steps).
+- **Motion paths respect layers.** A card moving within a row is pulled out toward the viewer, moved, and pushed back
+  in at its new height; a played card rises clear of the hand, travels over it, then descends and lands flat; a fanned
+  hand shares one plane (tilts are in-plane). Lifting, dropping or sliding straight through other cards is a bug.
+- **Clipping check (probe, every frame):** oriented boxes for every card/piece/pawn/bar, pairwise separating-axis
+  test: any interpenetration, parallel overlapping cards closer than 0.003 along their normal, or a card under the
+  table is an error.
+- **Flicker check (pixels):** pixels that flip and flip back (A->B->A) at least 3 times per second in place; more
+  than 0.02% of the frame fails. The reviewed same-cards Short measures 1.68%; fixed renders ~0.001-0.004%.
+  Objects the stage probe sees moving are masked out (z-fighting is a still-surface defect; moving objects are covered
+  by the clipping check; a field of identical cards gliding fast strobes at pixel level without any depth problem).
+- **Torture test in CI** (`episodes/kit-torture`, `.github/workflows/kit-ci.yml`): 5 seats x 9-card hands with plays
+  every 0.5 s, 40/30/20-card piles, the deck spread with the hero moving top/middle/bottom/top, a 10-card hand with 4
+  plays and lifts, 15 cards leaving a 30-card grid at once; orbiting cameras; rendered in 16:9 and 9:16 on every push
+  that touches the kit, and every gate must pass. `render.yml` and `shorts.yml` fail when a visual gate errors (the
+  report and contact sheet are still uploaded).
+
 ## Camera (research notes, see sources in docs/camera-research.md)
 - One dominant move per shot. Slow orbit 1-4 deg/s (we use ~1 deg/s, max +/-8 deg for wide charts: wider arcs
   make the edge bars lean and the fair-share line tilt), push-in 10-20% of distance on a key reveal.
@@ -228,8 +253,8 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   the aligned words, "Full video on my channel" + Buh at the bottom. Same voice and music as the long video.
 - **First second decides everything** (first going-first Short kept 24% of viewers: static header over an empty
   table, chart grew seconds later). Native Shorts open on the spoken hook (scenes can jump: hook line first, then
-  the setup), the main visual is pre-built so frame 1 shows it nearly done and still moving, the camera dollies in
-  from frame 1, and the anchored words become emphasis pulses. The `opening` gate measures it (frame-1 fill >= 60%
+  the setup), the main visual is pre-built so frame 1 shows it nearly done and still moving, the camera opens on a
+  quick sideways swing at full framing (an opening dolly-out made frame 1 smaller than the rest), and the anchored words become emphasis pulses. The `opening` gate measures it (frame-1 fill >= 60%
   of the clip's median, motion in the first 0.5 s / 1 s). Target: 60%+ stayed to watch.
 - Pick self-contained 15-35 s moments with a question or a surprising number. Always link the long video
   (Shorts editor -> Related video). Use the caption-free render as the source.

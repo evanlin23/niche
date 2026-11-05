@@ -155,7 +155,7 @@ export class Kit {
   // pre-built in the first ~0.4 s (staggered by idx) and the word becomes an emphasis pulse instead.
   build(name, at, dur = 0.9, idx = 0) {
     if (!this.L.short) { const k = this.tw(name, at, dur); k.emph = () => 0; return k; }
-    const k = this.tw(`${name} (pre-built)`, -0.45 + idx * 0.04, 0.6);   // frame 1: ~85% built AND still moving
+    const k = this.tw(`${name} (pre-built)`, -0.52 + idx * 0.03, 0.6);   // frame 1: ~95% built AND still moving
     const e = this.tw(`${name} emphasis`, at, 0.7);
     k.emph = (t) => (t >= at ? Math.sin(Math.PI * e(t)) : 0);
     return k;
@@ -219,6 +219,7 @@ export class Kit {
     const S = this.L.safe;
     this.content = { l: S.l, r: S.r, t: this.rowY + pad, b: this.bottomY - pad };
     this.content.w = this.content.r - this.content.l; this.content.h = this.content.b - this.content.t;
+    this.stage.qa.content = this.content;          // the gate checks the main visual fills it (Shorts)
     return this.content;
   }
   // split the content rect: 16:9 -> left/right, 9:16 -> top/bottom. f = share of the first part
@@ -235,19 +236,24 @@ export class Kit {
   // ---------------------------------------------------------------- camera rig: fit once, then orbit + push-in
   // pts: world points that must stay inside `rect`; elev: camera elevation (deg); yaw: max +/- deg of the orbit
   // (or 0 for a level push-in, e.g. overhead text); push: fraction of distance closed over the scene.
-  fit(pts, { rect = null, elev = 28, yaw = 6, push = 0.07, look = null, fov = 30, margin = 0.04 } = {}) {
+  fit(pts, { rect = null, elev = 28, yaw = 6, push = 0.07, look = null, fov = 30, margin = null } = {}) {
+    margin = margin ?? (this.L.short ? 0.012 : 0.04);
     const stage = this.stage, cam = stage.camera, r = rect || this.content || this.contentRect();
     cam.fov = fov; cam.updateProjectionMatrix();
     const bb = new THREE.Box3().setFromPoints(pts);
     look = look ? new THREE.Vector3(...look) : bb.getCenter(new THREE.Vector3());
     const amp = Math.min(yaw, 0.5 * stage.duration);          // ~1 deg/s, never more than +/- yaw
     const dirs = [dirFrom(elev, -amp), dirFrom(elev, 0), dirFrom(elev, amp)];
+    if (this.L.short && this.spec.short.first) dirs.push(dirFrom(elev, -amp - (this.swingDeg ?? 12)));   // the opening swing stays in frame too
     const dEnd = fitDistance(stage, pts, look, dirs, r.w * (1 - 2 * margin), r.h * (1 - 2 * margin));
     // view offset so the fitted content is centred in the rect (measured at the middle pose)
     placeCam(cam, look, dirs[1], dEnd);
     const b = projectAll(cam, pts, stage.W, stage.H);
     const dx = (r.l + r.r) / 2 - (b[0] + b[2]) / 2, dy = (r.t + r.b) / 2 - (b[1] + b[3]) / 2;
     this.rig = { look, elev, amp, d1: dEnd, d0: dEnd / (1 - push), dx, dy, pts, rect: r };
+    // depth precision: a near plane scaled to the shot (a fixed 0.1 near at 30-60 units of distance left too few
+    // depth steps for stacked cards: z-fighting flicker). Nothing in a kit shot comes closer than ~0.4 d.
+    cam.near = Math.max(0.1, dEnd * 0.12); cam.far = this.rig.d0 * 5; cam.updateProjectionMatrix();
     // fog scaled to the shot: big boards sit far away and the room's fixed fog washed them out
     if (stage.scene.fog) { stage.scene.fog.near = this.rig.d0 * 1.4; stage.scene.fog.far = this.rig.d0 * 3.2; }
     this.applyCam(0);
@@ -257,12 +263,14 @@ export class Kit {
     const R = this.rig; if (!R) return;
     const stage = this.stage, cam = stage.camera;
     const k = this.L.short ? clamp(t / stage.duration) : ease(clamp(t / stage.duration));   // Shorts: moving from frame 1
-    const dir = dirFrom(R.elev, lerp(-R.amp, R.amp, k));
+    // Shorts open on a quick sideways swing, fastest at frame 1 and settled by 1.2 s: motion from the first frame
+    // without starting smaller (an opening dolly-out made frame 1 emptier than the rest: opening gate)
+    const swing = this.L.short && this.spec.short.first ? (this.swingDeg ?? 12) * (1 - clamp(t / 1.2)) ** 2 : 0;
+    const dir = dirFrom(R.elev, lerp(-R.amp, R.amp, k) - swing);
     cam.clearViewOffset();
     // Shorts open on a quick dolly-in, fastest at frame 1 and settled by 1.2 s (motion in the first second is the
     // retention gate); the slow orbit carries on from there
-    const open = this.L.short && this.spec.short.first ? 0.14 * (1 - clamp(t / 1.2)) ** 2 : 0;
-    placeCam(cam, R.look, dir, lerp(R.d0, R.d1, k) * (1 + open));
+    placeCam(cam, R.look, dir, lerp(R.d0, R.d1, k));
     cam.setViewOffset(stage.W, stage.H, -R.dx, -R.dy, stage.W, stage.H);
     cam.updateProjectionMatrix(); cam.updateMatrixWorld();
   }
@@ -372,6 +380,12 @@ export function faceTex(face) {
   if (typeof face === 'string') return genericTexture({ name: face });
   return genericTexture(face);
 }
+// ---- THE card builder. Every card in every kit scene comes from kitCard(), and every stack/overlap is laid out with
+// layerY(): cards that overlap are always CARD_SEP apart along their normal (thickness + 6 mm-equivalent), so no two
+// card faces are ever coplanar or interpenetrating (the probe's clipping check and the flicker gate verify it).
+// Episode scene files must not build cards themselves (pipeline/qa_static.py fails them).
+export const CARD_SEP = CARD.T + 0.004 + 0.006;   // body + the face plane lifted 0.004 + 6 mm-equivalent of air
+export const layerY = (i, base = 0.02, scale = 1) => base + i * CARD_SEP * scale;
 // a card lying flat (face up unless face is 'back'); card.setFace(face) swaps the art
 export function kitCard(stage, face = 'back') {
   const c = makeCard(stage, 'back', false);
@@ -449,8 +463,8 @@ T.statement = async (stage, spec, { kicker = null, ring = false } = {}) => {
   K.chips(p.callouts);
   K.contentRect(30);
   const raw = (spec.lines || p.lines || []).map((l) => (typeof l === 'string' ? { text: l, at: 0.05 } : { at: 0.05, ...l }));
-  const lines = wrapLines(raw, K.L.vert, 13);
-  const size = p.size || 1.0, gap = size * 1.45;
+  const lines = wrapLines(raw, K.L.vert, K.L.short ? 8 : 13);
+  const size = p.size || 1.0, gap = size * (K.L.short ? 1.9 : 1.45);   // Shorts: a taller block fills the band
   const meshes = lines.map((ln, k) => {
     const geo = new TextGeometry(String(ln.text).toUpperCase(), { font, size, depth: size * 0.32, curveSegments: 6,
       bevelEnabled: true, bevelThickness: size * 0.03, bevelSize: size * 0.025, bevelSegments: 3 });
@@ -466,8 +480,20 @@ T.statement = async (stage, spec, { kicker = null, ring = false } = {}) => {
     K.key(m); stage.scene.add(m);
     return m;
   });
-  const wmax = Math.max(...meshes.map((m) => m.userData.w), 2);
-  const zr = (lines.length * gap) / 2 + size * 0.4;
+  let wmax = Math.max(...meshes.map((m) => m.userData.w), 2);
+  let zr = (lines.length * gap) / 2 + size * 0.4;
+  if (K.L.short && meshes.length > 1) {
+    // Shorts: stacked-poster lines, each scaled to the block's width (up to 2x), so the block fills the band
+    let z = 0;
+    const sc = meshes.map((m) => Math.min(2, wmax / m.userData.w));
+    const hs = sc.map((k) => k * size * 1.25);
+    const total = hs.reduce((a, b) => a + b, 0);
+    meshes.forEach((m, k) => {
+      m.scale.setScalar(sc[k]); z += hs[k];
+      m.position.z = z - total / 2 - hs[k] * 0.12 + size * 0.5;
+    });
+    zr = total / 2 + size * 0.3;
+  }
   let cards = [];
   if (ring) {        // title: our own cards around the words, inside the frame
     const faces = p.cards || [0, 1, 2, 3, 6, 7, 8, 4, 5];
@@ -475,12 +501,12 @@ T.statement = async (stage, spec, { kicker = null, ring = false } = {}) => {
       // on a rectangle around the words (an ellipse cut into the corners of wrapped lines)
       const c = kitCard(stage, f); const a = k / faces.length * Math.PI * 2 + 0.3, A = wmax / 2 + 1.3, B = zr + 1.0;
       const q = Math.max(Math.abs(Math.cos(a)) / A, Math.abs(Math.sin(a)) / B);
-      c.position.set(Math.cos(a) / q, 0.08 + k * 0.01, Math.sin(a) / q + size * 0.5);
+      c.position.set(Math.cos(a) / q, layerY(k, 0.08), Math.sin(a) / q + size * 0.5);
       c.rotation.y = 0; K.key(c, 'idle'); return c;
     });
   }
   const ext = ring ? [wmax / 2 + 2.0, zr + 2.0] : [wmax / 2 + 0.2, zr];
-  K.fit(boxPoints(-ext[0], 0, size * 0.5 - ext[1], ext[0], size * 0.32, size * 0.5 + ext[1]), { elev: 66, yaw: 3, push: 0.08, fov: 30 });
+  K.fit(boxPoints(-ext[0], 0, size * 0.5 - ext[1], ext[0], size * 0.32, size * 0.5 + ext[1]), { elev: K.L.short ? 74 : 66, yaw: 3, push: 0.08, fov: 30 });
   return K.frame((t) => {
     for (const m of meshes) {
       const k = m.userData.k(t);
@@ -488,7 +514,7 @@ T.statement = async (stage, spec, { kicker = null, ring = false } = {}) => {
       m.visible = k > 0.001; m.castShadow = k > 0.6;
       m.position.y = (1 - k) * 0.25;
     }
-    cards.forEach((c, k) => { c.position.y = 0.08 + k * 0.01 + Math.max(0, Math.sin(t * 1.4 + k)) * 0.03; });
+    cards.forEach((c, k) => { c.position.y = layerY(k, 0.08) + Math.max(0, Math.sin(t * 1.4 + k)) * 0.03; });
   });
 };
 T.title = (stage, spec) => T.statement(stage, spec, { kicker: 'BUH SIMULATES', ring: true });
@@ -498,7 +524,7 @@ T.title = (stage, spec) => T.statement(stage, spec, { kicker: 'BUH SIMULATES', r
 function buildBars(K, ch, { x0, width, height, z = 0 }) {
   const stage = K.stage, items = ch.items, n = items.length;
   const unit = ch.unit ?? '%';
-  const maxV = ch.maxV || Math.max(...items.map((i) => i.value)) / 0.74;   // tallest bar ~75% of the axis
+  const maxV = ch.maxV || Math.max(...items.map((i) => i.value)) / (K.L.short ? 0.9 : 0.74);   // tallest bar ~75% of the axis (Shorts: 90%, fill the frame)
   const gap = width / n, bw = Math.min(1.6, gap * 0.62), hq = stage.spec.quality === 'high';
   const dec = ch.decimals ?? 1;
   const bars = items.map((it, i) => {
@@ -511,7 +537,8 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     K.key(m); stage.scene.add(m);
     const k = K.build(`bar ${it.label}`, it.at ?? 0.3, 0.9, i);
     const H = it.value / maxV * height;
-    const val = K.worldLabel({ text: '', size: K.L.vert ? 46 : 44, role: 'value', at: K.L.short ? -1 : it.at ?? 0.3, anchor: it.at_ref, fade: 0.3,
+    // context: true = a value implied by what is said (e.g. the 2-player complement); the number gate treats it like the fair line
+    const val = K.worldLabel({ text: '', size: K.L.vert ? 46 : 44, role: it.context ? 'context' : 'value', at: K.L.short ? -1 : it.at ?? 0.3, anchor: it.at_ref, fade: 0.3,
       color: it.hl ? GN.mustard : GN.text }, () => new THREE.Vector3(x, Math.max(0.001, H * k(K.t)) + 0.2, z), -58);
     const lab = K.worldLabel({ text: it.label, size: K.L.vert ? 30 : 26, weight: 700, role: 'label', at: K.L.short ? -1 : it.at ?? 0.3, fade: 0.3,
       color: GN.muted, lh: 1.08 }, new THREE.Vector3(x, 0, z + bw / 2 + 0.3), 6);
@@ -521,11 +548,12 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
   if (ch.fair != null) {
     const fy = ch.fair / maxV * height;
     fairMesh = new THREE.Mesh(new THREE.BoxGeometry(width + 0.6, 0.03, 0.05), new THREE.MeshStandardMaterial({ color: GN.text, emissive: GN.text, emissiveIntensity: 0.4 }));
-    fairMesh.position.set(x0 + width / 2, fy, z + bw / 2 + 0.05); fairMesh.visible = false; K.key(fairMesh); stage.scene.add(fairMesh);
+    // in front of the bars with room for the emphasis pulse (bars widen 18%: the line went through them)
+    fairMesh.position.set(x0 + width / 2, fy, z + bw / 2 * 1.2 + 0.06); fairMesh.visible = false; K.key(fairMesh); stage.scene.add(fairMesh);
     const first = K.L.short ? -1 : Math.min(...items.map((i) => i.at ?? 0.3));
     // 16:9: beside the end of the line (room reserved in the fit); 9:16: the player pill already says it
     if (!K.L.vert) fairLab = K.worldLabel({ text: `fair share ${ch.fair}${unit}`, size: 26, weight: 700, role: 'fair', at: first, fade: 0.4, align: 'left' },
-      new THREE.Vector3(x0 + width + 0.45, fy, z + bw / 2 + 0.05), -16);
+      new THREE.Vector3(x0 + width + 0.45, fy, z + bw / 2 * 1.2 + 0.06), -16);
   }
   const pts = boxPoints(x0 - 0.4, 0, z - bw / 2, x0 + width + (ch.fair != null && !K.L.vert ? 3.4 : 0.4), height * 1.0, z + bw / 2 + 0.6);
   return {
@@ -559,9 +587,13 @@ T.bars = async (stage, spec) => {
   const vert = K.L.vert, n = ch.items.length;
   const r = K.content;
   const width = vert ? Math.min(8.4, 1.9 * n + 0.6) : Math.min(13.5, 2.6 * n + 1.5);
-  const height = clamp(width * (r.h - 130) / r.w * (vert ? (K.L.short ? 1.5 : 1.0) : 1.25), 3.6, vert ? 11 : 6.4);   // fill the rect
+  const insT = K.L.short ? 64 : 50, insB = K.L.short ? 96 : vert ? 110 : 80;          // value labels above, names below
+  const fr = { ...r, t: r.t + insT, b: r.b - insB, h: r.h - insT - insB };
+  // Shorts: the chart takes the band's own aspect so it fills it (creator: "chart in the upper half, empty middle")
+  const height = K.L.short ? clamp((width + 0.8) * fr.h / fr.w * 0.97, 3.6, 18)
+                           : clamp(width * (r.h - 130) / r.w * (vert ? 1.0 : 1.25), 3.6, vert ? 11 : 6.4);
   const B = buildBars(K, ch, { x0: -width / 2, width, height });
-  K.fit(B.pts, { rect: { ...r, t: r.t + 50, b: r.b - (vert ? 110 : 80), h: r.h - 50 - (vert ? 110 : 80) }, elev: 18, yaw: K.p.yaw ?? 6, push: 0.06 });
+  K.fit(B.pts, { rect: fr, elev: K.L.short ? 10 : 18, yaw: K.p.yaw ?? 6, push: 0.06 });
   B.layoutLabels();
   return K.frame((t) => { K.t = t; B.update(t); });
 };
@@ -591,7 +623,7 @@ function deckPiles(K, stage, spec) {
     const cards = [];
     for (let j = 0; j < n; j++) {
       const c = kitCard(stage, Array.isArray(pl.card) ? pl.card[j % pl.card.length] : pl.card);
-      c.position.set(gx - fanW / 2 + (j % 10) * 0.12, 0.016 + j * 0.033, gz + Math.floor(j / 10) * 0.45);
+      c.position.set(gx - fanW / 2 + (j % 10) * 0.12, layerY(j, 0.016), gz + Math.floor(j / 10) * 0.45);
       c.visible = false; K.key(c); cards.push(c);
     }
     const lab = K.worldLabel({ text: pl.label ?? '', size: vert ? 30 : 28, role: 'label', at: at + 0.2, fade: 0.3, maxW: vert ? 300 : 340 },
@@ -609,7 +641,7 @@ function deckPiles(K, stage, spec) {
     for (const h of hl) if (t >= h[1] - 0.05 && t < h[1] + HOLD + 0.45) cur = h;
     items.forEach((it, gi) => {
       const k = it.k(t), active = cur && cur[0] === gi;
-      it.cards.forEach((c, j) => { c.visible = k > 0; c.position.y = 0.016 + j * 0.033 + (1 - k) * 2; });
+      it.cards.forEach((c, j) => { c.visible = k > 0; c.position.y = layerY(j, 0.016) + (1 - k) * 2; });
       const z = cur ? ease(clamp((t - cur[1]) / 0.25)) * (1 - ease(clamp((t - cur[1] - HOLD) / 0.4))) : 0;
       it.lab.o.alpha = (tt) => clamp((tt - it.lab.at) / 0.3) * (active ? 1 : 1 - z);
       it.lab.el.style.color = active ? GN.mustard : GN.text;
@@ -633,11 +665,14 @@ function deckPiles(K, stage, spec) {
 }
 function deckRow(K, stage, spec) {
   const p = K.p, vert = K.L.vert, R = p.row, n = R.count || 12;
-  const SC = 1.45, RS = 0.6, DY = 0.09;   // > 2 card thicknesses so the hero fits between two cards
+  // Shorts: a gentle opening swing over a row (a fast swing slid the row's evenly spaced thin card edges across the
+  // same pixels again and again: shimmer, flicker gate)
+  if (K.L.short) K.swingDeg = 2.5;
+  const SC = 1.45, RS = 0.6 * SC / 1.45, DY = 2 * CARD_SEP * SC + 0.004;   // two layers per slot: the hero fits between two cards
   const rowW = (n + 1.8) * RS;
   let RX, RZ = 0, chart = null;
   if (p.chart) {
-    if (vert) { RX = -rowW / 2; RZ = -13; chart = buildBars(K, p.chart, { x0: -4.0, width: 8.0, height: 6.5, z: 0.6 }); }
+    if (vert) { RX = -rowW / 2; RZ = K.L.short ? -21 : -13; chart = buildBars(K, p.chart, { x0: -4.0, width: 8.0, height: K.L.short ? 10 : 6.5, z: 0.6 }); }
     else { RX = -rowW - 0.6; RZ = 0.2; chart = buildBars(K, p.chart, { x0: 1.0, width: 6.6, height: 5.2, z: 0.5 }); }
   } else RX = -rowW / 2;
   const rowY = (j) => 0.06 + (n - j) * DY;
@@ -648,8 +683,8 @@ function deckRow(K, stage, spec) {
   K.worldLabel({ text: ends[0], size: 26, role: 'label', color: GN.mustard, at: -1, align: 'left' }, new THREE.Vector3(RX - CARD.W * SC / 2, 0, RZ + CARD.H * SC / 2 + 0.2), 4);
   K.worldLabel({ text: ends[1], size: 26, role: 'label', color: GN.muted, at: -1, align: 'right' }, new THREE.Vector3(RX + (n + 0.8) * RS + CARD.W * SC / 2, 0, RZ + CARD.H * SC / 2 + 0.2), 4);
   const plan = (p.plan || [[0.6, Math.floor(n / 2)]]).map(([a, s]) => [typeof a === 'number' ? a : 0.6, s]);
-  if (K.L.short) plan[0][0] = Math.min(plan[0][0], 0.6);     // Shorts: the hero card is on the table from frame 1
-  const planDur = plan.map(([a, s], i) => K.tw(`hero to slot ${s}`, a, i === 0 ? 0.6 : 0.7).dur);
+  if (K.L.short) plan[0][0] = Math.min(plan[0][0], -0.6);    // Shorts: the hero card is already in its slot in frame 1
+  const planDur = plan.map(([a, s], i) => K.tw(`hero to slot ${s}`, a, i === 0 ? 0.6 : 0.9).dur);
   const rowPts = boxPoints(RX - CARD.W * SC / 2, 0, RZ - CARD.H * SC / 2 - 0.4, RX + n * RS + CARD.W * SC / 2, 1.4, RZ + CARD.H * SC / 2 + 0.5);
   K.fit(chart ? [...rowPts, ...chart.pts] : rowPts, { elev: chart ? (vert ? 30 : 22) : 40, yaw: 4, push: 0.05,
     rect: chart ? { ...K.content, t: K.content.t + 50, h: K.content.h - 120, b: K.content.b - 70 } : K.content });
@@ -657,13 +692,18 @@ function deckRow(K, stage, spec) {
   return K.frame((t) => {
     K.t = t;
     let slot = plan[0][1], prev = plan[0][1], ts = plan[0][0];
-    let pd = 0.7; plan.forEach(([at, s], i) => { if (t >= at) { prev = slot; slot = s; ts = at; pd = planDur[i]; } });
-    const k = ease((t - ts) / pd), sl = lerp(prev, slot, k);
+    let pd = 0.9; plan.forEach(([at, s], i) => { if (t >= at) { prev = slot; slot = s; ts = at; pd = planDur[i]; } });
+    // like a hand would: pull the hero out of the row toward the viewer, move it (and change layer height) while clear
+    // of the row, then push it back in at its new layer. Lifting/dropping through the row went through the cards
+    // above it (probe clipping check).
+    const u = clamp((t - ts) / pd), k = ease(u), sl = lerp(prev, slot, ease(clamp((u - 0.25) / 0.5)));
+    const outZ = prev === slot ? 0 : CARD.H * SC * 1.08 * Math.min(1, ease(u / 0.25), ease((1 - u) / 0.25));
     row.forEach((c, j) => { const g = clamp(j - sl + 1); c.position.x = RX + j * RS + g * RS * 1.8; c.position.y = rowY(j); });
     const arrive = ease((t - plan[0][0] + 0.6) / 0.6);
     hero.visible = t >= plan[0][0] - 0.6;
     // deck order = stacking order: under the card before it, over the card after it (nothing under it at the bottom)
-    hero.position.set(RX + (sl + 0.4) * RS, rowY(sl) + DY * 0.5 + Math.sin(k * Math.PI) * 1.2 + (1 - arrive) * 1.5, RZ);
+    // arrives the same way: sliding in level from the front, already at its layer height
+    hero.position.set(RX + (sl + 0.4) * RS, rowY(sl) + DY * 0.5, RZ + Math.max(outZ, (1 - arrive) * CARD.H * SC * 1.3));
     if (chart) chart.update(t);
   });
 }
@@ -677,33 +717,54 @@ T.fan = async (stage, spec) => {
   K.contentRect(30);
   const faces = p.cards || [1, 3, 6, 8, 2], n = faces.length;
   const pawn = makePawn(stage, p.color || 'BLUE', 1.0); pawn.position.set(0, 0, 3.6); K.key(pawn);   // the seat, in front: cards above its head
-  const cards = faces.map((f) => { const c = kitCard(stage, f); c.scale.setScalar(1.8); K.key(c); return c; });
+  const cards = faces.map((f) => { const c = kitCard(stage, f); c.scale.setScalar(K.L.short ? 1.9 : 1.8); K.key(c); return c; });
   const pile = kitCard(stage, p.pile ?? 'back'); pile.position.set(0, 0.05, -0.4); pile.scale.setScalar(1.3); K.key(pile);
-  const spread = vert ? 0.8 : 1.05;
-  const slot = (i) => { const off = i - (n - 1) / 2; return [new THREE.Vector3(off * spread, 3.0 - off * off * 0.05, 2.0 + i * 0.012), -off * 0.12]; };
+  const spread = vert ? (K.L.short ? 0.84 : 0.8) : 1.05;
+  const handY = K.L.short ? 4.6 : 3.0;     // Shorts (tall frame): the hand held high above the seat
+  const slot = (i) => { const off = i - (n - 1) / 2; const r = n > 1 ? off / ((n - 1) / 2) : 0;   // -1..1 across the hand: the arc depth is bounded whatever the hand size
+    return [new THREE.Vector3(off * spread, handY - r * r * 0.3, 2.0), -r * 0.35]; };
   const hl = (p.highlights || []).filter((h) => typeof h.at === 'number');
   const plays = (p.play || []).filter((h) => typeof h.at === 'number');
   hl.forEach((h) => K.tw(`lift card ${h.card}`, h.at, 0.3));
-  plays.forEach((h) => K.tw(`play card ${h.card}`, h.at, 0.7));
+  plays.forEach((h) => K.tw(`play card ${h.card}`, h.at, 0.9));
   const appear = K.tw('hand up', 0.05, 0.5);
   const pill = K.label({ text: '', size: 34, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
   if (p.seat_label) K.worldLabel({ text: p.seat_label, size: 30, role: 'label', at: -1, color: GN.text }, new THREE.Vector3(0, 0, 4.3), 4);
   const w = (n - 1) / 2 * spread + 1.1;
-  K.fit(boxPoints(-Math.max(w, 1.8), 0, -1.4, Math.max(w, 1.8), 4.4, 4.4), { elev: 20, yaw: 5, push: 0.06 });
+  const rise = plays.length ? CARD.H * cards[0].scale.x * 1.2 : 0;     // played cards rise above the hand: keep them in frame
+  K.fit(boxPoints(-Math.max(w, 1.8), 0, -1.4, Math.max(w, 1.8), handY + 1.4 + rise, 4.4), { elev: 20, yaw: 5, push: 0.06 });
   return K.frame((t) => {
     const up = appear(t), cam = stage.camera.position;
+    // ONE plane for the whole hand (facing the camera from the hand's centre): with a per-card facing, neighbouring
+    // planes weren't parallel and their edges crossed (probe clipping check)
+    const hc = new THREE.Vector3(0, handY, 2.0), n0 = cam.clone().sub(hc).normalize();
+    const q0 = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), n0), flat = new THREE.Quaternion();
     let cur = null; for (const h of hl) if (t >= h.at && t < h.at + 1.8) cur = h;
     cards.forEach((c, i) => {
       const [pos, rz] = slot(i);
       const pl = plays.find((h) => h.card === i);
       const lift = cur && cur.card === i ? ease(clamp((t - cur.at) / 0.3)) * (1 - ease(clamp((t - cur.at - 1.5) / 0.3))) : 0;
-      c.position.copy(pos).add(new THREE.Vector3(0, lift * 0.6 + (1 - up) * -1.5, -lift * 0.3));
-      faceToward(c, cam); c.rotateY(rz * 0); c.rotation.z += rz;
+      c.quaternion.copy(q0); c.rotateY(rz);                 // tilt within the hand's plane (normals stay parallel)
+      // one layer per card along the shared normal; a highlighted card lifts up and toward the camera (never into the others)
+      const inPlane = pos.clone().addScaledVector(n0, -pos.clone().sub(hc).dot(n0));   // the arc lies IN the hand's plane
+      // highlight = lift within the hand's plane (stays in its own layer: moving toward the camera went through cards)
+      const upIn = new THREE.Vector3(0, 0, -1).applyQuaternion(q0);
+      // appears by rising into place from just above the table (rising from 1.5 below went through the table)
+      c.position.copy(inPlane).addScaledVector(upIn, lift * 0.7).add(new THREE.Vector3(0, (1 - up) * -(handY - 0.3 - CARD.H * c.scale.x * 0.62 - 0.1), 0))
+        .addScaledVector(n0, i * CARD_SEP * c.scale.x);
       c.visible = up > 0.01;
       if (pl && t >= pl.at) {
-        const k = ease(clamp((t - pl.at) / 0.7));
-        c.position.lerpVectors(pos, new THREE.Vector3(0, 0.12 + i * 0.03, -0.4), k); c.position.y += Math.sin(k * Math.PI) * 1.4;
-        if (k >= 1) c.rotation.set(0, 0, 0);
+        // rise clear above the hand (in its plane), then travel to the pile and land flat: going straight back
+        // passed through the cards behind it, and an upright card landing went edge-first into the table
+        // 3 phases: rise in the hand's plane until clear, travel back over the hand at that height, then descend
+        // and flatten onto the pile (straight lines went through the hand, and an upright card landed edge-first)
+        const u = clamp((t - pl.at) / 0.9), k1 = ease(clamp(u / 0.3)), k2 = ease(clamp((u - 0.3) / 0.3)), k3 = ease(clamp((u - 0.6) / 0.4));
+        const landed = plays.filter((h) => h.at <= pl.at).length - 1;      // played cards stack in play order
+        const top = c.position.clone().addScaledVector(upIn, k1 * CARD.H * c.scale.x * 1.15), hq = c.quaternion.clone();
+        const pileTop = new THREE.Vector3(0, layerY(landed + 1, 0.05 + CARD.T * 1.3, c.scale.x), -0.4);
+        const over = new THREE.Vector3(pileTop.x, top.y, pileTop.z);
+        c.position.lerpVectors(top, over, k2).lerp(pileTop, k3);
+        c.quaternion.slerpQuaternions(hq, flat, k3);
       }
     });
     if (cur) {
@@ -723,8 +784,8 @@ T.table = async (stage, spec) => {
   K.header({ pill: p.pill ?? `${n} players` });
   K.contentRect(40);
   const COLS = ['BLUE', 'CREAM', 'CORAL', 'MUSTARD', 'GREEN', 'PLUM'];
-  const rx = vert ? 3.9 : 7.2, rz = vert ? 5.6 : 3.5;
-  const deck = []; for (let k = 0; k < 24; k++) { const c = kitCard(stage, p.back || 'back'); c.position.set(-0.9, 0.07 + k * (CARD.T + 0.003), 0); K.key(c, 'decor'); deck.push(c); }
+  const rx = vert ? 3.9 : 7.2, rz = vert ? (K.L.short ? 6.6 : 5.6) : 3.5;
+  const deck = []; for (let k = 0; k < 24; k++) { const c = kitCard(stage, p.back || 'back'); c.position.set(-0.9, layerY(k, 0.03), 0); K.key(c, 'decor'); deck.push(c); }
   const pile = []; const mover = kitCard(stage, 'back'); mover.visible = false; mover.traverse((o) => { o.castShadow = false; }); K.key(mover);
   const seats = [];
   for (let i = 0; i < n; i++) {
@@ -737,7 +798,7 @@ T.table = async (stage, spec) => {
     const cnt = Array.isArray(p.hands) ? p.hands[i] : (p.hands ?? 5);
     for (let k = 0; k < cnt; k++) {
       const c = kitCard(stage, p.back || 'back'); const off = (k - (cnt - 1) / 2) * 0.42;
-      c.position.set(sx * 0.82 + Math.cos(dir) * off, 0.02 + k * 0.032, sz * 0.82 - Math.sin(dir) * off);
+      c.position.set(sx * 0.82 + Math.cos(dir) * off, layerY(k, 0.02), sz * 0.82 - Math.sin(dir) * off);
       c.rotation.set(0, dir + Math.PI, 0); K.key(c, 'decor'); hand.push(c);
     }
     const front = sz > 1;
@@ -775,11 +836,12 @@ T.table = async (stage, spec) => {
     mover.visible = false;
     const played = turns.filter((x) => x.ev === 'play' && t >= x.at + x.dur);
     while (pile.length < played.length) { const c = kitCard(stage, 'back'); c.traverse((o) => { o.castShadow = false; }); K.key(c, 'decor'); pile.push(c); }
-    pile.forEach((c, i) => { c.setFace(played[i].card); c.position.set(1.0 + (i % 2) * 0.05, 0.07 + i * (CARD.T + 0.004), 0.02 * (i % 3)); c.visible = true; });
+    pile.forEach((c, i) => { c.setFace(played[i].card); c.position.set(1.0 + (i % 2) * 0.05, layerY(i, 0.03), 0.02 * (i % 3)); c.visible = true; });
     deck.forEach((c, i) => { c.visible = i < 24 - turns.filter((x) => x.ev === 'draw' && t >= x.at).length; });
     if (e) {
       const s = seats[e.seat % n], k = ease(clamp((t - e.at) / e.dur));
-      const seatP = new THREE.Vector3(s.sx * 0.82, 0.3, s.sz * 0.82), deckP = new THREE.Vector3(-0.9, 0.9, 0), pileP = new THREE.Vector3(1.0, 0.3, 0);
+      // the mover lands one layer above the pile's current top (never inside it)
+      const seatP = new THREE.Vector3(s.sx * 0.82, layerY(14, 0.02), s.sz * 0.82), deckP = new THREE.Vector3(-0.9, layerY(24, 0.03), 0), pileP = new THREE.Vector3(1.0, layerY(played.length, 0.03), 0);
       if (k < 1) {
         mover.visible = true; mover.setFace(e.ev === 'draw' ? (p.back || 'back') : e.card);
         if (e.ev === 'draw') mover.position.lerpVectors(deckP, seatP, k); else mover.position.lerpVectors(seatP, pileP, k);
@@ -879,7 +941,7 @@ T.grid = async (stage, spec) => {
       sq.position.copy(cell(r, c)).setY(0.31); sq.receiveShadow = true; board.add(sq);
     }
   }
-  K.key(board);
+  K.key(board); board.userData.noclip = true;     // a frame with holes: its own pieces sit inside it by design
   const hlMeshes = [];
   for (const h of (p.highlight || [])) {
     if (typeof h.at !== 'number') continue;
@@ -1058,7 +1120,7 @@ T.odds = async (stage, spec) => {
       const [px, , pz] = slot(Math.min(i, prev.total - 1), prev.total), [nx, y, nz] = slot(Math.min(i, f.total - 1), f.total);
       c.visible = (fi === 0 ? inNow : inNow || (inPrev && k < 1)) && appear > 0.01;
       if (!c.visible) return;
-      if (!inNow && inPrev) c.position.set(lerp(px, hx + 1.0, k), y + 0.02 * i * k + Math.sin(k * Math.PI) * 1.2, lerp(pz, 0, k));   // to a discard pile in frame
+      if (!inNow && inPrev) c.position.set(lerp(px, hx + 1.0, k), layerY(i - f.total, y) + Math.sin(k * Math.PI) * 1.2, lerp(pz, 0, k));   // to a discard pile in frame, one layer each (from the start)
       else c.position.set(inNow ? lerp(px, nx, k) : px, y + (1 - appear) * 1.5, inNow ? lerp(pz, nz, k) : pz);
       const hit = hits.has(i) && inNow;
       if (dots) c.material.color.set(hit ? GN.coral : GN.cream); else c.setFace(hit ? (p.hit_face ?? 0) : 'back');
@@ -1084,7 +1146,7 @@ T.checklist = async (stage, spec) => {
     K.tw(`item ${k + 1}`, it.at ?? 0.2, 0.25);
   });
   const faces = p.cards || [0, 1, 3, 6, 7, 8];
-  const deco = faces.map((f, k) => { const m = kitCard(stage, f); m.position.set(k * 0.55, 0.08 + k * 0.01, -k * 0.1); K.key(m, 'decor'); return m; });
+  const deco = faces.map((f, k) => { const m = kitCard(stage, f); m.position.set(k * 0.55, layerY(k, 0.03), -k * 0.1); K.key(m, 'decor'); return m; });
   const w = faces.length * 0.55;
   K.fit(boxPoints(-0.7, 0, -CARD.H / 2 - 0.7, w + 0.2, 0.3, CARD.H / 2 + 0.2), { rect: decoR, elev: 55, yaw: 5, push: 0.06 });
   // the list sits on a darker band so it reads over the floor
