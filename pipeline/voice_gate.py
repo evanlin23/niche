@@ -112,6 +112,7 @@ def word_diff(script: str, heard: list[str]):
 def final_check(ep: Path, transcript=True):
     from .timeline import parse_script
     vd = ep / "voice"
+    vd.mkdir(exist_ok=True)
     script = parse_script(ep / "script.md")
     report, fails = [], 0
     model = None
