@@ -1,0 +1,5632 @@
+{
+ "method": "YouTube autocomplete (suggestqueries.google.com, ds=yt) for 'how to win at / how to always win / how to win every time at / how to beat / how to win / trick to win / best strategy for / how to get good at' + a-z and 100 two-letter suffixes; n = number of expansions a phrase appeared in (a rough popularity signal). Candidates: demand and solved/simulated supply from yt-dlp flat search.",
+ "win_objects_top400": [
+  {
+   "object": "chess",
+   "autocomplete_hits": 34,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for chess",
+    "how to always win at chess",
+    "how to always win chess",
+    "how to always win in chess"
+   ]
+  },
+  {
+   "object": "nim",
+   "autocomplete_hits": 29,
+   "best_rank": 0,
+   "examples": [
+    "how to always win nim",
+    "how to win at nim",
+    "how to win nim",
+    "how to win nim every time"
+   ]
+  },
+  {
+   "object": "monopoly",
+   "autocomplete_hits": 22,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for monopoly",
+    "how to always win in monopoly",
+    "how to always win monopoly",
+    "how to get good at monopoly"
+   ]
+  },
+  {
+   "object": "rock paper scissors",
+   "autocomplete_hits": 22,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for rock paper scissors",
+    "how to always win in rock paper scissors",
+    "how to always win rock paper scissors",
+    "how to win at rock paper scissors"
+   ]
+  },
+  {
+   "object": "every giveaway",
+   "autocomplete_hits": 22,
+   "best_rank": 1,
+   "examples": [
+    "how to win every giveaway"
+   ]
+  },
+  {
+   "object": "blackjack",
+   "autocomplete_hits": 19,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for blackjack",
+    "how to always win at blackjack",
+    "how to always win blackjack",
+    "how to always win in blackjack"
+   ]
+  },
+  {
+   "object": "risk",
+   "autocomplete_hits": 19,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for risk",
+    "how to always win at risk",
+    "how to always win risk",
+    "how to win at risk"
+   ]
+  },
+  {
+   "object": "fortnite",
+   "autocomplete_hits": 16,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for fortnite",
+    "how to always win fortnite",
+    "how to beat fortnite",
+    "how to get good at fortnite"
+   ]
+  },
+  {
+   "object": "tic tac toe",
+   "autocomplete_hits": 16,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for tic tac toe",
+    "how to always win at tic tac toe",
+    "how to always win in tic tac toe",
+    "how to always win tic tac toe"
+   ]
+  },
+  {
+   "object": "poker",
+   "autocomplete_hits": 15,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for poker",
+    "how to always win poker",
+    "how to get good at poker",
+    "how to win at poker"
+   ]
+  },
+  {
+   "object": "uno",
+   "autocomplete_hits": 15,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for uno",
+    "how to always win in uno",
+    "how to always win uno",
+    "how to win at uno"
+   ]
+  },
+  {
+   "object": "mancala",
+   "autocomplete_hits": 15,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for mancala",
+    "how to always win at mancala",
+    "how to always win mancala",
+    "how to win at mancala"
+   ]
+  },
+  {
+   "object": "laser tag",
+   "autocomplete_hits": 14,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for laser tag",
+    "how to always win laser tag",
+    "how to get good at laser tag",
+    "how to win at laser tag"
+   ]
+  },
+  {
+   "object": "catan",
+   "autocomplete_hits": 13,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for catan",
+    "how to always win catan",
+    "how to get good at catan",
+    "how to win at catan"
+   ]
+  },
+  {
+   "object": "fantasy football",
+   "autocomplete_hits": 13,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for fantasy football",
+    "best strategy for fantasy football 2026",
+    "how to always win fantasy football",
+    "how to get good at fantasy football"
+   ]
+  },
+  {
+   "object": "hide and seek",
+   "autocomplete_hits": 13,
+   "best_rank": 0,
+   "examples": [
+    "how to always win at hide and seek",
+    "how to always win hide and seek",
+    "how to get good at hide and seek",
+    "how to win at hide and seek"
+   ]
+  },
+  {
+   "object": "solitaire",
+   "autocomplete_hits": 13,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for solitaire",
+    "how to always win solitaire",
+    "how to get good at solitaire",
+    "how to win at solitaire"
+   ]
+  },
+  {
+   "object": "minecraft",
+   "autocomplete_hits": 13,
+   "best_rank": 0,
+   "examples": [
+    "how to beat minecraft",
+    "how to beat minecraft every time",
+    "how to beat minecraft fast",
+    "how to beat minecraft for beginners"
+   ]
+  },
+  {
+   "object": "battleship",
+   "autocomplete_hits": 12,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for battleship",
+    "how to always win battleship",
+    "how to win at battleship",
+    "how to win at battleship every time"
+   ]
+  },
+  {
+   "object": "dominoes",
+   "autocomplete_hits": 12,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for dominoes",
+    "how to always win dominoes",
+    "how to win at dominoes",
+    "how to win at dominoes every time"
+   ]
+  },
+  {
+   "object": "rivals",
+   "autocomplete_hits": 12,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for rivals",
+    "how to always win rivals",
+    "how to get good at rivals",
+    "how to win at rivals"
+   ]
+  },
+  {
+   "object": "tug of war",
+   "autocomplete_hits": 12,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for tug of war",
+    "how to always win at tug of war",
+    "how to always win tug of war",
+    "how to get good at tug of war"
+   ]
+  },
+  {
+   "object": "tag",
+   "autocomplete_hits": 12,
+   "best_rank": 0,
+   "examples": [
+    "how to always win in tag",
+    "how to always win tag",
+    "how to win at tag",
+    "how to win tag"
+   ]
+  },
+  {
+   "object": "balatro",
+   "autocomplete_hits": 11,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for balatro",
+    "how to always win balatro",
+    "how to get good at balatro",
+    "how to win at balatro"
+   ]
+  },
+  {
+   "object": "euchre",
+   "autocomplete_hits": 11,
+   "best_rank": 0,
+   "examples": [
+    "how to always win euchre",
+    "how to get good at euchre",
+    "how to win at euchre",
+    "how to win at euchre every time"
+   ]
+  },
+  {
+   "object": "jenga",
+   "autocomplete_hits": 11,
+   "best_rank": 0,
+   "examples": [
+    "how to always win jenga",
+    "how to win at jenga",
+    "how to win at jenga every time",
+    "how to win jenga"
+   ]
+  },
+  {
+   "object": "ludo",
+   "autocomplete_hits": 11,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for ludo",
+    "how to always win ludo",
+    "how to win at ludo",
+    "how to win at ludo every time"
+   ]
+  },
+  {
+   "object": "merge tactics",
+   "autocomplete_hits": 11,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for merge tactics",
+    "how to always win merge tactics",
+    "how to get good at merge tactics",
+    "how to win at merge tactics"
+   ]
+  },
+  {
+   "object": "a claw machine",
+   "autocomplete_hits": 10,
+   "best_rank": 0,
+   "examples": [
+    "how to always win a claw machine",
+    "how to win a claw machine every time",
+    "how to win at a claw machine",
+    "how to win at a claw machine every time"
+   ]
+  },
+  {
+   "object": "hoplite",
+   "autocomplete_hits": 10,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for hoplite",
+    "how to always win hoplite",
+    "how to get good at hoplite",
+    "how to win at hoplite"
+   ]
+  },
+  {
+   "object": "minesweeper",
+   "autocomplete_hits": 10,
+   "best_rank": 0,
+   "examples": [
+    "how to always win minesweeper",
+    "how to beat minesweeper",
+    "how to get good at minesweeper",
+    "how to win at minesweeper"
+   ]
+  },
+  {
+   "object": "ping pong",
+   "autocomplete_hits": 10,
+   "best_rank": 0,
+   "examples": [
+    "how to always win ping pong",
+    "how to get good at ping pong",
+    "how to win at ping pong",
+    "how to win at ping pong every time"
+   ]
+  },
+  {
+   "object": "sudoku",
+   "autocomplete_hits": 10,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for sudoku",
+    "how to always win sudoku",
+    "how to get good at sudoku",
+    "how to win at sudoku"
+   ]
+  },
+  {
+   "object": "bedwars",
+   "autocomplete_hits": 10,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for bedwars",
+    "how to always win bedwars",
+    "how to get good at bedwars",
+    "how to win at bedwars"
+   ]
+  },
+  {
+   "object": "civ 6",
+   "autocomplete_hits": 10,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for civ 6",
+    "how to always win civ 6",
+    "how to get good at civ 6",
+    "how to win at civ 6"
+   ]
+  },
+  {
+   "object": "connect 4",
+   "autocomplete_hits": 10,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for connect 4",
+    "how to always win connect 4",
+    "how to always win in connect 4",
+    "how to win at connect 4"
+   ]
+  },
+  {
+   "object": "territorial.io",
+   "autocomplete_hits": 10,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for territorial.io",
+    "how to always win territorial.io",
+    "how to get good at territorial.io",
+    "how to win at territorial.io"
+   ]
+  },
+  {
+   "object": "life",
+   "autocomplete_hits": 9,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for life",
+    "how to always win in life",
+    "how to get good at life",
+    "how to win at life"
+   ]
+  },
+  {
+   "object": "bowling",
+   "autocomplete_hits": 9,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for bowling",
+    "how to always win bowling",
+    "how to get good at bowling",
+    "how to win at bowling"
+   ]
+  },
+  {
+   "object": "dice",
+   "autocomplete_hits": 9,
+   "best_rank": 0,
+   "examples": [
+    "how to always win dice",
+    "how to win at dice",
+    "how to win at dice every time",
+    "how to win dice"
+   ]
+  },
+  {
+   "object": "fortnite zero build",
+   "autocomplete_hits": 9,
+   "best_rank": 0,
+   "examples": [
+    "how to always win fortnite zero build",
+    "how to get good at fortnite zero build",
+    "how to win at fortnite zero build",
+    "how to win fortnite zero build"
+   ]
+  },
+  {
+   "object": "keno",
+   "autocomplete_hits": 9,
+   "best_rank": 0,
+   "examples": [
+    "how to win at keno",
+    "how to win keno",
+    "how to win keno every time",
+    "how to win keno game"
+   ]
+  },
+  {
+   "object": "warzone",
+   "autocomplete_hits": 9,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for warzone",
+    "how to always win in warzone",
+    "how to get good at warzone",
+    "how to win at warzone"
+   ]
+  },
+  {
+   "object": "paper.io 2",
+   "autocomplete_hits": 9,
+   "best_rank": 0,
+   "examples": [
+    "how to always win in paper.io 2",
+    "how to get good at paper.io 2",
+    "how to win at paper.io 2",
+    "how to win paper.io 2"
+   ]
+  },
+  {
+   "object": "siege",
+   "autocomplete_hits": 9,
+   "best_rank": 0,
+   "examples": [
+    "how to always win in siege",
+    "how to get good at siege",
+    "how to get good at siege for beginners",
+    "how to win at siege"
+   ]
+  },
+  {
+   "object": "soccer",
+   "autocomplete_hits": 9,
+   "best_rank": 0,
+   "examples": [
+    "how to always win in soccer",
+    "how to get good at soccer",
+    "how to get good at soccer fast",
+    "how to get good at soccer fast for beginners"
+   ]
+  },
+  {
+   "object": "tic-tac-toe",
+   "autocomplete_hits": 9,
+   "best_rank": 0,
+   "examples": [
+    "how to win at tic-tac-toe game",
+    "how to win every time at tic-tac-toe",
+    "how to win in tic-tac-toe",
+    "how to win tic-tac-toe"
+   ]
+  },
+  {
+   "object": "with rsi",
+   "autocomplete_hits": 9,
+   "best_rank": 0,
+   "examples": [
+    "best strategy with rsi"
+   ]
+  },
+  {
+   "object": "pool",
+   "autocomplete_hits": 9,
+   "best_rank": 1,
+   "examples": [
+    "how to always win pool",
+    "how to get good at pool",
+    "how to get good at pool fast",
+    "how to win at pool"
+   ]
+  },
+  {
+   "object": "sticks",
+   "autocomplete_hits": 9,
+   "best_rank": 1,
+   "examples": [
+    "how to always win in sticks",
+    "how to always win sticks"
+   ]
+  },
+  {
+   "object": "every of tag",
+   "autocomplete_hits": 9,
+   "best_rank": 2,
+   "examples": [
+    "how to win every game of tag"
+   ]
+  },
+  {
+   "object": "arm wrestling",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to always win arm wrestling",
+    "how to win arm wrestling every time in tamil",
+    "how to win at arm wrestling",
+    "how to win every time arm wrestling"
+   ]
+  },
+  {
+   "object": "air hockey",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to always win air hockey",
+    "how to get good at air hockey",
+    "how to win air hockey",
+    "how to win air hockey every time"
+   ]
+  },
+  {
+   "object": "dots and boxes",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for dots and boxes",
+    "how to always win dots and boxes",
+    "how to win at dots and boxes",
+    "how to win dots and boxes"
+   ]
+  },
+  {
+   "object": "gang beasts",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to always win gang beasts",
+    "how to get good at gang beasts",
+    "how to win at gang beasts"
+   ]
+  },
+  {
+   "object": "geoguessr",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to always win geoguessr",
+    "how to get good at geoguessr",
+    "how to win at geoguessr",
+    "how to win geoguessr"
+   ]
+  },
+  {
+   "object": "kickball",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for kickball",
+    "how to always win in kickball",
+    "how to get good at kickball",
+    "how to win at kickball"
+   ]
+  },
+  {
+   "object": "mahjong",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for mahjong",
+    "how to always win mahjong",
+    "how to win at mahjong",
+    "how to win mahjong"
+   ]
+  },
+  {
+   "object": "mini golf",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to always win mini golf",
+    "how to win at mini golf",
+    "how to win mini golf",
+    "how to win mini golf every time"
+   ]
+  },
+  {
+   "object": "war dogs",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for war dogs",
+    "how to get good at war dogs",
+    "how to win at war dogs",
+    "how to win war dogs"
+   ]
+  },
+  {
+   "object": "word hunt",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to always win word hunt",
+    "how to get good at word hunt",
+    "how to win at word hunt",
+    "how to win word hunt"
+   ]
+  },
+  {
+   "object": "geometry dash",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to always win in geometry dash",
+    "how to beat geometry dash",
+    "how to get good at geometry dash",
+    "how to win geometry dash"
+   ]
+  },
+  {
+   "object": "rocket league",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to always win rocket league",
+    "how to get good at rocket league",
+    "how to get good at rocket league for beginners",
+    "how to win at rocket league"
+   ]
+  },
+  {
+   "object": "risk board",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for risk board game",
+    "how to always win risk board game",
+    "how to win at risk board game",
+    "how to win risk every time board game"
+   ]
+  },
+  {
+   "object": "rummy",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to always win rummy",
+    "how to win at rummy",
+    "how to win at rummy every time",
+    "how to win rummy every time"
+   ]
+  },
+  {
+   "object": "as killer in forsaken",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to always win as killer in forsaken",
+    "how to win every time as killer in forsaken"
+   ]
+  },
+  {
+   "object": "bets",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to always win bets"
+   ]
+  },
+  {
+   "object": "the casino",
+   "autocomplete_hits": 8,
+   "best_rank": 0,
+   "examples": [
+    "how to win every time at the casino"
+   ]
+  },
+  {
+   "object": "exploding kittens",
+   "autocomplete_hits": 8,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for exploding kittens",
+    "how to always win exploding kittens",
+    "how to win at exploding kittens",
+    "how to win exploding kittens every time"
+   ]
+  },
+  {
+   "object": "gamble with your friends",
+   "autocomplete_hits": 8,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for gamble with your friends",
+    "how to always win gamble with your friends",
+    "how to win at gamble with your friends",
+    "how to win gamble with your friends"
+   ]
+  },
+  {
+   "object": "mario kart world",
+   "autocomplete_hits": 8,
+   "best_rank": 1,
+   "examples": [
+    "how to always win mario kart world",
+    "how to get good at mario kart world",
+    "how to win at mario kart world",
+    "how to win mario kart world"
+   ]
+  },
+  {
+   "object": "nine men's morris",
+   "autocomplete_hits": 8,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for nine men's morris",
+    "how to always win nine men's morris",
+    "how to win at nine men's morris",
+    "how to win nine men's morris"
+   ]
+  },
+  {
+   "object": "fall guys",
+   "autocomplete_hits": 8,
+   "best_rank": 1,
+   "examples": [
+    "how to always win fall guys",
+    "how to get good at fall guys",
+    "how to win at fall guys",
+    "how to win fall guys"
+   ]
+  },
+  {
+   "object": "ludo king",
+   "autocomplete_hits": 8,
+   "best_rank": 1,
+   "examples": [
+    "how to always win ludo king",
+    "how to win at ludo king",
+    "how to win ludo king every time in telugu"
+   ]
+  },
+  {
+   "object": "dice kcd2",
+   "autocomplete_hits": 8,
+   "best_rank": 1,
+   "examples": [
+    "how to always win dice kcd2",
+    "how to win dice every time kcd2",
+    "how to win dice game every time kcd2",
+    "how to win dice kcd2"
+   ]
+  },
+  {
+   "object": "dodgeball",
+   "autocomplete_hits": 8,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for dodgeball",
+    "how to always win dodgeball",
+    "how to get good at dodgeball",
+    "how to win at dodgeball"
+   ]
+  },
+  {
+   "object": "bingo",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "how to always win bingo",
+    "how to win at bingo",
+    "how to win at bingo every time",
+    "how to win bingo"
+   ]
+  },
+  {
+   "object": "guess who",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "how to always win guess who",
+    "how to win at guess who",
+    "how to win guess who every time"
+   ]
+  },
+  {
+   "object": "long jump",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for long jump",
+    "how to get good at long jump",
+    "how to win at long jump"
+   ]
+  },
+  {
+   "object": "komi warframe",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "how to always win komi warframe",
+    "how to win at komi warframe",
+    "how to win komi warframe"
+   ]
+  },
+  {
+   "object": "low stakes poker",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "how to always win low stakes poker",
+    "how to beat low stakes poker",
+    "how to win at low stakes poker",
+    "how to win low stakes poker"
+   ]
+  },
+  {
+   "object": "tennis",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "how to always win in tennis",
+    "how to get good at tennis",
+    "how to get good at tennis fast",
+    "how to win at tennis"
+   ]
+  },
+  {
+   "object": "valorant",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for valorant",
+    "how to always win valorant",
+    "how to get good at valorant",
+    "how to get good at valorant for beginners"
+   ]
+  },
+  {
+   "object": "bedwars minecraft",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "how to always win bedwars minecraft",
+    "how to get good at bedwars minecraft",
+    "how to win at bedwars minecraft",
+    "how to win bedwars every time minecraft"
+   ]
+  },
+  {
+   "object": "without crushing your soul",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "how to win without crushing your soul"
+   ]
+  },
+  {
+   "object": "gin rummy",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "how to always win gin rummy",
+    "how to win at gin rummy",
+    "how to win at gin rummy every time",
+    "how to win gin rummy"
+   ]
+  },
+  {
+   "object": "hive bedwars",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for hive bedwars",
+    "how to always win hive bedwars",
+    "how to get good at hive bedwars",
+    "how to win at hive bedwars"
+   ]
+  },
+  {
+   "object": "slither.io",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for slither.io",
+    "how to always win slither.io",
+    "how to get good at slither.io",
+    "how to win at slither.io"
+   ]
+  },
+  {
+   "object": "league of legends",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at league of legends",
+    "how to get good at league of legends for beginners",
+    "how to win league of legends"
+   ]
+  },
+  {
+   "object": "in chess",
+   "autocomplete_hits": 7,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for beginners in chess",
+    "how to win easily in chess",
+    "how to win easy in chess",
+    "how to win every time in chess"
+   ]
+  },
+  {
+   "object": "ring toss",
+   "autocomplete_hits": 7,
+   "best_rank": 1,
+   "examples": [
+    "how to always win ring toss",
+    "how to win at ring toss",
+    "how to win ring toss",
+    "how to win ring toss every time"
+   ]
+  },
+  {
+   "object": "uno no mercy",
+   "autocomplete_hits": 7,
+   "best_rank": 1,
+   "examples": [
+    "how to always win uno no mercy",
+    "how to win at uno no mercy",
+    "how to win uno no mercy",
+    "how to win uno no mercy every time"
+   ]
+  },
+  {
+   "object": "bedwars roblox",
+   "autocomplete_hits": 7,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for bedwars roblox",
+    "how to always win bedwars roblox",
+    "how to get good at bedwars roblox",
+    "how to win at bedwars roblox"
+   ]
+  },
+  {
+   "object": "monopoly deal",
+   "autocomplete_hits": 7,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for monopoly deal",
+    "how to always win monopoly deal",
+    "how to win at monopoly deal",
+    "how to win monopoly deal every time"
+   ]
+  },
+  {
+   "object": "ticket to ride",
+   "autocomplete_hits": 7,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for ticket to ride",
+    "how to always win ticket to ride",
+    "how to win at ticket to ride every time",
+    "how to win ticket to ride"
+   ]
+  },
+  {
+   "object": "go karting",
+   "autocomplete_hits": 7,
+   "best_rank": 1,
+   "examples": [
+    "how to always win go karting",
+    "how to get good at go karting",
+    "how to win go karting",
+    "how to win go karting every time"
+   ]
+  },
+  {
+   "object": "just dance",
+   "autocomplete_hits": 7,
+   "best_rank": 1,
+   "examples": [
+    "how to always win in just dance",
+    "how to win just dance",
+    "how to win just dance every time"
+   ]
+  },
+  {
+   "object": "checkers",
+   "autocomplete_hits": 7,
+   "best_rank": 3,
+   "examples": [
+    "best strategy for checkers",
+    "how to always win checkers",
+    "how to win at checkers",
+    "how to win at checkers every time"
+   ]
+  },
+  {
+   "object": "darts",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at darts",
+    "how to win at darts",
+    "how to win darts",
+    "how to win darts every time"
+   ]
+  },
+  {
+   "object": "stratego",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for stratego",
+    "how to win at stratego"
+   ]
+  },
+  {
+   "object": "lottery",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to win at lottery",
+    "how to win lottery",
+    "how to win lottery every time"
+   ]
+  },
+  {
+   "object": "wingspan",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for wingspan",
+    "how to win at wingspan"
+   ]
+  },
+  {
+   "object": "pac man",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for pac man",
+    "how to always win pac man",
+    "how to win at pac man",
+    "how to win pac man"
+   ]
+  },
+  {
+   "object": "rummikub",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to always win rummikub",
+    "how to win at rummikub",
+    "how to win rummikub",
+    "how to win rummikub every time"
+   ]
+  },
+  {
+   "object": "texas holdem",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for texas holdem",
+    "how to win at texas holdem",
+    "how to win texas holdem"
+   ]
+  },
+  {
+   "object": "yahtzee",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to always win yahtzee",
+    "how to win at yahtzee",
+    "how to win at yahtzee every time",
+    "how to win yahtzee every time"
+   ]
+  },
+  {
+   "object": "basketball",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to always win basketball",
+    "how to get good at basketball",
+    "how to get good at basketball for beginners",
+    "how to win at basketball"
+   ]
+  },
+  {
+   "object": "coin pusher",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to always win coin pusher",
+    "how to win at coin pusher",
+    "how to win at coin pusher every time",
+    "how to win coin pusher every time"
+   ]
+  },
+  {
+   "object": "dice silksong",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to always win dice game silksong",
+    "how to win at dice silksong",
+    "how to win dice game every time silksong",
+    "how to win dice game silksong"
+   ]
+  },
+  {
+   "object": "gomoku",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to always win gomoku",
+    "how to win at gomoku",
+    "how to win gomoku every time"
+   ]
+  },
+  {
+   "object": "go fish",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to always win go fish",
+    "how to win at go fish",
+    "how to win go fish",
+    "how to win go fish every time"
+   ]
+  },
+  {
+   "object": "minecraft pvp",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to always win minecraft pvp",
+    "how to get good at minecraft pvp",
+    "how to win at minecraft pvp",
+    "how to win minecraft pvp"
+   ]
+  },
+  {
+   "object": "musical chairs",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to always win musical chairs",
+    "how to win at musical chairs",
+    "how to win musical chairs",
+    "how to win musical chairs every time"
+   ]
+  },
+  {
+   "object": "outbreak roblox",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for outbreak roblox",
+    "how to beat outbreak roblox",
+    "how to get good at outbreak roblox",
+    "how to win outbreak roblox"
+   ]
+  },
+  {
+   "object": "pubg",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for pubg",
+    "how to always win in pubg",
+    "how to get good at pubg",
+    "how to win at pubg"
+   ]
+  },
+  {
+   "object": "ranked fortnite",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for ranked fortnite",
+    "how to always win ranked fortnite",
+    "how to get good at ranked fortnite",
+    "how to win ranked fortnite"
+   ]
+  },
+  {
+   "object": "sequence",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for sequence game",
+    "how to always win sequence",
+    "how to win at sequence",
+    "how to win at sequence every time"
+   ]
+  },
+  {
+   "object": "settlers of catan",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for settlers of catan",
+    "how to always win settlers of catan",
+    "how to win at settlers of catan",
+    "how to win settlers of catan"
+   ]
+  },
+  {
+   "object": "buckshot roulette",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to always win buckshot roulette",
+    "how to win buckshot roulette",
+    "how to win buckshot roulette every time"
+   ]
+  },
+  {
+   "object": "top lane",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "how to always win top lane",
+    "how to win top lane",
+    "how to win top lane every time"
+   ]
+  },
+  {
+   "object": "bedwars fortnite",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for bedwars fortnite",
+    "how to win bedwars every time fortnite",
+    "how to win bedwars fortnite"
+   ]
+  },
+  {
+   "object": "fantasy football draft",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for fantasy football draft",
+    "best strategy for fantasy football draft 2025",
+    "best strategy for fantasy football draft 2026"
+   ]
+  },
+  {
+   "object": "rainbow six siege",
+   "autocomplete_hits": 6,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for rainbow six siege",
+    "how to get good at rainbow six siege",
+    "how to get good at rainbow six siege for beginners"
+   ]
+  },
+  {
+   "object": "among us",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for among us",
+    "how to always win among us",
+    "how to always win in among us",
+    "how to get good at among us"
+   ]
+  },
+  {
+   "object": "foosball",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "how to always win foosball",
+    "how to win at foosball",
+    "how to win at foosball every time",
+    "how to win foosball every time"
+   ]
+  },
+  {
+   "object": "fifa 26",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "how to always win fifa 26",
+    "how to get good at fifa 26",
+    "how to win at fifa 26",
+    "how to win fifa 26"
+   ]
+  },
+  {
+   "object": "hoi4",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "how to always win in hoi4",
+    "how to get good at hoi4",
+    "how to win at hoi4",
+    "how to win hoi4"
+   ]
+  },
+  {
+   "object": "ink",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "how to always win ink game",
+    "how to get good at ink game",
+    "how to win at ink game",
+    "how to win at ink game every time"
+   ]
+  },
+  {
+   "object": "keymaster",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "how to win at keymaster",
+    "how to win keymaster every time"
+   ]
+  },
+  {
+   "object": "mm2",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "how to always win in mm2",
+    "how to always win mm2",
+    "how to get good at mm2",
+    "how to win at mm2"
+   ]
+  },
+  {
+   "object": "civilization 6",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for civilization 6",
+    "how to get good at civilization 6",
+    "how to win at civilization 6",
+    "how to win civilization 6"
+   ]
+  },
+  {
+   "object": "connect four",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "how to always win connect four",
+    "how to win at connect four",
+    "how to win at connect four every time",
+    "how to win connect four"
+   ]
+  },
+  {
+   "object": "halloween the",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for halloween the game",
+    "how to get good at halloween the game",
+    "how to win at halloween the game",
+    "how to win halloween the game"
+   ]
+  },
+  {
+   "object": "polytopia",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for polytopia",
+    "how to always win polytopia",
+    "how to get good at polytopia",
+    "how to win at polytopia"
+   ]
+  },
+  {
+   "object": "solitaire cash",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for solitaire cash",
+    "how to always win solitaire cash",
+    "how to win at solitaire cash",
+    "how to win solitaire cash every time"
+   ]
+  },
+  {
+   "object": "table tennis",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "how to always win table tennis",
+    "how to get good at table tennis",
+    "how to win at table tennis",
+    "how to win table tennis every time"
+   ]
+  },
+  {
+   "object": "tetris",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for tetris",
+    "how to get good at tetris",
+    "how to win at tetris",
+    "how to win tetris"
+   ]
+  },
+  {
+   "object": "btc",
+   "autocomplete_hits": 6,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for btc"
+   ]
+  },
+  {
+   "object": "keyboard escape",
+   "autocomplete_hits": 6,
+   "best_rank": 2,
+   "examples": [
+    "how to beat keyboard escape",
+    "how to get good at keyboard escape",
+    "how to win keyboard escape"
+   ]
+  },
+  {
+   "object": "mario party jamboree",
+   "autocomplete_hits": 6,
+   "best_rank": 2,
+   "examples": [
+    "how to always win mario party jamboree",
+    "how to win at mario party jamboree",
+    "how to win mario party jamboree"
+   ]
+  },
+  {
+   "object": "poker rdr1",
+   "autocomplete_hits": 6,
+   "best_rank": 3,
+   "examples": [
+    "how to always win poker rdr1",
+    "how to win at poker rdr1",
+    "how to win poker every time rdr1"
+   ]
+  },
+  {
+   "object": "poker rdr2",
+   "autocomplete_hits": 6,
+   "best_rank": 3,
+   "examples": [
+    "how to win at poker rdr2",
+    "how to win poker every time rdr2",
+    "how to win poker rdr2"
+   ]
+  },
+  {
+   "object": "fifa",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win at fifa",
+    "how to always win fifa",
+    "how to get good at fifa",
+    "how to win at fifa"
+   ]
+  },
+  {
+   "object": "home poker",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to win at home poker games",
+    "how to win home poker games"
+   ]
+  },
+  {
+   "object": "jeopardy",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at jeopardy",
+    "how to win at jeopardy",
+    "how to win jeopardy"
+   ]
+  },
+  {
+   "object": "noughts and crosses",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win noughts and crosses",
+    "how to win at noughts and crosses",
+    "how to win noughts and crosses"
+   ]
+  },
+  {
+   "object": "aoe2",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "best strategy aoe2",
+    "how to get good at aoe2",
+    "how to win aoe2"
+   ]
+  },
+  {
+   "object": "bullet chess",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for bullet chess",
+    "how to always win bullet chess",
+    "how to get good at bullet chess",
+    "how to win at bullet chess"
+   ]
+  },
+  {
+   "object": "deadlock",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at deadlock",
+    "how to win at deadlock",
+    "how to win deadlock"
+   ]
+  },
+  {
+   "object": "fights in fortnite",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win fights in fortnite",
+    "how to win fights in fortnite"
+   ]
+  },
+  {
+   "object": "hangman",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win hangman",
+    "how to win at hangman",
+    "how to win hangman every time"
+   ]
+  },
+  {
+   "object": "hello neighbor",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to beat hello neighbor",
+    "how to win at hello neighbor",
+    "how to win hello neighbor"
+   ]
+  },
+  {
+   "object": "mortal kombat 1",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win in mortal kombat 1",
+    "how to get good at mortal kombat 1",
+    "how to win mortal kombat 1"
+   ]
+  },
+  {
+   "object": "lane deadlock",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win lane deadlock",
+    "how to win lane deadlock"
+   ]
+  },
+  {
+   "object": "oakheart high court",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to beat oakheart high court",
+    "how to win oakheart high court"
+   ]
+  },
+  {
+   "object": "oil empire",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for oil empire",
+    "how to beat oil empire",
+    "how to get good at oil empire"
+   ]
+  },
+  {
+   "object": "oogly boogly",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to beat oogly boogly",
+    "how to beat oogly boogly 2026",
+    "how to get good at oogly boogly"
+   ]
+  },
+  {
+   "object": "super smash bros",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win in super smash bros",
+    "how to get good at super smash bros",
+    "how to win at super smash bros",
+    "how to win super smash bros"
+   ]
+  },
+  {
+   "object": "werewolf",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to beat werewolf",
+    "how to beat werewolf game",
+    "how to win at werewolf",
+    "how to win werewolf"
+   ]
+  },
+  {
+   "object": "wordle",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for wordle",
+    "how to always win wordle",
+    "how to win at wordle",
+    "how to win at wordle every time"
+   ]
+  },
+  {
+   "object": "claw machine",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win claw machine",
+    "how to win claw machine",
+    "trick to win claw machine"
+   ]
+  },
+  {
+   "object": "discord giveaways",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win discord giveaways",
+    "how to win discord giveaways every time"
+   ]
+  },
+  {
+   "object": "kahoot",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win kahoot game",
+    "how to win kahoot",
+    "how to win kahoot every time 2025"
+   ]
+  },
+  {
+   "object": "left right center",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win left right center",
+    "how to win left right center every time"
+   ]
+  },
+  {
+   "object": "top",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win top"
+   ]
+  },
+  {
+   "object": "the lottery",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win the lottery",
+    "how to win the lottery"
+   ]
+  },
+  {
+   "object": "timebomb duels",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win timebomb duels",
+    "how to get good at timebomb duels",
+    "how to win timebomb duels"
+   ]
+  },
+  {
+   "object": "dti without vip",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win dti without vip",
+    "how to win dti every time without vip"
+   ]
+  },
+  {
+   "object": "as survivor in forsaken",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to always win as survivor in forsaken",
+    "how to win every time as survivor in forsaken"
+   ]
+  },
+  {
+   "object": "casino gta",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to win every time at casino gta"
+   ]
+  },
+  {
+   "object": "i gamble with your friends",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to win every time i gamble with your friends"
+   ]
+  },
+  {
+   "object": "on horse racing gta 5",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "how to win every time on horse racing gta 5"
+   ]
+  },
+  {
+   "object": "roaring knight",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for roaring knight",
+    "how to beat roaring knight"
+   ]
+  },
+  {
+   "object": "pocket option",
+   "autocomplete_hits": 5,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for pocket option",
+    "best strategy for pocket option 2025",
+    "best strategy for pocket option 2026"
+   ]
+  },
+  {
+   "object": "arcade",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to win arcade games",
+    "how to win arcade games every time",
+    "how to win at arcade games",
+    "how to win every time at arcade"
+   ]
+  },
+  {
+   "object": "chess in 4 moves",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to win at chess in 4 moves",
+    "how to win chess in 4 moves",
+    "how to win in chess in 4 moves"
+   ]
+  },
+  {
+   "object": "kalshi",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for kalshi",
+    "how to win at kalshi",
+    "how to win on kalshi every time"
+   ]
+  },
+  {
+   "object": "ufc 5",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to always win ufc 5",
+    "how to get good at ufc 5",
+    "how to win at ufc 5",
+    "how to win ufc 5"
+   ]
+  },
+  {
+   "object": "wrestling",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to always win wrestling",
+    "how to get good at wrestling",
+    "how to get good at wrestling fast",
+    "how to win at wrestling"
+   ]
+  },
+  {
+   "object": "aoe4",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "best strategy aoe4",
+    "how to get good at aoe4",
+    "how to win aoe4"
+   ]
+  },
+  {
+   "object": "dominoes rdr2",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to win at dominoes rdr2",
+    "how to win dominoes every time rdr2"
+   ]
+  },
+  {
+   "object": "forsaken",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to always win forsaken",
+    "how to get good at forsaken",
+    "how to win at forsaken"
+   ]
+  },
+  {
+   "object": "gambling with friends",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for gambling with friends",
+    "how to always win gambling with friends",
+    "how to win at gambling with friends"
+   ]
+  },
+  {
+   "object": "hide and seek ink",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to always win hide and seek ink game",
+    "how to win at hide and seek ink game",
+    "how to win hide and seek ink game"
+   ]
+  },
+  {
+   "object": "mortal kombat",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to always win in mortal kombat",
+    "how to get good at mortal kombat",
+    "how to win at mortal kombat"
+   ]
+  },
+  {
+   "object": "ludo in real life",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to win ludo every time in real life",
+    "how to win ludo in real life"
+   ]
+  },
+  {
+   "object": "of the year",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to always win game of the year",
+    "how to win game of the year"
+   ]
+  },
+  {
+   "object": "coin flip",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to always win coin flip",
+    "how to win in coin flip"
+   ]
+  },
+  {
+   "object": "blackjack in fallout new vegas",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to always win blackjack in fallout new vegas",
+    "how to win blackjack every time in fallout new vegas"
+   ]
+  },
+  {
+   "object": "survivor.io",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for survivor.io",
+    "how to always win in survivor.io",
+    "how to get good at survivor.io"
+   ]
+  },
+  {
+   "object": "ranked",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to always win ranked",
+    "how to get good at ranked",
+    "how to win ranked",
+    "how to win ranked every time"
+   ]
+  },
+  {
+   "object": "every single time",
+   "autocomplete_hits": 5,
+   "best_rank": 1,
+   "examples": [
+    "how to win every single time"
+   ]
+  },
+  {
+   "object": "mario kart 8",
+   "autocomplete_hits": 5,
+   "best_rank": 2,
+   "examples": [
+    "how to always win mario kart 8",
+    "how to win at mario kart 8",
+    "how to win mario kart 8"
+   ]
+  },
+  {
+   "object": "dead rails",
+   "autocomplete_hits": 5,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for dead rails",
+    "how to always win dead rails",
+    "how to beat dead rails",
+    "how to win dead rails"
+   ]
+  },
+  {
+   "object": "control europe",
+   "autocomplete_hits": 5,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for control europe",
+    "how to always win in control europe",
+    "how to win control europe"
+   ]
+  },
+  {
+   "object": "with ai in",
+   "autocomplete_hits": 5,
+   "best_rank": 2,
+   "examples": [
+    "how to win with ai in 2026"
+   ]
+  },
+  {
+   "object": "hades",
+   "autocomplete_hits": 5,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for hades",
+    "how to beat hades",
+    "how to get good at hades",
+    "how to win hades"
+   ]
+  },
+  {
+   "object": "nas100",
+   "autocomplete_hits": 5,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for nas100"
+   ]
+  },
+  {
+   "object": "in ink",
+   "autocomplete_hits": 5,
+   "best_rank": 3,
+   "examples": [
+    "how to win easily in ink game",
+    "how to win every time in ink game"
+   ]
+  },
+  {
+   "object": "mario party",
+   "autocomplete_hits": 5,
+   "best_rank": 4,
+   "examples": [
+    "how to always win mario party",
+    "how to win at mario party",
+    "how to win mario party every time"
+   ]
+  },
+  {
+   "object": "fortnite reload",
+   "autocomplete_hits": 5,
+   "best_rank": 5,
+   "examples": [
+    "best strategy for fortnite reload",
+    "how to always win fortnite reload",
+    "how to win at fortnite reload",
+    "how to win fortnite reload"
+   ]
+  },
+  {
+   "object": "duo crimson desert",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to win at duo crimson desert",
+    "how to win duo crimson desert"
+   ]
+  },
+  {
+   "object": "hearts",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for hearts",
+    "how to win at hearts"
+   ]
+  },
+  {
+   "object": "quoridor",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to always win quoridor",
+    "how to win at quoridor",
+    "how to win quoridor",
+    "how to win quoridor every time"
+   ]
+  },
+  {
+   "object": "round 1",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to win at round 1",
+    "how to win round 1 games"
+   ]
+  },
+  {
+   "object": "voltorb flip",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to always win voltorb flip",
+    "how to win at voltorb flip",
+    "how to win voltorb flip every time"
+   ]
+  },
+  {
+   "object": "aac",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to beat aac",
+    "how to get good at aac"
+   ]
+  },
+  {
+   "object": "box fights fortnite",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at box fights fortnite",
+    "how to win box fights fortnite"
+   ]
+  },
+  {
+   "object": "carnival",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to beat carnival games",
+    "how to win at carnival games",
+    "how to win carnival games"
+   ]
+  },
+  {
+   "object": "civ 7",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for civ 7",
+    "how to get good at civ 7",
+    "how to win at civ 7",
+    "how to win civ 7"
+   ]
+  },
+  {
+   "object": "gerson",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to beat gerson"
+   ]
+  },
+  {
+   "object": "huss valley",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to always win huss valley",
+    "how to get good at huss valley",
+    "how to win at huss valley"
+   ]
+  },
+  {
+   "object": "word hunt imessage",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to win word hunt imessage"
+   ]
+  },
+  {
+   "object": "jevil",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to beat jevil",
+    "how to beat jevil easily",
+    "how to win jevil"
+   ]
+  },
+  {
+   "object": "jiu jitsu",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at jiu jitsu",
+    "how to get good at jiu jitsu fast",
+    "how to win jiu jitsu"
+   ]
+  },
+  {
+   "object": "just walk around it",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to beat just walk around it",
+    "how to win just walk around it"
+   ]
+  },
+  {
+   "object": "lust",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to beat lust",
+    "how to win lust"
+   ]
+  },
+  {
+   "object": "color or die",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to beat color or die",
+    "how to win at color or die",
+    "how to win color or die"
+   ]
+  },
+  {
+   "object": "peak",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to beat peak",
+    "how to get good at peak",
+    "how to win at peak",
+    "how to win peak"
+   ]
+  },
+  {
+   "object": "peg",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to beat peg game",
+    "how to win at peg game",
+    "how to win peg game"
+   ]
+  },
+  {
+   "object": "reversi",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to always win reversi",
+    "how to win at reversi",
+    "how to win reversi",
+    "how to win reversi every time"
+   ]
+  },
+  {
+   "object": "rusty rafts",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for rusty rafts",
+    "how to beat rusty rafts",
+    "how to win at rusty rafts",
+    "how to win rusty rafts"
+   ]
+  },
+  {
+   "object": "sales",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for sales",
+    "how to get good at sales",
+    "how to win at sales",
+    "how to win sales"
+   ]
+  },
+  {
+   "object": "senior assassin",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for senior assassin",
+    "how to win senior assassin"
+   ]
+  },
+  {
+   "object": "singles pickleball",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for singles pickleball",
+    "how to win at singles pickleball",
+    "how to win singles pickleball"
+   ]
+  },
+  {
+   "object": "blackjack gta 5",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to always win blackjack gta 5",
+    "how to win every time at blackjack gta 5"
+   ]
+  },
+  {
+   "object": "ebay bids",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to always win ebay bids",
+    "how to win ebay bids every time"
+   ]
+  },
+  {
+   "object": "heads or tails",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to always win heads or tails"
+   ]
+  },
+  {
+   "object": "hues and cues",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to always win hues and cues",
+    "how to win hues and cues"
+   ]
+  },
+  {
+   "object": "key master",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to always win key master",
+    "how to win key master"
+   ]
+  },
+  {
+   "object": "ranked rivals",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to always win ranked rivals",
+    "how to get good at ranked rivals",
+    "how to win ranked rivals"
+   ]
+  },
+  {
+   "object": "tower defense 2 blooket",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for tower defense 2 blooket",
+    "how to always win tower defense 2 blooket"
+   ]
+  },
+  {
+   "object": "retro bowl",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for retro bowl",
+    "how to always win in retro bowl",
+    "how to get good at retro bowl"
+   ]
+  },
+  {
+   "object": "in hide and seek",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to win every time in hide and seek"
+   ]
+  },
+  {
+   "object": "in control europe",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to win everytime in control europe"
+   ]
+  },
+  {
+   "object": "in pen fight",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to win every time in pen fight"
+   ]
+  },
+  {
+   "object": "in rivals",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to win everytime in rivals"
+   ]
+  },
+  {
+   "object": "in mario kart",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to win everytime in mario kart"
+   ]
+  },
+  {
+   "object": "in tug of war",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to win every time in tug of war"
+   ]
+  },
+  {
+   "object": "in paper.io 2",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to win every time in paper.io 2"
+   ]
+  },
+  {
+   "object": "hello neighbor act 3",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "how to beat hello neighbor act 3",
+    "how to win hello neighbor act 3"
+   ]
+  },
+  {
+   "object": "rust",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for rust",
+    "how to get good at rust",
+    "how to win rust"
+   ]
+  },
+  {
+   "object": "day trading",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for day trading",
+    "how to get good at day trading"
+   ]
+  },
+  {
+   "object": "jee advanced",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for jee advanced",
+    "best strategy for jee advanced 2026"
+   ]
+  },
+  {
+   "object": "quotex trading",
+   "autocomplete_hits": 4,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for quotex trading",
+    "best strategy for quotex trading 2025",
+    "best strategy for quotex trading 2026",
+    "best strategy for quotex trading for beginners"
+   ]
+  },
+  {
+   "object": "fair",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to win at fair games",
+    "how to win fair games"
+   ]
+  },
+  {
+   "object": "john cena challenge in coc",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to beat john cena challenge in coc",
+    "how to win john cena challenge in coc"
+   ]
+  },
+  {
+   "object": "openfront.io",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to get good at openfront.io",
+    "how to win at openfront.io"
+   ]
+  },
+  {
+   "object": "golf",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to get good at golf",
+    "how to get good at golf fast",
+    "how to win at golf"
+   ]
+  },
+  {
+   "object": "jelly bean guessing",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to always win jelly bean guessing game",
+    "how to win jelly bean guessing game"
+   ]
+  },
+  {
+   "object": "nubby's number factory",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to beat nubby's number factory",
+    "how to get good at nubby's number factory",
+    "how to win nubby's number factory"
+   ]
+  },
+  {
+   "object": "paintball",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for paintball",
+    "how to get good at paintball",
+    "how to win at paintball",
+    "how to win paintball"
+   ]
+  },
+  {
+   "object": "poker in red dead redemption 2",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to always win poker in red dead redemption 2",
+    "how to win at poker in red dead redemption 2",
+    "how to win poker every time in red dead redemption 2"
+   ]
+  },
+  {
+   "object": "an argument",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to always win an argument",
+    "how to win an argument"
+   ]
+  },
+  {
+   "object": "lottery tickets",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to always win lottery tickets",
+    "how to win lottery tickets"
+   ]
+  },
+  {
+   "object": "slap royale",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to always win slap royale",
+    "how to win slap royale",
+    "how to win slap royale easily",
+    "how to win slap royale every time"
+   ]
+  },
+  {
+   "object": "double or nothing gag2",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to always win double or nothing gag2"
+   ]
+  },
+  {
+   "object": "ranked reload",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to always win ranked reload",
+    "how to win ranked reload",
+    "how to win ranked reload every time"
+   ]
+  },
+  {
+   "object": "in among us",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to win every time in among us"
+   ]
+  },
+  {
+   "object": "in bite by night",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to win everytime in bite by night"
+   ]
+  },
+  {
+   "object": "bedwars hive",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to win bedwars every time hive",
+    "how to win bedwars hive"
+   ]
+  },
+  {
+   "object": "kickoff in rocket league",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to win kickoff every time in rocket league"
+   ]
+  },
+  {
+   "object": "in mobile legends",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to win every time in mobile legends"
+   ]
+  },
+  {
+   "object": "more cash cups",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to win more cash cups"
+   ]
+  },
+  {
+   "object": "daily rivals",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to win daily rivals",
+    "how to win daily rivals every time"
+   ]
+  },
+  {
+   "object": "doors",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to beat doors",
+    "how to beat doors every time",
+    "how to get good at doors"
+   ]
+  },
+  {
+   "object": "night shift at paulie's",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to beat night shift at paulie's",
+    "how to win night shift at paulie's"
+   ]
+  },
+  {
+   "object": "with rook and king",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to win with rook and king"
+   ]
+  },
+  {
+   "object": "minecraft survival",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for minecraft survival",
+    "how to get good at minecraft survival",
+    "how to win minecraft survival"
+   ]
+  },
+  {
+   "object": "futures",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for futures"
+   ]
+  },
+  {
+   "object": "nasdaq",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for nasdaq"
+   ]
+  },
+  {
+   "object": "dandy's world",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "best strategy for dandy's world",
+    "how to get good at dandy's world"
+   ]
+  },
+  {
+   "object": "keyboard and mouse",
+   "autocomplete_hits": 4,
+   "best_rank": 1,
+   "examples": [
+    "how to get good at keyboard and mouse",
+    "how to get good at keyboard and mouse fast",
+    "how to get good at keyboard and mouse for beginners"
+   ]
+  },
+  {
+   "object": "darts in gta 5",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to win at darts in gta 5",
+    "how to win darts in gta 5"
+   ]
+  },
+  {
+   "object": "prizepicks",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to always win prizepicks",
+    "how to win at prizepicks",
+    "how to win on prizepicks",
+    "how to win prizepicks"
+   ]
+  },
+  {
+   "object": "ultimate texas hold'em",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for ultimate texas hold'em",
+    "how to win at ultimate texas hold'em",
+    "how to win ultimate texas hold'em"
+   ]
+  },
+  {
+   "object": "beer pong",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to always win beer pong",
+    "how to win at beer pong",
+    "how to win at beer pong every time",
+    "how to win beer pong every time"
+   ]
+  },
+  {
+   "object": "dummynation",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "best strategy in dummynation",
+    "how to always win in dummynation",
+    "how to get good at dummynation",
+    "how to win at dummynation"
+   ]
+  },
+  {
+   "object": "fear and hunger",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to beat fear and hunger",
+    "how to get good at fear and hunger",
+    "how to win fear and hunger"
+   ]
+  },
+  {
+   "object": "four in a row",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to always win four in a row",
+    "how to win at four in a row",
+    "how to win four in a row"
+   ]
+  },
+  {
+   "object": "funded account",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for funded account",
+    "how to win funded account"
+   ]
+  },
+  {
+   "object": "go kart racing",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to always win at go kart racing",
+    "how to win at go kart racing"
+   ]
+  },
+  {
+   "object": "kessel sabacc",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to win kessel sabacc"
+   ]
+  },
+  {
+   "object": "99 nights in the forest",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for 99 nights in the forest",
+    "how to always win 99 nights in the forest",
+    "how to win at 99 nights in the forest"
+   ]
+  },
+  {
+   "object": "piggy",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to always win piggy",
+    "how to get good at piggy",
+    "how to win at piggy",
+    "how to win piggy every time"
+   ]
+  },
+  {
+   "object": "ranked brawl stars",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to always win ranked brawl stars",
+    "how to get good at ranked brawl stars",
+    "how to win ranked brawl stars"
+   ]
+  },
+  {
+   "object": "roblox bedwars",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for roblox bedwars",
+    "how to always win roblox bedwars",
+    "how to get good at roblox bedwars",
+    "how to win at roblox bedwars"
+   ]
+  },
+  {
+   "object": "russian roulette",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for russian roulette",
+    "how to always win russian roulette",
+    "how to win at russian roulette",
+    "how to win russian roulette"
+   ]
+  },
+  {
+   "object": "super auto pets",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for super auto pets",
+    "how to always win in super auto pets"
+   ]
+  },
+  {
+   "object": "double or nothing",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to always win double or nothing"
+   ]
+  },
+  {
+   "object": "gunfights in siege",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to always win gunfights in siege",
+    "how to win gunfights in siege"
+   ]
+  },
+  {
+   "object": "8 ball pool",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "how to win every time 8 ball pool"
+   ]
+  },
+  {
+   "object": "in clash royale",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for beginners in clash royale",
+    "how to win every time in clash royale"
+   ]
+  },
+  {
+   "object": "halloween",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for halloween",
+    "how to beat halloween",
+    "how to win halloween"
+   ]
+  },
+  {
+   "object": "pokemon go",
+   "autocomplete_hits": 4,
+   "best_rank": 2,
+   "examples": [
+    "best strategy for pokemon go",
+    "how to get good at pokemon go"
+   ]
+  },
+  {
+   "object": "gambling crimson desert",
+   "autocomplete_hits": 4,
+   "best_rank": 3,
+   "examples": [
+    "how to always win gambling crimson desert",
+    "how to win at gambling crimson desert",
+    "how to win gambling crimson desert"
+   ]
+  },
+  {
+   "object": "jewel of jahari",
+   "autocomplete_hits": 4,
+   "best_rank": 3,
+   "examples": [
+    "how to win jewel of jahari"
+   ]
+  },
+  {
+   "object": "backgammon",
+   "autocomplete_hits": 4,
+   "best_rank": 3,
+   "examples": [
+    "best strategy for backgammon",
+    "how to always win backgammon",
+    "how to win at backgammon",
+    "how to win backgammon every time"
+   ]
+  },
+  {
+   "object": "barricade",
+   "autocomplete_hits": 4,
+   "best_rank": 3,
+   "examples": [
+    "best strategy for barricade",
+    "how to always win barricade",
+    "how to win at barricade",
+    "how to win barricade every time"
+   ]
+  },
+  {
+   "object": "mafia",
+   "autocomplete_hits": 4,
+   "best_rank": 3,
+   "examples": [
+    "how to always win mafia",
+    "how to win at mafia",
+    "how to win mafia",
+    "how to win mafia every time"
+   ]
+  },
+  {
+   "object": "ticket to ride europe",
+   "autocomplete_hits": 4,
+   "best_rank": 3,
+   "examples": [
+    "best strategy for ticket to ride europe",
+    "how to always win ticket to ride europe"
+   ]
+  },
+  {
+   "object": "in mm2",
+   "autocomplete_hits": 4,
+   "best_rank": 3,
+   "examples": [
+    "how to win easily in mm2",
+    "how to win every time in mm2"
+   ]
+  },
+  {
+   "object": "podium vehicle",
+   "autocomplete_hits": 4,
+   "best_rank": 3,
+   "examples": [
+    "how to win podium vehicle every time"
+   ]
+  },
+  {
+   "object": "with the london system",
+   "autocomplete_hits": 4,
+   "best_rank": 3,
+   "examples": [
+    "how to win with the london system"
+   ]
+  },
+  {
+   "object": "xox",
+   "autocomplete_hits": 4,
+   "best_rank": 4,
+   "examples": [
+    "how to win xox",
+    "how to win xox game"
+   ]
+  },
+  {
+   "object": "shadow boxing",
+   "autocomplete_hits": 4,
+   "best_rank": 4,
+   "examples": [
+    "how to always win shadow boxing",
+    "how to win at shadow boxing",
+    "how to win shadow boxing every time"
+   ]
+  },
+  {
+   "object": "football",
+   "autocomplete_hits": 4,
+   "best_rank": 4,
+   "examples": [
+    "how to get good at football",
+    "how to win at football"
+   ]
+  },
+  {
+   "object": "mario kart",
+   "autocomplete_hits": 4,
+   "best_rank": 4,
+   "examples": [
+    "how to always win mario kart",
+    "how to win at mario kart",
+    "how to win mario kart"
+   ]
+  },
+  {
+   "object": "v4 trials with buddha",
+   "autocomplete_hits": 4,
+   "best_rank": 4,
+   "examples": [
+    "how to always win v4 trials with buddha",
+    "how to win v4 trials every time with buddha"
+   ]
+  },
+  {
+   "object": "wii boxing",
+   "autocomplete_hits": 4,
+   "best_rank": 4,
+   "examples": [
+    "how to always win wii boxing",
+    "how to get good at wii boxing",
+    "how to win wii boxing every time"
+   ]
+  },
+  {
+   "object": "risk of rain 2",
+   "autocomplete_hits": 4,
+   "best_rank": 4,
+   "examples": [
+    "how to beat risk of rain 2",
+    "how to get good at risk of rain 2",
+    "how to win risk of rain 2"
+   ]
+  },
+  {
+   "object": "with queen and king",
+   "autocomplete_hits": 4,
+   "best_rank": 4,
+   "examples": [
+    "how to win with queen and king"
+   ]
+  },
+  {
+   "object": "land or die",
+   "autocomplete_hits": 4,
+   "best_rank": 5,
+   "examples": [
+    "how to always win in land or die",
+    "how to get good at land or die",
+    "how to win land or die"
+   ]
+  },
+  {
+   "object": "with ironclad",
+   "autocomplete_hits": 4,
+   "best_rank": 6,
+   "examples": [
+    "how to win with ironclad"
+   ]
+  },
+  {
+   "object": "corner fire red",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win at game corner fire red",
+    "how to win game corner fire red"
+   ]
+  },
+  {
+   "object": "jacks or better",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win at jacks or better"
+   ]
+  },
+  {
+   "object": "karting",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at karting",
+    "how to win at karting"
+   ]
+  },
+  {
+   "object": "a nerf battle",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win a nerf battle",
+    "how to win a nerf battle"
+   ]
+  },
+  {
+   "object": "omegle",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win omegle",
+    "how to win at omegle",
+    "how to win omegle"
+   ]
+  },
+  {
+   "object": "pickleball singles",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win at pickleball singles",
+    "how to win pickleball singles"
+   ]
+  },
+  {
+   "object": "topgolf",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at topgolf",
+    "how to win at topgolf"
+   ]
+  },
+  {
+   "object": "ufc 6",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at ufc 6",
+    "how to win at ufc 6",
+    "how to win ufc 6"
+   ]
+  },
+  {
+   "object": "aaron ryan",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat aaron ryan"
+   ]
+  },
+  {
+   "object": "ao oni",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat ao oni"
+   ]
+  },
+  {
+   "object": "big brother",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win big brother"
+   ]
+  },
+  {
+   "object": "daily rivals 2k27",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win daily rivals 2k27"
+   ]
+  },
+  {
+   "object": "eeoc discrimination case",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win eeoc discrimination case"
+   ]
+  },
+  {
+   "object": "eoc chapter 3 moon",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat eoc chapter 3 moon"
+   ]
+  },
+  {
+   "object": "giveaways on whatnot",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win giveaways on whatnot"
+   ]
+  },
+  {
+   "object": "giveaways",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win giveaways",
+    "how to win giveaways"
+   ]
+  },
+  {
+   "object": "hackathons",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win hackathons"
+   ]
+  },
+  {
+   "object": "ian garry",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat ian garry"
+   ]
+  },
+  {
+   "object": "iudex gundyr",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat iudex gundyr"
+   ]
+  },
+  {
+   "object": "card jitsu",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win card jitsu every time"
+   ]
+  },
+  {
+   "object": "jump ball 2k26",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win jump ball 2k26"
+   ]
+  },
+  {
+   "object": "kickoff rocket league",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win kickoff rocket league"
+   ]
+  },
+  {
+   "object": "kumite",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at kumite",
+    "how to win kumite"
+   ]
+  },
+  {
+   "object": "meccha chameleon",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at meccha chameleon",
+    "how to win at meccha chameleon",
+    "how to win meccha chameleon"
+   ]
+  },
+  {
+   "object": "noita",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at noita",
+    "how to win noita"
+   ]
+  },
+  {
+   "object": "oak street",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat oak street"
+   ]
+  },
+  {
+   "object": "oil rig palworld",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat oil rig palworld"
+   ]
+  },
+  {
+   "object": "outnumbered fights in minecraft",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win outnumbered fights in minecraft"
+   ]
+  },
+  {
+   "object": "outbreak",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win in outbreak",
+    "how to win outbreak"
+   ]
+  },
+  {
+   "object": "redsec",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for redsec",
+    "how to win at redsec",
+    "how to win redsec"
+   ]
+  },
+  {
+   "object": "sabacc",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win sabacc",
+    "how to win at sabacc every time",
+    "how to win sabacc every time"
+   ]
+  },
+  {
+   "object": "survivor",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win survivor"
+   ]
+  },
+  {
+   "object": "wars in hoi4",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win wars in hoi4"
+   ]
+  },
+  {
+   "object": "horse races in bitlife",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win horse races in bitlife"
+   ]
+  },
+  {
+   "object": "liars dice rdr1",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win liars dice rdr1"
+   ]
+  },
+  {
+   "object": "lucky shot in 8 ball pool",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win lucky shot in 8 ball pool",
+    "how to win lucky shot in 8 ball pool"
+   ]
+  },
+  {
+   "object": "super smash bros ultimate",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win super smash bros ultimate",
+    "how to get good at super smash bros ultimate"
+   ]
+  },
+  {
+   "object": "word hunt pigeon",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win word hunt game pigeon"
+   ]
+  },
+  {
+   "object": "debates",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win debates",
+    "how to win debates"
+   ]
+  },
+  {
+   "object": "blackjack discord",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win blackjack discord",
+    "how to win blackjack every time discord"
+   ]
+  },
+  {
+   "object": "ea fc 26",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win in ea fc 26",
+    "how to get good at ea fc 26",
+    "how to win ea fc 26"
+   ]
+  },
+  {
+   "object": "simon says",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to always win simon says",
+    "how to win simon says"
+   ]
+  },
+  {
+   "object": "in connect 4",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win every time in connect 4"
+   ]
+  },
+  {
+   "object": "in cricket league",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win every time in cricket league"
+   ]
+  },
+  {
+   "object": "arm wrestling exercise at home",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win arm wrestling every time exercise at home"
+   ]
+  },
+  {
+   "object": "in fortnite",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win every time in fortnite",
+    "how to win games in fortnite"
+   ]
+  },
+  {
+   "object": "the time keeper dead cells",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat the time keeper dead cells"
+   ]
+  },
+  {
+   "object": "bingo in weplay",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to win bingo every time in weplay"
+   ]
+  },
+  {
+   "object": "cup pong",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at cup pong",
+    "how to win cup pong",
+    "how to win cup pong every time"
+   ]
+  },
+  {
+   "object": "night 4 tds",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat night 4 tds"
+   ]
+  },
+  {
+   "object": "paladius palworld",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat paladius palworld"
+   ]
+  },
+  {
+   "object": "obsession",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat obsession"
+   ]
+  },
+  {
+   "object": "baldi's basics",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for baldi's basics",
+    "how to beat baldi's basics"
+   ]
+  },
+  {
+   "object": "hollow knight",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat hollow knight",
+    "how to get good at hollow knight"
+   ]
+  },
+  {
+   "object": "subnautica",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat subnautica",
+    "how to win subnautica"
+   ]
+  },
+  {
+   "object": "saw",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat saw",
+    "how to win saw"
+   ]
+  },
+  {
+   "object": "simply walk around it",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat simply walk around it",
+    "how to win simply walk around it"
+   ]
+  },
+  {
+   "object": "der eisendrache",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for der eisendrache",
+    "how to beat der eisendrache"
+   ]
+  },
+  {
+   "object": "gamble with friends",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat gamble with friends",
+    "how to win gamble with friends"
+   ]
+  },
+  {
+   "object": "john cena challenge",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to beat john cena challenge",
+    "how to win john cena challenge"
+   ]
+  },
+  {
+   "object": "marvel rivals",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at marvel rivals",
+    "how to win marvel rivals"
+   ]
+  },
+  {
+   "object": "nightreign",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at nightreign",
+    "how to win nightreign"
+   ]
+  },
+  {
+   "object": "futures trading",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for futures trading"
+   ]
+  },
+  {
+   "object": "pirate shop",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for pirate shop"
+   ]
+  },
+  {
+   "object": "fortnite pirate token",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for fortnite pirate token"
+   ]
+  },
+  {
+   "object": "desert storm last war",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for desert storm last war"
+   ]
+  },
+  {
+   "object": "five zombies",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for five zombies"
+   ]
+  },
+  {
+   "object": "guillotine league fantasy football",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for guillotine league fantasy football"
+   ]
+  },
+  {
+   "object": "halo wars 2",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for halo wars 2"
+   ]
+  },
+  {
+   "object": "kingdom rush",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for kingdom rush"
+   ]
+  },
+  {
+   "object": "kafe dostoyevsky",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for kafe dostoyevsky"
+   ]
+  },
+  {
+   "object": "lucky defense",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for lucky defense",
+    "how to get good at lucky defense"
+   ]
+  },
+  {
+   "object": "learning a new language",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for learning a new language"
+   ]
+  },
+  {
+   "object": "new york session",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for new york session"
+   ]
+  },
+  {
+   "object": "we are warriors",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for we are warriors",
+    "how to get good at we are warriors"
+   ]
+  },
+  {
+   "object": "waves aotr",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for waves aotr"
+   ]
+  },
+  {
+   "object": "sell lemons",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "best strategy for sell lemons",
+    "how to get good at sell lemons"
+   ]
+  },
+  {
+   "object": "guitar",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at guitar",
+    "how to get good at guitar fast"
+   ]
+  },
+  {
+   "object": "lacrosse",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at lacrosse",
+    "how to get good at lacrosse fast"
+   ]
+  },
+  {
+   "object": "piano",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at piano",
+    "how to get good at piano fast"
+   ]
+  },
+  {
+   "object": "pull ups",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at pull ups"
+   ]
+  },
+  {
+   "object": "two time",
+   "autocomplete_hits": 3,
+   "best_rank": 0,
+   "examples": [
+    "how to get good at two time",
+    "how to get good at two time 2026"
+   ]
+  },
+  {
+   "object": "duo",
+   "autocomplete_hits": 3,
+   "best_rank": 1,
+   "examples": [
+    "how to win at duo",
+    "how to win duo"
+   ]
+  },
+  {
+   "object": "liar's dice",
+   "autocomplete_hits": 3,
+   "best_rank": 1,
+   "examples": [
+    "how to win at liar's dice",
+    "how to win liar's dice"
+   ]
+  },
+  {
+   "object": "a nerf war",
+   "autocomplete_hits": 3,
+   "best_rank": 1,
+   "examples": [
+    "how to win a nerf war",
+    "how to win a nerf war every time"
+   ]
+  },
+  {
+   "object": "a negotiation",
+   "autocomplete_hits": 3,
+   "best_rank": 1,
+   "examples": [
+    "how to always win a negotiation",
+    "how to win a negotiation"
+   ]
+  }
+ ],
+ "candidates": [
+  {
+   "c": "nim",
+   "ac": 29,
+   "demand": 626414,
+   "dmed": 4949,
+   "best": [
+    142358,
+    "tecmath",
+    "The Game of Nim - a math game of strategy using matchst"
+   ],
+   "besty": null,
+   "nsim100k": 1
+  },
+  {
+   "c": "chopsticks hand game",
+   "ac": 9,
+   "demand": 1381823,
+   "dmed": 2779.5,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "tic tac toe",
+   "ac": 16,
+   "demand": 38539679,
+   "dmed": 122930,
+   "best": [
+    161372,
+    "Science Buddies",
+    "Simple Explanation of the Minimax Algorithm with Tic-Ta"
+   ],
+   "besty": [
+    5994,
+    "The Synthetic Mind",
+    "Genetic Algorithms Explained Visually"
+   ],
+   "nsim100k": 2
+  },
+  {
+   "c": "dots and boxes",
+   "ac": 8,
+   "demand": 2506610,
+   "dmed": 578.0,
+   "best": [
+    89338,
+    "CBS News",
+    "OpenAI unveils new AI agent called \"dots\""
+   ],
+   "besty": [
+    89338,
+    "CBS News",
+    "OpenAI unveils new AI agent called \"dots\""
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "nine men's morris",
+   "ac": 8,
+   "demand": 1138589,
+   "dmed": 7379,
+   "best": [
+    112,
+    "Lyndhurst Primary School",
+    "Maths Game: Nine Men's Morris"
+   ],
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "gomoku",
+   "ac": 6,
+   "demand": 742638,
+   "dmed": 6603.0,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "guess who",
+   "ac": 7,
+   "demand": 92681796,
+   "dmed": 349282,
+   "best": [
+    115846,
+    "HannahKettleMaths",
+    "GCSE Maths Higher \"Best Guess\" 2026 Predicted Paper"
+   ],
+   "besty": [
+    77037,
+    "HannahKettleMaths",
+    "*PAPER 3* GCSE Maths Foundation \"Best Guess\" "
+   ],
+   "nsim100k": 2
+  },
+  {
+   "c": "hangman",
+   "ac": 5,
+   "demand": 24137082,
+   "dmed": 72417.0,
+   "best": [
+    2258,
+    "aific",
+    "Hangman - Computer Game in R"
+   ],
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "rock paper scissors",
+   "ac": 22,
+   "demand": 115150848,
+   "dmed": 180894,
+   "best": [
+    4642331,
+    "Primer",
+    "Simulating the Evolution of Rock, Paper, Scissors"
+   ],
+   "besty": null,
+   "nsim100k": 1
+  },
+  {
+   "c": "mancala",
+   "ac": 15,
+   "demand": 1136137,
+   "dmed": 29241.5,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "dominoes",
+   "ac": 12,
+   "demand": 6200135,
+   "dmed": 64473.5,
+   "best": [
+    404960,
+    "Psicotécnica",
+    "🧠 Domino Psychometric Tests Solved and Explained"
+   ],
+   "besty": [
+    2033,
+    "Young Mathematicians EDC",
+    "Domino math game for preschool & kindergarten"
+   ],
+   "nsim100k": 1
+  },
+  {
+   "c": "euchre",
+   "ac": 11,
+   "demand": 1206575,
+   "dmed": 7279.0,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "rummikub",
+   "ac": 6,
+   "demand": 0,
+   "dmed": 0.0,
+   "best": [
+    2102,
+    "Cardioide",
+    "The math behind Rummikub | 5 tips to win"
+   ],
+   "besty": [
+    2102,
+    "Cardioide",
+    "The math behind Rummikub | 5 tips to win"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "sequence board game",
+   "ac": 6,
+   "demand": 3843243,
+   "dmed": 35814,
+   "best": [
+    820746,
+    "Start Practicing",
+    "Sequencing Problem | n job 2 machine sequencing Problem"
+   ],
+   "besty": null,
+   "nsim100k": 4
+  },
+  {
+   "c": "bingo",
+   "ac": 7,
+   "demand": 3040698,
+   "dmed": 73721.0,
+   "best": [
+    13099,
+    "Think Square",
+    "Thinking Bingo - a skill based maths game"
+   ],
+   "besty": [
+    19,
+    "Level Up with KJ & Moni",
+    "Math Bingo Episode 1 - Addition Facts Game fo"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "go fish",
+   "ac": 6,
+   "demand": 16168785,
+   "dmed": 194585.0,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "jenga",
+   "ac": 11,
+   "demand": 26644613,
+   "dmed": 123782.0,
+   "best": [
+    223,
+    "Untold Realities",
+    "I Solved JENGA - You're pulling wrong blocks"
+   ],
+   "besty": [
+    223,
+    "Untold Realities",
+    "I Solved JENGA - You're pulling wrong blocks"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "claw machine",
+   "ac": 10,
+   "demand": 40509830,
+   "dmed": 392764.0,
+   "best": [
+    266493,
+    "IBM Technology and IBM Developer",
+    "What is OpenClaw? Inside AI Agents, LLMs and the Agenti"
+   ],
+   "besty": [
+    266493,
+    "IBM Technology and IBM Developer",
+    "What is OpenClaw? Inside AI Agents, LLMs and "
+   ],
+   "nsim100k": 1
+  },
+  {
+   "c": "coin pusher",
+   "ac": 6,
+   "demand": 19973977,
+   "dmed": 130711.0,
+   "best": [
+    281166,
+    "Khan Academy",
+    "Counting American coins | Measurement and data | Early "
+   ],
+   "besty": [
+    9598,
+    "Kekse9355",
+    "Coin Maker Simulator Demo"
+   ],
+   "nsim100k": 1
+  },
+  {
+   "c": "ring toss",
+   "ac": 7,
+   "demand": 6074403,
+   "dmed": 34190.0,
+   "best": [
+    3851,
+    "TGT PGT By Chandra Institute",
+    "GIC Lecturer🎯 | MATHS | Ring Theory | (Concept + PYQ) 🔥"
+   ],
+   "besty": [
+    3851,
+    "TGT PGT By Chandra Institute",
+    "GIC Lecturer🎯 | MATHS | Ring Theory | (Concep"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "keno",
+   "ac": 9,
+   "demand": 1097177,
+   "dmed": 21300.0,
+   "best": [
+    107665,
+    "Casino Maths",
+    "The Maths Behind Keno"
+   ],
+   "besty": null,
+   "nsim100k": 2
+  },
+  {
+   "c": "fantasy football draft",
+   "ac": 6,
+   "demand": 1367533,
+   "dmed": 51459.0,
+   "best": [
+    1630,
+    "Davis Mattek",
+    "Top Secret Computer SOLVES Fantasy Football! (Week 8 Fa"
+   ],
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "march madness bracket",
+   "ac": null,
+   "demand": 12004746,
+   "dmed": 32027.5,
+   "best": [
+    2500,
+    "University of Nebraska High School",
+    "FYI: Probability of the Perfect March Madness Bracket"
+   ],
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "super bowl squares",
+   "ac": null,
+   "demand": 652029,
+   "dmed": 4798,
+   "best": [
+    71604,
+    "Rakesh Yadav and Careerwill SSC",
+    "SSC CGL 2026 | SSC CGL 2026 Maths Super Set 02 | SSC Ma"
+   ],
+   "besty": [
+    71604,
+    "Rakesh Yadav and Careerwill SSC",
+    "SSC CGL 2026 | SSC CGL 2026 Maths Super Set 0"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "mario party",
+   "ac": 5,
+   "demand": 29271905,
+   "dmed": 871945.5,
+   "best": [
+    2407116,
+    "MarioPartyGaming",
+    "Super Mario Party - Maths of Glory"
+   ],
+   "besty": null,
+   "nsim100k": 1
+  },
+  {
+   "c": "mario kart world",
+   "ac": 8,
+   "demand": 8293483,
+   "dmed": 316207.5,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "hide and seek",
+   "ac": 13,
+   "demand": 239740349,
+   "dmed": 539965,
+   "best": [
+    17273,
+    "Magnet Brains",
+    "Hide and Seek - Explanation | Class 4th Maths Mela | Ch"
+   ],
+   "besty": [
+    17273,
+    "Magnet Brains",
+    "Hide and Seek - Explanation | Class 4th Maths"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "musical chairs",
+   "ac": 6,
+   "demand": 154558300,
+   "dmed": 19483.5,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "tug of war",
+   "ac": 12,
+   "demand": 32459993,
+   "dmed": 64973.5,
+   "best": [
+    2437,
+    "ROYAL PIONEERS MARTUR",
+    "Digital Board Math Game - Tug of War | Royal Pioneers K"
+   ],
+   "besty": [
+    2437,
+    "ROYAL PIONEERS MARTUR",
+    "Digital Board Math Game - Tug of War | Royal "
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "darts",
+   "ac": 6,
+   "demand": 8661215,
+   "dmed": 203802.0,
+   "best": [
+    416,
+    "OneClass",
+    "PROBLEM 18 A dart thrower \"randomly\" throws darts at a "
+   ],
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "bowling",
+   "ac": 9,
+   "demand": 14904598,
+   "dmed": 359357,
+   "best": [
+    21627,
+    "JMXP",
+    "New Decorations & Kitchen! | Bowling Alley Simulator | "
+   ],
+   "besty": [
+    21627,
+    "JMXP",
+    "New Decorations & Kitchen! | Bowling Alley Si"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "mini golf",
+   "ac": 8,
+   "demand": 41706053,
+   "dmed": 102942.0,
+   "best": [
+    1062,
+    "Alfie G",
+    "Mathsframe - Subtraction Mini Golf"
+   ],
+   "besty": [
+    351,
+    "Scottish Mortgage",
+    "MiniMax The Chinese AI Lab Doing More With Le"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "pool billiards",
+   "ac": 9,
+   "demand": 36552474,
+   "dmed": 710549.0,
+   "best": [
+    1236409,
+    "Stand-up Maths",
+    "Is pool actually just mathematics?"
+   ],
+   "besty": [
+    107,
+    "Tim Maher and Tom McDowell",
+    "Pool Throw Compensation and Aiming Explained "
+   ],
+   "nsim100k": 1
+  },
+  {
+   "c": "air hockey",
+   "ac": 8,
+   "demand": 426607,
+   "dmed": 8111.5,
+   "best": [
+    155593,
+    "JEE Nexus by Unacademy ",
+    "How to Solve Every Math Problem in JEE by AIR 42🔥"
+   ],
+   "besty": [
+    7212,
+    "English by Sanjeev Thakur",
+    "Air Force 02/2027 Maths Mock Test 04 🔥 | Top "
+   ],
+   "nsim100k": 1
+  },
+  {
+   "c": "ping pong",
+   "ac": 10,
+   "demand": 22533594,
+   "dmed": 487645,
+   "best": [
+    56811,
+    "andrey chao",
+    "The most advanced intelligent table tennis serving AI r"
+   ],
+   "besty": [
+    43,
+    "ADHD Prototypes",
+    "How to Solve a Rubik's Cube | Step 7: Place t"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "cornhole",
+   "ac": null,
+   "demand": 5188191,
+   "dmed": 118291.0,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "beer pong",
+   "ac": 4,
+   "demand": 6423461,
+   "dmed": 317592,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "monopoly deal",
+   "ac": 7,
+   "demand": 12875315,
+   "dmed": 42420.0,
+   "best": [
+    12115399,
+    "b2studios",
+    "AI Learns Insane Monopoly Strategies"
+   ],
+   "besty": [
+    2779347,
+    "Perfect Play",
+    "The Best Monopoly Strategy, Tested on 300 Mil"
+   ],
+   "nsim100k": 2
+  },
+  {
+   "c": "ticket to ride",
+   "ac": 7,
+   "demand": 2086348,
+   "dmed": 24212.0,
+   "best": [
+    32163,
+    "Math The World",
+    "Proven Math Strategies for Winning Ticket to Ride"
+   ],
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "spades card game",
+   "ac": null,
+   "demand": 2795837,
+   "dmed": 27474.5,
+   "best": [
+    182,
+    "Ms Shaws Math Class",
+    "Find probabilities 3, 2, 1, 0 spades if one card is dra"
+   ],
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "hearts card game",
+   "ac": 4,
+   "demand": 1207061,
+   "dmed": 16374,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "crazy eights",
+   "ac": null,
+   "demand": 3812307,
+   "dmed": 12087.5,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "war card game",
+   "ac": null,
+   "demand": 18586753,
+   "dmed": 90148,
+   "best": [
+    407,
+    "rightstartmath",
+    "RightStart Math Card Games - Money War M4 and M5"
+   ],
+   "besty": [
+    5,
+    "Solved by Code",
+    "Can a Game of War Last Forever? I Played 2.8 "
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "egyptian ratscrew",
+   "ac": null,
+   "demand": 806414,
+   "dmed": 1479,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "bs card game",
+   "ac": null,
+   "demand": 6602598,
+   "dmed": 134081.0,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "2048",
+   "ac": null,
+   "demand": 6741091,
+   "dmed": 67258,
+   "best": [
+    1333331,
+    "Kartenovis",
+    "2048 but the AI Can't Stop Learning"
+   ],
+   "besty": [
+    1333331,
+    "Kartenovis",
+    "2048 but the AI Can't Stop Learning"
+   ],
+   "nsim100k": 1
+  },
+  {
+   "c": "tetris",
+   "ac": 6,
+   "demand": 24343758,
+   "dmed": 149618.5,
+   "best": [
+    214439,
+    "3D 4FUN",
+    "TOP 5 Pentominoes and Tetris Softbody Simulation | Who "
+   ],
+   "besty": [
+    202,
+    "Untold Realities",
+    "I Solved Tetris - Best Strategy"
+   ],
+   "nsim100k": 1
+  },
+  {
+   "c": "snake game",
+   "ac": null,
+   "demand": 27118314,
+   "dmed": 322588.5,
+   "best": [
+    2587433,
+    "Android Weekly",
+    "SNAKE RUN RACE - Color Math Games (New Update! All Snak"
+   ],
+   "besty": [
+    225998,
+    "ARBS KING",
+    "Dinosaurs and Animals Falling Into Giant Snak"
+   ],
+   "nsim100k": 3
+  },
+  {
+   "c": "solitaire",
+   "ac": 13,
+   "demand": 9954718,
+   "dmed": 195309,
+   "best": [
+    3681,
+    "Brute Force Lab",
+    "I Played 100 Million Games of Solitaire"
+   ],
+   "besty": [
+    3681,
+    "Brute Force Lab",
+    "I Played 100 Million Games of Solitaire"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "freecell",
+   "ac": null,
+   "demand": 348738,
+   "dmed": 1072,
+   "best": [
+    69,
+    "Every Outcome",
+    "Is Every FreeCell Game Winnable? I Tested 32,000 Deals"
+   ],
+   "besty": [
+    69,
+    "Every Outcome",
+    "Is Every FreeCell Game Winnable? I Tested 32,"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "spider solitaire",
+   "ac": null,
+   "demand": 227409,
+   "dmed": 1799,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "pac man",
+   "ac": 6,
+   "demand": 45092352,
+   "dmed": 68602.5,
+   "best": [
+    1652316,
+    "Retro Game Mechanics Explained",
+    "Pac-Man Ghost AI Explained"
+   ],
+   "besty": [
+    65886,
+    "StrEat",
+    "Pacman & the AI Robot Team | The Useless Butt"
+   ],
+   "nsim100k": 1
+  },
+  {
+   "c": "balatro",
+   "ac": 11,
+   "demand": 6488863,
+   "dmed": 320067.5,
+   "best": [
+    122239,
+    "Howdy ツ",
+    "Balatro Source Code Review: \"Bad\" Code & Math Tricks"
+   ],
+   "besty": [
+    122239,
+    "Howdy ツ",
+    "Balatro Source Code Review: \"Bad\" Code & Math"
+   ],
+   "nsim100k": 1
+  },
+  {
+   "c": "territorial.io",
+   "ac": 10,
+   "demand": 987286,
+   "dmed": 4061,
+   "best": [
+    6952,
+    "Balwinder Live",
+    "Territorial Army Exam Anaysis 2022| TA Maths Solved Pap"
+   ],
+   "besty": [
+    82,
+    "Competition Ka Badshah",
+    "Territorial Army Officers Paper 1,Reasoning &"
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "paper.io",
+   "ac": null,
+   "demand": 0,
+   "dmed": 0.0,
+   "best": [
+    4642331,
+    "Primer",
+    "Simulating the Evolution of Rock, Paper, Scissors"
+   ],
+   "besty": [
+    36519,
+    "Jacob Sichamba Online Math",
+    "2026 GCE Maths Paper 1, Fully Solved Paper"
+   ],
+   "nsim100k": 7
+  },
+  {
+   "c": "hoplite",
+   "ac": 10,
+   "demand": 1257085,
+   "dmed": 31365.0,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  },
+  {
+   "c": "laser tag",
+   "ac": 14,
+   "demand": 82448341,
+   "dmed": 54487,
+   "best": [
+    202,
+    "Code Harmony",
+    "Solving LeetCode 2125  Number of Laser Beams in a Bank "
+   ],
+   "besty": [
+    2,
+    "FlentOrbix1138",
+    "Let's Play Lorelei and the Laser Eyes - Part "
+   ],
+   "nsim100k": 0
+  },
+  {
+   "c": "dodgeball",
+   "ac": 8,
+   "demand": 56076321,
+   "dmed": 62342.5,
+   "best": null,
+   "besty": null,
+   "nsim100k": 0
+  }
+ ],
+ "lane_autocomplete_top40": {
+  "chess": [
+   "is the london system good",
+   "chess data",
+   "chess reduce blunders",
+   "chess prevent blunders",
+   "chess mistakes to avoid",
+   "best chess opening beginners",
+   "chess mistakes",
+   "chess elo gotham",
+   "chess most common mistakes",
+   "chess statistics in tamil",
+   "check moves in chess",
+   "what is the london system in chess",
+   "chess.com checkmates",
+   "chess.com ding liren",
+   "best chess openings as black",
+   "best chess opening no one knows",
+   "chess opening traps",
+   "chess opening mistakes",
+   "chess statistics",
+   "chess mistakes beginners make",
+   "chess mistakes in telugu",
+   "how to win at chess every time",
+   "how to win at chess next level",
+   "how to win at chess levy rozman book",
+   "how to win at chess 18",
+   "why is the london system hated",
+   "best chess openings advanced",
+   "chess mistakes in hindi",
+   "chess opening mistakes in the ruy lopez",
+   "how to win at chess book review",
+   "chess 1k elo",
+   "how to win at chess next level review",
+   "chess system openings",
+   "chess opening e5",
+   "how to win chess against your dad",
+   "chess avoid blunders",
+   "best chess opening moves",
+   "best chess opening traps",
+   "best chess opening caro kann",
+   "best chess opening for you"
+  ],
+  "maps": [
+   "map comparison",
+   "map comparison games",
+   "population maps",
+   "population map in qgis",
+   "population map in arcgis",
+   "us maps",
+   "map sizes",
+   "map comparison gta v san andreas",
+   "map size",
+   "us map for kids",
+   "map comparison red dead 1 and 2",
+   "population map of the world over time",
+   "every country song",
+   "population map of india",
+   "map animation warrior cats",
+   "us map by year",
+   "map comparison of all gta games",
+   "map comparison crimson desert",
+   "maps animation",
+   "map multi animator project",
+   "map of midterms",
+   "map of election results 2026",
+   "map of the united states",
+   "every country in the world",
+   "every country eas alarm",
+   "every country compete in basketball",
+   "every country has a monster",
+   "every country flag",
+   "every country vs usa",
+   "population map",
+   "population map animation",
+   "population map drawing",
+   "map animation after effects",
+   "map animation capcut",
+   "map animation davinci resolve",
+   "map animation x",
+   "map animation tutorial",
+   "map animation meme",
+   "map animation video",
+   "map animation open"
+  ],
+  "whatif": [
+   "zombie apocalypse simulation",
+   "what if tsunami comes",
+   "what if a tsunami",
+   "zombie apocalypse simulation game",
+   "what if a nuke hit",
+   "zombie apocalypse simulation real life",
+   "what if an asteroid hit earth",
+   "what if yellowstone blew up",
+   "zombie apocalypse simulator game",
+   "what would happen if a nuke",
+   "what if yellowstone erupts",
+   "what if yellowstone",
+   "what to do if an earthquake hits",
+   "what if the asteroid didn't hit earth",
+   "what if an asteroid hit the pacific ocean",
+   "what if a tsunami hit the east coast",
+   "what happens if an earthquake with a magnitude of 13.0 struck",
+   "what if earthquake 20",
+   "what if a tsunami hit the west coast",
+   "what if yellowstone exploded",
+   "what if north korea launched a nuke at the us",
+   "what if an asteroid hit the moon",
+   "what if an asteroid hit the ocean",
+   "what if an asteroid hit the sun",
+   "what if an asteroid hit a jello ocean",
+   "what if yellowstone erupts zack d films",
+   "what if a tsunami hit the uk",
+   "what if a mega tsunami hit the united states",
+   "what if an earthquake hit new york city",
+   "what happens if there's an earthquake",
+   "what if a nuke hit the sun",
+   "zombie apocalypse simulation reveals who actually survives",
+   "what if an asteroid hit earth at the speed of light",
+   "what to do if you see a tsunami coming",
+   "what if a nuke hit the moon",
+   "what if an asteroid didn't kill the dinosaurs",
+   "what happens if an asteroid is coming towards earth",
+   "what if an asteroid was going to hit earth",
+   "what if yellowstone was a pokemon region",
+   "what if a tsunami hit new york"
+  ]
+ },
+ "channels": [
+  {
+   "name": "Man vs Chess",
+   "url": "https://www.youtube.com/channel/UCCaryufIiRnlEWrrrpQzvHw",
+   "subs": 1280,
+   "videos": [
+    [
+     "10 Gambits That Actually Win (89 Million Lichess Games)",
+     41000,
+     1389
+    ],
+    [
+     "I Built a Chess Cheat Detector. It Found Cheating Chess.com Missed",
+     22000,
+     693
+    ],
+    [
+     "10 Chess Myths or Facts? I Checked the Data",
+     37000,
+     816
+    ],
+    [
+     "What the Black Pieces Really Cost",
+     961,
+     584
+    ],
+    [
+     "How Many Players Are Cheating? I Checked the Data",
+     33000,
+     803
+    ],
+    [
+     "The Rating Trap: Why Hikaru Won the Most... and Lost Rating",
+     486,
+     430
+    ],
+    [
+     "Chess rating systems explained. How they work, how they compare and how to influence them",
+     14000,
+     816
+    ],
+    [
+     "Improve your chess with data",
+     1200,
+     942
+    ],
+    [
+     "Chess is a global game - who has the power in 2026?",
+     173,
+     794
+    ],
+    [
+     "Candidates 2026 explainer",
+     278,
+     283
+    ],
+    [
+     "Analysing the first 5m chess games of 2026",
+     1300,
+     696
+    ],
+    [
+     "The OG AI battle - how the chess war was won",
+     883,
+     685
+    ],
+    [
+     "Reaching 1600: what have I learned?",
+     308,
+     694
+    ],
+    [
+     "1600 chase is on!",
+     81,
+     915
+    ],
+    [
+     "Learn tricks against the Queen's Gambit - it's easy and deadly (when it works).",
+     165,
+     362
+    ],
+    [
+     "How not to win against the 1400s....",
+     127,
+     1508
+    ]
+   ],
+   "shorts": [
+    [
+     "Avoid these X-ray attacks!",
+     606,
+     null
+    ],
+    [
+     "DON'T EVER allow this...",
+     1200,
+     null
+    ],
+    [
+     "DON'T fall for this endgame TRAP like I did!",
+     150,
+     null
+    ],
+    [
+     "Today's DOUBLE blunder...",
+     188,
+     null
+    ],
+    [
+     "Man vs Chess - The Daily Blunder",
+     167,
+     null
+    ],
+    [
+     "Boost your chess rating by beating the system!",
+     206,
+     null
+    ],
+    [
+     "Chess.com rating higher than FIDE??",
+     789,
+     null
+    ],
+    [
+     "Proof that better chess players nail the basics...",
+     276,
+     null
+    ],
+    [
+     "1100s vs 2400s #chess",
+     286,
+     null
+    ],
+    [
+     "Male and female chess ratings",
+     307,
+     null
+    ],
+    [
+     "When will you hit your chess peak?",
+     277,
+     null
+    ],
+    [
+     "Guess the top rated chess nation!",
+     603,
+     null
+    ],
+    [
+     "Cut out just one blunder!",
+     77,
+     null
+    ],
+    [
+     "The future of chess",
+     243,
+     null
+    ],
+    [
+     "Boom! 9-move checkmate playing Black against 1540-rated player",
+     242,
+     null
+    ],
+    [
+     "D4 disaster trap!",
+     2100,
+     null
+    ],
+    [
+     "Pre-move goes horribly wrong",
+     297,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "wintrcat",
+   "url": "https://www.youtube.com/channel/UCmi13p-wiRVNE73q841adog",
+   "subs": 31900,
+   "videos": [
+    [
+     "More Rare Anomalies in Chess",
+     152000,
+     763
+    ],
+    [
+     "Rare Anomalies in Chess",
+     1200000,
+     362
+    ],
+    [
+     "Where is the most Brilliant Chess move?",
+     376000,
+     607
+    ],
+    [
+     "How Chess Game Review REALLY works.",
+     94000,
+     286
+    ],
+    [
+     "How I coded my OWN Chess Coach!",
+     62000,
+     269
+    ],
+    [
+     "The 1,000 Player Chess Game.",
+     13000,
+     315
+    ],
+    [
+     "Analyse your Chess games for FREE.",
+     68000,
+     179
+    ],
+    [
+     "What is the most brilliant game in Chess?",
+     84000,
+     535
+    ],
+    [
+     "Storing Files in Chess Games for Free Cloud Storage",
+     181000,
+     243
+    ],
+    [
+     "Improving my Discord Spellcast Solver",
+     6400,
+     205
+    ],
+    [
+     "The Automatic YouTube Short Generator",
+     25000,
+     198
+    ],
+    [
+     "I coded a FREE Chess Game Review website.",
+     1500000,
+     204
+    ],
+    [
+     "How I solved Discord Spellcast with code",
+     21000,
+     200
+    ]
+   ],
+   "shorts": [
+    [
+     "Beating a SUSPICIOUS Chess player! #chess #chesscom",
+     2800,
+     null
+    ],
+    [
+     "STUPIDEST Chess Comeback! #chess #brilliantmove",
+     9700,
+     null
+    ],
+    [
+     "Draw this Chess position by doing... nothing!? #chess #chesspuzzle",
+     21000,
+     null
+    ],
+    [
+     "An IMPOSSIBLE Chess puzzle? #chess #chesspuzzle",
+     17000,
+     null
+    ],
+    [
+     "Craziest EQUAL Chess position! #chess #chesspuzzle #brilliantmove",
+     2500,
+     null
+    ],
+    [
+     "Chess positions at the end of the world #chess #chesspuzzle #brilliantmove",
+     4000,
+     null
+    ],
+    [
+     "Do you think this move is BRILLIANT? #chess #brilliantmove #gamereview",
+     2400,
+     null
+    ],
+    [
+     "I coded my OWN Chess Coach! #chess #chesstactics",
+     6900,
+     null
+    ],
+    [
+     "What is the craziest game in Chess? #chess #brilliantmove #shorts",
+     9700,
+     null
+    ],
+    [
+     "BRILLIANT MOVE! Can you find it? #chess #brilliantmove #shorts",
+     6500,
+     null
+    ],
+    [
+     "How to get Chess Game Review and analysis for FREE #shorts #chess #brilliantmove",
+     62000,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "ZoomZike",
+   "url": "https://www.youtube.com/channel/UCiSVflez5qi1cLwh6rg5Kyw",
+   "subs": 105000,
+   "videos": [
+    [
+     "Identifying Luck: Mario Party: The Top 100",
+     81000,
+     4681
+    ],
+    [
+     "Identifying Luck: Mario Party Star Rush",
+     60000,
+     6925
+    ],
+    [
+     "Identifying Luck: Mario Party 10",
+     136000,
+     9253
+    ],
+    [
+     "Identifying Luck: Mario Party: Island Tour",
+     110000,
+     9651
+    ],
+    [
+     "Identifying Luck: Mario Party 9",
+     275000,
+     19033
+    ],
+    [
+     "Identifying Luck: Mario Party DS",
+     395000,
+     16285
+    ],
+    [
+     "Mario Party's Minigame Labels Are Hilariously Wrong",
+     92000,
+     785
+    ],
+    [
+     "Do You Really Know Classic Sonic?",
+     73000,
+     1187
+    ],
+    [
+     "Final Rush Is Great For All The Wrong Reasons",
+     123000,
+     1396
+    ],
+    [
+     "Identifying Luck: Mario Party 8",
+     1200000,
+     12850
+    ],
+    [
+     "Identifying Luck: Mario Party 7",
+     620000,
+     19521
+    ],
+    [
+     "Super Mario RPG in a Nutshell",
+     39000,
+     212
+    ],
+    [
+     "Eternal Engine is Eternal Suffering",
+     70000,
+     735
+    ],
+    [
+     "Respect Emerald Coast",
+     65000,
+     1015
+    ],
+    [
+     "The Wacky History of Mario Day",
+     45000,
+     680
+    ],
+    [
+     "Sonic's Speed is Fundamentally Flawed",
+     96000,
+     673
+    ],
+    [
+     "Super Mario World Doesn't Have A \"First Level\"",
+     581000,
+     569
+    ],
+    [
+     "Wario Colosseum is BOOTY",
+     402000,
+     211
+    ],
+    [
+     "The Super Smash Bros. Melee Trophy Compendium",
+     62000,
+     5441
+    ],
+    [
+     "The Mystery of Marty",
+     218000,
+     392
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Arcade Matt",
+   "url": "https://www.youtube.com/channel/UCMe8Y3zO7_la3uHaWR3OVrg",
+   "subs": 1850000,
+   "videos": [
+    [
+     "I Found Arcade Game GLITCHES To Win Non-Stop JACKPOTS",
+     109000,
+     1049
+    ],
+    [
+     "I Tried Winning EVERY Carnival Game With $100",
+     107000,
+     1035
+    ],
+    [
+     "Can I Win The BIGGEST Carnival Prize As A Screamster?",
+     96000,
+     1556
+    ],
+    [
+     "I Played A Weird High Risk UK Coin Pusher!",
+     346000,
+     966
+    ],
+    [
+     "This NEW Coin Pusher Is Unlike Anything You've Seen!",
+     113000,
+     926
+    ],
+    [
+     "I Won The Most Impossible Jackpot At The Arcade",
+     164000,
+     1258
+    ],
+    [
+     "I Won A Carnival Game That Admits It's RIGGED",
+     99000,
+     784
+    ],
+    [
+     "I Got Once In A Lifetime Wins At This Clawcade!",
+     447000,
+     1164
+    ],
+    [
+     "My Camera Guy Took Over The Channel (And Couldn't Stop Winning)",
+     105000,
+     859
+    ],
+    [
+     "I Bet ALL Of My Arcade Tickets On A Mascot Go-Kart Race!",
+     85000,
+     1816
+    ],
+    [
+     "I Got IMPOSSIBLE Claw Machine Wins That Shouldn't Have Happened!",
+     72000,
+     916
+    ],
+    [
+     "IMPOSSIBLE Japanese Arcade Game Made Me LOSE IT",
+     108000,
+     1212
+    ],
+    [
+     "We Pulled Off IMPOSSIBLE Claw Machine Wins",
+     96000,
+     1787
+    ],
+    [
+     "Can I Win The GOLD Prize From A Coin Pusher?",
+     193000,
+     1255
+    ],
+    [
+     "Can I Turn $100 Into PROFIT Playing Claw Machines?",
+     113000,
+     1256
+    ],
+    [
+     "The UNEXPECTED Happened Playing Carnival Games",
+     75000,
+     1038
+    ],
+    [
+     "Can I Win The LAST GIANT Gummy Bear Prize?",
+     84000,
+     1336
+    ],
+    [
+     "What's Inside The Mystery Box Claw Machine?",
+     135000,
+     885
+    ],
+    [
+     "I Couldn't Stop WINNING At These Claw Machines! *NEW RECORD*",
+     133000,
+     1252
+    ],
+    [
+     "I Can't Leave The Carnival Until I Win The Gold Prize",
+     184000,
+     679
+    ]
+   ],
+   "shorts": [
+    [
+     "Can I Win The Playstation Headset Stand for 6,000 Tickets? #shorts",
+     69000,
+     null
+    ],
+    [
+     "Winning SpongeBob Socks at the Arcade!",
+     170000,
+     null
+    ],
+    [
+     "Trick to Win the \"Stop The Light\" Game",
+     239000,
+     null
+    ],
+    [
+     "Winning Gudetama for 950 Tickets, in 3 Plays!",
+     112000,
+     null
+    ],
+    [
+     "Can I Win Giant Pikachu?",
+     130000,
+     null
+    ],
+    [
+     "Weird Things in My Uncle's MASSIVE Toy Collection",
+     67000,
+     null
+    ],
+    [
+     "Will It Claw? Mini Arcade Machine #Shorts",
+     113000,
+     null
+    ],
+    [
+     "Trick To Win Cyclone #Shorts",
+     64000,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "Abacaba",
+   "url": "https://www.youtube.com/channel/UCeV6iT4UbZMq_dZVXiYy_OA",
+   "subs": 116000,
+   "videos": [
+    [
+     "Abacaba channel update, Dec 2022 (I'm merging Abacaba with carykh!)",
+     45000,
+     598
+    ],
+    [
+     "COVID-19 2021Jun24 update. Final COVID19 video, I’ve retired! (Data-viz source code now open-source)",
+     90000,
+     1371
+    ],
+    [
+     "Super Mario Bros speedrun history [Animated Bar Graph] [REUPLOAD]",
+     36000,
+     420
+    ],
+    [
+     "Most-commented Subreddits (r/wallstreetbets)",
+     118000,
+     196
+    ],
+    [
+     "Redoing COVID-19 data-vizzes (January 20, 2021 update)",
+     78000,
+     381
+    ],
+    [
+     "Celeste speedrun history [ANIMATED BAR GRAPH]",
+     35000,
+     381
+    ],
+    [
+     "Mask-wearing and COVID-19 correlation in the US (Jan 10th update)",
+     36000,
+     408
+    ],
+    [
+     "Girl's names: Which are oldest vs. youngest?",
+     100000,
+     746
+    ],
+    [
+     "Abacaba-style coding tutorial - Part 1 (Introduction)  [PART 2 IS LINKED IN THE DESCRIPTION]",
+     22000,
+     375
+    ],
+    [
+     "COVID-19 bubbles for every country (Nov 6, 2020 update)",
+     186000,
+     937
+    ],
+    [
+     "Undertale speedrun history [ANIMATED BAR GRAPH]",
+     34000,
+     253
+    ],
+    [
+     "History of Minecraft speedrun world records over time (RSG)",
+     433000,
+     669
+    ],
+    [
+     "(October 13, 2020 update) COVID-19 vs other 2000s epidemics",
+     109000,
+     239
+    ],
+    [
+     "The history of online slang (according to Urban Dictionary) (1999-2020)",
+     43000,
+     870
+    ],
+    [
+     "Coronavirus in each US state and Korean province (June 27th update)",
+     83000,
+     412
+    ],
+    [
+     "LineGraph-TimeLapse of EliGabRet, ArcaPlays, and Humany's YouTube channels!",
+     30000,
+     619
+    ],
+    [
+     "Top Stack Overflow Tags Over Time (2008-2020)",
+     24000,
+     230
+    ],
+    [
+     "Police Killings in the US and the UK, 2009-2020",
+     89000,
+     527
+    ],
+    [
+     "Coronavirus in Brazil, the US, and the world (May 31st update)",
+     219000,
+     857
+    ],
+    [
+     "LineGraph-TimeLapse of Diamondcup67 and Meester Tweester's YouTube Channels!",
+     40000,
+     439
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Tom Delalande",
+   "url": "https://www.youtube.com/channel/UCYuQjtwffrSIzfswH3V24mQ",
+   "subs": 58800,
+   "videos": [
+    [
+     "Everyone is wrong about ArtCraft",
+     70000,
+     592
+    ],
+    [
+     "Give me 8 minutes and I will make you an AI Engineer",
+     16000,
+     462
+    ],
+    [
+     "Making AI Slop to avoid Subscriptions",
+     40000,
+     328
+    ],
+    [
+     "How to beat a monopoly - Linear Case Study",
+     158000,
+     1110
+    ],
+    [
+     "Average ThePrimeagen Video Be Like",
+     25000,
+     571
+    ],
+    [
+     "Average Theo video be like",
+     134000,
+     288
+    ],
+    [
+     "You've Been Using Git Wrong",
+     41000,
+     703
+    ],
+    [
+     "ThreeJS & WebGPU",
+     32000,
+     250
+    ],
+    [
+     "I was wrong about AI coding agents",
+     14000,
+     726
+    ],
+    [
+     "Serverless Computing is Pointless and Overpriced",
+     31000,
+     295
+    ],
+    [
+     "Claude Code Agents Are Completely Useless",
+     143000,
+     499
+    ],
+    [
+     "The 7 CLI tools I can't live without",
+     19000,
+     408
+    ],
+    [
+     "Obligatory ClawdBot video but I hate it and think it's useless (and talk about something else)",
+     7000,
+     262
+    ],
+    [
+     "The modern internet is uninspired and over-industrialized",
+     15000,
+     711
+    ],
+    [
+     "Omarchy – The Good, The Bad & The Ugly",
+     65000,
+     1024
+    ],
+    [
+     "AWS is 10x slower than a dedicated server for the same price",
+     177000,
+     784
+    ],
+    [
+     "The solo project making $10M a year - Sidekiq Case Study",
+     13000,
+     301
+    ],
+    [
+     "Create a custom game engine like DOOM",
+     5500,
+     628
+    ],
+    [
+     "Okay, but do you REALLY need containers?",
+     19000,
+     461
+    ],
+    [
+     "The Perfect Startup is the Boring One You've Never Heard Of - Case Study",
+     66000,
+     1047
+    ]
+   ],
+   "shorts": [
+    [
+     "The next video is a case study on Linear",
+     1100,
+     null
+    ],
+    [
+     "What the Rust Community Refuses To Admit",
+     8300,
+     null
+    ],
+    [
+     "Slack Is Ransomware #coding #programming",
+     7800,
+     null
+    ],
+    [
+     "Truffle Hog - Everything You Need To Know  #coding #programming #security",
+     5900,
+     null
+    ],
+    [
+     "Landing pages in 2024 are too animated #coding #programming",
+     4400,
+     null
+    ],
+    [
+     "you should test in production",
+     8200,
+     null
+    ]
+   ]
+  }
+ ]
+}

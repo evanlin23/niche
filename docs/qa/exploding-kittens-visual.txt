@@ -1,0 +1,150 @@
+VISUAL QA: exploding-kittens
+
+RESULT: FAIL  (79 errors, 49 warnings)
+by check: coverage error:6, cut error:2, overlap error:19, safe error:52, numbers info:28, anchors warn:4, numbers warn:39, safe warn:6
+
+[across scenes]
+  ERROR safe                     label 'BUH SIMULATES' (text) leaves the title-safe area by 40px  -> 32 scenes: cold, hookrank, five, rules, check, cantlie, meet, ranking, testsetup, m1, patience, odds, m2, dodge, attacks, m3, future, countdiv, m4, placement, confession, m5, steal, small, seats, twoplayer, tables, length, strategy, final, lie, ask
+  WARN  numbers                  '25.0%' shows 25, not said in this scene  -> 5 scenes: dodge, future, small, small, final
+
+[cold]  (20.3s, 232 events)
+  ERROR safe        0.00-13.20 s label 'THE NORMAL PLAYER' (text) leaves the title-safe area by 51px
+  ERROR safe        0.10-11.00 s label 'SEE THE FUTURE' (text) leaves the title-safe area by 20px
+  ERROR safe        0.50-20.23 s label 'THE PATIENT ONE' (text) leaves the title-safe area by 54px
+  ERROR safe        0.60-0.90  s label 'FAVOR' (text) leaves the title-safe area by 13px
+  ERROR safe        1.50-1.80  s label 'YUP!' (text) leaves the title-safe area by 13px
+  ERROR safe        2.00-2.30  s label 'SKIP' (text) leaves the title-safe area by 13px
+  ERROR safe        6.30-18.60 s label 'DEFUSED' (text) leaves the title-safe area by 53px
+  ERROR safe        7.30-17.70 s label 'STEAL' (text) leaves the title-safe area by 51px
+  ERROR safe       11.50-16.50 s label 'THE HOARDER' (text) leaves the title-safe area by 28px
+  ERROR safe       11.60-19.60 s label 'BOOM' (text) leaves the title-safe area by 54px
+  ERROR safe       18.80-19.10 s label 'SHUFFLE' (text) leaves the title-safe area by 54px
+  ERROR safe       18.90-19.40 s label 'THE GAMBLER' (text) leaves the title-safe area by 2px
+  ERROR safe       19.50-20.23 s label 'OUT' (text) leaves the title-safe area by 3px
+  WARN  numbers     4.40-4.40  s 'ATTACK → P3' shows 3, not said in this scene
+  WARN  numbers     5.90-5.90  s 'ATTACK → P4' shows 4, not said in this scene
+  WARN  numbers    14.40-14.40 s '5 bots at one table' shows 5, not said in this scene
+
+[five]  (6.9s, 1 events)
+  ERROR coverage    0.00-6.87  s 6.9 s with no new visual event while narrating (o5): add a word-anchored event
+
+[title]  (1.3s, 3 events)
+  WARN  safe        0.00-0.00  s 9 objects (auto) partly off-screen (up to 3418px): check props stay in frame
+
+[rules]  (54.0s, 194 events)
+  ERROR overlap     3.10-4.70  s labels overlap: '5 × Nope' and 'Everyone draws from one deck' (2230 px²)
+  ERROR overlap     3.40-4.70  s labels overlap: '5 × See the Future' and 'Everyone draws from one deck' (4841 px²)
+  ERROR overlap     6.40-6.50  s labels overlap: '5 × Nope' and '…unless you have a Defuse' (2159 px²)
+  ERROR overlap     6.40-6.50  s labels overlap: '5 × See the Future' and '…unless you have a Defuse' (4191 px²)
+  ERROR overlap     8.10-10.60 s labels overlap: '5 × Nope' and 'Every other card: avoid drawing' (2111 px²)
+  ERROR overlap     8.10-10.60 s labels overlap: '5 × See the Future' and 'Every other card: avoid drawing' (4583 px²)
+  ERROR overlap    11.30-13.90 s labels overlap: '5 × Nope' and 'Last player standing wins' (3499 px²)
+  ERROR overlap    11.30-13.90 s labels overlap: '5 × See the Future' and 'Last player standing wins' (6519 px²)
+  ERROR overlap    18.50-21.20 s labels overlap: '5 × Nope' and 'Play as many cards as you like…' (2313 px²)
+  ERROR overlap    18.50-21.20 s labels overlap: '5 × See the Future' and 'Play as many cards as you like…' (5047 px²)
+  ERROR safe       19.90-54.00 s label '4 × Exploding Kittens' (text) leaves the title-safe area by 27px
+  ERROR overlap    21.50-23.40 s labels overlap: '5 × Nope' and '…then draw one card' (1840 px²)
+  ERROR overlap    21.50-23.40 s labels overlap: '5 × See the Future' and '…then draw one card' (3117 px²)
+  ERROR overlap    23.70-26.60 s labels overlap: '5 × Nope' and 'That draw is where you explode' (2609 px²)
+  ERROR overlap    23.70-26.60 s labels overlap: '5 × See the Future' and 'That draw is where you explode' (5663 px²)
+  ERROR overlap    45.30-45.40 s labels overlap: '5 × Nope' and 'Official rulebook · original edition' (1732 px²)
+  ERROR overlap    45.30-45.40 s labels overlap: '5 × See the Future' and 'Official rulebook · original edition' (3758 px²)
+  WARN  numbers     3.10-3.10  s '5 × Nope' shows 5, not said in this scene
+  WARN  numbers     3.50-3.50  s '5 × See the Future' shows 5, not said in this scene
+  WARN  numbers     3.80-3.80  s '20 × Cat cards' shows 20, not said in this scene
+
+[check]  (15.0s, 3 events)
+  ERROR coverage    7.10-15.02 s 7.9 s with no new visual event while narrating (c2, c3): add a word-anchored event
+  WARN  anchors                  statement line 'math says 13.04%' is not timed to a spoken word (first word not said): give it an 'at' anchor
+
+[cantlie]  (15.7s, 31 events)
+  WARN  safe        3.00-15.70 s 35 objects (auto) partly off-screen (up to 1438px): check props stay in frame
+
+[meet]  (21.9s, 37 events)
+  ERROR safe        2.20-10.30 s label 'The Normal Player' (text) leaves the title-safe area by 28px
+  ERROR safe       10.70-12.80 s label 'The Gambler' (text) leaves the title-safe area by 12px
+  ERROR safe       13.20-16.20 s label 'The Panicker' (text) leaves the title-safe area by 20px
+  ERROR safe       16.50-19.00 s label 'The Hoarder' (text) leaves the title-safe area by 24px
+  ERROR safe       19.30-21.87 s label 'The Patient One' (text) leaves the title-safe area by 49px
+
+[ranking]  (13.1s, 19 events)
+  ERROR overlap     3.20-3.20  s labels overlap: '17.3%' and 'fair share 20%' (1313 px²)
+
+[patience]  (11.1s, 15 events)
+  ERROR cut        11.10-11.10 s object Mesh#15 (auto) still moving at the cut (0.98 units/s)
+
+[odds]  (16.8s, 56 events)
+  ERROR coverage   10.20-15.60 s 5.4 s with no new visual event while narrating (p5): add a word-anchored event
+  WARN  numbers     4.90-4.90  s 'First draw: 3 Kittens in 23 cards' shows 3, not said in this scene
+  WARN  numbers     4.90-4.90  s 'First draw: 3 Kittens in 23 cards' shows 23, not said in this scene
+  WARN  numbers     5.10-5.10  s '13% (about 1 in 7)' shows 13, not said in this scene
+  WARN  numbers     7.20-7.20  s 'Last few draws, e.g. 3 Kittens in 4 cards' shows 3, not said in this scene
+  WARN  numbers     7.20-7.20  s 'Last few draws, e.g. 3 Kittens in 4 cards' shows 4, not said in this scene
+  WARN  safe        7.50-7.90  s 19 objects (auto) partly off-screen (up to 297px): check props stay in frame
+
+[dodge]  (22.3s, 23 events)
+  WARN  numbers     8.80-8.80  s 'dodge at 1 in 3' shows 3, not said in this scene
+  WARN  numbers     9.40-9.40  s '18.9%' shows 18.9, not said in this scene
+  WARN  numbers     9.70-9.70  s '22.7%' shows 22.7, not said in this scene
+
+[attacks]  (18.0s, 13 events)
+  WARN  numbers     4.70-4.70  s '22.8%' shows 22.8, not said in this scene
+  WARN  numbers    10.30-10.30 s '38.2%' shows 38.2, not said in this scene
+  WARN  numbers    14.20-14.20 s '7.4%' shows 7.4, not said in this scene
+
+[future]  (16.8s, 16 events)
+  ERROR coverage    6.10-11.60 s 5.5 s with no new visual event while narrating (f2, f3): add a word-anchored event
+  WARN  numbers     4.00-4.00  s '22.6%' shows 22.6, not said in this scene
+  WARN  numbers     6.70-6.70  s '22.3%' shows 22.3, not said in this scene
+
+[countdiv]  (9.9s, 47 events)
+  WARN  numbers     1.70-1.70  s '15 cards ÷ 3 Kittens = 5' shows 15, not said in this scene
+  WARN  numbers     1.70-1.70  s '15 cards ÷ 3 Kittens = 5' shows 5, not said in this scene
+  WARN  numbers     5.00-5.00  s '9 cards ÷ 3 Kittens = 3' shows 9, not said in this scene
+  WARN  safe        5.30-8.30  s 9 objects (auto) partly off-screen (up to 328px): check props stay in frame
+
+[m4]  (2.9s, 1 events)
+  WARN  anchors                  statement line 'hiding the Kitten' is not timed to a spoken word (first word not said): give it an 'at' anchor
+  WARN  anchors                  statement line 'in the wrong place.' is not timed to a spoken word (first word not said): give it an 'at' anchor
+
+[placement]  (32.4s, 54 events)
+  ERROR safe       17.90-32.33 s label 'TOP OF DECK' (text) leaves the title-safe area by 17px
+  WARN  numbers    10.70-10.70 s '23.7%' shows 23.7, not said in this scene
+
+[confession]  (14.8s, 6 events)
+  WARN  anchors                  statement line 'Guesses get labelled.' is not timed to a spoken word (first word not said): give it an 'at' anchor
+
+[small]  (21.1s, 23 events)
+  ERROR coverage    0.30-5.60  s 5.3 s with no new visual event while narrating (x1, x2): add a word-anchored event
+  ERROR overlap    15.10-15.10 s labels overlap: '20.4%' and 'fair share 25%' (729 px²)
+
+[seats]  (14.7s, 14 events)
+  ERROR coverage    0.30-6.30  s 6.0 s with no new visual event while narrating (t1, t2): add a word-anchored event
+  WARN  numbers     7.50-7.50  s '47.7%' shows 47.7, not said in this scene
+  WARN  numbers    10.70-10.70 s '20.5%' shows 20.5, not said in this scene
+  WARN  numbers    12.00-12.00 s '19.6%' shows 19.6, not said in this scene
+
+[twoplayer]  (20.4s, 20 events)
+  ERROR overlap     4.60-4.60  s labels overlap: '38.9%' and 'fair share 50%' (1051 px²)
+  WARN  numbers     4.90-4.90  s '50.0%' shows 50, not said in this scene
+  WARN  numbers    20.20-20.20 s '41.3%' shows 41.3, not said in this scene
+
+[tables]  (20.0s, 16 events)
+  WARN  numbers    11.00-11.00 s '50.2%' shows 50.2, not said in this scene
+  WARN  numbers    11.50-11.50 s 'Four Patient Ones: exactly 25% each' shows 25, not said in this scene
+
+[length]  (7.3s, 9 events)
+  ERROR cut         7.34-7.34  s object Mesh#9 (auto) still moving at the cut (0.32 units/s)
+
+[strategy]  (14.8s, 14 events)
+  WARN  safe        0.00-0.00  s 6 objects (auto) partly off-screen (up to 2646px): check props stay in frame
+
+[final]  (10.7s, 26 events)
+  WARN  numbers     4.50-4.50  s '33.3%' shows 33.3, not said in this scene
+  WARN  numbers     4.80-4.80  s '51.1%' shows 51.1, not said in this scene
+  WARN  numbers     7.10-7.10  s '50.0%' shows 50, not said in this scene
+  WARN  numbers     9.30-9.30  s '29.5%' shows 29.5, not said in this scene
+
+[endcard]  (12.0s, 3 events)
+  WARN  safe        0.00-0.00  s 3 objects (auto) partly off-screen (up to 1716px): check props stay in frame
+

@@ -10,9 +10,16 @@ from pathlib import Path
 from typing import Callable
 
 import numpy as np
-import skia
 
-from . import style as S
+try:                      # 2D (skia) engine only; the 3D engine (render3d) works without it
+    import skia
+except ImportError:       # e.g. no libEGL on the machine
+    skia = None
+
+try:
+    from . import style as S
+except ImportError:
+    S = None
 
 
 @dataclass
@@ -38,7 +45,7 @@ def preview(fmt: Format) -> Format:
     return Format(fmt.name, fmt.width, fmt.height, 30, 480 / min(fmt.width, fmt.height))
 
 
-DrawFn = Callable[[skia.Canvas, float, int], None]   # (canvas, t_seconds, frame_index)
+DrawFn = Callable[[object, float, int], None]   # (canvas, t_seconds, frame_index)
 
 
 def render_video(path: Path, fmt: Format, duration: float, draw: DrawFn,
@@ -73,7 +80,7 @@ def render_video(path: Path, fmt: Format, duration: float, draw: DrawFn,
     return path
 
 
-def render_still(path: Path, width: int, height: int, draw: Callable[[skia.Canvas], None]) -> Path:
+def render_still(path: Path, width: int, height: int, draw: Callable[[object], None]) -> Path:
     surface = skia.Surface(width, height)
     with surface as c:
         c.clear(S.BG)

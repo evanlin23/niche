@@ -57,6 +57,10 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   of words not yet spoken sits on the floor. Statement scenes show their first line from the start (never
   open on an empty floor); later lines appear on their spoken cue.
 - Keep decorative props fully in frame and clear of text (the checklist card fan was half off-screen).
+- **Stacking order must match deck order.** In a spread row each card lies a little higher than the next; an
+  inserted card must sit between its neighbours' heights (under the card before it), with a gap at least two card
+  thicknesses tall and wide enough that ~1 card step of it shows. The Kitten "at the bottom" used to lie on top of
+  the last card, so a card showed under it (creator spotted it).
 - While a rules line names each card, light up that pile (lift + mustard label), timed from the word cues.
 
 ## Visuals follow the voice (creator feedback on video 1)
@@ -170,6 +174,9 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   file, lowering the ceiling until the decoded peak is <= -1 dBFS.
 
 ## Packaging
+- **Titles never use the copycat template** ("Tested on N games", "I simulated N games", a big number first):
+  ~40 copycat channels use it (median 58 views). Lead with one specific claim or question; numbers stay inside
+  the video. Same for Short titles, hooks, description first lines and thumbnails (no small % next to a big %).
 - **Never link the code** (repo, simulator) in descriptions, end cards or comments. The creator's call.
 - **Length: at least 8:00** (mid-roll ads), with margin (aim ~8:20). If short, add real content from unused
   data or a fuller game primer (rules from the official sheet), never filler. Order: what the game is ->
@@ -192,20 +199,32 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - Plan ~14 episodes ahead; research + build in parallel with docs/agent-prompts/game-research-and-sim.md
   (give that agent its own branch).
 
+## Gates, not eyeballs
+- The creator wants quality ensured by a process. Every rule above that can be measured is a gate
+  (`make voice`, `make qa-visual`, `make qa-final`); a new lesson that can be measured becomes a check in
+  `pipeline/qa_visual.py` / `voice_gate.py` / `qa_final.py` plus a test in `tests/test_qa_gates.py` that proves it fires.
+- What no gate caught (the Kitten "at the bottom" with a card under it) is a reason to add a template rule,
+  not to eyeball harder.
+
 ## Per-episode checklist
 1. Demand/competition scan → pick game → confirm public rules (save source link in RULES.md).
 2. Go engine + rule tests → baseline "normal" bot → one-variable experiments → mirror check → big run on Actions.
 3. Script in the PerfectPlay-style structure → lint → read aloud.
-4. Scenes: map every line; contact sheet of stills.
-5. Recording sheet → one long take → `make split` → `find_stumbles` → `tighten_voice` → `audio_qa`
-   → `match_voice` → full-narration check vs script → listen-list (narration mp3 + cut list) → pick-ups.
-6. Render on Actions (recorded timing) → assemble locally with voice + music → contact sheet, brightness-dip
-   scan, loudness (-14 LUFS), caption check.
+4. Scenes from the kit (docs/scene-kit.md): map every line; `make stills` (+ `VERTICAL=1`); `make qa-visual` PASS.
+5. Recording sheet → one long take → `make voice SLUG=... REC=...` (whole chain + final check) PASS → send
+   `voice/_listen.mp3` + the cut list from `voice/_report_voice.txt` → pick-ups.
+6. Render on Actions (recorded timing) → assemble locally with voice + music → `make qa-visual VIDEO=...` and
+   `make qa-final` PASS (contact sheet, black frames/flashes, -14 LUFS, peak, length, captions).
 7. Upload kit: 3 titles + 3 thumbnails, description with chapters, SRT, pinned comment, end screen.
 
 ## Shorts
 - Cut from the finished long video (`python -m pipeline.shorts_cut episodes/<slug>`, segments in
   `episodes/<slug>/shorts_cut.yaml`): hook headline on top, the 16:9 video full-width, big 1-3 word captions from
   the aligned words, "Full video on my channel" + Buh at the bottom. Same voice and music as the long video.
+- **First second decides everything** (first going-first Short kept 24% of viewers: static header over an empty
+  table, chart grew seconds later). Native Shorts open on the spoken hook (scenes can jump: hook line first, then
+  the setup), the main visual is pre-built so frame 1 shows it nearly done and still moving, the camera dollies in
+  from frame 1, and the anchored words become emphasis pulses. The `opening` gate measures it (frame-1 fill >= 60%
+  of the clip's median, motion in the first 0.5 s / 1 s). Target: 60%+ stayed to watch.
 - Pick self-contained 15-35 s moments with a question or a surprising number. Always link the long video
   (Shorts editor -> Related video). Use the caption-free render as the source.

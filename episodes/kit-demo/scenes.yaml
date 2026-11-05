@@ -1,0 +1,175 @@
+# Kit demo: one scene per template. Render stills: python -m pipeline.stills kit-demo [--vertical]
+engine: 3d
+look: clean-sage
+quality: normal
+burn_captions: false
+scenes:
+- id: title
+  render: title
+  min_duration: 2.5
+  params:
+    lines: [1 Billion Games of, Exploding Kittens]
+- id: statement
+  render: statement
+  lines: [s1, s2]
+  params:
+    callouts:
+    - {text: "One habit", at: s1@habit}
+    - {text: "1,000,000,000 games", at: s2@billion}
+    lines:
+    - Same cards.
+    - {text: One habit changed everything., color: MUSTARD, at: s1@one}
+- id: ranking
+  render: bars
+  lines: [r1]
+  params:
+    title: One table, three bots
+    callouts:
+    - {text: "Best: patient", at: r1@best}
+    notes:
+    - {text: "Seats shuffled every game", at: r1@normal}
+    chart:
+      players: 3
+      fair: 33.3
+      items:
+      - {label: The best bot, value: "=demo.json:ranking[name=best].win*100", color: MUSTARD, at: r1@thirty, hl: true}
+      - {label: The Normal Player, value: "=demo.json:ranking[name=normal].win*100", at: r1@twenty}
+      - {label: The worst bot, value: "=demo.json:ranking[name=worst].win*100", color: CORAL, at: r1@eleven}
+- id: deck
+  render: deck
+  lines: [d1]
+  params:
+    title: The deck
+    pill: 4 players
+    name_words: {kittens: 0, kitten: 0, defuse: 1, cat: 2}
+    piles:
+    - {card: 0, count: 4, label: 4 × Exploding Kitten}
+    - {card: 1, count: 6, label: 6 × Defuse}
+    - {card: [8, 9, 10, 11, 12], count: 20, label: 20 × Cat cards}
+- id: placement
+  render: deck
+  lines: [p1]
+  params:
+    title: Where to put the Kitten back
+    callouts:
+    - {text: "The bottom feels safe…", at: p1@bottom}
+    row: {count: 12}
+    hero: 0
+    plan: [[p1@random, 6], [p1@bottom, 12], [p1@top, 0]]
+    chart:
+      players: 4
+      fair: 25
+      items:
+      - {label: random, value: "=demo.json:placement.random*100", at: p1@five}
+      - {label: bottom, value: "=demo.json:placement.bottom*100", color: CORAL, at: p1@twenty_three}
+      - {label: top, value: "=demo.json:placement.top*100", color: TEAL, at: p1@nine}
+      - {label: next player's draw, value: "=demo.json:placement.next*100", color: MUSTARD, at: p1@thirty, hl: true}
+- id: fan
+  render: fan
+  lines: [f1]
+  params:
+    title: Your hand
+    seat_label: YOU
+    cards: [3, 6, 1, 8, 2]
+    highlights:
+    - {card: 0, at: f1@skip, label: SKIP}
+    - {card: 1, at: f1@nope, label: NOPE}
+    - {card: 2, at: f1@defuse, label: DEFUSE}
+    play:
+    - {card: 4, at: f1@attack}
+- id: table
+  render: table
+  lines: [t1]
+  params:
+    title: Four players
+    players: 4
+    names: [YOU, THE GAMBLER, THE PANICKER, THE HOARDER]
+    highlight: [[0, t1@first], [1, t1@second], [2, t1@third]]
+    turns:
+    - {at: t1@plays, seat: 0, ev: play, card: 3, label: SKIP}
+    - {at: t1@draws, seat: 1, ev: draw}
+    - {at: t1@attacked, seat: 2, ev: play, card: 2, label: ATTACK}
+- id: lineup
+  render: lineup
+  lines: [m1]
+  params:
+    title: Meet the bots
+    bots:
+    - name: The Gambler
+      color: CORAL
+      at: m1@gambler
+      habits: [{text: Plays cards on a whim, at: m1@whim}]
+    - name: The Panicker
+      color: MUSTARD
+      at: m1@panicker
+      habits: [{text: Skips at the first sign of danger, at: m1@skips}]
+    - name: The Patient One
+      color: BLUE
+      at: m1@patient
+      habits: [{text: Waits, at: m1@waits}]
+- id: checkers
+  render: grid
+  lines: [g1]
+  params:
+    title: Checkers
+    pill: 2 players
+    rows: 8
+    cols: 8
+    style: checkers
+    pieces: [[5, 0, RED], [5, 2, RED], [4, 3, RED], [2, 5, RED], [2, 1, BLACK], [1, 4, BLACK]]
+    highlight: [{at: g1@side, until: g1@then, cells: [[4, 1]]}]
+    moves:
+    - {at: g1@first, from: [5, 0], to: [4, 1]}
+    - {at: g1@jumps, from: [2, 1], to: [6, 5], capture: [[4, 3]], king: false}
+    - {at: g1@king, from: [6, 5], to: [7, 4], king: true}
+- id: connect4
+  render: grid
+  lines: [c1]
+  params:
+    title: Connect Four
+    pill: 2 players
+    rows: 6
+    cols: 7
+    style: connect4
+    highlight: [{at: c1@middle, cells: [[5, 3], [4, 3], [3, 3]]}]
+    moves:
+    - {at: c1@drops, col: 3, color: RED}
+    - {at: c1@answers, col: 1, color: YELLOW}
+- id: sorry
+  render: track
+  lines: [k1]
+  params:
+    title: A track board
+    pill: 4 players
+    length: 60
+    slides: [{from: 1, len: 4, player: 0}, {from: 16, len: 4, player: 1}]
+    pawns: [{id: r1, player: 0, on: start}, {id: b1, player: 1, on: 30}]
+    moves:
+    - {at: k1@leaves, pawn: r1, to: 4}
+    - {at: k1@seven, pawn: r1, to: 11}
+    - {at: k1@bumped, pawn: r1, to: start}
+    highlight: [{at: k1@seven, until: k1@bumped, squares: [5, 6, 7, 8, 9, 10, 11]}]
+- id: odds
+  render: odds
+  lines: [o1]
+  params:
+    title: Kitten odds
+    frames:
+    - {at: o1@start, total: 23, hits: 3, head: "3 Kittens in 23 cards", sub: "13% (about 1 in 7)"}
+    - {at: o1@seven, total: 23, hits: 3, head: "3 Kittens in 23 cards", sub: "about 1 in 7"}
+    - {at: o1@end, total: 4, hits: 3, head: "3 Kittens in 4 cards", sub: "mostly Kittens"}
+- id: recipe
+  render: checklist
+  lines: [w1]
+  params:
+    title: The recipe
+    items:
+    - {text: Wait for your moment, at: w1@wait}
+    - {text: Only dodge when you know, at: w1@only}
+    - {text: Steal from the biggest hand, at: w1@steal}
+- id: endcard
+  render: endcard
+  min_duration: 6
+  pad: [0, 0]
+  params:
+    next_title: I Tested Every Uno House Rule

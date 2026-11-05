@@ -1,7 +1,16 @@
 # Buh Simulates: how an episode gets made (end to end)
 
-Read this first, then `docs/LESSONS.md` (the why behind every rule). Exploding Kittens
-(`episodes/exploding-kittens/`) is the reference episode for every step.
+Read this first, then `docs/LESSONS.md` (the why behind every rule) and `docs/scene-kit.md` (templates + gates).
+Exploding Kittens (`episodes/exploding-kittens/`) is the reference episode for every step.
+
+**Quality is ensured by gates, not by eyeballing.** Four commands, each fails loudly with a readable report;
+a step is done only when its gate passes (fix the source, never waive a failure silently):
+| when | command | report |
+|---|---|---|
+| after recording | `make voice SLUG=<slug> REC=rec.m4a` | `voice/_report_voice.txt` + `voice/_listen.mp3` |
+| before any render | `make qa-visual SLUG=<slug>` (+ `VERTICAL=1` for Shorts) | `out/qa/visual.txt` + `contact.png` |
+| after the render | `make qa-visual SLUG=<slug> VIDEO=out/final/<slug>.mp4` | adds black-frame / flash checks |
+| after assembly | `make qa-final SLUG=<slug>` | `out/qa/final.txt` |
 
 ## Ground rules (never break)
 - Public repo. **Never commit** voice audio, music, full transcripts or `out/`. Never link the code anywhere
@@ -34,7 +43,10 @@ Read this first, then `docs/LESSONS.md` (the why behind every rule). Exploding K
 Phone recorder ~15-20 cm away, quiet room. 10 s of silence first, then read top to bottom with 1-2 s
 between lines. Fumble = pause, redo the whole sentence (the last take wins). Send the m4a in the session chat.
 
-## 4. Voice pipeline (in this order)
+## 4. Voice pipeline: `make voice SLUG=<slug> REC=rec.m4a` (gate)
+One command runs the chain below in order, stops at the first failing step (resume with `FROM=<step>`), then the
+final check (transcript vs script, abrupt endings, digital silence, clipping, long gaps) and writes the report and
+the listen file. The individual steps, for reference:
 ```
 python -m pipeline.split_recording episodes/<slug> rec.m4a          # per-line clips + json timing
 python -m pipeline.extend_tails   episodes/<slug> rec.m4a          # restore chopped word endings
@@ -46,9 +58,13 @@ python -m pipeline.match_voice    episodes/<slug>/voice             # same tone/
 - Update `script.md` to what was actually said (captions come from it), then re-run the alignment steps.
 - Send the creator one full-narration listen + a short list of anything you changed. Fix what they hear.
 
-## 5. Visuals
+## 5. Visuals (scene kit: `docs/scene-kit.md`)
 - `episodes/<slug>/scenes.yaml` (copy EK's header: `engine: 3d`, `look: clean-sage`, `grade`,
-  `burn_captions: false`, `voice_style: studio`, `music:`) and `web/scenes.js`.
+  `burn_captions: false`, `voice_style: studio`, `music:`) with **kit templates** (statement, title, bars, deck,
+  fan, table, lineup, grid, track, odds, checklist, endcard). No scenes3d.py / web/scenes.js unless the game needs
+  a custom scene (build it on `Kit`). Numbers as data refs (`"=results.json:..."`), timing as word anchors.
+- Stills: `make stills SLUG=<slug>` (+ `VERTICAL=1`); gate: `make qa-visual SLUG=<slug>` must PASS before
+  the full render (use `TTS=silent` before the voice exists).
 - Everything moves and follows the voice: events anchored to words (`'line@word'`), never more than ~5 s
   without something new; player count always shown; cards square-on; hard cuts between scenes.
 - Iterate with local stills (`allstills`-style PNGs per scene) before any full render.
@@ -61,8 +77,9 @@ python -m pipeline.match_voice    episodes/<slug>/voice             # same tone/
   (Joel Cummins).
 - Download the run's `scene-*` artifacts into `episodes/<slug>/out/final/scenes/`, then
   `TTS_ENGINE=recorded VOICE_DIR=episodes/<slug>/voice python -m pipeline.cli episode <slug> --only none --assemble`
-- Checks: -14 LUFS, decoded peak <= -1 dBFS (mux enforces it), no black frames/dips
-  (`blackdetect`), a contact sheet every 10 s, end card present, duration >= 8:00.
+- Gates: `make qa-visual SLUG=<slug> VIDEO=episodes/<slug>/out/final/<slug>.mp4` (black frames, flashes,
+  contact sheet every 10 s) and `make qa-final SLUG=<slug>` (-14 LUFS, decoded peak <= -1 dBFS, >= 8:00,
+  no burned captions, SRT present). Both must PASS before anything goes to the creator.
 - Send the creator the 1080p file + a 720p preview.
 
 ## 7. Upload kit (one GitHub issue per episode, like issue #1)
@@ -70,3 +87,9 @@ Title + 3 thumbnails (1280x720) for A/B testing, description with chapters (from
 `out/final/description-long.txt`), SRT (`out/final/<slug>.en.srt`), tags, playlist
 "Board & Card Games, Simulated", end screen (video left / subscribe right template, "Best for viewer" until the
 next video is out), pinned comment = the argument-starter question. Branding lives in `branding/`.
+
+## 8. Shorts (native 9:16, no extra recording)
+`episodes/<slug>/shorts_native.yaml` picks moments (script lines) and kit templates; `.github/workflows/shorts.yml`
+renders them at 1080x1920 (hook, word-timed captions, "Full video on my channel" + Buh) and runs the visual gate in
+9:16. Locally put the long video's own mix in: `python -m pipeline.shorts_native <slug> --assemble --audio
+episodes/<slug>/out/final/<slug>.mp4`, then `python -m pipeline.qa_final <slug> --short --video <short>.mp4`.

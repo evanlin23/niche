@@ -6,9 +6,9 @@ Files (after the final assemble): `out/final/exploding-kittens.mp4`, `exploding-
 ## Title + thumbnail A/B test (YouTube Studio → Test & compare, up to 3; winner = most watch time)
 | | Title | Thumbnail |
 |---|---|---|
-| A | I Simulated 10 Billion Games of Exploding Kittens. Here's How to Win. | `thumb-A.png` "DO NOTHING. / WIN 40%" |
-| B | Same Cards, 3x the Wins: Exploding Kittens Tested on 10 Billion Games | `thumb-B.png` "11% vs 35% / SAME CARDS." |
-| C | 5 Exploding Kittens Mistakes Everyone Makes (10 Billion Games Simulated) | `thumb-C.png` "5 MISTAKES EVERYONE MAKES" |
+| A | Why You Keep Losing at Exploding Kittens (5 Mistakes Everyone Makes) | `thumb-A.png` "DO NOTHING. / WIN 40%" |
+| B | The Best Exploding Kittens Player Wins 3x as Often. Here's What They Do Differently | `thumb-B.png` "11% vs 35% / SAME CARDS." |
+| C | Where Should You Put the Exploding Kitten Back? | `thumb-C.png` "5 MISTAKES EVERYONE MAKES" |
 
 Every claim is true: 10.2 billion games simulated; best bot 35.4% vs worst 11.5% at one table (≈3x);
 the Patient One wins 40.6% vs a normal table of four; the script is built around five mistakes.

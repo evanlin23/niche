@@ -1,0 +1,506 @@
+{
+ "method": "yt-dlp --write-comments (top sort, 200 root comments), logged out, 2026-11-05 ~03:45 UTC; top 40 by likes, text cut to 200 chars",
+ "videos": [
+  {
+   "id": "S_2eVAaw1UM",
+   "title": "The Best Monopoly Strategy, Tested on 300 Million Games",
+   "upload_date": "20261013",
+   "views": 2778278,
+   "likes": 16345,
+   "comment_count": 200,
+   "duration": 528,
+   "tags": [
+    "monopoly",
+    "monopoly strategy",
+    "best monopoly strategy",
+    "how to win monopoly",
+    "how to always win monopoly",
+    "monopoly tips",
+    "monopoly simulation",
+    "monopoly math",
+    "monopoly probability",
+    "best monopoly properties",
+    "orange properties monopoly",
+    "monopoly mistakes",
+    "board game strategy",
+    "board games",
+    "game simulation"
+   ],
+   "description_start": "I turned eight classic Monopoly strategies into computer players and made them play 312,898,560 games against each other. At a table of four, the best one won 43% of its games. The worst one won 3%.\n\nThe gap doesn't come from one clever trick. It comes from four common mistakes: being picky about what you buy, saving your cash, stopping at three houses, and refusing to trade. Then I let the computer tune every habit at once, to see how far a carefully tuned player can go and which color set is really worth fighting for.\n\nCHAPTERS\n0:00 8 strategies, 300 million games\n0:35 The rules my players follow\n1:24 Meet the eight players\n2:12 The tournament\n3:17 Mistake 1: Being picky\n4:14 Mistake 2: Sa",
+   "chapters": [
+    "8 strategies, 300 million games",
+    "The rules my players follow",
+    "Meet the eight players",
+    "The tournament",
+    "Mistake 1: Being picky",
+    "Mistake 2: Saving money",
+    "Mistake 3: Stopping at three houses",
+    "Mistake 4: Refusing to trade",
+    "Which color is worth fighting for",
+    "The tuned player",
+    "What to do at your table"
+   ],
+   "top_comments": [
+    {
+     "likes": 2700,
+     "by_creator": false,
+     "text": "This neglects a major part of monopoly - human psychology. The players who are behind will team up against the leader. Or you just get screwed because someone at the table doesn’t like you in particul"
+    },
+    {
+     "likes": 1500,
+     "by_creator": false,
+     "text": "wtf am i doing here? its 3 am and i ain't even have a monopoly table"
+    },
+    {
+     "likes": 782,
+     "by_creator": false,
+     "text": "Dope video, but what's up with the random accent changes"
+    },
+    {
+     "likes": 599,
+     "by_creator": false,
+     "text": "I made a monopoly game simulator 35 years ago on a Texas TI 99 4a, in BASIC. Computing power was 1:1,000,000th what's available today, but I discovered that buy everything, use your cash, and stick to"
+    },
+    {
+     "likes": 261,
+     "by_creator": false,
+     "text": "There was this online monopoly game where I landed on both browns and snatched all the railways, then I realize I had exactly 1 of each color, I just knew I won there and then, I just refused to trade"
+    },
+    {
+     "likes": 196,
+     "by_creator": false,
+     "text": "I love to get the cheaper properties to suck up houses.  The goal is to have so many houses no one else can build to 3 on all three properties.\n\nIf the other players distain brown and light blue, I pi"
+    },
+    {
+     "likes": 179,
+     "by_creator": false,
+     "text": "You forgot one big strategy : you build as many houses as possible but no hotel. There is only 32 houses in the game, and if there is no one left, nobody can buy it anymore. So you can trade your big "
+    },
+    {
+     "likes": 96,
+     "by_creator": false,
+     "text": "Why does it sound like you keep swapping between an American accent and a British one?"
+    },
+    {
+     "likes": 63,
+     "by_creator": false,
+     "text": "As a teen I was playing monopoly with my siblings and one of them suggested a trade but one of the cards she wanted she already had . So I made it clear with witnesses that after the trade she would h"
+    },
+    {
+     "likes": 56,
+     "by_creator": false,
+     "text": "Do The Settlers of Catan next!"
+    },
+    {
+     "likes": 54,
+     "by_creator": false,
+     "text": "My favorite underdog strategy when you aren't able to buy anything of value - trade for the cheap side, then fill all 5 properties with 4 houses each.  Rather than high end properties, you're trying t"
+    },
+    {
+     "likes": 53,
+     "by_creator": false,
+     "text": "Collecting Railroads is an S tier strategy as long as it isnt your ONLY strategy. They won't knock out a player, but they will suck up cash and really slow down the other players build and trade."
+    },
+    {
+     "likes": 25,
+     "by_creator": false,
+     "text": "This should tell you a lot about buying equities"
+    },
+    {
+     "likes": 24,
+     "by_creator": false,
+     "text": "Wait why does your accent keep changing? Are there two people running the channel?"
+    },
+    {
+     "likes": 23,
+     "by_creator": false,
+     "text": "Good job. You might want to see Hanna Fry's video on monopoly. Mathematically, the best color depends on how many players play the game. Also there is one strategy that is super strong - rush to 4 hou"
+    },
+    {
+     "likes": 19,
+     "by_creator": false,
+     "text": "I had my last game where someone (the banker) changed his money to get all the $1’s completely crashing the economy of the game making 1’s very rare and so landing on someone else’s property for $11 w"
+    },
+    {
+     "likes": 16,
+     "by_creator": false,
+     "text": "The irony is that everyone wins if nobody ever buys anything. Everyone just gets richer and richer as they pass Go. \n\nBut the biggest flaw here is the auction rule. If someone doesn't buy a property i"
+    },
+    {
+     "likes": 14,
+     "by_creator": false,
+     "text": "Funnily enough, my family played enough rounds between siblings and dad that we figured out eveything that was mentioned in your video. Going all in, targeting the cheap properties etc. We have even p"
+    },
+    {
+     "likes": 13,
+     "by_creator": false,
+     "text": "I think doing Monopoly Mega might be interesting because of the speed die moving you to the next property where you pay rent after all properties are owned and the auction square moving to the highest"
+    },
+    {
+     "likes": 7,
+     "by_creator": false,
+     "text": "The player who just trades instead of being picky makes perfect sense. In GalCiv, tech trading is a powerful way to get ahead. The trick is that you are always making tech gains even from a lousy deal"
+    },
+    {
+     "likes": 4,
+     "by_creator": false,
+     "text": "Amazing video! I really enjoyed."
+    },
+    {
+     "likes": 4,
+     "by_creator": false,
+     "text": "89 subscribers?? This deserves literally 10,000 times more than that, well done man"
+    },
+    {
+     "likes": 4,
+     "by_creator": false,
+     "text": "For the next analysis Chess would be quite interesting for sure!"
+    },
+    {
+     "likes": 3,
+     "by_creator": false,
+     "text": "Dude, this was genuinely a FANTASTIC first vid on your channel.  I haven't sat down and watched a video to the end like this one in awhile."
+    },
+    {
+     "likes": 3,
+     "by_creator": false,
+     "text": "Would love to see classic Risk next! And then if the testing program can handle it, 7 Wonders and Lords of Waterdeep."
+    },
+    {
+     "likes": 3,
+     "by_creator": false,
+     "text": "What a well put together video with concise information. Unfortunately I won’t ever be able to use any of it as my family is exclusively comprised of Never Traders, no matter what horribly one-sided d"
+    },
+    {
+     "likes": 3,
+     "by_creator": false,
+     "text": "That \"you know who you are\" was personal"
+    },
+    {
+     "likes": 3,
+     "by_creator": false,
+     "text": "Great video brother! Have you thought of creating a simulation of the card game Monopoly Deal as well? Would love to watch something like this"
+    },
+    {
+     "likes": 3,
+     "by_creator": false,
+     "text": "I try to buy 1 of each property not worried about utilities or RR. If I complete this the game is essentially over"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "The ultimate Monopoly strategy:\n\n    Buy everything you land on.\n\n    Spend almost all your cash — mortgage spare properties to fund purchases and building.\n\n    Get 3 houses on a color set ASAP, then"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "I have not seen the ending yet but I feel this guy made this whole video to target ‘Never trades’ people after having an annoying monopoly game with one 2:07"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "I had a strategy.  buy or trade for, all the properties that have 'advance to'.  I made out like a bandit in a four player game.\nSo.. Reading railroad, Illinois Ave, St. Charles, St. James, boardwalk "
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "You missed something. In the official rules, when you pass on a property, it goes to auction and EVERYONE can bid on it. Even the one who passed. That strategy can get properties for less than their a"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "Awesome video!! Do Catan please!!!"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "I had a multi game absolute winner streak at monopoly that went for years, and I did it by taking one part of this to extremes:\n\nWe played contract monopoly, and I would _ always_ be down to make a de"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "Never buy hotels.  Hog the houses."
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "Pls do a Video about Siedler of Catan! That would be awesome and would get you alot of views cuz its played A LOT"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "Do catan next!!"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "Great video.  Since most casual home games don't play by standard rules, a home game simulation would be a great follow up video.   Something like \"free parking jackpot\" and no auctions for properties"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "Awesome vid! I am curious, did your tests take into account the fact that the game purposely has a limited number of houses? I have often seen people utilize the strategy of not upgrading to hotels on"
+    }
+   ]
+  },
+  {
+   "id": "3XLDKvhrIjk",
+   "title": "The Best Catan Strategy, Tested on 200 Million Games",
+   "upload_date": "20261031",
+   "views": 343721,
+   "likes": 3181,
+   "comment_count": 200,
+   "duration": 749,
+   "tags": [
+    "best catan strategy",
+    "board game simulation",
+    "board game strategy",
+    "catan",
+    "catan board game",
+    "catan longest road",
+    "catan ore wheat sheep",
+    "catan simulation",
+    "catan strategy",
+    "catan tips",
+    "game simulation",
+    "how to win at catan",
+    "how to win catan",
+    "settlers of catan",
+    "settlers of catan strategy"
+   ],
+   "description_start": "Get the game: https://www.amazon.com/dp/B0DYK1ZH2D?tag=perfectplaysim-20 (affiliate link)\n\nThis one's for everyone who asked for Catan after the Risk video. I turned the six plans people argue about into players, added a regular player to compare them against, and made them play a little over 200 million games.\n\nKnight Army and All Five tied for first, both at 57% against three regular players (a fair share is 25%). The port plan finished last at all 20 of its tables. The biggest single thing I found is settlements before cities, at 5:55.\n\nChapters:\n0:00 200 million games of Catan\n0:47 The rules and the limits\n1:28 Meet the players\n2:38 The tournament\n4:31 The port trap\n5:43 The habits that ",
+   "chapters": [
+    "200 million games of Catan",
+    "The rules and the limits",
+    "Meet the players",
+    "The tournament",
+    "The port trap",
+    "The habits that win",
+    "The start",
+    "Ore-Wheat-Sheep",
+    "What a win looks like",
+    "Checking against real games",
+    "Luck",
+    "What to do in your next game"
+   ],
+   "top_comments": [
+    {
+     "likes": 379,
+     "by_creator": false,
+     "text": "The missing element is reaction. Punishing the leading player by always robbing them is one aspect, but blocking roads and expansion is another. Giving an opponent resources to build a road to cut off"
+    },
+    {
+     "likes": 293,
+     "by_creator": false,
+     "text": "The thing that cripples this version of the port strategy is that you START on the port.  In real games, people start on a good spot, but with their starting road, they only need one road to get to th"
+    },
+    {
+     "likes": 157,
+     "by_creator": false,
+     "text": "You should do Seven Wonders next! Seeing which wonder is best. Sounds like it would be hard to implement as a model tho"
+    },
+    {
+     "likes": 114,
+     "by_creator": false,
+     "text": "Ticket to Ride!"
+    },
+    {
+     "likes": 55,
+     "by_creator": false,
+     "text": "Carcassonne! I love the map permutations it generates."
+    },
+    {
+     "likes": 44,
+     "by_creator": false,
+     "text": "Dominion would be really cool to see!  Understanding when to pivot, what strategies are best early vs late, and how the ways other players choose cards should change your behavior would all be really "
+    },
+    {
+     "likes": 40,
+     "by_creator": true,
+     "text": "You guys asked for it, I hope you like it. \n\nBtw, here's the game if you want it, or if your copy is missing half its pieces: \nhttps://www.amazon.com/dp/B0DYK1ZH2D?tag=perfectplaysim-20\n\n(affiliate li"
+    },
+    {
+     "likes": 38,
+     "by_creator": false,
+     "text": "It makes sense that Settlements > Cities. Not only do they tend to diversify your portfolio, giving you a steadier stream of resources to reduce the odds you lose a bunch at once and the number of tra"
+    },
+    {
+     "likes": 30,
+     "by_creator": false,
+     "text": "One of the most underrated youtubers and videos"
+    },
+    {
+     "likes": 29,
+     "by_creator": false,
+     "text": "Battleship!\nAnalyze not only where to place your ships, but also where to aim your shots to best find your opponent's boats."
+    },
+    {
+     "likes": 21,
+     "by_creator": false,
+     "text": "The amount of variables, outcomes, and exceptions in Catan just goes to show what a great strategic game it is. Great analysis!"
+    },
+    {
+     "likes": 20,
+     "by_creator": false,
+     "text": "Dune Imperium Uprising and Terra Mystica next"
+    },
+    {
+     "likes": 18,
+     "by_creator": false,
+     "text": "Not as many people play it, but I've been seeing Splendor come up a lot more. I think its a very accessible game for most people. I have a feeling I know what the result will be, but I'd be interested"
+    },
+    {
+     "likes": 16,
+     "by_creator": false,
+     "text": "Hi! This is a wonderful video with incredible production quality, it is a shame that you don't have a bigger audience. I'm actually doing research for this exact thing, Catan game and behavior modelin"
+    },
+    {
+     "likes": 11,
+     "by_creator": false,
+     "text": "The primary difference between these sims and real games is you choose your strat based on the board and what other players are doing. For example always going port first is bad on many boards, but on"
+    },
+    {
+     "likes": 5,
+     "by_creator": false,
+     "text": "My strategy is always to just hoard the ore. I never win, lmao 🤣 \nBut being an overlord tycoon with the only ore on the board is so much fun 😁"
+    },
+    {
+     "likes": 5,
+     "by_creator": false,
+     "text": "I need a statistics professor to explain why building settlements is better than building cities. I was NOT expecting the knight army to win so often. I played that strategy the last time i played, an"
+    },
+    {
+     "likes": 4,
+     "by_creator": false,
+     "text": "Wow! I love seeing this video so quickly! Would still love to see Diplomacy, Battleship, and Wingspan. \nThanks!"
+    },
+    {
+     "likes": 4,
+     "by_creator": false,
+     "text": "Yeah but what about Catan Cities and Knights!"
+    },
+    {
+     "likes": 4,
+     "by_creator": false,
+     "text": "Do Acquire next, please"
+    },
+    {
+     "likes": 4,
+     "by_creator": false,
+     "text": "i think the problem with this sim are you need to play a different stratergy at every board. port stratergies should only be played iin special circumstances or example."
+    },
+    {
+     "likes": 3,
+     "by_creator": false,
+     "text": "A tile layer next!  Tigris and Euphrates would be hypnotic"
+    },
+    {
+     "likes": 3,
+     "by_creator": false,
+     "text": "Please, do Carcassonne!"
+    },
+    {
+     "likes": 3,
+     "by_creator": false,
+     "text": "I would love to see Risk next"
+    },
+    {
+     "likes": 3,
+     "by_creator": false,
+     "text": "Chess when?!"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "The port strategy critically depends on being the player who goes last, as they get to place both of their towns at the same time allowing them to pick a 2:1 port and a 6/8 of that resource at the sam"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "8:50 Im not sure if you took that into account, but it struck me when you said that the chance for the 6-9-5 spot is only 1 in 24, because it’s comparably pretty common for the games I play. It could "
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "Do Hearts next!\nOr another trick taking game I often played was 4 player Wizard, with no rounds, just 12 cards dealt to each player"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "3:19 I knew my port strategy was bad"
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "I'm curious about UNO."
+    },
+    {
+     "likes": 2,
+     "by_creator": false,
+     "text": "Other strategy: unique numbers- he builds settlements only where he gets more unique numbers. No need for luck when every roll hits."
+    },
+    {
+     "likes": 1,
+     "by_creator": false,
+     "text": "Really well put together, again! I'd love to see a breakdown of Cribbage. Subscribed"
+    },
+    {
+     "likes": 1,
+     "by_creator": false,
+     "text": "My strategy is to secure a solid source of brick and a solid source of ore because those ones have just 3 tiles each and tend to be more rare. It's easier to trade them for what you need, and it's har"
+    },
+    {
+     "likes": 1,
+     "by_creator": false,
+     "text": "I always heard for the robber that you should block the opposite of what been rolled recently. I guess that makes it hurt for the table since it makes it hard for people to spend their resources."
+    },
+    {
+     "likes": 1,
+     "by_creator": false,
+     "text": "First settlement on the best numbers, second settlement to round out your resource access. Try for longest road from the start unless it's highly unlikely. Spend if you can. I'm undefeated in vanilla "
+    },
+    {
+     "likes": 1,
+     "by_creator": false,
+     "text": "Ore wheat sheep works best when the board has the setup for it. It doesn't work on every board. On the boards where you can place it and plan ahead, it's insanely strong. If you force it to be played "
+    },
+    {
+     "likes": 1,
+     "by_creator": false,
+     "text": "Dune Imperium, probably hard to model though"
+    },
+    {
+     "likes": 1,
+     "by_creator": false,
+     "text": "Would love to see you do this for Terraforming Mars"
+    },
+    {
+     "likes": 1,
+     "by_creator": false,
+     "text": "What you have to keep in mind for games like Catan: Depending on the circumstances, that is the board, available resources, other players' choices, etc. some strategies are stronger in some games and "
+    },
+    {
+     "likes": 1,
+     "by_creator": false,
+     "text": "Model misses a crucial variable: Having to sleep on the couch after the game."
+    }
+   ]
+  }
+ ],
+ "earlier_monopoly_hits": [
+  {
+   "id": "dkvFcYBznPI",
+   "channel": "b2studios",
+   "title": "AI Learns Insane Monopoly Strategies",
+   "upload_date": "20211221",
+   "views": 12115329
+  },
+  {
+   "id": "qu6GMpQfyUU",
+   "channel": "What's What",
+   "title": "HOW TO WIN MONOPOLY EVERY TIME",
+   "upload_date": "20221216",
+   "views": 6942458
+  }
+ ]
+}

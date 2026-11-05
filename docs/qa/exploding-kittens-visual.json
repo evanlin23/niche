@@ -1,0 +1,2590 @@
+{
+ "slug": "exploding-kittens",
+ "vertical": false,
+ "scenes": {
+  "cold": {
+   "duration": 20.26,
+   "events": 232,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'THE NORMAL PLAYER' (text) leaves the title-safe area by 51px",
+     "t": [
+      0,
+      13.2
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      20.23
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'SEE THE FUTURE' (text) leaves the title-safe area by 20px",
+     "t": [
+      0.1,
+      11
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'THE PATIENT ONE' (text) leaves the title-safe area by 54px",
+     "t": [
+      0.5,
+      20.23
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'FAVOR' (text) leaves the title-safe area by 13px",
+     "t": [
+      0.6,
+      0.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'YUP!' (text) leaves the title-safe area by 13px",
+     "t": [
+      1.5,
+      1.8
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'SKIP' (text) leaves the title-safe area by 13px",
+     "t": [
+      2,
+      2.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'DEFUSED' (text) leaves the title-safe area by 53px",
+     "t": [
+      6.3,
+      18.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'STEAL' (text) leaves the title-safe area by 51px",
+     "t": [
+      7.3,
+      17.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'THE HOARDER' (text) leaves the title-safe area by 28px",
+     "t": [
+      11.5,
+      16.5
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BOOM' (text) leaves the title-safe area by 54px",
+     "t": [
+      11.6,
+      19.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'SHUFFLE' (text) leaves the title-safe area by 54px",
+     "t": [
+      18.8,
+      19.1
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'THE GAMBLER' (text) leaves the title-safe area by 2px",
+     "t": [
+      18.9,
+      19.4
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'OUT' (text) leaves the title-safe area by 3px",
+     "t": [
+      19.5,
+      20.23
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'ATTACK \u2192 P3' shows 3, not said in this scene",
+     "t": [
+      4.4,
+      4.4
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'ATTACK \u2192 P4' shows 4, not said in this scene",
+     "t": [
+      5.9,
+      5.9
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'5 bots at one table' shows 5, not said in this scene",
+     "t": [
+      14.4,
+      14.4
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0.1,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.6,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1.1,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    1.5,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2.4,
+    2.4,
+    2.4,
+    2.4,
+    2.4,
+    2.4,
+    2.4,
+    2.4,
+    2.9,
+    2.9,
+    2.9,
+    2.9,
+    2.9,
+    2.9,
+    3,
+    3.4,
+    3.4,
+    3.4,
+    3.4,
+    3.5,
+    3.9,
+    3.9,
+    3.9,
+    3.9,
+    3.9,
+    3.9,
+    3.9,
+    3.9,
+    3.9,
+    4,
+    4.4,
+    4.4,
+    4.4,
+    4.4,
+    4.4,
+    4.8,
+    4.8,
+    4.8,
+    4.8,
+    4.8,
+    4.8,
+    4.8,
+    4.9,
+    5.3,
+    5.3,
+    5.3,
+    5.3,
+    5.3,
+    5.3,
+    5.3,
+    5.4,
+    5.8,
+    5.8,
+    5.8,
+    5.8,
+    5.8,
+    5.8,
+    5.9,
+    6.3,
+    6.3,
+    6.3,
+    6.3,
+    6.3,
+    6.8,
+    6.8,
+    6.8,
+    6.8,
+    7.1,
+    7.2,
+    7.3,
+    7.7,
+    7.7,
+    7.7,
+    7.7,
+    7.7,
+    7.7,
+    7.7,
+    7.7,
+    7.7,
+    8.2,
+    8.2,
+    8.2,
+    8.2,
+    8.2,
+    8.2,
+    8.2,
+    8.3,
+    8.7,
+    8.7,
+    8.7,
+    8.7,
+    8.7,
+    8.7,
+    9.2,
+    9.2,
+    9.2,
+    9.2,
+    9.2,
+    9.6,
+    9.6,
+    10.1,
+    10.1,
+    10.1,
+    10.2,
+    10.6,
+    10.6,
+    10.6,
+    10.6,
+    10.6,
+    10.6,
+    11.1,
+    11.1,
+    11.1,
+    11.1,
+    11.1,
+    11.1,
+    11.6,
+    11.6,
+    11.8,
+    11.8,
+    12,
+    12,
+    12,
+    12.1,
+    12.5,
+    12.5,
+    12.5,
+    12.5,
+    12.6,
+    13,
+    13.3,
+    13.3,
+    13.5,
+    13.5,
+    13.5,
+    13.5,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14.4,
+    14.4,
+    14.4,
+    14.9,
+    14.9,
+    14.9,
+    14.9,
+    14.9,
+    15.1,
+    15.4,
+    15.4,
+    15.4,
+    15.4,
+    15.4,
+    15.9,
+    15.9,
+    15.9,
+    15.9,
+    15.9,
+    15.9,
+    15.9,
+    15.9,
+    16.4,
+    16.4,
+    16.6,
+    16.6,
+    16.8,
+    16.8,
+    16.8,
+    16.9,
+    17.3,
+    17.3,
+    17.3,
+    17.3,
+    17.4,
+    17.8,
+    17.8,
+    17.8,
+    17.8,
+    18.3,
+    18.3,
+    18.3,
+    18.3,
+    18.6,
+    18.7,
+    18.8,
+    18.8,
+    19.2,
+    19.3,
+    19.5,
+    19.5
+   ]
+  },
+  "hookrank": {
+   "duration": 5.6,
+   "events": 10,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      5.57
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'5 players \u00b7 fair share 20%' shows 5 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'5 players \u00b7 fair share 20%' shows 20 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'fair share 20%' shows 20 (context, not said)",
+     "t": [
+      1.5,
+      1.5
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    0.3,
+    1.3,
+    1.5,
+    1.5,
+    1.5,
+    4.4,
+    4.5,
+    4.5
+   ]
+  },
+  "five": {
+   "duration": 6.87,
+   "events": 1,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      6.83
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "coverage",
+     "msg": "6.9 s with no new visual event while narrating (o5): add a word-anchored event",
+     "t": [
+      0,
+      6.87
+     ]
+    }
+   ],
+   "event_times": [
+    0
+   ]
+  },
+  "title": {
+   "duration": 1.3,
+   "events": 3,
+   "issues": [
+    {
+     "sev": "warn",
+     "check": "safe",
+     "msg": "9 objects (auto) partly off-screen (up to 3418px): check props stay in frame",
+     "t": [
+      0,
+      0
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'10 Billion Games of' shows 10, not said in this scene",
+     "t": [
+      0.2,
+      0.2
+     ]
+    }
+   ],
+   "event_times": [
+    0.1,
+    0.2,
+    0.2
+   ]
+  },
+  "rules": {
+   "duration": 54.019979166666666,
+   "events": 194,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label '4 \u00d7 Exploding Kittens' (text) leaves the title-safe area by 27px",
+     "t": [
+      19.9,
+      54
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 Nope' and 'Everyone draws from one deck' (2230 px\u00b2)",
+     "t": [
+      3.1,
+      4.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 See the Future' and 'Everyone draws from one deck' (4841 px\u00b2)",
+     "t": [
+      3.4,
+      4.7
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 Nope' and '\u2026unless you have a Defuse' (2159 px\u00b2)",
+     "t": [
+      6.4,
+      6.5
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 See the Future' and '\u2026unless you have a Defuse' (4191 px\u00b2)",
+     "t": [
+      6.4,
+      6.5
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 Nope' and 'Every other card: avoid drawing' (2111 px\u00b2)",
+     "t": [
+      8.1,
+      10.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 See the Future' and 'Every other card: avoid drawing' (4583 px\u00b2)",
+     "t": [
+      8.1,
+      10.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 Nope' and 'Last player standing wins' (3499 px\u00b2)",
+     "t": [
+      11.3,
+      13.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 See the Future' and 'Last player standing wins' (6519 px\u00b2)",
+     "t": [
+      11.3,
+      13.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 Nope' and 'Play as many cards as you like\u2026' (2313 px\u00b2)",
+     "t": [
+      18.5,
+      21.2
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 See the Future' and 'Play as many cards as you like\u2026' (5047 px\u00b2)",
+     "t": [
+      18.5,
+      21.2
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 Nope' and '\u2026then draw one card' (1840 px\u00b2)",
+     "t": [
+      21.5,
+      23.4
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 See the Future' and '\u2026then draw one card' (3117 px\u00b2)",
+     "t": [
+      21.5,
+      23.4
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 Nope' and 'That draw is where you explode' (2609 px\u00b2)",
+     "t": [
+      23.7,
+      26.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 See the Future' and 'That draw is where you explode' (5663 px\u00b2)",
+     "t": [
+      23.7,
+      26.6
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 Nope' and 'Official rulebook \u00b7 original edition' (1732 px\u00b2)",
+     "t": [
+      45.3,
+      45.4
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '5 \u00d7 See the Future' and 'Official rulebook \u00b7 original edition' (3758 px\u00b2)",
+     "t": [
+      45.3,
+      45.4
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'5 \u00d7 Nope' shows 5, not said in this scene",
+     "t": [
+      3.1,
+      3.1
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'5 \u00d7 See the Future' shows 5, not said in this scene",
+     "t": [
+      3.5,
+      3.5
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'20 \u00d7 Cat cards' shows 20, not said in this scene",
+     "t": [
+      3.8,
+      3.8
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    0.7,
+    0.7,
+    0.7,
+    0.7,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1.3,
+    1.3,
+    1.3,
+    1.3,
+    1.4,
+    1.7,
+    1.7,
+    1.7,
+    1.7,
+    1.7,
+    1.7,
+    2.1,
+    2.1,
+    2.1,
+    2.1,
+    2.1,
+    2.4,
+    2.4,
+    2.4,
+    2.4,
+    2.4,
+    2.7,
+    2.7,
+    2.7,
+    2.7,
+    2.7,
+    2.8,
+    3.1,
+    3.1,
+    3.1,
+    3.1,
+    3.1,
+    3.1,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.5,
+    3.8,
+    4.8,
+    5.9,
+    6.3,
+    6.4,
+    6.4,
+    6.4,
+    6.4,
+    6.4,
+    6.4,
+    6.4,
+    6.4,
+    6.5,
+    7.6,
+    8,
+    8.1,
+    8.1,
+    8.1,
+    8.1,
+    8.1,
+    8.1,
+    8.1,
+    8.1,
+    11.3,
+    13.4,
+    13.9,
+    15.4,
+    15.5,
+    15.5,
+    15.5,
+    15.5,
+    15.5,
+    15.5,
+    15.5,
+    15.5,
+    18.5,
+    21.5,
+    23.7,
+    24.7,
+    26.2,
+    26.3,
+    26.3,
+    26.3,
+    26.3,
+    26.3,
+    26.3,
+    26.3,
+    26.3,
+    26.6,
+    28.1,
+    28.3,
+    28.3,
+    28.3,
+    28.3,
+    28.3,
+    28.3,
+    28.3,
+    28.3,
+    30.1,
+    31.6,
+    31.8,
+    31.8,
+    31.8,
+    31.8,
+    31.8,
+    31.8,
+    31.8,
+    31.8,
+    32.6,
+    34.1,
+    34.3,
+    34.3,
+    34.3,
+    34.3,
+    34.3,
+    34.3,
+    34.3,
+    34.3,
+    35.8,
+    36,
+    36,
+    36,
+    36,
+    36,
+    36,
+    36,
+    36,
+    37.7,
+    39.2,
+    39.4,
+    39.4,
+    39.4,
+    39.4,
+    39.4,
+    39.4,
+    39.4,
+    39.4,
+    41.2,
+    42.7,
+    42.9,
+    42.9,
+    42.9,
+    42.9,
+    42.9,
+    42.9,
+    42.9,
+    42.9,
+    45.4,
+    49,
+    50.5,
+    50.7,
+    50.7,
+    50.7,
+    50.7,
+    50.7,
+    50.7,
+    50.7,
+    50.7,
+    52.4,
+    52.6,
+    52.6,
+    52.6,
+    52.6,
+    52.6,
+    52.6,
+    52.6,
+    52.6
+   ]
+  },
+  "check": {
+   "duration": 15.019979166666667,
+   "events": 3,
+   "issues": [
+    {
+     "sev": "warn",
+     "check": "anchors",
+     "msg": "statement line 'math says 13.04%' is not timed to a spoken word (first word not said): give it an 'at' anchor"
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      15
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "coverage",
+     "msg": "7.9 s with no new visual event while narrating (c2, c3): add a word-anchored event",
+     "t": [
+      7.1,
+      15.02
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    2.6,
+    7.1
+   ]
+  },
+  "cantlie": {
+   "duration": 15.72,
+   "events": 31,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      15.7
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "safe",
+     "msg": "35 objects (auto) partly off-screen (up to 1438px): check props stay in frame",
+     "t": [
+      3,
+      15.7
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.4,
+    2.9,
+    2.9,
+    2.9,
+    2.9,
+    2.9,
+    4.2,
+    4.2,
+    4.2,
+    4.8,
+    4.8,
+    4.8,
+    4.8,
+    4.8,
+    5.1,
+    5.1,
+    5.1,
+    5.4,
+    5.4,
+    5.4,
+    5.4,
+    5.4,
+    5.4,
+    5.4,
+    5.4,
+    5.6,
+    6.8,
+    10.5,
+    12.2,
+    13.4
+   ]
+  },
+  "meet": {
+   "duration": 21.90997916666667,
+   "events": 37,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      21.87
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'The Normal Player' (text) leaves the title-safe area by 28px",
+     "t": [
+      2.2,
+      10.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'The Gambler' (text) leaves the title-safe area by 12px",
+     "t": [
+      10.7,
+      12.8
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'The Panicker' (text) leaves the title-safe area by 20px",
+     "t": [
+      13.2,
+      16.2
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'The Hoarder' (text) leaves the title-safe area by 24px",
+     "t": [
+      16.5,
+      19
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'The Patient One' (text) leaves the title-safe area by 49px",
+     "t": [
+      19.3,
+      21.87
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    0.3,
+    0.4,
+    0.6,
+    0.6,
+    0.8,
+    0.8,
+    1,
+    1,
+    1.1,
+    1.3,
+    1.8,
+    1.8,
+    1.8,
+    1.9,
+    2,
+    4,
+    6.1,
+    7.7,
+    10.4,
+    10.4,
+    10.5,
+    11.6,
+    12.9,
+    12.9,
+    13.1,
+    13.5,
+    16.3,
+    16.3,
+    16.4,
+    17.1,
+    17.8,
+    19.1,
+    19.1,
+    19.2,
+    21.3
+   ]
+  },
+  "ranking": {
+   "duration": 13.1,
+   "events": 19,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      13.07
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '17.3%' and 'fair share 20%' (1313 px\u00b2)",
+     "t": [
+      3.2,
+      3.2
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'5 players \u00b7 fair share 20%' shows 5 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    0.3,
+    2.8,
+    3,
+    3,
+    3.1,
+    4.9,
+    5.1,
+    5.1,
+    6.7,
+    6.9,
+    6.9,
+    8.3,
+    8.5,
+    8.5,
+    10,
+    10.1,
+    10.1
+   ]
+  },
+  "testsetup": {
+   "duration": 11.61,
+   "events": 4,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      11.57
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.6,
+    4.8,
+    7.4
+   ]
+  },
+  "m1": {
+   "duration": 2.7100000000000004,
+   "events": 3,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      2.67
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    1.8
+   ]
+  },
+  "patience": {
+   "duration": 11.099979166666666,
+   "events": 15,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      11.07
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "cut",
+     "msg": "object Mesh#15 (auto) still moving at the cut (0.98 units/s)",
+     "t": [
+      11.1,
+      11.1
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'4 players \u00b7 fair share 25%' shows 4 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'Mistake 1: playing cards for fun' shows 1 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.2,
+    0.3,
+    0.3,
+    1.4,
+    5.2,
+    5.3,
+    5.3,
+    5.4,
+    6.2,
+    6.4,
+    6.4,
+    10.4,
+    10.6,
+    10.6
+   ]
+  },
+  "odds": {
+   "duration": 16.82,
+   "events": 56,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      16.8
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "safe",
+     "msg": "19 objects (auto) partly off-screen (up to 297px): check props stay in frame",
+     "t": [
+      7.5,
+      7.9
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "coverage",
+     "msg": "5.4 s with no new visual event while narrating (p5): add a word-anchored event",
+     "t": [
+      10.2,
+      15.6
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'First draw: 3 Kittens in 23 cards' shows 3, not said in this scene",
+     "t": [
+      4.9,
+      4.9
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'First draw: 3 Kittens in 23 cards' shows 23, not said in this scene",
+     "t": [
+      4.9,
+      4.9
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'Last few draws, e.g. 3 Kittens in 4 cards' shows 3, not said in this scene",
+     "t": [
+      7.2,
+      7.2
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'Last few draws, e.g. 3 Kittens in 4 cards' shows 4, not said in this scene",
+     "t": [
+      7.2,
+      7.2
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'13% (about 1 in 7)' shows 13, not said in this scene",
+     "t": [
+      5.1,
+      5.1
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    0.9,
+    3.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.2,
+    4.9,
+    5.1,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.2,
+    7.6,
+    10.2,
+    15.6
+   ]
+  },
+  "m2": {
+   "duration": 2.3300000000000005,
+   "events": 1,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      2.3
+     ]
+    }
+   ],
+   "event_times": [
+    0
+   ]
+  },
+  "dodge": {
+   "duration": 22.31,
+   "events": 23,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      22.27
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'4 players \u00b7 fair share 25%' shows 25 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'Mistake 2: panicking' shows 2 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'fair share 25%' shows 25 (context, not said)",
+     "t": [
+      7.2,
+      7.2
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'18.9%' shows 18.9, not said in this scene",
+     "t": [
+      9.4,
+      9.4
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'dodge at 1 in 3' shows 3, not said in this scene",
+     "t": [
+      8.8,
+      8.8
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'22.7%' shows 22.7, not said in this scene",
+     "t": [
+      9.7,
+      9.7
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'25.0%' shows 25, not said in this scene",
+     "t": [
+      14.9,
+      14.9
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    0.3,
+    2.3,
+    3.7,
+    7,
+    7.2,
+    7.2,
+    7.2,
+    8.6,
+    8.8,
+    8.8,
+    8.9,
+    9,
+    9.1,
+    9.1,
+    12.4,
+    14.1,
+    14.2,
+    14.3,
+    14.3,
+    17.2,
+    18.8
+   ]
+  },
+  "attacks": {
+   "duration": 18.0,
+   "events": 13,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      17.97
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'22.8%' shows 22.8, not said in this scene",
+     "t": [
+      4.7,
+      4.7
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'38.2%' shows 38.2, not said in this scene",
+     "t": [
+      10.3,
+      10.3
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'7.4%' shows 7.4, not said in this scene",
+     "t": [
+      14.2,
+      14.2
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    3.9,
+    4.1,
+    4.1,
+    6.6,
+    9.5,
+    9.7,
+    9.7,
+    13.4,
+    13.6,
+    13.6,
+    14.6
+   ]
+  },
+  "m3": {
+   "duration": 3.7,
+   "events": 1,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      3.67
+     ]
+    }
+   ],
+   "event_times": [
+    0
+   ]
+  },
+  "future": {
+   "duration": 16.76,
+   "events": 16,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      16.73
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "coverage",
+     "msg": "5.5 s with no new visual event while narrating (f2, f3): add a word-anchored event",
+     "t": [
+      6.1,
+      11.6
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'4 players \u00b7 fair share 25%' shows 4 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'4 players \u00b7 fair share 25%' shows 25 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'22.6%' shows 22.6, not said in this scene",
+     "t": [
+      4,
+      4
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'fair share 25%' shows 25 (context, not said)",
+     "t": [
+      3.4,
+      3.4
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'22.3%' shows 22.3, not said in this scene",
+     "t": [
+      6.7,
+      6.7
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'25.0%' shows 25, not said in this scene",
+     "t": [
+      12.4,
+      12.4
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.2,
+    0.3,
+    0.3,
+    3.2,
+    3.4,
+    3.4,
+    3.4,
+    5.9,
+    6.1,
+    6.1,
+    11.6,
+    11.8,
+    11.8,
+    13.9,
+    14.8
+   ]
+  },
+  "countdiv": {
+   "duration": 9.870000000000001,
+   "events": 47,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      9.83
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "safe",
+     "msg": "9 objects (auto) partly off-screen (up to 328px): check props stay in frame",
+     "t": [
+      5.3,
+      8.3
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'15 cards \u00f7 3 Kittens = 5' shows 15, not said in this scene",
+     "t": [
+      1.7,
+      1.7
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'15 cards \u00f7 3 Kittens = 5' shows 5, not said in this scene",
+     "t": [
+      1.7,
+      1.7
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'9 cards \u00f7 3 Kittens = 3' shows 9, not said in this scene",
+     "t": [
+      5,
+      5
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1.7,
+    2,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5.1,
+    5.1,
+    5.1,
+    5.1,
+    5.1,
+    5.1,
+    5.1,
+    5.1,
+    5.1,
+    5.4,
+    7.6,
+    7.6,
+    7.6,
+    7.6,
+    7.6,
+    7.6,
+    7.6,
+    7.6,
+    7.6,
+    7.6,
+    7.9
+   ]
+  },
+  "m4": {
+   "duration": 2.9000000000000004,
+   "events": 1,
+   "issues": [
+    {
+     "sev": "warn",
+     "check": "anchors",
+     "msg": "statement line 'hiding the Kitten' is not timed to a spoken word (first word not said): give it an 'at' anchor"
+    },
+    {
+     "sev": "warn",
+     "check": "anchors",
+     "msg": "statement line 'in the wrong place.' is not timed to a spoken word (first word not said): give it an 'at' anchor"
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      2.87
+     ]
+    }
+   ],
+   "event_times": [
+    0
+   ]
+  },
+  "placement": {
+   "duration": 32.38,
+   "events": 54,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      32.33
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'TOP OF DECK' (text) leaves the title-safe area by 17px",
+     "t": [
+      17.9,
+      32.33
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'4 players \u00b7 fair share 25%' shows 4 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'Mistake 4: where to put the Kitten back' shows 4 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'23.7%' shows 23.7, not said in this scene",
+     "t": [
+      10.7,
+      10.7
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0,
+    0,
+    0.3,
+    0.3,
+    1.7,
+    5,
+    5.6,
+    5.6,
+    5.6,
+    5.8,
+    5.8,
+    5.8,
+    7.8,
+    7.9,
+    7.9,
+    8,
+    8.1,
+    8.2,
+    8.3,
+    8.3,
+    8.9,
+    9.9,
+    10.1,
+    10.1,
+    11.6,
+    16.4,
+    19.6,
+    19.6,
+    19.6,
+    19.7,
+    19.8,
+    19.8,
+    19.8,
+    19.8,
+    19.9,
+    19.9,
+    20,
+    20,
+    20,
+    20.1,
+    20.1,
+    20.2,
+    20.8,
+    23.4,
+    23.4,
+    25,
+    25.1,
+    28.2,
+    28.2,
+    28.2,
+    28.4,
+    28.4,
+    28.6
+   ]
+  },
+  "confession": {
+   "duration": 14.85,
+   "events": 6,
+   "issues": [
+    {
+     "sev": "warn",
+     "check": "anchors",
+     "msg": "statement line 'Guesses get labelled.' is not timed to a spoken word (first word not said): give it an 'at' anchor"
+    },
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      14.83
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.6,
+    3.1,
+    6.5,
+    11.4,
+    14.1
+   ]
+  },
+  "m5": {
+   "duration": 2.6100000000000003,
+   "events": 1,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      2.57
+     ]
+    }
+   ],
+   "event_times": [
+    0
+   ]
+  },
+  "steal": {
+   "duration": 29.11,
+   "events": 20,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      29.07
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'4 players \u00b7 fair share 25%' shows 4 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'4 players \u00b7 fair share 25%' shows 25 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'Mistake 5: steal from the biggest hand' shows 5 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'fair share 25%' shows 25 (context, not said)",
+     "t": [
+      5.6,
+      5.6
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    0.3,
+    1.9,
+    5.4,
+    5.5,
+    5.5,
+    5.6,
+    8.7,
+    8.9,
+    8.9,
+    10.8,
+    11,
+    11,
+    15,
+    17.7,
+    18.7,
+    19.7,
+    22.7,
+    26.9
+   ]
+  },
+  "small": {
+   "duration": 21.14,
+   "events": 23,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      21.1
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '20.4%' and 'fair share 25%' (729 px\u00b2)",
+     "t": [
+      15.1,
+      15.1
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "coverage",
+     "msg": "5.3 s with no new visual event while narrating (x1, x2): add a word-anchored event",
+     "t": [
+      0.3,
+      5.6
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'4 players \u00b7 fair share 25%' shows 4 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'4 players \u00b7 fair share 25%' shows 25 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'25.0%' shows 25, not said in this scene",
+     "t": [
+      6.4,
+      6.4
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'fair share 25%' shows 25 (context, not said)",
+     "t": [
+      5.8,
+      5.8
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'25.0%' shows 25, not said in this scene",
+     "t": [
+      14.5,
+      14.5
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    0.3,
+    5.6,
+    5.7,
+    5.7,
+    5.8,
+    7,
+    7.2,
+    7.2,
+    8.2,
+    12.1,
+    12.3,
+    12.3,
+    13.7,
+    13.8,
+    13.8,
+    14.6,
+    14.7,
+    14.7,
+    15.7,
+    17.9,
+    20.1
+   ]
+  },
+  "seats": {
+   "duration": 14.709999999999999,
+   "events": 14,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      14.67
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "coverage",
+     "msg": "6.0 s with no new visual event while narrating (t1, t2): add a word-anchored event",
+     "t": [
+      0.3,
+      6.3
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'47.7%' shows 47.7, not said in this scene",
+     "t": [
+      7.5,
+      7.5
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'20.5%' shows 20.5, not said in this scene",
+     "t": [
+      10.7,
+      10.7
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'19.6%' shows 19.6, not said in this scene",
+     "t": [
+      12,
+      12
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    6.3,
+    6.5,
+    6.5,
+    6.7,
+    6.9,
+    6.9,
+    9.9,
+    10,
+    10,
+    11.2,
+    11.4,
+    11.4
+   ]
+  },
+  "twoplayer": {
+   "duration": 20.39,
+   "events": 20,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      20.37
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "overlap",
+     "msg": "labels overlap: '38.9%' and 'fair share 50%' (1051 px\u00b2)",
+     "t": [
+      4.6,
+      4.6
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'2 players \u00b7 fair share 50%' shows 50 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'50.0%' shows 50, not said in this scene",
+     "t": [
+      4.9,
+      4.9
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'fair share 50%' shows 50 (context, not said)",
+     "t": [
+      4.3,
+      4.3
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'41.3%' shows 41.3, not said in this scene",
+     "t": [
+      20.2,
+      20.2
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    0.3,
+    4.1,
+    4.2,
+    4.2,
+    4.3,
+    6.8,
+    7,
+    7,
+    8.3,
+    12.3,
+    12.5,
+    12.5,
+    15.2,
+    15.4,
+    15.4,
+    19.4,
+    19.5,
+    19.5
+   ]
+  },
+  "tables": {
+   "duration": 19.98997916666667,
+   "events": 16,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      19.97
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'4 players \u00b7 fair share 25%' shows 25 (context, not said)",
+     "t": [
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'fair share 25%' shows 25 (context, not said)",
+     "t": [
+      4.9,
+      4.9
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'50.2%' shows 50.2, not said in this scene",
+     "t": [
+      11,
+      11
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'Four Patient Ones: exactly 25% each' shows 25, not said in this scene",
+     "t": [
+      11.5,
+      11.5
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    0.3,
+    4.7,
+    4.8,
+    4.8,
+    4.9,
+    7.9,
+    8.1,
+    8.1,
+    10.2,
+    10.4,
+    10.4,
+    11.5,
+    16.4,
+    17.4
+   ]
+  },
+  "length": {
+   "duration": 7.34,
+   "events": 9,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      7.3
+     ]
+    },
+    {
+     "sev": "error",
+     "check": "cut",
+     "msg": "object Mesh#9 (auto) still moving at the cut (0.32 units/s)",
+     "t": [
+      7.34,
+      7.34
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    0.3,
+    4,
+    4.2,
+    4.2,
+    6.5,
+    6.7,
+    6.7
+   ]
+  },
+  "strategy": {
+   "duration": 14.779979166666667,
+   "events": 14,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      14.73
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "safe",
+     "msg": "6 objects (auto) partly off-screen (up to 2646px): check props stay in frame",
+     "t": [
+      0,
+      0
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    2.8,
+    2.8,
+    4.3,
+    4.3,
+    5.7,
+    5.7,
+    8.6,
+    8.6,
+    10.5,
+    10.5,
+    12.4,
+    12.4
+   ]
+  },
+  "final": {
+   "duration": 10.709999999999999,
+   "events": 26,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      10.67
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'25.0%' shows 25, not said in this scene",
+     "t": [
+      2.3,
+      2.3
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'33.3%' shows 33.3, not said in this scene",
+     "t": [
+      4.5,
+      4.5
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'51.1%' shows 51.1, not said in this scene",
+     "t": [
+      4.8,
+      4.8
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'50.0%' shows 50, not said in this scene",
+     "t": [
+      7.1,
+      7.1
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'5 players: fair' shows 5 (context, not said)",
+     "t": [
+      8.4,
+      8.4
+     ]
+    },
+    {
+     "sev": "warn",
+     "check": "numbers",
+     "msg": "'29.5%' shows 29.5, not said in this scene",
+     "t": [
+      9.3,
+      9.3
+     ]
+    },
+    {
+     "sev": "info",
+     "check": "numbers",
+     "msg": "'5 players: strategy' shows 5 (context, not said)",
+     "t": [
+      8.7,
+      8.7
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    0.3,
+    1.5,
+    1.7,
+    1.7,
+    1.8,
+    2,
+    2,
+    3.7,
+    3.8,
+    3.8,
+    4,
+    4.1,
+    4.1,
+    6.3,
+    6.5,
+    6.5,
+    6.6,
+    6.8,
+    6.8,
+    8.2,
+    8.4,
+    8.4,
+    8.5,
+    8.7,
+    8.7
+   ]
+  },
+  "lie": {
+   "duration": 10.92,
+   "events": 4,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      10.9
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    3.7,
+    6.6,
+    10.2
+   ]
+  },
+  "ask": {
+   "duration": 7.18,
+   "events": 3,
+   "issues": [
+    {
+     "sev": "error",
+     "check": "safe",
+     "msg": "label 'BUH SIMULATES' (text) leaves the title-safe area by 40px",
+     "t": [
+      0,
+      7.13
+     ]
+    }
+   ],
+   "event_times": [
+    0,
+    1.5,
+    4.6
+   ]
+  },
+  "endcard": {
+   "duration": 12.0,
+   "events": 3,
+   "issues": [
+    {
+     "sev": "warn",
+     "check": "safe",
+     "msg": "3 objects (auto) partly off-screen (up to 1716px): check props stay in frame",
+     "t": [
+      0,
+      0
+     ]
+    }
+   ],
+   "event_times": [
+    0.5,
+    0.7,
+    0.7
+   ]
+  }
+ },
+ "contact": "/home/user/niche/episodes/exploding-kittens/out/qa/contact.png"
+}

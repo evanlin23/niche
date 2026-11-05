@@ -1,0 +1,175 @@
+# Native 9:16 Shorts (python -m pipeline.shorts_native exploding-kittens). Kit templates, long-video timing,
+# audio cut from the long video. Numbers come from data/*.json. Each links back to the long video (Related video).
+# Rule (first going-first Short kept 24% of viewers): open on the spoken hook, main visual already on screen and
+# moving in frame 1, emphasis on the words. Each scene = one contiguous span of the long video; 'k2@most' starts a
+# line at that word; scenes may jump (hook first, then the setup).
+game: "Exploding Kittens"   # context pill above the hook
+shorts:
+- id: kitten-placement
+  hook: "Bottom of the deck?\nWorse than random."
+  title: "Where should you put the Exploding Kitten back?"
+  description: "Bottom of the deck is worse than random. Full video with all five mistakes on my channel. #explodingkittens #boardgames #cardgames"
+  scenes:
+  - id: kp-bottom
+    render: deck
+    lines: [k3]
+    params:
+      callouts:
+      - {text: "…it's worse than random", at: k3@worse, color: CORAL}
+      - {text: "My guess: it waits for whoever's left", at: k3@guess, color: CREAM}
+      row: {count: 12}
+      hero: 0
+      plan: [[k3@bottom, 12]]
+      chart:
+        players: 4
+        fair: 25
+        items:
+        - {label: random, value: "=results.json:placement[value=random].win*100", at: k3@random}
+        - {label: bottom, value: "=results.json:placement[value=bottom].win*100", color: CORAL, at: k3@worse}
+  - id: kp-random
+    render: deck
+    lines: ["k2@most"]
+    params:
+      callouts:
+      - {text: "Random = exactly average", at: k2@average}
+      row: {count: 12}
+      hero: 0
+      plan: [[k2@most, 12], [k2@random, 6]]
+      chart:
+        players: 4
+        fair: 25
+        items:
+        - {label: random, value: "=results.json:placement[value=random].win*100", at: k2@average}
+        - {label: bottom, value: "=results.json:placement[value=bottom].win*100", color: CORAL, at: k2@most}
+  - id: kp-best
+    render: deck
+    lines: [k4, k5]
+    params:
+      callouts:
+      - {text: "Best: the next player's draw", at: k4@best}
+      - {text: "Usually the top", at: k4@top}
+      - {text: "Under Attack? Count your turns", at: k4@attack}
+      - {text: "One more turn: 2nd from top", at: k4@second}
+      - {text: "Two more: 3rd", at: k4@third}
+      - {text: "25% → 30%", at: k5@thirty}
+      row: {count: 12}
+      hero: 0
+      plan: [[k4@best, 6], [k4@top, 0], [k4@second, 1], [k4@third, 2], [k5@thirty, 0]]
+      chart:
+        players: 4
+        fair: 25
+        items:
+        - {label: random, value: "=results.json:placement[value=random].win*100", at: k5@twenty}
+        - {label: "next player's draw", value: "=results.json:placement[value=next].win*100", color: MUSTARD, at: k5@thirty, hl: true}
+
+- id: same-cards
+  hook: "Same cards.\n35% vs 11%"
+  title: "Same cards, three times the wins. What is the best Exploding Kittens player doing?"
+  description: "Five mistakes most tables make. Full video on my channel. #explodingkittens #boardgames #cardgames"
+  scenes:
+  - id: sc-rank
+    render: bars
+    lines: [o4]
+    params:
+      chart:
+        players: 5
+        fair: 20
+        items:
+        - {label: best bot, value: "=ranking-5p.json:table[name=The Patient One].win*100", color: MUSTARD, at: o4@thirty, hl: true}
+        - {label: worst bot, value: "=ranking-5p.json:table[name=The Hoarder].win*100", color: CORAL, at: o4@eleven}
+  - id: sc-table
+    render: table
+    lines: [o1, o2, o3]
+    params:
+      players: 5
+      pill: 5 bots, one table
+      names: [THE PATIENT ONE, THE NORMAL PLAYER, THE GAMBLER, THE PANICKER, THE HOARDER]
+      highlight: [[2, o2@plays], [3, o2@skips], [4, o2@steals], [0, o3@bots]]
+      callouts:
+      - {text: "Plays every card at once", at: o2@plays}
+      - {text: "Skips when it feels dangerous", at: o2@skips}
+      - {text: "Never steals", at: o2@steals}
+      - {text: "10,000,000,000+ games", at: o3@ten}
+      turns:
+      - {at: 0.15, seat: 1, ev: draw}
+      - {at: o1@same, seat: 2, ev: play, card: 2, label: ATTACK}
+      - {at: o2@plays, seat: 2, ev: play, card: 2, label: ATTACK}
+      - {at: o2@second, seat: 2, ev: play, card: 4, label: FAVOR}
+      - {at: o2@skips, seat: 3, ev: play, card: 3, label: SKIP}
+      - {at: o2@dangerous, seat: 3, ev: play, card: 3, label: SKIP}
+      - {at: o2@steals, seat: 4, ev: draw}
+      - {at: o2@rude, seat: 0, ev: draw}
+      - {at: o3@turned, seat: 1, ev: play, card: 6, label: NOPE}
+      - {at: o3@sat, seat: 2, ev: draw}
+      - {at: o3@play, seat: 3, ev: draw}
+  - id: sc-five
+    render: statement
+    lines: [o5]
+    params:
+      lines:
+      - It came down to
+      - {text: five mistakes., color: MUSTARD}
+
+- id: going-first
+  hook: "Does going first\nmatter?"
+  title: "Does going first matter in Exploding Kittens?"
+  description: "With two players it does. With five, it flips. Full video on my channel. #explodingkittens #boardgames #cardgames"
+  scenes:
+  - id: gf-two
+    render: bars
+    lines: ["t1@does", t2]
+    params:
+      callouts:
+      - {text: "2 players: yes", at: t2@does}
+      chart:
+        players: 2
+        fair: 50
+        items:
+        - {label: goes first, value: "=results.json:seats.2.seat_win.0*100", color: MUSTARD, at: t2@fifty, hl: true}
+  - id: gf-five
+    render: bars
+    lines: [t3]
+    params:
+      callouts:
+      - {text: "5 players: it flips", at: t3@flips}
+      - {text: "Watch a few draws first", at: t3@watch}
+      chart:
+        players: 5
+        fair: 20
+        items:
+        - {label: first seat, value: "=results.json:seats.5.seat_win.0*100", at: t3@first}
+        - {label: last seat, value: "=results.json:seats.5.seat_win.4*100", color: MUSTARD, at: t3@last, hl: true}
+
+- id: steal
+  hook: "The 'weakest' cards\nwin you games"
+  title: "The weakest cards in Exploding Kittens are secretly the best"
+  description: "Steal from the biggest hand, and never pair up your Attacks. Full video on my channel. #explodingkittens #boardgames #cardgames"
+  scenes:
+  - id: st-bars
+    render: bars
+    lines: [s2, s3]
+    params:
+      callouts:
+      - {text: "Every steal = a shot at their Defuse", at: s3@lottery}
+      - {text: "Aim at the biggest hand", at: s3@biggest}
+      chart:
+        players: 4
+        fair: 25
+        items:
+        - {label: the Patient One, value: "=final.json:vs_casual.4.win*100", color: MUSTARD, at: s2@forty, hl: true}
+        - {label: without pair steals, value: "=final.json:ablation[drop=pair_steal].win*100", color: CORAL, at: s2@thirty}
+        - {label: without Favors, value: "=final.json:ablation[drop=favor_use].win*100", color: CORAL, at: s2@thirty_four}
+  - id: st-pair
+    render: fan
+    lines: [s4]
+    params:
+      seat_label: YOUR HAND
+      cards: [2, 2, 3, 8, 1]
+      highlights:
+      - {card: 0, at: s4@any, label: "ANY PAIR COUNTS"}
+      - {card: 1, at: s4@don't, label: "DON'T PAIR ATTACKS"}
+      - {card: 2, at: s4@skips, label: "OR SKIPS"}
+      play: [{card: 0, at: s4@trading}, {card: 1, at: s4@escapes}]
+      callouts:
+      - {text: "A bot that did: 20%", at: s4@twenty, color: CORAL}
+      - {text: "2 escapes for 1 random card", at: s4@trading}

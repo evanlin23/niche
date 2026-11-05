@@ -1,0 +1,3747 @@
+{
+ "method": "per topic: demand = sum of top-20 long-video views for the demand query; year = same with the this-year filter; best_data = biggest title matching a data/simulation pattern",
+ "topics": {
+  "chess openings": {
+   "demand": 38106346,
+   "demand_med": 853402.0,
+   "year": 10595137,
+   "year_med": 197098.0,
+   "year_share": 0.2780412742801422,
+   "best_data": [
+    20170187,
+    "Mark Rober",
+    "I Solved Every Board Game"
+   ],
+   "best_data_year": [
+    2711646,
+    "Team Liquid Chess",
+    "Magnus Teaches the London System (to every Elo)"
+   ],
+   "n_data_year_100k": 5
+  },
+  "wordle": {
+   "demand": 22366581,
+   "demand_med": 26253,
+   "year": 2379206,
+   "year_med": 2807.0,
+   "year_share": 0.1063732539184241,
+   "best_data": [
+    2138168,
+    "Ballpark Figures",
+    "I Solved Wordle*"
+   ],
+   "best_data_year": [
+    20171469,
+    "Mark Rober",
+    "I Solved Every Board Game"
+   ],
+   "n_data_year_100k": 5
+  },
+  "nyt connections": {
+   "demand": 331667,
+   "demand_med": 1422.5,
+   "year": 312902,
+   "year_med": 2061.5,
+   "year_share": 0.9434221674149071,
+   "best_data": [
+    297223,
+    "Cael4Scale",
+    "Can you Brute Force the NYT Connections with Math?"
+   ],
+   "best_data_year": [
+    297223,
+    "Cael4Scale",
+    "Can you Brute Force the NYT Connections with Math?"
+   ],
+   "n_data_year_100k": 1
+  },
+  "poker": {
+   "demand": 17531768,
+   "demand_med": 313537,
+   "year": 2084334,
+   "year_med": 34949.0,
+   "year_share": 0.11888897913775724,
+   "best_data": [
+    1054784,
+    "BlackRain79Poker",
+    "5 Basic Poker Strategies EVERY Beginner Should Know"
+   ],
+   "best_data_year": [
+    473122,
+    "Sethy Poker",
+    "How To CRUSH Low Stakes Poker! (Every Hand)"
+   ],
+   "n_data_year_100k": 3
+  },
+  "blackjack": {
+   "demand": 30274971,
+   "demand_med": 536014,
+   "year": 1739977,
+   "year_med": 22572.5,
+   "year_share": 0.057472458024815286,
+   "best_data": [
+    342401,
+    "Blackjack Apprenticeship",
+    "The Betting System Every Gambler Tries (and Why It Fails)"
+   ],
+   "best_data_year": [
+    342401,
+    "Blackjack Apprenticeship",
+    "The Betting System Every Gambler Tries (and Why It Fails)"
+   ],
+   "n_data_year_100k": 1
+  },
+  "roulette systems": {
+   "demand": 778839,
+   "demand_med": 5853.5,
+   "year": 171579,
+   "year_med": 6276,
+   "year_share": 0.22030098646832016,
+   "best_data": [
+    203063,
+    "Brettski",
+    "I Retested The Martingale Strategy in High-Limit"
+   ],
+   "best_data_year": [
+    12531,
+    "Ryan Brown (ResponsibleForexTrading)",
+    "I Can Prove Martingale Grid Trading Works — Here’s 20 Years of Data"
+   ],
+   "n_data_year_100k": 0
+  },
+  "lottery": {
+   "demand": 4682018,
+   "demand_med": 29006.0,
+   "year": 815279,
+   "year_med": 4557.0,
+   "year_share": 0.17412983034238655,
+   "best_data": [
+    3681197,
+    "60 Minutes Australia",
+    "Mathematician explains the 'simple' loophole used to win the lottery |"
+   ],
+   "best_data_year": [
+    5786,
+    "Utility Sports",
+    "Simulating the 2026 NBA Draft Lottery"
+   ],
+   "n_data_year_100k": 0
+  },
+  "scratch offs": {
+   "demand": 11608363,
+   "demand_med": 91275,
+   "year": 4558035,
+   "year_med": 44908,
+   "year_share": 0.3926509706838079,
+   "best_data": [
+    3681197,
+    "60 Minutes Australia",
+    "Mathematician explains the 'simple' loophole used to win the lottery |"
+   ],
+   "best_data_year": [
+    103391,
+    "The Overnight Millionaire",
+    "The Lottery Loophole That Turned a Math Nerd Into Legend"
+   ],
+   "n_data_year_100k": 1
+  },
+  "minecraft mechanics": {
+   "demand": 15642485,
+   "demand_med": 253312.0,
+   "year": 971081,
+   "year_med": 27593,
+   "year_share": 0.06207971431649127,
+   "best_data": [
+    2864569,
+    "Bionic",
+    "Minecraft, But Every Drop is Horror..."
+   ],
+   "best_data_year": [
+    2905186,
+    "PrestonPlayz",
+    "Testing Scary Minecraft Myths That Are Unsolved…"
+   ],
+   "n_data_year_100k": 3
+  },
+  "gacha pity": {
+   "demand": 3186324,
+   "demand_med": 36762,
+   "year": 97760,
+   "year_med": 3107,
+   "year_share": 0.03068112345135021,
+   "best_data": [
+    445295,
+    "Kryand",
+    "What Genshin Impact Doesn't Tell You! 9 Things Every Player Should Kno"
+   ],
+   "best_data_year": [
+    3935,
+    "Rusty Champaign",
+    "Gacha Capsule Shop Simulator First Look Live! - Our Gacha Shop Journey"
+   ],
+   "n_data_year_100k": 0
+  },
+  "pokemon tcg pocket": {
+   "demand": 1136019,
+   "demand_med": 26854.0,
+   "year": 557165,
+   "year_med": 26625.5,
+   "year_share": 0.4904539448724009,
+   "best_data": [
+    994946,
+    "Purplecliffe",
+    "I Played 100 Days of TCG Card Shop Simulator"
+   ],
+   "best_data_year": [
+    207404,
+    "Seeker227 and JunkSeeker",
+    "Opening a Pokémon TCG Store! - TCG Card Shop Simulator, MODDED"
+   ],
+   "n_data_year_100k": 1
+  },
+  "clash royale": {
+   "demand": 3666307,
+   "demand_med": 72590.0,
+   "year": 3675174,
+   "year_med": 72590.0,
+   "year_share": 1.0024185099611134,
+   "best_data": [
+    2104717,
+    "Jynxzi",
+    "I Played The BEST Deck for EVERY ARENA in Clash Royale!"
+   ],
+   "best_data_year": [
+    2104717,
+    "Jynxzi",
+    "I Played The BEST Deck for EVERY ARENA in Clash Royale!"
+   ],
+   "n_data_year_100k": 1
+  },
+  "mario kart": {
+   "demand": 22216385,
+   "demand_med": 1088270,
+   "year": 4154367,
+   "year_med": 248806,
+   "year_share": 0.18699563407818148,
+   "best_data": [
+    2055105,
+    "Shortcat",
+    "Playing the BEST Combo of Every Character in Mario Kart 8 Deluxe!"
+   ],
+   "best_data_year": [
+    94368,
+    "Switch Stop",
+    "Choosing The Best Kart For Every Character In Mario Kart World"
+   ],
+   "n_data_year_100k": 0
+  },
+  "monopoly go": {
+   "demand": 10613622,
+   "demand_med": 48049,
+   "year": 51200,
+   "year_med": 1548.0,
+   "year_share": 0.004823989397775802,
+   "best_data": [
+    13166157,
+    "Veritasium",
+    "The Strange Math That Predicts (Almost) Anything"
+   ],
+   "best_data_year": [
+    20171469,
+    "Mark Rober",
+    "I Solved Every Board Game"
+   ],
+   "n_data_year_100k": 1
+  },
+  "fantasy football": {
+   "demand": 1386227,
+   "demand_med": 60685.5,
+   "year": 1500717,
+   "year_med": 63747.5,
+   "year_share": 1.082591090780947,
+   "best_data": [
+    17745,
+    "Draft Sharks Fantasy Football",
+    "2026 Fantasy Football Draft Strategy: When to Draft Every Position"
+   ],
+   "best_data_year": [
+    65234,
+    "NFL Stock Exchange",
+    "Re-Grading Every 2026 1st Round Pick"
+   ],
+   "n_data_year_100k": 0
+  },
+  "march madness": {
+   "demand": 0,
+   "demand_med": 0,
+   "year": 565061,
+   "year_med": 6702.0,
+   "year_share": 0,
+   "best_data": [
+    100611,
+    "Halftime Productions",
+    "Simulating the 2026 NCAA March Madness Tournament on 2K26 - 64 Team Br"
+   ],
+   "best_data_year": [
+    100611,
+    "Halftime Productions",
+    "Simulating the 2026 NCAA March Madness Tournament on 2K26 - 64 Team Br"
+   ],
+   "n_data_year_100k": 1
+  },
+  "nfl decisions": {
+   "demand": 735538,
+   "demand_med": 1583.5,
+   "year": 2401516,
+   "year_med": 4442,
+   "year_share": 3.2649788318210615,
+   "best_data": [
+    139914,
+    "RBT",
+    "I Simulated the NFL Season 100 Times!"
+   ],
+   "best_data_year": [
+    139914,
+    "RBT",
+    "I Simulated the NFL Season 100 Times!"
+   ],
+   "n_data_year_100k": 3
+  },
+  "f1 strategy": {
+   "demand": 7879721,
+   "demand_med": 256179.5,
+   "year": 5869292,
+   "year_med": 222108,
+   "year_share": 0.7448603827470541,
+   "best_data": [
+    1051428,
+    "DailyFuelUp",
+    "Every F1 Driving Style Explained"
+   ],
+   "best_data_year": [
+    1545184,
+    "General Motors and 3 more",
+    "Inside Cadillac Formula 1 Team’s First Race Simulation"
+   ],
+   "n_data_year_100k": 6
+  },
+  "squid game": {
+   "demand": 29019074,
+   "demand_med": 768360,
+   "year": 458911,
+   "year_med": 5160.5,
+   "year_share": 0.015814115915621568,
+   "best_data": [
+    8238242,
+    "Louis Weisz",
+    "I Tested Every Strategy to WIN Squid Game"
+   ],
+   "best_data_year": [
+    4488475,
+    "Joe Bartolozzi",
+    "How Fast You'd Die In Every Prehistoric Era"
+   ],
+   "n_data_year_100k": 2
+  },
+  "jeopardy": {
+   "demand": 13348805,
+   "demand_med": 21640,
+   "year": 973684,
+   "year_med": 1231.0,
+   "year_share": 0.07294166032090513,
+   "best_data": [
+    796,
+    "MrExcel.com",
+    "Excel - Jeopardy Masters Semi-Finals Tie! What Are The Odds - Episode "
+   ],
+   "best_data_year": [
+    20242,
+    "soyadesu",
+    "I Know December Holiday's SECRET. (And 3 MORE. . .) (A DELTARUNE Lore "
+   ],
+   "n_data_year_100k": 0
+  },
+  "survival odds": {
+   "demand": 8552720,
+   "demand_med": 94.5,
+   "year": 4404834,
+   "year_med": 73,
+   "year_share": 0.5150214200862415,
+   "best_data": [
+    25,
+    "DoodledDisasters",
+    "Could You Survive The Titanic? (The Real Odds Will Shock You)"
+   ],
+   "best_data_year": [
+    351891,
+    "Survival Curriculum",
+    "Zombie Apocalypse Simulation Reveals the Truth About Survival"
+   ],
+   "n_data_year_100k": 1
+  },
+  "zombie outbreak": {
+   "demand": 28854739,
+   "demand_med": 628218.5,
+   "year": 14098458,
+   "year_med": 509929.0,
+   "year_share": 0.4886011271839957,
+   "best_data": [
+    1097478,
+    "Silo Entertainment",
+    "I Tried Surviving a Zombie Virus Outbreak Simulation Airsoft Event"
+   ],
+   "best_data_year": [
+    1097478,
+    "Silo Entertainment",
+    "I Tried Surviving a Zombie Virus Outbreak Simulation Airsoft Event"
+   ],
+   "n_data_year_100k": 3
+  },
+  "three body": {
+   "demand": 42907678,
+   "demand_med": 918223.5,
+   "year": 2989953,
+   "year_med": 67327.5,
+   "year_share": 0.06968340258356558,
+   "best_data": [
+    1792437,
+    "Quinn's Ideas",
+    "Three Body Problem Full Timeline | 18 Million Years in 9 Minutes!"
+   ],
+   "best_data_year": [
+    12586,
+    "Movie Facts",
+    "THE THREE-BODY PROBLEM – Full Timeline Of Universe / 18 Billion Years "
+   ],
+   "n_data_year_100k": 0
+  },
+  "retirement": {
+   "demand": 5055232,
+   "demand_med": 129232.0,
+   "year": 2552201,
+   "year_med": 47450.0,
+   "year_share": 0.5048632782827771,
+   "best_data": [
+    684962,
+    "Humphrey Yang",
+    "The $1.8 Million Retirement Lie: How Much You REALLY Need"
+   ],
+   "best_data_year": [
+    14720,
+    "Happy on Monday",
+    "Retirement MATH Made SIMPLE! (How much money do you actually need to r"
+   ],
+   "n_data_year_100k": 0
+  },
+  "investing backtests": {
+   "demand": 1366229,
+   "demand_med": 52458.0,
+   "year": 423034,
+   "year_med": 5356.5,
+   "year_share": 0.30963623228609555,
+   "best_data": [
+    287345,
+    "Trading Heroes",
+    "I Backtested 21 Years of Market Data in 6 Seconds with ChatGPT: This C"
+   ],
+   "best_data_year": [
+    28326,
+    "Jason Graystone",
+    "The Backtesting Method Elite Traders Use to Stay Profitable"
+   ],
+   "n_data_year_100k": 0
+  },
+  "rent vs buy": {
+   "demand": 19574061,
+   "demand_med": 649830.0,
+   "year": 7049476,
+   "year_med": 145576.0,
+   "year_share": 0.3601437637289472,
+   "best_data": [
+    1961814,
+    "Logical Money",
+    "Renting Vs Buying a Home - The Real Math"
+   ],
+   "best_data_year": [
+    1961814,
+    "Logical Money",
+    "Renting Vs Buying a Home - The Real Math"
+   ],
+   "n_data_year_100k": 5
+  },
+  "dating stopping": {
+   "demand": 116958384,
+   "demand_med": 1583610.0,
+   "year": 24342596,
+   "year_med": 469404.5,
+   "year_share": 0.20813040645294825,
+   "best_data": [
+    46668446,
+    "Veritasium",
+    "The Simplest Math Problem No One Can Solve - Collatz Conjecture"
+   ],
+   "best_data_year": [
+    8776948,
+    "StarTalk",
+    "Did AI Solve One of Math’s Hardest Problems?"
+   ],
+   "n_data_year_100k": 17
+  },
+  "geoguessr": {
+   "demand": 8645182,
+   "demand_med": 72519,
+   "year": 825260,
+   "year_med": 14932.5,
+   "year_share": 0.09545895043042471,
+   "best_data": [
+    5535203,
+    "WIRED",
+    "Every Trick a Pro GeoGuessr Player Uses to Win (ft. RAINBOLT) | WIRED"
+   ],
+   "best_data_year": [
+    581429,
+    "Justin Tran",
+    "Why Every Reviewer is WRONG about the MacBook Neo"
+   ],
+   "n_data_year_100k": 2
+  },
+  "speedrun luck": {
+   "demand": 37748707,
+   "demand_med": 505236,
+   "year": 5982024,
+   "year_med": 1627.0,
+   "year_share": 0.1584696397680588,
+   "best_data": [
+    10836011,
+    "The Game Theorists",
+    "Game Theory: Did Dream FAKE His Speedrun? A Final Analysis."
+   ],
+   "best_data_year": [
+    3397467,
+    "MrMangoHands",
+    "Dream Cheated Every World Record"
+   ],
+   "n_data_year_100k": 1
+  },
+  "rock paper scissors": {
+   "demand": 8202022,
+   "demand_med": 122007,
+   "year": 14583000,
+   "year_med": 259912.0,
+   "year_share": 1.7779762112318158,
+   "best_data": [
+    355718,
+    "Way Too Simple",
+    "How to Win Rock, Paper, Scissors Every Time"
+   ],
+   "best_data_year": [
+    265,
+    "CV orbit ",
+    "Rock–Paper–Scissor Classification Using YOLOv8 | Train Custom YOLO Mod"
+   ],
+   "n_data_year_100k": 0
+  },
+  "tetris": {
+   "demand": 5797426,
+   "demand_med": 199825,
+   "year": 12005,
+   "year_med": 202,
+   "year_share": 0.0020707465692533203,
+   "best_data": [
+    11664,
+    "SimulationGrid",
+    "AI Tetris Machine Simulation Goes for the Highscore | Unity 4k"
+   ],
+   "best_data_year": [
+    48658,
+    "Moby Motion",
+    "30 minutes of Tetris Getting Shredded (Particle Simulations)"
+   ],
+   "n_data_year_100k": 0
+  },
+  "pac-man": {
+   "demand": 6536311,
+   "demand_med": 107308,
+   "year": 492674,
+   "year_med": 9092.0,
+   "year_share": 0.07537493243513047,
+   "best_data": [
+    2286775,
+    "Fireknight99",
+    "PACMAN 3D Robotic Character Simulation Compilation | Cinema 4D #17"
+   ],
+   "best_data_year": [
+    279033,
+    "Fireknight99",
+    "PACMAN 3D Robot Battle Royale | Realistic Cinema 4D Physics Simulation"
+   ],
+   "n_data_year_100k": 4
+  },
+  "slot machines": {
+   "demand": 8206222,
+   "demand_med": 84970,
+   "year": 3289448,
+   "year_med": 43083,
+   "year_share": 0.4008480394510409,
+   "best_data": [
+    250727,
+    "Casquad",
+    "This ULTIMATE SLOT STRATEGY Is The BIBLE For Every Gambler!"
+   ],
+   "best_data_year": [
+    37600,
+    "Gamble Smart",
+    "🛑 Stop \"Testing\" Slot Machines — The Math Says You're Wasting Your Mon"
+   ],
+   "n_data_year_100k": 0
+  },
+  "dice games casino": {
+   "demand": 2523430,
+   "demand_med": 26544.5,
+   "year": 523280,
+   "year_med": 17665.5,
+   "year_share": 0.20736854202414967,
+   "best_data": [
+    233441,
+    "Color Up",
+    "Best Craps Strategy Based on Math"
+   ],
+   "best_data_year": [
+    4176,
+    "Shoulda Cashed Out",
+    "I Watched A Stranger Play Craps For 2 Hours, Then Tested It"
+   ],
+   "n_data_year_100k": 0
+  },
+  "escape the backrooms": {
+   "demand": 129426941,
+   "demand_med": 429894.5,
+   "year": 10318787,
+   "year_med": 207191.5,
+   "year_share": 0.0797267317010915,
+   "best_data": [
+    743568,
+    "John Song",
+    "A Comparison of Pathfinding Algorithms"
+   ],
+   "best_data_year": [
+    8383,
+    "How It Really Works?",
+    "13 Maze Generation Algorithms Visualized (with Sound) | 迷路生成アルゴリズム全13種"
+   ],
+   "n_data_year_100k": 0
+  },
+  "coin flip paradoxes": {
+   "demand": 36710296,
+   "demand_med": 370469,
+   "year": 10752193,
+   "year_med": 353,
+   "year_share": 0.2928931164161684,
+   "best_data": [
+    1757334,
+    "TED-Ed",
+    "How statistics can be misleading - Mark Liddell"
+   ],
+   "best_data_year": [
+    642699,
+    "MindYourDecisions",
+    "Why The Probability Really Is 51.8%"
+   ],
+   "n_data_year_100k": 2
+  },
+  "size comparison": {
+   "demand": 495569747,
+   "demand_med": 19995963,
+   "year": 14119986,
+   "year_med": 371124.0,
+   "year_share": 0.028492429341131675,
+   "best_data": [
+    162318349,
+    "Alex Evett",
+    "Universe Size Comparison 3D"
+   ],
+   "best_data_year": [
+    4003114,
+    "Interplanetary",
+    "Universe Size Comparison | Solar System To Observable Universe | True "
+   ],
+   "n_data_year_100k": 18
+  },
+  "speed comparison": {
+   "demand": 127353569,
+   "demand_med": 3522323.5,
+   "year": 27092111,
+   "year_med": 396827,
+   "year_share": 0.21273146259450335,
+   "best_data": [
+    23411030,
+    "Reigarw Comparisons",
+    "Speed Comparison 2 : Faster than Light"
+   ],
+   "best_data_year": [
+    17326816,
+    "RED SIDE",
+    "🏁 Fastest Running Cartoon Characters Ever! 💨🏃3D Comparison"
+   ],
+   "n_data_year_100k": 18
+  },
+  "population data": {
+   "demand": 20560371,
+   "demand_med": 284863,
+   "year": 2751139,
+   "year_med": 26324,
+   "year_share": 0.13380784811713758,
+   "best_data": [
+    10280065,
+    "WorldTV Studio",
+    "Total Population by Country  | Flags and country ranked by population "
+   ],
+   "best_data_year": [
+    1169846,
+    "Memeable Data",
+    "Every Level of Population Collapse in 13 Minutes"
+   ],
+   "n_data_year_100k": 1
+  },
+  "bar chart race": {
+   "demand": 6728541,
+   "demand_med": 121777.0,
+   "year": 2660397,
+   "year_med": 4354.5,
+   "year_share": 0.3953898772408461,
+   "best_data": [
+    1748707,
+    "Data Is Beautiful",
+    "Most Popular Programming Languages: Data from 1958 to 2025"
+   ],
+   "best_data_year": [
+    1068629,
+    "Just Explained",
+    "Every Programming Language Explained in 16 Minutes"
+   ],
+   "n_data_year_100k": 2
+  },
+  "map history": {
+   "demand": 76643165,
+   "demand_med": 550176,
+   "year": 9600858,
+   "year_med": 135824.0,
+   "year_share": 0.12526698238518724,
+   "best_data": [
+    33862662,
+    "Cottereau",
+    "The History of Europe: Every Year"
+   ],
+   "best_data_year": [
+    3186544,
+    "Cottereau",
+    "History of the World: Every Year"
+   ],
+   "n_data_year_100k": 4
+  },
+  "asteroid what-if": {
+   "demand": 42605251,
+   "demand_med": 881825,
+   "year": 18004670,
+   "year_med": 9884.0,
+   "year_share": 0.42259274566883787,
+   "best_data": [
+    10359019,
+    "MetaBallStudios",
+    "ASTEROID IMPACT Comparison 🌑💥"
+   ],
+   "best_data_year": [
+    960631,
+    "ExtinctZoo ",
+    "I Simulated What The K-T Extinction Would Have Felt Like In Real Time"
+   ],
+   "n_data_year_100k": 1
+  },
+  "disaster what-if": {
+   "demand": 34285871,
+   "demand_med": 1070902.0,
+   "year": 8053594,
+   "year_med": 263,
+   "year_share": 0.23489541799886024,
+   "best_data": [
+    8573523,
+    "EarthquakeSim",
+    "Construction Materials: 10 Earthquakes Simulation"
+   ],
+   "best_data_year": [
+    336153,
+    "Doomsday Math",
+    "What If the Cascadia Megaquake Hit Tonight? We Ran 10,000 Simulations"
+   ],
+   "n_data_year_100k": 1
+  },
+  "hurricane": {
+   "demand": 14644436,
+   "demand_med": 255095,
+   "year": 35311,
+   "year_med": 27.0,
+   "year_share": 0.0024112229381862164,
+   "best_data": [
+    4079400,
+    "CBS Mornings",
+    "Storm simulator recreates Category 5 hurricane conditions"
+   ],
+   "best_data_year": [
+    66957,
+    "Mapocalypse",
+    "I Simulated Yellowstone Erupting, Day by Day"
+   ],
+   "n_data_year_100k": 0
+  },
+  "climate data": {
+   "demand": 37034467,
+   "demand_med": 472088,
+   "year": 19293699,
+   "year_med": 277234.5,
+   "year_share": 0.5209660233533265,
+   "best_data": [
+    386886,
+    "space and science",
+    "The Fastest Heat Event in 66 Million Years - Can We Adapt? | Surviving"
+   ],
+   "best_data_year": [
+    386886,
+    "space and science",
+    "The Fastest Heat Event in 66 Million Years - Can We Adapt? | Surviving"
+   ],
+   "n_data_year_100k": 1
+  },
+  "space scale": {
+   "demand": 97829159,
+   "demand_med": 749043,
+   "year": 15608795,
+   "year_med": 170041,
+   "year_share": 0.15955156069572263,
+   "best_data": [
+    49745814,
+    "Global Data",
+    "Universe Size Comparison | 3d Animation Comparison | Stars Real Scale "
+   ],
+   "best_data_year": [
+    4003114,
+    "Interplanetary",
+    "Universe Size Comparison | Solar System To Observable Universe | True "
+   ],
+   "n_data_year_100k": 4
+  },
+  "flight traffic": {
+   "demand": 710830310,
+   "demand_med": 1440190.0,
+   "year": 71163707,
+   "year_med": 379942,
+   "year_share": 0.10011349544168988,
+   "best_data": [
+    6486763,
+    "DougDoug",
+    "Can you fly an airplane \"under\" every famous monument? (Microsoft Flig"
+   ],
+   "best_data_year": [
+    1033923,
+    "Qatar Airways",
+    "Behind Every Flight at the World’s Best Airline"
+   ],
+   "n_data_year_100k": 2
+  },
+  "transit": {
+   "demand": 6543611,
+   "demand_med": 3366,
+   "year": 2053149,
+   "year_med": 168,
+   "year_share": 0.31376391414465193,
+   "best_data": [
+    31051,
+    "ArcGIS",
+    "Creating a Network Dataset with Public Transit Data"
+   ],
+   "best_data_year": [
+    163,
+    "Corero Network Security",
+    "Track, Analyze, and Cut Transit Costs with Traffic Analysis"
+   ],
+   "n_data_year_100k": 0
+  },
+  "salaries": {
+   "demand": 11508072,
+   "demand_med": 115007.5,
+   "year": 4294256,
+   "year_med": 69670.5,
+   "year_share": 0.3731516452104227,
+   "best_data": [
+    3528600,
+    "WatchData",
+    "Price Comparison: Highest Paid Jobs"
+   ],
+   "best_data_year": [
+    71290,
+    "Ishan Sharma",
+    "5 Highest Paying Jobs in 2026 | Every Fresher Needs to Watch This"
+   ],
+   "n_data_year_100k": 0
+  },
+  "cost of living": {
+   "demand": 352463,
+   "demand_med": 91,
+   "year": 1016389,
+   "year_med": 248.0,
+   "year_share": 2.883675733339386,
+   "best_data": [
+    1476,
+    "Money Fit by DRS",
+    "How Do You Compare the Cost of Living between Cities"
+   ],
+   "best_data_year": [
+    817273,
+    "NY1 and Spectrum News",
+    "How does New York's cost of living compare to London?"
+   ],
+   "n_data_year_100k": 1
+  },
+  "invest what-if": {
+   "demand": 6916205,
+   "demand_med": 73897.0,
+   "year": 3560666,
+   "year_med": 12522,
+   "year_share": 0.5148294476522891,
+   "best_data": [
+    1159883,
+    "Benjamin",
+    "Investing Backtests That Make Me Sad"
+   ],
+   "best_data_year": [
+    614368,
+    "Umar Punjabi",
+    "How To Backtest a Trading Strategy For Consistent Profits ( My EXACT S"
+   ],
+   "n_data_year_100k": 4
+  },
+  "inflation": {
+   "demand": 154718707,
+   "demand_med": 664398,
+   "year": 3271250,
+   "year_med": 32,
+   "year_share": 0.021143209269451818,
+   "best_data": [
+    14124,
+    "Good Winner",
+    "Every Country by Inflation Rate (2026)"
+   ],
+   "best_data_year": [
+    266,
+    "KoCStats",
+    "The Highest Inflation Rates in History 📉💸  (1999 - 2026) | Bar Chart R"
+   ],
+   "n_data_year_100k": 0
+  },
+  "languages": {
+   "demand": 4537557,
+   "demand_med": 36781,
+   "year": 2615045,
+   "year_med": 33999.0,
+   "year_share": 0.5763112176882846,
+   "best_data": [
+    704226,
+    "Harvard Business Review",
+    "Telling Stories with Data in 3 Steps (Quick Study)"
+   ],
+   "best_data_year": [
+    594630,
+    "Airlearn Language Show",
+    "The FIVE Most Powerful Languages in History (Ranked)"
+   ],
+   "n_data_year_100k": 3
+  },
+  "music data": {
+   "demand": 18300929,
+   "demand_med": 125711,
+   "year": 6112714,
+   "year_med": 53402.0,
+   "year_share": 0.33401113134748517,
+   "best_data": [
+    884187,
+    "Half as Interesting",
+    "Spotify’s Mathematical System For Determining Your Music Taste"
+   ],
+   "best_data_year": [
+    1521,
+    "NDC Conferences",
+    "The Sound of Privacy – What Your Spotify Data Reveals About You - Denn"
+   ],
+   "n_data_year_100k": 0
+  },
+  "sports records": {
+   "demand": 48692276,
+   "demand_med": 1963724,
+   "year": 5412957,
+   "year_med": 195958,
+   "year_share": 0.11116664581462571,
+   "best_data": [
+    2252803,
+    "We Love Stats",
+    "Fastest Man in the World Every Year (100 metres)"
+   ],
+   "best_data_year": [
+    1449679,
+    "MotionAthlete",
+    "Fastest 200m Times in History Compared | Decade by Decade"
+   ],
+   "n_data_year_100k": 5
+  },
+  "olympics": {
+   "demand": 29541867,
+   "demand_med": 696554,
+   "year": 2340463,
+   "year_med": 77376,
+   "year_share": 0.07922529066967907,
+   "best_data": [
+    5783995,
+    "WatchData",
+    "Race Simulation: Animal Olympics"
+   ],
+   "best_data_year": [
+    1031864,
+    "Olympic Games and Olympics Aquatics",
+    "🇺🇸 EVERY Michael Phelps Gold Medal at Beijing 2008 🥇🥇🥇🥇🥇🥇🥇🥇| #Beijing2"
+   ],
+   "n_data_year_100k": 2
+  },
+  "deep earth": {
+   "demand": 179904901,
+   "demand_med": 1921198.5,
+   "year": 18340465,
+   "year_med": 129157,
+   "year_share": 0.10194533277334118,
+   "best_data": [
+    906536,
+    "Artgram_DIY - Uupvan dhawan",
+    "How to Make Earth Layer Model With Cardboard/ Make 3d Earth Layer Mode"
+   ],
+   "best_data_year": null,
+   "n_data_year_100k": 0
+  },
+  "ai benchmarks": {
+   "demand": 1128882,
+   "demand_med": 19571,
+   "year": 1060243,
+   "year_med": 19166,
+   "year_share": 0.9391973651807718,
+   "best_data": [
+    204270,
+    "Parker Prompts",
+    "I Tested Gemini vs Claude vs ChatGPT So You Don't Have To"
+   ],
+   "best_data_year": [
+    464153,
+    "Better Stack",
+    "This Tiny Engine Runs Impossibly Big AI Models Locally! (colibrì)"
+   ],
+   "n_data_year_100k": 4
+  },
+  "quiz": {
+   "demand": 23681962,
+   "demand_med": 136235.5,
+   "year": 14645521,
+   "year_med": 258952.5,
+   "year_share": 0.6184251541320774,
+   "best_data": [
+    0,
+    "NA",
+    "2 Million+ Views: World Geography Quiz - How Many Can You Answer?"
+   ],
+   "best_data_year": [
+    440132,
+    "Quizzes4U",
+    "CAN YOU REACH LEVEL 7 EVERY TIME? (10 ROUNDS)"
+   ],
+   "n_data_year_100k": 1
+  },
+  "life odds": {
+   "demand": 4953731,
+   "demand_med": 41,
+   "year": 185773,
+   "year_med": 18.0,
+   "year_share": 0.0375016326078263,
+   "best_data": [
+    8267531,
+    "Reigarw Comparisons",
+    "Probability Comparison: Rarest Things in the Universe"
+   ],
+   "best_data_year": [
+    9612,
+    "numiqo",
+    "Probability Theory Explained Simply"
+   ],
+   "n_data_year_100k": 0
+  },
+  "life expectancy": {
+   "demand": 18255763,
+   "demand_med": 387991,
+   "year": 0,
+   "year_med": 0.0,
+   "year_share": 0.0,
+   "best_data": [
+    4217872,
+    "Infinite Comparison",
+    "Comparison: How Long Would You Survive In Space"
+   ],
+   "best_data_year": [
+    63925,
+    "Data Vision",
+    "Comparison: Life Expectancy in Every Country – Global Map 2027"
+   ],
+   "n_data_year_100k": 0
+  },
+  "everyone who ever lived": {
+   "demand": 13542548,
+   "demand_med": 221058,
+   "year": 5337601,
+   "year_med": 388.0,
+   "year_share": 0.39413565305435877,
+   "best_data": [
+    19252775,
+    "American Museum of Natural History",
+    "Human Population Through Time #datavisualization"
+   ],
+   "best_data_year": [
+    3186544,
+    "Cottereau",
+    "History of the World: Every Year"
+   ],
+   "n_data_year_100k": 1
+  },
+  "car data": {
+   "demand": 7961526,
+   "demand_med": 173128.0,
+   "year": 4776315,
+   "year_med": 65042.0,
+   "year_share": 0.5999245622007641,
+   "best_data": [
+    1062758,
+    "Car Help Corner",
+    "Engineer Ranks Every Car Brand BEST To WORST For Reliability"
+   ],
+   "best_data_year": [
+    1062758,
+    "Car Help Corner",
+    "Engineer Ranks Every Car Brand BEST To WORST For Reliability"
+   ],
+   "n_data_year_100k": 1
+  },
+  "energy": {
+   "demand": 13827527,
+   "demand_med": 580154.0,
+   "year": 6534791,
+   "year_med": 11218.5,
+   "year_share": 0.47259289387032116,
+   "best_data": [
+    1613568,
+    "TED-Ed",
+    "The beauty of data visualization - David McCandless"
+   ],
+   "best_data_year": [
+    643050,
+    "TED-Ed",
+    "Why are AI data centers using so much electricity? - Sajan Saini"
+   ],
+   "n_data_year_100k": 1
+  }
+ },
+ "channels": [
+  {
+   "name": "Doomsday Math",
+   "url": "https://www.youtube.com/channel/UCQLVQhePJA0sdpukpLkIamQ",
+   "subs": 1360,
+   "videos": [
+    [
+     "What If Pompeii's Volcano Erupted Today? We Mapped Every Town",
+     88,
+     394
+    ],
+    [
+     "What If the San Andreas Big One Hit Today? We Broke the Fault 10,000 Times",
+     1900,
+     616
+    ],
+    [
+     "What If an Asteroid Hit the Mariana Trench Today? We Mapped Every Coast",
+     6200,
+     494
+    ],
+    [
+     "What If the Carrington Event Hit Today? (We Ran It on the Real Power Grid)",
+     519,
+     506
+    ],
+    [
+     "What If the Space Station Fell Tonight? We Ran 10,000 Simulations of Where It Lands",
+     849,
+     528
+    ],
+    [
+     "What If the Moon Fell to Earth Tonight? We Simulated Every Hour, City by City",
+     361,
+     367
+    ],
+    [
+     "What If Yellowstone Erupted Today? Here's Where the Ash Lands, City by City",
+     6100,
+     453
+    ],
+    [
+     "What If a Black Hole Passed Through Our Solar System? We Ran 1,000 Flybys",
+     1000,
+     395
+    ],
+    [
+     "What If Earth Stopped Spinning? We Simulated It on Real Data",
+     9700,
+     457
+    ],
+    [
+     "What If the Dinosaur-Killer Asteroid Hit Today? We Ran the Numbers",
+     199000,
+     450
+    ],
+    [
+     "What If Everyday Objects Hit Earth at 99% the Speed of Light?",
+     388,
+     192
+    ],
+    [
+     "What If All the Ice Melted? We Flooded Every Coastline on Real Data",
+     2900,
+     493
+    ],
+    [
+     "What If the Cascadia Megaquake Hit Tonight? We Ran 10,000 Simulations",
+     336000,
+     567
+    ],
+    [
+     "What If Apophis Hit Earth? We Ran 10,000 Real Simulations",
+     68000,
+     624
+    ]
+   ],
+   "shorts": [
+    [
+     "What If Vesuvius Erupted Tonight? Which Town Gets Hit First 🌋 #shorts",
+     223,
+     null
+    ],
+    [
+     "The Big One Hits Tonight: Which City Shakes First? 🌎 #shorts",
+     320,
+     null
+    ],
+    [
+     "Asteroid in the Mariana Trench: Which Island Gets Hit First? 🌊 #shorts",
+     1000,
+     null
+    ],
+    [
+     "What If the Carrington Event Hit Today? ☀️⚡ #shorts",
+     1100,
+     null
+    ],
+    [
+     "You Asked: What If the New Madrid Fault Hit Today? 🌎 #shorts",
+     272,
+     null
+    ],
+    [
+     "This Ash Cloud Makes Its Own Wind #shorts",
+     232,
+     null
+    ],
+    [
+     "Yellowstone Erupts: Which City Gets Buried First? #shorts",
+     353,
+     null
+    ],
+    [
+     "Where Would the Moon Hit Earth? #shorts",
+     1800,
+     null
+    ],
+    [
+     "A 150-Metre Tide off Africa #shorts",
+     1000,
+     null
+    ],
+    [
+     "Why the Ocean Can't Keep Up With a Falling Moon #shorts",
+     1000,
+     null
+    ],
+    [
+     "If the Moon Stopped, It Would Hit Us in 4 Days #shorts",
+     1100,
+     null
+    ],
+    [
+     "We Sent a Black Hole Through the Solar System 1,000 Times #shorts",
+     1100,
+     null
+    ],
+    [
+     "You Would Never See This Black Hole Coming #shorts",
+     834,
+     null
+    ],
+    [
+     "What If Earth Orbited a Black Hole? #shorts",
+     165,
+     null
+    ],
+    [
+     "A Black Hole Throws Earth Out of the Solar System #shorts",
+     185,
+     null
+    ],
+    [
+     "How Big Was the Asteroid That Killed the Dinosaurs? #shorts",
+     655,
+     null
+    ],
+    [
+     "The Asteroid That Turned Off the Sun for 2 Years #shorts",
+     430,
+     null
+    ],
+    [
+     "If the Dinosaur Asteroid Hit Mexico Today #shorts",
+     1500,
+     null
+    ],
+    [
+     "The Dinosaur Asteroid's Tsunami, If It Hit Today #shorts",
+     1900,
+     null
+    ],
+    [
+     "Which Cities Survive If Earth Stops Spinning? #shorts",
+     1300,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "Mapocalypse",
+   "url": "https://www.youtube.com/channel/UCajCRRSirKAyuTI-5t5XLCw",
+   "subs": 7610,
+   "videos": [
+    [
+     "I Simulated Yellowstone Erupting, Day by Day",
+     67000,
+     2746
+    ],
+    [
+     "I Simulated a 3D Alien Invasion",
+     18000,
+     2401
+    ],
+    [
+     "I Simulated a War Between NATO and the USSR — Who Wins?",
+     239000,
+     2424
+    ],
+    [
+     "What If Earth Was a Game Server — and It Was Crashing?",
+     5000,
+     2444
+    ],
+    [
+     "What If a Microbe From Mars Threatened Humanity? I Simulated How We Beat It",
+     18000,
+     2418
+    ],
+    [
+     "What Happened to the People Who Moved to Mars? AI Simulated Their Fate",
+     23000,
+     2745
+    ],
+    [
+     "What Happens After an Asteroid Hits Earth? I Simulated 93 Years",
+     45000,
+     2271
+    ],
+    [
+     "An Asteroid Is Coming and Only 1 Million Can Leave for Mars. I Simulated It",
+     46000,
+     2471
+    ],
+    [
+     "What If the Carrington Event Happened Today? I Simulated It",
+     9700,
+     1625
+    ],
+    [
+     "What If the Black Death Came Back by Sea? I Simulated It",
+     6800,
+     1690
+    ],
+    [
+     "I Simulated a Zombie Apocalypse, Day by Day",
+     65000,
+     1804
+    ],
+    [
+     "I Simulated World War III Until It Went Nuclear",
+     169000,
+     1836
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "ExtinctZoo",
+   "url": "https://www.youtube.com/channel/UC0ggS8bt4v7NiZpDfGqNpZQ",
+   "subs": 1550000,
+   "videos": [
+    [
+     "The Evolution Of The Largest Things To Ever Live",
+     265000,
+     1717
+    ],
+    [
+     "The Largest Animal From Every Period",
+     683000,
+     2165
+    ],
+    [
+     "The Deadliest Place To Ever Exist",
+     489000,
+     1633
+    ],
+    [
+     "Every Time Something Has Evolved Into A Snake",
+     null,
+     1360
+    ],
+    [
+     "Pangea Never Got Deadlier Than This",
+     435000,
+     1216
+    ],
+    [
+     "The Extinct Animals That Never Were",
+     1400000,
+     1292
+    ],
+    [
+     "Prehistoric Human Deaths That Make Stubbing Your Toe Seem Pleasurable",
+     2100000,
+     1045
+    ],
+    [
+     "This Channel May Not Exist In 2 Years (Update)",
+     200000,
+     510
+    ],
+    [
+     "When Amphibians Were Apex Predators",
+     1300000,
+     1597
+    ],
+    [
+     "Earth's Scariest Flying Predators From Each Period",
+     785000,
+     1920
+    ],
+    [
+     "When The Sahara Was A Jungle",
+     373000,
+     1172
+    ],
+    [
+     "How Boring Was The Boring Billion Really?",
+     1200000,
+     803
+    ],
+    [
+     "I Simulated What The K-T Extinction Would Have Felt Like In Real Time",
+     960000,
+     1133
+    ],
+    [
+     "Earth's Deadliest Predator From Every Single Period",
+     2400000,
+     1935
+    ],
+    [
+     "Would A T. Rex Survive Middle Earth?",
+     413000,
+     1272
+    ],
+    [
+     "The Triassic Was Earth's Strangest Period By Far",
+     563000,
+     1081
+    ],
+    [
+     "The Deadliest Sea Animal From Every Single Period",
+     3200000,
+     2480
+    ],
+    [
+     "The Strangest Fossils Discovered Beneath The Earth",
+     377000,
+     1249
+    ],
+    [
+     "When Prey Became Scarier Than Predators",
+     951000,
+     1317
+    ],
+    [
+     "When Earth Got Microwaved",
+     530000,
+     1398
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Memeable Data",
+   "url": "https://www.youtube.com/channel/UCZcBeMQLxvjhsW3PEYXuiAA",
+   "subs": 276000,
+   "videos": [
+    [
+     "AI is Going Faster than You Think.",
+     358000,
+     756
+    ],
+    [
+     "Every Level of Obesity in 13 Minutes",
+     55000,
+     800
+    ],
+    [
+     "Every Level of Immigration in 21 Minutes",
+     114000,
+     1314
+    ],
+    [
+     "Every Level of Population Collapse in 13 Minutes",
+     1100000,
+     838
+    ],
+    [
+     "What 3 Degrees of Global Warming Looks Like",
+     912000,
+     1008
+    ],
+    [
+     "Every Level of Wealth in 13 Minutes",
+     5000000,
+     811
+    ],
+    [
+     "How Height Impacts Your Success",
+     478000,
+     763
+    ],
+    [
+     "At What Age Do You Peak?",
+     1400000,
+     549
+    ],
+    [
+     "Is There a Smarter Sex?",
+     462000,
+     1092
+    ],
+    [
+     "The Most Likely Way to Die",
+     105000,
+     474
+    ],
+    [
+     "Why the U.S. Values Your Life at $12,500,000",
+     257000,
+     687
+    ],
+    [
+     "Why Night Owls Die Younger",
+     1200000,
+     458
+    ],
+    [
+     "The Casualties of War in Ukraine",
+     1400000,
+     862
+    ],
+    [
+     "Why Your Friends Have More Friends than You",
+     1500000,
+     482
+    ],
+    [
+     "Why Men Get So Few Matches on Dating Apps",
+     6600000,
+     567
+    ],
+    [
+     "The New Type of Journalism Brought by AI",
+     36000,
+     380
+    ],
+    [
+     "The True Scale of Plastic Pollution",
+     44000,
+     680
+    ],
+    [
+     "How Your Birth Month Impacts Your Success",
+     2200000,
+     430
+    ],
+    [
+     "Is Vegan Food Cheap? I Analyzed 11,000 Foods to Find Out",
+     53000,
+     606
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "MotionAthlete",
+   "url": "https://www.youtube.com/channel/UCPk8PYN6QTu-ujp2woaqhMQ",
+   "subs": 190000,
+   "videos": [
+    [
+     "360° VR Usain Bolt 9.63 Olympic Champion | London 2012 POV",
+     2100000,
+     161
+    ],
+    [
+     "Usain Bolt VS Speed Stars Game World Record",
+     564000,
+     165
+    ],
+    [
+     "8 Fastest Players at the 2026 World Cup",
+     90000,
+     167
+    ],
+    [
+     "360° VR Usain Bolt 9.58 World Record | Berlin 2009 POV",
+     7600000,
+     140
+    ],
+    [
+     "How Much Do Hurdles Actually Slow You Down? | 3D Realistic Simulation",
+     141000,
+     202
+    ],
+    [
+     "The Perfect 4x100m Dream Team | 3D Data Simulation",
+     534000,
+     239
+    ],
+    [
+     "Usain Bolt vs Fastest NFL 40 yard dash | Realistic 3D Simulation",
+     326000,
+     141
+    ],
+    [
+     "Fastest Acceleration Ever 💀 SU vs COLEMAN | 3D Comparison",
+     254000,
+     119
+    ],
+    [
+     "Fastest 200m Times in History Compared | Decade by Decade",
+     1400000,
+     375
+    ],
+    [
+     "Usain Bolt VS Human Speed Limit | 3D Comparison",
+     2300000,
+     139
+    ],
+    [
+     "Can We Jump Further Than a Dog? [3D Simulation]",
+     150000,
+     240
+    ],
+    [
+     "Fastest 100m Times in History Compared | Decade by Decade",
+     1900000,
+     338
+    ],
+    [
+     "iShowSpeed VS Tyreek Hill | 3D Speed Comparison",
+     255000,
+     120
+    ],
+    [
+     "Can you Escape Usain Bolt? [REALISTIC 3D SIMULATION]",
+     498000,
+     131
+    ],
+    [
+     "Michael Johnson VS Wayde van Niekerk | 3D",
+     147000,
+     153
+    ],
+    [
+     "iShowSpeed VS Daniel LaBelle [3D]",
+     725000,
+     115
+    ],
+    [
+     "Ashton Hall VS Fastest Woman",
+     1100000,
+     145
+    ],
+    [
+     "3 Fastest Women Ever | 100m 3D Speed Comparison",
+     368000,
+     173
+    ],
+    [
+     "100m Speed Comparison | Fastest Men by Continent [3D]",
+     2100000,
+     284
+    ],
+    [
+     "iShowSpeed VS Sha'Carri Richardson [3D SPEED COMPARISON]",
+     7000000,
+     129
+    ]
+   ],
+   "shorts": [
+    [
+     "Bolt 9.58 vs Bolt 9.63 🤯⚡ #trackandfield",
+     3600,
+     null
+    ],
+    [
+     "IMPOSSIBLE 💀 connect 9 dots with 4 lines",
+     7600,
+     null
+    ],
+    [
+     "Bro got cooked 2 TIMES🥶 #trackandfield #athletics",
+     35000,
+     null
+    ],
+    [
+     "Pause Mike Powell's 8.95m Jump Inside the Shape, Only 1% Can 🎯🤯",
+     18000,
+     null
+    ],
+    [
+     "chatgpt did me dirty 💀",
+     10000,
+     null
+    ],
+    [
+     "Who's The Fastest 200m Man In History? 🔥 pt 4",
+     7200,
+     null
+    ],
+    [
+     "Who's The Fastest 200m Man In History? 🔥 pt. 3",
+     8200,
+     null
+    ],
+    [
+     "Who's The Fastest 200m Man In History? 🔥 pt. 2",
+     4100,
+     null
+    ],
+    [
+     "Who's The Fastest 200m Runner In History? 🤯 pt 1",
+     7700,
+     null
+    ],
+    [
+     "Why Animating Duplantis Is Almost IMPOSSIBLE 🥶 #3danimation #trackandfield",
+     4200,
+     null
+    ],
+    [
+     "THIS Is How Far Ahead a Very Good Gamer Gets on Bolt 🥶  #trackandfield #3danimation",
+     20000,
+     null
+    ],
+    [
+     "Worth it? 💔💀",
+     10000,
+     null
+    ],
+    [
+     "I Built Noah Lyles From Scratch, 6 Hours Of Work 🤯⚡",
+     22000,
+     null
+    ],
+    [
+     "5 Min vs 567 Min 🤯 :⚡Ryan Bailey Animation",
+     29000,
+     null
+    ],
+    [
+     "This Is What Bolt Actually Saw in London 2012 🤯 #trackandfield",
+     41000,
+     null
+    ],
+    [
+     "Usain Bolt Loses By One Thousandth To A Phone Game 🥶 #trackandfield #sports",
+     54000,
+     null
+    ],
+    [
+     "KISHANE SPLITS ❤️💀",
+     74000,
+     null
+    ],
+    [
+     "Cat Hits 51.5 km/h vs Usain Bolt 🐐⚡",
+     47000,
+     null
+    ],
+    [
+     "Mbappé Loses to a Female Sprinter?? 🔥 #athletics",
+     37000,
+     null
+    ],
+    [
+     "Bolt Hit 40.3 km/h and Was STILL Accelerating 🤯 #athletics #trackandfield",
+     50000,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "Interplanetary",
+   "url": "https://www.youtube.com/channel/UCSaCQr2ppyNUY_kjnWY1yVQ",
+   "subs": 54400,
+   "videos": [
+    [
+     "Universe Size Comparison | Solar System To Observable Universe | True Scale",
+     4000000,
+     536
+    ],
+    [
+     "A planetary-scale heat wave in Jupiter's upper atmosphere, sent by the aurora",
+     33000,
+     48
+    ],
+    [
+     "Watch An Entire Day on Jupiter: 360° takes 9 hours 55 minutes",
+     55000,
+     35735
+    ],
+    [
+     "How BIG the Moon used to look in our sky – simulation of \"Lunar Retreat\"",
+     20000,
+     91
+    ],
+    [
+     "The positions of stars in Zodiacal constellations",
+     8900,
+     54
+    ],
+    [
+     "The PLANETS* to scale not only in size, but also in their tilt and rotation speed. *plus Pluto/Ceres",
+     84000,
+     80
+    ],
+    [
+     "How far can we throw a ball on other worlds?",
+     83000,
+     110
+    ],
+    [
+     "The reason for the seasons, solstices and equinox (southern hemisphere)",
+     11000,
+     60
+    ],
+    [
+     "The reason for the seasons, solstices and equinox",
+     32000,
+     60
+    ],
+    [
+     "The heating of Jupiter's entire global upper atmosphere by aurora",
+     24000,
+     36
+    ],
+    [
+     "Visualization of the velocities required to escape Solar System bodies",
+     72000,
+     108
+    ],
+    [
+     "A 1 Kilometer \"Ball Drop\" On Solar System Bodies",
+     539000,
+     88
+    ],
+    [
+     "A straightforward comparison of the inner planets",
+     16000,
+     40
+    ],
+    [
+     "Mars",
+     8100,
+     40
+    ],
+    [
+     "Sizes of celestial objects in the sky over the next 3 years using Moon as a reference",
+     11000,
+     140
+    ],
+    [
+     "This is how the Moon will look for the next couple of years on the near and far side, simultaneously",
+     5900,
+     80
+    ],
+    [
+     "Great Conjunction of Jupiter & Saturn. Here's what they'll look like to scale in the sky!",
+     5300,
+     12
+    ],
+    [
+     "Jupiter and Saturn conjunction video 3! *Moon only pictured here to show the scale*",
+     4000,
+     24
+    ],
+    [
+     "Great Conjunction of Jupiter & Saturn 2020, with Moon added to show scale",
+     5600,
+     25
+    ],
+    [
+     "The Great Conjunction 2020 -- Jupiter & Saturn",
+     6600,
+     24
+    ]
+   ],
+   "shorts": [
+    [
+     "Universe Size Comparison | From Solar System To Observable Universe (preview)",
+     40000,
+     null
+    ],
+    [
+     "The planets rotating on a single sphere!",
+     7900,
+     null
+    ],
+    [
+     "Relative planetary rotations",
+     21000,
+     null
+    ],
+    [
+     "Earth from the Moon. The Earthrise effect is caused by the spacecraft motion as it orbited the Moon",
+     6700,
+     null
+    ],
+    [
+     "speed of light from Earth to Moon, to scale, in real time 😳",
+     7500,
+     null
+    ],
+    [
+     "speed of light around earth",
+     6700,
+     null
+    ],
+    [
+     "Celestial objects to scale!",
+     7200,
+     null
+    ],
+    [
+     "The scale of the solar system",
+     53000,
+     null
+    ],
+    [
+     "The Planets With Accurate Rotations and Tilts",
+     10000,
+     null
+    ],
+    [
+     "Ultraviolet Planetary Auroras",
+     20000,
+     null
+    ],
+    [
+     "Our relative velocities",
+     42000,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "RED SIDE",
+   "url": "https://www.youtube.com/channel/UCrYB2eCu6M_aKVLYcTb6JUg",
+   "subs": 1010000,
+   "videos": [
+    [
+     "🏁 Fastest Running GAME Characters Ever! 🎮💨 3D Comparison",
+     557000,
+     680
+    ],
+    [
+     "🏁 Fastest Running MONSTER Characters Ever! 🧌💨 3D Comparison",
+     2000000,
+     713
+    ],
+    [
+     "🏁 Fastest Running Cartoon Characters Ever! 💨🏃3D Comparison",
+     17000000,
+     710
+    ],
+    [
+     "CARS Characters  🚒❤️‍🔥 Speed Comparison ",
+     1000000,
+     485
+    ],
+    [
+     "🌪️ Most VIOLENT TORNADOES Ever 🌩️🌪️ Size COMPARISON",
+     null,
+     494
+    ],
+    [
+     "🌋 Most Powerful VOLCANIC ERUPTIONS Ever 🌋💥 Size Comparison",
+     339000,
+     794
+    ],
+    [
+     "☢️ Most DESTRUCTIVE EXPLOSIONS Ever 💥💣 Size COMPARISON",
+     4100000,
+     754
+    ],
+    [
+     "☄️Scariest MISSILES Used in Today’s Conflict 🪖 3D Simulated",
+     181000,
+     615
+    ],
+    [
+     "WW1 🪖 8K Speed Comparison 3D 🥇",
+     147000,
+     360
+    ],
+    [
+     "8K ANIMALS at 10× Scale 🦒😱 Surreal Size Comparison",
+     177000,
+     528
+    ],
+    [
+     "🐞8K INSECT SPEED Comparison 🏁 3D",
+     787000,
+     491
+    ],
+    [
+     "INSECTS at 1000× Scale 🐜😱 Surreal Size Comparison",
+     1100000,
+     481
+    ],
+    [
+     "Biggest Dragons 🐉 Size Comparison 3D",
+     63000,
+     204
+    ],
+    [
+     "Animals Lifting Power 💪 3D Strength Comparison ⚖️",
+     79000,
+     248
+    ],
+    [
+     "⚡Light Speed ORBITING Planets🪐3D Visualized",
+     97000,
+     486
+    ],
+    [
+     "Weapon Evolution ⚡ Shooting SPEED Comparison",
+     1000000,
+     647
+    ],
+    [
+     "🔥Fastest HUMANS EVER | Speed Comparison 3D",
+     629000,
+     520
+    ],
+    [
+     "🚙💨 World-RECORD Breaking | SPEED COMPARISON",
+     294000,
+     481
+    ],
+    [
+     "🦍🔉 Animals SOUND Distance | 3D Comparison",
+     133000,
+     240
+    ],
+    [
+     "I Monitored Billionaires Earnings 💵 In Real-Time 3D",
+     85000,
+     312
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Cottereau",
+   "url": "https://www.youtube.com/channel/UCmYAcjJNtB8UsSZjXqyx4Zg",
+   "subs": 291000,
+   "videos": [
+    [
+     "History of the World: Every Year",
+     3100000,
+     1044
+    ],
+    [
+     "The Territorial Evolution of France",
+     3400000,
+     254
+    ],
+    [
+     "Assembling France by Political Orientation",
+     173000,
+     61
+    ],
+    [
+     "Assembling France by Average Income",
+     101000,
+     63
+    ],
+    [
+     "Animated map shows every European town in 46 seconds",
+     604000,
+     46
+    ],
+    [
+     "Assembling the World by Alcohol Consumption",
+     156000,
+     81
+    ],
+    [
+     "Which Countries Have the Highest Tax Rates?",
+     197000,
+     143
+    ],
+    [
+     "Assembling the World by Fertility Rate",
+     187000,
+     125
+    ],
+    [
+     "Assembling the World by Income Inequality",
+     101000,
+     140
+    ],
+    [
+     "Assembling the World by Suicide Rate",
+     1000000,
+     116
+    ],
+    [
+     "Assembling the World by Homicide Rate",
+     213000,
+     144
+    ],
+    [
+     "Assembling the World by GDP per Capita",
+     365000,
+     176
+    ],
+    [
+     "Top 15 Most Subscribed YouTubers in France (2012-2019)",
+     783000,
+     183
+    ],
+    [
+     "Top 10 Most Subscribed YouTube Channels (2011-2019)",
+     1200000,
+     208
+    ],
+    [
+     "Timeline of English & British Monarchs",
+     4500000,
+     272
+    ],
+    [
+     "Timeline of U.S. Presidents",
+     3700000,
+     194
+    ],
+    [
+     "Timeline of the Rulers of France",
+     5100000,
+     401
+    ],
+    [
+     "100 Largest Empires in History",
+     5900000,
+     262
+    ],
+    [
+     "500 Greatest Generals in History: 516-401",
+     404000,
+     319
+    ],
+    [
+     "500 Greatest Generals in History: 400-301",
+     407000,
+     280
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Logical Money",
+   "url": "https://www.youtube.com/channel/UCKhpM-cu2Cod-GyG6KngNYg",
+   "subs": 28000,
+   "videos": [
+    [
+     "Why Smart People Make STUPID Money Decisions",
+     1000,
+     643
+    ],
+    [
+     "America's $40 Trillion Debt Explained in Simple English",
+     4300,
+     953
+    ],
+    [
+     "How the Economy Works — Explained Through One Simple Story",
+     1800,
+     752
+    ],
+    [
+     "How the Stock Market Actually Works (Explained Simply)",
+     2200,
+     912
+    ],
+    [
+     "Index Funds vs Mutual Funds vs ETFs vs Hedge Funds — Explained Simply",
+     1100,
+     522
+    ],
+    [
+     "Stock Market Terminology Explained So Simply You'll Never Forget It",
+     2100,
+     651
+    ],
+    [
+     "7 Money Lessons You Learned as a KID that Keep You BROKE",
+     2200,
+     538
+    ],
+    [
+     "If YOU Are Saving Money, You NEED To Stop!",
+     12000,
+     488
+    ],
+    [
+     "Once You Understand ECONOMICS, You See the World DIFFERENTLY",
+     6600,
+     731
+    ],
+    [
+     "How to Manage Your Money LIKE THE 1%",
+     8400,
+     647
+    ],
+    [
+     "Why Looking Poor Is SO Important | Logical Money",
+     13000,
+     590
+    ],
+    [
+     "Buy, Finance or Lease a Car in 2026 — Which Is Cheaper?",
+     10000,
+     923
+    ],
+    [
+     "How to Think Like an Investor (Not a Speculator)",
+     3400,
+     904
+    ],
+    [
+     "8 Minimalist Money Habits to Stay Financially Stable",
+     205000,
+     730
+    ],
+    [
+     "5 Rules That Guarantee WEALTH – No Matter Where You Start",
+     4500,
+     859
+    ],
+    [
+     "The 3 Times When You Should Sell a Stock : Warren Buffett",
+     3400,
+     705
+    ],
+    [
+     "The Transition from Saving to Investing — Step by Step",
+     7500,
+     853
+    ],
+    [
+     "If You Don't Understand Credit, You Don't Understand Money",
+     3800,
+     611
+    ],
+    [
+     "Renting Vs Buying a Home - The Real Math",
+     1900000,
+     1061
+    ],
+    [
+     "The World's Unluckiest Investor | Logical Money",
+     2500,
+     526
+    ]
+   ],
+   "shorts": [
+    [
+     "What If You Invested Just $200/Month Since 2020? 📈 | Logical Money #investing #personalfinance",
+     2700,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "Cael4Scale",
+   "url": "https://www.youtube.com/channel/UCU0wFGNGF2sMoG7cvLTFXYA",
+   "subs": 3220,
+   "videos": [
+    [
+     "Oops... Bruteforcing the Connections Follow-up",
+     1300,
+     1195
+    ],
+    [
+     "Can you Brute Force the NYT Connections with Math?",
+     297000,
+     1595
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Silo Entertainment",
+   "url": "https://www.youtube.com/channel/UCo8q1BVz59Yepk1QPGKLElA",
+   "subs": 6300000,
+   "videos": [
+    [
+     "Actual Soldiers vs YouTube Airsoft Sniper",
+     1600000,
+     1033
+    ],
+    [
+     "I Tried the EASIEST Class to Play in Airsoft",
+     971000,
+     629
+    ],
+    [
+     "I Tested an Exo-suit at World's Largest 72h Airsoft War",
+     6600000,
+     1352
+    ],
+    [
+     "This Airsoft Gun Makes NO SOUND",
+     6500000,
+     578
+    ],
+    [
+     "Becoming the Most HATED Airsoft Player",
+     1400000,
+     748
+    ],
+    [
+     "Stealth Level 100 Using a TRASH Ghillie Suit - guy literally steps on me",
+     609000,
+     537
+    ],
+    [
+     "A Guy Got Beaten Up For Playing With GLASS BBs in Airsoft",
+     395000,
+     521
+    ],
+    [
+     "TOP 100 Airsoft Moments of 2025 (Crashouts, Cheaters, Accidents)",
+     585000,
+     1403
+    ],
+    [
+     "I Tried Surviving a Zombie Virus Outbreak Simulation Airsoft Event",
+     1000000,
+     1271
+    ],
+    [
+     "I Tried Surviving 3 Days at the S.T.A.L.K.E.R. Airsoft Survival Challenge",
+     3800000,
+     1389
+    ],
+    [
+     "I Tested the Toughest 100 Hour Military Conflict Simulation Event with the CZECH ARMY",
+     5600000,
+     1323
+    ],
+    [
+     "I Tried The Most Hated Airsoft Class",
+     5400000,
+     875
+    ],
+    [
+     "This Airsoft Game is Completely UNDERGROUND",
+     869000,
+     942
+    ],
+    [
+     "Guy Brings a M2A1 Flamethrower to Airsoft Game and LIGHTS UP EVERYONE",
+     1900000,
+     636
+    ],
+    [
+     "SOLO Surviving the Largest Airsoft Game on EARTH (5500 players - New World Record)",
+     2700000,
+     667
+    ],
+    [
+     "World's FASTEST Full-Auto Airsoft Pistol.",
+     486000,
+     698
+    ],
+    [
+     "The Next Big Realism Step in Airsoft is here.",
+     386000,
+     622
+    ],
+    [
+     "Prototype .50 Cal vs FINAL PRODUCT",
+     399000,
+     314
+    ],
+    [
+     "I Bought some EXOSKELETON Robot-legs To Beat Everyone at Airsoft",
+     729000,
+     501
+    ],
+    [
+     "This Was Once A German Soldier's Rifle During WW2, Now It's an Airsoft Gun.",
+     224000,
+     544
+    ]
+   ],
+   "shorts": [
+    [
+     "Airsoft RCXD",
+     53000,
+     null
+    ],
+    [
+     "Guy brings moaning anime gun to airsoft",
+     93000,
+     null
+    ],
+    [
+     "When you meet a female...",
+     44000,
+     null
+    ],
+    [
+     "Airsoft: THE GAME - now on PC 😂",
+     47000,
+     null
+    ],
+    [
+     "How do airsoft guns shoot UNDERWATER?",
+     967000,
+     null
+    ],
+    [
+     "I hope it's a ps5 🥰",
+     82000,
+     null
+    ],
+    [
+     "Pov: you grab the wrong rifle for airsoft        @fox@FoxTrotter 6",
+     328000,
+     null
+    ],
+    [
+     "Robbing Airsoft Players",
+     103000,
+     null
+    ],
+    [
+     "P90 + Smoke Silencer #airsoft",
+     90000,
+     null
+    ],
+    [
+     "M249 and P90 with Smoke Suppressor",
+     104000,
+     null
+    ],
+    [
+     "Robbing Airsoft Players",
+     13000000,
+     null
+    ],
+    [
+     "Chernobyl Survival Challenge ☢️",
+     126000,
+     null
+    ],
+    [
+     "They can't keep getting away with this 😭 #airsoft",
+     152000,
+     null
+    ],
+    [
+     "Prototype .50 Cal to Final Result",
+     14000000,
+     null
+    ],
+    [
+     "So annoying when this happens 🙄",
+     96000,
+     null
+    ],
+    [
+     "Tiny 4K Airsoft Camera | Insta360 GO 3S #insta360 #insta360go3s #ad",
+     107000,
+     null
+    ],
+    [
+     "9 August 2025",
+     72000,
+     null
+    ],
+    [
+     "The TRUTH about women",
+     383000,
+     null
+    ],
+    [
+     "World's Smallest 4K Airsoft Camera | Insta360 GO 3S #insta360 #insta360go3s #ad",
+     79000,
+     null
+    ],
+    [
+     "The WORST Airsoft Accidents 🤕☠️",
+     128000,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "We Love Stats",
+   "url": "https://www.youtube.com/channel/UC5pzyshFH_xD9tI8aPDCHDw",
+   "subs": 20600,
+   "videos": [
+    [
+     "Most Powerful Passports in the World✈️🌍",
+     1300,
+     613
+    ],
+    [
+     "Countries With the Most College Students (1980–2026) 🎓",
+     4700,
+     201
+    ],
+    [
+     "Best Universities in the World by CWUR Ranking (2012-2026) 🎓",
+     1200,
+     125
+    ],
+    [
+     "Where Did the World’s Richest People Study? Billionaires and Their Universities 🎓",
+     12000,
+     487
+    ],
+    [
+     "Top 100 Best Universities in the World 🎓",
+     17000,
+     569
+    ],
+    [
+     "Universities with the Most Nobel Prize Laureates (1901–2026)",
+     27000,
+     485
+    ],
+    [
+     "Every Winner of the Nobel Prize in Economic Sciences (1969–2026) 📈",
+     16000,
+     485
+    ],
+    [
+     "All Nobel Prize Winners in Physics (1901-2026)⚛️",
+     248000,
+     823
+    ],
+    [
+     "All Nobel Prizes in Chemistry (1901-2026) 🧪",
+     30000,
+     748
+    ],
+    [
+     "Every Nobel Prize in Physiology or Medicine Winner (1901-2026) 🧬| Complete List of Laureates by Year",
+     36000,
+     897
+    ],
+    [
+     "Every Nobel Prize in Literature Winner (1901-2026)📚 | Complete List of Laureates by Year",
+     659000,
+     537
+    ],
+    [
+     "Every Nobel Peace Prize Winner (1901-2026): Complete List of Laureates by Year 🕊️",
+     196000,
+     567
+    ],
+    [
+     "Countries with the Most Nobel Prize Winners (1901-2026) 📊",
+     278000,
+     289
+    ],
+    [
+     "Countries with the Most Medals at the Asian Games (1951–2026): All-Time Medal Tally 🏅",
+     588,
+     145
+    ],
+    [
+     "Countries with the Most Gold Medals at the Asian Games (1951–2026) 🥇",
+     522,
+     152
+    ],
+    [
+     "Every WRC Drivers' Champion (1977–2026) 🏁",
+     302000,
+     269
+    ],
+    [
+     "Running Backs with the Most Rushing Yards in College Football (1956–2026) 🏈",
+     122000,
+     487
+    ],
+    [
+     "Best Male Volleyball Players in 2026 🏐",
+     46000,
+     585
+    ],
+    [
+     "Countries with the Most Wins in Men's EuroVolley (1948–2026) 🏐",
+     66000,
+     219
+    ],
+    [
+     "Quarterbacks with the Most Passing Yards in College Football (1956–2026) 🏈",
+     207000,
+     485
+    ]
+   ],
+   "shorts": [
+    [
+     "Countries with the Most Nobel Prizes this Century 📊",
+     5700,
+     null
+    ],
+    [
+     "Countries with the Most Gold Medals in the Physics Olympiad this Century🥇",
+     6900,
+     null
+    ],
+    [
+     "Countries with the Most Gold Medals in the Math Olympiad this Century🥇",
+     6100,
+     null
+    ],
+    [
+     "All NBA Champions (1947–2026)🏀🏆",
+     4500,
+     null
+    ],
+    [
+     "Top Countries in Eurovision in the 21st Century (2001-2026) 🇪🇺✨",
+     5900,
+     null
+    ],
+    [
+     "Medal Table at every Winter Olympics❄️",
+     20000,
+     null
+    ],
+    [
+     "Gold Medal Table at every Winter Olympics🥇❄️",
+     7300,
+     null
+    ],
+    [
+     "Most Dominant NFL Teams by Point Differential in 21st Century 🏈",
+     18000,
+     null
+    ],
+    [
+     "Top 10 Chess Players by FIDE Rating in 21st Century ♟️📈",
+     23000,
+     null
+    ],
+    [
+     "Most Popular Christmas Gifts (2001–2025) 🎅🎁🎄",
+     1400,
+     null
+    ],
+    [
+     "Teams with Most College Football Playoff Wins (2014-2025) 🏆🏈",
+     2100,
+     null
+    ],
+    [
+     "Football Clubs with the Most Goals Scored in Champions League ⚽️📈",
+     27000,
+     null
+    ],
+    [
+     "Countries with the Most Goals Scored in World Cup History ⚽️",
+     157000,
+     null
+    ],
+    [
+     "Top Countries in the Math Olympiad this Century (2001-2025) 📊🧮",
+     48000,
+     null
+    ],
+    [
+     "NBA Teams with Most Wins in the Last 10 Years! 🏀📊",
+     3300,
+     null
+    ],
+    [
+     "Paris 2024 Gold Medal Race by Country",
+     6500,
+     null
+    ],
+    [
+     "Paris 2024 Medal Race | Olympic Medal Table",
+     14000,
+     null
+    ],
+    [
+     "Reaching for the Heavens! Top 10 Church Giants ⛪️ #architecture #church",
+     894,
+     null
+    ],
+    [
+     "Architectural Marvels: The Top 10 Tallest Skyscrapers Worldwide  #architecture #skycrapers",
+     4600,
+     null
+    ],
+    [
+     "Top Women's Tennis Players with the Longest Reign at WTA No. 1",
+     2100,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "RBT",
+   "url": "https://www.youtube.com/channel/UCKBqv7Cc5ptUsSQ9Aa02D-w",
+   "subs": 1550000,
+   "videos": [
+    [
+     "Scoring a 99 Yard Touchdown with EVERY QB!",
+     81000,
+     3962
+    ],
+    [
+     "I Fix a Broken Franchise",
+     121000,
+     4272
+    ],
+    [
+     "I Created the SCARIEST Player in NFL History",
+     157000,
+     1997
+    ],
+    [
+     "I Survive 365 Days as a Kicker...",
+     322000,
+     5621
+    ],
+    [
+     "I Created a Perfect Rookie to RUIN the NFL",
+     204000,
+     3270
+    ],
+    [
+     "I Played Madden 17 in 2026 & it's SO MUCH BETTER!",
+     98000,
+     3774
+    ],
+    [
+     "I Made Every NFL Superstar a Free Agent",
+     141000,
+     3997
+    ],
+    [
+     "I Built the STRONGEST NFL Team!",
+     176000,
+     1850
+    ],
+    [
+     "Rebuilding the 0-16 Browns Until a Super Bowl...",
+     176000,
+     3672
+    ],
+    [
+     "I Played the Career of MALACHI TONEY From College to NFL!",
+     152000,
+     5413
+    ],
+    [
+     "I Put Every Quarterback in a Race!",
+     87000,
+     1496
+    ],
+    [
+     "Can AI Go 20-0 in Madden 27?",
+     220000,
+     2577
+    ],
+    [
+     "Scoring a Touchdown with EVERY Wide Receiver in Madden 27!",
+     205000,
+     3648
+    ],
+    [
+     "I Played Madden 19 in 2026 & it's SO MUCH BETTER!",
+     228000,
+     2945
+    ],
+    [
+     "I Built the FASTEST NFL Team!",
+     456000,
+     1922
+    ],
+    [
+     "I Rebuild the Patriots...",
+     158000,
+     4029
+    ],
+    [
+     "I Played the Career of KAMARIO TAYLOR From College to NFL!",
+     127000,
+     4874
+    ],
+    [
+     "I Saved Cam Ward's Career...",
+     123000,
+     4044
+    ],
+    [
+     "What If You Run Out of Players?",
+     185000,
+     1754
+    ],
+    [
+     "Scoring a 99 Yard Touchdown with EVERY 99 Overall!",
+     119000,
+     845
+    ]
+   ],
+   "shorts": [
+    [
+     "I’m so sad",
+     76000,
+     null
+    ],
+    [
+     "Simulating the NFL Season 100 Times...",
+     149000,
+     null
+    ],
+    [
+     "Aaron Donald is BACK 😳",
+     91000,
+     null
+    ],
+    [
+     "Proof Madden 27 is BROKEN",
+     99000,
+     null
+    ],
+    [
+     "Tush Push vs. QB Sneak",
+     160000,
+     null
+    ],
+    [
+     "Predicting the ENTIRE NFL Season - Seahawks",
+     44000,
+     null
+    ],
+    [
+     "Secret Additions to Madden 27",
+     458000,
+     null
+    ],
+    [
+     "Predicting the ENTIRE NFL Season - Panthers",
+     31000,
+     null
+    ],
+    [
+     "Predicting the ENTIRE NFL Season - Chiefs",
+     40000,
+     null
+    ],
+    [
+     "Can You Kick a 100 Yard Field Goal with Mascots?",
+     137000,
+     null
+    ],
+    [
+     "I Played College Football 27 Mascot Mode",
+     241000,
+     null
+    ],
+    [
+     "Can the Eagles go 20-0?",
+     53000,
+     null
+    ],
+    [
+     "I Got Eli Manning to Create the Perfect QB",
+     916000,
+     null
+    ],
+    [
+     "My Mom is the GOAT.",
+     185000,
+     null
+    ],
+    [
+     "This Hurt… 😕",
+     148000,
+     null
+    ],
+    [
+     "Can Justin Jefferson Build a 20-0 Team?",
+     385000,
+     null
+    ],
+    [
+     "Can Trey McBride Build a 20-0 Team?",
+     310000,
+     null
+    ],
+    [
+     "Can CeeDee Lamb Build a 20-0 Team?",
+     632000,
+     null
+    ],
+    [
+     "Can CMC Build a 20-0 Team?",
+     566000,
+     null
+    ],
+    [
+     "THE TITANS SHOCK THE WORLD",
+     143000,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "Benjamin",
+   "error": "not found"
+  },
+  {
+   "name": "Infinite Comparison",
+   "url": "https://www.youtube.com/channel/UC1wjrBtYqZtC3HeQydqZscA",
+   "subs": 808000,
+   "videos": [
+    [
+     "Comparison: Types Of Relationships",
+     64000,
+     186
+    ],
+    [
+     "Comparison: Weird Wants At Each Age",
+     60000,
+     186
+    ],
+    [
+     "Comparison: How Long Can You Survive Inside __",
+     71000,
+     186
+    ],
+    [
+     "Comparison: Common Deaths At Each Age",
+     88000,
+     186
+    ],
+    [
+     "Comparison: Facts About Puberty You Didn't Know",
+     10000,
+     186
+    ],
+    [
+     "Comparison: Worst Things To Lose At Each Age",
+     244000,
+     186
+    ],
+    [
+     "Comparison: Weirdest Habits In Bed",
+     12000,
+     186
+    ],
+    [
+     "Comparison: Chances To Be Born In ___ [Part 2]",
+     69000,
+     186
+    ],
+    [
+     "Comparison: Awkward Things At Each Age",
+     25000,
+     186
+    ],
+    [
+     "Comparison: Fatal Height Falling Into __",
+     31000,
+     186
+    ],
+    [
+     "Comparison: How Long To Go Deaf From __",
+     99000,
+     186
+    ],
+    [
+     "Comparison: Scariest Messages To Receive At 3 AM",
+     12000,
+     186
+    ],
+    [
+     "Comparison: How Fast Would A __ Kill You",
+     54000,
+     186
+    ],
+    [
+     "Comparison: Scariest Things That Can Happen At Daytime",
+     97000,
+     186
+    ],
+    [
+     "Comparison: Most Desired Things At Each Age",
+     35000,
+     186
+    ],
+    [
+     "Comparison: How Much of This Liquid to Kill You",
+     32000,
+     186
+    ],
+    [
+     "Comparison: How LUCKY Are You",
+     19000,
+     186
+    ],
+    [
+     "Comparison: How Fast This DISEASES Can Kill You",
+     52000,
+     186
+    ],
+    [
+     "Comparison: Never Do This at 3 AM",
+     90000,
+     186
+    ],
+    [
+     "Comparison: Your Body After ____",
+     21000,
+     186
+    ]
+   ],
+   "shorts": [
+    [
+     "Most Powerful Weapons Comparison",
+     161000,
+     null
+    ],
+    [
+     "Worst Tortures | Comparison",
+     81000,
+     null
+    ],
+    [
+     "Worst Serial Killers | Comparison",
+     57000,
+     null
+    ],
+    [
+     "Comparison: Top 20 Fastest Cars",
+     91000,
+     null
+    ],
+    [
+     "Comparison: Richest Presidents Ever",
+     117000,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "WatchData",
+   "url": "https://www.youtube.com/channel/UCL2hOcfXAxD44bGz0JIf-dA",
+   "subs": 1690000,
+   "videos": [
+    [
+     "Comparison: Every Serial Killer's Calling Card",
+     8400,
+     198
+    ],
+    [
+     "Comparison: Every Country And How They Wake Up",
+     14000,
+     241
+    ],
+    [
+     "Comparison: Every Feeling You Can't Name Explained",
+     44000,
+     230
+    ],
+    [
+     "Comparison: Every Level Of Human Suffering",
+     238000,
+     180
+    ],
+    [
+     "Comparison: Every Impossible Number That Shouldn't Exist",
+     116000,
+     217
+    ],
+    [
+     "Comparison: Every Level Of Radiation",
+     22000,
+     195
+    ],
+    [
+     "Comparison: What Every Country's Flag Means",
+     80000,
+     686
+    ],
+    [
+     "Comparison: Every Type Of Number",
+     269000,
+     398
+    ],
+    [
+     "Comparison: How Safe Is Tap Water Worldwide?",
+     603000,
+     643
+    ],
+    [
+     "Comparison: Every Scientific Scale",
+     45000,
+     423
+    ],
+    [
+     "Comparison: Every Unit Of Time (Shortest To Longest)",
+     104000,
+     241
+    ],
+    [
+     "Timeline: Evolution Of Elon Musk's Net Worth",
+     75000,
+     279
+    ],
+    [
+     "Comparison: Every Mental Disorder From Weakest To Strongest",
+     98000,
+     326
+    ],
+    [
+     "Comparison: How Long For Your Hand To Dissolve In ___?",
+     33000,
+     219
+    ],
+    [
+     "Comparison: Evolution Of Language (400,000 BC - 2026)",
+     175000,
+     205
+    ],
+    [
+     "Comparison: How Common Is Your Name? (2026)",
+     81000,
+     358
+    ],
+    [
+     "Comparison: What Happens After Death In Every Religion?",
+     201000,
+     180
+    ],
+    [
+     "Comparison: Scariest Road Signs",
+     508000,
+     180
+    ],
+    [
+     "Comparison: What Males Learn At Each Age",
+     151000,
+     280
+    ],
+    [
+     "Comparison: Men Vs Women",
+     68000,
+     358
+    ]
+   ],
+   "shorts": [
+    [
+     "What If You Were Buried Alive?",
+     47000,
+     null
+    ],
+    [
+     "Rarest Human Genetics",
+     54000,
+     null
+    ],
+    [
+     "What If You Never Stopped Running?",
+     27000,
+     null
+    ],
+    [
+     "Probability Comparison Rarest Mental Disorders",
+     18000,
+     null
+    ],
+    [
+     "Comparison Average Age For Everything",
+     23000,
+     null
+    ],
+    [
+     "Comparison Hardest Things To Learn",
+     36000,
+     null
+    ],
+    [
+     "What If Everyone On Earth Suddenly Hated You",
+     21000,
+     null
+    ],
+    [
+     "Comparison Worst Smells",
+     22000,
+     null
+    ],
+    [
+     "If There Were Only Two People Left On Earth",
+     14000,
+     null
+    ],
+    [
+     "What If There Were Suddenly 1 Trillion Humans?",
+     24000,
+     null
+    ],
+    [
+     "If You Were The Last Girl Alive",
+     38000,
+     null
+    ],
+    [
+     "Comparison: Survival Without Organs",
+     14000,
+     null
+    ],
+    [
+     "What If You Could Freeze Time",
+     46000,
+     null
+    ],
+    [
+     "What If Everything You Said Came True",
+     29000,
+     null
+    ],
+    [
+     "How Rare Are You???",
+     786000,
+     null
+    ],
+    [
+     "What if you were immortal?",
+     90000,
+     null
+    ],
+    [
+     "History's Largest Empires! Which is the biggest?",
+     47000,
+     null
+    ],
+    [
+     "Comparison: Computer Viruses",
+     54000,
+     null
+    ],
+    [
+     "Most Deadly Man-Made Disasters",
+     38000,
+     null
+    ],
+    [
+     "Hardest Things To Learn (Comparison)",
+     63000,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "MetaBallStudios",
+   "url": "https://www.youtube.com/channel/UCQwFuQLnLocj5F7ZcmcuWYQ",
+   "subs": 1980000,
+   "videos": [
+    [
+     "👽 ALIENS seen from a FIRST-PERSON VIEW! 💥 (3D without AI)",
+     337000,
+     485
+    ],
+    [
+     "These SIZES will BLOW your MIND 👽😱 (3D without AI)",
+     1100000,
+     595
+    ],
+    [
+     "Fictional CITIES in Perspective 🏬🏭🏫🏤🏣",
+     271000,
+     596
+    ],
+    [
+     "🗽 STATUES Size Comparison 👁️ VR Experience 👁️",
+     66000,
+     541
+    ],
+    [
+     "This is HOW the EARTH is DESTROYED! 🌍💥 (3D no AI)",
+     598000,
+     400
+    ],
+    [
+     "⚠️ Fictional UNDERGROUND FACILITIES ► 3D Comparison",
+     1500000,
+     476
+    ],
+    [
+     "🏛️ Brutal Scales: The Biggest BUILDINGS seen in first person",
+     146000,
+     620
+    ],
+    [
+     "This is the actual SIZE of the BUILDING from FICTION! 😱🤯(3D Comparison)",
+     1700000,
+     444
+    ],
+    [
+     "Global OIL RESERVES Comparison 🛢️🛢️🛢️",
+     296000,
+     311
+    ],
+    [
+     "😵 The INSANE Scale of NUMBERS (From 1 to Infinity) 😮 3D Comparison",
+     1800000,
+     889
+    ],
+    [
+     "💥 The WORST Nuclear Weapons ACCIDENTS 💥 3D animation",
+     1200000,
+     799
+    ],
+    [
+     "🔥 The Most COLOSSAL BRIDGES in the WORLD 🔥 3D Comparison",
+     318000,
+     437
+    ],
+    [
+     "⚠️ Can you FOLD a PAPER to INFINITY?? ►►► 3D Comparison",
+     2200000,
+     441
+    ],
+    [
+     "The Most EXTREME FORCES in Perspective! 💪💪 3D Comparison",
+     192000,
+     284
+    ],
+    [
+     "🌍 The INCREDIBLE DEPTH of the EARTH 🌎 Earth Layers ◄",
+     4600000,
+     431
+    ],
+    [
+     "😱 This Is the TRUE Size of Titans! – ATTACK on TITAN",
+     1900000,
+     422
+    ],
+    [
+     "💀 The TRUE SCALE of COVID Deaths ⚰️⚰️⚰️",
+     193000,
+     201
+    ],
+    [
+     "🌊 The biggest TSUNAMIS in MOVIES 🌊 3D Comparison",
+     3600000,
+     430
+    ],
+    [
+     "☄️ Real SIZES of the most known COMETS ☄️",
+     3100000,
+     495
+    ],
+    [
+     "🐉 DRAGON BALL Size COMPARISON 🐉 (First-person view)",
+     900000,
+     520
+    ]
+   ],
+   "shorts": [
+    [
+     "Scaled Solar System poster",
+     13000,
+     null
+    ],
+    [
+     "Mug featuring the prefixes of the International System of Units",
+     15000,
+     null
+    ],
+    [
+     "MetaBallStudios turns 12 years old",
+     67000,
+     null
+    ],
+    [
+     "1.000.000 Thanks",
+     172000,
+     null
+    ]
+   ]
+  },
+  {
+   "name": "Reigarw Comparisons",
+   "url": "https://www.youtube.com/channel/UCcM-EIxza5g1S0dpnoO_ePA",
+   "subs": 2140000,
+   "videos": [
+    [
+     "YOU vs People Your Age 2 (Accomplishment Comparison)",
+     1500000,
+     488
+    ],
+    [
+     "Probability Comparison: World Records",
+     394000,
+     210
+    ],
+    [
+     "Probability Comparison: How smart are you?",
+     764000,
+     157
+    ],
+    [
+     "Probability Comparison: Gaming Speedrun",
+     558000,
+     172
+    ],
+    [
+     "Probability Comparison: 2020 Events",
+     336000,
+     122
+    ],
+    [
+     "Ice Blasts Comparison (Movies & Anime)",
+     325000,
+     213
+    ],
+    [
+     "Flamethrower Size Comparison (Movies & Anime)",
+     789000,
+     343
+    ],
+    [
+     "Most Celebrated Holiday Comparison",
+     376000,
+     369
+    ],
+    [
+     "Pawn Stars Price Comparison: Most Expensive Deals",
+     285000,
+     483
+    ],
+    [
+     "Highest HP Characters Comparison (In Gaming)",
+     833000,
+     213
+    ],
+    [
+     "Biggest Protests Comparison",
+     393000,
+     178
+    ],
+    [
+     "MrBeast Giveaway Comparison",
+     950000,
+     213
+    ],
+    [
+     "World Leaders Follower Comparison (150 countries ranking)",
+     531000,
+     493
+    ],
+    [
+     "Among Us Probability Comparison: Rarest Things that Really Happened",
+     1600000,
+     219
+    ],
+    [
+     "Regrets Comparison",
+     465000,
+     280
+    ],
+    [
+     "Company Pay Comparison (YOU vs your Boss)",
+     316000,
+     484
+    ],
+    [
+     "YOU vs People Your Age (Life Comparison)",
+     1400000,
+     486
+    ],
+    [
+     "Wildfire Size Comparison",
+     1100000,
+     482
+    ],
+    [
+     "Cars Horsepower Comparison (ft. MetaBallStudios)",
+     632000,
+     182
+    ],
+    [
+     "Greatest Investment Returns Comparison",
+     268000,
+     118
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Data Vision",
+   "url": "https://www.youtube.com/channel/UCxshoj6Co9DJsrqTTkQzPtQ",
+   "subs": 2310,
+   "videos": [
+    [
+     "Every Country Banned From the Olympics, Explained",
+     5300,
+     604
+    ],
+    [
+     "Most Dangerous and Safest Countries, Ranked - Global Map",
+     41000,
+     604
+    ],
+    [
+     "Why Tipping Is RUDE in Some Countries | Every Country's Tipping Culture, Explained",
+     2900,
+     577
+    ],
+    [
+     "Every Country’s Population in 2026 vs 2100 - Global Map",
+     2200,
+     579
+    ],
+    [
+     "What Happens If You Kill Your Own Dog in Every Country - Global Map",
+     10000,
+     574
+    ],
+    [
+     "Every Country WITHOUT KFC, Explained - World Map",
+     3900,
+     697
+    ],
+    [
+     "The US Says DON'T Travel to THESE Countries - World Map",
+     22000,
+     580
+    ],
+    [
+     "Comparison: The Highest Temperature Ever Recorded in Every Country - Global Map",
+     5600,
+     603
+    ],
+    [
+     "Every Country WITHOUT Google Street View - Explained (Map)",
+     23000,
+     564
+    ],
+    [
+     "Every Country's Gasoline Prices, Explained - Global Map",
+     10000,
+     591
+    ],
+    [
+     "Comparison: Life Expectancy in Every Country – Global Map 2027",
+     63000,
+     578
+    ],
+    [
+     "Comparison: How Safe Is Walking Alone at Night in Every Country - Global Map",
+     219000,
+     589
+    ],
+    [
+     "Every Country Messi Has Played In Throughout His Career, Explained – 2026 Map",
+     4600,
+     567
+    ],
+    [
+     "Every Passport in the World, Ranked from Weakest to Strongest - Global Map 2026",
+     9000,
+     586
+    ],
+    [
+     "Every Country’s Pepsi Price, Explained From Cheapest to Most Expensive",
+     2400,
+     582
+    ],
+    [
+     "Comparision: The Coldest Temperature Ever Recorded In Every Country - Global Map",
+     31000,
+     583
+    ],
+    [
+     "Tap Water Safety in Every Country, Explained (Map 2026)",
+     250000,
+     565
+    ],
+    [
+     "Ishowspeed Subscribers Vs  Every Country's Population - 2026 Map",
+     1500,
+     550
+    ],
+    [
+     "The Most Dangerous Animal in Every Country 2026 - A Global Map",
+     20000,
+     559
+    ],
+    [
+     "Which Pizza Giant Rules the World? Domino's Vs Pizza Hut",
+     680,
+     387
+    ]
+   ],
+   "shorts": null
+  },
+  {
+   "name": "Brute Force Lab",
+   "url": "https://www.youtube.com/channel/UCPF-sCEEkBlgNiw20Ae_o0Q",
+   "subs": 2750,
+   "videos": [
+    [
+     "You Asked Where the Army Was. So I Sent It In.",
+     27000,
+     737
+    ],
+    [
+     "How Many Werewolves Make a Fair Game?",
+     348000,
+     499
+    ],
+    [
+     "I Released One Zombie in Manhattan. 4 Months Later...",
+     650000,
+     553
+    ],
+    [
+     "Why 1 in 6 Monopoly Games Never Ends",
+     10000,
+     427
+    ],
+    [
+     "I Simulated How Much Luck You Need to Get Rich",
+     1500,
+     602
+    ],
+    [
+     "How Much of UNO Is Luck?",
+     8600,
+     601
+    ],
+    [
+     "The Perfect Strategy for Guess Who",
+     7200,
+     663
+    ],
+    [
+     "How Often Does Minesweeper Force You to Guess?",
+     19000,
+     722
+    ],
+    [
+     "I Played 100 Million Games of Solitaire",
+     3600,
+     491
+    ],
+    [
+     "Can a Game of War Last Forever?",
+     4800,
+     520
+    ]
+   ],
+   "shorts": [
+    [
+     "This Solitaire deal is impossible, even if you see every card",
+     268,
+     null
+    ],
+    [
+     "Buried aces don't ruin Solitaire. Buried kings do.",
+     747,
+     null
+    ],
+    [
+     "This Solitaire deal has zero moves",
+     126,
+     null
+    ],
+    [
+     "The longest game of War I found",
+     114,
+     null
+    ],
+    [
+     "This game of War never ends",
+     84,
+     null
+    ],
+    [
+     "This game of War never ends",
+     216,
+     null
+    ],
+    [
+     "You can hold all four aces and still lose War",
+     382,
+     null
+    ]
+   ]
+  }
+ ]
+}

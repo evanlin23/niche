@@ -19,6 +19,9 @@ window.setup = async (specUrl) => {
   const stage = new Stage(spec);
   const frame = await mod.build(stage, spec);
   window.frame = (i) => { const t = i / spec.fps; frame(t, i); stage.updateTexts(t); stage.render(); };
+  // QA (pipeline/web/probe.js): advance scene state without drawing, then read it back
+  window.step = (i, draw) => { const t = i / spec.fps; frame(t, i); stage.updateTexts(t); if (draw) stage.render(); };
+  window.STAGE = stage;
   return spec.n_frames;
 };
 window.READY = true;
