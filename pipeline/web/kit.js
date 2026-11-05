@@ -167,7 +167,7 @@ export class Kit {
     return it;
   }
   // callouts: [{text, at, color?, hold?, at_ref?}] one at a time in their own row (word-timed key facts)
-  chips(list, { role = 'callout', size = 36, hold = 3.2, persistent = false } = {}) {
+  chips(list, { role = 'callout', size = 36, hold = 3.2, persistent = false, footer = false } = {}) {
     list = (list || []).filter((c) => typeof c.at === 'number').sort((a, b) => a.at - b.at);
     if (!list.length) return [];
     const L = this.L;
@@ -178,15 +178,17 @@ export class Kit {
         pill: c.color === 'CORAL' ? GN.coral : c.color === 'CREAM' ? 'rgba(244,234,213,0.95)' : (c.pill ? col(c.pill) : GN.mustard) });
     });
     const h = Math.max(...its.map((it) => this.labels.measure(it)[1]));
-    const y = this._row(h, 12);
+    let y;
+    if (footer) { this.bottomY -= h + 12; y = this.bottomY + 6; } else y = this._row(h, 12);
     its.forEach((it) => (it.y = y));
     return its;
   }
   notes(list) { return this.chips((list || []).map((n) => ({ ...n, color: n.color || 'CREAM', pill: n.pill })), { role: 'note', size: this.L.vert ? 34 : 34, persistent: true }); }
   // a free text row (e.g. the odds headline); returns the label
   headRow(o) {
-    const it = this.label({ maxW: this.L.sw, x: this.L.cx, ...o });
+    const it = this.label({ maxW: this.L.sw, x: this.L.cx, ...o, text: o.text || 'Xg' });
     const [, h] = this.labels.measure(it);
+    it.el.textContent = o.text || '';
     it.y = this._row(o.h || h, 8);
     return it;
   }
@@ -194,8 +196,9 @@ export class Kit {
   header({ title, pill, callouts, notes } = {}) {
     this.title(title ?? this.p.title);
     this.pill(pill ?? this.p.pill);
-    this.chips(callouts ?? this.p.callouts);
     this.notes(notes ?? this.p.notes);
+    // 16:9: callouts in a footer row above the brand (keeps the header short); 9:16: under the notes
+    this.chips(callouts ?? this.p.callouts, { footer: !this.L.vert });
   }
   // the rect the 3D content is fitted into (call after the header rows)
   contentRect(pad = 18) {
@@ -231,6 +234,8 @@ export class Kit {
     const b = projectAll(cam, pts, stage.W, stage.H);
     const dx = (r.l + r.r) / 2 - (b[0] + b[2]) / 2, dy = (r.t + r.b) / 2 - (b[1] + b[3]) / 2;
     this.rig = { look, elev, amp, d1: dEnd, d0: dEnd / (1 - push), dx, dy, pts, rect: r };
+    // fog scaled to the shot: big boards sit far away and the room's fixed fog washed them out
+    if (stage.scene.fog) { stage.scene.fog.near = this.rig.d0 * 1.4; stage.scene.fog.far = this.rig.d0 * 3.2; }
     this.applyCam(0);
     return this.rig;
   }
@@ -304,10 +309,10 @@ export class Kit {
   frame(fn) {
     return (t, i) => {
       this.applyCam(t);
+      this.stage.clear2d();
       if (fn) fn(t, i);
       for (const u of this.updaters) u(t);
       this.labels.update(t);
-      this.stage.clear2d();
       const fo = this.spec.fade_out || 0, fi = this.spec.fade_in || 0;   // hard cuts by default
       const a = Math.max(fi ? 1 - clamp(t / fi) : 0, fo ? clamp((t - (this.stage.duration - fo)) / fo) : 0);
       if (a > 0.001) { const g = this.stage.g; g.fillStyle = `rgba(${GN.scrim},${a})`; g.fillRect(0, 0, this.stage.W, this.stage.H); }
@@ -439,12 +444,14 @@ T.statement = async (stage, spec, { kicker = null, ring = false } = {}) => {
   if (ring) {        // title: our own cards around the words, inside the frame
     const faces = p.cards || [0, 1, 2, 3, 6, 7, 8, 4, 5];
     cards = faces.map((f, k) => {
-      const c = kitCard(stage, f); const a = k / faces.length * Math.PI * 2;
-      c.position.set(Math.cos(a) * (wmax / 2 + 1.6), 0.08 + k * 0.01, Math.sin(a) * (zr + 1.0) + size * 0.5);
+      // on a rectangle around the words (an ellipse cut into the corners of wrapped lines)
+      const c = kitCard(stage, f); const a = k / faces.length * Math.PI * 2 + 0.3, A = wmax / 2 + 1.3, B = zr + 1.0;
+      const q = Math.max(Math.abs(Math.cos(a)) / A, Math.abs(Math.sin(a)) / B);
+      c.position.set(Math.cos(a) / q, 0.08 + k * 0.01, Math.sin(a) / q + size * 0.5);
       c.rotation.y = 0; K.key(c, 'idle'); return c;
     });
   }
-  const ext = ring ? [wmax / 2 + 2.3, zr + 1.9] : [wmax / 2 + 0.2, zr];
+  const ext = ring ? [wmax / 2 + 2.0, zr + 2.0] : [wmax / 2 + 0.2, zr];
   K.fit(boxPoints(-ext[0], 0, size * 0.5 - ext[1], ext[0], size * 0.32, size * 0.5 + ext[1]), { elev: 66, yaw: 3, push: 0.08, fov: 30 });
   return K.frame((t) => {
     for (const m of meshes) {
@@ -488,16 +495,18 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     fairMesh = new THREE.Mesh(new THREE.BoxGeometry(width + 0.6, 0.03, 0.05), new THREE.MeshStandardMaterial({ color: GN.text, emissive: GN.text, emissiveIntensity: 0.4 }));
     fairMesh.position.set(x0 + width / 2, fy, z + bw / 2 + 0.05); fairMesh.visible = false; K.key(fairMesh); stage.scene.add(fairMesh);
     const first = Math.min(...items.map((i) => i.at ?? 0.3));
-    fairLab = K.worldLabel({ text: `fair share ${ch.fair}${unit}`, size: K.L.vert ? 28 : 26, weight: 700, role: 'fair', at: first, fade: 0.4, align: 'right' },
-      new THREE.Vector3(x0 + width + 0.3, fy, z + bw / 2 + 0.05), -40);
+    // 16:9: beside the end of the line (room reserved in the fit); 9:16: the player pill already says it
+    if (!K.L.vert) fairLab = K.worldLabel({ text: `fair share ${ch.fair}${unit}`, size: 26, weight: 700, role: 'fair', at: first, fade: 0.4, align: 'left' },
+      new THREE.Vector3(x0 + width + 0.45, fy, z + bw / 2 + 0.05), -16);
   }
-  const pts = boxPoints(x0 - 0.4, 0, z - bw / 2, x0 + width + 0.4, height * 1.0, z + bw / 2 + 0.6);
+  const pts = boxPoints(x0 - 0.4, 0, z - bw / 2, x0 + width + (ch.fair != null && !K.L.vert ? 3.4 : 0.4), height * 1.0, z + bw / 2 + 0.6);
   return {
     pts, maxV, bars,
     layoutLabels() {        // label wrap width = the bar spacing on screen
       const a = K.project([x0, 0, z]), b = K.project([x0 + gap, 0, z]);
       const gp = Math.abs(b[0] - a[0]);
-      bars.forEach((B) => { B.lab.el.style.maxWidth = Math.max(120, gp * 0.94) + 'px'; B.lab.el.style.whiteSpace = 'normal'; });
+      const vs = Math.round(clamp(gp * 0.36, 26, K.L.vert ? 48 : 46));    // value labels never collide
+      bars.forEach((B) => { B.lab.el.style.maxWidth = Math.max(120, gp * 0.94) + 'px'; B.lab.el.style.whiteSpace = 'normal'; B.val.el.style.fontSize = vs + 'px'; });
     },
     update(t) {
       for (const B of bars) {
@@ -518,9 +527,10 @@ T.bars = async (stage, spec) => {
   K.header({ pill: pillText(ch) });
   K.contentRect(70);                                   // room for value labels above / names below
   const vert = K.L.vert, n = ch.items.length;
-  const width = vert ? Math.min(8.4, 1.9 * n) : Math.min(12.6, 2.6 * n + 1), height = vert ? 7.5 : 6.2;
-  const B = buildBars(K, ch, { x0: -width / 2, width, height });
   const r = K.content;
+  const width = vert ? Math.min(8.4, 1.9 * n + 0.6) : Math.min(13.5, 2.6 * n + 1.5);
+  const height = clamp(width * (r.h - 130) / r.w * (vert ? 1.0 : 1.25), 3.6, vert ? 9 : 6.4);   // fill the rect
+  const B = buildBars(K, ch, { x0: -width / 2, width, height });
   K.fit(B.pts, { rect: { ...r, t: r.t + 50, b: r.b - (vert ? 110 : 80), h: r.h - 50 - (vert ? 110 : 80) }, elev: 18, yaw: K.p.yaw ?? 6, push: 0.06 });
   B.layoutLabels();
   return K.frame((t) => { K.t = t; B.update(t); });
@@ -597,7 +607,7 @@ function deckRow(K, stage, spec) {
   const rowW = (n + 1.8) * RS;
   let RX, RZ = 0, chart = null;
   if (p.chart) {
-    if (vert) { RX = -rowW / 2; RZ = -6.2; chart = buildBars(K, p.chart, { x0: -4.0, width: 8.0, height: 6.5, z: 0.6 }); }
+    if (vert) { RX = -rowW / 2; RZ = -9.5; chart = buildBars(K, p.chart, { x0: -4.0, width: 8.0, height: 6.5, z: 0.6 }); }
     else { RX = -rowW - 0.6; RZ = 0.2; chart = buildBars(K, p.chart, { x0: 1.0, width: 6.6, height: 5.2, z: 0.5 }); }
   } else RX = -rowW / 2;
   const rowY = (j) => 0.06 + (n - j) * DY;
@@ -635,20 +645,20 @@ T.fan = async (stage, spec) => {
   K.header({});
   K.contentRect(30);
   const faces = p.cards || [1, 3, 6, 8, 2], n = faces.length;
-  const pawn = makePawn(stage, p.color || 'BLUE', 1.2); pawn.position.set(0, 0, 3.4); K.key(pawn);
-  const cards = faces.map((f) => { const c = kitCard(stage, f); c.scale.setScalar(1.35); K.key(c); return c; });
-  const pile = kitCard(stage, p.pile ?? 'back'); pile.position.set(0, 0.05, -1.6); pile.scale.setScalar(1.2); K.key(pile);
-  const spread = vert ? 0.62 : 0.78;
-  const slot = (i) => { const off = i - (n - 1) / 2; return [new THREE.Vector3(off * spread, 2.2 - off * off * 0.05, 2.2 + i * 0.012), -off * 0.12]; };
+  const pawn = makePawn(stage, p.color || 'BLUE', 1.0); pawn.position.set(0, 0, 3.6); K.key(pawn);   // the seat, in front: cards above its head
+  const cards = faces.map((f) => { const c = kitCard(stage, f); c.scale.setScalar(1.8); K.key(c); return c; });
+  const pile = kitCard(stage, p.pile ?? 'back'); pile.position.set(0, 0.05, -0.4); pile.scale.setScalar(1.3); K.key(pile);
+  const spread = vert ? 0.8 : 1.05;
+  const slot = (i) => { const off = i - (n - 1) / 2; return [new THREE.Vector3(off * spread, 3.0 - off * off * 0.05, 2.0 + i * 0.012), -off * 0.12]; };
   const hl = (p.highlights || []).filter((h) => typeof h.at === 'number');
   const plays = (p.play || []).filter((h) => typeof h.at === 'number');
   hl.forEach((h) => K.tw(`lift card ${h.card}`, h.at, 0.3));
   plays.forEach((h) => K.tw(`play card ${h.card}`, h.at, 0.7));
   const appear = K.tw('hand up', 0.05, 0.5);
   const pill = K.label({ text: '', size: 34, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
-  if (p.seat_label) K.worldLabel({ text: p.seat_label, size: 28, role: 'label', at: -1, color: GN.text }, new THREE.Vector3(0, 0, 4.6), 4);
+  if (p.seat_label) K.worldLabel({ text: p.seat_label, size: 30, role: 'label', at: -1, color: GN.text }, new THREE.Vector3(0, 0, 4.3), 4);
   const w = (n - 1) / 2 * spread + 1.1;
-  K.fit(boxPoints(-Math.max(w, 1.6), 0, -2.6, Math.max(w, 1.6), 3.6, 4.8), { elev: 30, yaw: 5, push: 0.06, look: [0, 1.4, 1.0] });
+  K.fit(boxPoints(-Math.max(w, 1.8), 0, -1.4, Math.max(w, 1.8), 4.4, 4.4), { elev: 20, yaw: 5, push: 0.06 });
   return K.frame((t) => {
     const up = appear(t), cam = stage.camera.position;
     let cur = null; for (const h of hl) if (t >= h.at && t < h.at + 1.8) cur = h;
@@ -661,7 +671,7 @@ T.fan = async (stage, spec) => {
       c.visible = up > 0.01;
       if (pl && t >= pl.at) {
         const k = ease(clamp((t - pl.at) / 0.7));
-        c.position.lerpVectors(pos, new THREE.Vector3(0, 0.12 + i * 0.03, -1.6), k); c.position.y += Math.sin(k * Math.PI) * 1.4;
+        c.position.lerpVectors(pos, new THREE.Vector3(0, 0.12 + i * 0.03, -0.4), k); c.position.y += Math.sin(k * Math.PI) * 1.4;
         if (k >= 1) c.rotation.set(0, 0, 0);
       }
     });
@@ -682,7 +692,7 @@ T.table = async (stage, spec) => {
   K.header({ pill: p.pill ?? `${n} players` });
   K.contentRect(40);
   const COLS = ['BLUE', 'CREAM', 'CORAL', 'MUSTARD', 'GREEN', 'PLUM'];
-  const rx = vert ? 3.9 : 6.4, rz = vert ? 5.6 : 3.9;
+  const rx = vert ? 3.9 : 7.2, rz = vert ? 5.6 : 3.5;
   const deck = []; for (let k = 0; k < 24; k++) { const c = kitCard(stage, p.back || 'back'); c.position.set(-0.9, 0.07 + k * (CARD.T + 0.003), 0); K.key(c, 'decor'); deck.push(c); }
   const pile = []; const mover = kitCard(stage, 'back'); mover.visible = false; mover.traverse((o) => { o.castShadow = false; }); K.key(mover);
   const seats = [];
@@ -906,7 +916,7 @@ T.grid = async (stage, spec) => {
 
 // ---------------------------------------------------------------- track board: Sorry!/Ludo-style loop
 // params.length (squares), players (colours per side), start_square [per player], home_len, slides [{from, len, player}],
-// pawns [{id, player, at: 'start' | square | 'home:k'}], moves [{at, pawn, to: square | 'start' | 'home:k', steps?}],
+// pawns [{id, player, on: 'start' | square | 'home:k'}], moves [{at, pawn, to: square | 'start' | 'home:k', steps?}],
 // highlight [{at, until, squares: [..], color}]
 T.track = async (stage, spec) => {
   const K = new Kit(stage, spec), p = K.p;
@@ -921,10 +931,10 @@ T.track = async (stage, spec) => {
     return [[-half + f, -half], [half, -half + f], [half - f, half], [-half, half - f]][s].map((v, k) => v + (k === 0 ? S / 2 : S / 2) * 0);
   };
   const pos = (i) => { const [x, z] = sq(i); return new THREE.Vector3(x, 0.36, z); };
-  const base = new THREE.Mesh(new RoundedBoxGeometry(side * S + 1.4, 0.3, side * S + 1.4, 4, 0.12), new THREE.MeshStandardMaterial({ color: '#efe7d8', roughness: 0.8 }));
+  const base = new THREE.Mesh(new RoundedBoxGeometry(side * S + 1.4, 0.3, side * S + 1.4, 4, 0.12), new THREE.MeshStandardMaterial({ color: '#24413b', roughness: 0.8 }));
   base.position.y = 0.15; base.receiveShadow = true; stage.scene.add(base); K.key(base);
   const sqGeo = new THREE.BoxGeometry(S * 0.92, 0.04, S * 0.92);
-  for (let i = 0; i < N; i++) { const m = new THREE.Mesh(sqGeo, new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: 0.7 })); m.position.copy(pos(i)).setY(0.32); m.receiveShadow = true; stage.scene.add(m); }
+  for (let i = 0; i < N; i++) { const m = new THREE.Mesh(sqGeo, new THREE.MeshStandardMaterial({ color: '#f4ead5', roughness: 0.7 })); m.position.copy(pos(i)).setY(0.32); m.receiveShadow = true; stage.scene.add(m); }
   for (const sl of (p.slides || [])) for (let k = 0; k < sl.len; k++) { const m = new THREE.Mesh(new THREE.BoxGeometry(S * 0.5, 0.05, S * 0.5), new THREE.MeshStandardMaterial({ color: pc(sl.player || 0) })); m.position.copy(pos(sl.from + k)).setY(0.35); stage.scene.add(m); }
   const starts = p.start_square || [4, 4 + side, 4 + 2 * side, 4 + 3 * side];
   const HL = p.home_len ?? 5;
@@ -941,8 +951,8 @@ T.track = async (stage, spec) => {
   const pawns = {}; const cnt = {};
   for (const pw of (p.pawns || [])) {
     const j = cnt[pw.player] = (cnt[pw.player] ?? -1) + 1;
-    const g = makePawn(stage, pc(pw.player), 0.42); K.key(g);
-    pawns[pw.id] = { g, pl: pw.player, j, keys: [{ t: -1, path: [where(pw.player, pw.at, j)] }], cur: pw.at };
+    const g = makePawn(stage, pc(pw.player), 0.62); K.key(g);
+    pawns[pw.id] = { g, pl: pw.player, j, keys: [{ t: -1, path: [where(pw.player, pw.on, j)] }], cur: pw.on };
   }
   for (const mv of (p.moves || []).filter((m) => typeof m.at === 'number').sort((a, b) => a.at - b.at)) {
     const P = pawns[mv.pawn]; if (!P) continue;

@@ -112,6 +112,10 @@ class Resolver:
             self.anchors.append({"ref": ref, "t": v, "line": line_of(ref), "path": path})
         return v
 
+    def _plain(self, v):
+        m = PLAIN_RE.match(v)
+        return bool(m and m.group(1) in self.scene.cues)
+
     def all(self, obj, path=""):
         if isinstance(obj, str):
             if obj.startswith("=") and ":" in obj:
@@ -122,7 +126,7 @@ class Resolver:
         if isinstance(obj, dict):
             out = {}
             for k, v in obj.items():
-                if k in ("at", "until") and isinstance(v, str) and (is_anchor(v) or PLAIN_RE.match(v)):
+                if k in ("at", "until") and isinstance(v, str) and (is_anchor(v) or self._plain(v)):
                     r = self.at(v, f"{path}.{k}", drop_on_error=True)
                     if r is None:
                         return None                      # the whole item is dropped (and reported)
