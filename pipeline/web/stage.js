@@ -65,7 +65,8 @@ export class Stage {
     root.appendChild(this.ov);
 
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(spec.fov || 32, this.W / this.H, 0.1, 400);
+    // near 0.5 (was 0.1): 5x the depth precision; stacked card hands z-fought at 0.1 (qa flicker gate, EK cold)
+    this.camera = new THREE.PerspectiveCamera(spec.fov || 32, this.W / this.H, spec.near || 0.5, 400);
     if (spec.theme !== 'custom') this.studio();
     this.texts = [];
   }

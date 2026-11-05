@@ -174,8 +174,12 @@ export function makeCard(stage, type, faceUp = true) {
   const body = new THREE.Mesh(_cardGeo, [new THREE.MeshStandardMaterial({ color: 0xf1e7d0, roughness: 0.6 }),
                                          new THREE.MeshStandardMaterial({ color: 0xcdbf9f, roughness: 0.7 })]);
   body.castShadow = true; body.receiveShadow = true; grp.add(body);
-  const face = new THREE.Mesh(_faceGeo, new THREE.MeshStandardMaterial({ map: cardTexture(faceUp ? type : 'back'), roughness: 0.55, transparent: true }));
-  face.rotation.x = -Math.PI / 2; face.position.y = CT / 2 + 0.001; grp.add(face);
+  // Printed face: opaque (alpha-test for the rounded corners, never `transparent`, which re-sorts every frame) and
+  // lifted well clear of the card body plus a polygon offset. At 0.001 above the body the cream cap z-fought
+  // through the art at Shorts camera distances ("flashing like crazy", creator). The qa_visual flicker gate checks it.
+  const face = new THREE.Mesh(_faceGeo, new THREE.MeshStandardMaterial({ map: cardTexture(faceUp ? type : 'back'), roughness: 0.55,
+    alphaTest: 0.5, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -4 }));
+  face.rotation.x = -Math.PI / 2; face.position.y = CT / 2 + 0.004; grp.add(face);
   grp.userData = { face, type };
   grp.setFace = (tp) => { face.material.map = cardTexture(tp); face.material.needsUpdate = true; };
   stage.scene.add(grp);
