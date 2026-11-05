@@ -13,7 +13,7 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
   attack small 25.5, dump high 23.8.
 - `house_habits`: always stack 25.5 / never 22.7; seven to random player 21.4; always jump in 26.8 / never 23.2;
   hold wilds under free +4 30.4, under seven zero 25.7.
-- `players.N.official/draw_until` turns: 2p 33.9/53.1, 4p 47.0/82.3, 10p 91.1/137.8 (+~7.3 turns per player).
+- `players.N.official/draw_until` turns: 2p 33.9/53.1, 4p 47.0/82.3, 10p 91.1/137.8 (+~7.3 turns per player; big run 10p draw_until 137.7).
 - `two_player`: first seat 51.5; smart 54.2, seven_zero 50.6.
 - `classic_deck` (108 cards): turns 47.1 (same as 112).
 - data/matches.json (2M whole games to 500 per rule set): rounds official 9.9, draw_until 6.5, free_draw4 11.7;
@@ -23,7 +23,8 @@ Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: do
 - Rules: Mattel instruction sheet GDJ85 (read 2026-11-04): no stacking ("only on a matching colour or another Draw Two",
   victim draws and misses turn), draw ONE card and may play it, Wild Draw 4 only without the current colour, challenge
   4/6, Shuffle Hands + 3 Customizable, 2-10 players, first to 500.
-- "Billions": results.json total_games (big run, 20 shards).
+- "Billions": results.json total_games = 63 tests x 200M = 12.6 billion rounds (Actions run 41924460193, 20 shards,
+  2026-11-04). Every rounded number above re-checked against it; nothing moved.
 
 ## Cold open
 [o1] Every family plays Uno a little differently.
