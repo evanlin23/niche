@@ -97,3 +97,8 @@ What the numbers say:
    voice) or Chatterbox (MIT, open, watermarked). Run the same audit on the clone against your real recordings.
 3. Whatever voice: synthesize a paragraph at a time rather than line by line, normalise loudness over the whole
    narration, fix the pronunciation of "Buh" and game names, and stop using Piper ryan (non-commercial).
+
+## 4. Creator's verdict (2026-11-05)
+After listening to the best free voices (af_heart, bm_lewis, am_michael) and two flagged ones, the creator judged them
+not good enough and will record narration manually. The voice probe in §7.2 is dropped. Cloning the creator's own
+voice stays an option for later; it would need the same audit against real recordings.

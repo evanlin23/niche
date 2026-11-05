@@ -45,7 +45,7 @@ code, checked against real data" is worth saying on screen.
 | Size and speed comparisons | 495.6M / 127.4M, still live (4.0M and 17.3M videos this year) | | huge, owned by million-sub incumbents |
 | Squid Game | 29.0M all-time, 0.5M this year | | the fad is over |
 
-## 3. Shortlist, ranked
+## 3. Shortlist, ranked (first pass; section 5 rechecks it against real searches)
 1. **Chess from real games: what actually wins at your rating.** Lichess publishes every rated game monthly under CC0
    (database.lichess.org: "Use them for research, commercial purpose, publication, anything you like"). Its opening
    explorer gives win rates by rating band, but now needs a free Lichess API token (our request got a 401). Code does the analysis and draws the board;
@@ -70,3 +70,46 @@ finance (crowded, credibility-heavy), Squid Game (fad over).
 Add chess as lane D in the Shorts probe (`docs/simulation-niche-research.md` §7.2): three Shorts from the Lichess opening
 explorer (free, needs an API token from a Lichess account) or one monthly CC0 database file, one question each ("Is the Fried Liver trap worth it under 1000?"). They need a board
 template (new visual code) and narration. Map Shorts (lane E) come next, once a map template exists; they need no voice.
+
+## 5. Gaps that pass the creator's four tests (second pass, 2026-11-05)
+The tests: everyone has played it, people want to win, they search how to win, and "simulated" or "solved" makes the
+answer believable. Raw data: `docs/win-intent-scan-2026-11-05.txt` and `docs/win-intent-2026-11-05.json`.
+
+**Method.**
+- **What people want to win:** YouTube's own autocomplete for "how to win at", "how to always win", "how to beat",
+  "best strategy for" and similar, each followed by every letter and 100 two-letter starts. That gave 5,749 real
+  suggestions.
+- **Ranking:** how many of those suggestions name each thing (chess 34, nim 29, Monopoly 22, rock paper scissors 22,
+  blackjack 19, Risk 19, Fortnite 16, tic-tac-toe 16, poker 15, Uno 15, mancala 15, ...).
+- **Checks:** 58 candidates, each searched as "how to win at X" and "X solved simulated math" (all time and this
+  year), plus a look at who owns the top results. The section 3 lanes were rechecked with 25 real autocomplete
+  searches each.
+
+| Candidate | Top-20 "how to win" results | Who owns them | Verdict |
+|---|---|---|---|
+| **Chess, from real games** | "how to win at chess every time" 32.3M; "is the london system good" 22.5M; "chess opening win rate" 41.9M | chess personalities (GothamChess has 386M across these searches). Data channels: wintrcat (31.9K subs, median 84K, "Rare Anomalies in Chess" 1.2M) and Man vs Chess (1.3K subs, median 922; "10 Gambits That Actually Win (89 Million Lichess Games)" 41K) | **the one big open gap**: nobody answers "what wins at your rating" with data |
+| Guess Who | 92.7M | Mark Rober "BEST Guess Who Strategy- 96% WIN record" 31.0M | taken |
+| Tic-tac-toe | 38.5M | DaveHax 15.4M; "There are Exactly 14 Different Games of Tic-Tac-Toe" 7.8M | taken |
+| Mario Party | 29.3M | ZoomZike's "Identifying Luck: Mario Party" series (105K subs, median 103K) | taken |
+| Claw machines | 40.5M | Vox "It's not you. Claw machines are rigged." 10.0M; Arcade Matt (1.85M subs) | taken |
+| Pool, bowling, ping pong | 15-37M | lesson channels; Stand-up Maths' pool video 1.2M | skill games: practice is the answer, not simulation |
+| Mario Kart World | 8.3M | tips channels; Nathaniel Bandy's item ranking 4.4M | mid-sized; mechanics only from fan datamines |
+| Go Fish, BS, War, Solitaire, Monopoly Deal | the real how-to videos get 1-4M each (bigger totals came from unrelated games with the same name) | wikiHow and how-to channels | small on YouTube |
+| Hide and seek, musical chairs, dodgeball | 56-240M | MrBeast, Ben Azelart, children's songs | kids' content; a simulation would look like a toy |
+| Mancala, dominoes, euchre, nim, dots and boxes, chopsticks | under 7M each | | small; fine for Shorts |
+| Blackjack, poker, roulette | blackjack 30.3M (§2) | casino streamers, template channels | passes, but it's gambling: advertiser limits |
+
+**What this changes.**
+1. **Chess from real games is the only large gap that passes all four tests.** wintrcat shows data chess can grow fast,
+   with curiosities ("Rare Anomalies"). Nobody does "how to win at your rating, from 90 million real games". Before
+   committing, give it the same deep check our board games got: the top 50 chess channels, Shorts, and the copycats.
+2. **Most universal games already have one big data or maths video** (Mark Rober, Vox, ZoomZike, Perfect Play,
+   2swap, Ballpark Figures) or are small on YouTube. Our family-game lane (Uno, Exploding Kittens, Sorry!, Gin,
+   Checkers) is mid-sized but has no data winner yet.
+3. **Section 3's lanes 2 and 3 fail the tests:** there is nothing to win. Their real searches are owned by kids' songs
+   and game-map comparisons (maps) and by Kurzgesagt, What If and RealLifeLore (what-ifs). Treat them as side ideas.
+4. **Search intent for our own plan:** in the "how to win" autocomplete, Uno appears 15 times, mancala 15, Battleship
+   12, Connect 4 10, Exploding Kittens 8, Gin Rummy 7, Checkers 7 and Yahtzee 6. Sorry!, Phase 10, Skip-Bo, Farkle and
+   Cribbage don't appear at all; for Sorry! that may only be because "sorry" is a common word.
+5. **Limits:** search-result views aren't search volume; autocomplete counts are a rough popularity signal; one
+   logged-out snapshot.
