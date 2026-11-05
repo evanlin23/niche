@@ -1,0 +1,9 @@
+g5: extra speech 2.0-2.72s 'matters anyway'
+g5: extra speech 3.07-4.35s 'every plus four or'
+c6: 120 ms of digital silence (dropout)
+r3: 105 ms of digital silence (dropout)
+x1: 120 ms of digital silence (dropout)
+x5: starts abruptly
+x5: extra speech 0.0-0.34s 'my opinion'
+x5: extra speech 0.68-1.38s 'should play like'
+b2: extra speech 4.18-5.02s 'take around'
