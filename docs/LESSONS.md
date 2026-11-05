@@ -69,6 +69,10 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
   a torture-test scene in CI for any change to pipeline/web, and renders FAIL in CI when a visual gate errors.
 
 ## Visuals follow the voice (creator feedback on video 1)
+- **Captions and callouts don't count as motion** (creator, Uno first cut: "sometimes I'm saying stuff and the only
+  thing that moves is a caption popping up"). Every spoken beat needs an OBJECT event (card played/drawn, bar, highlight,
+  hand change, piece move). Hands must change size as cards are played/drawn. Same-template neighbours must not jump
+  (continuous shot or a clearly different one). Motion starts on the word (±0.15 s).
 - **"Everything I say, if it can be shown, should get a scene."** (creator rule) One beat per scene (~5-20 s): rules
   played out at a table, habits shown in a hand, numbers charted or called out as they're said. Never park a topic on
   one chart for 40+ s. (Uno went from 27 to 47 scenes because of this.)
