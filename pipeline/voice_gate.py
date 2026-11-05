@@ -3,6 +3,10 @@
     make voice SLUG=<slug> REC=path/to/recording.m4a          (several recordings: REC="a.m4a b.m4a")
     python -m pipeline.voice_gate episodes/<slug> rec.m4a [--from-step N] [--check-only]
 
+Before step 1: a recording whose peaks are stored ABOVE full scale (float m4a) is gain-reduced to a -4.5 dBFS peak
+(voice/_input/), so nothing clips downstream; the voice/_orig/ backups are keyed to the recording each line came
+from, so a new recording never runs against stale backups (pipeline/voice_source.py).
+
 Steps (each must succeed before the next runs; a failing step stops the chain with its output):
   1 split_recording   per-line clips + timing          5 audio_qa          noises filled, edges trimmed
   2 extend_tails      chopped word endings restored     6 match_voice       same tone/level across sessions
@@ -43,14 +47,18 @@ def run_step(n, name, cmd):
         raise SystemExit(r.returncode or 1)
 
 
-def chain(ep: Path, recs: list[str], start=1):
+def chain(ep: Path, recs: list[str], start=1, legacy_orig=False):
+    from .voice_source import prepare_inputs
     py = sys.executable
     vd = ep / "voice"
+    if recs:
+        recs, _ = prepare_inputs(vd, recs)
+    lo = ["--legacy-orig"] if legacy_orig else []
     steps = [
         ("split_recording", [py, "-m", "pipeline.split_recording", str(ep), *recs[:1]]),
-        ("extend_tails", [py, "-m", "pipeline.extend_tails", str(ep), *recs]),
+        ("extend_tails", [py, "-m", "pipeline.extend_tails", str(ep), *recs, *lo]),
         ("find_stumbles", [py, "-m", "pipeline.find_stumbles", str(ep)]),
-        ("tighten_voice", [py, "-m", "pipeline.tighten_voice", str(vd), "--cuts", str(vd / "_stumbles.json")]
+        ("tighten_voice", [py, "-m", "pipeline.tighten_voice", str(vd), "--cuts", str(vd / "_stumbles.json"), *lo]
          + (["--words", str(vd / "_verbatim.json")] if (vd / "_verbatim.json").exists() else [])),
         ("audio_qa", [py, "-m", "pipeline.audio_qa", str(ep)]),
         ("match_voice", [py, "-m", "pipeline.match_voice", str(vd)]),
@@ -206,6 +214,15 @@ def final_check(ep: Path, transcript=True):
             continue
         for ev in json.loads(js.read_text()).get("qa_edits", []):
             cuts.append(f"  {js.stem}: {ev['action']} {ev['start']}-{ev['end']}s ({ev.get('kind', 'noise')})")
+    inp = vd / "_input_check.json"                   # input headroom (before splitting)
+    if inp.exists():
+        for e in json.loads(inp.read_text()):
+            if e.get("gain_db"):
+                report.insert(0, f"[input] {e['recording']}: peak {e['peak_dbfs']:+.2f} dBFS was ABOVE full scale; "
+                                 f"applied {e['gain_db']:+.2f} dB before splitting (peak {e.get('peak_after_dbfs', 0):+.2f} dBFS), "
+                                 "nothing clipped")
+            else:
+                report.insert(0, f"[input] {e['recording']}: peak {e['peak_dbfs']:+.2f} dBFS, within full scale")
     head = [f"VOICE GATE: {ep.name}", f"RESULT: {'FAIL' if fails else 'PASS'}  ({fails} problems in {len(script)} lines)", ""]
     text = "\n".join(head + report + (["", "Edits made (send this list with the listen file):"] + cuts if cuts else [])) + "\n"
     (vd / "_report_voice.txt").write_text(text)
@@ -220,12 +237,14 @@ def main(argv=None):
     ap.add_argument("--from-step", type=int, default=1)
     ap.add_argument("--check-only", action="store_true", help="skip the chain, run the final check")
     ap.add_argument("--no-transcript", action="store_true")
+    ap.add_argument("--legacy-orig", action="store_true",
+                    help="reuse voice/_orig/ backups made before they were keyed to the recording")
     a = ap.parse_args(argv)
     ep = Path(a.episode).resolve()
     if not a.check_only:
         if not a.recordings and a.from_step <= 2:
             ap.error("give the recording(s): make voice SLUG=... REC=path.m4a")
-        chain(ep, a.recordings, a.from_step)
+        chain(ep, a.recordings, a.from_step, a.legacy_orig)
     print("\n=== step 7: final check ===", flush=True)
     raise SystemExit(1 if final_check(ep, not a.no_transcript) else 0)
 
