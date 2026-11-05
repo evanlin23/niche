@@ -302,3 +302,47 @@ func TestUnoCall(t *testing.T) {
 		t.Fatal("nobody catches: no penalty")
 	}
 }
+
+func TestJokeCard(t *testing.T) {
+	laughs, draws := 0, 0
+	for k := 0; k < 400; k++ {
+		g := NewGame(rand.New(rand.NewSource(int64(k))), &Rules{Joke: true}, pols(3), 0)
+		g.cur, g.dir, g.color = 0, 1, 0
+		g.hands[0] = []Card{{WildCol, Custom}, {0, 1}, {0, 2}, {0, 3}, {1, 4}}
+		total := len(g.deck) + len(g.discard)
+		for _, h := range g.hands {
+			total += len(h)
+		}
+		g.play(0, 0)
+		switch len(g.hands[0]) {
+		case 1:
+			laughs++
+		case 8:
+			draws++
+		default:
+			t.Fatalf("joke card: hand %d", len(g.hands[0]))
+		}
+		after := len(g.deck) + len(g.discard)
+		for _, h := range g.hands {
+			after += len(h)
+		}
+		if after != total {
+			t.Fatal("cards lost")
+		}
+	}
+	if laughs < 150 || draws < 150 {
+		t.Fatalf("coin flip: %d / %d", laughs, draws)
+	}
+}
+
+func TestBounce(t *testing.T) {
+	g := fresh(t, Rules{Bounce: true}, 3)
+	always := &Policy{ColorChoice: "most", StackProb: 1, PlayDrawn: true}
+	g.pols = []*Policy{always, always, always}
+	g.hands[0] = []Card{{0, DrawTwo}, {0, 5}}
+	g.hands[1] = []Card{{0, Reverse}, {1, 3}}
+	g.play(0, 0)
+	if len(g.hands[0]) != 3 || len(g.hands[1]) != 1 || g.dir != -1 || g.cur != 2 {
+		t.Fatalf("bounce: hands %d/%d dir %d cur %d", len(g.hands[0]), len(g.hands[1]), g.dir, g.cur)
+	}
+}

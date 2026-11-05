@@ -45,6 +45,8 @@ type Rules struct {
 	NoActOut  bool `json:"no_action_out"` // house rule: you can't go out on an action card or a Wild
 	UnoCall   bool `json:"uno_call"`      // GDJ85: forget "UNO" and get caught before the next turn -> draw UnoPen
 	UnoPen    int  `json:"uno_penalty"`   // 0 = official 2 cards
+	Joke      bool `json:"joke_cards"`    // GDJ85 blank-card suggestion: "Tell a joke. If someone laughs, discard down to 1 card. If no one laughs, draw 4" (laugh = coin flip)
+	Bounce    bool `json:"bounce"`        // house rule: hit by a Draw Two, play a Reverse of that colour to send it back
 	PassEvery bool `json:"pass_every"`    // joke rule: after every turn, everyone passes their whole hand to the next player
 }
 
@@ -68,24 +70,25 @@ type Policy struct {
 }
 
 type Game struct {
-	rng        *rand.Rand
-	R          *Rules
-	deck       []Card
-	discard    []Card
-	hands      [][]Card
-	pols       []*Policy
-	cur, dir   int
-	color      int8
-	pending    int  // stacked draw penalty waiting for the current player
-	pendKind   int8 // DrawTwo or WildD4
-	turns      int
-	drawn      []int
-	maxHit     int // biggest single penalty taken
-	lastD4Ill  bool
-	lastD4Who  int
-	dry        int // times a draw found no cards left anywhere
-	unoCaught  int // forgotten UNO calls that were caught
-	multiPlays int
+	rng            *rand.Rand
+	R              *Rules
+	deck           []Card
+	discard        []Card
+	hands          [][]Card
+	pols           []*Policy
+	cur, dir       int
+	color          int8
+	pending        int  // stacked draw penalty waiting for the current player
+	pendKind       int8 // DrawTwo or WildD4
+	turns          int
+	drawn          []int
+	maxHit         int // biggest single penalty taken
+	lastD4Ill      bool
+	lastD4Who      int
+	dry            int // times a draw found no cards left anywhere
+	unoCaught      int // forgotten UNO calls that were caught
+	multiPlays     int
+	jokes, bounces int
 }
 
 func newDeck(r *Rules) []Card {
@@ -393,6 +396,23 @@ func (g *Game) playCore(p, i int) (won bool) {
 	if c.K == Shuffle {
 		g.shuffleHands(p)
 	}
+	if g.R.Joke && c.K == Custom && len(g.hands[p]) > 0 {
+		if g.rng.Intn(2) == 0 { // somebody laughed: discard down to one card (under the top card)
+			keep := g.rng.Intn(len(g.hands[p]))
+			top := g.discard[len(g.discard)-1]
+			g.discard = g.discard[:len(g.discard)-1]
+			for k, x := range g.hands[p] {
+				if k != keep {
+					g.discard = append(g.discard, x)
+				}
+			}
+			g.discard = append(g.discard, top)
+			g.hands[p] = []Card{g.hands[p][keep]}
+		} else {
+			g.give(p, 4)
+		}
+		g.jokes++
+	}
 	if len(g.hands[p]) == 0 {
 		// a final Draw Two / Draw 4 still makes the next player draw (affects points)
 		if c.K == DrawTwo {
@@ -446,6 +466,18 @@ func (g *Game) playCore(p, i int) (won bool) {
 			g.give(nx, 6)
 			g.cur = g.next(nx)
 			return false
+		}
+		if g.R.Bounce && c.K == DrawTwo && len(g.hands[nx]) > 1 && g.rng.Float64() < g.pols[nx].StackProb {
+			for k, x := range g.hands[nx] {
+				if x.K == Reverse && x.C == c.C { // bounce it back: direction flips, the player who played it draws and loses the turn
+					g.discard = append(g.discard, g.remove(nx, k))
+					g.dir = -g.dir
+					g.give(p, amt)
+					g.cur = g.next(p)
+					g.bounces++
+					return false
+				}
+			}
 		}
 		g.give(nx, amt)
 		g.cur = g.next(nx)
