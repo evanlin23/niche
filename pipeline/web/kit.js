@@ -142,9 +142,13 @@ export class Kit {
   }
 
   // ---------------------------------------------------------------- QA-registered tweens
+  // every transition finishes before the cut: one starting on the scene's last word is shortened (min 0.12 s)
   tw(name, at, dur = 0.5) {
+    const sp = this.stage.spec, end = (sp.n_frames ? (sp.n_frames - 1) / sp.fps : this.stage.duration) - 0.02;   // the last frame drawn
+    if (at < end) dur = Math.max(0.12, Math.min(dur, end - at));
     this.stage.qa.tweens.push({ name, at, dur });
-    return (t) => ease((t - at) / dur);
+    const f = (t) => ease((t - at) / dur); f.dur = dur;
+    return f;
   }
   key(obj, kind = 'key') { obj.userData.qa = kind; return obj; }
 
@@ -618,7 +622,7 @@ function deckRow(K, stage, spec) {
   K.worldLabel({ text: ends[0], size: 26, role: 'label', color: GN.mustard, at: -1, align: 'left' }, new THREE.Vector3(RX - CARD.W * SC / 2, 0, RZ + CARD.H * SC / 2 + 0.2), 4);
   K.worldLabel({ text: ends[1], size: 26, role: 'label', color: GN.muted, at: -1, align: 'right' }, new THREE.Vector3(RX + (n + 0.8) * RS + CARD.W * SC / 2, 0, RZ + CARD.H * SC / 2 + 0.2), 4);
   const plan = (p.plan || [[0.6, Math.floor(n / 2)]]).map(([a, s]) => [typeof a === 'number' ? a : 0.6, s]);
-  plan.forEach(([a, s], i) => K.tw(`hero to slot ${s}`, a, i === 0 ? 0.6 : 0.7));
+  const planDur = plan.map(([a, s], i) => K.tw(`hero to slot ${s}`, a, i === 0 ? 0.6 : 0.7).dur);
   const rowPts = boxPoints(RX - CARD.W * SC / 2, 0, RZ - CARD.H * SC / 2 - 0.4, RX + n * RS + CARD.W * SC / 2, 1.4, RZ + CARD.H * SC / 2 + 0.5);
   K.fit(chart ? [...rowPts, ...chart.pts] : rowPts, { elev: chart ? (vert ? 34 : 22) : 40, yaw: 4, push: 0.05,
     rect: chart ? { ...K.content, t: K.content.t + 50, h: K.content.h - 120, b: K.content.b - 70 } : K.content });
@@ -626,8 +630,8 @@ function deckRow(K, stage, spec) {
   return K.frame((t) => {
     K.t = t;
     let slot = plan[0][1], prev = plan[0][1], ts = plan[0][0];
-    for (const [at, s] of plan) if (t >= at) { prev = slot; slot = s; ts = at; }
-    const k = ease((t - ts) / 0.7), sl = lerp(prev, slot, k);
+    let pd = 0.7; plan.forEach(([at, s], i) => { if (t >= at) { prev = slot; slot = s; ts = at; pd = planDur[i]; } });
+    const k = ease((t - ts) / pd), sl = lerp(prev, slot, k);
     row.forEach((c, j) => { const g = clamp(j - sl + 1); c.position.x = RX + j * RS + g * RS * 1.8; c.position.y = rowY(j); });
     const arrive = ease((t - plan[0][0]) / 0.6);
     hero.visible = t >= plan[0][0] - 0.6;
@@ -716,37 +720,38 @@ T.table = async (stage, spec) => {
     seats.push({ i, sx, sz, pawn, hand, lab, home: pawn.position.clone() });
   }
   const hl = (p.highlight || p.seat_hl || []).filter((h) => typeof h[1] === 'number');
-  hl.forEach(([s, at]) => K.tw(`highlight seat ${s}`, at, 0.3));
+  const hlK = hl.map(([s, at]) => K.tw(`seat ${s} hop`, at, 2.3));
   let turns = (p.turns || []).filter((e) => typeof e.at === 'number');
   if (p.turns_auto) {
     const A = p.turns_auto, every = A.every || 1.2, faces = A.cards || [2, 3, 6, 7, 1, 4];
     for (let t0 = A.from ?? 0.4, k = 0; t0 < stage.duration - 1.2; t0 += every, k++) turns.push({ at: t0, seat: k % n, ev: k % 3 === 2 ? 'draw' : 'play', card: faces[k % faces.length] });
   }
   turns.sort((a, b) => a.at - b.at);
-  turns.forEach((e) => K.tw(`${e.ev} by seat ${e.seat}`, e.at, 0.75));
+  turns.forEach((e) => { e.dur = K.tw(`${e.ev} by seat ${e.seat}`, e.at, 0.75).dur; });   // lands before the cut
   const outs = (p.out || []).filter((h) => typeof h[1] === 'number');
   const pill = K.label({ text: '', size: 30, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
   const ex = rx * 1.18 + 0.8, ez = rz * 1.18 + 0.9;
   K.fit(boxPoints(-ex, 0, -ez, ex, 2.0, ez), { elev: vert ? 58 : 50, yaw: 5, push: 0.06 });
   return K.frame((t) => {
     seats.forEach((s) => {
-      const on = hl.some(([si, t0]) => si === s.i && t >= t0 && t < t0 + 2.4);
+      let on = false, hop = 0;
+      hl.forEach(([si, t0], q) => { if (si === s.i && t >= t0 && t < t0 + hlK[q].dur) { on = true; hop = Math.abs(Math.sin((t - t0) * 7)) * 0.3 * (1 - hlK[q](t)); } });
       s.lab.el.style.color = on ? GN.mustard : GN.muted;
       s.pawn.position.copy(s.home);
       const o = outs.find(([si]) => si === s.i);
       const ko = o ? ease(clamp((t - o[1]) / 0.5)) : 0;
       s.pawn.rotation.z = ko * Math.PI / 2.2; s.pawn.position.y += ko * 0.3;
-      if (on) s.pawn.position.y += Math.abs(Math.sin((t - hl.find(([si, t0]) => si === s.i && t >= t0)[1]) * 7)) * 0.3 * (1 - clamp((t - hl.find(([si, t0]) => si === s.i && t >= t0)[1] - 1.8) / 0.5));
+      s.pawn.position.y += hop;
     });
     // turns
-    let e = null; for (const x of turns) if (t >= x.at && t < x.at + 1.0) e = x;
+    let e = null; for (const x of turns) if (t >= x.at && t < x.at + x.dur + 0.25) e = x;
     mover.visible = false;
-    const played = turns.filter((x) => x.ev === 'play' && t >= x.at + 0.75);
+    const played = turns.filter((x) => x.ev === 'play' && t >= x.at + x.dur);
     while (pile.length < played.length) { const c = kitCard(stage, 'back'); c.traverse((o) => { o.castShadow = false; }); K.key(c, 'decor'); pile.push(c); }
     pile.forEach((c, i) => { c.setFace(played[i].card); c.position.set(1.0 + (i % 2) * 0.05, 0.07 + i * (CARD.T + 0.004), 0.02 * (i % 3)); c.visible = true; });
     deck.forEach((c, i) => { c.visible = i < 24 - turns.filter((x) => x.ev === 'draw' && t >= x.at).length; });
     if (e) {
-      const s = seats[e.seat % n], k = ease(clamp((t - e.at) / 0.75));
+      const s = seats[e.seat % n], k = ease(clamp((t - e.at) / e.dur));
       const seatP = new THREE.Vector3(s.sx * 0.82, 0.3, s.sz * 0.82), deckP = new THREE.Vector3(-0.9, 0.9, 0), pileP = new THREE.Vector3(1.0, 0.3, 0);
       if (k < 1) {
         mover.visible = true; mover.setFace(e.ev === 'draw' ? (p.back || 'back') : e.card);
@@ -755,7 +760,8 @@ T.table = async (stage, spec) => {
       }
       const [px, py] = K.project(new THREE.Vector3(s.pawn.position.x, 2.6, s.pawn.position.z));
       pill.el.textContent = e.label || '';
-      pill.o.alpha = (tt) => (e.label ? clamp((tt - e.at) / 0.12) * (1 - clamp((tt - e.at - 0.85) / 0.12)) : 0);
+      const holdToCut = e.at + e.dur + 0.3 > stage.duration;     // a late event keeps its pill through the cut
+      pill.o.alpha = (tt) => (e.label ? clamp((tt - e.at) / 0.1) * (holdToCut ? 1 : 1 - clamp((tt - e.at - e.dur - 0.1) / 0.12)) : 0);
       pill.o.pos = () => [px, py - 50];
     } else pill.o.alpha = () => 0;
   });
@@ -1010,7 +1016,8 @@ T.odds = async (stage, spec) => {
     K.key(m); items.push(m);
   }
   const rowsMax = Math.ceil(MAX / Math.min(colsN, MAX)), hx = Math.min(colsN, MAX) / 2 * SX + 0.6, hz = rowsMax / 2 * SZ + 0.6;
-  K.fit(boxPoints(-hx, 0, -hz, hx, 0.3, hz), { elev: 76, yaw: 0, push: 0.05, fov: 22 });
+  const discard = frames.some((f, i) => i && f.total < frames[i - 1].total);
+  K.fit(boxPoints(-hx, 0, -hz, hx + (discard ? 1.8 : 0), 0.3, hz), { elev: 76, yaw: 0, push: 0.05, fov: 22 });
   return K.frame((t) => {
     if (!frames.length) return;
     let fi = 0; frames.forEach((f, i) => { if (t >= f.at) fi = i; });
@@ -1022,7 +1029,7 @@ T.odds = async (stage, spec) => {
       const [px, , pz] = slot(Math.min(i, prev.total - 1), prev.total), [nx, y, nz] = slot(Math.min(i, f.total - 1), f.total);
       c.visible = (fi === 0 ? inNow : inNow || (inPrev && k < 1)) && appear > 0.01;
       if (!c.visible) return;
-      if (!inNow && inPrev) c.position.set(lerp(px, hx + 2, k), y + Math.sin(k * Math.PI) * 1.2, lerp(pz, -hz, k));
+      if (!inNow && inPrev) c.position.set(lerp(px, hx + 1.0, k), y + 0.02 * i * k + Math.sin(k * Math.PI) * 1.2, lerp(pz, 0, k));   // to a discard pile in frame
       else c.position.set(inNow ? lerp(px, nx, k) : px, y + (1 - appear) * 1.5, inNow ? lerp(pz, nz, k) : pz);
       const hit = hits.has(i) && inNow;
       if (dots) c.material.color.set(hit ? GN.coral : GN.cream); else c.setFace(hit ? (p.hit_face ?? 0) : 'back');

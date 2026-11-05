@@ -90,7 +90,9 @@ function qaState(t) {
       for (const f of it.frames) {
         if (f >= n) continue;
         const st = await page.evaluate(([k, fps]) => { window.step(k, false); return window.qaState(k / fps); }, [f, it.fps || 30]);
-        st.f = f; lines.push(JSON.stringify(st));
+        st.f = f;
+        if (!lines.length) st.alltw = await page.evaluate(() => ((window.STAGE.qa && window.STAGE.qa.tweens) || []));
+        lines.push(JSON.stringify(st));
       }
       fs.writeFileSync(it.out, lines.join('\n') + '\n');
       if (failed) fs.appendFileSync(it.out, JSON.stringify({ error: failed }) + '\n');

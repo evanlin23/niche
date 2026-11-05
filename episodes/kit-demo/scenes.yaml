@@ -60,10 +60,10 @@ scenes:
       players: 4
       fair: 25
       items:
-      - {label: random, value: "=demo.json:placement.random*100", at: p1@random}
-      - {label: bottom, value: "=demo.json:placement.bottom*100", color: CORAL, at: p1@worse}
-      - {label: top, value: "=demo.json:placement.top*100", color: TEAL, at: p1@top}
-      - {label: next player's draw, value: "=demo.json:placement.next*100", color: MUSTARD, at: p1@next, hl: true}
+      - {label: random, value: "=demo.json:placement.random*100", at: p1@five}
+      - {label: bottom, value: "=demo.json:placement.bottom*100", color: CORAL, at: p1@twenty_three}
+      - {label: top, value: "=demo.json:placement.top*100", color: TEAL, at: p1@nine}
+      - {label: next player's draw, value: "=demo.json:placement.next*100", color: MUSTARD, at: p1@thirty, hl: true}
 - id: fan
   render: fan
   lines: [f1]
@@ -156,6 +156,7 @@ scenes:
     title: Kitten odds
     frames:
     - {at: o1@start, total: 23, hits: 3, head: "3 Kittens in 23 cards", sub: "13% (about 1 in 7)"}
+    - {at: o1@seven, total: 23, hits: 3, head: "3 Kittens in 23 cards", sub: "about 1 in 7"}
     - {at: o1@end, total: 4, hits: 3, head: "3 Kittens in 4 cards", sub: "mostly Kittens"}
 - id: recipe
   render: checklist
