@@ -207,5 +207,9 @@ Collected while making video 1 (Exploding Kittens). Newest lessons are folded in
 - Cut from the finished long video (`python -m pipeline.shorts_cut episodes/<slug>`, segments in
   `episodes/<slug>/shorts_cut.yaml`): hook headline on top, the 16:9 video full-width, big 1-3 word captions from
   the aligned words, "Full video on my channel" + Buh at the bottom. Same voice and music as the long video.
+- **First second decides everything.** The first going-first Short kept only 24% of viewers ("stayed to watch"):
+  it opened on a static header over an empty table, and the chart grew in seconds later. Rule: motion AND the
+  main visual (bars/cards, already populated) on screen in frame 1, hook spoken within ~1 s, no title-card opening,
+  video filling most of the screen. Target: 60%+ stayed to watch.
 - Pick self-contained 15-35 s moments with a question or a surprising number. Always link the long video
   (Shorts editor -> Related video). Use the caption-free render as the source.
