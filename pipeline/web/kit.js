@@ -552,7 +552,9 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
       color: it.hl ? GN.mustard : GN.text }, () => new THREE.Vector3(x, Math.max(0.001, H * k(K.t)) + 0.2, z), -58);
     const lab = K.worldLabel({ text: it.label, size: K.L.vert ? 30 : 26, weight: 700, role: 'label', at: K.L.short ? -1 : it.at ?? 0.3, fade: 0.3,
       color: GN.muted, lh: 1.08 }, new THREE.Vector3(x, 0, z + bw / 2 + 0.3), 6);
-    return { m, it, k, H, val, lab, x };
+    // pulse: [times] - the bar swells and its value turns mustard when it is mentioned again (an object event, not a caption)
+    const pulses = (it.pulse || []).map((a, j) => { const e = K.tw(`bar ${it.label} pulse ${j}`, a, 0.8); return (t) => (t >= a ? Math.sin(Math.PI * e(t)) : 0); });
+    return { m, it, k, H, val, lab, x, pulse: (t) => Math.max(0, ...pulses.map((f) => f(t))) };
   });
   let fairMesh = null, fairLab = null;
   if (ch.fair != null) {
@@ -576,7 +578,7 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     },
     update(t) {
       for (const B of bars) {
-        const k = B.k(t), h = Math.max(0.001, B.H * k), e = B.k.emph(t);
+        const k = B.k(t), h = Math.max(0.001, B.H * k), e = Math.max(B.k.emph(t), B.pulse(t));
         B.m.scale.y = h; B.m.position.y = h / 2; B.m.visible = k > 0.002;
         B.m.scale.x = B.m.scale.z = 1 + 0.18 * e;                       // emphasis on the word (Shorts)
         B.val.el.style.color = e > 0.05 || B.it.hl ? GN.mustard : GN.text;
@@ -817,7 +819,7 @@ T.table = async (stage, spec) => {
     const name = (p.names || [])[i] || `PLAYER ${i + 1}`;
     const lab = K.worldLabel({ text: name, size: vert ? 30 : 26, role: 'label', at: -1, color: GN.muted, maxW: vert ? 320 : 360 },
       new THREE.Vector3(pawn.position.x, front ? 0 : 2.0, pawn.position.z + (front ? 0.9 : 0)), front ? 4 : -34);
-    seats.push({ i, sx, sz, pawn, hand, lab, home: pawn.position.clone() });
+    seats.push({ i, sx, sz, dir, cnt, pawn, hand, lab, home: pawn.position.clone() });
   }
   const hl = (p.highlight || p.seat_hl || []).filter((h) => typeof h[1] === 'number');
   const hlK = hl.map(([s, at]) => K.tw(`seat ${s} hop`, at, 2.3));
@@ -832,6 +834,21 @@ T.table = async (stage, spec) => {
   scheduleLandings(turns, 0.12, (e) => K.tw(`${e.ev} by seat ${e.seat}`, e.start, 0.75).dur);   // lands before the cut
   const plays = turns.filter((x) => x.ev === 'play');
   plays.map((e, i) => ({ e, i })).sort((a, b) => a.e.lands - b.e.lands || a.i - b.i).forEach(({ e }, slot) => { e.slot = slot; });   // pile layers among plays, landing order
+  // hands change size: a play takes a card out of that seat's hand as it leaves, a draw adds one when it lands
+  seats.forEach((st) => {
+    const extra = turns.filter((x) => x.ev === 'draw' && x.seat % n === st.i).length;
+    for (let k = 0; k < extra; k++) { const c = kitCard(stage, p.back || 'back'); c.visible = false; K.key(c, 'decor'); st.hand.push(c); }
+  });
+  const handCount = (st, t, soft) => {        // soft: eased count for spacing (cards slide together/apart over 0.3 s)
+    let c = st.cnt;
+    for (const x of turns) {
+      if (x.seat % n !== st.i) continue;
+      const t0 = x.ev === 'play' ? x.start : x.lands;
+      const u = soft ? ease(clamp((t - t0) / 0.3)) : (t >= t0 ? 1 : 0);
+      c += x.ev === 'play' ? -u : u;
+    }
+    return Math.max(0, c);
+  };
   turns.forEach((e, k) => { e.mover = kitCard(stage, 'back'); e.mover.visible = false; e.mover.traverse((o) => { o.castShadow = false; }); e.lane = k % 3; K.key(e.mover); });
   const outs = (p.out || []).filter((h) => typeof h[1] === 'number');
   const pill = K.label({ text: '', size: 30, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
@@ -848,6 +865,16 @@ T.table = async (stage, spec) => {
       const ko = o ? ease(clamp((t - o[1]) / 0.5)) : 0;
       s.pawn.rotation.z = ko * Math.PI / 2.2; s.pawn.position.y += ko * 0.3;
       s.pawn.position.y += hop;
+    });
+    seats.forEach((st) => {
+      const shown = Math.round(handCount(st, t, false)), span = handCount(st, t, true);
+      st.hand.forEach((c, k) => {
+        c.visible = k < shown;
+        if (!c.visible) return;
+        const off = (k - (Math.max(span, 1) - 1) / 2) * 0.42;
+        c.position.set(st.sx * 0.82 + Math.cos(st.dir) * off, layerY(k, 0.02), st.sz * 0.82 - Math.sin(st.dir) * off);
+        c.rotation.set(0, st.dir + Math.PI, 0);
+      });
     });
     // turns
     let e = null; for (const x of turns) if (t >= x.start && t < x.start + x.dur + 0.25) e = x;
