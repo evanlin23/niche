@@ -189,3 +189,113 @@ grandmaster). The copycats share the opposite: a number-first title, about 9 min
 
 Whichever lane: daily Shorts (the only thing that reliably gets a new channel seen), fewer but longer and more
 personal long videos, and titles that lead with a question or a finding.
+
+## 7. Multi-lane test plan (2026-11-05)
+No single niche yet, no engines, no API spend: three lanes, tested with Shorts. §5/§6 = sections above.
+
+### 7.1 Lanes
+**A. Family game stories, hosted.** Hook: the arguments at your game night, settled, with you as host and Buh as referee.
+- Titles: "Is Your Grandpa Right to Knock at Ten?" / "The Backwards Card in Sorry! Is Better Than It Looks" /
+  "My Fairness Test Failed. The Bug Was the Board."
+- Hard to copy: the creator's voice, true process stories, viewers' house rules tested and credited.
+- Competition: 35 template channels, median 58 views (§5); Brute Force Lab (question titles) 2,740 subs, median 9.3K;
+  Ballpark Figures "I Solved Yahtzee*" 1.12M; Veritasium "...Game Of Life Wrong" 11.6M.
+- Cost: long video 2.5-3 h of creator time (`docs/cadence-plan.md`); 8 games already have engines. Compute $0
+  (runners are free on public repos: docs.github.com/en/billing/concepts/product-billing/github-actions).
+  Short: about 56 words (`docs/shorts-backlog.md` median), so 5 min of recording plus 10 min of posting; visuals
+  from the kit (`docs/scene-kit.md`, branch `claude/production-kit`).
+
+**B. AI models play family games, graded by our bots (Liar's Dice first).** Hook: ChatGPT, Claude, Gemini and Grok
+play your games, and a bot that played a billion games grades every move.
+- Titles: "Which AI Bluffs Best at Liar's Dice?" / "Do AIs Know When to Knock in Gin?" / "Can Claude Beat a Bot That
+  Played a Billion Games of Sorry!?"
+- Hard to copy: rivals only report who won; we grade every move. Plus a season table and new-model rematches.
+- Competition: Turing Games 114K subs, median 353K; Croissant 193K, 299K; copycats (13-67 subs) 68-1.3K; "AI Plays
+  Uno" 249; no AI Gin, Sorry! or Liar's Dice video in 16 searches (`sim-lanes-*`).
+- Cost: as A, plus engine and harness (1-2 days, later). API spend assumes 4 players, about 85 decisions, and
+  2,500 in plus 1,500 out tokens per decision (thinking billed as output): my assumptions, for a pilot to measure.
+
+| Lineup ($/1M in / out) | Per match | Per video (50 matches) |
+|---|---|---|
+| Flagship: gpt-6-astra 10/50, claude-fable-5-1 10/50, gemini-4-argon 2/10 (4/20 from 1 Dec), grok-4.7 2/6 | $5.0-5.4 | $250-270 |
+| Mid: gpt-6.1-sol 2/10, claude-sonnet-5-5 2/10, gemini-3.8-flash 0.75/3.75, deepseek-v4-pro 1.32/3.96 | $1.2 | $60 |
+| Cheap: gpt-6-luna 0.10/0.50, claude-haiku-5-5 0.10/0.50, gemini-3.5-flash-lite 0.30/2.50, deepseek-flash 0.30/1.20 | $0.19 | $10 |
+
+Sources (undated pages): developers.openai.com/api/docs/pricing, aistudio.google.com/docs/pricing,
+docs.x.ai/developers/pricing, api-docs.deepseek.com/quick_start/pricing, platform.claude.com/docs/en/about-claude/pricing.
+Output is 64-75% of the cost, so twice the thinking roughly doubles it. xAI and DeepSeek don't say how they bill thinking.
+
+**C. Party and hidden-role maths, hosted** (Secret Hitler, One Night Ultimate Werewolf, Coup). Hook: the maths of
+lying, or when your friend's story is actually likely.
+- Titles: "Your President Drew Three Fascist Policies. Were They Lying?" / "How Often Is Nobody the Werewolf?" /
+  "Should You Ever Believe a Duke?"
+- Hard to copy: exact hidden-information maths; accusation stories suit a voice host.
+- Competition: lane median 87K, mostly let's-plays (Smosh Secret Hitler 3.77M, Polygon Coup 1.81M); one maths video
+  (Brute Force Lab, Werewolf, 348K).
+- Cost: a Short is one exact calculation after checking the card list; long videos need bluffing bots (my estimate:
+  1-2 days each). Secret Hitler is CC BY-NC-SA: facts only, our own visuals.
+
+Not shortlisted (§6): Pokémon (IP, needs a Pokémon host), Balatro (solo), game shows (23K), bot leagues (27K).
+
+### 7.2 Two-week Shorts probe
+Same rules for every Short: motion and the question in frame 1, Buh by second 2 (the static first frame kept 24%:
+`docs/LESSONS.md` on `claude/beautiful-shannon-cijjtq`); 20-40 s; question titles; no Related video; same time daily,
+lanes alternating.
+
+| # | Title | Needs |
+|---|---|---|
+| A1 | Where should you put the Kitten back? | existing EK cut plus a new 2 s opening; no recording |
+| A2 | Is Grandpa right to knock at ten? | Gin data (Gin-only 39.55%), kit `bars`, recording |
+| A3 | The backwards card in Sorry! beats the five | Sorry! card values (3.8 vs 3.3), kit `track`, recording |
+| A4 | My fairness test failed. It wasn't a bug. | Sorry! three-player seats (39.84% vs about 30%), recording |
+| B1 | Do AIs know when to knock in gin? | 3 free chat apps (screen capture, $0), graded with Gin data; recording |
+| B2 | Can you stack +2s in Uno? I asked three AIs | checked against Mattel's sheet (`episodes/uno/RULES.md`); Uno scenes; recording |
+| B3 | Where would an AI put the Kitten back? | chat apps plus EK data and footage; recording |
+| B4 | ChatGPT says "liar." Is it right? | one Liar's Dice position, exact binomial (no engine); recording |
+| C1 | Your president drew three fascist policies. Lying? | 165/680 = 24.3% (17 tiles: 6 Liberal, 11 Fascist, `docs/next-episodes.md` (d)); recording |
+| C2 | How often is nobody the werewolf? | an exact count once the rulebook's card list is verified; recording |
+| C3 | Should you believe a Duke? | hypergeometric once the deck is verified; recording |
+
+Creator time: about 1 h recording, 40 min of captures, 2 h of posting. Post days 1-11; read each Short at 7 days.
+
+| Metric (per Short, at 7 days) | Baseline | Pass | Strong | Basis |
+|---|---|---|---|---|
+| Stayed to watch: "stayed to watch past the initial seconds" (support.google.com/youtube/answer/12220281) | 24% | 50% | 70% | 1of10 (12 Sep 2026): 70-79% "working", 80%+ "strong"; Humble & Brag: a swipe-away rate above 40% is "a red flag" |
+| Views | 174 | 500 | 1,300 | §5: new channels' median Short 487; 0-10-sub channels get 500-1,300 |
+| Likes / views | not recorded | 3% | 5% | 1of10: 3-5% working; Humble & Brag: 3-6% |
+| Subs per 1,000 views | not recorded | 1 | 3 | no published bar; Perfect Play's channel converts 2.6 (§5). My choice |
+
+Decision: compare lane medians, not totals. The winner has the best median stayed-to-watch among lanes passing views
+and likes; ties go to subs per 1,000. A lane with one 10x outlier gets four more Shorts first. If no lane reaches 50%,
+fix the openings and rerun.
+
+### 7.3 Host personality, concrete (from the channels' own captions)
+| Channel (video) | What they do | Buh version |
+|---|---|---|
+| SmithPlays (9_JZ64_qbb4) | the first line is a verdict on one named character ("I've got the data to back this one up"); a doubter beat; the same sign-off every video | open on one card with a verdict ("This is the Four. It's secretly the best card in Sorry!"); a doubter beat before the engine check; a fixed sign-off |
+| Dr Ruckus MTG (Xq4T44EvPvo) | a skit cold open (losing to the bot); the same identity line each video ("a Google software engineer who wrote MTG Arena from scratch"); daily uploads | Buh loses a game to a family habit in the cold open; one identity line ("I build your games in code; Buh makes the bots fight") |
+| Turing Games (JhBtg-lyKdo), Croissant (uBa-t5Buz8Y) | cold open on the sharpest accusation, then the rules "real quick"; the host is the referee; AIs narrated as people with motives ("she chose to strike") | lane B: open on the best lie; Buh shows a green or red verdict card on every graded move |
+| Ballpark Figures (DOgb5wrb7mM, ApdLgfgfh5o); 2swap (KaljD3Q3ct0) | a "silly question" that escalates; "a short video... turned into something else"; thanks commenters; an asterisk in the title. 2swap opens on the finished visual with one story device (two all-knowing gods) | escalating openings or the finished chart first; a 20-30 min deep dive monthly; honest asterisks |
+
+House rules:
+1. A recurring cast across games (the Normal Player as the rival, the Gin Hunter, the Grabber) in a family-league table.
+2. Buh in frame 1 of every Short; three bits: "Buh's hot take" (the myth), the verdict card, a faceplant when a habit loses.
+3. Reactions only when true; a house rule of the week from a named commenter.
+4. Shorts 20-40 s, videos 8-12 min, a monthly deep dive (audience channels' median 25.5 min, §5).
+5. Titles name one thing (a card, a move, a person) as a claim or question; numbers stay in the video.
+
+### 7.4 Packaging check: Perfect Play's wording
+Checked: 4 branches, issues #1-#7, Perfect Play's titles, thumbnails and the lines in `docs/perfectplay-structure-notes.md`.
+Issue #1 confirmed (thumbnail-only test, old B replaced). Found:
+1. **Perfect Play's wording:** the first line of the issue #1 description, "...tested on more than 10 billion simulated
+   games." Probably live; edit it in Studio.
+2. **Out of date:** `episodes/exploding-kittens/UPLOAD.md` lines 7-11, on all branches, still list the old title B
+   and a title test.
+3. **Look:** `thumb-B.png` (small "11%", big yellow "35%", 3D bars) is closest: all four Perfect Play thumbnails pair a big
+   yellow percentage with a small white one.
+4. **Number-first template:** live title A, issue #1 title C, `meta.yaml:19`, EK Shorts 3-4 (issue #7, `shorts_*.yaml`)
+   and their shared opening line, and the Sorry!, Checkers, Gin and Shut the Box working titles.
+5. **Narration echoing Perfect Play:** "a ranking doesn't tell you why" (EK b6, Sorry! r5), "the number to beat"
+   (Sorry! r1, Gin m1, Checkers h2), "I'll come back to it" (Sorry! c5, Gin c4), "what ten billion games taught me"
+   (EK w1), "turned those ... into bots" (Sorry! o3, Gin o3), "still up to you" (Sorry! x1, Gin y1). I wrote the
+   Sorry!, Checkers and Gin scripts; reword before recording.
