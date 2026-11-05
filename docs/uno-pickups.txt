@@ -1,0 +1,8 @@
+UNO PICK-UPS (3 lines). Same phone, same spot, same room if you can. 10 s of silence first, then each line once
+or twice with a pause between. Send the m4a here.
+
+[r8]  And what if you throw every house rule in at once? Stacking, Seven Zero, Jump In, draw until you can play, the free plus four. You get eighty six turns a round, and less skill than the official game at twenty eight and a half percent.
+
+[u4]  A bot that always forgets wins five percent of the time. Catching other people that forget barely matters, less than a point. So just make sure you say Uno.
+
+[u6]  And at a lot of tables, it's a race. The second you're down to one card, if someone else yells Uno before you do, you draw two. I made that race a coin flip. A bot that always wins the race wins forty one percent of rounds. A bot that always loses, under the official rules, basically never wins. Three rounds in a hundred thousand. Every time it gets to one card, it gets back up to three.

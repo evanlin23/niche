@@ -1,0 +1,22 @@
+{
+ "note": "UNO race as a coin flip: everyone loses the race half the time (forget 0.5) and is always caught (catch 1). Official 2-card penalty.",
+ "games_per_test": 20000000,
+ "table": {
+  "name": "normal",
+  "color_choice": "most",
+  "challenge": "p30",
+  "jump_prob": 0.5,
+  "stack_prob": 0.8,
+  "play_drawn": true,
+  "forget": 0.5,
+  "catch": 1
+ },
+ "official": {
+  "always wins race": 0.40945195,
+  "always loses race": 2.8e-05
+ },
+ "pick": {
+  "always wins race": 0.37537715,
+  "always loses race": 0.08171845
+ }
+}

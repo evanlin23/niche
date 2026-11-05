@@ -1,0 +1,118 @@
+{
+ "games_per_test": 100000000,
+ "best": {
+  "name": "best",
+  "color_choice": "most",
+  "challenge": "smart",
+  "jump_prob": 1.0,
+  "stack_prob": 1.0,
+  "play_drawn": true,
+  "hold_wilds": true,
+  "attack_small": 2.0,
+  "change_color": true
+ },
+ "pick": {
+  "stack": true,
+  "jump_in": true,
+  "free_d4": true,
+  "multi": true
+ },
+ "rules": {
+  "official": {
+   "rules": {},
+   "turns": 47.06702444,
+   "p90": 76.0,
+   "first": 0.26775017,
+   "best": 0.28964727
+  },
+  "joke_cards": {
+   "rules": {
+    "joke_cards": true
+   },
+   "turns": 40.58538559,
+   "p90": 72.75,
+   "first": 0.26445536000000003,
+   "best": 0.26364873
+  },
+  "bounce": {
+   "rules": {
+    "bounce": true
+   },
+   "turns": 46.89074761,
+   "p90": 76.0,
+   "first": 0.26735916,
+   "best": 0.29158149
+  },
+  "stack_bounce": {
+   "rules": {
+    "stack": true,
+    "bounce": true
+   },
+   "turns": 49.912448999999995,
+   "p90": 80.0,
+   "first": 0.26617342,
+   "best": 0.3009033
+  },
+  "pass_every": {
+   "rules": {
+    "pass_every": true
+   },
+   "turns": 82.64512899,
+   "p90": 170.75,
+   "first": 0.24796971,
+   "best": 0.23899373000000002
+  },
+  "pick": {
+   "rules": {
+    "stack": true,
+    "jump_in": true,
+    "free_d4": true,
+    "multi": true
+   },
+   "turns": 39.26944014,
+   "p90": 62.0,
+   "first": 0.26884334,
+   "best": 0.31920456
+  },
+  "mine": {
+   "rules": {
+    "stack": true,
+    "multi": true,
+    "free_d4": true
+   },
+   "turns": 40.31450128,
+   "p90": 63.0,
+   "first": 0.26854176,
+   "best": 0.31137515
+  },
+  "mine_joke": {
+   "rules": {
+    "stack": true,
+    "multi": true,
+    "free_d4": true,
+    "joke_cards": true
+   },
+   "turns": 36.32674047,
+   "p90": 62.0,
+   "first": 0.26570687,
+   "best": 0.28357891
+  }
+ },
+ "habits_pick": {
+  "hold wilds": 0.29223451,
+  "random colour": 0.23563909,
+  "switch to best colour": 0.26692963999999997,
+  "always stack": 0.25542351,
+  "never stack": 0.22629324,
+  "always jump in": 0.25880101,
+  "never jump in": 0.24151908,
+  "one card at a time": 0.1531554,
+  "attack when next has <=2": 0.26189049,
+  "all best habits": 0.31920456
+ },
+ "uno_pick": {
+  "never forgets": 0.29388253999999997,
+  "always forgets": 0.09431372
+ },
+ "shards": 20
+}
