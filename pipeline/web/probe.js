@@ -66,7 +66,8 @@ function qaState(t) {
       s: [+o.scale.x.toFixed(4)], r: behind ? null : [x0, y0, x1, y1].map((v) => +v.toFixed(1)) });
   }
   const tw = ((S.qa && S.qa.tweens) || []).filter((w) => t > w.at + 1e-4 && t < w.at + w.dur - 1e-4).map((w) => w.name);
-  return { t: +t.toFixed(3), texts, objs, tw };
+  const content = S.qa && S.qa.content ? [S.qa.content.l, S.qa.content.t, S.qa.content.r, S.qa.content.b] : null;
+  return { t: +t.toFixed(3), texts, objs, tw, content };
 }
 
 (async () => {

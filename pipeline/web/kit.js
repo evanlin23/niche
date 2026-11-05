@@ -219,6 +219,7 @@ export class Kit {
     const S = this.L.safe;
     this.content = { l: S.l, r: S.r, t: this.rowY + pad, b: this.bottomY - pad };
     this.content.w = this.content.r - this.content.l; this.content.h = this.content.b - this.content.t;
+    this.stage.qa.content = this.content;          // the gate checks the main visual fills it (Shorts)
     return this.content;
   }
   // split the content rect: 16:9 -> left/right, 9:16 -> top/bottom. f = share of the first part
@@ -235,7 +236,8 @@ export class Kit {
   // ---------------------------------------------------------------- camera rig: fit once, then orbit + push-in
   // pts: world points that must stay inside `rect`; elev: camera elevation (deg); yaw: max +/- deg of the orbit
   // (or 0 for a level push-in, e.g. overhead text); push: fraction of distance closed over the scene.
-  fit(pts, { rect = null, elev = 28, yaw = 6, push = 0.07, look = null, fov = 30, margin = 0.04 } = {}) {
+  fit(pts, { rect = null, elev = 28, yaw = 6, push = 0.07, look = null, fov = 30, margin = null } = {}) {
+    margin = margin ?? (this.L.short ? 0.012 : 0.04);
     const stage = this.stage, cam = stage.camera, r = rect || this.content || this.contentRect();
     cam.fov = fov; cam.updateProjectionMatrix();
     const bb = new THREE.Box3().setFromPoints(pts);
@@ -248,6 +250,9 @@ export class Kit {
     const b = projectAll(cam, pts, stage.W, stage.H);
     const dx = (r.l + r.r) / 2 - (b[0] + b[2]) / 2, dy = (r.t + r.b) / 2 - (b[1] + b[3]) / 2;
     this.rig = { look, elev, amp, d1: dEnd, d0: dEnd / (1 - push), dx, dy, pts, rect: r };
+    // depth precision: a near plane scaled to the shot (a fixed 0.1 near at 30-60 units of distance left too few
+    // depth steps for stacked cards: z-fighting flicker). Nothing in a kit shot comes closer than ~0.4 d.
+    cam.near = Math.max(0.1, dEnd * 0.12); cam.far = this.rig.d0 * 5; cam.updateProjectionMatrix();
     // fog scaled to the shot: big boards sit far away and the room's fixed fog washed them out
     if (stage.scene.fog) { stage.scene.fog.near = this.rig.d0 * 1.4; stage.scene.fog.far = this.rig.d0 * 3.2; }
     this.applyCam(0);
@@ -449,8 +454,8 @@ T.statement = async (stage, spec, { kicker = null, ring = false } = {}) => {
   K.chips(p.callouts);
   K.contentRect(30);
   const raw = (spec.lines || p.lines || []).map((l) => (typeof l === 'string' ? { text: l, at: 0.05 } : { at: 0.05, ...l }));
-  const lines = wrapLines(raw, K.L.vert, 13);
-  const size = p.size || 1.0, gap = size * 1.45;
+  const lines = wrapLines(raw, K.L.vert, K.L.short ? 8 : 13);
+  const size = p.size || 1.0, gap = size * (K.L.short ? 1.9 : 1.45);   // Shorts: a taller block fills the band
   const meshes = lines.map((ln, k) => {
     const geo = new TextGeometry(String(ln.text).toUpperCase(), { font, size, depth: size * 0.32, curveSegments: 6,
       bevelEnabled: true, bevelThickness: size * 0.03, bevelSize: size * 0.025, bevelSegments: 3 });
@@ -466,8 +471,20 @@ T.statement = async (stage, spec, { kicker = null, ring = false } = {}) => {
     K.key(m); stage.scene.add(m);
     return m;
   });
-  const wmax = Math.max(...meshes.map((m) => m.userData.w), 2);
-  const zr = (lines.length * gap) / 2 + size * 0.4;
+  let wmax = Math.max(...meshes.map((m) => m.userData.w), 2);
+  let zr = (lines.length * gap) / 2 + size * 0.4;
+  if (K.L.short && meshes.length > 1) {
+    // Shorts: stacked-poster lines, each scaled to the block's width (up to 2x), so the block fills the band
+    let z = 0;
+    const sc = meshes.map((m) => Math.min(2, wmax / m.userData.w));
+    const hs = sc.map((k) => k * size * 1.25);
+    const total = hs.reduce((a, b) => a + b, 0);
+    meshes.forEach((m, k) => {
+      m.scale.setScalar(sc[k]); z += hs[k];
+      m.position.z = z - total / 2 - hs[k] * 0.12 + size * 0.5;
+    });
+    zr = total / 2 + size * 0.3;
+  }
   let cards = [];
   if (ring) {        // title: our own cards around the words, inside the frame
     const faces = p.cards || [0, 1, 2, 3, 6, 7, 8, 4, 5];
@@ -480,7 +497,7 @@ T.statement = async (stage, spec, { kicker = null, ring = false } = {}) => {
     });
   }
   const ext = ring ? [wmax / 2 + 2.0, zr + 2.0] : [wmax / 2 + 0.2, zr];
-  K.fit(boxPoints(-ext[0], 0, size * 0.5 - ext[1], ext[0], size * 0.32, size * 0.5 + ext[1]), { elev: 66, yaw: 3, push: 0.08, fov: 30 });
+  K.fit(boxPoints(-ext[0], 0, size * 0.5 - ext[1], ext[0], size * 0.32, size * 0.5 + ext[1]), { elev: K.L.short ? 74 : 66, yaw: 3, push: 0.08, fov: 30 });
   return K.frame((t) => {
     for (const m of meshes) {
       const k = m.userData.k(t);
@@ -498,7 +515,7 @@ T.title = (stage, spec) => T.statement(stage, spec, { kicker: 'BUH SIMULATES', r
 function buildBars(K, ch, { x0, width, height, z = 0 }) {
   const stage = K.stage, items = ch.items, n = items.length;
   const unit = ch.unit ?? '%';
-  const maxV = ch.maxV || Math.max(...items.map((i) => i.value)) / 0.74;   // tallest bar ~75% of the axis
+  const maxV = ch.maxV || Math.max(...items.map((i) => i.value)) / (K.L.short ? 0.9 : 0.74);   // tallest bar ~75% of the axis (Shorts: 90%, fill the frame)
   const gap = width / n, bw = Math.min(1.6, gap * 0.62), hq = stage.spec.quality === 'high';
   const dec = ch.decimals ?? 1;
   const bars = items.map((it, i) => {
@@ -511,7 +528,8 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     K.key(m); stage.scene.add(m);
     const k = K.build(`bar ${it.label}`, it.at ?? 0.3, 0.9, i);
     const H = it.value / maxV * height;
-    const val = K.worldLabel({ text: '', size: K.L.vert ? 46 : 44, role: 'value', at: K.L.short ? -1 : it.at ?? 0.3, anchor: it.at_ref, fade: 0.3,
+    // context: true = a value implied by what is said (e.g. the 2-player complement); the number gate treats it like the fair line
+    const val = K.worldLabel({ text: '', size: K.L.vert ? 46 : 44, role: it.context ? 'context' : 'value', at: K.L.short ? -1 : it.at ?? 0.3, anchor: it.at_ref, fade: 0.3,
       color: it.hl ? GN.mustard : GN.text }, () => new THREE.Vector3(x, Math.max(0.001, H * k(K.t)) + 0.2, z), -58);
     const lab = K.worldLabel({ text: it.label, size: K.L.vert ? 30 : 26, weight: 700, role: 'label', at: K.L.short ? -1 : it.at ?? 0.3, fade: 0.3,
       color: GN.muted, lh: 1.08 }, new THREE.Vector3(x, 0, z + bw / 2 + 0.3), 6);
@@ -559,9 +577,13 @@ T.bars = async (stage, spec) => {
   const vert = K.L.vert, n = ch.items.length;
   const r = K.content;
   const width = vert ? Math.min(8.4, 1.9 * n + 0.6) : Math.min(13.5, 2.6 * n + 1.5);
-  const height = clamp(width * (r.h - 130) / r.w * (vert ? (K.L.short ? 1.5 : 1.0) : 1.25), 3.6, vert ? 11 : 6.4);   // fill the rect
+  const insT = K.L.short ? 64 : 50, insB = K.L.short ? 96 : vert ? 110 : 80;          // value labels above, names below
+  const fr = { ...r, t: r.t + insT, b: r.b - insB, h: r.h - insT - insB };
+  // Shorts: the chart takes the band's own aspect so it fills it (creator: "chart in the upper half, empty middle")
+  const height = K.L.short ? clamp((width + 0.8) * fr.h / fr.w * 0.97, 3.6, 18)
+                           : clamp(width * (r.h - 130) / r.w * (vert ? 1.0 : 1.25), 3.6, vert ? 11 : 6.4);
   const B = buildBars(K, ch, { x0: -width / 2, width, height });
-  K.fit(B.pts, { rect: { ...r, t: r.t + 50, b: r.b - (vert ? 110 : 80), h: r.h - 50 - (vert ? 110 : 80) }, elev: 18, yaw: K.p.yaw ?? 6, push: 0.06 });
+  K.fit(B.pts, { rect: fr, elev: K.L.short ? 10 : 18, yaw: K.p.yaw ?? 6, push: 0.06 });
   B.layoutLabels();
   return K.frame((t) => { K.t = t; B.update(t); });
 };
@@ -637,7 +659,7 @@ function deckRow(K, stage, spec) {
   const rowW = (n + 1.8) * RS;
   let RX, RZ = 0, chart = null;
   if (p.chart) {
-    if (vert) { RX = -rowW / 2; RZ = -13; chart = buildBars(K, p.chart, { x0: -4.0, width: 8.0, height: 6.5, z: 0.6 }); }
+    if (vert) { RX = -rowW / 2; RZ = K.L.short ? -21 : -13; chart = buildBars(K, p.chart, { x0: -4.0, width: 8.0, height: K.L.short ? 10 : 6.5, z: 0.6 }); }
     else { RX = -rowW - 0.6; RZ = 0.2; chart = buildBars(K, p.chart, { x0: 1.0, width: 6.6, height: 5.2, z: 0.5 }); }
   } else RX = -rowW / 2;
   const rowY = (j) => 0.06 + (n - j) * DY;
@@ -677,10 +699,11 @@ T.fan = async (stage, spec) => {
   K.contentRect(30);
   const faces = p.cards || [1, 3, 6, 8, 2], n = faces.length;
   const pawn = makePawn(stage, p.color || 'BLUE', 1.0); pawn.position.set(0, 0, 3.6); K.key(pawn);   // the seat, in front: cards above its head
-  const cards = faces.map((f) => { const c = kitCard(stage, f); c.scale.setScalar(1.8); K.key(c); return c; });
+  const cards = faces.map((f) => { const c = kitCard(stage, f); c.scale.setScalar(K.L.short ? 1.9 : 1.8); K.key(c); return c; });
   const pile = kitCard(stage, p.pile ?? 'back'); pile.position.set(0, 0.05, -0.4); pile.scale.setScalar(1.3); K.key(pile);
-  const spread = vert ? 0.8 : 1.05;
-  const slot = (i) => { const off = i - (n - 1) / 2; return [new THREE.Vector3(off * spread, 3.0 - off * off * 0.05, 2.0 + i * 0.012), -off * 0.12]; };
+  const spread = vert ? (K.L.short ? 0.84 : 0.8) : 1.05;
+  const handY = K.L.short ? 4.6 : 3.0;     // Shorts (tall frame): the hand held high above the seat
+  const slot = (i) => { const off = i - (n - 1) / 2; return [new THREE.Vector3(off * spread, handY - off * off * 0.05, 2.0 + i * 0.012), -off * 0.12]; };
   const hl = (p.highlights || []).filter((h) => typeof h.at === 'number');
   const plays = (p.play || []).filter((h) => typeof h.at === 'number');
   hl.forEach((h) => K.tw(`lift card ${h.card}`, h.at, 0.3));
@@ -689,7 +712,7 @@ T.fan = async (stage, spec) => {
   const pill = K.label({ text: '', size: 34, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
   if (p.seat_label) K.worldLabel({ text: p.seat_label, size: 30, role: 'label', at: -1, color: GN.text }, new THREE.Vector3(0, 0, 4.3), 4);
   const w = (n - 1) / 2 * spread + 1.1;
-  K.fit(boxPoints(-Math.max(w, 1.8), 0, -1.4, Math.max(w, 1.8), 4.4, 4.4), { elev: 20, yaw: 5, push: 0.06 });
+  K.fit(boxPoints(-Math.max(w, 1.8), 0, -1.4, Math.max(w, 1.8), handY + 1.4, 4.4), { elev: 20, yaw: 5, push: 0.06 });
   return K.frame((t) => {
     const up = appear(t), cam = stage.camera.position;
     let cur = null; for (const h of hl) if (t >= h.at && t < h.at + 1.8) cur = h;
@@ -723,7 +746,7 @@ T.table = async (stage, spec) => {
   K.header({ pill: p.pill ?? `${n} players` });
   K.contentRect(40);
   const COLS = ['BLUE', 'CREAM', 'CORAL', 'MUSTARD', 'GREEN', 'PLUM'];
-  const rx = vert ? 3.9 : 7.2, rz = vert ? 5.6 : 3.5;
+  const rx = vert ? 3.9 : 7.2, rz = vert ? (K.L.short ? 6.6 : 5.6) : 3.5;
   const deck = []; for (let k = 0; k < 24; k++) { const c = kitCard(stage, p.back || 'back'); c.position.set(-0.9, 0.07 + k * (CARD.T + 0.003), 0); K.key(c, 'decor'); deck.push(c); }
   const pile = []; const mover = kitCard(stage, 'back'); mover.visible = false; mover.traverse((o) => { o.castShadow = false; }); K.key(mover);
   const seats = [];

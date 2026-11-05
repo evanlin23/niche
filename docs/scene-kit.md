@@ -85,7 +85,9 @@ On 9:16 long lines wrap in two automatically. The first line is up from frame 0 
       - {label: The Patient One, value: "=ranking-5p.json:table[name=The Patient One].win*100", color: MUSTARD, at: b5@thirty, hl: true}
       - {label: The Hoarder, value: "=ranking-5p.json:table[name=The Hoarder].win*100", color: CORAL, at: b5@eleven}
 ```
-Each bar grows on its word and counts up; label wrap width and value size follow the bar spacing.
+Each bar grows on its word and counts up; label wrap width and value size follow the bar spacing. An item with
+`context: true` (a value implied by what is said, e.g. the 2-player complement) is shown without an anchor and the
+number gate treats it like the fair-share line.
 
 ### deck: card piles (rules) or a spread row (placement), optional chart
 ```yaml

@@ -245,7 +245,7 @@ def check_scene(sc, spec, states, script, cfg):
             line = near[0]["line"] if near else None
         static = t <= 0.25 and not line
         # meta numbers (player count, fair share, "Mistake 4") are context, not claims: only FYI when unsaid
-        meta = role in ("pill", "fair", "title", "kicker") or bool(re.search(r"fair share|\bplayers?\b|mistake", txt, re.I))
+        meta = role in ("pill", "fair", "title", "kicker", "context") or bool(re.search(r"fair share|\bplayers?\b|mistake", txt, re.I))
         for x in nums:
             if meta:
                 if not agrees(x, all_said):
@@ -262,6 +262,29 @@ def check_scene(sc, spec, states, script, cfg):
                 sev = "info" if static else "warn"
                 issues.append(_issue(sev, "numbers", f"'{txt}' shows {x:g}, not said in this scene"
                                                      + (f" (anchored to {line})" if line else ""), t))
+
+    # ---- fill (Shorts): the main visual must fill the content band (creator: "too small, empty middle")
+    if spec.get("short"):
+        fills = []
+        for st in states:
+            if st["t"] < max(1.0, 0.75 * dur) or not st.get("content"):     # the built visual (last quarter)
+                continue
+            rs = [o["r"] for o in st["objs"] if o["r"] and o["kind"] in ("key", "decor") and o["op"] > 0.05]
+            rs += [x["r"] for x in st["texts"] if x["role"] in ("value", "label", "fair", "context") and x["op"] > 0.3]   # a chart = bars + its labels
+            if rs:
+                c = st["content"]
+                y0 = max(c[1], min(r[1] for r in rs)); y1 = min(c[3], max(r[3] for r in rs))
+                fh = max(0, y1 - y0) / max(1, c[3] - c[1])
+                if sc.render in ("statement", "title"):       # words can't be stretched: filling the width counts too
+                    x0 = max(c[0], min(r[0] for r in rs)); x1 = min(c[2], max(r[2] for r in rs))
+                    fh = max(fh, max(0, x1 - x0) / max(1, c[2] - c[0]))
+                fills.append(fh)
+        if fills:
+            fm = sorted(fills)[len(fills) // 2]
+            spec.setdefault("_metrics", {})["fill"] = round(fm, 3)
+            if fm < 0.75:
+                issues.append(_issue("error", "fill", f"the main visual fills only {fm:.0%} of the content band height "
+                                                      f"(need 75%): scale it up / frame the camera on it"))
 
     # ---- captions
     if cfg.get("burn_captions") is False and spec.get("captions"):
@@ -348,6 +371,62 @@ def pixel_checks(video: Path, timeline):
             last["t"][1] = it["t"][1]; continue
         out.append(it); last = it
     return out, ys
+
+
+def flicker_check(video: Path, timeline, w=540, h=960, T=24, win_max=0.0002):
+    """Z-fighting / shimmer: pixels whose brightness jumps and comes straight back (A -> B -> A) between consecutive
+    frames. Camera moves are smooth, so real motion doesn't toggle; coplanar faces fighting in the depth buffer do.
+    Error when, over any 1 s window, more than 0.02% of pixels toggle per frame (the flickering card hands in the
+    first native same-cards Short measured 0.27%; clean Shorts measure ~0.001%)."""
+    import numpy as np
+    vw, vh = (w, h)
+    pr = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height",
+                         "-of", "csv=p=0", str(video)], capture_output=True, text=True).stdout.strip().split(",")
+    if pr and len(pr) == 2 and int(pr[0]) > int(pr[1]):
+        vw, vh = h, w                                      # landscape video
+    p = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-i", str(video), "-vf", f"scale={vw}:{vh},format=gray",
+                          "-f", "rawvideo", "-"], stdout=subprocess.PIPE)
+    n = vw * vh
+    prev2 = prev1 = None
+    fracs, boxes = [], []
+    while True:
+        buf = p.stdout.read(n)
+        if len(buf) < n:
+            break
+        f = np.frombuffer(buf, np.uint8).reshape(vh, vw).astype(np.int16)
+        if prev2 is not None:
+            d1, d2 = prev1 - prev2, f - prev1
+            tog = (np.abs(d1) > T) & (np.abs(d2) > T) & (np.sign(d1) != np.sign(d2)) & (np.abs(f - prev2) < T // 2)
+            fracs.append(float(tog.mean()))
+            ys, xs = np.nonzero(tog)
+            boxes.append((xs.min(), ys.min(), xs.max(), ys.max()) if len(xs) > 20 else None)
+        prev2, prev1 = prev1, f
+    p.wait()
+    fps = 30.0
+    fr = np.array(fracs) if fracs else np.zeros(1)
+    def where(t):
+        for sc in timeline:
+            if sc["start"] <= t < sc["start"] + sc["duration"]:
+                return sc["id"]
+        return "?"
+    issues, k = [], int(fps)
+    bad = [i for i in range(0, max(1, len(fr) - k + 1), k // 2) if fr[i:i + k].mean() > win_max]
+    runs = []
+    for i in bad:
+        if runs and i <= runs[-1][1]:
+            runs[-1][1] = i + k
+        else:
+            runs.append([i, i + k])
+    for i0, i1 in runs:
+        bx = [b for b in boxes[i0:i1] if b]
+        loc = ""
+        if bx:
+            sx, sy = W_ = vw / 100.0, vh / 100.0
+            loc = f", around x {min(b[0] for b in bx) / vw:.0%}-{max(b[2] for b in bx) / vw:.0%}, y {min(b[1] for b in bx) / vh:.0%}-{max(b[3] for b in bx) / vh:.0%} of the frame"
+        t0, t1 = (i0 + 1) / fps, (i1 + 1) / fps
+        issues.append(_issue("error", "flicker", f"flicker (z-fighting/shimmer) in {where(t0)}: {fr[i0:i1].mean():.3%} of pixels "
+                                                 f"toggle per frame (limit {win_max:.2%}){loc}", t0, t1, scene=where(t0)))
+    return issues, {"flicker_mean": round(float(fr.mean()), 6), "flicker_worst_1s": round(float(max([fr[i:i + k].mean() for i in range(0, max(1, len(fr) - k + 1))] or [0])), 6)}
 
 
 def opening_checks(video: Path, band=(0.20, 0.78)):
@@ -447,13 +526,16 @@ def run(slug, video=None, only=None, vertical=False, stills=True, out_dir=None, 
         spec["_tweens"] = st[0].get("alltw", []) if st else []     # kit scenes: every registered transition
         issues, events = check_scene(sc, spec, st, script, cfg)
         issues = anchor_issues.get(sc.id, []) + issues
-        res["scenes"][sc.id] = {"duration": spec["duration"], "events": len(events), "issues": issues,
+        res["scenes"][sc.id] = {"duration": spec["duration"], "events": len(events), "issues": issues, **spec.get("_metrics", {}),
                                 "event_times": [round(e[0], 2) for e in events][:400]}
     if video:
         tl = ep / "out" / "final" / "timeline.json"
         if timeline is None:
             timeline = json.loads(tl.read_text()) if tl.exists() else [{"id": s.id, "start": s.start, "duration": s.duration} for s in scenes]
         pix, _ = pixel_checks(Path(video), timeline)
+        fl, fm = flicker_check(Path(video), timeline)
+        pix += fl
+        res["flicker"] = fm
         if short:
             op, metrics = opening_checks(Path(video))
             pix += op
