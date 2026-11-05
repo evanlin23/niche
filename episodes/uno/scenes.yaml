@@ -215,6 +215,9 @@ scenes:
   lines: [r1, r2]
   params:
     players: 4
+    elev: 24
+    yaw: 6
+    push: 0.1
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
     highlight: [[2, r2@nudges]]
@@ -230,18 +233,20 @@ scenes:
     - {text: "Skill meter: 30%", at: r2@thirty, color: MUSTARD}
     - {text: "Barely anything", at: r2@barely}
 - id: sevenzero
-  render: table
+  render: fan
   lines: [r3]
   params:
-    players: 4
-    names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
-    hands: [6, 3, 7, 5]
-    highlight: [[0, r3@seven#2], [1, r3@zero#2], [3, r3@starts]]
-    turns:
-    - {at: r3@seven#2, seat: 0, ev: play, card: 'uno:3:7', label: "SEVEN: SWAP"}
-    - {at: r3@zero#2, seat: 1, ev: play, card: 'uno:2:0', label: "ZERO: PASS ALL"}
-    - {at: r3@take, seat: 2, ev: draw}
-    - {at: r3@starts, seat: 3, ev: play, card: 'uno:1:4', label: GOES FIRST}
+    title: "Seven Zero"
+    seat_label: YOUR HAND
+    pill: 4 players
+    cards: ['uno:3:7', 'uno:0:4', 'uno:1:9', 'uno:2:2', 'uno:4:13', 'uno:0:0']
+    highlights:
+    - {card: 0, at: r3@seven#2, label: "A SEVEN: SWAP WITH SOMEONE"}
+    - {card: 5, at: r3@zero#2, label: "A ZERO: EVERYONE PASSES"}
+    - {card: 4, at: r3@plan, label: "YOUR PLAN…"}
+    - {card: 1, at: r3@take, label: "…NOW SOMEONE ELSE'S"}
+    play:
+    - {card: 0, at: r3@swaps}
     callouts:
     - {text: "Skill meter: 26%", at: r3@twenty, color: CORAL}
     - {text: "My guess: hard to plan a hand that gets taken", at: r3@guess, color: CREAM}
@@ -252,6 +257,9 @@ scenes:
   lines: [r4]
   params:
     players: 4
+    elev: 36
+    yaw: 4
+    push: 0.12
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
     highlight: [[2, r4@slap]]
@@ -267,6 +275,9 @@ scenes:
   lines: [r5]
   params:
     players: 4
+    elev: 80
+    yaw: 0
+    push: 0.1
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
     turns:
@@ -296,17 +307,16 @@ scenes:
       - {label: Official, value: "=v2.json:combos[key=official].turns", at: r6@forty, color: TEAL}
       - {label: Draw until you can play, value: "=v2.json:combos[key=draw_until].turns", at: r6@eighty, color: CORAL, hl: true}
 - id: noout
-  render: table
+  render: fan
   lines: [r7]
   params:
-    players: 4
-    names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
-    hands: [1, 5, 4, 6]
-    turns:
-    - {at: r7@allowed, seat: 0, ev: play, card: 'uno:3:10', label: "LAST CARD: SKIP?"}
-    - {at: r7@wild, seat: 0, ev: draw, label: NOT ALLOWED}
-    - {at: r7@drops, seat: 1, ev: play, card: 'uno:1:3'}
-    turns_auto: {from: 0.5, every: 1.8}
+    title: "No going out on an action card"
+    seat_label: YOUR LAST CARD
+    pill: 4 players
+    cards: ['uno:3:10']
+    highlights:
+    - {card: 0, at: r7@allowed, label: "A SKIP? NOT ALLOWED"}
+    - {card: 0, at: r7@wild, label: "OR A WILD"}
     callouts:
     - {text: "Can't go out on an action card or Wild", at: r7@kills}
     - {text: "Skill meter: 25.5%", at: r7@twenty, color: CORAL}
@@ -332,6 +342,9 @@ scenes:
   lines: [r9]
   params:
     players: 4
+    elev: 30
+    yaw: 6
+    push: 0.1
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
     highlight: [[1, r9@reverse]]
@@ -436,6 +449,9 @@ scenes:
   lines: [x1]
   params:
     players: 4
+    elev: 68
+    yaw: 3
+    push: 0.08
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
     turns:
@@ -596,6 +612,9 @@ scenes:
   lines: [w4]
   params:
     players: 4
+    elev: 42
+    yaw: 6
+    push: 0.12
     names: [YOU, PLAYER 2, PLAYER 3, PLAYER 4]
     hands: 5
     turns:
