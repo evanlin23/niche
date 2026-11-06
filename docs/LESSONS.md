@@ -270,3 +270,11 @@ structurally prevented and every render is checked:
   of the clip's median, motion in the first 0.5 s / 1 s). Target: 60%+ stayed to watch.
 - Pick self-contained 15-35 s moments with a question or a surprising number. Always link the long video
   (Shorts editor -> Related video). Use the caption-free render as the source.
+
+## First data (Nov 6, EK long video + 2 Shorts, lifetime)
+- Long video: 176 impressions, CTR 1.7%. 172 of them were Suggested next to the channel's OLD audience (Babylon 5 /
+  Star Trek reaction videos), CTR 1.2%, but those who clicked watched 6:04 of 8:11. Reach problem, not content.
+  Checkpoint after Uno + 4-5 Shorts: if Suggested still comes from unrelated videos, start a fresh channel.
+- The only search term was "exploding kittens how to play" (viewers left after 0:17): rules-tutorial demand exists.
+  Put the rules primer early; consider a fast "how to play X" format that hands off to the strategy video.
+- Shorts: old letterboxed cut 24% stayed (641 views); native vertical cut 44% stayed on day 1. Target 60%+.
