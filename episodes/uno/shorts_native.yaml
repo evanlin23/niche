@@ -34,6 +34,10 @@ shorts:
           at: m3@twenty
           color: TEAL
           pulse:
+          - m2@luck
+          - m2@four
+          - m3@four
+          - m3@dealt
           - m4@luck
         - label: Exploding Kittens
           value: =../../exploding-kittens/data/final.json:vs_casual.4.win*100
@@ -128,23 +132,23 @@ shorts:
       - text: 'Going first: almost 27% officially'
         at: r3@official
 - id: say-uno
-  hook: 'What if you never
+  hook: 'What if you forget
 
-    forget to say Uno?'
+    to say Uno?'
   title: How much does forgetting to say Uno cost you?
   description: 'Everyone forgets one time in four. Full video on my channel. #uno #cardgames #boardgames'
   scenes:
   - id: su-bars
     render: bars
     lines:
-    - u3
     - u4
+    - u5
     params:
       callouts:
-      - text: Everyone forgets 1 time in 4
-        at: u3@forgets
-      - text: Caught half the time
-        at: u3@half
+      - text: Catching others barely matters
+        at: u4@catching
+      - text: Penalty of 4 cards
+        at: u5@four
         color: CREAM
       chart:
         players: 4
@@ -154,12 +158,23 @@ shorts:
         items:
         - label: Never forgets
           value: =v2.json:uno.official.never forgets*100
-          at: u3@thirty
+          at: 0.0
           color: MUSTARD
           hl: true
+          pulse:
+          - u4@catching
+          - u4@say
+          - u5@some
+          context: true
         - label: Always forgets
           value: =v2.json:uno.official.always forgets*100
           at: u4@five
           color: CORAL
-          pulse:
-          - u4@uno
+        - label: Never forgets, 4-card penalty
+          value: =v2.json:uno.penalty4.never forgets*100
+          at: u5@thirty
+          color: MUSTARD
+        - label: Never forgets, my rules
+          value: =extras.json:uno_pick.never forgets*100
+          at: u5@twenty
+          color: TEAL
