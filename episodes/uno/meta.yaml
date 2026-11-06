@@ -1,7 +1,7 @@
 long:
   title: "The Best Way to Play Uno"
   description: |
-    How to play Uno and actually win: the official rules are mostly luck, but the right house rules let a good player win almost twice as often.
+    How to play Uno and actually win: the official rules are mostly luck, but the right house rules give a good player almost twice the edge.
 
     I built Uno from the official Mattel rule sheet (112 cards), gave the rules and every popular house rule to bots that only know what a real player knows, and tested every combination: 192 rule sets, stacking, Seven Zero, Jump In, draw until you can play, the free plus four, dumping matching numbers, and more. Then I tested the habits that win, including saying Uno.
 
