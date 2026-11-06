@@ -144,7 +144,8 @@ export class Kit {
   // ---------------------------------------------------------------- QA-registered tweens
   // every transition finishes before the cut: one starting on the scene's last word is shortened (min 0.12 s)
   tw(name, at, dur = 0.5) {
-    const sp = this.stage.spec, end = (sp.n_frames ? (sp.n_frames - 1) / sp.fps : this.stage.duration) - 0.02;   // the last frame drawn
+    // done before the second-to-last frame (ending between the last two frames left a sliver of easing at the cut)
+    const sp = this.stage.spec, end = (sp.n_frames ? (sp.n_frames - 2) / sp.fps : this.stage.duration - 0.034) - 0.01;
     if (at < end) dur = Math.max(0.12, Math.min(dur, end - at));
     this.stage.qa.tweens.push({ name, at, dur });
     const f = (t) => ease((t - at) / dur); f.dur = dur;
@@ -957,7 +958,7 @@ T.table = async (stage, spec) => {
     const total = H.cnt + H.ev.filter((x) => x.ev === 'draw').length;
     for (let k = 0; k < total; k++) { const c = kitCard(stage, BACK); c.visible = false; K.key(c, 'decor'); H.cards.push(c); }
   });
-  const END = (spec.n_frames ? (spec.n_frames - 1) / spec.fps : stage.duration) - 0.02;   // the last frame drawn
+  const END = (spec.n_frames ? (spec.n_frames - 2) / spec.fps : stage.duration - 0.034) - 0.01;   // before the second-to-last frame
   const handCount = (H, t, soft) => {        // soft: eased count for spacing (cards slide together/apart over 0.3 s)
     let c = H.cnt;
     for (const x of H.ev) {
@@ -976,16 +977,19 @@ T.table = async (stage, spec) => {
   turns.forEach((x) => {
     if (x.seat == null) return;
     const st = seats[x.seat % n], H = hands[x.hand], c = Math.round(handCount(H, (x.ev === 'play' ? x.start : x.lands) - 1e-4, false));
-    x.handP = x.ev === 'play' ? slotAt(st, Math.max(0, c - 1), c) : slotAt(st, c, c);
+    x.handP = x.ev === 'play' ? slotAt(st, Math.max(0, c - 1), c) : slotAt(st, c, c); x.slotK = c;
   });
   turns.forEach((e) => { e.mover = kitCard(stage, BACK); e.mover.visible = false; K.key(e.mover); });
   // arc lanes by what's already in the air: a flight that starts while others fly takes the lowest free lane, and
   // lanes sit a card's height apart (cards flip in the air: two flips 0.24 s apart on one arc height clipped).
   // Dealt cards: lanes 0-2 in turn (a deal has many cards in the air, all leaving the deck one after another)
   turns.slice().sort((a, b) => a.start - b.start).forEach((e, j, arr) => {
-    if (e.dealt) { e.lane = j % 3; e.laneSet = true; return; }
+    // draws all fly the same arc: each later card leaves the deck one layer lower and later, so it can never overtake
+    // the one ahead (a higher lane rose faster and caught the previous card over the deck: clipping)
+    if (e.ev === 'draw' || e.ev === 'flip') { e.lane = 0; e.laneSet = true; return; }   // everything leaving the deck: one arc
     const busy = new Set(arr.filter((o) => o !== e && o.laneSet && o.start < e.start + e.dur && e.start < o.start + o.dur).map((o) => o.lane));
-    let l = 0; while (busy.has(l)) l++; e.lane = l; e.laneSet = true;
+    let l = 0; while (busy.has(l)) l++;
+    e.lane = Math.min(l, 3); e.laneSet = true;
   });
   const LANE = 0.95;   // (framing doesn't depend on lanes: arcs peak mid-table, and same-template shots must match)
   const hl = (p.highlight || p.seat_hl || []).filter((h) => typeof h[1] === 'number');
@@ -999,6 +1003,13 @@ T.table = async (stage, spec) => {
     const s = seats[h[0] % n], t0 = h[1], dur = Math.min(1.8, hlK[q].dur + 0.3);
     K.label({ text: String(h[2]), size: 30, role: 'label', pill: GN.mustard, at: t0, fade: 0.1,
       alpha: (tt) => clamp((tt - t0) / 0.1) * (t0 + dur > stage.duration - 0.05 ? 1 : 1 - clamp((tt - t0 - dur) / 0.15)), pos: () => pillPos(s) });
+  });
+  // a swap/pass label: over the first seat of a swap, over the pile for a pass
+  moves.filter((m) => m.label).forEach((m) => {
+    const t0 = m.start, dur = m.dur + 0.4;
+    K.label({ text: String(m.label), size: 30, role: 'label', pill: GN.mustard, at: t0, fade: 0.1,
+      alpha: (tt) => clamp((tt - t0) / 0.1) * (t0 + dur > stage.duration - 0.05 ? 1 : 1 - clamp((tt - t0 - dur) / 0.15)),
+      pos: () => (m.ev === 'swap' ? ((q) => [q[0], q[1] - 52])(pillPos(seats[m.seat % n])) : (() => { const [x, y] = K.project(new THREE.Vector3(0.05, 1.8, 0)); return [x, y]; })()) });
   });
   const outs = (p.out || []).filter((h) => typeof h[1] === 'number');
   const pill = K.label({ text: '', size: 30, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
@@ -1052,9 +1063,13 @@ T.table = async (stage, spec) => {
       // at the swap, flat again by 80% of the flight); a drawn card turns to face its seat
       // rise first, travel across at height, then come down near-vertically: a card from the far seats used to cross
       // the deck already descending (and mid-flip) and clipped it
-      const kx = ease(clamp((k - 0.15) / 0.7)), from = x.ev === 'play' ? x.handP : deckP, to = x.ev === 'draw' ? x.handP : pileAt(x.slot);
-      x.mover.position.set(lerp(from.x, to.x, kx), lerp(from.y, to.y, k), lerp(from.z, to.z, kx));
-      x.mover.position.y += Math.sin(k * Math.PI) * ((x.dealt ? 1.0 : 1.6) + LANE * x.lane);
+      // leaving the deck: away at once while rising (a card that climbed first, then dropped over the deck, met the
+      // next card climbing); leaving a hand: rise first. A draw aims at its slot as the hand is laid out NOW (the hand
+      // may still be re-spacing), so it lands exactly where its hand card appears
+      const kx = x.ev === 'play' ? ease(clamp((k - 0.15) / 0.7)) : ease(clamp(k / 0.85)), from = x.ev === 'play' ? x.handP : deckP;
+      const to = x.ev === 'draw' ? slotAt(seats[x.seat % n], x.slotK, Math.max(handCount(hands[x.hand], t, true), x.slotK)) : pileAt(x.slot);
+      x.mover.position.set(lerp(from.x, to.x, kx), lerp(from.y, to.y, kx), lerp(from.z, to.z, kx));   // height follows the horizontal travel: a card leaving the tall deck didn't sink while still over it (the next card caught up)
+      x.mover.position.y += Math.sin(k * Math.PI) * ((x.ev === 'play' ? 1.6 : 1.2) + LANE * x.lane);
       // yaw: from the pile's (0) to the hand's turn, or back, the short way round, over the first/last half of the flight
       const dYaw = s ? wrap(s.dir + Math.PI) : 0;
       if (x.ev === 'draw') { x.mover.setFace(BACK); x.mover.rotation.set(0, dYaw * ease(clamp((k - 0.5) / 0.5)), 0); }
