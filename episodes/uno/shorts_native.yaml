@@ -74,8 +74,11 @@ shorts:
         at: r5@time
         label: STILL HAVE RED? PLAY IT ANYWAY
       - card: 4
-        at: r5@highest
-        label: ANOTHER ONE
+        at: r5@whole
+        label: AND AGAIN, WHENEVER
+      - card: pile
+        at: r5@brings
+        label: NO ONE CAN CHALLENGE IT
       play:
       - card: 0
         at: r5@challenges
@@ -85,6 +88,7 @@ shorts:
       - text: 'Skill meter: 31%'
         at: r5@thirty
         color: MUSTARD
+      pile: uno:0:3
 - id: seven-zero
   hook: 'Does Seven Zero
 
@@ -92,39 +96,62 @@ shorts:
   title: Does Seven Zero make Uno more luck?
   description: 'Swapping hands drags the skill meter down and wipes out the edge of going first. Full video on my channel. #uno #cardgames #boardgames'
   scenes:
-  - id: sz-hand
-    render: fan
+  - id: sz-table
+    render: table
     lines:
     - r3
     params:
-      seat_label: YOUR HAND
-      pill: 4 players
-      cards:
-      - uno:3:7
-      - uno:0:4
-      - uno:1:9
-      - uno:2:2
-      - uno:4:13
-      - uno:0:0
-      highlights:
-      - card: 0
-        at: r3@seven#2
-        label: 'A SEVEN: SWAP WITH SOMEONE'
-      - card: 5
-        at: r3@zero#2
-        label: 'A ZERO: EVERYONE PASSES'
-      - card: 4
-        at: r3@plan
-        label: YOUR PLAN…
-      - card: 1
-        at: r3@take
-        label: …NOW SOMEONE ELSE'S
-      - card: 2
-        at: r3@starts
-        label: 'GOING FIRST: NO EDGE LEFT'
-      play:
-      - card: 0
-        at: r3@swaps
+      players: 4
+      elev: 36
+      yaw: 5
+      push: 0.1
+      names:
+      - YOU
+      - PLAYER 2
+      - PLAYER 3
+      - PLAYER 4
+      hands: 5
+      pile: uno:1:3
+      turns:
+      - at: r3@seven#2
+        seat: 0
+        ev: play
+        card: uno:1:7
+        label: A SEVEN
+      - at: r3@swaps
+        ev: swap
+        seat: 0
+        with: 2
+        label: SWAP HANDS
+      - at: r3@zero#2
+        seat: 1
+        ev: play
+        card: uno:1:0
+        label: A ZERO
+      - at: r3@passes
+        ev: pass
+        label: EVERYONE PASSES
+      - at: r3@take
+        seat: 3
+        ev: play
+        card: uno:1:7
+        label: A SEVEN
+      - at: r3@time
+        ev: swap
+        seat: 3
+        with: 0
+        label: TAKES YOUR HAND
+      - at: r3@drags
+        seat: 2
+        ev: play
+        card: uno:1:5
+      highlight:
+      - - 0
+        - r3@plan
+        - YOUR PLAN…
+      - - 0
+        - r3@starts
+        - 'WENT FIRST: NO EDGE'
       callouts:
       - text: 'Skill meter: 26%'
         at: r3@twenty

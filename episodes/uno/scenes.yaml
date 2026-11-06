@@ -136,6 +136,8 @@ scenes:
         color: TEAL
         context: true
         pulse:
+        - o5@rules
+        - o5@skill
         - o5@official
       - label: The most skillful rules
         value: =v2.json:combos[key=stack+jump_in+draw_until+free_d4].best*100
@@ -181,91 +183,6 @@ scenes:
     - PLAYER 4
     hands: 0
     turns:
-    - at: g1@seven
-      seat: 0
-      ev: draw
-      label: SEVEN CARDS EACH
-    - at: g1@seven+0.06
-      seat: 1
-      ev: draw
-    - at: g1@seven+0.12
-      seat: 2
-      ev: draw
-    - at: g1@seven+0.18
-      seat: 3
-      ev: draw
-    - at: g1@seven+0.24
-      seat: 0
-      ev: draw
-    - at: g1@seven+0.30
-      seat: 1
-      ev: draw
-    - at: g1@seven+0.36
-      seat: 2
-      ev: draw
-    - at: g1@seven+0.42
-      seat: 3
-      ev: draw
-    - at: g1@seven+0.48
-      seat: 0
-      ev: draw
-    - at: g1@seven+0.54
-      seat: 1
-      ev: draw
-    - at: g1@seven+0.60
-      seat: 2
-      ev: draw
-    - at: g1@seven+0.66
-      seat: 3
-      ev: draw
-    - at: g1@seven+0.72
-      seat: 0
-      ev: draw
-    - at: g1@seven+0.78
-      seat: 1
-      ev: draw
-    - at: g1@seven+0.84
-      seat: 2
-      ev: draw
-    - at: g1@seven+0.90
-      seat: 3
-      ev: draw
-    - at: g1@seven+0.96
-      seat: 0
-      ev: draw
-    - at: g1@seven+1.02
-      seat: 1
-      ev: draw
-    - at: g1@seven+1.08
-      seat: 2
-      ev: draw
-    - at: g1@seven+1.14
-      seat: 3
-      ev: draw
-    - at: g1@seven+1.20
-      seat: 0
-      ev: draw
-    - at: g1@seven+1.26
-      seat: 1
-      ev: draw
-    - at: g1@seven+1.32
-      seat: 2
-      ev: draw
-    - at: g1@seven+1.38
-      seat: 3
-      ev: draw
-    - at: g1@seven+1.44
-      seat: 0
-      ev: draw
-    - at: g1@seven+1.50
-      seat: 1
-      ev: draw
-    - at: g1@seven+1.56
-      seat: 2
-      ev: draw
-    - at: g1@seven+1.62
-      seat: 3
-      ev: draw
     - at: g1@flipped
       ev: flip
       card: uno:0:5
@@ -292,6 +209,10 @@ scenes:
     - - 3
       - g2@zero
       - FIRST TO ZERO CARDS WINS
+    deal:
+      at: g1@seven
+      count: 7
+      every: 0.09
 - id: cards
   render: deck
   lines:
@@ -642,10 +563,6 @@ scenes:
     - at: r3@passes
       ev: pass
       label: EVERYONE PASSES
-    - at: r3@plan
-      seat: 2
-      ev: play
-      card: uno:1:5
     - at: r3@take
       seat: 3
       ev: play
@@ -656,7 +573,14 @@ scenes:
       seat: 3
       with: 0
       label: TAKES YOUR HAND
+    - at: r3@drags
+      seat: 2
+      ev: play
+      card: uno:1:5
     highlight:
+    - - 0
+      - r3@plan
+      - YOUR PLAN…
     - - 0
       - r3@starts
       - 'WENT FIRST: NO EDGE'
@@ -727,6 +651,9 @@ scenes:
     - card: 4
       at: r5@whole
       label: AND AGAIN, WHENEVER
+    - card: pile
+      at: r5@brings
+      label: NO ONE CAN CHALLENGE IT
     play:
     - card: 0
       at: r5@challenges
@@ -1123,6 +1050,9 @@ scenes:
     - text: Everyone passes their hand. Every turn.
       at: x1@force
       color: CORAL
+  pad:
+  - 0.2
+  - 1.0
 - id: passbars
   render: bars
   lines:
@@ -1668,6 +1598,9 @@ scenes:
     - text: 3 rounds in 100,000
       at: u6@hundred
       color: CORAL
+  pad:
+  - 0.2
+  - 1.0
 - id: close
   render: statement
   lines:
