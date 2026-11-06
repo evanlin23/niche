@@ -155,8 +155,8 @@ scenes:
   params:
     title: Kitten odds
     frames:
-    - {at: o1@start, total: 23, hits: 3, head: "3 Kittens in 23 cards", sub: "13% (about 1 in 7)"}
-    - {at: o1@seven, total: 23, hits: 3, head: "3 Kittens in 23 cards", sub: "about 1 in 7"}
+    - {at: o1@start, total: 23, hits: 0, head: "23 cards", sub: ""}
+    - {at: o1@hide, total: 23, hits: 3, head: "3 Kittens in 23 cards", sub: "13% (about 1 in 7)"}   # the hits rise on 'hide'
     - {at: o1@end, total: 4, hits: 3, head: "3 Kittens in 4 cards", sub: "mostly Kittens"}
 - id: recipe
   render: checklist

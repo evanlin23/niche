@@ -17,11 +17,18 @@ def text(i, r, op=1.0, txt="label", role="", anchor=""):
     return {"id": i, "text": txt, "op": op, "r": r, "role": role, "anchor": anchor}
 
 
-def states(fn, dur=6.0):
+def piece(i, p=(0, 0, 0), r=(700, 400, 760, 460)):
+    return {"id": i, "kind": "decor", "name": "card", "op": 1, "p": list(p), "s": [1], "r": list(r)}
+
+
+def states(fn, dur=6.0, auto=True, step=3):
+    """auto: a new piece appears every second (object coverage) unless the case brings its own objects"""
     out = []
-    for f in list(range(0, int(dur * 30), 3)) + [int(dur * 30) - 2, int(dur * 30) - 1]:
+    for f in list(range(0, int(dur * 30), step)) + [int(dur * 30) - 2, int(dur * 30) - 1]:
         t = f / 30
         texts, objs, tw = fn(t)
+        if auto and not objs:
+            objs = [piece(500 + k, (k, 0, 0), (700 + k * 70, 400, 760 + k * 70, 460)) for k in range(int(t) + 1) if k < 6]
         out.append({"t": t, "texts": texts, "objs": objs, "tw": tw, "f": f})
     return out
 
@@ -68,8 +75,60 @@ def test_object_moving_at_cut():
 
 
 def test_coverage_gap():
-    iss, _ = check_scene(SC, spec(dur=9.0, cues={"a1": [0.2, 8.8]}), states(lambda t: ([text(1, OK_TEXT)], [], []), 9.0), {"a1": "x"}, {})
+    iss, _ = check_scene(SC, spec(dur=9.0, cues={"a1": [0.2, 8.8]}), states(lambda t: ([text(1, OK_TEXT)], [], []), 9.0, auto=False), {"a1": "x"}, {})
     assert "coverage" in checks(iss)
+
+
+def test_coverage_ignores_captions_and_callouts():
+    """only text popping up while narrating (the creator: 'the only thing that moves is a caption') fails coverage"""
+    sp = spec(dur=9.0, cues={"a1": [0.2, 8.8]})
+    texty = lambda t: ([text(100 + k, [200, 200 + k * 50, 300, 240 + k * 50], role="callout") for k in range(int(t) + 1)], [], [])
+    assert "coverage" in checks(check_scene(SC, sp, states(texty, 9.0, auto=False), {"a1": "x"}, {})[0])
+    assert "coverage" not in checks(check_scene(SC, sp, states(texty, 9.0), {"a1": "x"}, {})[0])
+
+
+def _dense(fn, dur=4.0):
+    return states(lambda t: ([], fn(t), []), dur, auto=False, step=1)
+
+
+def test_sync_late_and_on_time():
+    from pipeline.qa_visual import check_sync
+    from pipeline.web_ease import smooth
+    anc = [{"ref": "a1@go", "t": 1.5, "path": "params.play[0].at"}]
+    move = lambda t0: (lambda t: [piece(1, (3 * smooth((t - t0) / 0.6), 0, 0))])
+    late, _ = check_sync(spec(dur=4.0, anchors=anc), _dense(move(1.75)))
+    ok, offs = check_sync(spec(dur=4.0, anchors=anc), _dense(move(1.45)))
+    assert [i["check"] for i in late] == ["sync"] and ok == [], (late, ok)
+    assert abs(offs[0]["offset"]) < 0.15
+    two = [dict(anc[0]), dict(anc[0], path="params.play[1].at")]          # two cards on one word: both must move
+    one_moves, _ = check_sync(spec(dur=4.0, anchors=two), _dense(move(1.45)))
+    assert "only 1 objects" in one_moves[0]["msg"]
+
+
+def test_smooth_teleport_and_eased():
+    from pipeline.qa_visual import check_smooth
+    from pipeline.web_ease import smooth
+    eased = _dense(lambda t: [piece(1, (3 * smooth((t - 1) / 0.6), 0, 0))])
+    jump = _dense(lambda t: [piece(1, (3 * smooth((t - 1) / 0.6) + (1.0 if t > 2.5 else 0), 0, 0))])
+    linear = _dense(lambda t: [piece(1, (3 * min(1, max(0, (t - 1) / 0.6)), 0, 0))])   # instant start and stop
+    assert check_smooth(eased) == []
+    assert check_smooth(jump) and check_smooth(linear)
+
+
+def test_continuity_jump_vs_continuous_vs_new_shot():
+    import math
+    from pipeline.qa_visual import check_continuity
+    def cam(yaw, d=20.0, elev=40):
+        e, y = math.radians(elev), math.radians(yaw)
+        dvec = [-math.cos(e) * math.sin(y), -math.sin(e), -math.cos(e) * math.cos(y)]
+        return {"t": 0, "f": 0, "texts": [], "objs": [], "cam": {"p": [-v * d for v in dvec], "d": dvec, "fov": 30}}
+    A, B = SimpleNamespace(id="a"), SimpleNamespace(id="b")
+    sp = [(A, {"type": "table"}), (B, {"type": "table"})]
+    run = lambda ya, yb: check_continuity(sp, {"a": [cam(ya)], "b": [cam(yb)]})[0]
+    assert [i["check"] for i in run(5, -5)] == ["continuity"]      # +5 -> -5 deg orbit restart: a jump
+    assert run(5, 5) == [] and run(5, 40) == []                    # continuous shot / clearly different shot
+    sp2 = [(A, {"type": "table"}), (B, {"type": "bars"})]
+    assert check_continuity(sp2, {"a": [cam(5)], "b": [cam(-5)]})[0] == []   # different template: any cut is fine
 
 
 def test_number_mismatch_and_match():
@@ -92,6 +151,12 @@ def test_spoken_numbers():
     assert spoken_numbers("a billion games") == [1e9]
     assert spoken_numbers("Two more, third.") == [2.0, 3.0]
     assert agrees(35.4, [35]) and not agrees(31.0, [35]) and agrees(10.2e9, [1e10])
+    # punctuation ends a number; unit words don't chain; "a hundred and ..." (Uno episode)
+    assert spoken_numbers("With the free plus four, thirty one.") == [4.0, 31.0]
+    assert spoken_numbers("wins about twenty three. Four points") == [23.0, 4.0]
+    assert spoken_numbers("a hundred and thirty eight") == [138.0]
+    assert spoken_numbers("one hundred and twelve cards") == [112.0]
+    assert spoken_numbers("All hundred and twelve cards, the hundred and eight card deck") == [112.0, 108.0]
 
 
 # ------------------------------------------------------------------ voice gate measurements

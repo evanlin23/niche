@@ -101,6 +101,8 @@ def plan_short(sh, cues):
         for lid, a, b, ws, text in ls:
             sc.cues[lid] = Cue(lid, text, a - st, b - st, [(w, x - st, y - st) for w, x, y in ws])
         scenes.append(sc); t += sc.duration
+    from .timeline import mark_chains
+    mark_chains(scenes)                          # same-template cuts: one continuous shot, or a clearly new one
     return segs, scenes
 
 

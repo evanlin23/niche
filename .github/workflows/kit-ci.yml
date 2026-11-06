@@ -16,6 +16,7 @@ on:
       - episodes/kit-*/**
       - tests/test_qa_gates.py
       - .github/workflows/kit-ci.yml
+      - .github/actions/**
 
 concurrency:
   group: kit-ci-${{ github.ref }}

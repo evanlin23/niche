@@ -242,31 +242,61 @@ export class Kit {
     cam.fov = fov; cam.updateProjectionMatrix();
     const bb = new THREE.Box3().setFromPoints(pts);
     look = look ? new THREE.Vector3(...look) : bb.getCenter(new THREE.Vector3());
-    const amp = Math.min(yaw, 0.5 * stage.duration);          // ~1 deg/s, never more than +/- yaw
-    const dirs = [dirFrom(elev, -amp), dirFrom(elev, 0), dirFrom(elev, amp)];
+    // a chain of scenes on the same template = ONE continuous move over the whole chain (cuts continue the shot);
+    // `shot: new` = a clearly different shot (30 deg round, 12 deg higher) instead of a near-identical one
+    const span = this.spec.chain ? this.spec.chain.total : stage.duration;
+    const yaw0 = this.spec.shot_new ? 30 : 0;
+    if (this.spec.shot_new) elev = Math.min(80, elev + 12);
+    const amp = Math.min(yaw, 0.5 * span);                    // ~1 deg/s, never more than +/- yaw
+    const dirs = [dirFrom(elev, yaw0 - amp), dirFrom(elev, yaw0), dirFrom(elev, yaw0 + amp)];
     if (this.L.short && this.spec.short.first) dirs.push(dirFrom(elev, -amp - (this.swingDeg ?? 12)));   // the opening swing stays in frame too
     const dEnd = fitDistance(stage, pts, look, dirs, r.w * (1 - 2 * margin), r.h * (1 - 2 * margin));
     // view offset so the fitted content is centred in the rect (measured at the middle pose)
     placeCam(cam, look, dirs[1], dEnd);
     const b = projectAll(cam, pts, stage.W, stage.H);
     const dx = (r.l + r.r) / 2 - (b[0] + b[2]) / 2, dy = (r.t + r.b) / 2 - (b[1] + b[3]) / 2;
-    this.rig = { look, elev, amp, d1: dEnd, d0: dEnd / (1 - push), dx, dy, pts, rect: r };
+    this.rig = { look, elev, amp, yaw0, span, d1: dEnd, d0: dEnd / (1 - push), dx, dy, pts, rect: r };
     // depth precision: a near plane scaled to the shot (a fixed 0.1 near at 30-60 units of distance left too few
     // depth steps for stacked cards: z-fighting flicker). Nothing in a kit shot comes closer than ~0.4 d.
     cam.near = Math.max(0.1, dEnd * 0.12); cam.far = this.rig.d0 * 5; cam.updateProjectionMatrix();
     // fog scaled to the shot: big boards sit far away and the room's fixed fog washed them out
     if (stage.scene.fog) { stage.scene.fog.near = this.rig.d0 * 1.4; stage.scene.fog.far = this.rig.d0 * 3.2; }
+    this.fitShadows(pts);
     this.applyCam(0);
     return this.rig;
+  }
+  // shadow camera fitted to the shot (+3 units of headroom for flights and pawn hops): a fixed 28-unit box spent the
+  // shadow map on empty floor (blocky, acne under moving cards); bias + normalBias keep thin cards' shadows attached
+  fitShadows(pts) {
+    let key = this.room && this.room.key;
+    if (!key) this.stage.scene.traverse((o) => { if (!key && o.isDirectionalLight && o.castShadow) key = o; });
+    if (!key) return;
+    const bb = new THREE.Box3().setFromPoints(pts); bb.max.y += 3; bb.min.y = Math.min(bb.min.y, 0);
+    key.target.position.copy(bb.getCenter(new THREE.Vector3())).setY(0); key.target.updateMatrixWorld();
+    key.position.copy(key.target.position).add(new THREE.Vector3(-6, 18, 10)); key.updateMatrixWorld();
+    const sc = key.shadow.camera; sc.position.copy(key.position); sc.lookAt(key.target.position); sc.updateMatrixWorld();
+    const inv = sc.matrixWorldInverse;
+    let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9, z0 = 1e9, z1 = -1e9;
+    for (const x of [bb.min.x, bb.max.x]) for (const y of [bb.min.y, bb.max.y]) for (const z of [bb.min.z, bb.max.z]) {
+      const v = new THREE.Vector3(x, y, z).applyMatrix4(inv);
+      x0 = Math.min(x0, v.x); x1 = Math.max(x1, v.x); y0 = Math.min(y0, v.y); y1 = Math.max(y1, v.y); z0 = Math.min(z0, v.z); z1 = Math.max(z1, v.z);
+    }
+    const m = 1.0;
+    Object.assign(sc, { left: x0 - m, right: x1 + m, bottom: y0 - m, top: y1 + m, near: Math.max(0.5, -z1 - 4), far: -z0 + 4 });
+    sc.updateProjectionMatrix();
+    key.shadow.bias = -0.0002; key.shadow.normalBias = 0.015; key.shadow.needsUpdate = true;
   }
   applyCam(t) {
     const R = this.rig; if (!R) return;
     const stage = this.stage, cam = stage.camera;
-    const k = this.L.short ? clamp(t / stage.duration) : ease(clamp(t / stage.duration));   // Shorts: moving from frame 1
+    // eased at both ends: long form = smoothstep over the scene (or the whole same-template chain, continuous across
+    // its cuts); Shorts = fastest at frame 1 (retention gate) and settling into the cut (sine ease-out)
+    const T = (this.spec.chain ? this.spec.chain.t0 : 0) + t;
+    const k = this.L.short ? Math.sin(clamp(T / R.span) * Math.PI / 2) : ease(clamp(T / R.span));
     // Shorts open on a quick sideways swing, fastest at frame 1 and settled by 1.2 s: motion from the first frame
     // without starting smaller (an opening dolly-out made frame 1 emptier than the rest: opening gate)
     const swing = this.L.short && this.spec.short.first ? (this.swingDeg ?? 12) * (1 - clamp(t / 1.2)) ** 2 : 0;
-    const dir = dirFrom(R.elev, lerp(-R.amp, R.amp, k) - swing);
+    const dir = dirFrom(R.elev, R.yaw0 + lerp(-R.amp, R.amp, k) - swing);
     cam.clearViewOffset();
     // Shorts open on a quick dolly-in, fastest at frame 1 and settled by 1.2 s (motion in the first second is the
     // retention gate); the slow orbit carries on from there
@@ -386,13 +416,24 @@ export function faceTex(face) {
 // Episode scene files must not build cards themselves (pipeline/qa_static.py fails them).
 export const CARD_SEP = CARD.T + 0.004 + 0.006;   // body + the face plane lifted 0.004 + 6 mm-equivalent of air
 export const layerY = (i, base = 0.02, scale = 1) => base + i * CARD_SEP * scale;
-// Events that send cards to ONE pile: each gets its own start (simultaneous anchors staggered by `gap`, in the
-// order written) and its own depth slot in LANDING order. Two plays on the same word used to get the same slot
-// and land inside each other (Uno: card#29 vs card#55, 0.03 deep); now no two landings can share a layer.
+// Events that send cards to ONE pile: each gets its own depth slot in LANDING order, and events on the same word
+// are staggered around that word (in the order written, at most +-SYNC_SPREAD so every card still moves on its word:
+// sync gate +-0.15 s), each later one on a higher lane (arc). Two plays on the same word used to get the same slot
+// and land inside each other (Uno: card#29 vs card#55, 0.03 deep).
+export const SYNC_SPREAD = 0.09;
 export function scheduleLandings(evs, gap, durOf) {
   const order = evs.map((e, i) => ({ e, i })).sort((a, b) => a.e.at - b.e.at || a.i - b.i);
-  let prev = -Infinity;
-  for (const { e } of order) { e.start = Math.max(e.at, prev + gap); prev = e.start; e.dur = durOf(e); e.lands = e.start + e.dur; }
+  for (let a = 0; a < order.length;) {
+    let b = a; while (b + 1 < order.length && Math.abs(order[b + 1].e.at - order[a].e.at) < 1e-3) b++;
+    const c = b - a + 1, g = c > 1 ? Math.min(gap, 2 * SYNC_SPREAD / (c - 1)) : 0;
+    for (let j = 0; j < c; j++) {
+      const { e } = order[a + j];
+      // centred on the word, a hair early: the eye sees a move start ~0.05 s after it begins (ease-in)
+      e.start = e.at + (c > 1 ? (j - (c - 1) / 2) * g - 0.03 : 0); e.lane = j; e.group = c;
+    }
+    a = b + 1;
+  }
+  for (const { e } of order) { e.dur = durOf(e); e.lands = e.start + e.dur; }
   order.slice().sort((a, b) => a.e.lands - b.e.lands || a.i - b.i).forEach(({ e }, slot) => { e.slot = slot; });
   return evs;
 }
@@ -546,6 +587,10 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     m.position.set(x, 0, z); m.castShadow = m.receiveShadow = true; m.scale.y = 0.001; m.visible = false;
     K.key(m); stage.scene.add(m);
     const k = K.build(`bar ${it.label}`, it.at ?? 0.3, 0.9, i);
+    // it.pulse [anchors]: the bar swells again on each later word that's about it (an object event on the word,
+    // not just a caption: coverage + sync gates)
+    const pulses = (it.pulse || []).filter((a) => typeof a === 'number').map((a) => K.tw(`bar ${it.label} pulse`, a, 0.7));
+    const emph0 = k.emph; k.emph = (t) => Math.max(emph0(t), ...pulses.map((f) => (f.dur && t >= 0 ? Math.sin(Math.PI * f(t)) : 0)));
     const H = it.value / maxV * height;
     // context: true = a value implied by what is said (e.g. the 2-player complement); the number gate treats it like the fair line
     const val = K.worldLabel({ text: '', size: K.L.vert ? 46 : 44, role: it.context ? 'context' : 'value', at: K.L.short ? -1 : it.at ?? 0.3, anchor: it.at_ref, fade: 0.3,
@@ -577,8 +622,9 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     update(t) {
       for (const B of bars) {
         const k = B.k(t), h = Math.max(0.001, B.H * k), e = B.k.emph(t);
-        B.m.scale.y = h; B.m.position.y = h / 2; B.m.visible = k > 0.002;
-        B.m.scale.x = B.m.scale.z = 1 + 0.18 * e;                       // emphasis on the word (Shorts)
+        const he = h * (1 + 0.1 * e);                                  // emphasis on the word (Shorts): the bar swells
+        B.m.scale.y = he; B.m.position.y = he / 2; B.m.visible = k > 0.002;   // (taller AND wider: a colour-only pulse
+        B.m.scale.x = B.m.scale.z = 1 + 0.18 * e;                       //  didn't read as anything happening)
         B.val.el.style.color = e > 0.05 || B.it.hl ? GN.mustard : GN.text;
         B.val.el.textContent = `${(B.it.value * Math.min(1, k * 1.02)).toFixed(dec)}${unit}`;
       }
@@ -642,7 +688,7 @@ function deckPiles(K, stage, spec) {
   });
   const hx = (ncol - 1) / 2 * SX + 1.0, hz = (nrow - 1) / 2 * SZ + 1.6;
   K.fit(boxPoints(-hx, 0, -hz - 0.6, hx, 0.4, hz + 0.6), { elev: 66, yaw: 0, push: 0.05, fov: 24 });
-  const hero = kitCard(stage, 'back'); hero.visible = false; hero.traverse((o) => { o.castShadow = false; }); K.key(hero);
+  const hero = kitCard(stage, 'back'); hero.visible = false; K.key(hero);
   const HOLD = 1.5;
   const hl = (p.highlights || []).map(([g, t0]) => [g, t0]);
   hl.forEach(([g, t0], i) => { K.tw(`highlight ${g} up`, t0, 0.35); K.tw(`highlight ${g} down`, t0 + HOLD, 0.4); });
@@ -694,23 +740,40 @@ function deckRow(K, stage, spec) {
   K.worldLabel({ text: ends[1], size: 26, role: 'label', color: GN.muted, at: -1, align: 'right' }, new THREE.Vector3(RX + (n + 0.8) * RS + CARD.W * SC / 2, 0, RZ + CARD.H * SC / 2 + 0.2), 4);
   const plan = (p.plan || [[0.6, Math.floor(n / 2)]]).map(([a, s]) => [typeof a === 'number' ? a : 0.6, s]);
   if (K.L.short) plan[0][0] = Math.min(plan[0][0], -0.6);    // Shorts: the hero card is already in its slot in frame 1
-  const planDur = plan.map(([a, s], i) => K.tw(`hero to slot ${s}`, a, i === 0 ? 0.6 : 0.9).dur);
+  // a move finishes before the next word's move begins (moves 0.76 s apart overlapped: the next one began mid-move)
+  const planDur = plan.map(([a, s], i) => K.tw(`hero to slot ${s}`, a, i === 0 ? 0.6 : Math.max(0.45, Math.min(0.9, (plan[i + 1] ? plan[i + 1][0] - a : 9) - 0.04))).dur);
   const rowPts = boxPoints(RX - CARD.W * SC / 2, 0, RZ - CARD.H * SC / 2 - 0.4, RX + n * RS + CARD.W * SC / 2, 1.4, RZ + CARD.H * SC / 2 + 0.5);
   K.fit(chart ? [...rowPts, ...chart.pts] : rowPts, { elev: chart ? (vert ? 30 : 22) : 40, yaw: 4, push: 0.05,
     rect: chart ? { ...K.content, t: K.content.t + 50, h: K.content.h - 120, b: K.content.b - 70 } : K.content });
   if (chart) chart.layoutLabels();
+  // the plan as a continuous chain: each move starts from wherever the previous one IS at that moment (a move that
+  // began before the last one finished used to restart from its end: a teleport, smoothness gate)
+  const gapOf = (j, s) => (j >= s ? 1 : 0);                 // cards at/after the hero's slot sit one gap further
+  const stateAt = (t) => {
+    let sl = plan[0][1], out = 0, gaps = row.map((_, j) => gapOf(j, plan[0][1]));
+    let outFrom = 0;
+    for (let i = 1; i < plan.length; i++) {
+      const [at, s] = plan[i];
+      if (t < at) break;
+      const te = plan[i + 1] ? Math.min(t, plan[i + 1][0]) : t;     // interrupted by the next move: hand over its state
+      const u = clamp((te - at) / planDur[i]), from = sl, gFrom = gaps, oFrom = out;
+      sl = lerp(from, s, ease(clamp((u - 0.25) / 0.5)));         // move while pulled out
+      out = Math.abs(from - s) < 1e-6 ? oFrom * (1 - ease(u / 0.25)) : Math.max(oFrom * (1 - ease(u / 0.25)), Math.min(ease(u / 0.25), ease((1 - u) / 0.25)));
+      gaps = row.map((_, j) => lerp(gFrom[j], gapOf(j, s), ease(clamp((u - 0.15) / 0.7))));   // each card eases over 0.6 s
+      outFrom = out;
+    }
+    return { sl, out: outFrom, gaps };
+  };
   return K.frame((t) => {
     K.t = t;
-    let slot = plan[0][1], prev = plan[0][1], ts = plan[0][0];
-    let pd = 0.9; plan.forEach(([at, s], i) => { if (t >= at) { prev = slot; slot = s; ts = at; pd = planDur[i]; } });
     // like a hand would: pull the hero out of the row toward the viewer, move it (and change layer height) while clear
     // of the row, then push it back in at its new layer. Lifting/dropping through the row went through the cards
     // above it (probe clipping check).
-    const u = clamp((t - ts) / pd), k = ease(u), sl = lerp(prev, slot, ease(clamp((u - 0.25) / 0.5)));
-    const outZ = prev === slot ? 0 : CARD.H * SC * 1.08 * Math.min(1, ease(u / 0.25), ease((1 - u) / 0.25));
-    row.forEach((c, j) => { const g = clamp(j - sl + 1); c.position.x = RX + j * RS + g * RS * 1.8; c.position.y = rowY(j); });
-    const arrive = ease((t - plan[0][0] + 0.6) / 0.6);
-    hero.visible = t >= plan[0][0] - 0.6;
+    const { sl, out, gaps } = stateAt(t);
+    const outZ = CARD.H * SC * 1.08 * out;
+    row.forEach((c, j) => { c.position.x = RX + j * RS + gaps[j] * RS * 1.8; c.position.y = rowY(j); });
+    const arrive = ease((t - plan[0][0] + 0.05) / 0.6);          // slides in ON its word (it used to start 0.6 s early)
+    hero.visible = t >= plan[0][0] - 0.05;
     // deck order = stacking order: under the card before it, over the card after it (nothing under it at the bottom)
     // arrives the same way: sliding in level from the front, already at its layer height
     hero.position.set(RX + (sl + 0.4) * RS, rowY(sl) + DY * 0.5, RZ + Math.max(outZ, (1 - arrive) * CARD.H * SC * 1.3));
@@ -738,12 +801,12 @@ T.fan = async (stage, spec) => {
   hl.forEach((h) => K.tw(`lift card ${h.card}`, h.at, 0.3));
   // plays on the same moment: staggered so one card is clear of the hand's height before the next travels, and
   // each lands in its own pile layer in landing order (two plays on one word used to share a layer)
-  scheduleLandings(plays, 0.3, (h) => K.tw(`play card ${h.card}`, h.start, 0.9).dur);
+  scheduleLandings(plays, 0.3, (h) => K.tw(`play card ${h.card}`, h.start, 0.9).dur);   // same word: staggered +-0.09 s, own lane
   const appear = K.tw('hand up', 0.05, 0.5);
   const pill = K.label({ text: '', size: 34, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
   if (p.seat_label) K.worldLabel({ text: p.seat_label, size: 30, role: 'label', at: -1, color: GN.text }, new THREE.Vector3(0, 0, 4.3), 4);
   const w = (n - 1) / 2 * spread + 1.1;
-  const rise = plays.length ? CARD.H * cards[0].scale.x * 1.2 : 0;     // played cards rise above the hand: keep them in frame
+  const rise = plays.length ? CARD.H * cards[0].scale.x * (1.2 + 0.7 * Math.max(0, ...plays.map((h) => h.lane || 0))) : 0;   // + lanes of simultaneous plays     // played cards rise above the hand: keep them in frame
   K.fit(boxPoints(-Math.max(w, 1.8), 0, -1.4, Math.max(w, 1.8), handY + 1.4 + rise, 4.4), { elev: 20, yaw: 5, push: 0.06 });
   return K.frame((t) => {
     const up = appear(t), cam = stage.camera.position;
@@ -755,7 +818,13 @@ T.fan = async (stage, spec) => {
     cards.forEach((c, i) => {
       const [pos, rz] = slot(i);
       const pl = plays.find((h) => h.card === i);
-      const lift = cur && cur.card === i ? ease(clamp((t - cur.at) / 0.3)) * (1 - ease(clamp((t - cur.at - 1.5) / 0.3))) : 0;
+      // each highlight lifts its own card and lowers it on its own schedule (one shared 'current' highlight dropped
+      // the previous card back in one frame when the next began: smoothness gate)
+      // + a pop on every highlight (the same card named again while still lifted didn't move at all); overlapping
+      // highlights of one card combine smoothly (a max() of a falling and a rising envelope kinked)
+      const mine = hl.filter((h) => h.card === i && t >= h.at);
+      const lift = 1 - mine.reduce((m, h) => m * (1 - ease(clamp((t - h.at) / 0.3)) * (1 - ease(clamp((t - h.at - 1.5) / 0.3)))), 1)
+        + mine.reduce((m, h) => m + 0.3 * Math.sin(Math.PI * ease(clamp((t - h.at) / 0.6))), 0);   // soft enough to turn round smoothly
       c.quaternion.copy(q0); c.rotateY(rz);                 // tilt within the hand's plane (normals stay parallel)
       // one layer per card along the shared normal; a highlighted card lifts up and toward the camera (never into the others)
       const inPlane = pos.clone().addScaledVector(n0, -pos.clone().sub(hc).dot(n0));   // the arc lies IN the hand's plane
@@ -774,7 +843,7 @@ T.fan = async (stage, spec) => {
         const landed = pl.slot;                                             // its own layer, landing order
         const top = c.position.clone().addScaledVector(upIn, k1 * CARD.H * c.scale.x * 1.15), hq = c.quaternion.clone();
         const pileTop = new THREE.Vector3(0, layerY(landed + 1, 0.05 + CARD.T * 1.3, c.scale.x), -0.4);
-        const over = new THREE.Vector3(pileTop.x, top.y, pileTop.z);
+        const over = new THREE.Vector3(pileTop.x, top.y + (pl.lane || 0) * CARD.H * c.scale.x * 0.7, pileTop.z);   // simultaneous plays: one lane above the other
         c.position.lerpVectors(top, over, k2).lerp(pileTop, k3);
         c.quaternion.slerpQuaternions(hq, flat, k3);
       }
@@ -817,7 +886,7 @@ T.table = async (stage, spec) => {
     const name = (p.names || [])[i] || `PLAYER ${i + 1}`;
     const lab = K.worldLabel({ text: name, size: vert ? 30 : 26, role: 'label', at: -1, color: GN.muted, maxW: vert ? 320 : 360 },
       new THREE.Vector3(pawn.position.x, front ? 0 : 2.0, pawn.position.z + (front ? 0.9 : 0)), front ? 4 : -34);
-    seats.push({ i, sx, sz, pawn, hand, lab, home: pawn.position.clone() });
+    seats.push({ i, sx, sz, dir, cnt, pawn, hand, lab, home: pawn.position.clone() });
   }
   const hl = (p.highlight || p.seat_hl || []).filter((h) => typeof h[1] === 'number');
   const hlK = hl.map(([s, at]) => K.tw(`seat ${s} hop`, at, 2.3));
@@ -832,15 +901,44 @@ T.table = async (stage, spec) => {
   scheduleLandings(turns, 0.12, (e) => K.tw(`${e.ev} by seat ${e.seat}`, e.start, 0.75).dur);   // lands before the cut
   const plays = turns.filter((x) => x.ev === 'play');
   plays.map((e, i) => ({ e, i })).sort((a, b) => a.e.lands - b.e.lands || a.i - b.i).forEach(({ e }, slot) => { e.slot = slot; });   // pile layers among plays, landing order
-  turns.forEach((e, k) => { e.mover = kitCard(stage, 'back'); e.mover.visible = false; e.mover.traverse((o) => { o.castShadow = false; }); e.lane = k % 3; K.key(e.mover); });
+  // hands change size (Uno session): a play takes a card out of that seat's hand as it leaves, a draw adds one when it lands
+  seats.forEach((st) => {
+    const extra = turns.filter((x) => x.ev === 'draw' && x.seat % n === st.i).length;
+    for (let k = 0; k < extra; k++) { const c = kitCard(stage, p.back || 'back'); c.visible = false; K.key(c, 'decor'); st.hand.push(c); }
+  });
+  const handCount = (st, t, soft) => {        // soft: eased count for spacing (cards slide together/apart over 0.3 s)
+    let c = st.cnt;
+    for (const x of turns) {
+      if (x.seat % n !== st.i) continue;
+      const t0 = x.ev === 'play' ? x.start : x.lands;
+      const u = soft ? ease(clamp((t - t0) / 0.3)) : (t >= t0 ? 1 : 0);
+      c += x.ev === 'play' ? -u : u;
+    }
+    return Math.max(0, c);
+  };
+  const handSlot = (st, k, span) => { const off = (k - (Math.max(span, 1) - 1) / 2) * 0.42;
+    return new THREE.Vector3(st.sx * 0.82 + Math.cos(st.dir) * off, layerY(k, 0.02), st.sz * 0.82 - Math.sin(st.dir) * off); };
+  // flights start/end exactly where the hand card is: a play leaves from the top card's slot, a draw lands in the next
+  // slot (the hand re-spaces from there)
+  turns.forEach((x) => { const st = seats[x.seat % n], c = Math.round(handCount(st, (x.ev === 'play' ? x.start : x.lands) - 1e-4, false));
+    x.handP = x.ev === 'play' ? handSlot(st, Math.max(0, c - 1), c) : handSlot(st, c, c); });
+  turns.forEach((e, k) => { e.mover = kitCard(stage, 'back'); e.mover.visible = false; K.key(e.mover); });
+  // arc lanes by what's already in the air: a flight that starts while others fly takes the lowest free lane, and
+  // lanes sit a card's height apart (cards flip in the air: two flips 0.24 s apart on one arc height clipped)
+  turns.slice().sort((a, b) => a.start - b.start).forEach((e, _, arr) => {
+    const busy = new Set(arr.filter((o) => o !== e && o.laneSet && o.start < e.start + e.dur && e.start < o.start + o.dur).map((o) => o.lane));
+    let l = 0; while (busy.has(l)) l++; e.lane = l; e.laneSet = true;
+  });
+  const LANE = 0.95;   // (framing doesn't depend on lanes: arcs peak mid-table, and same-template shots must match)
   const outs = (p.out || []).filter((h) => typeof h[1] === 'number');
   const pill = K.label({ text: '', size: 30, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
   const ex = rx * 1.18 + 0.8, ez = rz * 1.18 + 0.9;
-  K.fit(boxPoints(-ex, 0, -ez, ex, 2.0, ez), { elev: vert ? 58 : 50, yaw: 5, push: 0.06 });
+  // camera per scene (optional): elev (deg above the table), yaw (orbit +/- deg), push (fraction); defaults unchanged
+  K.fit(boxPoints(-ex, 0, -ez, ex, 2.0, ez), { elev: p.elev ?? (vert ? 58 : 50), yaw: p.yaw ?? 5, push: p.push ?? 0.06 });
   return K.frame((t) => {
     seats.forEach((s) => {
       let on = false, hop = 0;
-      hl.forEach(([si, t0], q) => { if (si === s.i && t >= t0 && t < t0 + hlK[q].dur) { on = true; hop = Math.abs(Math.sin((t - t0) * 7)) * 0.3 * (1 - hlK[q](t)); } });
+      hl.forEach(([si, t0], q) => { if (si === s.i && t >= t0 && t < t0 + hlK[q].dur) { on = true; hop = Math.sin((t - t0) * 7) ** 2 * 0.3 * (1 - hlK[q](t)); } });   // smooth hops (|sin| kinked at each landing)
       s.lab.el.style.color = on ? GN.mustard : GN.muted;
       s.pawn.position.copy(s.home);
       const o = outs.find(([si]) => si === s.i);
@@ -848,10 +946,19 @@ T.table = async (stage, spec) => {
       s.pawn.rotation.z = ko * Math.PI / 2.2; s.pawn.position.y += ko * 0.3;
       s.pawn.position.y += hop;
     });
+    seats.forEach((st) => {
+      const shown = Math.round(handCount(st, t, false)), span = handCount(st, t, true);
+      st.hand.forEach((c, k) => {
+        c.visible = k < shown;
+        if (!c.visible) return;
+        c.position.copy(handSlot(st, k, span));
+        c.rotation.set(0, st.dir + Math.PI, 0);
+      });
+    });
     // turns
     let e = null; for (const x of turns) if (t >= x.start && t < x.start + x.dur + 0.25) e = x;
     // landed plays: each in its own layer (its landing slot), drawn as pile cards
-    while (pile.length < plays.length) { const c = kitCard(stage, 'back'); c.traverse((o) => { o.castShadow = false; }); c.visible = false; K.key(c, 'decor'); pile.push(c); }
+    while (pile.length < plays.length) { const c = kitCard(stage, 'back'); c.visible = false; K.key(c, 'decor'); pile.push(c); }
     const pileAt = (i) => new THREE.Vector3(1.0 + (i % 2) * 0.05, layerY(i, 0.03), 0.02 * (i % 3));
     plays.forEach((x) => { const c = pile[x.slot]; c.visible = t >= x.lands; if (c.visible) { c.setFace(x.card); c.position.copy(pileAt(x.slot)); } });
     deck.forEach((c, i) => { c.visible = i < 24 - turns.filter((x) => x.ev === 'draw' && t >= x.start).length; });
@@ -859,10 +966,22 @@ T.table = async (stage, spec) => {
       const s = seats[x.seat % n], k = ease(clamp((t - x.start) / x.dur));
       x.mover.visible = t >= x.start && k < 1;
       if (!x.mover.visible) continue;
-      const seatP = new THREE.Vector3(s.sx * 0.82, layerY(14, 0.02), s.sz * 0.82), deckP = new THREE.Vector3(-0.9, layerY(24, 0.03), 0);
-      x.mover.setFace(x.ev === 'draw' ? (p.back || 'back') : x.card);
-      if (x.ev === 'draw') x.mover.position.lerpVectors(deckP, seatP, k); else x.mover.position.lerpVectors(seatP, pileAt(x.slot), k);
-      x.mover.position.y += Math.sin(k * Math.PI) * (1.3 + 0.45 * x.lane); x.mover.rotation.set(0, 0, 0);
+      const seatP = x.handP, deckP = new THREE.Vector3(-0.9, layerY(24, 0.03), 0);
+      // an eased arc (k eased, so it leaves and lands with zero speed); a played card flips face-up in the air (edge-on
+      // at the swap, flat again by 80% of the flight); a drawn card turns to face its seat
+      // rise first, travel across at height, then come down near-vertically: a card from the far seats used to cross
+      // the 24-card deck already descending (and mid-flip) and clipped it
+      const kx = ease(clamp((k - 0.15) / 0.7)), from = x.ev === 'draw' ? deckP : seatP, to = x.ev === 'draw' ? seatP : pileAt(x.slot);
+      x.mover.position.set(lerp(from.x, to.x, kx), lerp(from.y, to.y, k), lerp(from.z, to.z, kx));
+      x.mover.position.y += Math.sin(k * Math.PI) * (1.6 + LANE * x.lane);
+      // yaw: from the pile's (0) to the hand's turn, or back, the short way round, over the first/last half of the flight
+      const handYaw = s.dir + Math.PI, dYaw = Math.atan2(Math.sin(handYaw), Math.cos(handYaw));
+      if (x.ev === 'draw') { x.mover.setFace(p.back || 'back'); x.mover.rotation.set(0, dYaw * ease(clamp((k - 0.5) / 0.5)), 0); }
+      else {
+        const fk = ease(clamp((k - 0.25) / 0.5));                 // 0 -> 1: back up -> face up, only while clear of hands and pile
+        x.mover.setFace(fk < 0.5 ? (p.back || 'back') : x.card);
+        x.mover.rotation.set(fk < 0.5 ? fk * Math.PI : (fk - 1) * Math.PI, dYaw * (1 - ease(clamp(k / 0.5))), 0);   // leaves turned like the hand
+      }
     }
     if (e) {
       const s = seats[e.seat % n];
@@ -912,11 +1031,17 @@ T.lineup = async (stage, spec) => {
   K.fit(boxPoints(-hx, 0, z0, hx, 2.4, z1), { rect: pawnRect, elev: 24, yaw: 5, push: 0.05 });
   return K.frame((t) => {
     let cur = -1; pawns.forEach((q, i) => { if (typeof q.b.at === 'number' && t >= q.b.at) cur = i; });
+    // each pawn's focus rises on its word and eases back when the next one is named; dimming eases too (the old
+    // switch moved and shrank pawns in one frame: smoothness gate)
+    const ats = pawns.map((q) => q.b.at).filter((a) => typeof a === 'number').sort((a, b) => a - b);
+    const focusOf = (q) => { if (typeof q.b.at !== 'number') return 0; const nx = ats.find((a) => a > q.b.at);
+      return ease(clamp((t - q.b.at) / 0.35)) * (nx === undefined ? 1 : 1 - ease(clamp((t - nx) / 0.35))); };
+    const fs = pawns.map(focusOf);
     pawns.forEach((q, i) => {
-      const k = q.appear(t), focus = i === cur ? ease(clamp((t - q.b.at) / 0.35)) : 0, dim = cur >= 0 && i !== cur;
+      const k = q.appear(t), focus = fs[i], dimK = Math.max(0, ...fs.filter((_, j) => j !== i)) * (1 - focus), dim = dimK > 0.5;
       q.g.visible = k > 0.001;
       q.g.position.set(q.x, (1 - k) * 1.5 + focus * 0.3, q.z + focus * 0.8);
-      q.g.scale.setScalar(0.001 + k * (1 + focus * 0.2 - (dim ? 0.1 : 0)));
+      q.g.scale.setScalar(0.001 + k * (1 + focus * 0.2 - dimK * 0.1));
       q.lab.el.style.color = i === cur ? q.col : GN.text;
       q.lab.o.alpha = (tt) => clamp((tt - q.lab.at) / 0.3) * (dim ? 0.55 : 1);
     });
@@ -969,7 +1094,7 @@ T.grid = async (stage, spec) => {
       const m = new THREE.Mesh(c4 ? new THREE.TorusGeometry(0.46, 0.06, 12, 32) : new THREE.BoxGeometry(0.96, 0.03, 0.96),
         new THREE.MeshStandardMaterial({ color: col(h.color, GN.mustard), emissive: col(h.color, GN.mustard), emissiveIntensity: 0.6, transparent: true, opacity: 0 }));
       m.position.copy(cell(r, c)); if (c4) m.position.z = 0.6; else m.position.y = 0.335;
-      stage.scene.add(m); hlMeshes.push({ m, k, until: h.until ?? 1e9 });
+      stage.scene.add(m); K.key(m, 'decor'); m.userData.noclip = true; hlMeshes.push({ m, k, until: h.until ?? 1e9, base: m.position.clone() });
     }
   }
   // pieces
@@ -1004,15 +1129,17 @@ T.grid = async (stage, spec) => {
   const ext = c4 ? boxPoints(-C / 2 - 0.4, 0, -0.3, C / 2 + 0.4, R + 1.6, 0.6) : boxPoints(-C / 2 - 0.5, 0, -R / 2 - 0.5, C / 2 + 0.5, 0.6, R / 2 + 0.5);
   K.fit(ext, c4 ? { elev: 12, yaw: 6, push: 0.05 } : { elev: vert ? 62 : 55, yaw: 5, push: 0.05 });
   return K.frame((t) => {
-    for (const h of hlMeshes) { const a = h.k(t) * (1 - clamp((t - h.until) / 0.3)); h.m.material.opacity = a * 0.85; h.m.visible = a > 0.01; }
+    // highlights pop in on their word: fade + a small rise toward the viewer (an object event, not just a colour)
+    for (const h of hlMeshes) { const a = h.k(t) * (1 - clamp((t - h.until) / 0.3)); h.m.material.opacity = a * 0.85; h.m.visible = a > 0.01;
+      h.m.position.copy(h.base); if (c4) h.m.position.z += a * 0.12; else h.m.position.y += a * 0.06; }
     for (const P of pieces) {
       if (c4) {
         if (!P.drop) { P.m.position.copy(cell(P.r, P.c)); continue; }
         const k = clamp((t - P.drop.at) / 0.55);
         P.m.visible = t >= P.drop.at;
         const top = cell(-1.2, P.c), dst = cell(P.drop.r, P.c);
-        const kk = k * k;                       // falls (gravity), tiny bounce at the end
-        P.m.position.lerpVectors(top, dst, kk); if (k >= 1) P.m.position.y = dst.y + Math.max(0, Math.sin(clamp((t - P.drop.at - 0.55) / 0.15) * Math.PI)) * 0.12;
+        // drops in and settles (eased: a gravity fall that stopped dead + a kinked bounce read as a jolt)
+        P.m.position.lerpVectors(top, dst, ease(k));
         continue;
       }
       let [r, c] = P.r0, y = 0.44, king = false;
@@ -1025,7 +1152,7 @@ T.grid = async (stage, spec) => {
       }
       const pos = cell(r, c); P.m.position.set(pos.x, y, pos.z);
       P.crown.visible = king || P.crown.visible && !P.path.length;
-      if (P.gone) { const g = clamp((t - P.gone) / 0.35); P.m.visible = g < 1; P.m.position.y += g * 1.2; P.m.material.transparent = true; P.m.material.opacity = 1 - g; }
+      if (P.gone) { const g = clamp((t - P.gone) / 0.35); P.m.visible = g < 1; P.m.position.y += ease(g) * 1.2; P.m.material.transparent = true; P.m.material.opacity = 1 - g; }
     }
   });
 };
@@ -1084,21 +1211,24 @@ T.track = async (stage, spec) => {
   }
   const hls = (p.highlight || []).filter((h) => typeof h.at === 'number').map((h) => {
     const k = K.tw('highlight squares', h.at, 0.3);
-    const ms = (h.squares || []).map((i) => { const m = new THREE.Mesh(new THREE.BoxGeometry(S * 0.98, 0.06, S * 0.98), new THREE.MeshStandardMaterial({ color: col(h.color, GN.mustard), emissive: col(h.color, GN.mustard), emissiveIntensity: 0.6, transparent: true, opacity: 0 })); m.position.copy(pos(i)).setY(0.34); stage.scene.add(m); return m; });
+    const ms = (h.squares || []).map((i) => { const m = new THREE.Mesh(new THREE.BoxGeometry(S * 0.98, 0.06, S * 0.98), new THREE.MeshStandardMaterial({ color: col(h.color, GN.mustard), emissive: col(h.color, GN.mustard), emissiveIntensity: 0.6, transparent: true, opacity: 0 })); m.position.copy(pos(i)).setY(0.34); stage.scene.add(m); K.key(m, 'decor'); m.userData.noclip = true; return m; });
     return { k, ms, until: h.until ?? 1e9 };
   });
   const e = half + 1.0;
   K.fit(boxPoints(-e, 0, -e, e, 1.0, e), { elev: 64, yaw: 5, push: 0.05 });
   return K.frame((t) => {
-    for (const h of hls) { const a = h.k(t) * (1 - clamp((t - h.until) / 0.3)); h.ms.forEach((m) => { m.material.opacity = a * 0.8; m.visible = a > 0.01; }); }
+    for (const h of hls) { const a = h.k(t) * (1 - clamp((t - h.until) / 0.3)); h.ms.forEach((m) => { m.material.opacity = a * 0.8; m.visible = a > 0.01; m.position.y = 0.34 + a * 0.05; }); }
     for (const P of Object.values(pawns)) {
       let key = P.keys[0]; for (const k of P.keys) if (t >= k.t) key = k;
       const path = key.path, dur = Math.min(2.2, 0.18 * path.length + 0.2);
-      const u = key.t < 0 ? 1 : clamp((t - key.t) / dur) * (path.length - 1);
-      const i = Math.min(path.length - 2, Math.floor(u)), f = u - Math.max(0, i);
+      // one eased glide along the whole path with one smooth lift (stop-start per square jerked, and a hop per square
+      // bounced 6 times a second); a bump back to start is one big arc
+      const u = key.t < 0 ? path.length - 1 : ease(clamp((t - key.t) / dur)) * (path.length - 1);
       if (path.length < 2) { P.g.position.copy(path[0]).setY(0.36); continue; }
-      const a = path[Math.max(0, i)], b = path[Math.max(0, i) + 1];
-      P.g.position.lerpVectors(a, b, ease(f)); P.g.position.y = 0.36 + Math.sin(f * Math.PI) * (key.bump ? 1.2 : 0.35) * (u < path.length - 1 ? 1 : 0);
+      const i = Math.min(path.length - 2, Math.floor(u)), f = u - i;
+      P.g.position.lerpVectors(path[i], path[i + 1], f);
+      const prog = u / (path.length - 1);
+      P.g.position.y = 0.36 + Math.sin(prog * Math.PI) ** 2 * (key.bump ? 1.2 : 0.45);
     }
   });
 };
@@ -1111,7 +1241,7 @@ T.odds = async (stage, spec) => {
   const head = K.headRow({ text: '', size: vert ? 58 : 60, role: 'odds-head', at: frames[0] ? frames[0].at : 0.2, fade: 0.25 });
   const sub = K.headRow({ text: '', size: vert ? 38 : 36, role: 'odds-sub', color: GN.mustard, at: frames[0] ? frames[0].at + 0.25 : 0.4, fade: 0.25 });
   K.contentRect(30);
-  frames.forEach((f, i) => K.tw(`odds frame ${i}`, f.at, i ? 0.8 : 0.6));
+  frames.forEach((f, i) => { f.dur = K.tw(`odds frame ${i}`, f.at, i ? 0.8 : 0.6).dur; });   // motion uses the (cut-clamped) duration
   const MAX = Math.max(...frames.map((f) => f.total), 1), colsN = vert ? 6 : 12;
   const dots = p.item === 'dot';
   const SX = dots ? 1.0 : 1.02, SZ = dots ? 1.0 : 1.38;
@@ -1132,15 +1262,27 @@ T.odds = async (stage, spec) => {
     if (!frames.length) return;
     let fi = 0; frames.forEach((f, i) => { if (t >= f.at) fi = i; });
     const f = frames[fi], prev = frames[Math.max(0, fi - 1)];
-    const k = fi === 0 ? 1 : ease(clamp((t - f.at) / 0.8));
-    const hits = hitIdx(f.total, f.hits), appear = K.L.short ? ease(clamp((t + 0.3) / 0.4)) : ease(clamp((t - (frames[0].at - 0.6)) / 0.6));
+    const k = fi === 0 ? 1 : ease(clamp((t - f.at) / f.dur));
+    // the grid builds ON its word (it used to start 0.6 s early: sync gate); a hit rises a little when it becomes one
+    const hits = hitIdx(f.total, f.hits), appear = K.L.short ? ease(clamp((t + 0.3) / 0.4)) : ease(clamp((t - (frames[0].at - 0.05)) / 0.6));
+    const prevHits = fi === 0 ? new Set() : hitIdx(prev.total, prev.hits), hk = ease(clamp((t - f.at) / 0.4));
     items.forEach((c, i) => {
       const inNow = i < f.total, inPrev = i < prev.total;
       const [px, , pz] = slot(Math.min(i, prev.total - 1), prev.total), [nx, y, nz] = slot(Math.min(i, f.total - 1), f.total);
       c.visible = (fi === 0 ? inNow : inNow || (inPrev && k < 1)) && appear > 0.01;
       if (!c.visible) return;
-      if (!inNow && inPrev) c.position.set(lerp(px, hx + 1.0, k), layerY(i - f.total, y) + Math.sin(k * Math.PI) * 1.2, lerp(pz, 0, k));   // to a discard pile in frame, one layer each (from the start)
-      else c.position.set(inNow ? lerp(px, nx, k) : px, y + (1 - appear) * 1.5, inNow ? lerp(pz, nz, k) : pz);
+      // to a discard pile in frame, one layer each; the arc rides the same eased k (a raw sin(k) launched at full speed)
+      if (!inNow && inPrev) {      // first rise into its own pile layer (cards still apart), then travel: layers never cross
+        const kx = ease(clamp((k - 0.15) / 0.85));
+        const y0 = y + (prevHits.has(i) ? 0.25 : 0);          // a lifted hit leaves from where it is
+        c.position.set(lerp(px, hx + 1.0, kx), lerp(y0, layerY(i - f.total, y), ease(clamp(k / 0.15))) + 4 * k * (1 - k) * 1.2, lerp(pz, 0, kx));
+      }
+      else {
+        const was = prevHits.has(Math.min(i, prev.total - 1)) && inPrev, is = hits.has(i) && inNow;
+        const lift = (is && was) ? 1 : is ? hk : was ? 1 - hk : 0;
+        const ks = discard && fi > 0 && f.total < prev.total ? ease(clamp((k - 0.35) / 0.65)) : k;   // stayers move once the discards have lifted off
+        c.position.set(inNow ? lerp(px, nx, ks) : px, y + (1 - appear) * 1.5 + lift * 0.25, inNow ? lerp(pz, nz, ks) : pz);
+      }
       const hit = hits.has(i) && inNow;
       if (dots) c.material.color.set(hit ? GN.coral : GN.cream); else c.setFace(hit ? (p.hit_face ?? 0) : 'back');
     });
@@ -1167,9 +1309,16 @@ T.checklist = async (stage, spec) => {
   const faces = p.cards || [0, 1, 3, 6, 7, 8];
   const deco = faces.map((f, k) => { const m = kitCard(stage, f); m.position.set(k * 0.55, layerY(k, 0.03), -k * 0.1); K.key(m, 'decor'); return m; });
   const w = faces.length * 0.55;
-  K.fit(boxPoints(-0.7, 0, -CARD.H / 2 - 0.7, w + 0.2, 0.3, CARD.H / 2 + 0.2), { rect: decoR, elev: 55, yaw: 5, push: 0.06 });
+  // every item drops a chip onto a stack beside the cards ON its word: something moves, not just a line of text
+  const CH = 0.16, chipX = w + 1.0;
+  const chips = items.map((it, k) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, CH - 0.02, 36), new THREE.MeshStandardMaterial({ color: col(it.color, GN.mustard), roughness: 0.4 }));
+    m.castShadow = true; m.visible = false; stage.scene.add(m); K.key(m); return { m, at: it.at ?? 0.2, y: 0.03 + CH / 2 + k * CH }; });
+  K.fit(boxPoints(-0.7, 0, -CARD.H / 2 - 0.7, chipX + 0.6, 0.3 + items.length * CH + 1.2, CARD.H / 2 + 0.2), { rect: decoR, elev: 55, yaw: 5, push: 0.06 });
   // the list sits on a darker band so it reads over the floor
-  return K.frame(() => { const g = stage.g; g.fillStyle = `rgba(${GN.scrim},0.45)`; g.fillRect(0, 0, stage.W, stage.H); });
+  return K.frame((t) => {
+    const g = stage.g; g.fillStyle = `rgba(${GN.scrim},0.45)`; g.fillRect(0, 0, stage.W, stage.H);
+    for (const c of chips) { const k = ease(clamp((t - c.at + 0.02) / 0.45)); c.m.visible = t >= c.at - 0.02; c.m.position.set(chipX, c.y + (1 - k) * 1.2, 0); }
+  });
 };
 
 // ---------------------------------------------------------------- end card: next video + subscribe + Buh (happy)

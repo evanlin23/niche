@@ -241,6 +241,16 @@ structurally prevented and every render is checked:
 - Plan ~14 episodes ahead; research + build in parallel with docs/agent-prompts/game-research-and-sim.md
   (give that agent its own branch).
 
+## Smooth, on the word, continuous (creator review of the first Uno cut)
+"Sometimes I'm saying stuff and the only thing that moves is a caption popping up": coverage now counts objects only.
+"Animations don't exactly match the words": an ease-in move is invisible for its first ~0.15 s, and several kit
+builds started 0.6 s before their word; the sync gate measures when the eye sees motion start (+-0.15 s).
+"Back-to-back scenes on the same template jump around": each scene restarted its own orbit (4-5 deg jumps at every
+cut); same-template chains now share one camera move, or cut to a clearly different shot. "Not smooth": teleports
+(a second highlight dropped the first card in one frame, a pile layer jumped), linear starts and |sin| bounces; the
+smooth gate flags any frame-to-frame velocity jump. Shadows: VSM smeared under thin flying cards; PCF + a shadow
+camera fitted to the shot.
+
 ## Gates, not eyeballs
 - The creator wants quality ensured by a process. Every rule above that can be measured is a gate
   (`make voice`, `make qa-visual`, `make qa-final`); a new lesson that can be measured becomes a check in
