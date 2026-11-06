@@ -199,7 +199,7 @@ def mux(video: Path, audio: Path, out: Path, loudnorm=True, target=-14.0) -> Pat
     ceiling lowered until no decoded sample exceeds -1 dBFS (single-pass loudnorm let peaks hit +2.1 dBFS)."""
     gain = target - _lufs(audio) if loudnorm else 0.0
     for ceiling_db in (-2.0, -3.0, -4.0):
-        af = f"volume={gain:.2f}dB,alimiter=limit={10 ** (ceiling_db / 20):.4f}:attack=5:release=80:level=false"
+        af = f"aresample=48000,volume={gain:.2f}dB,alimiter=limit={10 ** (ceiling_db / 20):.4f}:attack=5:release=80:level=false"
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(video), "-i", str(audio),
                         "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-af", af, "-c:a", "aac", "-b:a", "192k",
                         "-ar", "48000", "-shortest", "-movflags", "+faststart", str(out)], check=True)
