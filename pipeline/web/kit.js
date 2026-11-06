@@ -1455,12 +1455,19 @@ T.checklist = async (stage, spec) => {
         land.push({ m, at: (it.at ?? 0.2) + q * 0.12, x: cx + off * FX, z: cz + Math.abs(off) * 0.05, y: layerY(q, 0.03), r: -off * 0.14 });
       });
     });
+    // a stat line ('86 turns a round', 'Best bot wins 32%') has no card: it drops a chip on a score stack beside them
+    const plain = items.filter((it) => !it.card), CHP = 0.16, chX = Math.max(...land.map((o) => o.x)) + CARD.W * 1.3;
+    const chips = plain.map((it, k) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, CHP - 0.02, 36), new THREE.MeshStandardMaterial({ color: col(it.color, GN.mustard), roughness: 0.4 }));
+      m.castShadow = true; m.visible = false; stage.scene.add(m); K.key(m); return { m, at: it.at ?? 0.2, y: 0.03 + CHP / 2 + k * CHP }; });
+    if (chips.length) land.push({ x: chX + 0.42, z: 0, ghost: true }, { x: chX - 0.42, z: 0, ghost: true });
     const xs = land.map((o) => o.x), zs = land.map((o) => o.z);
     K.fit(boxPoints(Math.min(...xs) - CARD.W, 0, Math.min(...zs) - CARD.H * 0.7, Math.max(...xs) + CARD.W, 0.6, Math.max(...zs) + CARD.H * 0.7),
       { rect: decoR, elev: 68, yaw: 3, push: 0.06, margin: 0.02 });
     return K.frame((t) => {
       const g = stage.g; g.fillStyle = `rgba(${GN.scrim},0.45)`; g.fillRect(0, 0, stage.W, stage.H);
+      for (const c of chips) { const k = ease(clamp((t - c.at + 0.02) / 0.45)); c.m.visible = t >= c.at - 0.02; c.m.position.set(chX, c.y + (1 - k) * 1.2, 0); }
       for (const o of land) {
+        if (o.ghost) continue;
         const k = ease(clamp((t - o.at + 0.02) / 0.45));
         o.m.visible = t >= o.at - 0.02;
         o.m.position.set(o.x, o.y + (1 - k) * 1.6, o.z + (1 - k) * 0.4); o.m.rotation.set(0, o.r + (1 - k) * 0.5, 0);
