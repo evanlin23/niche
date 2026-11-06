@@ -1,5 +1,5 @@
 {
- "games_per_test": 270000000,
+ "games_per_test": 200000000,
  "normal": {
   "name": "normal",
   "color_choice": "most",
@@ -23,42 +23,44 @@
   "official": {
    "rules": {},
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.24998824074074072,
-    "ci95": 0.00023098458524148683,
+    "games": 10000000.0,
+    "test_win_rate": 0.25000496,
+    "ci95": 0.00026838581082285173,
     "fair_share": 0.25,
-    "mean_turns": 47.07120585925926,
+    "mean_turns": 47.063202265,
     "median_turns": 42.0,
     "p90_turns": 76.0,
-    "first_seat_win": 0.2675531740740741,
-    "mean_max_hit": 4.459791937037037,
+    "first_seat_win": 0.267754315,
+    "mean_max_hit": 4.4595069,
     "share_rounds_with_10plus_draw": 0.0,
-    "mean_round_points": 124.57195274814815,
+    "mean_round_points": 123.49014867000001,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 24.740820903703703
+    "mean_cards_drawn_per_round": 24.734897609999997,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.2896645740740741
+   "smart_vs_normal": 0.289648945
   },
   "stacking": {
    "rules": {
     "stack": true
    },
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.25001642592592593,
-    "ci95": 0.0002309932595834912,
+    "games": 10000000.0,
+    "test_win_rate": 0.25004768,
+    "ci95": 0.0002684011015770905,
     "fair_share": 0.25,
-    "mean_turns": 49.92100032962963,
+    "mean_turns": 49.912812509999995,
     "median_turns": 45.0,
     "p90_turns": 80.0,
-    "first_seat_win": 0.2658420555555555,
-    "mean_max_hit": 4.3977065444444445,
-    "share_rounds_with_10plus_draw": 0.008965533333333334,
-    "mean_round_points": 117.98179255185184,
+    "first_seat_win": 0.26611992,
+    "mean_max_hit": 4.397475375,
+    "share_rounds_with_10plus_draw": 0.00895907,
+    "mean_round_points": 116.94885421,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 23.771683092592593
+    "mean_cards_drawn_per_round": 23.766385935,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.2945777148148148
+   "smart_vs_normal": 0.294582845
   },
   "stacking_mixed": {
    "rules": {
@@ -66,126 +68,132 @@
     "stack_mix": true
    },
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.2500204222222222,
-    "ci95": 0.00023099449054010454,
+    "games": 10000000.0,
+    "test_win_rate": 0.24997447,
+    "ci95": 0.00026837489596674425,
     "fair_share": 0.25,
-    "mean_turns": 49.73747422592593,
+    "mean_turns": 49.72776876,
     "median_turns": 45.0,
     "p90_turns": 80.0,
-    "first_seat_win": 0.26522435925925925,
-    "mean_max_hit": 4.964196533333333,
-    "share_rounds_with_10plus_draw": 0.04601575555555555,
-    "mean_round_points": 118.15278612592593,
+    "first_seat_win": 0.265492475,
+    "mean_max_hit": 4.963954360000001,
+    "share_rounds_with_10plus_draw": 0.046024005,
+    "mean_round_points": 117.08332911,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 23.94007592222222
+    "mean_cards_drawn_per_round": 23.933539895000003,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.29413375185185187
+   "smart_vs_normal": 0.294041805
   },
   "seven_zero": {
    "rules": {
     "seven_zero": true
    },
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.24997940000000002,
-    "ci95": 0.0002309818608281473,
+    "games": 10000000.0,
+    "test_win_rate": 0.250019455,
+    "ci95": 0.00026839099451612155,
     "fair_share": 0.25,
-    "mean_turns": 48.0130167,
+    "mean_turns": 48.001995355,
     "median_turns": 43.0,
     "p90_turns": 78.0,
-    "first_seat_win": 0.25102741481481483,
-    "mean_max_hit": 4.4718033777777775,
+    "first_seat_win": 0.251033575,
+    "mean_max_hit": 4.471501935,
     "share_rounds_with_10plus_draw": 0.0,
-    "mean_round_points": 123.12949215925926,
+    "mean_round_points": 122.07304263,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 25.317761814814816
+    "mean_cards_drawn_per_round": 25.3096627,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.26182636296296297
+   "smart_vs_normal": 0.26184421
   },
   "jump_in": {
    "rules": {
     "jump_in": true
    },
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.2500164851851852,
-    "ci95": 0.0002309932814818229,
+    "games": 10000000.0,
+    "test_win_rate": 0.25000355,
+    "ci95": 0.00026838531002146434,
     "fair_share": 0.25,
-    "mean_turns": 44.42724107037037,
+    "mean_turns": 44.421205629999996,
     "median_turns": 40.0,
     "p90_turns": 72.0,
-    "first_seat_win": 0.26807535925925924,
-    "mean_max_hit": 4.427185014814815,
+    "first_seat_win": 0.26828449499999996,
+    "mean_max_hit": 4.427050865,
     "share_rounds_with_10plus_draw": 0.0,
-    "mean_round_points": 125.26152852962964,
+    "mean_round_points": 124.139048985,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 23.79350951111111
+    "mean_cards_drawn_per_round": 23.789147905,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.2883788222222222
+   "smart_vs_normal": 0.28837266
   },
   "draw_until": {
    "rules": {
     "draw_until": true
    },
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.2499998740740741,
-    "ci95": 0.00023098816930805039,
+    "games": 10000000.0,
+    "test_win_rate": 0.250027325,
+    "ci95": 0.00026839381214884505,
     "fair_share": 0.25,
-    "mean_turns": 82.31356773333333,
+    "mean_turns": 82.291937825,
     "median_turns": 59.0,
-    "p90_turns": 172.0,
-    "first_seat_win": 0.26162775185185183,
-    "mean_max_hit": 5.027792318518519,
+    "p90_turns": 172.05,
+    "first_seat_win": 0.261838175,
+    "mean_max_hit": 5.0272622,
     "share_rounds_with_10plus_draw": 0.0,
-    "mean_round_points": 177.75869604444443,
+    "mean_round_points": 176.3117998,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 72.90703981481481
+    "mean_cards_drawn_per_round": 72.883133075,
+    "share_rounds_draw_ran_dry": 5e-09
    },
-   "smart_vs_normal": 0.2950783111111111
+   "smart_vs_normal": 0.2951378
   },
   "forced_play": {
    "rules": {
     "forced": true
    },
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.24998824074074072,
-    "ci95": 0.00023098458524148683,
+    "games": 10000000.0,
+    "test_win_rate": 0.25000496,
+    "ci95": 0.00026838581082285173,
     "fair_share": 0.25,
-    "mean_turns": 47.07120585925926,
+    "mean_turns": 47.063202265,
     "median_turns": 42.0,
     "p90_turns": 76.0,
-    "first_seat_win": 0.2675531740740741,
-    "mean_max_hit": 4.459791937037037,
+    "first_seat_win": 0.267754315,
+    "mean_max_hit": 4.4595069,
     "share_rounds_with_10plus_draw": 0.0,
-    "mean_round_points": 124.57195274814815,
+    "mean_round_points": 123.49014867000001,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 24.740820903703703
+    "mean_cards_drawn_per_round": 24.734897609999997,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.2896645740740741
+   "smart_vs_normal": 0.289648945
   },
   "free_draw4": {
    "rules": {
     "free_d4": true
    },
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.24998614074074074,
-    "ci95": 0.00023098393741714348,
+    "games": 10000000.0,
+    "test_win_rate": 0.25002178,
+    "ci95": 0.0002683918321403026,
     "fair_share": 0.25,
-    "mean_turns": 50.03501878518519,
+    "mean_turns": 50.030178639999995,
     "median_turns": 46.0,
     "p90_turns": 79.0,
-    "first_seat_win": 0.2661896185185185,
-    "mean_max_hit": 3.699921462962963,
+    "first_seat_win": 0.266362805,
+    "mean_max_hit": 3.6998413599999997,
     "share_rounds_with_10plus_draw": 0.0,
-    "mean_round_points": 108.48906475925926,
+    "mean_round_points": 107.707917505,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 25.89811001851852
+    "mean_cards_drawn_per_round": 25.894606829999997,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.3101902962962963
+   "smart_vs_normal": 0.31022425
   },
   "everything": {
    "rules": {
@@ -197,109 +205,417 @@
     "free_d4": true
    },
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.2500052111111111,
-    "ci95": 0.00023098980431018084,
+    "games": 10000000.0,
+    "test_win_rate": 0.24997217,
+    "ci95": 0.0002683740714961819,
     "fair_share": 0.25,
-    "mean_turns": 86.42133608148148,
-    "median_turns": 66.1,
-    "p90_turns": 172.0,
-    "first_seat_win": 0.2506744851851852,
-    "mean_max_hit": 5.552762366666666,
-    "share_rounds_with_10plus_draw": 0.059603896296296296,
-    "mean_round_points": 156.13143182962963,
+    "mean_turns": 86.406016335,
+    "median_turns": 66.0,
+    "p90_turns": 171.95,
+    "first_seat_win": 0.25073284500000004,
+    "mean_max_hit": 5.552423615,
+    "share_rounds_with_10plus_draw": 0.059584145,
+    "mean_round_points": 154.85838563,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 72.2395723037037
+    "mean_cards_drawn_per_round": 72.22323575,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.2661227222222222
+   "smart_vs_normal": 0.266142945
   }
  },
  "habits": {
-  "hold wilds": 0.28666938148148147,
-  "attack when next has <=2": 0.25524399999999997,
-  "switch to your best colour": 0.2625978,
-  "random colour choice": 0.2247712074074074,
-  "never challenge": 0.2524246074074074,
-  "always challenge": 0.2444617185185185,
-  "smart challenge": 0.24730468888888887,
-  "bluff Draw 4 half the time": 0.24998824074074072,
-  "play randomly": 0.25000824814814815,
-  "dump high cards": 0.23818057407407406,
-  "all smart habits": 0.2896645740740741
+  "hold wilds": 0.28671231,
+  "attack when next has <=2": 0.25525873,
+  "switch to your best colour": 0.26255916,
+  "random colour choice": 0.22470405000000002,
+  "never challenge": 0.25235955,
+  "always challenge": 0.24444335499999997,
+  "smart challenge": 0.247270125,
+  "bluff Draw 4 half the time": 0.25000496,
+  "play randomly": 0.249980915,
+  "dump high cards": 0.23779539,
+  "all smart habits": 0.289648945
  },
  "two_player": {
   "official": {
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.5000149703703703,
-    "ci95": 0.0002667222089785901,
+    "games": 10000000.0,
+    "test_win_rate": 0.50003214,
+    "ci95": 0.0003099031973148657,
     "fair_share": 0.5,
-    "mean_turns": 33.91069860740741,
+    "mean_turns": 33.905585995,
     "median_turns": 28.0,
     "p90_turns": 63.0,
-    "first_seat_win": 0.5156456111111111,
-    "mean_max_hit": 3.809889637037037,
+    "first_seat_win": 0.51570987,
+    "mean_max_hit": 3.80967214,
     "share_rounds_with_10plus_draw": 0.0,
-    "mean_round_points": 55.57925752962963,
+    "mean_round_points": 54.88204896,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 19.085704822222223
+    "mean_cards_drawn_per_round": 19.081735155,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.5416063111111111
+   "smart_vs_normal": 0.5416641099999999
   },
   "draw_until": {
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.4999819185185185,
-    "ci95": 0.00026672220445363517,
+    "games": 10000000.0,
+    "test_win_rate": 0.49995643999999995,
+    "ci95": 0.00030990319355353197,
     "fair_share": 0.5,
-    "mean_turns": 53.08248123333334,
+    "mean_turns": 53.070569515,
     "median_turns": 37.0,
     "p90_turns": 114.0,
-    "first_seat_win": 0.5131851592592593,
-    "mean_max_hit": 4.463484414814815,
+    "first_seat_win": 0.513250105,
+    "mean_max_hit": 4.46313273,
     "share_rounds_with_10plus_draw": 0.0,
-    "mean_round_points": 76.2084799925926,
+    "mean_round_points": 75.33266571499999,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 46.718854011111105
+    "mean_cards_drawn_per_round": 46.705981539999996,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.5490628925925927
+   "smart_vs_normal": 0.549050305
   },
   "stacking": {
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.49993413333333336,
-    "ci95": 0.0002667221945618518,
+    "games": 10000000.0,
+    "test_win_rate": 0.49995653500000004,
+    "ci95": 0.0003099032009679812,
     "fair_share": 0.5,
-    "mean_turns": 36.18787558888889,
+    "mean_turns": 36.183574775,
     "median_turns": 30.0,
     "p90_turns": 66.0,
-    "first_seat_win": 0.5131759074074074,
-    "mean_max_hit": 3.7166948703703704,
-    "share_rounds_with_10plus_draw": 0.0025185333333333335,
-    "mean_round_points": 50.062267122222224,
+    "first_seat_win": 0.5132618800000001,
+    "mean_max_hit": 3.7164625950000003,
+    "share_rounds_with_10plus_draw": 0.00252036,
+    "mean_round_points": 49.453614735,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 18.522370211111113
+    "mean_cards_drawn_per_round": 18.519190605,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.5490286259259259
+   "smart_vs_normal": 0.5490247100000001
   },
   "seven_zero": {
    "table": {
-    "games": 13500000.0,
-    "test_win_rate": 0.5000263555555555,
-    "ci95": 0.0002667222069384073,
+    "games": 10000000.0,
+    "test_win_rate": 0.49998042,
+    "ci95": 0.00030990319469182385,
     "fair_share": 0.5,
-    "mean_turns": 33.69351551481482,
+    "mean_turns": 33.68793368,
     "median_turns": 28.0,
-    "p90_turns": 63.0,
-    "first_seat_win": 0.5028349185185185,
-    "mean_max_hit": 3.8028625740740742,
+    "p90_turns": 62.95,
+    "first_seat_win": 0.50287192,
+    "mean_max_hit": 3.8027234649999997,
     "share_rounds_with_10plus_draw": 0.0,
-    "mean_round_points": 56.94366263333334,
+    "mean_round_points": 56.208521,
     "unfinished": 0.0,
-    "mean_cards_drawn_per_round": 19.007666974074073
+    "mean_cards_drawn_per_round": 19.003567045,
+    "share_rounds_draw_ran_dry": 0.0
    },
-   "smart_vs_normal": 0.5060738
+   "smart_vs_normal": 0.506035565
   }
  },
+ "house_habits": {
+  "always stack": {
+   "rules": "stacking",
+   "win": 0.25519235500000004
+  },
+  "never stack": {
+   "rules": "stacking",
+   "win": 0.22715497
+  },
+  "always stack (mixed)": {
+   "rules": "stacking_mixed",
+   "win": 0.25652181
+  },
+  "never stack (mixed)": {
+   "rules": "stacking_mixed",
+   "win": 0.22033285
+  },
+  "seven to a random player": {
+   "rules": "seven_zero",
+   "win": 0.214376485
+  },
+  "always jump in": {
+   "rules": "jump_in",
+   "win": 0.2688661
+  },
+  "never jump in": {
+   "rules": "jump_in",
+   "win": 0.23255067000000001
+  },
+  "hold wilds (free +4)": {
+   "rules": "free_draw4",
+   "win": 0.304092185
+  },
+  "hold wilds (draw until)": {
+   "rules": "draw_until",
+   "win": 0.28748877500000003
+  },
+  "hold wilds (seven zero)": {
+   "rules": "seven_zero",
+   "win": 0.257886845
+  }
+ },
+ "players": {
+  "2": {
+   "official": {
+    "games": 10000000.0,
+    "test_win_rate": 0.50003214,
+    "ci95": 0.0003099031973148657,
+    "fair_share": 0.5,
+    "mean_turns": 33.905585995,
+    "median_turns": 28.0,
+    "p90_turns": 63.0,
+    "first_seat_win": 0.51570987,
+    "mean_max_hit": 3.80967214,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 54.88204896,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 19.081735155,
+    "share_rounds_draw_ran_dry": 0.0
+   },
+   "draw_until": {
+    "games": 10000000.0,
+    "test_win_rate": 0.49995643999999995,
+    "ci95": 0.00030990319355353197,
+    "fair_share": 0.5,
+    "mean_turns": 53.070569515,
+    "median_turns": 37.0,
+    "p90_turns": 114.0,
+    "first_seat_win": 0.513250105,
+    "mean_max_hit": 4.46313273,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 75.33266571499999,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 46.705981539999996,
+    "share_rounds_draw_ran_dry": 0.0
+   }
+  },
+  "3": {
+   "official": {
+    "games": 10000000.0,
+    "test_win_rate": 0.33329432,
+    "ci95": 0.00029217098468903015,
+    "fair_share": 0.3333333333333333,
+    "mean_turns": 40.006736975,
+    "median_turns": 35.0,
+    "p90_turns": 67.0,
+    "first_seat_win": 0.35131958,
+    "mean_max_hit": 4.16420842,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 85.675541765,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 21.404082289999998,
+    "share_rounds_draw_ran_dry": 0.0
+   },
+   "draw_until": {
+    "games": 10000000.0,
+    "test_win_rate": 0.333336105,
+    "ci95": 0.0002921801408729391,
+    "fair_share": 0.3333333333333333,
+    "mean_turns": 73.77181550499999,
+    "median_turns": 51.55,
+    "p90_turns": 159.0,
+    "first_seat_win": 0.34565403,
+    "mean_max_hit": 4.83160291,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 121.21480898499999,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 65.605590845,
+    "share_rounds_draw_ran_dry": 0.0
+   }
+  },
+  "4": {
+   "official": {
+    "games": 10000000.0,
+    "test_win_rate": 0.25000496,
+    "ci95": 0.00026838581082285173,
+    "fair_share": 0.25,
+    "mean_turns": 47.063202265,
+    "median_turns": 42.0,
+    "p90_turns": 76.0,
+    "first_seat_win": 0.267754315,
+    "mean_max_hit": 4.4595069,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 123.49014867000001,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 24.734897609999997,
+    "share_rounds_draw_ran_dry": 0.0
+   },
+   "draw_until": {
+    "games": 10000000.0,
+    "test_win_rate": 0.250027325,
+    "ci95": 0.00026839381214884505,
+    "fair_share": 0.25,
+    "mean_turns": 82.291937825,
+    "median_turns": 59.0,
+    "p90_turns": 172.05,
+    "first_seat_win": 0.261838175,
+    "mean_max_hit": 5.0272622,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 176.3117998,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 72.883133075,
+    "share_rounds_draw_ran_dry": 5e-09
+   }
+  },
+  "5": {
+   "official": {
+    "games": 10000000.0,
+    "test_win_rate": 0.199974765,
+    "ci95": 0.00024791082315696973,
+    "fair_share": 0.2,
+    "mean_turns": 54.614903325,
+    "median_turns": 49.0,
+    "p90_turns": 86.0,
+    "first_seat_win": 0.21615098000000002,
+    "mean_max_hit": 4.7001430399999995,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 160.722121335,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 28.39162453,
+    "share_rounds_draw_ran_dry": 0.0
+   },
+   "draw_until": {
+    "games": 10000000.0,
+    "test_win_rate": 0.20004211,
+    "ci95": 0.00024794212364741194,
+    "fair_share": 0.2,
+    "mean_turns": 90.966500255,
+    "median_turns": 66.1,
+    "p90_turns": 185.0,
+    "first_seat_win": 0.21054039000000002,
+    "mean_max_hit": 5.191580785,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 227.00288026500002,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 79.88504023,
+    "share_rounds_draw_ran_dry": 2.5e-08
+   }
+  },
+  "6": {
+   "official": {
+    "games": 10000000.0,
+    "test_win_rate": 0.16665477,
+    "ci95": 0.0002309815977378675,
+    "fair_share": 0.16666666666666666,
+    "mean_turns": 61.915247750000006,
+    "median_turns": 57.0,
+    "p90_turns": 96.0,
+    "first_seat_win": 0.18081897,
+    "mean_max_hit": 4.886794715,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 199.235742945,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 31.9425909,
+    "share_rounds_draw_ran_dry": 0.0
+   },
+   "draw_until": {
+    "games": 10000000.0,
+    "test_win_rate": 0.16665055499999998,
+    "ci95": 0.00023097926965522504,
+    "fair_share": 0.16666666666666666,
+    "mean_turns": 98.65235970500001,
+    "median_turns": 73.0,
+    "p90_turns": 196.0,
+    "first_seat_win": 0.175924075,
+    "mean_max_hit": 5.311818205,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 279.779799925,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 85.93440102,
+    "share_rounds_draw_ran_dry": 3.2e-07
+   }
+  },
+  "8": {
+   "official": {
+    "games": 10000000.0,
+    "test_win_rate": 0.12499542000000001,
+    "ci95": 0.00020497846733110464,
+    "fair_share": 0.125,
+    "mean_turns": 76.25368329,
+    "median_turns": 70.9,
+    "p90_turns": 114.0,
+    "first_seat_win": 0.13521147,
+    "mean_max_hit": 5.15700258,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 278.23700557,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 38.98605235,
+    "share_rounds_draw_ran_dry": 0.0
+   },
+   "draw_until": {
+    "games": 10000000.0,
+    "test_win_rate": 0.12495760062547608,
+    "ci95": 0.0002049518782992079,
+    "fair_share": 0.125,
+    "mean_turns": 115.94058080466309,
+    "median_turns": 89.0,
+    "p90_turns": 220.0,
+    "first_seat_win": 0.13165501065876006,
+    "mean_max_hit": 5.495248317476298,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 381.56080273776513,
+    "unfinished": 5e-09,
+    "mean_cards_drawn_per_round": 99.22192961606369,
+    "share_rounds_draw_ran_dry": 1.8575000083500007e-05
+   }
+  },
+  "10": {
+   "official": {
+    "games": 10000000.0,
+    "test_win_rate": 0.10000439000000001,
+    "ci95": 0.00018594553274193124,
+    "fair_share": 0.1,
+    "mean_turns": 91.0579374,
+    "median_turns": 84.0,
+    "p90_turns": 135.0,
+    "first_seat_win": 0.1066132,
+    "mean_max_hit": 5.347890965,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 362.095975495,
+    "unfinished": 0.0,
+    "mean_cards_drawn_per_round": 46.617529575,
+    "share_rounds_draw_ran_dry": 0.0
+   },
+   "draw_until": {
+    "games": 10000000.0,
+    "test_win_rate": 0.1000160190027233,
+    "ci95": 0.00018595516559432421,
+    "fair_share": 0.1,
+    "mean_turns": 137.73022678333908,
+    "median_turns": 112.0,
+    "p90_turns": 253.0,
+    "first_seat_win": 0.10424220959375541,
+    "mean_max_hit": 5.631452973414733,
+    "share_rounds_with_10plus_draw": 0.0,
+    "mean_round_points": 480.07498810558684,
+    "unfinished": 1.3999999999999998e-07,
+    "mean_cards_drawn_per_round": 116.09566012951169,
+    "share_rounds_draw_ran_dry": 0.00040713005704551145
+   }
+  }
+ },
+ "classic_deck": {
+  "table": {
+   "games": 10000000.0,
+   "test_win_rate": 0.24997356499999998,
+   "ci95": 0.0002683745833794786,
+   "fair_share": 0.25,
+   "mean_turns": 47.06771449,
+   "median_turns": 42.0,
+   "p90_turns": 78.0,
+   "first_seat_win": 0.27336901999999996,
+   "mean_max_hit": 4.5197814549999995,
+   "share_rounds_with_10plus_draw": 0.0,
+   "mean_round_points": 128.653795165,
+   "unfinished": 0.0,
+   "mean_cards_drawn_per_round": 25.301195200000002,
+   "share_rounds_draw_ran_dry": 0.0
+  },
+  "smart_vs_normal": 0.284957145
+ },
+ "runs": 63,
+ "total_games": 12600000000,
  "shards": 20
 }

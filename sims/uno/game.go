@@ -24,21 +24,30 @@ func (c Card) points() int {
 		return int(c.K)
 	case c.K <= DrawTwo:
 		return 20
+	case c.K == Shuffle || c.K == Custom:
+		return 40 // GDJ85 scoring: Wild Shuffle Hands and Customizable are 40
 	default:
 		return 50
 	}
 }
 
 type Rules struct {
-	Stack     bool `json:"stack"`      // Draw Two on Draw Two, Wild Draw 4 on Wild Draw 4; penalties add up
-	StackMix  bool `json:"stack_mix"`  // also +4 on +2 (and +2 on +4 of matching colour)
-	SevenZero bool `json:"seven_zero"` // 7 swaps hands with a chosen player, 0 rotates all hands
-	JumpIn    bool `json:"jump_in"`    // identical card can be played out of turn
-	DrawUntil bool `json:"draw_until"` // draw until you can play (then play it)
-	Forced    bool `json:"forced"`     // must play if able
-	FreeD4    bool `json:"free_d4"`    // Wild Draw 4 any time, no challenges
-	NoShuffle bool `json:"no_shuffle"` // remove the Wild Shuffle Hands card
-	NoCustom  bool `json:"no_custom"`  // remove the 3 blank wilds (older 108-card decks)
+	Stack     bool `json:"stack"`         // Draw Two on Draw Two, Wild Draw 4 on Wild Draw 4; penalties add up
+	StackMix  bool `json:"stack_mix"`     // also +4 on +2 (and +2 on +4 of matching colour)
+	SevenZero bool `json:"seven_zero"`    // 7 swaps hands with a chosen player, 0 rotates all hands
+	JumpIn    bool `json:"jump_in"`       // identical card can be played out of turn
+	DrawUntil bool `json:"draw_until"`    // draw until you can play (then play it)
+	Forced    bool `json:"forced"`        // must play if able
+	FreeD4    bool `json:"free_d4"`       // Wild Draw 4 any time, no challenges
+	NoShuffle bool `json:"no_shuffle"`    // remove the Wild Shuffle Hands card
+	NoCustom  bool `json:"no_custom"`     // remove the 3 blank wilds (older 108-card decks)
+	MultiPlay bool `json:"multi"`         // house rule: play several cards of the same NUMBER in one turn; the last one sets the colour
+	NoActOut  bool `json:"no_action_out"` // house rule: you can't go out on an action card or a Wild
+	UnoCall   bool `json:"uno_call"`      // GDJ85: forget "UNO" and get caught before the next turn -> draw UnoPen
+	UnoPen    int  `json:"uno_penalty"`   // 0 = official 2 cards
+	Joke      bool `json:"joke_cards"`    // GDJ85 blank-card suggestion: "Tell a joke. If someone laughs, discard down to 1 card. If no one laughs, draw 4" (laugh = coin flip)
+	Bounce    bool `json:"bounce"`        // house rule: hit by a Draw Two, play a Reverse of that colour to send it back
+	PassEvery bool `json:"pass_every"`    // joke rule: after every turn, everyone passes their whole hand to the next player
 }
 
 type Policy struct {
@@ -55,24 +64,31 @@ type Policy struct {
 	Random      float64 `json:"random"`       // prob. of just playing a random legal card
 	SwapTarget  string  `json:"swap_target"`  // 7-0: fewest | random
 	ChangeColor bool    `json:"change_color"` // prefer switching to my best colour when possible
+	Multi       string  `json:"multi"`        // multi-play rule: "" = play every card of that number, "one" = one at a time
+	Forget      float64 `json:"forget"`       // prob. of forgetting to say UNO (uno_call rule)
+	Catch       float64 `json:"catch"`        // prob. of catching each player who forgot
 }
 
 type Game struct {
-	rng       *rand.Rand
-	R         *Rules
-	deck      []Card
-	discard   []Card
-	hands     [][]Card
-	pols      []*Policy
-	cur, dir  int
-	color     int8
-	pending   int  // stacked draw penalty waiting for the current player
-	pendKind  int8 // DrawTwo or WildD4
-	turns     int
-	drawn     []int
-	maxHit    int // biggest single penalty taken
-	lastD4Ill bool
-	lastD4Who int
+	rng            *rand.Rand
+	R              *Rules
+	deck           []Card
+	discard        []Card
+	hands          [][]Card
+	pols           []*Policy
+	cur, dir       int
+	color          int8
+	pending        int  // stacked draw penalty waiting for the current player
+	pendKind       int8 // DrawTwo or WildD4
+	turns          int
+	drawn          []int
+	maxHit         int // biggest single penalty taken
+	lastD4Ill      bool
+	lastD4Who      int
+	dry            int // times a draw found no cards left anywhere
+	unoCaught      int // forgotten UNO calls that were caught
+	multiPlays     int
+	jokes, bounces int
 }
 
 func newDeck(r *Rules) []Card {
@@ -123,10 +139,7 @@ func NewGame(rng *rand.Rand, r *Rules, pols []*Policy, dealer int) *Game {
 		g.cur = (dealer + 1) % n
 		switch {
 		case c.isWild():
-			g.color = g.bestColor(g.cur)
-			if c.K == Shuffle {
-				g.shuffleHands(dealer)
-			}
+			g.color = g.bestColor(g.cur) // any Wild turned up (incl. Shuffle Hands): player left of dealer picks the colour, no shuffle
 		case c.K == DrawTwo:
 			g.give(g.cur, 2)
 			g.cur = g.next(g.cur)
@@ -141,29 +154,35 @@ func NewGame(rng *rand.Rand, r *Rules, pols []*Policy, dealer int) *Game {
 	return g
 }
 
+func (g *Game) canDraw() bool { return len(g.deck) > 0 || len(g.discard) > 1 }
+
 func (g *Game) pop() Card {
-	if len(g.deck) == 0 {
+	if len(g.deck) == 0 { // reshuffle the discard pile (all but the top card) into a new draw pile
 		top := g.discard[len(g.discard)-1]
 		g.deck = append(g.deck, g.discard[:len(g.discard)-1]...)
 		g.discard = []Card{top}
 		g.rng.Shuffle(len(g.deck), func(i, j int) { g.deck[i], g.deck[j] = g.deck[j], g.deck[i] })
-		if len(g.deck) == 0 { // everything is in hands: extremely rare; mint a fresh deck
-			g.deck = newDeck(g.R)
-		}
 	}
 	c := g.deck[len(g.deck)-1]
 	g.deck = g.deck[:len(g.deck)-1]
 	return c
 }
 
-func (g *Game) give(p, k int) {
-	for i := 0; i < k; i++ {
+// give draws up to k cards for p. If every card is in someone's hand there is nothing left to draw
+// (rare; the real table would be stuck the same way), so the draw just stops. Returns cards drawn.
+func (g *Game) give(p, k int) int {
+	n := 0
+	for ; n < k && g.canDraw(); n++ {
 		g.hands[p] = append(g.hands[p], g.pop())
 	}
-	g.drawn[p] += k
-	if k > g.maxHit {
-		g.maxHit = k
+	if n < k {
+		g.dry++
 	}
+	g.drawn[p] += n
+	if n > g.maxHit {
+		g.maxHit = n
+	}
+	return n
 }
 
 func (g *Game) next(p int) int { n := len(g.hands); return ((p+g.dir)%n + n) % n }
@@ -234,6 +253,9 @@ func (g *Game) choose(p int) int { // index into hand, -1 = draw
 		if g.legal(c) {
 			if c.K == WildD4 && !g.R.FreeD4 && g.hasColor(p, g.color) {
 				continue // illegal Wild Draw 4 handled by bluff below
+			}
+			if !g.canOut(p, c) {
+				continue
 			}
 			legalIdx = append(legalIdx, i)
 		}
@@ -308,13 +330,63 @@ func (g *Game) wantsChallenge(victim, player int) bool {
 
 // ---------------------------------------------------------------- play
 type Result struct {
-	Winner, Turns, MaxHit, Points int
-	Drawn                         []int
+	Winner, Turns, MaxHit, Points, Dry, UnoCaught, Multi int
+	Drawn                                                []int
 }
 
+// canOut: house rule "no going out on an action card or a Wild" (only matters for a player's last card).
+func (g *Game) canOut(p int, c Card) bool {
+	return !(g.R.NoActOut && len(g.hands[p]) == 1 && c.K > 9)
+}
+
+// play = the card play itself, then the UNO call (house/official penalty when forgotten and caught).
 func (g *Game) play(p, i int) (won bool) {
+	if g.playCore(p, i) {
+		return true
+	}
+	if g.R.UnoCall && len(g.hands[p]) == 1 && g.rng.Float64() < g.pols[p].Forget {
+		for q := range g.hands {
+			if q != p && g.rng.Float64() < g.pols[q].Catch {
+				pen := g.R.UnoPen
+				if pen == 0 {
+					pen = 2
+				}
+				g.give(p, pen)
+				g.unoCaught++
+				break
+			}
+		}
+	}
+	return false
+}
+
+func (g *Game) playCore(p, i int) (won bool) {
 	c := g.remove(p, i)
 	illegalD4 := c.K == WildD4 && !g.R.FreeD4 && g.hasColor(p, g.color)
+	if g.R.MultiPlay && c.K <= 9 && g.pols[p].Multi != "one" {
+		// every other card of the same number goes down too; the last one played sets the colour
+		group := []Card{c}
+		for k := len(g.hands[p]) - 1; k >= 0; k-- {
+			if g.hands[p][k].K == c.K && !g.hands[p][k].isWild() {
+				group = append(group, g.remove(p, k))
+			}
+		}
+		if len(group) > 1 {
+			last := g.rng.Intn(len(group))
+			if g.pols[p].ChangeColor { // finish on the colour I hold the most of
+				best := -1
+				for k, x := range group {
+					if n := g.countColor(p, x.C); n > best {
+						best, last = n, k
+					}
+				}
+			}
+			group[last], group[len(group)-1] = group[len(group)-1], group[last]
+			g.discard = append(g.discard, group[:len(group)-1]...)
+			c = group[len(group)-1]
+			g.multiPlays++
+		}
+	}
 	g.discard = append(g.discard, c)
 	if c.isWild() {
 		g.color = g.bestColor(p)
@@ -323,6 +395,23 @@ func (g *Game) play(p, i int) (won bool) {
 	}
 	if c.K == Shuffle {
 		g.shuffleHands(p)
+	}
+	if g.R.Joke && c.K == Custom && len(g.hands[p]) > 0 {
+		if g.rng.Intn(2) == 0 { // somebody laughed: discard down to one card (under the top card)
+			keep := g.rng.Intn(len(g.hands[p]))
+			top := g.discard[len(g.discard)-1]
+			g.discard = g.discard[:len(g.discard)-1]
+			for k, x := range g.hands[p] {
+				if k != keep {
+					g.discard = append(g.discard, x)
+				}
+			}
+			g.discard = append(g.discard, top)
+			g.hands[p] = []Card{g.hands[p][keep]}
+		} else {
+			g.give(p, 4)
+		}
+		g.jokes++
 	}
 	if len(g.hands[p]) == 0 {
 		// a final Draw Two / Draw 4 still makes the next player draw (affects points)
@@ -378,6 +467,18 @@ func (g *Game) play(p, i int) (won bool) {
 			g.cur = g.next(nx)
 			return false
 		}
+		if g.R.Bounce && c.K == DrawTwo && len(g.hands[nx]) > 1 && g.rng.Float64() < g.pols[nx].StackProb {
+			for k, x := range g.hands[nx] {
+				if x.K == Reverse && x.C == c.C { // bounce it back: direction flips, the player who played it draws and loses the turn
+					g.discard = append(g.discard, g.remove(nx, k))
+					g.dir = -g.dir
+					g.give(p, amt)
+					g.cur = g.next(p)
+					g.bounces++
+					return false
+				}
+			}
+		}
 		g.give(nx, amt)
 		g.cur = g.next(nx)
 	default:
@@ -430,13 +531,20 @@ func (g *Game) Play() Result {
 	n := len(g.hands)
 	for g.turns < 5000 {
 		g.turns++
+		if g.R.PassEvery && g.turns > 1 {
+			nh := make([][]Card, len(g.hands))
+			for q := range g.hands {
+				nh[g.nextFrom(q)] = g.hands[q]
+			}
+			g.hands = nh
+		}
 		p := g.cur
 		if g.pending > 0 {
 			// stacking: may add a matching draw card, otherwise take the lot
 			idx := -1
 			if g.rng.Float64() < g.pols[p].StackProb {
 				for i, c := range g.hands[p] {
-					if c.K == g.pendKind || (g.R.StackMix && (c.K == DrawTwo || c.K == WildD4) && (c.K == WildD4 || c.C == g.color)) {
+					if (c.K == g.pendKind || (g.R.StackMix && (c.K == DrawTwo || c.K == WildD4) && (c.K == WildD4 || c.C == g.color))) && g.canOut(p, c) {
 						idx = i
 						break
 					}
@@ -456,9 +564,9 @@ func (g *Game) Play() Result {
 		i := g.choose(p)
 		if i < 0 {
 			for {
-				g.give(p, 1)
-				g.drawn[p]-- // count voluntary draws separately from penalties? keep simple: drawn counts all
-				g.drawn[p]++
+				if g.give(p, 1) == 0 {
+					break // nothing left to draw
+				}
 				c := g.hands[p][len(g.hands[p])-1]
 				ok := g.legal(c) && !(c.K == WildD4 && !g.R.FreeD4 && g.hasColor(p, g.color))
 				if ok && (g.pols[p].PlayDrawn || g.R.Forced || g.R.DrawUntil) {
@@ -497,5 +605,5 @@ func (g *Game) result(w int) Result {
 			pts += c.points()
 		}
 	}
-	return Result{Winner: w, Turns: g.turns, MaxHit: g.maxHit, Points: pts, Drawn: g.drawn}
+	return Result{Winner: w, Turns: g.turns, MaxHit: g.maxHit, Points: pts, Drawn: g.drawn, Dry: g.dry, UnoCaught: g.unoCaught, Multi: g.multiPlays}
 }

@@ -1,0 +1,23 @@
+long:
+  title: "The Best Way to Play Uno"
+  description: |
+    How to play Uno and actually win: the official rules are mostly luck, but the right house rules give a good player almost twice the edge.
+
+    I built Uno from the official Mattel rule sheet (112 cards), gave the rules and every popular house rule to bots that only know what a real player knows, and tested every combination: 192 rule sets, stacking, Seven Zero, Jump In, draw until you can play, the free plus four, dumping matching numbers, and more. Then I tested the habits that win, including saying Uno.
+
+    Everything in this video, the simulation, the animation and the charts, is made with code. Not affiliated with Mattel; card designs are my own.
+  sources:
+    - "Official rules: Mattel UNO instruction sheet GDJ85 (112 cards, 2-10 players)."
+    - "Simulator: one test bot vs three normal bots, 20 to 270 million rounds per test, over 23 billion rounds in total, seats randomised."
+  music_note: "Music (YouTube Audio Library): Days Are Long by Silent Partner, Renunciation by Asher Fulero, Ponderous Days by Joel Cummins."
+  tags: [uno, uno rules, uno house rules, uno stacking, how to win uno, uno strategy, uno 7 0, uno jump in, card games,
+         board game strategy, simulation, game theory, buh simulates]
+  category: Gaming
+  contains_synthetic_media: false
+
+short_defaults:
+  title: "Is Uno skill or luck? #shorts"
+  description: |
+    Simulated with bots on the official rules and every house rule. Full video on my channel.
+  tags: [uno, card games, strategy, shorts]
+  category: Gaming

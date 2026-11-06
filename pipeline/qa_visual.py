@@ -573,7 +573,10 @@ def moving_rects(sp, states, timeline, fps=30):
             for o in b["objs"]:
                 q = pa.get(o["id"])
                 if o["r"] and (q is None or max(abs(x - y) for x, y in zip(o["p"], q)) > 0.002):
-                    r = o["r"]; rs.append((r[0] / W, r[1] / H, r[2] / W, r[3] / H))
+                    # with its shadow: a card in the air throws it about a card's size away on the table, and a run of
+                    # draws/deals sweeps those shadows over the same spot (motion, not z-fighting)
+                    r = o["r"]; e = max(r[2] - r[0], r[3] - r[1])
+                    rs.append(((r[0] - e) / W, (r[1] - e) / H, (r[2] + e) / W, (r[3] + e) / H))
             s0 = starts.get(sc.id, 0)
             ta = {x["id"]: (x["r"], x["text"]) for x in a["texts"]}     # labels sliding or counting are motion too
             for x in b["texts"]:

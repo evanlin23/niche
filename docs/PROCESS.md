@@ -71,6 +71,9 @@ python -m pipeline.match_voice    episodes/<slug>/voice             # same tone/
   a custom scene (build it on `Kit`). Numbers as data refs (`"=results.json:..."`), timing as word anchors.
 - Stills: `make stills SLUG=<slug>` (+ `VERTICAL=1`); gate: `make qa-visual SLUG=<slug>` must PASS before
   the full render (use `TTS=silent` before the voice exists).
+- **Everything the narration says that can be shown gets its own scene** (creator rule, Uno): a rule being explained is
+  played out at a table, a habit is shown in a hand, a number gets a chart or a callout the moment it's said. One beat
+  per scene, roughly 5-20 s; never park a topic on one chart for 40+ s. Group lines only when they show the same thing.
 - Everything moves and follows the voice: events anchored to words (`'line@word'`), never more than ~5 s
   without something new; player count always shown; cards square-on; hard cuts between scenes.
 - Iterate with local stills (`allstills`-style PNGs per scene) before any full render.

@@ -14,19 +14,23 @@ import (
 )
 
 type Summary struct {
-	Games        int     `json:"games"`
-	TestWinRate  float64 `json:"test_win_rate"`
-	CI95         float64 `json:"ci95"`
-	Fair         float64 `json:"fair_share"`
-	MeanTurns    float64 `json:"mean_turns"`
-	MedianTurns  float64 `json:"median_turns"`
-	P90Turns     float64 `json:"p90_turns"`
-	FirstSeatWin float64 `json:"first_seat_win"` // player left of the dealer (moves first)
-	MeanMaxHit   float64 `json:"mean_max_hit"`
-	BigHit10     float64 `json:"share_rounds_with_10plus_draw"`
-	MeanPoints   float64 `json:"mean_round_points"`
-	Unfinished   float64 `json:"unfinished"`
-	MeanDrawn    float64 `json:"mean_cards_drawn_per_round"`
+	Games        int                `json:"games"`
+	TestWinRate  float64            `json:"test_win_rate"`
+	CI95         float64            `json:"ci95"`
+	Fair         float64            `json:"fair_share"`
+	MeanTurns    float64            `json:"mean_turns"`
+	MedianTurns  float64            `json:"median_turns"`
+	P90Turns     float64            `json:"p90_turns"`
+	FirstSeatWin float64            `json:"first_seat_win"` // player left of the dealer (moves first)
+	MeanMaxHit   float64            `json:"mean_max_hit"`
+	BigHit10     float64            `json:"share_rounds_with_10plus_draw"`
+	MeanPoints   float64            `json:"mean_round_points"`
+	Unfinished   float64            `json:"unfinished"`
+	MeanDrawn    float64            `json:"mean_cards_drawn_per_round"`
+	DryRounds    float64            `json:"share_rounds_draw_ran_dry"`     // a draw found no cards anywhere (all in hands)
+	HitAtLeast   map[string]float64 `json:"share_rounds_max_hit_at_least"` // biggest single draw in the round >= k
+	UnoCaught    float64            `json:"uno_penalties_per_round"`
+	MultiPlays   float64            `json:"multi_plays_per_round"`
 }
 
 func main() {
@@ -37,6 +41,7 @@ func main() {
 	baseJ := flag.String("base", "{}", "")
 	testJ := flag.String("test", "", "")
 	allSame := flag.Bool("allsame", false, "")
+	match := flag.Bool("match", false, "play whole games to 500 points (GDJ85 scoring), report rounds and turns per game")
 	check := flag.Bool("check", false, "engine check: share of opening hands with at least one Wild card")
 	flag.Parse()
 	if *check {
@@ -64,6 +69,10 @@ func main() {
 	var base, test Policy
 	must(json.Unmarshal([]byte(*rulesJ), &R))
 	must(json.Unmarshal([]byte(*baseJ), &base))
+	if *match {
+		runMatches(*players, *games, *seed, &R, &base)
+		return
+	}
 	test = base
 	if *testJ != "" {
 		must(json.Unmarshal([]byte(*testJ), &test))
@@ -71,9 +80,11 @@ func main() {
 	W := runtime.NumCPU()
 	per := (*games + W - 1) / W
 	type acc struct {
-		wins, firstWins, unfinished, big10 int
-		turns                              []int
-		maxHit, points, drawn              float64
+		wins, firstWins, unfinished, big10, dry int
+		turns                                   []int
+		maxHit, points, drawn                   float64
+		hits                                    [7]int
+		caught, multi                           float64
 	}
 	accs := make([]acc, W)
 	var wg sync.WaitGroup
@@ -106,6 +117,16 @@ func main() {
 				if r.Winner == first {
 					a.firstWins++
 				}
+				if r.Dry > 0 {
+					a.dry++
+				}
+				for hi, k := range hitKs {
+					if r.MaxHit >= k {
+						a.hits[hi]++
+					}
+				}
+				a.caught += float64(r.UnoCaught)
+				a.multi += float64(r.Multi)
 				if r.MaxHit >= 10 {
 					a.big10++
 				}
@@ -121,13 +142,21 @@ func main() {
 	wg.Wait()
 	var s Summary
 	var all []int
-	wins, first, unf, big := 0, 0, 0, 0
+	wins, first, unf, big, dry := 0, 0, 0, 0, 0
 	mh, pts, dr := 0.0, 0.0, 0.0
+	var hits [7]int
+	caught, multi := 0.0, 0.0
 	for _, a := range accs {
 		wins += a.wins
 		first += a.firstWins
 		unf += a.unfinished
 		big += a.big10
+		dry += a.dry
+		for hi := range hits {
+			hits[hi] += a.hits[hi]
+		}
+		caught += a.caught
+		multi += a.multi
 		all = append(all, a.turns...)
 		mh += a.maxHit
 		dr += a.drawn
@@ -152,12 +181,78 @@ func main() {
 	s.MeanPoints = pts / n
 	s.Unfinished = float64(unf) / float64(s.Games)
 	s.MeanDrawn = dr / n
+	s.DryRounds = float64(dry) / n
+	s.HitAtLeast = map[string]float64{}
+	for hi, k := range hitKs {
+		s.HitAtLeast[fmt.Sprint(k)] = float64(hits[hi]) / n
+	}
+	s.UnoCaught = caught / n
+	s.MultiPlays = multi / n
 	must(json.NewEncoder(os.Stdout).Encode(s))
 }
+
+var hitKs = [7]int{4, 6, 8, 10, 12, 16, 20}
 
 func must(err error) {
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+}
+
+// runMatches: first to 500 points wins; the dealer moves left each round.
+func runMatches(players, games int, seed int64, R *Rules, base *Policy) {
+	W := runtime.NumCPU()
+	per := (games + W - 1) / W
+	type acc struct{ rounds, turns, firstDealtWins, unfinished float64 }
+	accs := make([]acc, W)
+	var wg sync.WaitGroup
+	for w := 0; w < W; w++ {
+		wg.Add(1)
+		go func(w int) {
+			defer wg.Done()
+			rng := rand.New(rand.NewSource(seed*7919 + int64(w)))
+			pols := make([]*Policy, players)
+			for i := range pols {
+				pols[i] = base
+			}
+			a := &accs[w]
+			for k := 0; k < per; k++ {
+				score := make([]int, players)
+				dealer := rng.Intn(players)
+				firstStarter := (dealer + 1) % players
+				for rounds := 1; ; rounds++ {
+					g := NewGame(rng, R, pols, dealer)
+					r := g.Play()
+					a.turns += float64(r.Turns)
+					if r.Winner < 0 {
+						a.unfinished++
+						a.rounds += float64(rounds)
+						break
+					}
+					score[r.Winner] += r.Points
+					if score[r.Winner] >= 500 {
+						a.rounds += float64(rounds)
+						if r.Winner == firstStarter {
+							a.firstDealtWins++
+						}
+						break
+					}
+					dealer = (dealer + 1) % players
+				}
+			}
+		}(w)
+	}
+	wg.Wait()
+	var t acc
+	for _, a := range accs {
+		t.rounds += a.rounds
+		t.turns += a.turns
+		t.firstDealtWins += a.firstDealtWins
+		t.unfinished += a.unfinished
+	}
+	n := float64(per * W)
+	out := map[string]float64{"games": n, "mean_rounds_per_game": t.rounds / n, "mean_turns_per_game": t.turns / n,
+		"first_round_starter_wins_game": t.firstDealtWins / n, "unfinished_rounds": t.unfinished / n}
+	must(json.NewEncoder(os.Stdout).Encode(out))
 }

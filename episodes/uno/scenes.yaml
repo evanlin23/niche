@@ -1,40 +1,159 @@
-# UNO: scene list. `lines` = narration ids in script.md. Chart values come from data/results.json.
-music:              # same Audio Library tracks as video 1 (local only)
+# The Best Way to Play Uno: scene list (scene kit templates, docs/scene-kit.md). `lines` = narration ids in script.md.
+# Bar values are data refs into data/*.json. Typed numbers in callouts/statements are traced in script.md's header.
+# Card names are written as words ("Draw Two"), so the numbers gate only sees real claims.
+music:              # YouTube Audio Library, no attribution required (local only, not in git)
   - music/days-are-long-silent-partner.mp3
   - music/renunciation-asher-fulero.mp3
   - music/ponderous-days-joel-cummins.mp3
 engine: 3d
+grade: eq=saturation=1.12:contrast=1.04   # light colour grade baked into every scene
+burn_captions: false  # creator: no burned-in captions; YouTube CC covers it, animations carry the screen
+voice_style: studio   # no-AI studio chain: de-reverb, broadcast EQ, compression (pipeline/studio_voice.py)
 look: clean-sage
 quality: high
 ssaa: 1.5
 scenes:
 - id: cold
-  chapter: Every family plays differently
-  render: unotable
+  chapter: Everybody plays differently
+  render: table
   lines:
   - o1
   - o2
   - o3
   pad:
   - 0.4
-  - 0.6
+  - 0.5
   params:
-    notes:
-    - text: Billions of rounds simulated
-      at: o3
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 56
-      color: MUSTARD
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names:
+    - THE STACKER
+    - THE RULES LAWYER
+    - THE SWAPPER
+    - THE KEEP-DRAWER
+    hands: 7
+    pile: uno:2:4
+    turns:
+    - at: o1@differently
+      seat: 2
+      ev: play
+      card: uno:2:9
+    - at: o2@plus
+      seat: 3
+      ev: play
+      card: uno:2:12
+      label: DRAW TWO
+    - at: o2@stack
+      seat: 0
+      ev: play
+      card: uno:0:12
+      label: STACKED!
+    - at: o2@stack+0.5
+      seat: 1
+      ev: draw
+      label: TAKES FOUR
+    - at: o2@stack+0.5+0.15
+      seat: 1
+      ev: draw
+    - at: o2@stack+0.5+0.30
+      seat: 1
+      ev: draw
+    - at: o2@stack+0.5+0.45
+      seat: 1
+      ev: draw
+    - at: o2@swap
+      seat: 2
+      ev: play
+      card: uno:0:7
+      label: A SEVEN
+    - at: o2@seven
+      ev: swap
+      seat: 2
+      with: 0
+      label: SWAP HANDS
+    - at: o2@keep
+      seat: 3
+      ev: draw
+      label: KEEP DRAWING
+    - at: o2@drawing
+      seat: 3
+      ev: draw
+    - at: o2@drawing#2
+      seat: 3
+      ev: draw
+    - at: o2@until
+      seat: 3
+      ev: draw
+    - at: o2@and#3
+      seat: 3
+      ev: play
+      card: uno:0:3
+    - at: o3@took
+      seat: 0
+      ev: play
+      card: uno:0:5
+    - at: o3@bots
+      seat: 1
+      ev: play
+      card: uno:1:5
+    - at: o3@billion
+      seat: 2
+      ev: play
+      card: uno:1:8
+    highlight:
+    - - 0
+      - o2@stack
+    - - 2
+      - o2@swap
+    - - 3
+      - o2@keep
+    - - 1
+      - o2@real
+      - THAT'S NOT A REAL RULE!
+    callouts:
+    - text: Every house rule vs the official game
+      at: o3@every
+    - text: 23,000,000,000+ rounds
+      at: o3@billion
 - id: hook
   render: bars
   lines:
   - o4
+  - o5
   params:
-    chart: hook
-    title: Average turns per round
+    title: The rules decide how much skill there is
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 42
+      items:
+      - label: Official rules
+        value: =v2.json:combos[key=official].best*100
+        at: o4@play
+        color: TEAL
+        context: true
+        pulse:
+        - o5@rules
+        - o5@skill
+        - o5@official
+      - label: The most skillful rules
+        value: =v2.json:combos[key=stack+jump_in+draw_until+free_d4].best*100
+        at: o5@third
+        color: MUSTARD
+        context: true
+        hl: true
+      - label: Pass your hand every turn
+        value: =extras.json:rules.pass_every.best*100
+        at: o5@lose
+        color: CORAL
+        context: true
+    callouts:
+    - text: How often a good player wins
+      at: o4@wins
+      color: CREAM
 - id: title
   render: title
   min_duration: 2.5
@@ -43,235 +162,1489 @@ scenes:
   - 0
   params:
     lines:
-    - Every Uno
-    - House Rule, Tested
-- id: primer
-  render: unotable
+    - The Best Way
+    - text: to Play Uno
+      color: MUSTARD
+- id: deal
+  chapter: The game in thirty seconds
+  render: table
   lines:
   - g1
+  - g2
   params:
-    from: 0.2
-    every: 0.8
-- id: deck
-  chapter: Can you trust it?
-  render: unodeck
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: &id001
+    - YOU
+    - PLAYER 2
+    - PLAYER 3
+    - PLAYER 4
+    hands: 0
+    turns:
+    - at: g1@flipped
+      ev: flip
+      card: uno:0:5
+      label: START THE PILE
+    - at: g2@color
+      seat: 0
+      ev: play
+      card: uno:0:9
+      label: SAME COLOR
+    - at: g2@number
+      seat: 1
+      ev: play
+      card: uno:3:9
+      label: SAME NUMBER
+    - at: g2@wild
+      seat: 2
+      ev: play
+      card: uno:4:13
+      label: WILD
+    highlight:
+    - - 0
+      - g2@turn
+      - YOUR TURN
+    - - 3
+      - g2@zero
+      - FIRST TO ZERO CARDS WINS
+    deal:
+      at: g1@seven
+      count: 7
+      every: 0.09
+- id: cards
+  render: deck
   lines:
-  - c1
+  - g3
   pad:
-  - 0.5
+  - 0.2
   - 1.0
-- id: surprise
+  params:
+    title: The action cards
+    pill: 2 to 10 players
+    piles:
+    - card:
+      - uno:0:3
+      - uno:1:8
+      - uno:2:1
+      - uno:3:6
+      count: 30
+      label: Number cards
+    - card: uno:3:10
+      count: 8
+      label: Skip
+    - card: uno:2:11
+      count: 8
+      label: Reverse
+    - card: uno:0:12
+      count: 8
+      label: Draw Two
+    - card: uno:4:13
+      count: 4
+      label: Wild
+    highlights:
+    - - 1
+      - g3@skip
+    - - 2
+      - g3@reverse
+    - - 3
+      - g3@draw
+    - - 4
+      - g3@wild
+- id: wild4
+  render: fan
+  lines:
+  - g4
+  params:
+    title: The Wild Draw Four
+    seat_label: YOU
+    pill: 4 players
+    cards:
+    - uno:4:14
+    - uno:0:5
+    - uno:0:9
+    - uno:3:5
+    - uno:1:2
+    highlights:
+    - card: 0
+      at: g4@wild
+      label: WILD DRAW FOUR
+    - card: pile
+      at: g4@current
+      label: 'THE CURRENT COLOR: RED'
+    - card: 1
+      at: g4@nothing
+      label: STILL HAVE RED? NO +4
+    play:
+    - card: 0
+      at: g4@cheated
+    callouts:
+    - text: Most people have never heard this part
+      at: g4@bet
+      color: CREAM
+    - text: 'Caught: you draw the 4'
+      at: g4@caught
+      color: CORAL
+    pile: uno:0:3
+- id: challenge
+  render: bars
+  lines:
+  - g5
+  params:
+    title: 'The challenge rule: one habit changed'
+    callouts:
+    - text: Barely matters
+      at: g5@barely
+    - text: About half a point
+      at: g5@half
+      color: CREAM
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 36
+      items:
+      - label: Always challenges
+        value: =results.json:habits.always challenge*100
+        at: g5@challenge
+        pulse:
+        - g5@challenging
+      - label: Bluffs a Draw Four
+        value: =results.json:habits.bluff Draw 4 half the time*100
+        at: g5@bluffing
+- id: sheet
   render: statement
   lines:
-  - c2
+  - g6
   params:
     lines:
-    - 'Official rules:'
+    - 'The rule sheet:'
     - text: no stacking.
       color: CORAL
+      at: g6@stack
     - text: draw ONE card.
       color: MUSTARD
+      at: g6@one
 - id: check
-  render: statement
+  chapter: Can you trust it?
+  render: bars
   lines:
   - c3
-  - c4
   params:
-    lines:
-    - 'Opening hand has a Wild:'
-    - math says 55.81%
-    - text: 'engine: 55.84%'
-      color: MUSTARD
-- id: limits
-  render: unotable
+    title: Opening hand has a Wild
+    pill: 4 players · 112-card deck
+    callouts:
+    - text: Plain math vs my simulator
+      at: c3@checked
+    - text: Ten million deals
+      at: c3@ten
+    chart:
+      unit: '%'
+      decimals: 1
+      maxV: 75
+      items:
+      - label: Plain math
+        value: =engine_check.json:math_opening_hand_has_wild*100
+        at: c3@fifty
+        color: TEAL
+      - label: My simulator
+        value: =engine_check.json:opening_hand_has_wild*100
+        at: c3@simulator
+        color: MUSTARD
+        hl: true
+- id: bots
+  render: fan
   lines:
-  - c5
+  - c6
+  pad:
+  - 0.2
+  - 1.0
   params:
-    notes:
-    - text: Bots never argue about the rules
-      at: c5
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 50
+    title: A normal bot
+    seat_label: NORMAL BOT
+    pill: 4 players
+    cards:
+    - uno:0:5
+    - uno:0:9
+    - uno:3:5
+    - uno:4:13
+    - uno:1:2
+    - uno:0:12
+    - uno:2:7
+    highlights:
+    - card: 0
+      at: c6@own
+      label: ITS OWN HAND
+    - card: pile
+      at: c6@top
+      label: THE TOP CARD
+    - card: 1
+      at: c6@plays
+      label: A CARD THAT MATCHES
+    - card: 3
+      at: c6@color
+      label: 'CALLS RED: ITS MOST COMMON COLOR'
+    play:
+    - card: 1
+      at: c6@matches+0.3
+    callouts:
+    - text: Only what a real player knows
+      at: c6@real
+    - text: How many cards everyone holds
+      at: c6@holding
+    pile: uno:0:6
+- id: meetbest
+  chapter: How much skill is in Uno?
+  render: table
+  lines:
+  - m1
+  - m2
+  params:
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names:
+    - BEST BOT
+    - NORMAL BOT
+    - NORMAL BOT
+    - NORMAL BOT
+    hands: 5
+    pile: uno:3:4
+    turns:
+    - at: m1@sat
+      seat: 0
+      ev: play
+      card: uno:3:7
+    - at: m1@three
+      seat: 1
+      ev: play
+      card: uno:3:2
+    - at: m1@normal
+      seat: 2
+      ev: play
+      card: uno:1:2
+    - at: m2@luck
+      seat: 3
+      ev: play
+      card: uno:1:9
+    - at: m2@four
+      seat: 0
+      ev: play
+      card: uno:1:5
+    - at: m2@twenty
+      seat: 1
+      ev: draw
+    highlight:
+    - - 0
+      - m1@best
+      - EVERY GOOD HABIT
+    - - 0
+      - m2@win
+    callouts:
+    - text: 'Pure luck: 1 round in 4'
+      at: m2@pure
+    - text: Exactly 25%
+      at: m2@twenty
       color: MUSTARD
-- id: rules
-  chapter: The house rules
-  render: checklist
+- id: meter
+  render: bars
+  lines:
+  - m3
+  - m4
+  params:
+    title: The skill meter
+    callouts:
+    - text: Four points of skill
+      at: m3@four
+    - text: Mostly the cards you're dealt
+      at: m3@dealt
+      color: CREAM
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 54
+      items:
+      - label: Uno, official rules
+        value: =v2.json:combos[key=official].best*100
+        at: m3@twenty
+        color: TEAL
+        pulse:
+        - m3@dealt
+        - m4@luck
+      - label: Exploding Kittens
+        value: =../../exploding-kittens/data/final.json:vs_casual.4.win*100
+        at: m4@forty
+        color: MUSTARD
+        hl: true
+        pulse:
+        - m4@size
+- id: stacking
+  chapter: House rules on the meter
+  render: table
   lines:
   - r1
   - r2
+  params:
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
+    hands: 5
+    pile: uno:0:4
+    turns:
+    - at: r1@check
+      seat: 3
+      ev: play
+      card: uno:0:8
+    - at: r2@stacking
+      seat: 0
+      ev: play
+      card: uno:0:12
+      label: DRAW TWO
+    - at: r2@everybody
+      seat: 1
+      ev: play
+      card: uno:3:12
+      label: STACKED!
+    - at: r2@nudges
+      seat: 2
+      ev: draw
+      label: TAKES FOUR
+    - at: r2@nudges+0.15
+      seat: 2
+      ev: draw
+    - at: r2@nudges+0.30
+      seat: 2
+      ev: draw
+    - at: r2@nudges+0.45
+      seat: 2
+      ev: draw
+    - at: r2@barely
+      seat: 3
+      ev: play
+      card: uno:3:6
+    highlight:
+    - - 2
+      - r2@nudges
+    callouts:
+    - text: 'Skill meter: 30%'
+      at: r2@thirty
+      color: MUSTARD
+- id: sevenzero
+  render: table
+  lines:
   - r3
   params:
-    title: The house rules
-    step: 110
-    size: 42
-    items:
-    - text: Stacking +2s (and +4s)
-      at: r2+0.5
-    - text: 'Seven Zero: swap and rotate hands'
-      at: r2+3.5
-    - text: 'Jump In: same card, out of turn'
-      at: r2+7
-    - text: Draw until you can play
-      at: r3
-    - text: Forced play
-      at: r3+2
-    - text: 'Free +4: no color rule, no challenges'
-      at: r3+3.5
-- id: length
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
+    hands: 5
+    pile: uno:1:3
+    turns:
+    - at: r3@seven#2
+      seat: 0
+      ev: play
+      card: uno:1:7
+      label: A SEVEN
+    - at: r3@swaps
+      ev: swap
+      seat: 0
+      with: 2
+      label: SWAP HANDS
+    - at: r3@zero#2
+      seat: 1
+      ev: play
+      card: uno:1:0
+      label: A ZERO
+    - at: r3@passes
+      ev: pass
+      label: EVERYONE PASSES
+    - at: r3@take
+      seat: 3
+      ev: play
+      card: uno:1:7
+      label: A SEVEN
+    - at: r3@time
+      ev: swap
+      seat: 3
+      with: 0
+      label: TAKES YOUR HAND
+    - at: r3@drags
+      seat: 2
+      ev: play
+      card: uno:1:5
+    highlight:
+    - - 0
+      - r3@plan
+      - YOUR PLAN…
+    - - 0
+      - r3@starts
+      - 'WENT FIRST: NO EDGE'
+    callouts:
+    - text: 'Skill meter: 26%'
+      at: r3@twenty
+      color: CORAL
+    - text: 'Going first: almost 27% officially'
+      at: r3@official
+- id: jumpin
+  render: table
+  lines:
+  - r4
+  params:
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
+    hands: 5
+    pile: uno:2:6
+    turns:
+    - at: r4@holding
+      seat: 0
+      ev: play
+      card: uno:0:6
+      label: RED SIX
+    - at: r4@slap
+      seat: 2
+      ev: play
+      card: uno:0:6
+      label: JUMP IN!
+    - at: r4@pushes
+      seat: 3
+      ev: play
+      card: uno:0:2
+    highlight:
+    - - 1
+      - r4@turn
+      - SKIPPED
+    callouts:
+    - text: The exact same card, out of turn
+      at: r4@exact
+    - text: 'Skill meter: 30.5%'
+      at: r4@thirty
+      color: MUSTARD
+- id: free4
+  render: fan
+  lines:
+  - r5
+  params:
+    title: The free Draw Four
+    seat_label: YOUR HAND
+    pill: 4 players
+    cards:
+    - uno:4:14
+    - uno:0:5
+    - uno:0:9
+    - uno:2:3
+    - uno:4:14
+    highlights:
+    - card: 0
+      at: r5@free
+      label: DRAW FOUR
+    - card: 1
+      at: r5@time
+      label: STILL HAVE RED? PLAY IT ANYWAY
+    - card: 4
+      at: r5@whole
+      label: AND AGAIN, WHENEVER
+    - card: pile
+      at: r5@brings
+      label: NO ONE CAN CHALLENGE IT
+    play:
+    - card: 0
+      at: r5@challenges
+    - card: 4
+      at: r5@knowing
+    callouts:
+    - text: 'Skill meter: 31%'
+      at: r5@thirty
+      color: MUSTARD
+    pile: uno:0:3
+- id: drawuntil
   render: bars
   lines:
-  - x1
-  - x2
-  - x3
-  - x4
-  - x5
+  - r6
   params:
-    chart: length
     title: Average turns per round
-    notes:
-    - text: 1 round in 10 lasts over 76 turns (official) vs 172 (draw until)
-      at: x4
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 32
-      pill: CORAL
-    - text: 'Cards drawn per round: 25 → 73'
-      at: x5
-      pos:
-      - 960
-      - 215
-      align: center
-      size: 36
-      pill: CREAM
-  chapter: The game breaker
-- id: stackdemo
-  chapter: Stacking
-  render: unotable
+    callouts:
+    - text: Barely moves the meter
+      at: r6@barely
+    - text: '1 round in 10: over 170 turns'
+      at: r6@ten
+      color: CORAL
+    chart:
+      players: 4
+      unit: ''
+      decimals: 0
+      items:
+      - label: Official
+        value: =v2.json:combos[key=official].turns
+        at: r6@barely
+        color: TEAL
+        pulse:
+        - r6@forever
+      - label: Draw until you can play
+        value: =v2.json:combos[key=draw_until].turns
+        at: r6@eighty
+        color: CORAL
+        hl: true
+        pulse:
+        - r6@ten
+        - r6@hundred
+- id: noout
+  render: fan
   lines:
-  - s1
+  - r7
   params:
-    stack: true
-    from: 0.3
-    every: 0.6
-- id: stack
-  render: bars
-  lines:
-  - s2
-  - s3
-  params:
-    chart: stack
-    title: Rounds where someone draws 10+ at once
-- id: sevenzero
-  render: bars
-  lines:
-  - z1
-  - z2
-  - z3
-  params:
-    chart: sevenzero
-    title: 'Seven Zero: first-player edge and skill'
-  chapter: Seven Zero
+    title: No going out on an action card
+    seat_label: YOUR LAST CARD
+    pill: 4 players
+    cards:
+    - uno:3:10
+    highlights:
+    - card: 0
+      at: r7@allowed
+      label: CAN'T GO OUT ON…
+    - card: 0
+      at: r7@action
+      label: …AN ACTION CARD
+    - card: 0
+      at: r7@longer
+      label: SO YOU KEEP PLAYING
+    callouts:
+    - text: Can't go out on an action card or Wild
+      at: r7@kills
+    - text: 'Skill meter: 25.5%'
+      at: r7@twenty
+      color: CORAL
+    pile: uno:3:3
 - id: everything
+  render: checklist
+  lines:
+  - r8
+  params:
+    title: Every house rule at once
+    items:
+    - text: Stacking
+      card: [uno:0:12, uno:3:12]
+      at: r8@stacking
+    - text: Seven Zero
+      card: [uno:1:7, uno:2:0]
+      at: r8@seven
+    - text: Jump In
+      card: [uno:0:6, uno:0:6]
+      at: r8@jump
+    - text: Draw until you can play
+      card: [uno:back:0, uno:back:0, uno:back:0]
+      at: r8@draw
+    - text: Free Draw Four
+      card: uno:4:14
+      at: r8@free
+    - text: 86 turns a round
+      at: r8@eighty
+      color: CORAL
+    callouts:
+    - text: 'Less skill than the official game: 28.5%'
+      at: r8@twenty
+      color: CORAL
+    cards:
+    - uno:0:12
+    - uno:3:12
+    - uno:4:14
+    - uno:0:2
+    - uno:1:2
+    - uno:3:2
+- id: bounce
+  render: table
+  lines:
+  - r9
+  params:
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
+    hands: 5
+    pile: uno:0:4
+    turns:
+    - at: r9@bounce
+      seat: 0
+      ev: play
+      card: uno:0:12
+      label: DRAW TWO
+    - at: r9@reverse
+      seat: 1
+      ev: play
+      card: uno:0:11
+      label: BOUNCE!
+    - at: r9@played
+      seat: 0
+      ev: draw
+      label: TAKES TWO
+    - at: r9@played+0.15
+      seat: 0
+      ev: draw
+    - at: r9@nothing
+      seat: 3
+      ev: play
+      card: uno:0:5
+    highlight:
+    - - 1
+      - r9@reverse
+    callouts:
+    - text: 'Skill meter: 29%'
+      at: r9@twenty
+      color: CREAM
+    - text: Changes nothing. Really fun.
+      at: r9@nothing
+      color: MUSTARD
+- id: myrules
+  chapter: How I play
+  render: checklist
+  lines:
+  - i1
+  params:
+    title: How I've always played
+    items:
+    - text: Draw Two on Draw Two
+      card: [uno:0:12, uno:3:12]
+      at: i1@twos
+    - text: Draw Four on Draw Four (no mixing)
+      card: [uno:4:14, uno:4:14]
+      at: i1@fours
+    - text: Draw Four any time
+      card: [uno:0:3, uno:4:14]
+      at: i1@whenever
+    - text: Dump all of the same number at once
+      card: [uno:0:5, uno:1:5, uno:3:5]
+      at: i1@dump
+      color: MUSTARD
+    cards:
+    - uno:0:2
+    - uno:1:2
+    - uno:3:2
+    - uno:4:14
+    - uno:0:12
+    - uno:2:12
+- id: mine
   render: bars
   lines:
-  - a1
-  - a2
+  - i2
+  - i3
   params:
-    chart: everything
-    title: All the house rules at once
-    notes:
-    - text: '6 rounds in 100: someone draws 10+'
-      at: a2+3
-      pos:
-      - 960
-      - 150
-      align: center
-      size: 36
-      pill: CORAL
-  chapter: Everything at once
+    title: My rules on the skill meter
+    callouts:
+    - text: Out of 192 rule combinations
+      at: i3@combinations
+    - text: 'Best bot: 31%'
+      at: i2@bot
+      color: MUSTARD
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 40
+      items:
+      - label: Official
+        value: =v2.json:combos[key=official].best*100
+        at: 0.0
+        color: TEAL
+        pulse:
+        - i2@changes
+        - i2@forty
+        context: true
+      - label: My rules
+        value: =v2.json:combos[key=stack+free_d4+multi].best*100
+        at: i2@thirty
+        color: MUSTARD
+        hl: true
+        pulse:
+        - i3@combinations
+        - i3@sixth
+        - i3@entire
+- id: dump
+  render: fan
+  lines:
+  - i4
+  params:
+    title: Dumping matching numbers
+    seat_label: YOU
+    pill: 4 players
+    cards:
+    - uno:0:2
+    - uno:1:2
+    - uno:3:2
+    - uno:2:8
+    - uno:4:13
+    highlights:
+    - card: 0
+      at: i4@habit
+      label: THREE TWOS
+    - card: 1
+      at: i4@matching
+      label: SAME NUMBER
+    play:
+    - card: 0
+      at: i4@dump
+    - card: 1
+      at: i4@dump+0.3
+    - card: 2
+      at: i4@dump+0.6
+    callouts:
+    - text: 'One at a time: 14% instead of 25%'
+      at: i4@fourteen
+      color: CORAL
+    - text: If you can dump them, dump them
+      at: i4@basically
+      color: MUSTARD
+    pile: uno:0:7
+- id: stacks
+  render: table
+  lines:
+  - i5
+  params:
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
+    hands: 6
+    pile: uno:0:6
+    turns:
+    - at: i5@stacks
+      seat: 1
+      ev: play
+      card: uno:0:12
+      label: DRAW TWO
+    - at: i5@rules
+      seat: 2
+      ev: play
+      card: uno:3:12
+      label: STACKED
+    - at: i5@round
+      seat: 3
+      ev: play
+      card: uno:2:12
+      label: STACKED
+    - at: i5@nine
+      seat: 0
+      ev: play
+      card: uno:1:12
+      label: EIGHT CARDS
+    - at: i5@pick
+      seat: 1
+      ev: draw
+      label: PICKS UP EIGHT
+    - at: i5@pick+0.16
+      seat: 1
+      ev: draw
+    - at: i5@pick+0.32
+      seat: 1
+      ev: draw
+    - at: i5@pick+0.48
+      seat: 1
+      ev: draw
+    - at: i5@pick+0.64
+      seat: 1
+      ev: draw
+    - at: i5@pick+0.80
+      seat: 1
+      ev: draw
+    - at: i5@pick+0.96
+      seat: 1
+      ev: draw
+    - at: i5@pick+1.12
+      seat: 1
+      ev: draw
+    - at: i5@ten
+      seat: 2
+      ev: play
+      card: uno:1:3
+    highlight:
+    - - 1
+      - i5@hundred
+    callouts:
+    - text: '8+ cards at once: 1 round in 9'
+      at: i5@eight
+      color: CORAL
+    - text: '10+: under 1 in 100'
+      at: i5@hundred
 - id: twoplayer
+  chapter: Other tables
   render: bars
   lines:
   - t1
   - t2
   params:
-    chart: twoplayer
-    title: Two players
-  chapter: Two players
-- id: getgood
+    title: One on one
+    callouts:
+    - text: The meter shifts
+      at: t1@shifts
+    - text: Every seven swaps with your only opponent
+      at: t2@every
+    chart:
+      players: 2
+      fair: 50
+      decimals: 1
+      maxV: 70
+      items:
+      - label: Best bot, official
+        value: =results.json:two_player.official.smart_vs_normal*100
+        at: t1@meter
+        color: MUSTARD
+        pulse:
+        - t1@fifty
+        - t2@seven
+      - label: Whoever goes first
+        value: =results.json:two_player.official.table.first_seat_win*100
+        at: t1@first
+        color: TEAL
+        pulse:
+        - t2@opponent
+      - label: Best bot, Seven Zero
+        value: =results.json:two_player.seven_zero.smart_vs_normal*100
+        at: t2@barely
+        color: CORAL
+- id: tenplayers
   render: statement
   lines:
-  - k1
+  - p1
   params:
     lines:
-    - Can you actually
-    - text: get good at Uno?
+    - 'More players:'
+    - text: +7 turns each
+      at: p1@seven
+    - text: '10 players: about 91 turns'
       color: MUSTARD
-  chapter: Can you get good at Uno?
-- id: luck
+      at: p1@ninety
+- id: passevery
+  chapter: The extremes
+  render: table
+  lines:
+  - x1
+  params:
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
+    hands: 5
+    pile: uno:2:5
+    turns:
+    - at: x1@pure
+      seat: 0
+      ev: play
+      card: uno:2:8
+    - at: x1@easy
+      seat: 1
+      ev: play
+      card: uno:3:8
+    - at: x1@turn
+      ev: pass
+      label: PASS YOUR HAND
+    - at: x1@force
+      seat: 2
+      ev: play
+      card: uno:3:1
+    - at: x1@player
+      ev: pass
+      label: AND AGAIN
+    callouts:
+    - text: Pure luck? Easy.
+      at: x1@easy
+      color: CREAM
+    - text: Everyone passes their hand. Every turn.
+      at: x1@force
+      color: CORAL
+  pad:
+  - 0.2
+  - 1.0
+- id: passbars
   render: bars
   lines:
-  - k2
-  - k3
+  - x2
   params:
-    chart: luck
-    title: Best bot vs a normal table
-- id: habits
+    title: Pass your hand every turn
+    callouts:
+    - text: Below a fair share
+      at: x2@below
+      color: CORAL
+    - text: Good at Uno = worse at Uno
+      at: x2@worse
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 40
+      items:
+      - label: Best bot, pass every turn
+        value: =extras.json:rules.pass_every.best*100
+        at: x2@four
+        color: CORAL
+        hl: true
+        pulse:
+        - x2@below
+        - x2@worse
+        - x2@handed
+- id: joke
+  render: fan
+  lines:
+  - x3
+  params:
+    title: The official sheet's blank-card idea
+    seat_label: YOU
+    pill: 4 players
+    cards:
+    - uno:4:16
+    - uno:0:5
+    - uno:3:9
+    - uno:1:2
+    - uno:2:7
+    highlights:
+    - card: 0
+      at: x3@blank
+      label: BLANK CARD
+    - card: 0
+      at: x3@joke
+      label: TELL A JOKE
+    play:
+    - card: 0
+      at: x3@laughs
+    - card: 1
+      at: x3@discard
+    - card: 2
+      at: x3@discard+0.25
+    - card: 3
+      at: x3@discard+0.5
+    callouts:
+    - text: 'Someone laughs: discard down to 1 card'
+      at: x3@laughs
+    - text: 'Nobody laughs: draw 4'
+      at: x3@nobody
+      color: CORAL
+    pile: uno:2:5
+- id: jokebars
   render: bars
   lines:
-  - h1
-  - h2
-  - h3
-  - h4
-  - h5
+  - x4
   params:
-    chart: habits
-    title: The habits that help (and hurt)
-  chapter: The habits that help
-- id: recipe
-  chapter: The verdict
+    title: The joke card
+    callouts:
+    - text: A laugh = a coin flip
+      at: x4@flip
+      color: CREAM
+    - text: Mostly a coin toss
+      at: x4@toss
+      color: CORAL
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 40
+      items:
+      - label: Official
+        value: =v2.json:combos[key=official].best*100
+        at: 0.0
+        color: TEAL
+      - label: Joke cards
+        value: =extras.json:rules.joke_cards.best*100
+        at: x4@twenty
+        color: CORAL
+        hl: true
+- id: luckiest
   render: checklist
   lines:
+  - x7
+  params:
+    title: The most luck-driven Uno
+    items:
+    - text: Draw until you can play
+      card: [uno:back:0, uno:back:0, uno:back:0]
+      at: x7@draw
+    - text: Dump matching numbers
+      card: [uno:0:5, uno:1:5, uno:3:5]
+      at: x7@dump
+    - text: No going out on an action card
+      card: uno:2:10
+      at: x7@going
+    - text: 'Best bot: 23.5%'
+      at: x7@twenty
+      verdict: BELOW FAIR
+      color: CORAL
+    callouts:
+    - text: Nobody should play this
+      at: x7@nobody
+      color: CORAL
+    cards:
+    - uno:0:12
+    - uno:3:12
+    - uno:4:14
+    - uno:0:2
+    - uno:1:2
+    - uno:3:2
+- id: skilliest
+  render: fan
+  lines:
+  - x5
+  - x6
+  params:
+    title: The most skillful Uno
+    seat_label: THE RULES
+    pill: 4 players
+    cards:
+    - uno:0:12
+    - uno:3:5
+    - uno:4:14
+    - uno:back:0
+    highlights:
+    - card: 0
+      at: x5@stacking
+      label: STACKING
+    - card: 1
+      at: x5@jump
+      label: JUMP IN
+    - card: 2
+      at: x5@free
+      label: FREE DRAW FOUR
+    - card: 3
+      at: x5@draw
+      label: DRAW UNTIL YOU CAN PLAY
+    - card: 3
+      at: x6@catch
+      label: 'ALL THAT DRAWING: 84 TURNS'
+    callouts:
+    - text: 'Best bot: 35%'
+      at: x5@thirty
+      color: MUSTARD
+    - text: Almost double the official game
+      at: x6@double
+      color: CORAL
+- id: best
+  chapter: The best way to play
+  render: checklist
+  lines:
+  - b1
+  - b2
+  - b3
+  params:
+    title: The best way to play Uno
+    items:
+    - text: Stacking
+      card: [uno:0:12, uno:3:12]
+      at: b2@stacking
+    - text: Jump In
+      card: [uno:0:6, uno:0:6]
+      at: b2@jump
+    - text: Free Draw Four
+      card: uno:4:14
+      at: b2@free
+    - text: Dump matching numbers
+      card: [uno:0:5, uno:1:5, uno:3:5]
+      at: b2@dumping
+    - text: About 39 turns a round
+      at: b2@thirty
+      verdict: FAST
+      color: MUSTARD
+    - text: Best bot wins 32%
+      at: b2@thirty#2
+      verdict: SKILL
+      color: MUSTARD
+    - at: b2@twice
+      color: MUSTARD
+      text: Almost twice the official skill
+    - text: Want a coin toss? Add Seven Zero
+      card: [uno:1:7, uno:2:0]
+      at: b3@add
+      color: CORAL
+    callouts:
+    - text: Fast, and skill counts
+      at: b1@fast
+    cards:
+    - uno:0:12
+    - uno:3:12
+    - uno:4:14
+    - uno:0:2
+    - uno:1:2
+    - uno:3:2
+- id: fourhabits
+  chapter: How to win
+  render: statement
+  lines:
   - w1
+  params:
+    lines:
+    - 'How to win:'
+    - text: four big habits
+      color: MUSTARD
+      at: w1@four
+    callouts:
+    - text: One bot, one habit, three normal players
+      at: w1@every
+- id: habit1
+  render: fan
+  lines:
   - w2
+  params:
+    title: 1. Dump every card of a number
+    seat_label: YOU
+    pill: 4 players
+    cards:
+    - uno:0:7
+    - uno:2:7
+    - uno:3:7
+    - uno:1:4
+    - uno:4:13
+    highlights:
+    - card: 0
+      at: w2@dump
+      label: ALL THE SEVENS
+    play:
+    - card: 0
+      at: w2@together
+    - card: 1
+      at: w2@together+0.3
+    - card: 2
+      at: w2@together+0.6
+    callouts:
+    - text: 'Hold any back: 25% → 15%'
+      at: w2@fifteen
+      color: CORAL
+    pile: uno:0:4
+- id: habit2
+  render: bars
+  lines:
   - w3
   params:
-    title: The house-rule verdict
-    step: 120
-    size: 44
-    items:
-    - text: 'Shorter rounds: add Jump In'
-      at: w2
-    - text: 'Chaos stories: add stacking'
-      at: w2+2.5
-    - text: 'More luck: add Seven Zero'
-      at: w2+4.5
-    - text: 'Never: draw until you can play'
-      at: w3
-      verdict: BROKEN
+    title: 2. Hold your Wilds
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 40
+      items:
+      - label: Holds Wilds
+        value: =extras.json:habits_pick.hold wilds*100
+        at: w3@hold
+        color: MUSTARD
+        hl: true
+        pulse:
+        - w3@don't
+        - w3@alone
+    callouts:
+    - text: Don't play a Wild if anything else fits
+      at: w3@don't
+- id: habit3
+  render: table
+  lines:
+  - w4
+  params:
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
+    hands: 5
+    pile: uno:0:5
+    turns:
+    - at: w4@stack
+      seat: 1
+      ev: play
+      card: uno:0:12
+      label: DRAW TWO
+    - at: w4@can
+      seat: 2
+      ev: play
+      card: uno:3:12
+      label: STACK IT
+    - at: w4@takes
+      seat: 3
+      ev: draw
+      label: 'NEVER STACKS: TAKES FOUR'
+    - at: w4@takes+0.15
+      seat: 3
+      ev: draw
+    - at: w4@takes+0.30
+      seat: 3
+      ev: draw
+    - at: w4@takes+0.45
+      seat: 3
+      ev: draw
+    - at: w4@twenty
+      seat: 0
+      ev: play
+      card: uno:3:8
+    callouts:
+    - text: 3. Always stack
+      at: w4@always
+    - text: 'Never stacks: 22.5%'
+      at: w4@twenty
       color: CORAL
-- id: argue
+- id: smallstuff
+  render: checklist
+  lines:
+  - w5
+  - w6
+  params:
+    title: The small stuff
+    items:
+    - text: Switch into your best color
+      card: uno:4:13
+      at: w5@switching
+      verdict: '+1.5'
+      color: MUSTARD
+    - text: Jump in whenever you can
+      card: [uno:0:6, uno:0:6]
+      at: w5@jumping
+      verdict: '+1'
+      color: MUSTARD
+    - text: One more habit…
+      at: w6@one
+      color: CORAL
+    callouts:
+    - text: My bots never got this wrong
+      at: w6@bots
+      color: CREAM
+    cards:
+    - uno:0:12
+    - uno:3:12
+    - uno:4:14
+    - uno:0:2
+    - uno:1:2
+    - uno:3:2
+- id: forget
+  chapter: Saying Uno
+  render: table
+  lines:
+  - u1
+  - u2
+  - u3
+  params:
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names:
+    - BEST BOT
+    - NORMAL BOT
+    - NORMAL BOT
+    - NORMAL BOT
+    hands:
+    - 3
+    - 2
+    - 2
+    - 6
+    pile: uno:2:5
+    turns:
+    - at: u1@remember
+      seat: 0
+      ev: play
+      card: uno:2:8
+    - at: u1@forget
+      seat: 1
+      ev: play
+      card: uno:2:3
+    - at: u2@draw
+      seat: 1
+      ev: draw
+      label: DRAW TWO
+    - at: u2@draw+0.15
+      seat: 1
+      ev: draw
+    - at: u3@forgets
+      seat: 2
+      ev: play
+      card: uno:2:6
+    - at: u3@half
+      seat: 2
+      ev: draw
+      label: DRAW TWO
+    - at: u3@half+0.15
+      seat: 2
+      ev: draw
+    - at: u3@half+0.8
+      seat: 3
+      ev: play
+      card: uno:2:2
+    - at: u3@never
+      seat: 0
+      ev: play
+      card: uno:2:9
+    highlight:
+    - - 1
+      - u1@made
+      - FORGOT TO SAY UNO
+    - - 2
+      - u2@catches
+      - CAUGHT YOU!
+    - - 3
+      - u3@catches
+      - CAUGHT!
+    - - 0
+      - u3@thirty
+      - UNO!
+    callouts:
+    - text: So I made them forget
+      at: u1@made
+      color: CORAL
+    - text: 'Caught before the next turn: draw 2'
+      at: u2@officially
+- id: sayuno
+  render: bars
+  lines:
+  - u4
+  - u5
+  params:
+    title: 'Saying Uno: one bot vs three normal players'
+    callouts:
+    - text: Catching others barely matters
+      at: u4@catching
+    - text: Penalty of 4 cards
+      at: u5@four
+      color: CREAM
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 46
+      items:
+      - label: Never forgets
+        value: =v2.json:uno.official.never forgets*100
+        at: 0.0
+        color: MUSTARD
+        hl: true
+        pulse:
+        - u4@catching
+        - u4@say
+        - u5@some
+        context: true
+      - label: Always forgets
+        value: =v2.json:uno.official.always forgets*100
+        at: u4@five
+        color: CORAL
+      - label: Never forgets, 4-card penalty
+        value: =v2.json:uno.penalty4.never forgets*100
+        at: u5@thirty
+        color: MUSTARD
+      - label: Never forgets, my rules
+        value: =extras.json:uno_pick.never forgets*100
+        at: u5@twenty
+        color: TEAL
+- id: race
+  render: table
+  lines:
+  - u6
+  params:
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
+    hands:
+    - 2
+    - 5
+    - 4
+    - 6
+    pile: uno:0:9
+    turns:
+    - at: u6@race
+      seat: 3
+      ev: play
+      card: uno:0:2
+    - at: u6@second
+      seat: 0
+      ev: play
+      card: uno:0:5
+      label: DOWN TO ONE CARD
+    - at: u6@draw
+      seat: 0
+      ev: draw
+      label: DRAW TWO
+    - at: u6@draw+0.15
+      seat: 0
+      ev: draw
+    - at: u6@always
+      seat: 1
+      ev: play
+      card: uno:0:3
+    - at: u6@official
+      seat: 2
+      ev: play
+      card: uno:0:8
+    - at: u6@basically
+      seat: 3
+      ev: play
+      card: uno:0:1
+    - at: u6@hundred
+      seat: 0
+      ev: play
+      card: uno:0:4
+    - at: u6@every
+      seat: 1
+      ev: play
+      card: uno:0:6
+    - at: u6@time
+      seat: 2
+      ev: play
+      card: uno:1:6
+    - at: u6@time+0.6
+      seat: 3
+      ev: play
+      card: uno:1:4
+    - at: u6@card#2
+      seat: 0
+      ev: play
+      card: uno:1:1
+    - at: u6@back
+      seat: 0
+      ev: draw
+    - at: u6@back+0.15
+      seat: 0
+      ev: draw
+    highlight:
+    - - 2
+      - u6@yells
+      - UNO!
+    - - 0
+      - u6@three
+      - BACK UP TO THREE
+    callouts:
+    - text: 'Always wins the race: 41%'
+      at: u6@forty
+      color: MUSTARD
+    - text: 3 rounds in 100,000
+      at: u6@hundred
+      color: CORAL
+  pad:
+  - 0.2
+  - 1.0
+- id: close
   render: statement
   lines:
   - e1
-  params:
-    lines:
-    - Argue about the rules.
-    - text: (That might be the real reason.)
-      color: MUSTARD
-- id: ask
-  render: statement
-  lines:
+  - n1
   - e2
   params:
     lines:
-    - text: Your opening move?
+    - 'Official: mostly luck'
+    - text: 'My pick: almost twice the edge'
       color: MUSTARD
+      at: e1@rules#2
+    - text: 39 turns a round
+      at: e1@thirty
+    - text: The best way to play Uno
+      color: MUSTARD
+      at: e1@best
+    - text: 'Next: Sorry!'
+      at: n1@next
+    - text: Where does your table land?
+      color: CORAL
+      at: e2@where
   pad:
   - 0.3
   - 1.2
@@ -282,4 +1655,4 @@ scenes:
   - 0
   - 0
   params:
-    next_title: How to Beat Your Friends at Connect 4
+    next_title: Sorry! Isn't Pure Luck

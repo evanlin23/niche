@@ -1,0 +1,52 @@
+{
+ "games_per_rule_set": 2000000,
+ "official": {
+  "first_round_starter_wins_game": 0.2503925,
+  "games": 2000000,
+  "mean_rounds_per_game": 9.906869,
+  "mean_turns_per_game": 466.307479,
+  "unfinished_rounds": 0
+ },
+ "draw_until": {
+  "first_round_starter_wins_game": 0.2507555,
+  "games": 2000000,
+  "mean_rounds_per_game": 6.5354895,
+  "mean_turns_per_game": 537.783889,
+  "unfinished_rounds": 0
+ },
+ "stacking": {
+  "first_round_starter_wins_game": 0.2505515,
+  "games": 2000000,
+  "mean_rounds_per_game": 10.5685475,
+  "mean_turns_per_game": 527.5712245,
+  "unfinished_rounds": 0
+ },
+ "seven_zero": {
+  "first_round_starter_wins_game": 0.250283,
+  "games": 2000000,
+  "mean_rounds_per_game": 10.0401925,
+  "mean_turns_per_game": 482.0341055,
+  "unfinished_rounds": 0
+ },
+ "jump_in": {
+  "first_round_starter_wins_game": 0.250582,
+  "games": 2000000,
+  "mean_rounds_per_game": 9.8468895,
+  "mean_turns_per_game": 437.3802905,
+  "unfinished_rounds": 0
+ },
+ "free_draw4": {
+  "first_round_starter_wins_game": 0.2503815,
+  "games": 2000000,
+  "mean_rounds_per_game": 11.670333,
+  "mean_turns_per_game": 583.749595,
+  "unfinished_rounds": 0
+ },
+ "everything": {
+  "first_round_starter_wins_game": 0.249496,
+  "games": 2000000,
+  "mean_rounds_per_game": 7.6087065,
+  "mean_turns_per_game": 657.3435745,
+  "unfinished_rounds": 0
+ }
+}

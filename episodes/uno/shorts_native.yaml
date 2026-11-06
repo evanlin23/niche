@@ -1,0 +1,213 @@
+# Native 9:16 Shorts (python -m pipeline.shorts_native uno). Kit templates, long-video timing, audio cut from the
+# long video. Numbers come from data/*.json. Each opens on its spoken hook with the main visual already on screen.
+# Titles are questions (no "N games simulated", no big number first).
+game: "Uno"   # context pill above the hook
+shorts:
+- id: skill-or-luck
+  hook: 'Is Uno skill
+
+    or luck?'
+  title: Is Uno actually a game of skill?
+  description: 'My best bot vs three normal players, official rules. Full video with every house rule on my channel. #uno #cardgames #boardgames'
+  scenes:
+  - id: sl-meter
+    render: bars
+    lines:
+    - m2
+    - m3
+    - m4
+    params:
+      callouts:
+      - text: 'Pure luck: 1 in 4'
+        at: m2@luck
+      - text: Mostly the cards you're dealt
+        at: m3@dealt
+        color: CREAM
+      chart:
+        players: 4
+        fair: 25
+        decimals: 1
+        maxV: 54
+        items:
+        - label: Uno, official rules
+          value: =v2.json:combos[key=official].best*100
+          at: m3@twenty
+          color: TEAL
+          pulse:
+          - m2@luck
+          - m2@four
+          - m3@four
+          - m3@dealt
+          - m4@luck
+        - label: Exploding Kittens
+          value: =../../exploding-kittens/data/final.json:vs_casual.4.win*100
+          at: m4@forty
+          color: MUSTARD
+          hl: true
+          pulse:
+          - m4@size
+- id: free-plus-four
+  hook: 'Is the free +4
+
+    a real rule?'
+  title: Can you really play a +4 whenever you want in Uno?
+  description: 'The free plus four is the biggest skill boost of any single house rule. Full video on my channel. #uno #cardgames #boardgames'
+  scenes:
+  - id: f4-hand
+    render: fan
+    lines:
+    - r5
+    params:
+      seat_label: YOUR HAND
+      pill: 4 players
+      cards:
+      - uno:4:14
+      - uno:0:5
+      - uno:0:9
+      - uno:2:3
+      - uno:4:14
+      highlights:
+      - card: 0
+        at: r5@free
+        label: DRAW FOUR
+      - card: 1
+        at: r5@time
+        label: STILL HAVE RED? PLAY IT ANYWAY
+      - card: 4
+        at: r5@whole
+        label: AND AGAIN, WHENEVER
+      - card: pile
+        at: r5@brings
+        label: NO ONE CAN CHALLENGE IT
+      play:
+      - card: 0
+        at: r5@challenges
+      - card: 4
+        at: r5@knowing
+      callouts:
+      - text: 'Skill meter: 31%'
+        at: r5@thirty
+        color: MUSTARD
+      pile: uno:0:3
+- id: seven-zero
+  hook: 'Does Seven Zero
+
+    ruin Uno?'
+  title: Does Seven Zero make Uno more luck?
+  description: 'Swapping hands drags the skill meter down and wipes out the edge of going first. Full video on my channel. #uno #cardgames #boardgames'
+  scenes:
+  - id: sz-table
+    render: table
+    lines:
+    - r3@playing
+    params:
+      players: 4
+      elev: 36
+      yaw: 5
+      push: 0.1
+      names:
+      - YOU
+      - PLAYER 2
+      - PLAYER 3
+      - PLAYER 4
+      hands: 5
+      pile: uno:1:3
+      turns:
+      - at: r3@seven
+        seat: 0
+        ev: play
+        card: uno:1:7
+        label: A SEVEN
+      - at: r3@swaps
+        ev: swap
+        seat: 0
+        with: 2
+        label: SWAP HANDS
+      - at: r3@zero
+        seat: 1
+        ev: play
+        card: uno:1:0
+        label: A ZERO
+      - at: r3@passes
+        ev: pass
+        label: EVERYONE PASSES
+      - at: r3@take
+        seat: 3
+        ev: play
+        card: uno:1:7
+        label: A SEVEN
+      - at: r3@time
+        ev: swap
+        seat: 3
+        with: 0
+        label: TAKES YOUR HAND
+      - at: r3@drags
+        seat: 2
+        ev: play
+        card: uno:1:5
+      highlight:
+      - - 0
+        - r3@plan
+        - YOUR PLAN…
+      - - 0
+        - r3@starts
+        - 'WENT FIRST: NO EDGE'
+      callouts:
+      - text: 'Skill meter: 26%'
+        at: r3@twenty
+        color: CORAL
+      - text: 'Going first: almost 27% officially'
+        at: r3@official
+- id: say-uno
+  hook: 'What if you forget
+
+    to say Uno?'
+  title: How much does forgetting to say Uno cost you?
+  description: 'Everyone forgets one time in four. Full video on my channel. #uno #cardgames #boardgames'
+  scenes:
+  - id: su-bars
+    render: bars
+    lines:
+    - u4
+    - u5
+    params:
+      callouts:
+      - text: Catching others barely matters
+        at: u4@catching
+      - text: Penalty of 4 cards
+        at: u5@four
+        color: CREAM
+      chart:
+        players: 4
+        fair: 25
+        decimals: 1
+        maxV: 46
+        items:
+        - label: Never forgets
+          value: =v2.json:uno.official.never forgets*100
+          at: 0.0
+          color: MUSTARD
+          hl: true
+          pulse:
+          - u4@catching
+          - u4@say
+          - u5@some
+          context: true
+        - label: Always forgets
+          value: =v2.json:uno.official.always forgets*100
+          at: 0.0
+          color: CORAL
+          pulse:
+          - u4@five
+        - label: Never forgets, 4-card penalty
+          value: =v2.json:uno.penalty4.never forgets*100
+          at: 0.0
+          color: MUSTARD
+          pulse:
+          - u5@thirty
+        - label: Never forgets, my rules
+          value: =extras.json:uno_pick.never forgets*100
+          at: 0.0
+          color: TEAL
+          pulse:
+          - u5@twenty
