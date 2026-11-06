@@ -144,7 +144,8 @@ export class Kit {
   // ---------------------------------------------------------------- QA-registered tweens
   // every transition finishes before the cut: one starting on the scene's last word is shortened (min 0.12 s)
   tw(name, at, dur = 0.5) {
-    const sp = this.stage.spec, end = (sp.n_frames ? (sp.n_frames - 1) / sp.fps : this.stage.duration) - 0.02;   // the last frame drawn
+    // done before the second-to-last frame (ending between the last two frames left a sliver of easing at the cut)
+    const sp = this.stage.spec, end = (sp.n_frames ? (sp.n_frames - 2) / sp.fps : this.stage.duration - 0.034) - 0.01;
     if (at < end) dur = Math.max(0.12, Math.min(dur, end - at));
     this.stage.qa.tweens.push({ name, at, dur });
     const f = (t) => ease((t - at) / dur); f.dur = dur;
@@ -793,10 +794,14 @@ T.fan = async (stage, spec) => {
   const SH = K.L.short;
   if (!SH) { const pawn = makePawn(stage, p.color || 'BLUE', 1.0); pawn.position.set(0, 0, 3.6); K.key(pawn); }   // the seat, in front: cards above its head
   const cards = faces.map((f) => { const c = kitCard(stage, f); c.scale.setScalar(K.L.short ? 1.9 : 1.8); K.key(c); return c; });
-  const PZ = SH ? 1.2 : -0.4;              // Shorts: the pile sits right under the hand (a compact, tall-frame layout)
-  const pile = kitCard(stage, p.pile ?? 'back'); pile.position.set(0, 0.05, PZ); pile.scale.setScalar(1.3); K.key(pile);
   // Shorts: fanned wider (still overlapping) so the hand spans ~85% of the band at the same height
   const spread = vert ? (K.L.short ? clamp(5.0 / Math.max(1, n - 1), 0.84, 1.25) : 0.8) : 1.05;
+  // the pile: Shorts - right under the hand (a compact, tall-frame layout); long form - on the table to the LEFT of
+  // the hand, at a hand card's scale, never behind or under the fan (it sat hidden behind the hand, and the top
+  // card's label landed on the hand cards)
+  const PS = SH ? 1.3 : cards[0].scale.x, PZ = SH ? 1.2 : 2.0;
+  const PX = SH ? 0 : -((n - 1) / 2 * spread + CARD.W * cards[0].scale.x * 0.5 + CARD.W * PS * 0.5 + 0.9);
+  const pile = kitCard(stage, p.pile ?? 'back'); pile.position.set(PX, 0.05, PZ); pile.scale.setScalar(PS); K.key(pile);
   const handY = SH ? 4.8 : 3.0;            // Shorts: high enough that a played card drops out under the hand (that gap + the pile below fill the band's height)
   const slot = (i) => { const off = i - (n - 1) / 2; const r = n > 1 ? off / ((n - 1) / 2) : 0;   // -1..1 across the hand: the arc depth is bounded whatever the hand size
     return [new THREE.Vector3(off * spread, handY - r * r * 0.3, 2.0), -r * 0.35]; };
@@ -805,16 +810,27 @@ T.fan = async (stage, spec) => {
   hl.forEach((h) => K.tw(`lift card ${h.card}`, h.at, 0.3));
   // plays on the same moment: staggered so one card is clear of the hand's height before the next travels, and
   // each lands in its own pile layer in landing order (two plays on one word used to share a layer)
-  scheduleLandings(plays, 0.3, (h) => K.tw(`play card ${h.card}`, h.start, 0.9).dur);   // same word: staggered +-0.09 s, own lane
+  // long form: the long sideways move reads ~0.08 s after it begins, so it begins that much before its word (sync gate)
+  scheduleLandings(plays, 0.3, (h) => { if (!SH) h.start -= 0.08; return K.tw(`play card ${h.card}`, h.start, 0.9).dur; });   // same word: staggered +-0.09 s, own lane
+  // lanes: a play that starts while earlier ones are still in flight goes ABOVE all of them (earlier cards always come
+  // down first, with nothing under them). Lowest-free-lane put a later card under an earlier one's descent: clipping
+  plays.slice().sort((a, b) => a.start - b.start).forEach((e, _, arr) => {
+    const up = arr.filter((o) => o !== e && o.laneSet && o.start < e.start + e.dur && e.start < o.start + o.dur).map((o) => o.lane);
+    e.lane = up.length ? Math.max(...up) + 1 : 0; e.laneSet = true;
+    if (!SH && e.lane) { e.dur = K.tw(`play card ${e.card} (lane ${e.lane})`, e.start, 0.9 + 0.3 * e.lane).dur; e.lands = e.start + e.dur; }   // a higher climb gets more time
+  });
+  plays.map((e, i) => ({ e, i })).sort((a, b) => a.e.lands - b.e.lands || a.i - b.i).forEach(({ e }, slot) => { e.slot = slot; });   // pile layers in (new) landing order
   const appear = SH ? K.tw('hand up (pre-built)', -0.35, 0.8) : K.tw('hand up', 0.05, 0.5);   // Shorts: built on frame 1, still settling
   const pill = K.label({ text: '', size: 34, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
   if (p.seat_label) K.worldLabel({ text: p.seat_label, size: 30, role: 'label', at: -1, color: GN.text }, new THREE.Vector3(0, 0, SH ? PZ + 1.35 : 4.3), 4);   // Shorts: under the pile
   const w = (n - 1) / 2 * spread + 1.1, LIFT = SH ? 0.5 : 0.7;
-  const rise = plays.length ? CARD.H * cards[0].scale.x * (1.2 + 0.7 * Math.max(0, ...plays.map((h) => h.lane || 0))) : 0;   // + lanes of simultaneous plays     // played cards rise above the hand: keep them in frame
+  // long form: plays slide out sideways (no rise), so only lanes of simultaneous plays need headroom
+  const rise = plays.length ? (SH ? CARD.H * cards[0].scale.x * (1.2 + 0.7 * Math.max(0, ...plays.map((h) => h.lane || 0)))
+    : 0.8 + CARD.H * cards[0].scale.x * 1.05 * Math.max(0, ...plays.map((h) => h.lane || 0))) : 0;   // + lanes of simultaneous plays     // played cards rise above the hand: keep them in frame
   if (SH) {   // tight: the hand's width (+ card half-width), from the pile up to a lifted card's top (plays go DOWN)
     const sc = cards[0].scale.x, hw = (n - 1) / 2 * spread + (CARD.W / 2 * Math.cos(0.35) + CARD.H / 2 * Math.sin(0.35)) * sc + 0.15;   // the outer cards are tilted 0.35 rad: their corners
     K.fit(boxPoints(-hw, 0, PZ - 0.7, hw, handY + CARD.H * cards[0].scale.x * 0.62 + LIFT + 0.3, 2.4), { elev: 20, yaw: 5, push: 0.06 });
-  } else K.fit(boxPoints(-Math.max(w, 1.8), 0, -1.4, Math.max(w, 1.8), handY + 1.4 + rise, 4.4), { elev: 20, yaw: 5, push: 0.06 });
+  } else K.fit(boxPoints(Math.min(-Math.max(w, 1.8), PX - CARD.H * PS * 0.55), 0, 0.6, Math.max(w, 1.8), handY + 1.4 + rise, 4.4), { elev: 20, yaw: 5, push: 0.06 });   // nothing behind the hand any more
   return K.frame((t) => {
     const up = appear(t), cam = stage.camera.position;
     // ONE plane for the whole hand (facing the camera from the hand's centre): with a per-card facing, neighbouring
@@ -846,15 +862,24 @@ T.fan = async (stage, spec) => {
         // passed through the cards behind it, and an upright card landing went edge-first into the table
         // 3 phases: rise in the hand's plane until clear, travel back over the hand at that height, then descend
         // and flatten onto the pile (straight lines went through the hand, and an upright card landed edge-first)
-        const u = clamp((t - pl.start) / pl.dur), k1 = ease(clamp(u / 0.3)), k2 = ease(clamp((u - 0.3) / 0.3)), k3 = ease(clamp((u - 0.6) / 0.4));
+        const u = clamp((t - pl.start) / pl.dur), k1 = ease(clamp(u / 0.3)), k2 = SH ? ease(clamp((u - 0.3) / 0.3)) : ease(clamp((u - 0.45) / 0.17)), k3 = ease(clamp((u - 0.6) / 0.4));
         const landed = pl.slot;                                             // its own layer, landing order
         // Shorts: the same 3 phases DOWNWARD (slide out under the hand, tuck back over the pile below it, settle
         // flat), so the frame needn't keep room above the hand: the hand fills the band's width
-        const top = c.position.clone().addScaledVector(upIn, (SH ? -1.25 : 1.15) * k1 * CARD.H * c.scale.x), hq = c.quaternion.clone();
-        const pileTop = new THREE.Vector3(0, layerY(landed + 1, 0.05 + CARD.T * 1.3, c.scale.x), PZ);
-        const over = new THREE.Vector3(pileTop.x, top.y + (pl.lane || 0) * CARD.H * c.scale.x * (SH ? -0.25 : 0.7), pileTop.z);   // simultaneous plays: own lanes
+        // long form: slide LEFT in the hand's plane until clear of the leftmost card (it passes over the cards behind
+        // it, each in its own layer), then over to the pile beside the hand, turn flat, lower. No room needed above
+        const leftIn = new THREE.Vector3(-1, 0, 0).applyQuaternion(q0);
+        const top = SH ? c.position.clone().addScaledVector(upIn, -1.25 * k1 * CARD.H * c.scale.x)
+          : c.position.clone().addScaledVector(leftIn, ease(clamp((u - 0.12) / 0.48)) * (PX - c.position.x) / (leftIn.x || -1))   // ONE long slide in the hand's plane, all the way over the pile
+            .addScaledVector(upIn, ease(clamp(u / 0.25)) * (0.8 + (pl.lane || 0) * CARD.H * c.scale.x * 1.05));   // up to its lane first (lanes a card's height apart; a diagonal climb crossed the lane below, where the previous card waited)
+        const hq = c.quaternion.clone();
+        const pileTop = new THREE.Vector3(PX, layerY(landed + 1, 0.05 + CARD.T * PS, c.scale.x), PZ);
+        // long form: travel sideways at the card's own depth (sending every card to the pile's depth collapsed the
+        // layer gap between simultaneous plays while still upright); the depth changes only once flat
+        const over = SH ? new THREE.Vector3(pileTop.x, top.y - (pl.lane || 0) * CARD.H * c.scale.x * 0.25, pileTop.z)
+          : top.clone();   // long form: the slide already ends over the pile (in the hand's plane: world-x drifted toward the cards behind under the orbit)   // simultaneous plays: own lanes
         // Shorts: turn flat first, then lower onto the pile (turning while descending dipped an edge into the card below)
-        const kd = SH ? ease(clamp((u - 0.75) / 0.25)) : k3, kr = SH ? ease(clamp((u - 0.6) / 0.25)) : k3;
+        const kd = ease(clamp((u - 0.78) / 0.22)), kr = ease(clamp((u - (SH ? 0.56 : 0.6)) / (SH ? 0.2 : 0.18)));   // turn flat, THEN lower
         c.position.lerpVectors(top, over, k2).lerp(pileTop, kd);
         c.quaternion.slerpQuaternions(hq, flat, kr);
       }
@@ -868,11 +893,14 @@ T.fan = async (stage, spec) => {
     const named = pileHl.length ? pileHl[pileHl.length - 1].at : t;
     const landedPlays = plays.filter((h) => named >= h.start + h.dur).sort((a, b) => a.slot - b.slot);
     const topCard = landedPlays.length ? cards[landedPlays[landedPlays.length - 1].card] : pile;
-    pile.position.set(0, 0.05, PZ);
+    pile.position.set(PX, 0.05, PZ);
     if (pileLift > 0) topCard.position.y += pileLift * 0.8;
     if (cur) {
+      // long form: the pile's label goes UNDER the pile (above it, it touched the hand); Shorts: above the top card
+      const pileBelow = cur.card === 'pile' && !SH;
       const anchorP = cur.card === 'pile' ? topCard.position.clone() : slot(cur.card)[0].clone();
-      const [x, y] = K.project(anchorP.add(new THREE.Vector3(0, 1.6, 0)));
+      const [x, y0] = K.project(anchorP.add(new THREE.Vector3(0, pileBelow ? 0 : 1.6, pileBelow ? CARD.H * PS * 0.6 : 0)));
+      const y = pileBelow ? y0 + 100 : y0;
       pill.el.textContent = cur.label || ''; pill.o.alpha = (tt) => (cur.label ? clamp((tt - cur.at) / 0.15) * (1 - clamp((tt - cur.at - 1.6) / 0.15)) : 0);
       pill.o.pos = () => [x, y - 60];
     } else pill.o.alpha = () => 0;
@@ -957,7 +985,7 @@ T.table = async (stage, spec) => {
     const total = H.cnt + H.ev.filter((x) => x.ev === 'draw').length;
     for (let k = 0; k < total; k++) { const c = kitCard(stage, BACK); c.visible = false; K.key(c, 'decor'); H.cards.push(c); }
   });
-  const END = (spec.n_frames ? (spec.n_frames - 1) / spec.fps : stage.duration) - 0.02;   // the last frame drawn
+  const END = (spec.n_frames ? (spec.n_frames - 2) / spec.fps : stage.duration - 0.034) - 0.01;   // before the second-to-last frame
   const handCount = (H, t, soft) => {        // soft: eased count for spacing (cards slide together/apart over 0.3 s)
     let c = H.cnt;
     for (const x of H.ev) {
@@ -976,16 +1004,22 @@ T.table = async (stage, spec) => {
   turns.forEach((x) => {
     if (x.seat == null) return;
     const st = seats[x.seat % n], H = hands[x.hand], c = Math.round(handCount(H, (x.ev === 'play' ? x.start : x.lands) - 1e-4, false));
-    x.handP = x.ev === 'play' ? slotAt(st, Math.max(0, c - 1), c) : slotAt(st, c, c);
+    x.handP = x.ev === 'play' ? slotAt(st, Math.max(0, c - 1), c) : slotAt(st, c, c); x.slotK = c;
   });
   turns.forEach((e) => { e.mover = kitCard(stage, BACK); e.mover.visible = false; K.key(e.mover); });
   // arc lanes by what's already in the air: a flight that starts while others fly takes the lowest free lane, and
   // lanes sit a card's height apart (cards flip in the air: two flips 0.24 s apart on one arc height clipped).
   // Dealt cards: lanes 0-2 in turn (a deal has many cards in the air, all leaving the deck one after another)
   turns.slice().sort((a, b) => a.start - b.start).forEach((e, j, arr) => {
-    if (e.dealt) { e.lane = j % 3; e.laneSet = true; return; }
+    // draws all fly the same arc: each later card leaves the deck one layer lower and later, so it can never overtake
+    // the one ahead (a higher lane rose faster and caught the previous card over the deck: clipping)
+    if (e.ev === 'draw') { e.lane = 0; e.laneSet = true; return; }
+    if (e.ev === 'flip') {   // a flip (slower than a dealt card) above any draw still in the air: it overtook the last dealt card
+      e.lane = arr.some((o) => o !== e && o.ev === 'draw' && o.start < e.start + e.dur && e.start < o.start + o.dur) ? 1 : 0; e.laneSet = true; return;
+    }
     const busy = new Set(arr.filter((o) => o !== e && o.laneSet && o.start < e.start + e.dur && e.start < o.start + o.dur).map((o) => o.lane));
-    let l = 0; while (busy.has(l)) l++; e.lane = l; e.laneSet = true;
+    let l = 0; while (busy.has(l)) l++;
+    e.lane = Math.min(l, 3); e.laneSet = true;
   });
   const LANE = 0.95;   // (framing doesn't depend on lanes: arcs peak mid-table, and same-template shots must match)
   const hl = (p.highlight || p.seat_hl || []).filter((h) => typeof h[1] === 'number');
@@ -998,7 +1032,14 @@ T.table = async (stage, spec) => {
     if (!h[2]) return;
     const s = seats[h[0] % n], t0 = h[1], dur = Math.min(1.8, hlK[q].dur + 0.3);
     K.label({ text: String(h[2]), size: 30, role: 'label', pill: GN.mustard, at: t0, fade: 0.1,
-      alpha: (tt) => clamp((tt - t0) / 0.1) * (t0 + dur > stage.duration - 0.05 ? 1 : 1 - clamp((tt - t0 - dur) / 0.15)), pos: () => pillPos(s) });
+      alpha: (tt) => clamp((tt - t0) / 0.1) * (t0 + dur + 0.2 > stage.duration ? 1 : 1 - clamp((tt - t0 - dur) / 0.15)), pos: () => pillPos(s) });
+  });
+  // a swap/pass label: over the first seat of a swap, over the pile for a pass
+  moves.filter((m) => m.label).forEach((m) => {
+    const t0 = m.start, dur = m.dur + 0.4;
+    K.label({ text: String(m.label), size: 30, role: 'label', pill: GN.mustard, at: t0, fade: 0.1,
+      alpha: (tt) => clamp((tt - t0) / 0.1) * (t0 + dur + 0.2 > stage.duration ? 1 : 1 - clamp((tt - t0 - dur) / 0.15)),   // hold through the cut rather than fade across it
+      pos: () => (m.ev === 'swap' ? ((q) => [q[0], q[1] - 52])(pillPos(seats[m.seat % n])) : (() => { const [x, y] = K.project(new THREE.Vector3(0.05, 1.8, 0)); return [x, y]; })()) });
   });
   const outs = (p.out || []).filter((h) => typeof h[1] === 'number');
   const pill = K.label({ text: '', size: 30, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
@@ -1052,9 +1093,13 @@ T.table = async (stage, spec) => {
       // at the swap, flat again by 80% of the flight); a drawn card turns to face its seat
       // rise first, travel across at height, then come down near-vertically: a card from the far seats used to cross
       // the deck already descending (and mid-flip) and clipped it
-      const kx = ease(clamp((k - 0.15) / 0.7)), from = x.ev === 'play' ? x.handP : deckP, to = x.ev === 'draw' ? x.handP : pileAt(x.slot);
-      x.mover.position.set(lerp(from.x, to.x, kx), lerp(from.y, to.y, k), lerp(from.z, to.z, kx));
-      x.mover.position.y += Math.sin(k * Math.PI) * ((x.dealt ? 1.0 : 1.6) + LANE * x.lane);
+      // leaving the deck: away at once while rising (a card that climbed first, then dropped over the deck, met the
+      // next card climbing); leaving a hand: rise first. A draw aims at its slot as the hand is laid out NOW (the hand
+      // may still be re-spacing), so it lands exactly where its hand card appears
+      const kx = x.ev === 'play' ? ease(clamp((k - 0.15) / 0.7)) : ease(clamp(k / 0.85)), from = x.ev === 'play' ? x.handP : deckP;
+      const to = x.ev === 'draw' ? slotAt(seats[x.seat % n], x.slotK, Math.max(handCount(hands[x.hand], t, true), x.slotK)) : pileAt(x.slot);
+      x.mover.position.set(lerp(from.x, to.x, kx), lerp(from.y, to.y, kx), lerp(from.z, to.z, kx));   // height follows the horizontal travel: a card leaving the tall deck didn't sink while still over it (the next card caught up)
+      x.mover.position.y += Math.sin(k * Math.PI) * ((x.ev === 'play' ? 1.6 : 1.2) + LANE * x.lane);
       // yaw: from the pile's (0) to the hand's turn, or back, the short way round, over the first/last half of the flight
       const dYaw = s ? wrap(s.dir + Math.PI) : 0;
       if (x.ev === 'draw') { x.mover.setFace(BACK); x.mover.rotation.set(0, dYaw * ease(clamp((k - 0.5) / 0.5)), 0); }
