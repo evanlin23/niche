@@ -99,7 +99,7 @@ shorts:
   - id: sz-table
     render: table
     lines:
-    - r3
+    - r3@playing
     params:
       players: 4
       elev: 36
@@ -113,7 +113,7 @@ shorts:
       hands: 5
       pile: uno:1:3
       turns:
-      - at: r3@seven#2
+      - at: r3@seven
         seat: 0
         ev: play
         card: uno:1:7
@@ -123,7 +123,7 @@ shorts:
         seat: 0
         with: 2
         label: SWAP HANDS
-      - at: r3@zero#2
+      - at: r3@zero
         seat: 1
         ev: play
         card: uno:1:0
@@ -195,13 +195,19 @@ shorts:
           context: true
         - label: Always forgets
           value: =v2.json:uno.official.always forgets*100
-          at: u4@five
+          at: 0.0
           color: CORAL
+          pulse:
+          - u4@five
         - label: Never forgets, 4-card penalty
           value: =v2.json:uno.penalty4.never forgets*100
-          at: u5@thirty
+          at: 0.0
           color: MUSTARD
+          pulse:
+          - u5@thirty
         - label: Never forgets, my rules
           value: =extras.json:uno_pick.never forgets*100
-          at: u5@twenty
+          at: 0.0
           color: TEAL
+          pulse:
+          - u5@twenty
