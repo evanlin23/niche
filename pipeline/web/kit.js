@@ -789,11 +789,15 @@ T.fan = async (stage, spec) => {
   K.header({});
   K.contentRect(30);
   const faces = p.cards || [1, 3, 6, 8, 2], n = faces.length;
-  const pawn = makePawn(stage, p.color || 'BLUE', 1.0); pawn.position.set(0, 0, 3.6); K.key(pawn);   // the seat, in front: cards above its head
+  // Shorts: the hand IS the visual (no pawn: a small hand over a pawn filled ~30% of the band, opening gate 13-16%)
+  const SH = K.L.short;
+  if (!SH) { const pawn = makePawn(stage, p.color || 'BLUE', 1.0); pawn.position.set(0, 0, 3.6); K.key(pawn); }   // the seat, in front: cards above its head
   const cards = faces.map((f) => { const c = kitCard(stage, f); c.scale.setScalar(K.L.short ? 1.9 : 1.8); K.key(c); return c; });
-  const pile = kitCard(stage, p.pile ?? 'back'); pile.position.set(0, 0.05, -0.4); pile.scale.setScalar(1.3); K.key(pile);
-  const spread = vert ? (K.L.short ? 0.84 : 0.8) : 1.05;
-  const handY = K.L.short ? 4.6 : 3.0;     // Shorts (tall frame): the hand held high above the seat
+  const PZ = SH ? 1.2 : -0.4;              // Shorts: the pile sits right under the hand (a compact, tall-frame layout)
+  const pile = kitCard(stage, p.pile ?? 'back'); pile.position.set(0, 0.05, PZ); pile.scale.setScalar(1.3); K.key(pile);
+  // Shorts: fanned wider (still overlapping) so the hand spans ~85% of the band at the same height
+  const spread = vert ? (K.L.short ? clamp(5.0 / Math.max(1, n - 1), 0.84, 1.25) : 0.8) : 1.05;
+  const handY = SH ? 4.8 : 3.0;            // Shorts: high enough that a played card drops out under the hand (that gap + the pile below fill the band's height)
   const slot = (i) => { const off = i - (n - 1) / 2; const r = n > 1 ? off / ((n - 1) / 2) : 0;   // -1..1 across the hand: the arc depth is bounded whatever the hand size
     return [new THREE.Vector3(off * spread, handY - r * r * 0.3, 2.0), -r * 0.35]; };
   const hl = (p.highlights || []).filter((h) => typeof h.at === 'number');
@@ -802,12 +806,15 @@ T.fan = async (stage, spec) => {
   // plays on the same moment: staggered so one card is clear of the hand's height before the next travels, and
   // each lands in its own pile layer in landing order (two plays on one word used to share a layer)
   scheduleLandings(plays, 0.3, (h) => K.tw(`play card ${h.card}`, h.start, 0.9).dur);   // same word: staggered +-0.09 s, own lane
-  const appear = K.tw('hand up', 0.05, 0.5);
+  const appear = SH ? K.tw('hand up (pre-built)', -0.35, 0.8) : K.tw('hand up', 0.05, 0.5);   // Shorts: built on frame 1, still settling
   const pill = K.label({ text: '', size: 34, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
-  if (p.seat_label) K.worldLabel({ text: p.seat_label, size: 30, role: 'label', at: -1, color: GN.text }, new THREE.Vector3(0, 0, 4.3), 4);
-  const w = (n - 1) / 2 * spread + 1.1;
+  if (p.seat_label) K.worldLabel({ text: p.seat_label, size: 30, role: 'label', at: -1, color: GN.text }, new THREE.Vector3(0, 0, SH ? PZ + 1.35 : 4.3), 4);   // Shorts: under the pile
+  const w = (n - 1) / 2 * spread + 1.1, LIFT = SH ? 0.5 : 0.7;
   const rise = plays.length ? CARD.H * cards[0].scale.x * (1.2 + 0.7 * Math.max(0, ...plays.map((h) => h.lane || 0))) : 0;   // + lanes of simultaneous plays     // played cards rise above the hand: keep them in frame
-  K.fit(boxPoints(-Math.max(w, 1.8), 0, -1.4, Math.max(w, 1.8), handY + 1.4 + rise, 4.4), { elev: 20, yaw: 5, push: 0.06 });
+  if (SH) {   // tight: the hand's width (+ card half-width), from the pile up to a lifted card's top (plays go DOWN)
+    const sc = cards[0].scale.x, hw = (n - 1) / 2 * spread + (CARD.W / 2 * Math.cos(0.35) + CARD.H / 2 * Math.sin(0.35)) * sc + 0.15;   // the outer cards are tilted 0.35 rad: their corners
+    K.fit(boxPoints(-hw, 0, PZ - 0.7, hw, handY + CARD.H * cards[0].scale.x * 0.62 + LIFT + 0.3, 2.4), { elev: 20, yaw: 5, push: 0.06 });
+  } else K.fit(boxPoints(-Math.max(w, 1.8), 0, -1.4, Math.max(w, 1.8), handY + 1.4 + rise, 4.4), { elev: 20, yaw: 5, push: 0.06 });
   return K.frame((t) => {
     const up = appear(t), cam = stage.camera.position;
     // ONE plane for the whole hand (facing the camera from the hand's centre): with a per-card facing, neighbouring
@@ -831,7 +838,7 @@ T.fan = async (stage, spec) => {
       // highlight = lift within the hand's plane (stays in its own layer: moving toward the camera went through cards)
       const upIn = new THREE.Vector3(0, 0, -1).applyQuaternion(q0);
       // appears by rising into place from just above the table (rising from 1.5 below went through the table)
-      c.position.copy(inPlane).addScaledVector(upIn, lift * 0.7).add(new THREE.Vector3(0, (1 - up) * -(handY - 0.3 - CARD.H * c.scale.x * 0.62 - 0.1), 0))
+      c.position.copy(inPlane).addScaledVector(upIn, lift * LIFT).add(new THREE.Vector3(0, (1 - up) * -(handY - 0.3 - CARD.H * c.scale.x * 0.62 - 0.1), 0))
         .addScaledVector(n0, i * CARD_SEP * c.scale.x);
       c.visible = up > 0.01;
       if (pl && t >= pl.start) {
@@ -841,11 +848,15 @@ T.fan = async (stage, spec) => {
         // and flatten onto the pile (straight lines went through the hand, and an upright card landed edge-first)
         const u = clamp((t - pl.start) / 0.9), k1 = ease(clamp(u / 0.3)), k2 = ease(clamp((u - 0.3) / 0.3)), k3 = ease(clamp((u - 0.6) / 0.4));
         const landed = pl.slot;                                             // its own layer, landing order
-        const top = c.position.clone().addScaledVector(upIn, k1 * CARD.H * c.scale.x * 1.15), hq = c.quaternion.clone();
-        const pileTop = new THREE.Vector3(0, layerY(landed + 1, 0.05 + CARD.T * 1.3, c.scale.x), -0.4);
-        const over = new THREE.Vector3(pileTop.x, top.y + (pl.lane || 0) * CARD.H * c.scale.x * 0.7, pileTop.z);   // simultaneous plays: one lane above the other
-        c.position.lerpVectors(top, over, k2).lerp(pileTop, k3);
-        c.quaternion.slerpQuaternions(hq, flat, k3);
+        // Shorts: the same 3 phases DOWNWARD (slide out under the hand, tuck back over the pile below it, settle
+        // flat), so the frame needn't keep room above the hand: the hand fills the band's width
+        const top = c.position.clone().addScaledVector(upIn, (SH ? -1.25 : 1.15) * k1 * CARD.H * c.scale.x), hq = c.quaternion.clone();
+        const pileTop = new THREE.Vector3(0, layerY(landed + 1, 0.05 + CARD.T * 1.3, c.scale.x), PZ);
+        const over = new THREE.Vector3(pileTop.x, top.y + (pl.lane || 0) * CARD.H * c.scale.x * (SH ? -0.25 : 0.7), pileTop.z);   // simultaneous plays: own lanes
+        // Shorts: turn flat first, then lower onto the pile (turning while descending dipped an edge into the card below)
+        const kd = SH ? ease(clamp((u - 0.75) / 0.25)) : k3, kr = SH ? ease(clamp((u - 0.6) / 0.25)) : k3;
+        c.position.lerpVectors(top, over, k2).lerp(pileTop, kd);
+        c.quaternion.slerpQuaternions(hq, flat, kr);
       }
     });
     if (cur) {
