@@ -810,13 +810,16 @@ T.fan = async (stage, spec) => {
   hl.forEach((h) => K.tw(`lift card ${h.card}`, h.at, 0.3));
   // plays on the same moment: staggered so one card is clear of the hand's height before the next travels, and
   // each lands in its own pile layer in landing order (two plays on one word used to share a layer)
-  scheduleLandings(plays, 0.3, (h) => K.tw(`play card ${h.card}`, h.start, 0.9).dur);   // same word: staggered +-0.09 s, own lane
-  // lanes by what's still in flight (not only same-word groups): a play 0.4 s after another came in over the pile on
-  // the lane the earlier card was still coming down through
+  // long form: the long sideways move reads ~0.08 s after it begins, so it begins that much before its word (sync gate)
+  scheduleLandings(plays, 0.3, (h) => { if (!SH) h.start -= 0.08; return K.tw(`play card ${h.card}`, h.start, 0.9).dur; });   // same word: staggered +-0.09 s, own lane
+  // lanes: a play that starts while earlier ones are still in flight goes ABOVE all of them (earlier cards always come
+  // down first, with nothing under them). Lowest-free-lane put a later card under an earlier one's descent: clipping
   plays.slice().sort((a, b) => a.start - b.start).forEach((e, _, arr) => {
-    const busy = new Set(arr.filter((o) => o !== e && o.laneSet && o.start < e.start + e.dur && e.start < o.start + o.dur).map((o) => o.lane));
-    let l = 0; while (busy.has(l)) l++; e.lane = l; e.laneSet = true;
+    const up = arr.filter((o) => o !== e && o.laneSet && o.start < e.start + e.dur && e.start < o.start + o.dur).map((o) => o.lane);
+    e.lane = up.length ? Math.max(...up) + 1 : 0; e.laneSet = true;
+    if (!SH && e.lane) { e.dur = K.tw(`play card ${e.card} (lane ${e.lane})`, e.start, 0.9 + 0.3 * e.lane).dur; e.lands = e.start + e.dur; }   // a higher climb gets more time
   });
+  plays.map((e, i) => ({ e, i })).sort((a, b) => a.e.lands - b.e.lands || a.i - b.i).forEach(({ e }, slot) => { e.slot = slot; });   // pile layers in (new) landing order
   const appear = SH ? K.tw('hand up (pre-built)', -0.35, 0.8) : K.tw('hand up', 0.05, 0.5);   // Shorts: built on frame 1, still settling
   const pill = K.label({ text: '', size: 34, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
   if (p.seat_label) K.worldLabel({ text: p.seat_label, size: 30, role: 'label', at: -1, color: GN.text }, new THREE.Vector3(0, 0, SH ? PZ + 1.35 : 4.3), 4);   // Shorts: under the pile
@@ -859,7 +862,7 @@ T.fan = async (stage, spec) => {
         // passed through the cards behind it, and an upright card landing went edge-first into the table
         // 3 phases: rise in the hand's plane until clear, travel back over the hand at that height, then descend
         // and flatten onto the pile (straight lines went through the hand, and an upright card landed edge-first)
-        const u = clamp((t - pl.start) / pl.dur), k1 = ease(clamp(u / 0.3)), k2 = ease(clamp((u - 0.3) / 0.3)), k3 = ease(clamp((u - 0.6) / 0.4));
+        const u = clamp((t - pl.start) / pl.dur), k1 = ease(clamp(u / 0.3)), k2 = SH ? ease(clamp((u - 0.3) / 0.3)) : ease(clamp((u - 0.45) / 0.17)), k3 = ease(clamp((u - 0.6) / 0.4));
         const landed = pl.slot;                                             // its own layer, landing order
         // Shorts: the same 3 phases DOWNWARD (slide out under the hand, tuck back over the pile below it, settle
         // flat), so the frame needn't keep room above the hand: the hand fills the band's width
@@ -867,16 +870,16 @@ T.fan = async (stage, spec) => {
         // it, each in its own layer), then over to the pile beside the hand, turn flat, lower. No room needed above
         const leftIn = new THREE.Vector3(-1, 0, 0).applyQuaternion(q0);
         const top = SH ? c.position.clone().addScaledVector(upIn, -1.25 * k1 * CARD.H * c.scale.x)
-          : c.position.clone().addScaledVector(leftIn, k1 * (i * spread + CARD.W * c.scale.x * 1.1))
-            .addScaledVector(upIn, k1 * (0.8 + (pl.lane || 0) * CARD.H * c.scale.x * 1.05));   // lanes a card's height apart: a card turning flat sweeps that far   // rising a little (clear of the seat below), simultaneous plays on their own lane
+          : c.position.clone().addScaledVector(leftIn, ease(clamp((u - 0.12) / 0.48)) * (PX - c.position.x) / (leftIn.x || -1))   // ONE long slide in the hand's plane, all the way over the pile
+            .addScaledVector(upIn, ease(clamp(u / 0.25)) * (0.8 + (pl.lane || 0) * CARD.H * c.scale.x * 1.05));   // up to its lane first (lanes a card's height apart; a diagonal climb crossed the lane below, where the previous card waited)
         const hq = c.quaternion.clone();
         const pileTop = new THREE.Vector3(PX, layerY(landed + 1, 0.05 + CARD.T * PS, c.scale.x), PZ);
         // long form: travel sideways at the card's own depth (sending every card to the pile's depth collapsed the
         // layer gap between simultaneous plays while still upright); the depth changes only once flat
         const over = SH ? new THREE.Vector3(pileTop.x, top.y - (pl.lane || 0) * CARD.H * c.scale.x * 0.25, pileTop.z)
-          : new THREE.Vector3(pileTop.x, top.y, top.z);   // simultaneous plays: own lanes
+          : top.clone();   // long form: the slide already ends over the pile (in the hand's plane: world-x drifted toward the cards behind under the orbit)   // simultaneous plays: own lanes
         // Shorts: turn flat first, then lower onto the pile (turning while descending dipped an edge into the card below)
-        const kd = ease(clamp((u - 0.78) / 0.22)), kr = ease(clamp((u - 0.56) / 0.2));   // turn flat, THEN lower
+        const kd = ease(clamp((u - 0.78) / 0.22)), kr = ease(clamp((u - (SH ? 0.56 : 0.6)) / (SH ? 0.2 : 0.18)));   // turn flat, THEN lower
         c.position.lerpVectors(top, over, k2).lerp(pileTop, kd);
         c.quaternion.slerpQuaternions(hq, flat, kr);
       }
@@ -1010,7 +1013,10 @@ T.table = async (stage, spec) => {
   turns.slice().sort((a, b) => a.start - b.start).forEach((e, j, arr) => {
     // draws all fly the same arc: each later card leaves the deck one layer lower and later, so it can never overtake
     // the one ahead (a higher lane rose faster and caught the previous card over the deck: clipping)
-    if (e.ev === 'draw' || e.ev === 'flip') { e.lane = 0; e.laneSet = true; return; }   // everything leaving the deck: one arc
+    if (e.ev === 'draw') { e.lane = 0; e.laneSet = true; return; }
+    if (e.ev === 'flip') {   // a flip (slower than a dealt card) above any draw still in the air: it overtook the last dealt card
+      e.lane = arr.some((o) => o !== e && o.ev === 'draw' && o.start < e.start + e.dur && e.start < o.start + o.dur) ? 1 : 0; e.laneSet = true; return;
+    }
     const busy = new Set(arr.filter((o) => o !== e && o.laneSet && o.start < e.start + e.dur && e.start < o.start + o.dur).map((o) => o.lane));
     let l = 0; while (busy.has(l)) l++;
     e.lane = Math.min(l, 3); e.laneSet = true;
@@ -1026,13 +1032,13 @@ T.table = async (stage, spec) => {
     if (!h[2]) return;
     const s = seats[h[0] % n], t0 = h[1], dur = Math.min(1.8, hlK[q].dur + 0.3);
     K.label({ text: String(h[2]), size: 30, role: 'label', pill: GN.mustard, at: t0, fade: 0.1,
-      alpha: (tt) => clamp((tt - t0) / 0.1) * (t0 + dur > stage.duration - 0.05 ? 1 : 1 - clamp((tt - t0 - dur) / 0.15)), pos: () => pillPos(s) });
+      alpha: (tt) => clamp((tt - t0) / 0.1) * (t0 + dur + 0.2 > stage.duration ? 1 : 1 - clamp((tt - t0 - dur) / 0.15)), pos: () => pillPos(s) });
   });
   // a swap/pass label: over the first seat of a swap, over the pile for a pass
   moves.filter((m) => m.label).forEach((m) => {
     const t0 = m.start, dur = m.dur + 0.4;
     K.label({ text: String(m.label), size: 30, role: 'label', pill: GN.mustard, at: t0, fade: 0.1,
-      alpha: (tt) => clamp((tt - t0) / 0.1) * (t0 + dur > stage.duration - 0.05 ? 1 : 1 - clamp((tt - t0 - dur) / 0.15)),
+      alpha: (tt) => clamp((tt - t0) / 0.1) * (t0 + dur + 0.2 > stage.duration ? 1 : 1 - clamp((tt - t0 - dur) / 0.15)),   // hold through the cut rather than fade across it
       pos: () => (m.ev === 'swap' ? ((q) => [q[0], q[1] - 52])(pillPos(seats[m.seat % n])) : (() => { const [x, y] = K.project(new THREE.Vector3(0.05, 1.8, 0)); return [x, y]; })()) });
   });
   const outs = (p.out || []).filter((h) => typeof h[1] === 'number');
