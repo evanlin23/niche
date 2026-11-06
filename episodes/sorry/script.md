@@ -23,7 +23,8 @@ are the local scan, seeds 42/77/9, 100k games per test; re-check every one after
 - Card values (results.json `mirror.4p.card_swing`, classic): Sorry! 40.2, eleven 10.4 ("almost four times"),
   four 3.8 > five 3.3. Twelve unusable 56.7% (`card_forfeit.12`).
 - Three cards (`extras.hand3_best`): 33.2, 158 turns.
-- [n1] (next-game teaser) is recorded later as a pick-up once the next game is set.
+- [n1] Battleship teaser: episodes/battleship/data/results.json `placement` (hiding moves the Hunter 55-67 shots, the
+  Calculator 42-46) vs `hunters` (random 95.4 vs Calculator 44.3 shots): how you shoot matters more than where you hide.
 - Habits under the pick (`habits_pick.*.test_win`, local 100k): runner 31.4; spreader 7.3; random 0.18; best 39.2 vs
   best_no_keep 32.5; careful 27.3; safety_first 27.0 ("about two points" each); never_switch 16.8; switcher 21.3;
   lead (always front pawn) 19.7; avenger 20.3; front_unless_bump 25.8; never_back1 25.1; saver alone 26.6.
@@ -106,4 +107,5 @@ are the local scan, seeds 42/77/9, 100k games per test; re-check every one after
 
 ## Close
 [e1] Under the official rules, Sorry! already has more than twice the skill of Uno. Hold five cards, skip the exact count, start with a pawn out, and a good player wins almost two games in five.
+[n1] Next up is Battleship. Everybody argues about where to hide their ships, and it turns out that's the wrong thing to argue about.
 [e2] Do you play with the exact count, or does any card get you Home? Tell me in the comments.
