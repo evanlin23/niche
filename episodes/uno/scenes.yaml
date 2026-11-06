@@ -86,7 +86,7 @@ scenes:
     - at: o2@until
       seat: 3
       ev: draw
-    - at: o2@play#2
+    - at: o2@and#3
       seat: 3
       ev: play
       card: uno:0:3
