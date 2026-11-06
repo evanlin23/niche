@@ -25,99 +25,133 @@ scenes:
   - 0.5
   params:
     players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
     names:
     - THE STACKER
+    - THE RULES LAWYER
     - THE SWAPPER
     - THE KEEP-DRAWER
-    - THE RULES LAWYER
     hands: 7
-    highlight:
-    - - 0
-      - o2@stack
-    - - 1
-      - o2@swap
-    - - 2
-      - o2@keep
-    - - 3
-      - o2@say#2
+    pile: uno:2:4
     turns:
     - at: o1@differently
+      seat: 2
+      ev: play
+      card: uno:2:9
+    - at: o2@plus
       seat: 3
       ev: play
-      card: uno:3:4
+      card: uno:2:12
+      label: DRAW TWO
     - at: o2@stack
       seat: 0
       ev: play
       card: uno:0:12
       label: STACKED!
-    - at: o2@swap
+    - at: o2@stack+0.5
       seat: 1
+      ev: draw
+      label: TAKES FOUR
+    - at: o2@stack+0.5+0.15
+      seat: 1
+      ev: draw
+    - at: o2@stack+0.5+0.30
+      seat: 1
+      ev: draw
+    - at: o2@stack+0.5+0.45
+      seat: 1
+      ev: draw
+    - at: o2@swap
+      seat: 2
       ev: play
       card: uno:0:7
-      label: SWAP HANDS
-    - at: o2@drawing
+      label: A SEVEN
+    - at: o2@seven
+      ev: swap
       seat: 2
+      with: 0
+      label: SWAP HANDS
+    - at: o2@keep
+      seat: 3
       ev: draw
       label: KEEP DRAWING
-    - at: o2@until
-      seat: 2
+    - at: o2@drawing
+      seat: 3
       ev: draw
-    - at: o2@real
+    - at: o2@drawing#2
+      seat: 3
+      ev: draw
+    - at: o2@until
+      seat: 3
+      ev: draw
+    - at: o2@play#2
       seat: 3
       ev: play
-      card: uno:2:7
-      label: NOT A REAL RULE
-    turns_auto:
-      from: 0.3
-      every: 1.6
-      cards: &id001
-      - uno:0:5
-      - uno:3:8
-      - uno:2:2
-      - uno:1:9
-      - uno:0:7
-      - uno:3:3
-      - uno:2:6
-      - uno:1:1
+      card: uno:0:3
+    - at: o3@took
+      seat: 0
+      ev: play
+      card: uno:0:5
+    - at: o3@bots
+      seat: 1
+      ev: play
+      card: uno:1:5
+    - at: o3@billion
+      seat: 2
+      ev: play
+      card: uno:1:8
+    highlight:
+    - - 0
+      - o2@stack
+    - - 2
+      - o2@swap
+    - - 3
+      - o2@keep
+    - - 1
+      - o2@real
+      - THAT'S NOT A REAL RULE!
     callouts:
     - text: Every house rule vs the official game
       at: o3@every
     - text: 23,000,000,000+ rounds
       at: o3@billion
 - id: hook
-  render: fan
+  render: bars
   lines:
   - o4
   - o5
   params:
-    title: The best way to play Uno
-    seat_label: HOUSE RULES
-    pill: 4 players
-    cards:
-    - uno:0:12
-    - uno:3:7
-    - uno:4:14
-    - uno:2:0
-    - uno:1:5
-    highlights:
-    - card: 0
-      at: o4@rounds
-      label: FAST ROUNDS
-    - card: 2
-      at: o5@rules
-      label: THE RULES DECIDE
-    - card: 4
-      at: o5@third
-      label: 'A GOOD PLAYER: OVER 1 IN 3'
-    - card: 1
-      at: o5@lose
-      label: ONE RULE PUNISHES PLAYING WELL
-    - card: 3
-      at: o5@aren't
-      label: '''OFFICIAL''? NOPE'
-    play:
-    - card: 2
-      at: o5@skill
+    title: The rules decide how much skill there is
+    chart:
+      players: 4
+      fair: 25
+      decimals: 1
+      maxV: 42
+      items:
+      - label: Official rules
+        value: =v2.json:combos[key=official].best*100
+        at: o4@playing
+        color: TEAL
+        context: true
+        pulse:
+        - o5@official
+      - label: The most skillful rules
+        value: =v2.json:combos[key=stack+jump_in+draw_until+free_d4].best*100
+        at: o5@third
+        color: MUSTARD
+        context: true
+        hl: true
+      - label: Pass your hand every turn
+        value: =extras.json:rules.pass_every.best*100
+        at: o5@lose
+        color: CORAL
+        context: true
+    callouts:
+    - text: How often a good player wins
+      at: o4@wins
+      color: CREAM
 - id: title
   render: title
   min_duration: 2.5
@@ -137,26 +171,103 @@ scenes:
   - g2
   params:
     players: 4
-    names:
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: &id001
     - YOU
     - PLAYER 2
     - PLAYER 3
     - PLAYER 4
-    hands: 7
-    highlight:
-    - - 0
-      - g2@turn
+    hands: 0
     turns:
-    - at: g1@while
-      seat: 1
-      ev: draw
     - at: g1@seven
       seat: 0
       ev: draw
       label: SEVEN CARDS EACH
-    - at: g1@flipped
+    - at: g1@seven+0.06
+      seat: 1
+      ev: draw
+    - at: g1@seven+0.12
+      seat: 2
+      ev: draw
+    - at: g1@seven+0.18
       seat: 3
-      ev: play
+      ev: draw
+    - at: g1@seven+0.24
+      seat: 0
+      ev: draw
+    - at: g1@seven+0.30
+      seat: 1
+      ev: draw
+    - at: g1@seven+0.36
+      seat: 2
+      ev: draw
+    - at: g1@seven+0.42
+      seat: 3
+      ev: draw
+    - at: g1@seven+0.48
+      seat: 0
+      ev: draw
+    - at: g1@seven+0.54
+      seat: 1
+      ev: draw
+    - at: g1@seven+0.60
+      seat: 2
+      ev: draw
+    - at: g1@seven+0.66
+      seat: 3
+      ev: draw
+    - at: g1@seven+0.72
+      seat: 0
+      ev: draw
+    - at: g1@seven+0.78
+      seat: 1
+      ev: draw
+    - at: g1@seven+0.84
+      seat: 2
+      ev: draw
+    - at: g1@seven+0.90
+      seat: 3
+      ev: draw
+    - at: g1@seven+0.96
+      seat: 0
+      ev: draw
+    - at: g1@seven+1.02
+      seat: 1
+      ev: draw
+    - at: g1@seven+1.08
+      seat: 2
+      ev: draw
+    - at: g1@seven+1.14
+      seat: 3
+      ev: draw
+    - at: g1@seven+1.20
+      seat: 0
+      ev: draw
+    - at: g1@seven+1.26
+      seat: 1
+      ev: draw
+    - at: g1@seven+1.32
+      seat: 2
+      ev: draw
+    - at: g1@seven+1.38
+      seat: 3
+      ev: draw
+    - at: g1@seven+1.44
+      seat: 0
+      ev: draw
+    - at: g1@seven+1.50
+      seat: 1
+      ev: draw
+    - at: g1@seven+1.56
+      seat: 2
+      ev: draw
+    - at: g1@seven+1.62
+      seat: 3
+      ev: draw
+    - at: g1@flipped
+      ev: flip
       card: uno:0:5
       label: START THE PILE
     - at: g2@color
@@ -174,18 +285,13 @@ scenes:
       ev: play
       card: uno:4:13
       label: WILD
-    - at: g2@first
-      seat: 3
-      ev: play
-      card: uno:1:2
-      label: OUT OF CARDS
-    turns_auto:
-      from: 0.3
-      every: 1.8
-      cards: *id001
-    callouts:
-    - text: First to zero cards wins
-      at: g2@zero
+    highlight:
+    - - 0
+      - g2@turn
+      - YOUR TURN
+    - - 3
+      - g2@zero
+      - FIRST TO ZERO CARDS WINS
 - id: cards
   render: deck
   lines:
@@ -243,9 +349,12 @@ scenes:
     - card: 0
       at: g4@wild
       label: WILD DRAW FOUR
+    - card: pile
+      at: g4@current
+      label: 'THE CURRENT COLOR: RED'
     - card: 1
       at: g4@nothing
-      label: A RED CARD? THEN NO +4
+      label: STILL HAVE RED? NO +4
     play:
     - card: 0
       at: g4@cheated
@@ -256,6 +365,7 @@ scenes:
     - text: 'Caught: you draw the 4'
       at: g4@caught
       color: CORAL
+    pile: uno:0:3
 - id: challenge
   render: bars
   lines:
@@ -343,23 +453,24 @@ scenes:
     - card: 0
       at: c6@own
       label: ITS OWN HAND
-    - card: 4
+    - card: pile
       at: c6@top
       label: THE TOP CARD
-    - card: 2
-      at: c6@matches
-      label: ANY MATCHING CARD
-    - card: 3
-      at: c6@color
-      label: CALLS ITS BEST COLOR
-    play:
     - card: 1
       at: c6@plays
+      label: A CARD THAT MATCHES
+    - card: 3
+      at: c6@color
+      label: 'CALLS RED: ITS MOST COMMON COLOR'
+    play:
+    - card: 1
+      at: c6@matches+0.3
     callouts:
     - text: Only what a real player knows
       at: c6@real
     - text: How many cards everyone holds
       at: c6@holding
+    pile: uno:0:6
 - id: meetbest
   chapter: How much skill is in Uno?
   render: table
@@ -368,35 +479,46 @@ scenes:
   - m2
   params:
     players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
     names:
     - BEST BOT
     - NORMAL BOT
     - NORMAL BOT
     - NORMAL BOT
     hands: 5
-    highlight:
-    - - 0
-      - m1@best
-    - - 0
-      - m2@win
+    pile: uno:3:4
     turns:
-    - at: m1@best
+    - at: m1@sat
       seat: 0
       ev: play
-      card: uno:4:13
-      label: EVERY GOOD HABIT
+      card: uno:3:7
     - at: m1@three
       seat: 1
       ev: play
-      card: uno:2:5
+      card: uno:3:2
     - at: m1@normal
       seat: 2
       ev: play
-      card: uno:2:8
-    turns_auto:
-      from: 0.4
-      every: 1.7
-      cards: *id001
+      card: uno:1:2
+    - at: m2@luck
+      seat: 3
+      ev: play
+      card: uno:1:9
+    - at: m2@four
+      seat: 0
+      ev: play
+      card: uno:1:5
+    - at: m2@twenty
+      seat: 1
+      ev: draw
+    highlight:
+    - - 0
+      - m1@best
+      - EVERY GOOD HABIT
+    - - 0
+      - m2@win
     callouts:
     - text: 'Pure luck: 1 round in 4'
       at: m2@pure
@@ -444,19 +566,17 @@ scenes:
   - r2
   params:
     players: 4
-    elev: 24
-    yaw: 6
+    elev: 36
+    yaw: 5
     push: 0.1
-    names:
-    - YOU
-    - PLAYER 2
-    - PLAYER 3
-    - PLAYER 4
+    names: *id001
     hands: 5
-    highlight:
-    - - 2
-      - r2@nudges
+    pile: uno:0:4
     turns:
+    - at: r1@check
+      seat: 3
+      ev: play
+      card: uno:0:8
     - at: r2@stacking
       seat: 0
       ev: play
@@ -467,55 +587,79 @@ scenes:
       ev: play
       card: uno:3:12
       label: STACKED!
-    - at: r1@check
+    - at: r2@nudges
+      seat: 2
+      ev: draw
+      label: TAKES FOUR
+    - at: r2@nudges+0.15
+      seat: 2
+      ev: draw
+    - at: r2@nudges+0.30
+      seat: 2
+      ev: draw
+    - at: r2@nudges+0.45
+      seat: 2
+      ev: draw
+    - at: r2@barely
       seat: 3
       ev: play
-      card: uno:2:4
-    - at: r2@barely
-      seat: 0
-      ev: play
-      card: uno:1:6
+      card: uno:3:6
+    highlight:
+    - - 2
+      - r2@nudges
     callouts:
-    - text: Player 3 takes four
-      at: r2@nudges
-      color: CORAL
     - text: 'Skill meter: 30%'
       at: r2@thirty
       color: MUSTARD
 - id: sevenzero
-  render: fan
+  render: table
   lines:
   - r3
   params:
-    title: Seven Zero
-    seat_label: YOUR HAND
-    pill: 4 players
-    cards:
-    - uno:3:7
-    - uno:0:4
-    - uno:1:9
-    - uno:2:2
-    - uno:4:13
-    - uno:0:0
-    highlights:
-    - card: 0
-      at: r3@seven#2
-      label: 'A SEVEN: SWAP WITH SOMEONE'
-    - card: 5
-      at: r3@zero#2
-      label: 'A ZERO: EVERYONE PASSES'
-    - card: 4
-      at: r3@plan
-      label: YOUR PLAN…
-    - card: 1
-      at: r3@take
-      label: …NOW SOMEONE ELSE'S
-    - card: 2
-      at: r3@starts
-      label: 'GOING FIRST: NO EDGE LEFT'
-    play:
-    - card: 0
-      at: r3@swaps
+    players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
+    hands: 5
+    pile: uno:1:3
+    turns:
+    - at: r3@seven#2
+      seat: 0
+      ev: play
+      card: uno:1:7
+      label: A SEVEN
+    - at: r3@swaps
+      ev: swap
+      seat: 0
+      with: 2
+      label: SWAP HANDS
+    - at: r3@zero#2
+      seat: 1
+      ev: play
+      card: uno:1:0
+      label: A ZERO
+    - at: r3@passes
+      ev: pass
+      label: EVERYONE PASSES
+    - at: r3@plan
+      seat: 2
+      ev: play
+      card: uno:1:5
+    - at: r3@take
+      seat: 3
+      ev: play
+      card: uno:1:7
+      label: A SEVEN
+    - at: r3@time
+      ev: swap
+      seat: 3
+      with: 0
+      label: TAKES YOUR HAND
+    highlight:
+    - - 0
+      - r3@starts
+      - 'WENT FIRST: NO EDGE'
     callouts:
     - text: 'Skill meter: 26%'
       at: r3@twenty
@@ -529,17 +673,11 @@ scenes:
   params:
     players: 4
     elev: 36
-    yaw: 4
-    push: 0.12
-    names:
-    - YOU
-    - PLAYER 2
-    - PLAYER 3
-    - PLAYER 4
+    yaw: 5
+    push: 0.1
+    names: *id001
     hands: 5
-    highlight:
-    - - 2
-      - r4@slap
+    pile: uno:2:6
     turns:
     - at: r4@holding
       seat: 0
@@ -551,10 +689,14 @@ scenes:
       ev: play
       card: uno:0:6
       label: JUMP IN!
-    turns_auto:
-      from: 0.3
-      every: 1.5
-      cards: *id001
+    - at: r4@pushes
+      seat: 3
+      ev: play
+      card: uno:0:2
+    highlight:
+    - - 1
+      - r4@turn
+      - SKIPPED
     callouts:
     - text: The exact same card, out of turn
       at: r4@exact
@@ -583,8 +725,8 @@ scenes:
       at: r5@time
       label: STILL HAVE RED? PLAY IT ANYWAY
     - card: 4
-      at: r5@highest
-      label: ANOTHER ONE
+      at: r5@whole
+      label: AND AGAIN, WHENEVER
     play:
     - card: 0
       at: r5@challenges
@@ -594,6 +736,7 @@ scenes:
     - text: 'Skill meter: 31%'
       at: r5@thirty
       color: MUSTARD
+    pile: uno:0:3
 - id: drawuntil
   render: bars
   lines:
@@ -638,16 +781,20 @@ scenes:
     highlights:
     - card: 0
       at: r7@allowed
-      label: A SKIP? NOT ALLOWED
+      label: CAN'T GO OUT ON…
     - card: 0
-      at: r7@wild
-      label: OR A WILD
+      at: r7@action
+      label: …AN ACTION CARD
+    - card: 0
+      at: r7@longer
+      label: SO YOU KEEP PLAYING
     callouts:
     - text: Can't go out on an action card or Wild
       at: r7@kills
     - text: 'Skill meter: 25.5%'
       at: r7@twenty
       color: CORAL
+    pile: uno:3:3
 - id: everything
   render: checklist
   lines:
@@ -685,18 +832,12 @@ scenes:
   - r9
   params:
     players: 4
-    elev: 30
-    yaw: 6
+    elev: 36
+    yaw: 5
     push: 0.1
-    names:
-    - YOU
-    - PLAYER 2
-    - PLAYER 3
-    - PLAYER 4
+    names: *id001
     hands: 5
-    highlight:
-    - - 1
-      - r9@reverse
+    pile: uno:0:4
     turns:
     - at: r9@bounce
       seat: 0
@@ -712,10 +853,16 @@ scenes:
       seat: 0
       ev: draw
       label: TAKES TWO
-    turns_auto:
-      from: 0.3
-      every: 1.6
-      cards: *id001
+    - at: r9@played+0.15
+      seat: 0
+      ev: draw
+    - at: r9@nothing
+      seat: 3
+      ev: play
+      card: uno:0:5
+    highlight:
+    - - 1
+      - r9@reverse
     callouts:
     - text: 'Skill meter: 29%'
       at: r9@twenty
@@ -818,21 +965,19 @@ scenes:
     - text: If you can dump them, dump them
       at: i4@basically
       color: MUSTARD
+    pile: uno:0:7
 - id: stacks
   render: table
   lines:
   - i5
   params:
     players: 4
-    elev: 40
+    elev: 36
     yaw: 5
     push: 0.1
-    names:
-    - YOU
-    - PLAYER 2
-    - PLAYER 3
-    - PLAYER 4
+    names: *id001
     hands: 6
+    pile: uno:0:6
     turns:
     - at: i5@stacks
       seat: 1
@@ -844,42 +989,47 @@ scenes:
       ev: play
       card: uno:3:12
       label: STACKED
-    - at: i5@nine
+    - at: i5@round
       seat: 3
       ev: play
-      card: uno:4:14
-      label: STACKED AGAIN
-    - at: i5@pick+0.00
+      card: uno:2:12
+      label: STACKED
+    - at: i5@nine
       seat: 0
+      ev: play
+      card: uno:1:12
+      label: EIGHT CARDS
+    - at: i5@pick
+      seat: 1
       ev: draw
-      label: PICK UP EIGHT
-    - at: i5@pick+0.18
-      seat: 0
+      label: PICKS UP EIGHT
+    - at: i5@pick+0.16
+      seat: 1
       ev: draw
-    - at: i5@pick+0.36
-      seat: 0
+    - at: i5@pick+0.32
+      seat: 1
       ev: draw
-    - at: i5@pick+0.54
-      seat: 0
+    - at: i5@pick+0.48
+      seat: 1
       ev: draw
-    - at: i5@pick+0.72
-      seat: 0
+    - at: i5@pick+0.64
+      seat: 1
       ev: draw
-    - at: i5@pick+0.90
-      seat: 0
+    - at: i5@pick+0.80
+      seat: 1
       ev: draw
-    - at: i5@pick+1.08
-      seat: 0
+    - at: i5@pick+0.96
+      seat: 1
       ev: draw
-    - at: i5@pick+1.26
-      seat: 0
+    - at: i5@pick+1.12
+      seat: 1
       ev: draw
     - at: i5@ten
-      seat: 0
+      seat: 2
       ev: play
       card: uno:1:3
     highlight:
-    - - 0
+    - - 1
       - i5@hundred
     callouts:
     - text: '8+ cards at once: 1 round in 9'
@@ -941,36 +1091,31 @@ scenes:
   - x1
   params:
     players: 4
-    elev: 68
-    yaw: 3
-    push: 0.08
-    names:
-    - YOU
-    - PLAYER 2
-    - PLAYER 3
-    - PLAYER 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
     hands: 5
+    pile: uno:2:5
     turns:
     - at: x1@pure
       seat: 0
       ev: play
-      card: uno:0:5
+      card: uno:2:8
     - at: x1@easy
       seat: 1
       ev: play
-      card: uno:0:8
-    - at: x1@single
-      seat: 2
-      ev: draw
-    - at: x1@force
-      seat: 3
-      ev: play
       card: uno:3:8
+    - at: x1@turn
+      ev: pass
       label: PASS YOUR HAND
-    turns_auto:
-      from: 0.9
-      every: 2.1
-      cards: *id001
+    - at: x1@force
+      seat: 2
+      ev: play
+      card: uno:3:1
+    - at: x1@player
+      ev: pass
+      label: AND AGAIN
     callouts:
     - text: Pure luck? Easy.
       at: x1@easy
@@ -1022,19 +1167,26 @@ scenes:
     highlights:
     - card: 0
       at: x3@blank
-      label: BLANK WILD
+      label: BLANK CARD
     - card: 0
       at: x3@joke
       label: TELL A JOKE
     play:
     - card: 0
       at: x3@laughs
+    - card: 1
+      at: x3@discard
+    - card: 2
+      at: x3@discard+0.25
+    - card: 3
+      at: x3@discard+0.5
     callouts:
     - text: 'Someone laughs: discard down to 1 card'
       at: x3@laughs
     - text: 'Nobody laughs: draw 4'
       at: x3@nobody
       color: CORAL
+    pile: uno:2:5
 - id: jokebars
   render: bars
   lines:
@@ -1118,18 +1270,16 @@ scenes:
     - card: 3
       at: x5@draw
       label: DRAW UNTIL YOU CAN PLAY
+    - card: 3
+      at: x6@catch
+      label: 'ALL THAT DRAWING: 84 TURNS'
     callouts:
     - text: 'Best bot: 35%'
       at: x5@thirty
       color: MUSTARD
-    - text: 84 turns a round
-      at: x6@eighty
-      color: CORAL
-    play:
-    - card: 2
-      at: x6@catch
-    - card: 3
+    - text: Almost double the official game
       at: x6@double
+      color: CORAL
 - id: best
   chapter: The best way to play
   render: checklist
@@ -1215,6 +1365,7 @@ scenes:
     - text: 'Hold any back: 25% → 15%'
       at: w2@fifteen
       color: CORAL
+    pile: uno:0:4
 - id: habit2
   render: bars
   lines:
@@ -1244,15 +1395,12 @@ scenes:
   - w4
   params:
     players: 4
-    elev: 42
-    yaw: 6
-    push: 0.12
-    names:
-    - YOU
-    - PLAYER 2
-    - PLAYER 3
-    - PLAYER 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
     hands: 5
+    pile: uno:0:5
     turns:
     - at: w4@stack
       seat: 1
@@ -1260,18 +1408,27 @@ scenes:
       card: uno:0:12
       label: DRAW TWO
     - at: w4@can
-      seat: 0
+      seat: 2
       ev: play
       card: uno:3:12
       label: STACK IT
     - at: w4@takes
-      seat: 2
+      seat: 3
       ev: draw
-      label: NEVER STACKS
-    turns_auto:
-      from: 0.3
-      every: 1.6
-      cards: *id001
+      label: 'NEVER STACKS: TAKES FOUR'
+    - at: w4@takes+0.15
+      seat: 3
+      ev: draw
+    - at: w4@takes+0.30
+      seat: 3
+      ev: draw
+    - at: w4@takes+0.45
+      seat: 3
+      ev: draw
+    - at: w4@twenty
+      seat: 0
+      ev: play
+      card: uno:3:8
     callouts:
     - text: 3. Always stack
       at: w4@always
@@ -1317,64 +1474,74 @@ scenes:
   - u3
   params:
     players: 4
+    elev: 36
+    yaw: 5
+    push: 0.1
     names:
     - BEST BOT
     - NORMAL BOT
     - NORMAL BOT
     - NORMAL BOT
     hands:
-    - 5
-    - 1
-    - 4
+    - 3
+    - 2
+    - 2
     - 6
+    pile: uno:2:5
     turns:
+    - at: u1@remember
+      seat: 0
+      ev: play
+      card: uno:2:8
     - at: u1@forget
       seat: 1
       ev: play
-      card: uno:0:5
-      label: …
-    - at: u1@made
-      seat: 1
-      ev: play
-      card: uno:0:3
-      label: FORGOT!
-    - at: u2@catches
-      seat: 2
-      ev: play
       card: uno:2:3
-      label: CAUGHT YOU!
     - at: u2@draw
       seat: 1
       ev: draw
       label: DRAW TWO
+    - at: u2@draw+0.15
+      seat: 1
+      ev: draw
     - at: u3@forgets
       seat: 2
       ev: play
       card: uno:2:6
-      label: FORGOT
-    - at: u3@catches
+    - at: u3@half
+      seat: 2
+      ev: draw
+      label: DRAW TWO
+    - at: u3@half+0.15
+      seat: 2
+      ev: draw
+    - at: u3@half+0.8
       seat: 3
       ev: play
-      card: uno:2:1
-      label: CAUGHT!
+      card: uno:2:2
     - at: u3@never
       seat: 0
       ev: play
       card: uno:2:9
-      label: NEVER FORGETS
-    turns_auto:
-      from: 0.4
-      every: 1.7
-      cards: *id001
+    highlight:
+    - - 1
+      - u1@made
+      - FORGOT TO SAY UNO
+    - - 2
+      - u2@catches
+      - CAUGHT YOU!
+    - - 3
+      - u3@catches
+      - CAUGHT!
+    - - 0
+      - u3@thirty
+      - UNO!
     callouts:
     - text: So I made them forget
       at: u1@made
       color: CORAL
     - text: 'Caught before the next turn: draw 2'
       at: u2@officially
-    highlight:
-    - - 0
-      - u3@thirty
 - id: sayuno
   render: bars
   lines:
@@ -1422,44 +1589,78 @@ scenes:
   - u6
   params:
     players: 4
-    names:
-    - YOU
-    - PLAYER 2
-    - PLAYER 3
-    - PLAYER 4
+    elev: 36
+    yaw: 5
+    push: 0.1
+    names: *id001
     hands:
-    - 1
+    - 2
     - 5
     - 4
     - 6
-    highlight:
-    - - 0
-      - u6@second
-    - - 2
-      - u6@yells
+    pile: uno:0:9
     turns:
+    - at: u6@race
+      seat: 3
+      ev: play
+      card: uno:0:2
     - at: u6@second
       seat: 0
       ev: play
       card: uno:0:5
-      label: ONE CARD LEFT
-    - at: u6@yells
-      seat: 2
-      ev: play
-      card: uno:2:5
-      label: UNO!
+      label: DOWN TO ONE CARD
     - at: u6@draw
       seat: 0
       ev: draw
       label: DRAW TWO
-    - at: u6@three
+    - at: u6@draw+0.15
       seat: 0
       ev: draw
-      label: BACK TO THREE
-    turns_auto:
-      from: 0.3
-      every: 1.6
-      cards: *id001
+    - at: u6@always
+      seat: 1
+      ev: play
+      card: uno:0:3
+    - at: u6@official
+      seat: 2
+      ev: play
+      card: uno:0:8
+    - at: u6@basically
+      seat: 3
+      ev: play
+      card: uno:0:1
+    - at: u6@hundred
+      seat: 0
+      ev: play
+      card: uno:0:4
+    - at: u6@every
+      seat: 1
+      ev: play
+      card: uno:0:6
+    - at: u6@time
+      seat: 2
+      ev: play
+      card: uno:1:6
+    - at: u6@time+0.6
+      seat: 3
+      ev: play
+      card: uno:1:4
+    - at: u6@card#2
+      seat: 0
+      ev: play
+      card: uno:1:1
+    - at: u6@back
+      seat: 0
+      ev: draw
+    - at: u6@back+0.15
+      seat: 0
+      ev: draw
+    highlight:
+    - - 2
+      - u6@yells
+      - UNO!
+    - - 0
+      - u6@three
+      - BACK UP TO THREE
     callouts:
     - text: 'Always wins the race: 41%'
       at: u6@forty
