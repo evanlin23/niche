@@ -1428,7 +1428,8 @@ T.checklist = async (stage, spec) => {
   const K = new Kit(stage, spec), p = K.p, vert = K.L.vert, items = p.items || [];
   K.header({});
   const c = K.contentRect(20);
-  const [listR, decoR] = vert ? K.split(0.72) : K.split(0.7);
+  const carded = items.some((it) => it.card);   // per-item cards need the room: the list takes a little over half
+  const [listR, decoR] = vert ? K.split(0.72) : K.split(carded ? 0.56 : 0.7);
   const size = p.size || (vert ? 44 : 42);
   const step = Math.min(p.step || (vert ? 150 : 110), listR.h / Math.max(1, items.length));
   items.forEach((it, k) => {
@@ -1438,6 +1439,34 @@ T.checklist = async (stage, spec) => {
     if (it.verdict) K.label({ text: it.verdict, size: size * 0.75, role: 'verdict', at: it.at, align: 'right', x: listR.r, y, pill: col(it.color, GN.mustard) });
     K.tw(`item ${k + 1}`, it.at ?? 0.2, 0.25);
   });
+  // items with `card` (a face or a list of faces): that card lands in its own slot ON the item's word, so what is
+  // said is what appears (Stacking -> two +2s, Free Draw Four -> a +4); otherwise a decor row + one chip per item
+  if (carded) {
+    const slots = items.map((it, k) => ({ it, k })).filter((o) => o.it.card);
+    const n = slots.length, cols = n > 3 ? Math.ceil(n / 2) : n, nf = (it) => (Array.isArray(it.card) ? it.card.length : 1);
+    const FX = CARD.W * 0.42, SX = CARD.W * 1.35 + FX * (Math.max(...slots.map((o) => nf(o.it))) - 1), SZ = CARD.H * 1.3;
+    const land = [];
+    slots.forEach(({ it, k }, j) => {
+      const faces = Array.isArray(it.card) ? it.card : [it.card];
+      const cx = (j % cols - (Math.min(n, cols) - 1) / 2) * SX, cz = (Math.floor(j / cols) - (Math.ceil(n / cols) - 1) / 2) * SZ;
+      faces.forEach((f, q) => {
+        const m = kitCard(stage, f); K.key(m); m.visible = false;
+        const off = (q - (faces.length - 1) / 2);
+        land.push({ m, at: (it.at ?? 0.2) + q * 0.12, x: cx + off * FX, z: cz + Math.abs(off) * 0.05, y: layerY(q, 0.03), r: -off * 0.14 });
+      });
+    });
+    const xs = land.map((o) => o.x), zs = land.map((o) => o.z);
+    K.fit(boxPoints(Math.min(...xs) - CARD.W, 0, Math.min(...zs) - CARD.H * 0.7, Math.max(...xs) + CARD.W, 0.6, Math.max(...zs) + CARD.H * 0.7),
+      { rect: decoR, elev: 68, yaw: 3, push: 0.06, margin: 0.02 });
+    return K.frame((t) => {
+      const g = stage.g; g.fillStyle = `rgba(${GN.scrim},0.45)`; g.fillRect(0, 0, stage.W, stage.H);
+      for (const o of land) {
+        const k = ease(clamp((t - o.at + 0.02) / 0.45));
+        o.m.visible = t >= o.at - 0.02;
+        o.m.position.set(o.x, o.y + (1 - k) * 1.6, o.z + (1 - k) * 0.4); o.m.rotation.set(0, o.r + (1 - k) * 0.5, 0);
+      }
+    });
+  }
   const faces = p.cards || [0, 1, 3, 6, 7, 8];
   const deco = faces.map((f, k) => { const m = kitCard(stage, f); m.position.set(k * 0.55, layerY(k, 0.03), -k * 0.1); K.key(m, 'decor'); return m; });
   const w = faces.length * 0.55;

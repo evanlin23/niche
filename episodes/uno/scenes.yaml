@@ -132,7 +132,7 @@ scenes:
       items:
       - label: Official rules
         value: =v2.json:combos[key=official].best*100
-        at: o4@playing
+        at: o4@play
         color: TEAL
         context: true
         pulse:
@@ -307,7 +307,9 @@ scenes:
       items:
       - label: Always challenges
         value: =results.json:habits.always challenge*100
-        at: g5@challenging
+        at: g5@challenge
+        pulse:
+        - g5@challenging
       - label: Bluffs a Draw Four
         value: =results.json:habits.bluff Draw 4 half the time*100
         at: g5@bluffing
@@ -730,14 +732,19 @@ scenes:
     title: Every house rule at once
     items:
     - text: Stacking
+      card: [uno:0:12, uno:3:12]
       at: r8@stacking
     - text: Seven Zero
+      card: [uno:1:7, uno:2:0]
       at: r8@seven
     - text: Jump In
+      card: [uno:0:6, uno:0:6]
       at: r8@jump
     - text: Draw until you can play
+      card: [uno:back:0, uno:back:0, uno:back:0]
       at: r8@draw
     - text: Free Draw Four
+      card: uno:4:14
       at: r8@free
     - text: 86 turns a round
       at: r8@eighty
@@ -806,12 +813,16 @@ scenes:
     title: How I've always played
     items:
     - text: Draw Two on Draw Two
+      card: [uno:0:12, uno:3:12]
       at: i1@twos
     - text: Draw Four on Draw Four (no mixing)
+      card: [uno:4:14, uno:4:14]
       at: i1@fours
     - text: Draw Four any time
+      card: [uno:0:3, uno:4:14]
       at: i1@whenever
     - text: Dump all of the same number at once
+      card: [uno:0:5, uno:1:5, uno:3:5]
       at: i1@dump
       color: MUSTARD
     cards:
@@ -985,9 +996,10 @@ scenes:
       items:
       - label: Best bot, official
         value: =results.json:two_player.official.smart_vs_normal*100
-        at: t1@fifty
+        at: t1@meter
         color: MUSTARD
         pulse:
+        - t1@fifty
         - t2@seven
       - label: Whoever goes first
         value: =results.json:two_player.official.table.first_seat_win*100
@@ -1073,7 +1085,7 @@ scenes:
       items:
       - label: Best bot, pass every turn
         value: =extras.json:rules.pass_every.best*100
-        at: x2@twenty
+        at: x2@four
         color: CORAL
         hl: true
         pulse:
@@ -1153,10 +1165,13 @@ scenes:
     title: The most luck-driven Uno
     items:
     - text: Draw until you can play
+      card: [uno:back:0, uno:back:0, uno:back:0]
       at: x7@draw
     - text: Dump matching numbers
+      card: [uno:0:5, uno:1:5, uno:3:5]
       at: x7@dump
     - text: No going out on an action card
+      card: uno:2:10
       at: x7@going
     - text: 'Best bot: 23.5%'
       at: x7@twenty
@@ -1221,12 +1236,16 @@ scenes:
     title: The best way to play Uno
     items:
     - text: Stacking
+      card: [uno:0:12, uno:3:12]
       at: b2@stacking
     - text: Jump In
+      card: [uno:0:6, uno:0:6]
       at: b2@jump
     - text: Free Draw Four
+      card: uno:4:14
       at: b2@free
     - text: Dump matching numbers
+      card: [uno:0:5, uno:1:5, uno:3:5]
       at: b2@dumping
     - text: About 39 turns a round
       at: b2@thirty
@@ -1240,6 +1259,7 @@ scenes:
       color: MUSTARD
       text: Almost twice the official skill
     - text: Want a coin toss? Add Seven Zero
+      card: [uno:1:7, uno:2:0]
       at: b3@add
       color: CORAL
     callouts:
@@ -1374,10 +1394,12 @@ scenes:
     title: The small stuff
     items:
     - text: Switch into your best color
+      card: uno:4:13
       at: w5@switching
       verdict: '+1.5'
       color: MUSTARD
     - text: Jump in whenever you can
+      card: [uno:0:6, uno:0:6]
       at: w5@jumping
       verdict: '+1'
       color: MUSTARD
