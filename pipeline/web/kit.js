@@ -794,10 +794,14 @@ T.fan = async (stage, spec) => {
   const SH = K.L.short;
   if (!SH) { const pawn = makePawn(stage, p.color || 'BLUE', 1.0); pawn.position.set(0, 0, 3.6); K.key(pawn); }   // the seat, in front: cards above its head
   const cards = faces.map((f) => { const c = kitCard(stage, f); c.scale.setScalar(K.L.short ? 1.9 : 1.8); K.key(c); return c; });
-  const PZ = SH ? 1.2 : -0.4;              // Shorts: the pile sits right under the hand (a compact, tall-frame layout)
-  const pile = kitCard(stage, p.pile ?? 'back'); pile.position.set(0, 0.05, PZ); pile.scale.setScalar(1.3); K.key(pile);
   // Shorts: fanned wider (still overlapping) so the hand spans ~85% of the band at the same height
   const spread = vert ? (K.L.short ? clamp(5.0 / Math.max(1, n - 1), 0.84, 1.25) : 0.8) : 1.05;
+  // the pile: Shorts - right under the hand (a compact, tall-frame layout); long form - on the table to the LEFT of
+  // the hand, at a hand card's scale, never behind or under the fan (it sat hidden behind the hand, and the top
+  // card's label landed on the hand cards)
+  const PS = SH ? 1.3 : cards[0].scale.x, PZ = SH ? 1.2 : 2.0;
+  const PX = SH ? 0 : -((n - 1) / 2 * spread + CARD.W * cards[0].scale.x * 0.5 + CARD.W * PS * 0.5 + 0.9);
+  const pile = kitCard(stage, p.pile ?? 'back'); pile.position.set(PX, 0.05, PZ); pile.scale.setScalar(PS); K.key(pile);
   const handY = SH ? 4.8 : 3.0;            // Shorts: high enough that a played card drops out under the hand (that gap + the pile below fill the band's height)
   const slot = (i) => { const off = i - (n - 1) / 2; const r = n > 1 ? off / ((n - 1) / 2) : 0;   // -1..1 across the hand: the arc depth is bounded whatever the hand size
     return [new THREE.Vector3(off * spread, handY - r * r * 0.3, 2.0), -r * 0.35]; };
@@ -807,15 +811,23 @@ T.fan = async (stage, spec) => {
   // plays on the same moment: staggered so one card is clear of the hand's height before the next travels, and
   // each lands in its own pile layer in landing order (two plays on one word used to share a layer)
   scheduleLandings(plays, 0.3, (h) => K.tw(`play card ${h.card}`, h.start, 0.9).dur);   // same word: staggered +-0.09 s, own lane
+  // lanes by what's still in flight (not only same-word groups): a play 0.4 s after another came in over the pile on
+  // the lane the earlier card was still coming down through
+  plays.slice().sort((a, b) => a.start - b.start).forEach((e, _, arr) => {
+    const busy = new Set(arr.filter((o) => o !== e && o.laneSet && o.start < e.start + e.dur && e.start < o.start + o.dur).map((o) => o.lane));
+    let l = 0; while (busy.has(l)) l++; e.lane = l; e.laneSet = true;
+  });
   const appear = SH ? K.tw('hand up (pre-built)', -0.35, 0.8) : K.tw('hand up', 0.05, 0.5);   // Shorts: built on frame 1, still settling
   const pill = K.label({ text: '', size: 34, role: 'label', pill: GN.mustard, at: -1, alpha: () => 0, pos: () => [0, 0] });
   if (p.seat_label) K.worldLabel({ text: p.seat_label, size: 30, role: 'label', at: -1, color: GN.text }, new THREE.Vector3(0, 0, SH ? PZ + 1.35 : 4.3), 4);   // Shorts: under the pile
   const w = (n - 1) / 2 * spread + 1.1, LIFT = SH ? 0.5 : 0.7;
-  const rise = plays.length ? CARD.H * cards[0].scale.x * (1.2 + 0.7 * Math.max(0, ...plays.map((h) => h.lane || 0))) : 0;   // + lanes of simultaneous plays     // played cards rise above the hand: keep them in frame
+  // long form: plays slide out sideways (no rise), so only lanes of simultaneous plays need headroom
+  const rise = plays.length ? (SH ? CARD.H * cards[0].scale.x * (1.2 + 0.7 * Math.max(0, ...plays.map((h) => h.lane || 0)))
+    : 0.8 + CARD.H * cards[0].scale.x * 1.05 * Math.max(0, ...plays.map((h) => h.lane || 0))) : 0;   // + lanes of simultaneous plays     // played cards rise above the hand: keep them in frame
   if (SH) {   // tight: the hand's width (+ card half-width), from the pile up to a lifted card's top (plays go DOWN)
     const sc = cards[0].scale.x, hw = (n - 1) / 2 * spread + (CARD.W / 2 * Math.cos(0.35) + CARD.H / 2 * Math.sin(0.35)) * sc + 0.15;   // the outer cards are tilted 0.35 rad: their corners
     K.fit(boxPoints(-hw, 0, PZ - 0.7, hw, handY + CARD.H * cards[0].scale.x * 0.62 + LIFT + 0.3, 2.4), { elev: 20, yaw: 5, push: 0.06 });
-  } else K.fit(boxPoints(-Math.max(w, 1.8), 0, -1.4, Math.max(w, 1.8), handY + 1.4 + rise, 4.4), { elev: 20, yaw: 5, push: 0.06 });
+  } else K.fit(boxPoints(Math.min(-Math.max(w, 1.8), PX - CARD.H * PS * 0.55), 0, 0.6, Math.max(w, 1.8), handY + 1.4 + rise, 4.4), { elev: 20, yaw: 5, push: 0.06 });   // nothing behind the hand any more
   return K.frame((t) => {
     const up = appear(t), cam = stage.camera.position;
     // ONE plane for the whole hand (facing the camera from the hand's centre): with a per-card facing, neighbouring
@@ -851,11 +863,20 @@ T.fan = async (stage, spec) => {
         const landed = pl.slot;                                             // its own layer, landing order
         // Shorts: the same 3 phases DOWNWARD (slide out under the hand, tuck back over the pile below it, settle
         // flat), so the frame needn't keep room above the hand: the hand fills the band's width
-        const top = c.position.clone().addScaledVector(upIn, (SH ? -1.25 : 1.15) * k1 * CARD.H * c.scale.x), hq = c.quaternion.clone();
-        const pileTop = new THREE.Vector3(0, layerY(landed + 1, 0.05 + CARD.T * 1.3, c.scale.x), PZ);
-        const over = new THREE.Vector3(pileTop.x, top.y + (pl.lane || 0) * CARD.H * c.scale.x * (SH ? -0.25 : 0.7), pileTop.z);   // simultaneous plays: own lanes
+        // long form: slide LEFT in the hand's plane until clear of the leftmost card (it passes over the cards behind
+        // it, each in its own layer), then over to the pile beside the hand, turn flat, lower. No room needed above
+        const leftIn = new THREE.Vector3(-1, 0, 0).applyQuaternion(q0);
+        const top = SH ? c.position.clone().addScaledVector(upIn, -1.25 * k1 * CARD.H * c.scale.x)
+          : c.position.clone().addScaledVector(leftIn, k1 * (i * spread + CARD.W * c.scale.x * 1.1))
+            .addScaledVector(upIn, k1 * (0.8 + (pl.lane || 0) * CARD.H * c.scale.x * 1.05));   // lanes a card's height apart: a card turning flat sweeps that far   // rising a little (clear of the seat below), simultaneous plays on their own lane
+        const hq = c.quaternion.clone();
+        const pileTop = new THREE.Vector3(PX, layerY(landed + 1, 0.05 + CARD.T * PS, c.scale.x), PZ);
+        // long form: travel sideways at the card's own depth (sending every card to the pile's depth collapsed the
+        // layer gap between simultaneous plays while still upright); the depth changes only once flat
+        const over = SH ? new THREE.Vector3(pileTop.x, top.y - (pl.lane || 0) * CARD.H * c.scale.x * 0.25, pileTop.z)
+          : new THREE.Vector3(pileTop.x, top.y, top.z);   // simultaneous plays: own lanes
         // Shorts: turn flat first, then lower onto the pile (turning while descending dipped an edge into the card below)
-        const kd = SH ? ease(clamp((u - 0.75) / 0.25)) : k3, kr = SH ? ease(clamp((u - 0.6) / 0.25)) : k3;
+        const kd = ease(clamp((u - 0.78) / 0.22)), kr = ease(clamp((u - 0.56) / 0.2));   // turn flat, THEN lower
         c.position.lerpVectors(top, over, k2).lerp(pileTop, kd);
         c.quaternion.slerpQuaternions(hq, flat, kr);
       }
@@ -869,11 +890,14 @@ T.fan = async (stage, spec) => {
     const named = pileHl.length ? pileHl[pileHl.length - 1].at : t;
     const landedPlays = plays.filter((h) => named >= h.start + h.dur).sort((a, b) => a.slot - b.slot);
     const topCard = landedPlays.length ? cards[landedPlays[landedPlays.length - 1].card] : pile;
-    pile.position.set(0, 0.05, PZ);
+    pile.position.set(PX, 0.05, PZ);
     if (pileLift > 0) topCard.position.y += pileLift * 0.8;
     if (cur) {
+      // long form: the pile's label goes UNDER the pile (above it, it touched the hand); Shorts: above the top card
+      const pileBelow = cur.card === 'pile' && !SH;
       const anchorP = cur.card === 'pile' ? topCard.position.clone() : slot(cur.card)[0].clone();
-      const [x, y] = K.project(anchorP.add(new THREE.Vector3(0, 1.6, 0)));
+      const [x, y0] = K.project(anchorP.add(new THREE.Vector3(0, pileBelow ? 0 : 1.6, pileBelow ? CARD.H * PS * 0.6 : 0)));
+      const y = pileBelow ? y0 + 100 : y0;
       pill.el.textContent = cur.label || ''; pill.o.alpha = (tt) => (cur.label ? clamp((tt - cur.at) / 0.15) * (1 - clamp((tt - cur.at - 1.6) / 0.15)) : 0);
       pill.o.pos = () => [x, y - 60];
     } else pill.o.alpha = () => 0;
