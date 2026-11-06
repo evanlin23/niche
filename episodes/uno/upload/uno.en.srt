@@ -1,0 +1,896 @@
+1
+00:00:00,501 --> 00:00:02,549
+Everybody plays Uno a
+little bit differently.
+
+2
+00:00:03,140 --> 00:00:04,942
+Some people will allow plus twos to stack.
+
+3
+00:00:05,502 --> 00:00:08,525
+Some people will say that you have to swap
+hands with someone whenever you play a
+
+4
+00:00:08,605 --> 00:00:11,887
+seven. And some people will force you to
+keep drawing and drawing until you can
+
+5
+00:00:11,927 --> 00:00:14,930
+play, and somebody else will always
+say that that isn't a real rule.
+
+6
+00:00:15,460 --> 00:00:18,165
+So, I took every house rule I
+could find, gave them to bots,
+
+7
+00:00:18,446 --> 00:00:20,369
+and played over twenty
+three billion rounds of Uno.
+
+8
+00:00:21,442 --> 00:00:22,786
+I wanted to find the best way to play.
+
+9
+00:00:23,228 --> 00:00:26,278
+Rounds that don't drag on forever, and
+where playing well actually wins you more
+
+10
+00:00:26,298 --> 00:00:27,098
+games.
+
+11
+00:00:27,170 --> 00:00:29,232
+The rules decide how
+much skill Uno even has.
+
+12
+00:00:29,633 --> 00:00:32,255
+Some rule sets let a good player
+win more than a third of the time.
+
+13
+00:00:32,776 --> 00:00:35,999
+One makes playing well lose you games,
+and a bunch of the rules you think are
+
+14
+00:00:36,019 --> 00:00:37,160
+official actually aren't.
+
+15
+00:00:40,481 --> 00:00:42,984
+If it's been a while since you've
+played, the rule sheet goes like this.
+
+16
+00:00:43,484 --> 00:00:47,129
+Everyone gets seven cards, and one card
+gets flipped face up from the deck to start
+
+17
+00:00:47,149 --> 00:00:47,949
+the pile.
+
+18
+00:00:48,020 --> 00:00:51,404
+On your turn, you can play a card that
+matches the top card either by color or by
+
+19
+00:00:51,464 --> 00:00:53,127
+number, or you can play a Wild.
+
+20
+00:00:53,547 --> 00:00:55,570
+The first one to get to
+zero cards wins the game.
+
+21
+00:00:56,410 --> 00:00:58,074
+A Skip makes the next player miss a turn.
+
+22
+00:00:58,535 --> 00:00:59,718
+Reverse flips the direction.
+
+23
+00:01:00,159 --> 00:01:02,725
+Draw Two makes the next player
+draw two and they lose their turn.
+
+24
+00:01:03,166 --> 00:01:04,369
+A Wild lets you pick the color.
+
+25
+00:01:05,900 --> 00:01:06,941
+Now, the Wild Draw Four.
+
+26
+00:01:07,441 --> 00:01:09,383
+I bet that most people have
+never even heard of this part.
+
+27
+00:01:09,803 --> 00:01:12,506
+Officially, you can only play it when you
+have nothing left in the current color.
+
+28
+00:01:12,966 --> 00:01:14,868
+If someone thinks you cheated,
+they can challenge you,
+
+29
+00:01:15,168 --> 00:01:17,450
+and if you get caught, you have
+to draw the four cards yourself.
+
+30
+00:01:18,230 --> 00:01:20,477
+And fun fact, that challenge
+barely even matters anyway.
+
+31
+00:01:20,858 --> 00:01:24,249
+Challenging every plus four or bluffing
+one changes your win rate by about half a
+
+32
+00:01:24,289 --> 00:01:25,089
+point.
+
+33
+00:01:25,262 --> 00:01:27,307
+The sheet also says that
+you can't stack plus twos.
+
+34
+00:01:27,708 --> 00:01:29,472
+And when you can't
+play, you draw one card.
+
+35
+00:01:29,913 --> 00:01:32,659
+One. Not to draw cards until
+you find something you can play.
+
+36
+00:01:33,520 --> 00:01:35,264
+I checked my simulator against plain math.
+
+37
+00:01:35,605 --> 00:01:38,812
+The chance that your opening hand has at
+least one Wild is fifty five point eight
+
+38
+00:01:38,853 --> 00:01:41,919
+percent, and over ten million
+deals my simulator got the same.
+
+39
+00:01:42,750 --> 00:01:44,855
+Also, the bots only know what
+a real player would know.
+
+40
+00:01:45,155 --> 00:01:48,021
+Their own hand, the top card, and
+how many cards everyone's holding.
+
+41
+00:01:48,502 --> 00:01:51,870
+A normal bot plays any card that matches
+and picks the color it holds the most of.
+
+42
+00:01:53,330 --> 00:01:55,013
+How do you even measure
+the skill in a card game?
+
+43
+00:01:55,333 --> 00:01:58,317
+For me, I took my best bot, gave
+it every good habit I could find,
+
+44
+00:01:58,598 --> 00:02:00,180
+and sat it down with three normal players.
+
+45
+00:02:00,710 --> 00:02:02,896
+If Uno was pure luck, it
+would win one round in four,
+
+46
+00:02:03,196 --> 00:02:04,420
+exactly twenty five percent.
+
+47
+00:02:05,240 --> 00:02:08,144
+Under the official rules, it wins
+twenty nine, four points of skill.
+
+48
+00:02:08,605 --> 00:02:11,448
+If we follow the official rules, most of
+the game is just the cards that you're
+
+49
+00:02:11,468 --> 00:02:12,490
+dealt and the cards you draw.
+
+50
+00:02:12,991 --> 00:02:15,135
+And for comparison, when I
+tested Exploding Kittens,
+
+51
+00:02:15,295 --> 00:02:18,843
+my best bot won forty and a half percent
+of the time at a table of the same size.
+
+52
+00:02:19,524 --> 00:02:22,149
+So the official version of Uno
+sits pretty close to the luck end.
+
+53
+00:02:22,961 --> 00:02:25,199
+Now let's check each of the
+house rules, one at a time.
+
+54
+00:02:25,680 --> 00:02:28,844
+First is stacking, which I guess is the
+rule that everybody has looked up at least
+
+55
+00:02:28,965 --> 00:02:31,588
+once. This rule nudges the
+best bot to thirty percent,
+
+56
+00:02:31,928 --> 00:02:32,830
+that's barely anything.
+
+57
+00:02:33,670 --> 00:02:37,494
+Next is Seven Zero, where playing a seven
+swaps your hand with someone and playing a
+
+58
+00:02:37,554 --> 00:02:39,495
+zero passes everyone's
+hand around the table.
+
+59
+00:02:40,036 --> 00:02:42,158
+This drags down the win
+rate to twenty six percent.
+
+60
+00:02:42,678 --> 00:02:46,061
+My guess is that it's hard to plan a hand
+strategically when someone can just take
+
+61
+00:02:46,081 --> 00:02:47,062
+it from you at any time.
+
+62
+00:02:47,543 --> 00:02:49,544
+This rule also wipes out
+the edge of going first.
+
+63
+00:02:49,965 --> 00:02:53,508
+If we follow the official rules, whoever
+starts wins almost twenty seven percent of
+
+64
+00:02:53,548 --> 00:02:55,590
+rounds, with Seven Zero it's dead even.
+
+65
+00:02:56,450 --> 00:02:59,975
+Now we can look at Jump In, where anyone
+holding the exact same card can slap it
+
+66
+00:03:00,015 --> 00:03:03,340
+down out of turn, and this pushes
+it up to thirty and a half percent.
+
+67
+00:03:04,160 --> 00:03:08,003
+Now the free plus four is how most people
+play it, a plus four at any time you want
+
+68
+00:03:08,063 --> 00:03:10,825
+with no challenges. This brings
+us up to thirty one percent.
+
+69
+00:03:11,245 --> 00:03:14,528
+That's the highest of any single house
+rule, and I've essentially played it like
+
+70
+00:03:14,528 --> 00:03:17,090
+this my whole life without even
+knowing it wasn't a real rule.
+
+71
+00:03:17,870 --> 00:03:20,753
+The rule that says that you have to draw
+until you can play barely moves the meter
+
+72
+00:03:20,833 --> 00:03:23,275
+at all. All it does is make
+everything take forever.
+
+73
+00:03:23,815 --> 00:03:26,097
+Rounds take eighty two turns
+instead of forty seven normally,
+
+74
+00:03:26,437 --> 00:03:29,380
+and one round in ten even takes
+over a hundred and seventy turns.
+
+75
+00:03:30,213 --> 00:03:33,819
+The rule that actually kills skill is not
+being allowed to go out on an action card
+
+76
+00:03:33,899 --> 00:03:37,005
+or a Wild. This drops the meter
+to twenty five and a half percent,
+
+77
+00:03:37,265 --> 00:03:39,729
+which is basically pure luck,
+and the rounds get longer too.
+
+78
+00:03:40,561 --> 00:03:42,764
+And what if you throw every
+house rule in at once?
+
+79
+00:03:43,185 --> 00:03:46,029
+Stacking, Seven Zero, Jump
+In, draw until you can play,
+
+80
+00:03:46,450 --> 00:03:49,114
+the free plus four. You get
+eighty six turns a round,
+
+81
+00:03:49,474 --> 00:03:52,339
+and less skill than the official game
+at twenty eight and a half percent.
+
+82
+00:03:53,120 --> 00:03:56,884
+Another thing I tried for fun was Bounce,
+where a Reverse sends a plus two right
+
+83
+00:03:56,904 --> 00:03:57,885
+back at whoever played it.
+
+84
+00:03:58,366 --> 00:04:00,768
+The win rate stays at twenty
+nine, it changes nothing,
+
+85
+00:04:01,089 --> 00:04:02,030
+it's just really fun to do.
+
+86
+00:04:02,910 --> 00:04:04,031
+This is how I've always played.
+
+87
+00:04:04,331 --> 00:04:06,714
+Plus twos stack on plus twos,
+and plus fours on plus fours,
+
+88
+00:04:06,714 --> 00:04:07,514
+but you can't mix them.
+
+89
+00:04:07,935 --> 00:04:11,198
+You can play a plus four whenever you
+want, and if you have a bunch of the same
+
+90
+00:04:11,218 --> 00:04:12,660
+number you can dump them all at once.
+
+91
+00:04:13,420 --> 00:04:14,702
+This last one changes a lot.
+
+92
+00:04:15,063 --> 00:04:17,226
+Rounds drop from forty
+seven turns to around forty,
+
+93
+00:04:17,527 --> 00:04:19,570
+and my best bot wins thirty
+one percent of the time.
+
+94
+00:04:20,081 --> 00:04:22,706
+Out of the one hundred and ninety
+two rule combinations I tested,
+
+95
+00:04:22,927 --> 00:04:25,091
+this combination lands in
+the top sixth for skill.
+
+96
+00:04:25,652 --> 00:04:28,919
+So apparently I've just been playing one
+of the better versions of Uno my entire
+
+97
+00:04:28,959 --> 00:04:29,759
+life.
+
+98
+00:04:30,010 --> 00:04:31,792
+One habit matters a ton
+with this combination.
+
+99
+00:04:32,192 --> 00:04:34,515
+If you hold back and play your
+matching numbers one at a time,
+
+100
+00:04:34,775 --> 00:04:36,837
+you win fourteen percent of
+rounds instead of twenty five.
+
+101
+00:04:37,277 --> 00:04:39,520
+Basically, if you can dump
+your numbers, just dump them.
+
+102
+00:04:40,413 --> 00:04:41,836
+I also checked how big the stacks get.
+
+103
+00:04:42,136 --> 00:04:45,803
+With my rules, in about one round of nine,
+somebody has to pick up eight or more
+
+104
+00:04:45,823 --> 00:04:49,130
+cards at once. Ten or more happens
+in less than one round in a hundred.
+
+105
+00:04:49,862 --> 00:04:51,844
+If you mostly play one
+on one, the meter shifts.
+
+106
+00:04:52,204 --> 00:04:54,927
+My best bot wins fifty four percent
+against a fair share of fifty,
+
+107
+00:04:55,347 --> 00:04:57,990
+and whoever goes first wins fifty
+one and a half percent of the time.
+
+108
+00:04:58,490 --> 00:05:01,335
+With Seven Zero, every seven swaps
+your hand with your only opponent,
+
+109
+00:05:01,655 --> 00:05:04,019
+and the best bot falls to
+barely over fifty percent.
+
+110
+00:05:04,810 --> 00:05:08,481
+Also, if we have more people, every
+extra player adds around seven turns,
+
+111
+00:05:08,842 --> 00:05:11,209
+so a ten player round takes
+around ninety one turns.
+
+112
+00:05:12,022 --> 00:05:13,867
+What if you wanted Uno
+to just be pure luck?
+
+113
+00:05:14,188 --> 00:05:17,958
+That's really easy. After every single
+turn, just force everyone to pass their hand
+
+114
+00:05:18,018 --> 00:05:18,818
+to the next player.
+
+115
+00:05:19,482 --> 00:05:22,748
+My best bot drops to twenty four percent,
+which is below a fair share of twenty
+
+116
+00:05:22,828 --> 00:05:25,913
+five. Under that rule, being good
+at Uno makes you worse at Uno.
+
+117
+00:05:26,474 --> 00:05:29,400
+My guess is that every good move you
+set up gets handed to the next person.
+
+118
+00:05:30,252 --> 00:05:33,137
+Or you could just use one of the ideas
+printed on the official rule sheet for the
+
+119
+00:05:33,158 --> 00:05:35,522
+blank cards. You tell a
+joke, and if anyone laughs,
+
+120
+00:05:35,643 --> 00:05:37,106
+you get to discard down to one card.
+
+121
+00:05:37,506 --> 00:05:39,029
+If nobody laughs, you have to draw four.
+
+122
+00:05:39,940 --> 00:05:42,883
+I simulated a laugh as a coin flip,
+because my bots aren't funny enough.
+
+123
+00:05:43,304 --> 00:05:45,766
+This rule drags the meter down
+to twenty six and a half percent.
+
+124
+00:05:46,167 --> 00:05:48,830
+The official suggestion turns
+Uno into mostly a coin toss.
+
+125
+00:05:49,660 --> 00:05:52,682
+Without any silly rules, the most
+luck-driven Uno I found is this one.
+
+126
+00:05:53,043 --> 00:05:55,244
+Draw until you can play,
+dump your matching numbers,
+
+127
+00:05:55,525 --> 00:05:56,966
+and no going out on an action card.
+
+128
+00:05:57,406 --> 00:06:00,128
+The best bot wins twenty three and a
+half, which is below the fair share.
+
+129
+00:06:00,529 --> 00:06:02,210
+In my opinion, nobody
+should play like this.
+
+130
+00:06:02,921 --> 00:06:05,203
+On the other hand, here's the
+most skillful Uno I could find.
+
+131
+00:06:05,624 --> 00:06:08,407
+Stacking, Jump In, the free
+plus four, and, of all things,
+
+132
+00:06:08,487 --> 00:06:09,288
+draw until you can play.
+
+133
+00:06:09,728 --> 00:06:11,310
+The best bot wins thirty five percent.
+
+134
+00:06:11,681 --> 00:06:14,013
+The only catch is that a round
+now takes eighty four turns,
+
+135
+00:06:14,193 --> 00:06:15,500
+almost double the official version.
+
+136
+00:06:16,235 --> 00:06:19,809
+Now here's what I would play if you want
+games to be both fast and skill based.
+
+137
+00:06:20,330 --> 00:06:23,573
+Stacking, Jump In, the free plus four,
+and dumping all your matching numbers at
+
+138
+00:06:23,673 --> 00:06:27,736
+once. Rounds now take around thirty nine
+turns, which is faster than the official
+
+139
+00:06:27,776 --> 00:06:29,898
+game, and the best bot
+wins thirty two percent.
+
+140
+00:06:30,198 --> 00:06:32,240
+That's almost twice the
+skill of the official rules.
+
+141
+00:06:32,751 --> 00:06:35,437
+If you'd rather keep it a coin toss
+so anyone at the table can win,
+
+142
+00:06:35,577 --> 00:06:36,499
+just add Seven Zero.
+
+143
+00:06:37,390 --> 00:06:38,854
+Now how do you win under those rules?
+
+144
+00:06:39,155 --> 00:06:40,539
+There are four big habits to follow.
+
+145
+00:06:41,021 --> 00:06:44,149
+Every number is one bot changing one
+habit against three normal players.
+
+146
+00:06:44,951 --> 00:06:47,434
+Number one. Dump every
+card of a number together.
+
+147
+00:06:47,795 --> 00:06:50,840
+If you hold any back, you drop from winning
+twenty five percent to fifteen percent.
+
+148
+00:06:51,651 --> 00:06:52,993
+Number two. Hold your Wilds.
+
+149
+00:06:53,254 --> 00:06:55,517
+Don't play a Wild while you
+have another card you can play.
+
+150
+00:06:55,817 --> 00:06:57,640
+That alone gets you to
+twenty nine percent.
+
+151
+00:06:58,440 --> 00:07:00,022
+Number three. Always stack when you can.
+
+152
+00:07:00,383 --> 00:07:03,287
+A bot that never stacks, and just takes
+the cards instead of passing them on,
+
+153
+00:07:03,647 --> 00:07:05,510
+wins around twenty two and
+a half percent of the time.
+
+154
+00:07:06,291 --> 00:07:07,554
+The rest is all just small stuff.
+
+155
+00:07:08,056 --> 00:07:10,823
+Switching into the color you hold most
+of is worth about a point and a half,
+
+156
+00:07:11,284 --> 00:07:13,189
+and jumping in whenever
+you can is worth about one.
+
+157
+00:07:13,690 --> 00:07:15,815
+Finally there's one habit
+that beats almost all of them,
+
+158
+00:07:16,175 --> 00:07:18,280
+and it's the one that my bots
+were never allowed to get wrong.
+
+159
+00:07:19,070 --> 00:07:21,077
+Remember how my bots never
+argue about the rules?
+
+160
+00:07:21,419 --> 00:07:22,944
+They also never forget to say Uno.
+
+161
+00:07:23,426 --> 00:07:24,449
+So I made them forget.
+
+162
+00:07:24,950 --> 00:07:27,997
+Officially, if you forget and someone
+catches you before the next player goes,
+
+163
+00:07:28,098 --> 00:07:28,919
+you draw two cards.
+
+164
+00:07:29,460 --> 00:07:32,483
+I set the table so everyone forgets
+to say Uno one time in four,
+
+165
+00:07:32,923 --> 00:07:34,785
+and someone catches a
+forgetter half the time.
+
+166
+00:07:35,346 --> 00:07:38,709
+A bot that never forgets wins thirty
+percent, which is a bigger edge than holding
+
+167
+00:07:38,769 --> 00:07:39,569
+onto your Wilds.
+
+168
+00:07:40,333 --> 00:07:42,599
+A bot that always forgets
+wins five percent of the time.
+
+169
+00:07:42,939 --> 00:07:45,666
+Catching other people that forget
+barely matters, less than a point.
+
+170
+00:07:45,986 --> 00:07:47,229
+So just make sure you say Uno.
+
+171
+00:07:47,821 --> 00:07:50,506
+Also, some tables make you draw
+four cards instead of just two.
+
+172
+00:07:51,027 --> 00:07:53,251
+Then never forgetting gets
+you to thirty two percent.
+
+173
+00:07:53,712 --> 00:07:55,996
+Under the rules I would play,
+it lands at twenty nine,
+
+174
+00:07:55,996 --> 00:07:57,639
+right up there with
+holding onto your Wilds.
+
+175
+00:07:58,431 --> 00:07:59,832
+And at a lot of tables, it's a race.
+
+176
+00:08:00,212 --> 00:08:03,536
+The second you're down to one card, if
+someone else yells Uno before you do,
+
+177
+00:08:03,736 --> 00:08:05,918
+you draw two. I made
+that race a coin flip.
+
+178
+00:08:06,359 --> 00:08:08,981
+A bot that always wins the race
+wins forty one percent of rounds.
+
+179
+00:08:09,462 --> 00:08:13,025
+A bot that always loses, under the
+official rules, basically never wins.
+
+180
+00:08:13,626 --> 00:08:14,767
+Three rounds in a hundred thousand.
+
+181
+00:08:14,987 --> 00:08:17,270
+Every time it gets to one
+card, it gets back up to three.
+
+182
+00:08:18,150 --> 00:08:20,272
+Under the official rules,
+Uno is mostly luck.
+
+183
+00:08:20,692 --> 00:08:23,975
+Under the rules I would play, a good
+player gets almost twice the edge,
+
+184
+00:08:24,275 --> 00:08:26,978
+and a round is over in thirty nine
+turns, about eight turns faster.
+
+185
+00:08:27,418 --> 00:08:29,260
+That's the best way to
+play Uno that I found.
+
+186
+00:08:29,790 --> 00:08:33,488
+Next up is Sorry. It's supposed to be pure
+luck, but my best bot won a third of its
+
+187
+00:08:33,508 --> 00:08:34,304
+games.
+
+188
+00:08:34,304 --> 00:08:37,195
+Tell me where your table lands on the
+meter, and what rule you'd add to it.
+
+189
+00:08:37,616 --> 00:08:38,319
+I'll read every one.
