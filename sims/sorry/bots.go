@@ -4,21 +4,22 @@ import "math"
 
 // Policy: how a bot picks among the legal moves for the card it drew. It sees only the board and its card.
 type Policy struct {
-	Name      string  `json:"name"`
-	Random    bool    `json:"random"`     // pick any legal move
-	Rush      float64 `json:"rush"`       // >1: favour the lead pawn (progress^rush); <1: favour back pawns
-	Hurt      float64 `json:"hurt"`       // weight on opponents' progress (normal 1; 0 = plays its own race)
-	Danger    float64 `json:"danger"`     // weight on the chance an opponent bumps you next turn (normal 0)
-	NoSplit   bool    `json:"no_split"`   // never split a 7
-	NoBack10  bool    `json:"no_back10"`  // never use a 10 to go back 1 (when forward 10 is possible)
-	NoSwitch  bool    `json:"no_switch"`  // never use the 11 to switch
-	SwitchLead bool   `json:"switch_lead"` // with an 11, always switch with the most advanced opponent pawn if you can
-	SorryLead bool    `json:"sorry_lead"` // with a Sorry!, always bump the most advanced opponent pawn
-	StartLate bool    `json:"start_late"` // don't start a new pawn while one is already on the track (if another move exists)
-	SafeFirst bool    `json:"safe_first"` // prefer moves that get a pawn into the Safety Zone
-	Lead      bool    `json:"lead"`       // always move your front pawn forward when it can
-	RandTie   bool    `json:"rand_tie"`   // break exact ties at random (default: first in board order, as in the big run)
-	LeadBump  bool    `json:"lead_bump"`  // ...unless another move bumps an opponent
+	Name       string  `json:"name"`
+	Random     bool    `json:"random"`      // pick any legal move
+	Rush       float64 `json:"rush"`        // >1: favour the lead pawn (progress^rush); <1: favour back pawns
+	Hurt       float64 `json:"hurt"`        // weight on opponents' progress (normal 1; 0 = plays its own race)
+	Danger     float64 `json:"danger"`      // weight on the chance an opponent bumps you next turn (normal 0)
+	NoSplit    bool    `json:"no_split"`    // never split a 7
+	NoBack10   bool    `json:"no_back10"`   // never use a 10 to go back 1 (when forward 10 is possible)
+	NoSwitch   bool    `json:"no_switch"`   // never use the 11 to switch
+	SwitchLead bool    `json:"switch_lead"` // with an 11, always switch with the most advanced opponent pawn if you can
+	SorryLead  bool    `json:"sorry_lead"`  // with a Sorry!, always bump the most advanced opponent pawn
+	StartLate  bool    `json:"start_late"`  // don't start a new pawn while one is already on the track (if another move exists)
+	SafeFirst  bool    `json:"safe_first"`  // prefer moves that get a pawn into the Safety Zone
+	Lead       bool    `json:"lead"`        // always move your front pawn forward when it can
+	RandTie    bool    `json:"rand_tie"`    // break exact ties at random (default: first in board order, as in the big run)
+	LeadBump   bool    `json:"lead_bump"`   // ...unless another move bumps an opponent
+	Keep       float64 `json:"keep"`        // 5-card variation: weight on what the played card would be worth later (saves Sorry! and 11s for a better moment)
 }
 
 func (b *Policy) pv(p int) float64 {
@@ -53,14 +54,16 @@ func init() {
 }
 
 func (b *Policy) Value(st *State, s int) float64 {
-	c := st.Col[s]
+	team := st.team(s)
 	own := 0.0
-	for i := 0; i < 4; i++ {
-		own += b.pv(progress(c, int(st.Loc[s][i])))
+	for _, o := range team {
+		for i := 0; i < 4; i++ {
+			own += b.pv(progress(st.Col[o], int(st.Loc[o][i])))
+		}
 	}
 	opp := 0.0
 	for q := 0; q < st.N; q++ {
-		if q == s {
+		if st.sameTeam(q, s) {
 			continue
 		}
 		for i := 0; i < 4; i++ {
@@ -74,28 +77,31 @@ func (b *Policy) Value(st *State, s int) float64 {
 	if b.Hurt < 0 {
 		hurt = 0
 	}
-	v := own - hurt*opp/float64(st.N-1)
+	v := own - hurt*opp*float64(len(team))/float64(st.N-len(team))
 	if b.Danger > 0 {
 		risk := 0.0
-		for i := 0; i < 4; i++ {
-			l := int(st.Loc[s][i])
-			if !isTrack(l) {
-				continue
-			}
-			p := 0.0
-			for d := 1; d <= 12; d++ {
-				o := st.Occ[(l-d+Track)%Track]
-				if o >= 0 && int(o)/4 != s {
-					p += hitBehind[d]
+		for _, o := range team {
+			c := st.Col[o]
+			for i := 0; i < 4; i++ {
+				l := int(st.Loc[o][i])
+				if !isTrack(l) {
+					continue
 				}
-			}
-			for _, d := range [2]int{4, 1} {
-				o := st.Occ[(l+d)%Track]
-				if o >= 0 && int(o)/4 != s {
-					p += 4.0 / 45
+				p := 0.0
+				for d := 1; d <= 12; d++ {
+					o := st.Occ[(l-d+Track)%Track]
+					if o >= 0 && !st.sameTeam(int(o)/4, s) {
+						p += hitBehind[d]
+					}
 				}
+				for _, d := range [2]int{4, 1} {
+					o := st.Occ[(l+d)%Track]
+					if o >= 0 && !st.sameTeam(int(o)/4, s) {
+						p += 4.0 / 45
+					}
+				}
+				risk += p * float64(progress(c, l))
 			}
-			risk += p * float64(progress(c, l))
 		}
 		v -= b.Danger * risk
 	}
@@ -181,7 +187,7 @@ func (b *Policy) Choose(g *Game, s int, v int8, ms []Move, sts []State) (int, bo
 		for pass := 0; pass < 1; pass++ {
 			bk, bv := -1, -1e18
 			for k, m := range ms {
-				if m.Kind == MFwd && int(m.P) == lead && allowed(m) {
+				if m.Kind == MFwd && m.O == 0 && int(m.P) == lead && allowed(m) {
 					if val := b.Value(&sts[k], s); val > bv {
 						bk, bv = k, val
 					}
@@ -239,7 +245,11 @@ func entersSafety(a, b *State, s int) bool {
 }
 
 // adult variation helpers
-func (b *Policy) keepValue(h []int8, k int) float64 { return 0 }
+// cardWorth: squares each card moves the race on average (data/results.json mirror 4p card_swing, classic rules).
+var cardWorth = map[int8]float64{CSorry: 40.2, 1: 2.0, 2: 2.7, 3: 2.3, 4: 3.8, 5: 3.3, 7: 4.6, 8: 4.2, 10: 4.9, 11: 10.4, 12: 6.0}
+
+// keepValue: playing card k gives up what it would be worth on a later turn.
+func (b *Policy) keepValue(h []int8, k int) float64 { return -b.Keep * cardWorth[h[k]] }
 
 func (b *Policy) dumpCard(h []int8) int {
 	// throw a plain forward card if there is one, keep Sorry!, 11, 1, 2, 4

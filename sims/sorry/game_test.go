@@ -75,7 +75,7 @@ func TestGeometry(t *testing.T) {
 
 func fresh(n int) *State {
 	var st State
-	st.init(n)
+	st.init(n, nil)
 	return &st
 }
 
@@ -362,5 +362,155 @@ func TestMirrorQuick(t *testing.T) {
 		if v < 0.23 || v > 0.27 {
 			t.Fatalf("seat %d wins %.3f", i, v)
 		}
+	}
+}
+
+func withRules(R *Rules, f func()) {
+	setRules(R)
+	defer setRules(&Rules{})
+	f()
+}
+
+func TestHouseSlides(t *testing.T) {
+	// 2020 sheet: slide only on your own colour. Colour 0's short slide: 1 -> 4; colour 1's: 16 -> 19.
+	withRules(&Rules{Slides: 1}, func() {
+		st := fresh(4)
+		st.set(0, 0, 58)
+		st.apply(0, Move{Kind: MFwd, P: 0, N: 3})
+		if st.Loc[0][0] != 4 {
+			t.Fatalf("2020: own slide should slide, at %d", st.Loc[0][0])
+		}
+		st = fresh(4)
+		st.set(0, 0, 13)
+		st.apply(0, Move{Kind: MFwd, P: 0, N: 3})
+		if st.Loc[0][0] != 16 {
+			t.Fatal("2020: other colour's slide: stay put")
+		}
+	})
+	withRules(&Rules{Slides: 2}, func() {
+		for _, c := range []struct{ from, n, want int }{{58, 3, 4}, {13, 3, 19}} {
+			st := fresh(4)
+			st.set(0, 0, c.from)
+			st.apply(0, Move{Kind: MFwd, P: 0, N: int8(c.n)})
+			if int(st.Loc[0][0]) != c.want {
+				t.Fatal("every slide slides")
+			}
+		}
+	})
+	withRules(&Rules{Slides: 3}, func() {
+		st := fresh(4)
+		st.set(0, 0, 13)
+		st.set(2, 0, 18)
+		st.apply(0, Move{Kind: MFwd, P: 0, N: 3})
+		if st.Loc[0][0] != 16 || st.Loc[2][0] != 18 {
+			t.Fatal("no slides")
+		}
+	})
+}
+
+func TestStartOutAndNoExact(t *testing.T) {
+	g := NewGame(rand.New(rand.NewSource(1)), &Rules{StartOut: true}, []*Policy{&normalPolicy, &normalPolicy, &normalPolicy})
+	for s := 0; s < 3; s++ {
+		if int(g.St.Loc[s][0]) != exitSq(g.St.Col[s]) || g.St.Loc[s][1] != Start || int(g.St.Occ[exitSq(g.St.Col[s])]) != s*4 {
+			t.Fatal("one pawn starts on the exit circle")
+		}
+	}
+	st := fresh(4)
+	st.set(0, 0, Safe1+3) // two moves from Home
+	if st.apply(0, Move{Kind: MFwd, P: 0, N: 5}) {
+		t.Fatal("classic: exact count")
+	}
+	withRules(&Rules{NoExact: true}, func() {
+		st := fresh(4)
+		st.set(0, 0, Safe1+3)
+		if !st.apply(0, Move{Kind: MFwd, P: 0, N: 5}) || st.Loc[0][0] != HomeSq {
+			t.Fatal("no exact count: overshoot goes Home")
+		}
+		st = fresh(4)
+		st.set(0, 0, 50)
+		st.apply(0, Move{Kind: MFwd, P: 0, N: 12})
+		if st.Loc[0][0] != 62-60 && !isSafe(int(st.Loc[0][0])) {
+			t.Fatalf("still can't pass the Safety entry: %d", st.Loc[0][0])
+		}
+	})
+}
+
+func TestTeams(t *testing.T) {
+	R := &Rules{Teams: true}
+	withRules(R, func() {
+		st := fresh(4)
+		// seat 0 (red) has nothing out; partner seat 2 has a pawn on 40: a 5 may move it
+		st.set(2, 0, 40)
+		ms := st.legal(0, 5, R, nil)
+		if len(ms) != 1 || ms[0].O != 3 {
+			t.Fatalf("partner's pawn moves: %+v", ms)
+		}
+		cp := st
+		cp.apply(0, ms[0])
+		if cp.Loc[2][0] != 45 {
+			t.Fatal("partner pawn moved 5")
+		}
+		// landing on the partner bumps it; landing on your own pawn is not allowed
+		st = fresh(4)
+		st.set(0, 0, 20)
+		st.set(2, 0, 25)
+		st.apply(0, Move{Kind: MFwd, P: 0, N: 5})
+		if st.Loc[0][0] != 25 || st.Loc[2][0] != Start {
+			t.Fatal("partner bumped")
+		}
+		// a 7 may split between your pawn and your partner's
+		st = fresh(4)
+		st.set(0, 0, 20)
+		st.set(2, 0, 30)
+		found := false
+		for _, m := range st.legal(0, 7, R, nil) {
+			if m.Kind == MSplit && m.O != m.O2 {
+				found = true
+			}
+		}
+		if !found {
+			t.Fatal("split across partners")
+		}
+		// no switching with a partner; Sorry! must hit the partner when no opponent is out
+		st = fresh(4)
+		st.set(0, 0, 20)
+		st.set(2, 0, 30)
+		for _, m := range st.legal(0, 11, R, nil) {
+			if m.Kind == MSwitch {
+				t.Fatal("switched with partner")
+			}
+		}
+		ms = st.legal(0, CSorry, R, nil)
+		if len(ms) == 0 {
+			t.Fatal("Sorry! must be used on the team when nobody else is out")
+		}
+		st.set(1, 0, 50)
+		for _, m := range st.legal(0, CSorry, R, nil) {
+			if int(m.T)/4 != 1 {
+				t.Fatal("Sorry! goes to the opponent when one is out")
+			}
+		}
+		// the team wins only with all eight pawns Home
+		st = fresh(4)
+		for i := 0; i < 4; i++ {
+			st.set(0, i, HomeSq)
+		}
+		if st.won(0) {
+			t.Fatal("four of eight isn't a win")
+		}
+		for i := 0; i < 4; i++ {
+			st.set(2, i, HomeSq)
+		}
+		if !st.won(0) || !st.won(2) || st.won(1) {
+			t.Fatal("team win")
+		}
+	})
+	// mirror: both teams normal -> each team ~50%
+	setRules(R)
+	r := runGames(4, 4000, 9, 4, R, &normalPolicy, nil)
+	setRules(&Rules{})
+	sw := r["seat_win"].([]float64)
+	if a := sw[0] + sw[2]; a < 0.47 || a > 0.53 {
+		t.Fatalf("team mirror %.3f", a)
 	}
 }

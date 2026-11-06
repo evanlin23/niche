@@ -46,10 +46,31 @@ That sheet says only "deck of cards (no 6s or 9s)". The deck mix and board count
 - After an 11 switch only your pawn can slide; the opponent's pawn simply takes your old square.
 - Seats sit in colour order and play passes clockwise; 2 players use opposite colours; 3 players leave one side empty.
 
+## Team rules (official variation, classic 00390 sheet; also "Partnership Games" in the 1958 sheet)
+Re-checked 2026-11-06 (pdftotext of the sheets above). "RED is always YELLOW's partner, and GREEN is always BLUE's."
+"you may move, or BUMP! your own or your partner's pawn in accordance with the card drawn." "If you land on a space
+occupied by a partner's pawn, BUMP it back to its START!" "SORRY! cards must be used. If there's no one else to pick
+on, this means you might send your own or your partner's pawn back!" "7 means you may split a move among any or all
+eight of your team's pawns" (simulated: between any two of the eight). "If you drew a 1 or 2, you may start or move a
+pawn of either partner." "The first partnership to get all eight pawns into their respective HOMEs wins the game."
+Simulated as written; an 11 switches only with an opponent. Partners sit opposite (seats 0/2 and 1/3). Two players
+who each play two opposite colours and may move either play the same game.
+
+## House rules (not on any sheet; common at home; tested on the skill meter in data/v2.json)
+- **Start with one pawn out:** every player begins with one pawn on its Start exit circle.
+- **No exact count:** a pawn can reach Home with any card that gets it there (extra steps are wasted). It still
+  can't pass its Safety Zone entry.
+- **Slide on every slide:** slide on your own colour's slides too. On the classic board your own short slide starts
+  one square before your Safety Zone entry, so landing on it sends a pawn past its entry and round again.
+- **No slides.**
+- The 2020 sheet's slide rule ("land ... on the triangle at the beginning of your color slide, slide ... If you land
+  on a slide that isn't your color, don't slide") is NOT tested: on the classic layout that would push every pawn
+  past its own Safety Zone entry; the 2020 board's layout can't be read reliably from the printed diagram.
+
 ## Edition differences (tested as variants)
-- **2020 rules (A5065):** a 2 does **not** draw again; a Sorry! card may instead move a pawn forward 4; and the slide
-  rule is reversed (slide on your own colour). We test the first two only: the 2020 board's slide colours can't be
-  read reliably from the printed diagram.
+- **2020 rules (A5065):** a 2 does **not** draw again (the 2 card text: "Move one of your pawns forward two from
+  START or if in play, move forward two spaces", no draw again); a Sorry! card may instead "move forward 4"; and the
+  slide rule is reversed (slide on your own colour). We test the first two only (see House rules).
 - **1958 pack:** 44 cards, without the fifth 1.
 - **"Variation for adults" (00390 sheet):** hold 5 cards, play one per turn, draw back to 5; if none can move, discard
   one and draw. We treat a played 2 as "play again from your refilled hand".
@@ -63,7 +84,9 @@ That sheet says only "deck of cards (no 6s or 9s)". The deck mix and board count
   (avoids ending within reach of opponents' next card); safety first; peaceful (ignores opponents); avenger
   (Sorry! always on the opponent's furthest pawn); switcher (11 always swaps with the opponent's furthest pawn);
   never switch; never split a 7; never use the 10 to go back 1; one pawn at a time.
-- **Best found:** runner + careful + safety first.
+- **Best found:** runner + careful + safety first. In the 5-card variation it also weighs what the card it plays
+  would be worth later ("keep" 0.5 x the card's average swing from data/results.json: saves Sorry! cards and 11s).
+- Under the Team rules every bot values its team's eight pawns against the other team's.
 
 ## Engine check (plain math)
 With 45 cards and only the 1s (five) and 2s (four) starting a pawn, the chance that nobody in a 4-player game gets

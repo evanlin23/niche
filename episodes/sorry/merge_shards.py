@@ -33,14 +33,17 @@ def merge(objs):
 def main(src, dst=None):
     dst = Path(dst) if dst else Path(__file__).resolve().parent / "data"
     dst.mkdir(parents=True, exist_ok=True)
-    shards = sorted(d for d in Path(src).glob("*/") if (d / "results.json").exists())
-    objs = [json.loads((d / "results.json").read_text()) for d in shards]
-    m = merge(objs)
-    m["shards"] = len(objs)
-    # the engine check's exact math is the same in every shard; keep it exact, not averaged
-    m["engine_check"]["math"] = objs[0]["engine_check"]["math"]
-    (dst / "results.json").write_text(json.dumps(m, indent=1))
-    print(f"merged {len(objs)} shards: {m['total_games']:,} games, {m['games_per_test']:,} per test")
+    for name in ("results.json", "v2.json"):
+        shards = sorted(d for d in Path(src).glob("*/") if (d / name).exists())
+        if not shards:
+            continue
+        objs = [json.loads((d / name).read_text()) for d in shards]
+        m = merge(objs)
+        m["shards"] = len(objs)
+        if "engine_check" in m:  # the exact math is the same in every shard; keep it exact, not averaged
+            m["engine_check"]["math"] = objs[0]["engine_check"]["math"]
+        (dst / name).write_text(json.dumps(m, indent=1))
+        print(f"{name}: merged {len(objs)} shards: {m['total_games']:,} games, {m['games_per_test']:,} per test")
 
 
 if __name__ == "__main__":

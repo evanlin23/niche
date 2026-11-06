@@ -11,7 +11,7 @@ SIM = ROOT / "sims" / "sorry"
 BIN = SIM / "sorrysim"
 
 NORMAL = {"name": "normal"}
-BEST = {"name": "best", "rush": 3, "danger": 1, "safe_first": True}
+BEST = {"name": "best", "rush": 3, "danger": 1, "safe_first": True, "keep": 0.5}  # keep: only used in the 5-card variation
 HABITS = {  # one change from the normal player each
     "random": {"name": "random", "random": True},
     "spreader": {"name": "spreader", "rush": 0.5},       # spreads moves over all pawns
@@ -47,6 +47,14 @@ def exact_checks():
 
 
 def main():
+    import sys
+    if "--v2" in sys.argv:  # the skill-meter run (rule combinations, Team rules, habits under the pick)
+        sys.argv.remove("--v2")
+        import importlib.util
+        sp = importlib.util.spec_from_file_location("v2", Path(__file__).resolve().parent / "experiments_v2.py")
+        v2 = importlib.util.module_from_spec(sp)
+        sp.loader.exec_module(v2)
+        return v2.main()
     ap = argparse.ArgumentParser()
     ap.add_argument("--games", type=int, default=20000)
     ap.add_argument("--seed", type=int, default=1)

@@ -1,6 +1,7 @@
 // sorrysim: Sorry! experiments.
-//   sorrysim -players 4 -games N -seed S -rules '{}' -base '{policy}' [-test '{policy}']
-//   sorrysim -mode check -games N   (engine check: nobody gets a pawn out in the first round of a 4-player game)
+//
+//	sorrysim -players 4 -games N -seed S -rules '{}' -base '{policy}' [-test '{policy}']
+//	sorrysim -mode check -games N   (engine check: nobody gets a pawn out in the first round of a 4-player game)
 package main
 
 import (
@@ -42,7 +43,7 @@ func main() {
 	if err := json.Unmarshal([]byte(*rulesJ), &R); err != nil {
 		panic(err)
 	}
-	noInteract = R.NoInteract
+	setRules(&R)
 	W := runtime.NumCPU()
 	per := (*games + W - 1) / W
 	enc := json.NewEncoder(os.Stdout)
@@ -128,6 +129,9 @@ func runGames(W, per int, seed int64, N int, R *Rules, base, test *Policy) map[s
 				}
 				if ts >= 0 {
 					pols[ts] = test
+					if teams && N == 4 {
+						pols[(ts+2)%4] = test // Team rules: the test bot plays both partners
+					}
 				}
 				g := NewGame(rng, R, pols)
 				if test == nil {
@@ -147,7 +151,7 @@ func runGames(W, per int, seed int64, N int, R *Rules, base, test *Policy) map[s
 					a.firstWins++
 				}
 				if ts >= 0 {
-					if win == ts {
+					if win == ts || (teams && N == 4 && win == (ts+2)%4) {
 						a.testWins++
 					}
 					a.testHome += float64(g.St.homeCount(ts))

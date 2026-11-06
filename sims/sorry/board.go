@@ -47,11 +47,14 @@ func progress(c, l int) int {
 	return 65 - (rem + 6)
 }
 
-// fwd: square reached moving forward n from l for colour c; ok=false if it would pass Home.
+// fwd: square reached moving forward n from l for colour c; ok=false if it would pass Home (classic: exact count).
 func fwd(c, l, n int) (int, bool) {
 	for k := 0; k < n; k++ {
 		switch {
 		case l == HomeSq:
+			if noExact { // house rule: extra steps past Home are wasted
+				return HomeSq, true
+			}
 			return 0, false
 		case isSafe(l):
 			l++
