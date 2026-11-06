@@ -99,3 +99,31 @@ scenes:
     - {card: 5, at: a7@once}
     - {card: 4, at: a7@once}
     - {card: 3, at: a7@together}
+- id: dealswap         # deal from the deck, flip a starting card, a labelled hop, a swap and a pass (hand counts follow)
+  render: table
+  lines: [a10]
+  params:
+    players: 4
+    hands: 0
+    names: [ONE, TWO, THREE, FOUR]
+    pile: 6
+    deal: {at: a10@deal, count: 7, every: 0.06}
+    highlight: [[2, a10@yells, UNO!]]
+    turns:
+    - {at: a10@flip, ev: flip, card: 3, label: START THE PILE}
+    - {at: a10@yells, seat: 2, ev: play, card: 7}
+    - {at: a10@swap, ev: swap, seat: 0, with: 2}
+    - {at: a10@passes, ev: pass}
+- id: topcard          # a highlight on the pile's top card, not a hand card
+  render: fan
+  lines: [a11]
+  pad: [0.2, 1.2]       # the play is on the line's last word: room to land before the cut
+  params:
+    seat_label: YOUR HAND
+    pile: 3
+    cards: [0, 1, 2, 3, 4]
+    highlights:
+    - {card: pile, at: a11@top, label: THE TOP CARD}
+    - {card: 3, at: a11@decides, label: MATCHES IT}
+    play:
+    - {card: 3, at: a11@play}

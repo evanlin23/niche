@@ -222,7 +222,7 @@ def build_spec(ctx, module: str | None = None, charts: dict | None = None) -> di
         params["plan"] = [x for x in params["plan"] if x[0] is not None]
     for key in ("highlight", "seat_hl", "out"):  # [[seat, anchor], ...]
         if isinstance(params.get(key), list) and params[key] and isinstance(params[key][0], list):
-            params[key] = [[a, R.at(b, key, drop_on_error=True)] for a, b in params[key]]
+            params[key] = [[x[0], R.at(x[1], key, drop_on_error=True), *x[2:]] for x in params[key]]   # [seat, anchor, label?]
             params[key] = [x for x in params[key] if x[1] is not None]
     s["params"] = R.all(params, "params")
     if "chart" in s["params"]:

@@ -10,3 +10,5 @@ Timing: TTS_ENGINE=silent. CI: .github/workflows/kit-ci.yml on every push touchi
 [a7] Two cards from one hand are played at once, together, onto the pile.
 [a8] The same table again, so the shot carries on: a pawn hops, cards fly high with their shadows, and one is drawn back.
 [a9] And now a new angle on that table, clearly different from the last one.
+[a10] Deal seven each, flip the first card, one player yells uno, two players swap hands, then everyone passes their hand on.
+[a11] The top card of the pile decides what you can play.

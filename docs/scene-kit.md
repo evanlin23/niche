@@ -147,6 +147,20 @@ cards" in docs/LESSONS.md. Custom scenes must use them too (the static gate fail
     # plays may share an anchor: they are staggered by a few frames and stack in landing order, never in each other
     out: [[3, o3@out]]                          # pawn tips over
 ```
+Literal events (all optional; say it, show it):
+```yaml
+    hands: 0                                    # with deal: nobody holds cards yet
+    deal: {at: g1@seven, count: 7, every: 0.06} # dealt round the table from the deck, one card at a time
+    pile: 'uno:0:5'                             # the starting top card, face up on the pile from frame 1
+    highlight: [[2, u4@uno, 'UNO!']]            # a hop with its own pill: something said or done without a card
+    turns:
+    - {at: g1@flipped, ev: flip, card: 'uno:0:5', label: START THE PILE}   # deck top -> pile, turns face up
+    - {at: r3@seven, ev: swap, seat: 0, with: 2}                          # two hands trade places (counts too)
+    - {at: r3@zero, ev: pass}                                             # every hand moves one seat on
+```
+Hand counts follow the cards: a play takes one out of that hand, a draw adds one, and a swap/pass carries the count
+with the hand. In the fan template, `highlights: [{card: pile, at, label}]` lifts and labels the pile's top card (the
+last card played onto it by then, else `pile:`).
 
 ### lineup: meet the players
 ```yaml
