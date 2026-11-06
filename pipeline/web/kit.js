@@ -623,7 +623,7 @@ function buildBars(K, ch, { x0, width, height, z = 0 }) {
     update(t) {
       for (const B of bars) {
         const k = B.k(t), h = Math.max(0.001, B.H * k), e = B.k.emph(t);
-        const he = h * (1 + 0.1 * e);                                  // emphasis on the word (Shorts): the bar swells
+        const he = h + e * Math.max(0.1 * h, 0.05 * height);           // emphasis on the word: the bar swells (a short bar visibly too)
         B.m.scale.y = he; B.m.position.y = he / 2; B.m.visible = k > 0.002;   // (taller AND wider: a colour-only pulse
         B.m.scale.x = B.m.scale.z = 1 + 0.18 * e;                       //  didn't read as anything happening)
         B.val.el.style.color = e > 0.05 || B.it.hl ? GN.mustard : GN.text;
