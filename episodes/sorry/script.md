@@ -1,111 +1,109 @@
-# I Played a Billion Games of Sorry! Your Family Is Moving the Wrong Pawn
+# The Best Way to Play Sorry!
 
-Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: docs/perfectplay-structure-notes.md.
-Big run: 1,006,250,000 games (GitHub Actions run 41872745692, 20 shards x 28.75 tests x 1.75M games; the three
-5-card-variation tests ran a quarter of the games). Claims say "over a billion" (not "billions").
+Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: the Uno episode (skill meter).
+Draft for the creator to rewrite in their own words; captions follow what they actually say.
 
-## Number sources (data/results.json unless noted; classic Hasbro rules, 4 players, three Normal opponents)
-- Fair share 25%. Best bot (runner + careful + safety first) 33.78%; random mover 4.90%; worst habit (spreader) 8.93%.
-- Habits (key in data/results.json "habits"): runner 32.33; front pawn unless a bump 28.82; front pawn always 24.18;
-  safety first 27.95; careful 27.24; never back 1 with a ten 24.94; one pawn at a time 24.74; never split a seven 23.72;
-  peaceful 23.37; avenger (Sorry! on the leader's furthest pawn) 19.89; never switch 19.23; switcher (eleven always swaps
-  with the leader's furthest pawn) 13.88; spreader 8.93.
-- Luck: Normal at a table of random movers 64.33; best at a table of random movers 72.96 (fair 25).
-- Engine check ("engine_check"): nobody gets a pawn out in round one, math 36x35x34x33 / 45x44x43x42 = 39.535%,
-  engine 39.551% (35M first rounds); first player out on turn one, math 20.000%, engine 19.993%.
-- Card values ("mirror" -> "4p" -> "card_swing", net squares of progress per draw: own gain plus opponents' average loss):
-  Sorry! 40.2, eleven 10.4, twelve 6.0, ten 4.9, seven 4.6, eight 4.2, four 3.8, five 3.3, two 2.7 (before its extra
-  draw), three 2.3, one 2.0. Twelves can't be used 56.7% of the time ("card_forfeit"). Game length 287.6 turns = 72 each.
-- Going first, 4 players: 24.91%; 2 players: 50.00% (no real edge).
-- Mirror check: 4 Normal players 24.92-25.08% per seat (more than noise at 35M games: exact ties were broken by board
-  order; with random tie-breaks 24.99-25.01%, data/supplementary_mirror_randtie.json); 4 best bots 24.99-25.02%;
-  2 players 49.98/50.02. Habit tests rotate the test bot through every seat, so the tie effect averages out.
-- Three players ("mirror" -> "3p"): the seat whose side runs into the empty side wins 39.84%, the others 30.06 and 30.10.
-  Same games with no bumping at all ("3p_no_interaction"): 33.23-33.50%. The colour rotation check (any three colours,
-  same result) was run locally during development: always the colour just before the empty side, about 40%.
-- Player count ("players"): best vs Normal, 2 players 55.20% (fair 50); 3 players 42.48% (fair 33.3).
-- Editions ("editions"): 2020 rules (two doesn't draw again; Sorry! may move four instead) best 32.17%, random 4.03%;
-  1958 44-card pack best 33.33%; 5-card adult variation best 31.73% (8.75M games).
-- Fully random player in the 5-card variation: 0.074% (data/supplementary_hand5_random.json, 4M games, local run after
-  the big run; the big run's "hand5_random" used a half-random bot and is not quoted).
-- Explanations marked "my guess" are not tested.
+## Number sources (4 players; "best bot" vs three Normal bots; fair share 25 unless said)
+Skill meter = best bot's win rate, data/v2.json `combos[key=...].best`; game length = `combos[key=...].turns` (turns
+per game, every player's turn counts). v2.json comes from Actions run 42172916225 (merge pending: the numbers below
+are the local scan, seeds 42/77/9, 100k games per test; re-check every one after the merge).
+- Official classic rules (`classic`): best 33.9, turns 277 (about 69 each). Random mover (`extras.random_floor.classic`)
+  4.9 = about 1 in 20. results.json (1B games) agrees: luck.best_vs_normal 33.78, random 4.90.
+- Uno official 29.0 (episodes/uno/script.md header, v2 `combos[key=official].best`): edge 4.0 vs Sorry! 8.9 ("more
+  than twice"). Exploding Kittens 40.5 (episodes/exploding-kittens/data/final.json `vs_casual.4.win`).
+- Engine check (results.json `engine_check`): nobody out in round one, math 39.535%, engine 39.551%.
+- House rules one at a time: start_out 34.2 / 259.5 turns; no_exact 32.2 / 176; slides_all 33.8 / 296;
+  no_slides 34.7 / 263; 2020 rules (`two_no_draw+sorry_four`) 32.2 / 291; two_no_draw alone 33.6 / 303.
+- Team rules (`extras.teams_best`): best team 56.6 vs fair 50. Players (results.json `players`): 2p 55.2 (fair 50),
+  3p 42.5 (fair 33.3). Three-player seat (results.json `mirror.3p`): 39.8 / 30.1 / 30.1; no bumping
+  (`mirror.3p_no_interaction`): 33.2-33.5.
+- 5-card variation (`hand5`): best 34.8, 117 turns; random (`extras.random_floor.hand5`) 0.07 = under 1 in 1,000.
+- Pick (`start_out+no_exact+hand5`): best 39.2, 86 turns (277 / 86 = 3.2 = "about a third of the time").
+  No slides on top (`no_slides+start_out+no_exact+hand5`): 40.3, 81 turns.
+- Card values (results.json `mirror.4p.card_swing`, classic): Sorry! 40.2, eleven 10.4 ("almost four times"),
+  four 3.8 > five 3.3. Twelve unusable 56.7% (`card_forfeit.12`).
+- Three cards (`extras.hand3_best`): 33.2, 158 turns.
+- [n1] (next-game teaser) is recorded later as a pick-up once the next game is set.
+- Habits under the pick (`habits_pick.*.test_win`, local 100k): runner 31.4; spreader 7.3; random 0.18; best 39.2 vs
+  best_no_keep 32.5; careful 27.3; safety_first 27.0 ("about two points" each); never_switch 16.8; switcher 21.3;
+  lead (always front pawn) 19.7; avenger 20.3; front_unless_bump 25.8; never_back1 25.1; saver alone 26.6.
+- Pick at other tables (`extras.players_pick`): 2p 57.8 (fair 50); 3p 47.3 (fair 33.3). Teams under the pick
+  (`extras.teams_pick_best`): 69.4 (fair 50) = "almost seven in ten".
+- Total games: results.json 1,006,250,000 + v2.json total_games (about 1.3B) = "over two billion" (re-check).
 
 ## Cold open
-[o1] Everybody plays Sorry! a little differently.
-[o2] Your little brother always moves whichever pawn is furthest behind. Your aunt swaps with the leader every time she draws an eleven. And your uncle saves every Sorry! card for whoever's winning.
-[o3] So I turned those habits into bots, gave them Hasbro's official rules, and had them play over a billion games.
-[o4] Here's the headline. At a table of four, a fair share is one game in four. The best bot won a third of its games. The worst habit won one in eleven.
-[o5] Sorry! is supposed to be pure luck. It isn't. It comes down to a few mistakes, and you're probably making at least one of them.
+[o1] Sorry! is supposed to be pure luck. You draw a card and you do what it says.
+[o2] But when I put it on my skill meter, Sorry! came out with more than twice the skill of Uno.
+[o3] And the official rule sheet has a variation printed on it that almost nobody plays. It makes the game more skillful, and it finishes in about a third of the time.
+[o4] I gave Hasbro's rules and every house rule I could find to bots, and had them play over two billion games. I wanted to find the best way to play Sorry!
 
-## The game in ten seconds
-[g1] Quick rules. Draw a card, move a pawn. Get all four pawns from your Start to your Home. Land on someone and they go back to their Start. Sorry.
+## How to play
+[g1] If it's been a while, here's how Sorry! works. Everyone has four pawns in their Start, and you win by getting all four around the board and into your Home.
+[g2] There are no dice. On your turn you draw a card and move that many spaces. The deck has forty five cards, with no sixes and no nines.
+[g3] You can only leave Start with a one or a two. And a two lets you draw again.
+[g4] A few cards are special. The four moves you backwards. The seven can be split between two pawns. The ten moves you ten forward or one back.
+[g5] The eleven moves eleven, or swaps one of your pawns with anyone else's on the board.
+[g6] And the Sorry! card. You take a pawn out of your Start, put it on someone else's pawn, and send theirs back to their Start.
+[g7] Landing on someone with any card bumps them back to Start too. And if you land on a triangle of another color, you slide to the end and bump everyone on the slide.
+[g8] The last five spaces before your Home are your Safety Zone. Nobody else can get in, and you need the exact count to get Home.
 
 ## Can you trust it
-[c1] My version follows Hasbro's classic rules. Forty five cards, no sixes and no nines. Only a one or a two gets you out of Start, and a two lets you draw again.
-[c2] Slides, the seven you can split, the eleven that swaps, the four that moves you backwards. All in there, square for square.
-[c3] To check the engine, I used plain math. With four players, nobody gets a pawn out in the first round if the first four cards are all useless.
-[c4] On paper that happens thirty nine point five four percent of the time. Over thirty five million first rounds, my engine says thirty nine point five five.
-[c5] One thing my bots don't do is hold a grudge. They never gang up on the leader on purpose. Keep that in mind. I'll come back to it at the end.
+[c1] I checked my simulator against plain math. With four players, the chance that nobody gets a pawn out in the first round is thirty nine and a half percent.
+[c2] Over thirty five million first rounds, my simulator landed within two hundredths of a percent of that.
+[c3] The bots only know what a real player knows, the board and the card they drew. A normal bot takes the move that gets it furthest, and bumps people whenever it can.
 
-## Meet the players
-[p1] Here's the table.
-[p2] The Normal player always makes the move that gets it furthest, and bumps people whenever it can.
-[p3] The Spreader moves whichever pawn is furthest behind. The Runner does the opposite, and pushes its front pawn home first.
-[p4] The Switcher swaps with the leader on every eleven. The Avenger always aims its Sorry! card at the leader's best pawn.
-[p5] And the Careful player won't stop right in front of an opponent if it can help it.
+## The skill meter
+[m1] So how do you measure skill in a game like this? I take my best bot, give it every good habit I found, and sit it down with three normal players.
+[m2] If Sorry! was pure luck, it would win one game in four. Twenty five percent.
+[m3] Under the official rules it wins thirty four. That's nine points of skill. I honestly expected it to land right next to Uno.
+[m4] Uno's official rules only gave my best bot twenty nine, so Sorry! has more than twice the skill. Exploding Kittens is still ahead at forty and a half.
+[m5] And at the bottom, a bot that moves completely at random wins about one game in twenty. So no, it's not all luck.
+[m6] The problem is the length. An official game takes two hundred and seventy seven turns. That's about sixty nine turns for every player.
 
-## The ranking
-[r1] Here's how each one did against three Normal players. One in four is a fair share, so twenty five percent is the number to beat.
-[r2] At the bottom, a bot that moves completely at random wins about one game in twenty. So no, it's not all luck.
-[r3] The Spreader wins nine percent. The Switcher, fourteen. The Avenger, twenty.
-[r4] The Careful player beats the table with twenty seven percent. The Runner wins thirty two.
-[r5] But a ranking doesn't tell you why. So let's take the habits one at a time.
-
-## Mistake one: spreading out
-[m1] Mistake one is spreading your pawns around the board. It feels safe. It's the worst habit I tested, apart from playing at random.
-[m2] My guess is that every pawn on the track is a target, and a pawn that's halfway around costs you a lot when it gets sent home.
-[m3] The Runner does the opposite. It mostly pushes its front pawn, gets it into the Safety Zone, and then moves on to the next one. That habit alone wins thirty two percent.
-[m4] If you want one rule to remember, try this. Move your front pawn, unless you can bump someone. That simple rule wins twenty nine percent.
-[m5] And it needs that exception. Always moving the front pawn, even when a bump is sitting right there, wins only twenty four. Worse than doing nothing special.
-
-## Mistake two: the eleven
-[e1] Mistake two is the eleven.
-[e2] Swapping with the leader every single time feels like justice. It wins fourteen percent. My guess is that a lot of those swaps send your own pawn backwards.
-[e3] But never swapping is a mistake too. That wins nineteen percent.
-[e4] The Normal player swaps only when the swap beats just moving eleven. That's the whole trick.
-
-## Mistake three: the Sorry! card
-[s1] Mistake three. Aiming every Sorry! card at the leader's best pawn wins twenty percent.
-[s2] When you play a Sorry!, your pawn lands where theirs was. My guess is that where you land matters as much as who you hit. The Normal player picks the spot that's best for both.
-[s3] If this is already changing how you play, subscribe. There are more games coming.
-
-## The cards
-[k1] Speaking of the Sorry! card, here's what every card is worth. I measured how far each one moves the race, counting your progress and what it costs your opponents.
+## Where the skill comes from
+[k1] Part of that skill is knowing what your cards are worth. I measured how far each card moves the race, counting your progress and what it costs everyone else.
 [k2] The Sorry! card is worth almost four times an eleven. Nothing else comes close.
-[k3] And here's my favorite. The four, the card that moves you backwards, is worth more than the five.
-[k4] Back up four squares from your Start circle and you're two squares from the entrance to your Safety Zone. You just skipped almost the whole board.
+[k3] My favorite is the four, the card that moves you backwards. It's worth more than the five.
+[k4] Back up four from your Start circle and you're two spaces from your Safety Zone. You just skipped almost the whole board.
 [k5] The twelve sounds great, but more than half the time you can't use it at all.
 
-## The aside
-[a1] One true story from making this. My first fairness test failed.
-[a2] With three players, one seat won forty percent of the time instead of a third. I assumed it was a bug in my code.
-[a3] It wasn't. With three players one side of the board is empty. The player whose pawns run into that empty side first wins forty percent. The other two win thirty each.
-[a4] When I switched off bumping completely, the three seats evened out. So it comes from the bumping, not from the code.
-[a5] So if you play with three, pick the color whose side comes just before the empty side, going the way the pawns move.
+## House rules on the meter
+[r1] Now let's put the house rules on the meter, one at a time.
+[r2] A common one is starting with one pawn already out. That nudges the meter up to thirty four, and cuts about eighteen turns.
+[r3] No exact count, where any card that reaches your Home gets you in. This one cuts the game by more than a third, down to a hundred and seventy six turns. It costs a little skill. The best bot drops to thirty two.
+[r4] Sliding on every slide, even your own color, sounds harmless. But your own slide starts right before the entrance to your Safety Zone. You slide straight past it and go around the board again.
+[r5] So that rule barely moves the meter, and games get longer, almost three hundred turns.
+[r6] No slides at all goes the other way. Thirty five percent, and a slightly shorter game.
+[r7] The newer twenty twenty rules take away the two's extra draw, and let a Sorry! card move you forward four instead. That drops the meter to thirty two, and adds about fourteen turns.
+[r8] The classic sheet also has official Team rules. Partners sit across from each other, and you can move either partner's pawns. A team of two best bots wins fifty six and a half percent, against a fair share of fifty.
+[r9] One on one, the best bot wins fifty five percent, against a fair share of fifty. With three players, forty two and a half, against a fair share of thirty three.
 
-## Your edition
-[d1] One more thing. Check the year on your box.
-[d2] In the newer rules, a two doesn't let you draw again, and a Sorry! card can move you forward four instead. The best bot still wins thirty two percent there.
-[d3] And there's a variation for adults on the classic instructions. Hold five cards and choose which one to play.
-[d4] That's where skill really shows. A player who picks cards at random wins less than one game in a thousand.
+## The three player seat
+[t1] But three players hides something weirder. One side of the board is empty, and one seat wins forty percent of the games. The other two win thirty each.
+[t2] I thought that was a bug. So I switched off bumping completely, and all three seats evened out at a third. It comes from the bumping.
+[t3] So with three players, take the color whose pawns run onto the empty side first.
 
-## The recipe
-[w1] So here's what over a billion games of Sorry! say.
-[w2] Push your front pawn home first, unless you can bump someone.
-[w3] Don't stop right in front of an opponent if you have a choice, and get into your Safety Zone whenever you can.
-[w4] Swap with an eleven only when it moves you forward. And play your Sorry! where it puts you furthest along.
-[w5] Do all of that and the best bot wins a third of its games at a table of four, against players who already play pretty well.
+## The best way to play
+[b1] Now the variation almost nobody plays. It's printed right on the classic rule sheet, as the variation for adults.
+[b2] Everyone holds five cards. On your turn you pick one, play it, and draw back up to five.
+[b3] On its own, that cuts the game to a hundred and seventeen turns, and the best bot wins thirty five percent.
+[b4] But the part I didn't expect was the bottom of the meter. A player who picks cards at random wins less than one game in a thousand.
+[b5] Even three cards gets you most of the way. The best bot wins thirty three percent, and a game takes a hundred and fifty eight turns.
+[b6] Now add no exact count, and start everyone with one pawn out. The best bot wins thirty nine percent, and a game takes eighty six turns instead of two hundred and seventy seven.
+[b7] That's more skill than the official game, in about a third of the time. That's how I'd play Sorry!
+[b8] It works with any number of players too. One on one, the best bot wins fifty eight percent. With Team rules, a team of two good players wins almost seven games in ten.
+[b9] If you want the most skill I found, take the slides out as well. That gets the best bot to forty. But the slides are half the fun, so I'd keep them.
+
+## How to win
+[w1] So how do you win under those rules? Every number here is one bot changing one habit, against three normal players.
+[w2] Number one. Push one pawn all the way home before you worry about the next. That habit alone wins thirty one percent.
+[w3] Spreading your moves over all four pawns feels safe. It's the worst habit I tested, apart from playing at random. Seven percent.
+[w4] Number two. Save your Sorry! cards and your elevens for a moment that's worth it. When I took that one habit away from my best bot, it fell from thirty nine to thirty two and a half.
+[w5] Number three. Don't stop right in front of an opponent if you can help it, and get into your Safety Zone whenever you can. Each of those is worth about two points.
+[w6] Number four. Use the eleven to switch when the switch moves you forward. Never switching drops you to seventeen. Switching with the leader every single time, twenty one.
+[w7] And one I got wrong. I thought you should always move your front pawn. But doing that even when you could bump someone drops you to twenty.
+[w8] Aiming every Sorry! card at the leader isn't great either. Twenty percent. Your pawn lands where theirs was, so where you land matters as much as who you hit.
 
 ## Close
-[x1] Remember, my bots never hold a grudge. Whether your family gangs up on the leader is still up to you.
-[x2] So who gets your Sorry! card, the leader or the person who just bumped you? Tell me in the comments.
+[e1] Under the official rules, Sorry! already has more than twice the skill of Uno. Hold five cards, skip the exact count, start with a pawn out, and a good player wins almost two games in five.
+[e2] Do you play with the exact count, or does any card get you Home? Tell me in the comments.

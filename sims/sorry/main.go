@@ -192,8 +192,12 @@ func runGames(W, per int, seed int64, N int, R *Rules, base, test *Policy) map[s
 	for i := range seat {
 		seat[i] = float64(t.seatWins[i]) / n
 	}
+	fair := 1 / float64(N)
+	if teams && N == 4 {
+		fair = 0.5 // Team rules: a side is two seats
+	}
 	out := map[string]any{
-		"games": t.games, "players": N, "fair_share": 1 / float64(N), "seat_win": seat,
+		"games": t.games, "players": N, "fair_share": fair, "seat_win": seat,
 		"first_player_win": float64(t.firstWins) / n, "mean_turns": float64(t.turns) / n,
 		"mean_cards": float64(t.cards) / n, "unfinished": float64(t.unfinished) / n,
 	}
