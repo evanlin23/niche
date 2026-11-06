@@ -107,5 +107,5 @@ are the local scan, seeds 42/77/9, 100k games per test; re-check every one after
 
 ## Close
 [e1] Under the official rules, Sorry! already has more than twice the skill of Uno. Hold five cards, skip the exact count, start with a pawn out, and a good player wins almost two games in five.
-[n1] Next up is Battleship. Everybody argues about where to hide their ships, and it turns out that's the wrong thing to argue about.
+[n1] Next up is Battleship. Everybody argues about where to hide their ships, and that's the wrong thing to argue about.
 [e2] Do you play with the exact count, or does any card get you Home? Tell me in the comments.
