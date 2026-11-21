@@ -1,5 +1,12 @@
 # The Best Way to Play Sorry!
 
+> **Status (2026-11-21): paused.** The channel is on hold; work stopped here. Done: rules re-checked, engine
+> extended (house rules + official Team rules, tests pass), outline approved by the creator, recording sheet sent
+> (docs/recording-script-sorry.txt). Not done: no recording received, v2 big run (Actions 42172916225, merged-data
+> artifact kept 30 days) not merged into data/v2.json, script numbers still from the local scan, no scenes, renders,
+> Shorts or upload kit. To resume: download and commit data/v2.json, re-check every number in the header below, then
+> scenes.yaml from the kit (track board) on silent timing.
+
 Narrated lines are `[id] text`. Style: docs/script-style-guide.md. Structure: the Uno episode (skill meter).
 Draft for the creator to rewrite in their own words; captions follow what they actually say.
 
