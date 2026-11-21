@@ -5,8 +5,8 @@ about 1:35–2:00 pm CST. Read with `docs/simulation-niche-research.md` §5–8,
 `docs/LESSONS.md`.
 
 **Verdict:** a conditional go. Start with one pilot (an egg drop designed by evolution, §6). Channels only weeks old have
-broken out here in the last 90 days, and its Shorts are among the biggest we've measured. The flood is real, though: 119 new "AI learns" channels with a median of 9 subscribers. We only win with
-Buh as a real character, the creator's voice, a story with a cheat in it, and 12–15 minute videos. Volume won't do it.
+broken out here in the last 90 days, and the lane's Shorts are among the biggest we've measured. The flood is real,
+though: 119 new "AI learns" channels with a median of 9 subscribers. We only win with Buh as a real character, the creator's voice, a story with a cheat in it, and 12–15 minute videos. Volume won't do it.
 
 ## 0. Method, sources, limits
 - **Sources.** Every number carries one of three tags:
